@@ -13,6 +13,13 @@ export GLOO_LICENSE_KEY="<INSERT_LICENSE_KEY_HERE>"
 export GLOO_MESH_LICENSE_KEY="<INSERT_LICENSE_KEY_HERE>"
 ```
 
+#### Renaming Cluster Context
+If your local clusters have a different context name, you will want to have it match the expected context name(s) (mgmt,cluster1,cluster2).
+IE for the mgmt cluster
+```
+kubectl config rename-context k3d-your_mgmt_cluster_name mgmt
+```
+
 ## To deploy
 ```
 ./aoa-tools/deploy.sh -f <environment directory>
