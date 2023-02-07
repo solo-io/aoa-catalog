@@ -35,6 +35,8 @@ Notes on defaults:
 ### vars.env
 The `vars.env` exists in each demo environment directory and the specified variables are treated as the source of truth for the installation. The installer will use any passed in flags and attempt to discover all of the necessary variables in the pre-check. Please verify the output before continuing.
 
+Note: All variables present in the `vars.env` will be exported and available everywhere for continued use
+
 #### vars.env overrides
 Below are a few override example variables that can be useful when forking this repo or specifying an `environment_overlay` directly
 
