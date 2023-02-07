@@ -1,0 +1,2 @@
+# removes default runAsUser: 1000 in container spec
+- {op: remove,  path: /spec/template/spec/containers/0/securityContext}

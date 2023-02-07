@@ -1,0 +1,17 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  labels:
+    failover: "true"
+  name: productpage-443
+  namespace: bookinfo-team-config
+spec:
+  hosts:
+  - productpage-443.global
+  ports:
+  - number: 9080
+    protocol: HTTP
+  services:
+  - labels:
+      app: productpage
+    namespace: bookinfo-frontends

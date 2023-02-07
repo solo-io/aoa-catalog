@@ -1,0 +1,27 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- ../../base/active/
+
+patchesJson6902:
+- path: patch/reviews-v1-arm.yaml
+  target:
+    group: apps
+    kind: Deployment
+    name: reviews-v1
+    version: v1
+- path: patch/reviews-v2-arm.yaml
+  target:
+    group: apps
+    kind: Deployment
+    name: reviews-v2
+    version: v1
+- path: patch/reviews-v3-arm.yaml
+  target:
+    group: apps
+    kind: Deployment
+    name: reviews-v3
+    version: v1

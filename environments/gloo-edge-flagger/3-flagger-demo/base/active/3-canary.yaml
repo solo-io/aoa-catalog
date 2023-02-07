@@ -1,0 +1,77 @@
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: podinfo
+  namespace: test
+spec:
+  # upstreamRef (optional)
+  # defines an upstream to copy the spec from when flagger generates new upstreams.
+  # necessary to copy over TLS config, circuit breakers, etc. (anything nonstandard)
+#  upstreamRef:
+#    apiVersion: gloo.solo.io/v1
+#    kind: Upstream
+#    name: podinfo-upstream
+#    namespace: gloo-system
+  provider: gloo
+  # deployment reference
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: podinfo
+  # HPA reference (optional)
+  autoscalerRef:
+    apiVersion: autoscaling/v2beta2
+    kind: HorizontalPodAutoscaler
+    name: podinfo
+  service:
+    # ClusterIP port number
+    port: 9898
+    # container port number or name (optional)
+    targetPort: 9898
+  analysis:
+    # schedule interval (default 60s)
+    interval: 10s
+    # max number of failed metric checks before rollback
+    threshold: 10
+    # max traffic percentage routed to canary
+    # percentage (0-100)
+    maxWeight: 50
+    # canary increment step
+    # percentage (0-100)
+    stepWeight: 5
+    # Gloo Prometheus checks
+    metrics:
+    # builtin metrics analysis
+    - name: request-success-rate
+      # minimum req success rate (non 5xx responses)
+      # percentage (0-100)
+      thresholdRange:
+        min: 99
+      interval: 1m
+    - name: request-duration
+      # maximum req duration P99
+      # milliseconds
+      thresholdRange:
+        max: 500
+      interval: 30s
+    # optional metrics analysis (prometheus)
+    - name: "podinfo-prometheus"
+      templateRef:
+        name: podinfo-prometheus
+      thresholdRange:
+        max: 1
+      interval: 1m
+    webhooks:
+      - name: acceptance-test
+        type: pre-rollout
+        url: http://flagger-loadtester.test/
+        timeout: 10s
+        metadata:
+          type: bash
+          cmd: "curl -sd 'test' http://podinfo-canary:9898/token | grep token"
+      - name: load-test
+        url: http://flagger-loadtester.test/
+        timeout: 5s
+        metadata:
+          type: cmd
+          cmd: "hey -z 2m -q 5 -c 2 -host podinfo.kapoozi.com https://podinfo.kapoozi.com/"

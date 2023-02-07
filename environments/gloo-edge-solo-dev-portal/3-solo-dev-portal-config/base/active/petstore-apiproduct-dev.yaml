@@ -1,0 +1,39 @@
+apiVersion: portal.gloo.solo.io/v1beta1
+kind: APIProduct
+metadata:
+  name: petstore-api-dev
+  namespace: petstore
+spec:
+  displayInfo:
+    description: API Product Internal to cluster
+    title: Petstore Product (Dev)
+    image:
+      fetchUrl: https://raw.githubusercontent.com/solo-io/gitops-library/main/assets/petstore-logo-1.jpg
+  versions:
+  - apis:
+    - apiDoc:
+        name: petstore-openapi-pets
+        namespace: petstore
+    gatewayConfig:
+      route:
+        inlineRoute:
+          backends:
+          - upstream:
+              name: petstore-petstore-dev-8080
+              namespace: gloo-system
+    name: v1
+  - apis:
+    - apiDoc:
+        name: petstore-openapi-pets
+        namespace: petstore
+    - apiDoc:
+        name: petstore-openapi-users
+        namespace: petstore
+    gatewayConfig:
+      route:
+        inlineRoute:
+          backends:
+          - upstream:
+              name: petstore-petstore-dev-8080
+              namespace: gloo-system
+    name: v2

@@ -1,0 +1,42 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  labels:
+    expose: "true"
+  name: productpage-rt-443
+  #namespace: bookinfo-team-config
+  namespace: bookinfo-frontends
+spec:
+  hosts:
+  - '*'
+  http:
+  - forwardTo:
+      destinations:
+      - port:
+          number: 9080
+        ref:
+          name: productpage
+          namespace: bookinfo-frontends
+          cluster: cluster1
+    labels:
+      waf: "true"
+      oauth: "true"
+    matchers:
+    - uri:
+        exact: /productpage
+    - uri:
+        prefix: /static
+    - uri:
+        exact: /login
+    - uri:
+        exact: /logout
+    - uri:
+        prefix: /api/v1/products
+    - uri:
+        prefix: /callback
+    name: productpage
+  virtualGateways:
+  - cluster: cluster1
+    name: cluster1-north-south-gw-443
+    namespace: istio-gateways
+  workloadSelectors: []

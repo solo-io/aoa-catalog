@@ -1,0 +1,88 @@
+apiVersion: portal.gloo.solo.io/v1beta1
+kind: Environment
+metadata:
+  name: dev-external
+  namespace: petstore
+spec:
+  apiProducts:
+  - basePath: '{%version%}'
+    names:
+    - httpbin-api-dev-external
+    - petstore-api-dev
+    namespaces:
+    - '*'
+    usagePlans:
+    - basic
+    - trusted
+    versions:
+      names:
+      - v1
+      - v2
+      - v3
+  basePath: /devteam
+  # no base path
+  #basePath: /
+  displayInfo:
+    description: This environment is meant for developers to deploy and test their
+      APIs.
+    displayName: Development
+  domains:
+  # arbitrary portal generated vs host
+  - httpbin-local.glootest.com
+  - httpbin-cluster1.kapoozi.com
+  gatewayConfig:
+    disableRoutes: false
+    options:
+      cors:
+        allowCredentials: true
+        allowHeaders:
+        - api-key
+        - Authorization
+        - accept
+        - content-type
+        - referer
+        - user-agent
+        allowMethods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        allowOrigin:
+        - https://portal-local.glootest.com
+        # arbitrary portal generated vs host
+        - httpbin-local.glootest.com
+        - https://httpbin-cluster1.kapoozi.com
+        #allowOriginRegex:
+        #- 'https://[a-zA-Z0-9]*-local.glootest.com'
+        #- 'http://[a-zA-Z0-9]*-local.glootest.com'
+    tls:
+      config:
+        secretRef:
+          name: upstream-tls
+          namespace: gloo-system
+        sniDomains:
+        - '*'
+      enabled: true
+  parameters:
+    usagePlans:
+      basic:
+        authPolicy:
+          apiKey: {}
+        displayName: Basic plan with API key auth
+        rateLimit:
+          requestsPerUnit: 3
+          unit: MINUTE
+      trusted:
+        displayName: trusted plan
+        rateLimit:
+          unit: MINUTE
+          requestsPerUnit: 10
+        authPolicy:
+          oauth:
+            authorizationUrl: https://dev-22653158.okta.com/oauth2/default/v1/authorize
+            tokenUrl: https://dev-22653158.okta.com/oauth2/default/v1/token
+            jwtValidation:
+              issuer: https://dev-22653158.okta.com/oauth2/default
+              remoteJwks:
+                refreshInterval: 60s
+                url: https://dev-22653158.okta.com/oauth2/default/v1/keys

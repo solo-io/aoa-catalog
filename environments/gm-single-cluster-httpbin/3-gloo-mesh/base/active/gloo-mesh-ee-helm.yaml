@@ -1,0 +1,67 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gloo-mesh-enterprise-helm
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gloo-mesh
+  project: default
+  source:
+    chart: gloo-mesh-enterprise
+    helm:
+      skipCrds: true
+      values: |
+        licenseSecretName: gloo-mesh-license
+        global:
+          cluster: mgmt
+        mgmtClusterName: mgmt
+        glooMeshMgmtServer:
+          serviceType: LoadBalancer
+          relay:
+            disableCa: true
+            disableCaCertGeneration: true
+            disableTokenGeneration: true
+            tlsSecret:
+              name: gloo-server-tls-cert
+          ports:
+            healthcheck: 8091
+        glooMeshUi:
+          serviceType: ClusterIP
+          enabled: true
+          auth:
+            enabled: false
+            backend: oidc
+            oidc: 
+              # From the OIDC provider
+              clientId: "0oa5zoq0xoGKtOSpg5d7"
+              # From the OIDC provider. To be base64 encoded and stored as a kubernetes secret.
+              clientSecret: "_MS9PJ52NpUJo8Hj2nE4zj90hX4BFkW61SdaXJfE"
+              # Name for generated secret
+              clientSecretName: dashboard
+              # The issuer URL from the OIDC provider, usually something like 'https://<domain>.<provider_url>/'.
+              issuerUrl: https://dev-22653158.okta.com/oauth2/default
+              # The URL that the UI for the OIDC app is available at, from the DNS and other ingress settings that expose the OIDC app UI service.
+              appUrl: "https://gmui-local.glootest.com/gmui"
+          deploymentOverrides:
+            spec:
+              template:
+                metadata:
+                  annotations:
+                    proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+                  labels:
+                    istio.io/rev: "1-15"
+                    sidecar.istio.io/inject: "true"
+    repoURL: https://storage.googleapis.com/gloo-mesh-enterprise/gloo-mesh-enterprise
+    targetRevision: 2.2.0
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  # ignore the self-signed certs that are being generated automatically    
+  ignoreDifferences:
+  - group: v1
+    kind: Secret

@@ -1,0 +1,21 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualGateway
+metadata:
+  name: cluster1-north-south-gw-443
+  namespace: istio-gateways
+spec:
+  listeners:
+  - http: {}
+    port:
+      number: 443
+    tls:
+      mode: SIMPLE
+      secretName: tls-secret
+    # specify a host
+    #allowedRouteTables:
+    #  - host: bookinfo-local.glootest.com
+  workloads:
+  - selector:
+      cluster: cluster1
+      labels:
+        istio: ingressgateway

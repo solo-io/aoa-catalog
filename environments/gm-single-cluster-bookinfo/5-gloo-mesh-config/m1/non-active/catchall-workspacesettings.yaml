@@ -1,0 +1,33 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: WorkspaceSettings
+metadata:
+  name: wildcard
+  namespace: gloo-mesh
+spec:
+  exportTo:
+  - workspaces:
+    - name: '*'
+  importFrom:
+  - workspaces:
+    - name: '*'
+  options:
+    federation:
+      enabled: true
+      hostSuffix: global
+      serviceSelector:
+      # specify workloads so that serviceentries are not created for everything
+      - workspace: wildcard
+        labels: 
+          app: in-mesh
+      - workspace: wildcard
+        labels: 
+          app: reviews
+      - workspace: wildcard
+        labels: 
+          app: ratings
+      - workspace: wildcard
+        labels: 
+          app: details
+      - workspace: wildcard
+        labels: 
+          app: productpage

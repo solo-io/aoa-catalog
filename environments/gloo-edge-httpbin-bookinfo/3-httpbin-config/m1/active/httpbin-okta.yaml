@@ -1,0 +1,18 @@
+apiVersion: enterprise.gloo.solo.io/v1
+kind: AuthConfig
+metadata:
+  name: httpbin-okta
+  namespace: gloo-system
+spec:
+  configs:
+  - oauth2:
+      oidcAuthorizationCode:
+        appUrl: https://httpbin-local.glootest.com/productpage
+        callbackPath: /callback
+        clientId: 0oa5zoq0xoGKtOSpg5d7
+        clientSecretRef:
+          name: okta-client-secret
+          namespace: gloo-system
+        issuerUrl: https://dev-22653158.okta.com/oauth2/default
+        scopes:
+        - email

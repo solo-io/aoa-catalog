@@ -1,0 +1,20 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- certmanager-istio-ca-cert.yaml
+- certmanager-selfsigned-issuer.yaml
+- gateway-cert.yaml
+- gateway-clusterissuer.yaml
+- glcm-ew-cluster1.yaml
+- glcm-ew-cluster2.yaml
+- glcm-ew-mgmt.yaml
+- glcm-ns-cluster1.yaml
+- glcm-ns-cluster2.yaml
+- glcm-ns-mgmt.yaml
+- ilcm-cluster1.yaml
+- ilcm-cluster2.yaml
+- ilcm-mgmt.yaml
+

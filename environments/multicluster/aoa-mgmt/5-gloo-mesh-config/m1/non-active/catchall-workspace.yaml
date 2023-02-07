@@ -1,0 +1,10 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: Workspace
+metadata:
+  name: wildcard
+  namespace: gloo-mesh
+spec:
+  workloadClusters:
+  - name: '*'
+    namespaces:
+    - name: '*'
