@@ -36,7 +36,6 @@ echo "###############   AoA Lib - Pre-install   ##################"
 echo "Environemnt: $env"
 echo "Install infra: $install_infra"
 echo "Overlay: $environment_overlay"
-echo ""
 check_git
 echo "Github Account: $github_username"
 echo "Repo: $repo_name"
@@ -73,16 +72,15 @@ check_env()
 
 check_git()
 {
+   echo "#################### Git Validation ########################"
    if [[ "$github_username$target_branch$repo_name" != "" ]]
    then
-      echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
       echo "!!!!!!!!!!!!!!!!!!!!   Warning   !!!!!!!!!!!!!!!!!!!!!!!!!!!"
       echo ""
       echo "Git: github_username and/or target_branch and/or repo_name   "
       echo "has/have been passed in the vars.env, skipping Git validation"
       echo ""              
       echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      echo ""   
       return
    fi 
 
@@ -102,14 +100,12 @@ check_git()
 
    if [[ ${local_changes} != "" ]] || [[ ${remote_hash} != ${local_hash} ]]
    then
-      echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
       echo "!!!!!!!!!!!!!!!!!!!!   Warning   !!!!!!!!!!!!!!!!!!!!!!!!!!!"
       echo ""
       echo "Git: the AoA files local changes are not in sync with the   "
       echo "remote!"
       echo ""              
       echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      echo ""   
    fi 
 
    origin=$(git remote get-url origin)  
