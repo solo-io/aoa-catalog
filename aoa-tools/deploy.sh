@@ -222,7 +222,7 @@ $SCRIPT_DIR/tools/wait-for-rollout.sh deployment argocd-server argocd 20 ${clust
 cd $env
 # deploy app of app waves
 for i in $(ls | sort -n); do 
-  if [[ ${i} == ".infra" ]] || [[ ${i} == ".images" ]] || [[ ${i} == "vars.env" ]] || [[ ${i} == "README.md" ]]
+  if [[ ${i:0:1}  == "." ]] || [[ ${i} == "vars.env" ]] || [[ ${i} == "README.md" ]]
   then
       continue
   fi 
