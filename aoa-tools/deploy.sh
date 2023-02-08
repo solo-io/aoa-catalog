@@ -106,7 +106,7 @@ check_git()
    if [[ ${local_changes} != "" ]] || [[ ${remote_hash} != ${local_hash} ]]
    then
       printf "${YELLOW}Warning: the AoA files local changes are not in sync with the   ${NO_COLOR}\n"
-      printf "${YELLOW}Git remote branch!${NO_COLOR}"
+      printf "${YELLOW}Git remote branch, make sure to push your local changes.${NO_COLOR}"
    else
       printf "${GREEN}Git Validation - Success ${NO_COLOR}"
    fi 
