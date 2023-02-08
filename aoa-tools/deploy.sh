@@ -6,6 +6,14 @@
 install_infra=false
 export SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 environment_overlay="base"
+
+
+#Colors
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+GREEN='\033[0;32m'
+NO_COLOR='\033[0m'
+
 ############################################################
 
 ############################################################
@@ -31,17 +39,17 @@ pre_install()
 check_env
 source_env_vars
 
-echo "############################################################"
-echo "###############   AoA Lib - Pre-install   ##################"
+echo "------------------------------------------------------------"
+echo "--------------   AoA Installer - Pre-install   -------------"
 echo "Environemnt: $env"
 echo "Install infra: $install_infra"
 echo "Overlay: $environment_overlay"
 check_git
+echo ""
 echo "Github Account: $github_username"
 echo "Repo: $repo_name"
 echo "Branch: $target_branch"
-echo "############################################################"
-echo ""
+echo "------------------------------------------------------------"
 
 echo "Continue? [y/N]"
 
@@ -60,7 +68,7 @@ check_env()
   if [[ ${env} == "" ]] || [ ! -d "$env" ]
   then
     # provide vars file
-    echo "Error: env folder not found, please use -f to choose a valid env folder."
+    printf "${RED}Error: env folder not found, please use -f to choose a valid env folder.${NO_COLOR}\n"
     help
     exit 1
    fi
@@ -72,16 +80,13 @@ check_env()
 
 check_git()
 {
-   echo "#################### Git Validation ########################"
+
+   echo "-------------  Git Validation In Progress  -----------------"
    if [[ "$github_username$target_branch$repo_name" != "" ]]
    then
-      echo "!!!!!!!!!!!!!!!!!!!!   Warning   !!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      echo ""
-      echo "Git: github_username and/or target_branch and/or repo_name   "
-      echo "has/have been passed in the vars.env, skipping Git validation"
-      echo ""              
-      echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      return
+      printf "${YELLOW}Warning: github_username and/or target_branch and/or repo_name  ${NO_COLOR}\n"
+      printf "${YELLOW}has/have been passed in the vars.env, skipping Git validation${NO_COLOR}"      
+      return      
    fi 
 
    cd ${env}
@@ -100,12 +105,10 @@ check_git()
 
    if [[ ${local_changes} != "" ]] || [[ ${remote_hash} != ${local_hash} ]]
    then
-      echo "!!!!!!!!!!!!!!!!!!!!   Warning   !!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      echo ""
-      echo "Git: the AoA files local changes are not in sync with the   "
-      echo "remote!"
-      echo ""              
-      echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      printf "${YELLOW}Warning: the AoA files local changes are not in sync with the   ${NO_COLOR}\n"
+      printf "${YELLOW}Git remote branch!${NO_COLOR}"
+   else
+      printf "${GREEN}Git Validation - Success ${NO_COLOR}"
    fi 
 
    origin=$(git remote get-url origin)  
@@ -157,7 +160,6 @@ install_infra()
       done      
       fi 
 }
-
 
 ############################################################
 # Get the options
