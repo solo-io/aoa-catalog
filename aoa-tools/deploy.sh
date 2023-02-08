@@ -5,7 +5,7 @@
 # Defaults
 install_infra=false
 export SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-environment_overlay="m1"
+environment_overlay="base"
 ############################################################
 
 ############################################################

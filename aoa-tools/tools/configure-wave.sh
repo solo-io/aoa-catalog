@@ -37,7 +37,7 @@ fi
 if [[ ${github_username} == "" ]]
   then
     # provide github_username variable
-    echo "Please provide the github_username to use (i.e. ably77):"
+    echo "Please provide the github_username to use (i.e. solo-io):"
     read github_username
 fi
 
