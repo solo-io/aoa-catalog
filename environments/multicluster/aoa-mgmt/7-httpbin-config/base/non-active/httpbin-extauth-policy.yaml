@@ -19,7 +19,7 @@ spec:
           oidcAuthorizationCode:
             appUrl: https://httpbin-local.glootest.com
             callbackPath: /callback
-            clientId: 0oa5zoq0xoGKtOSpg5d7
+            clientId: 0oa6qvzybcVCK6PcS5d7
             clientSecretRef:
               name: httpbin-oidc-client-secret
               namespace: httpbin

@@ -9,7 +9,7 @@ spec:
       oidcAuthorizationCode:
         appUrl: https://httpbin-local.glootest.com/productpage
         callbackPath: /callback
-        clientId: 0oa5zoq0xoGKtOSpg5d7
+        clientId: 0oa6qvzybcVCK6PcS5d7
         clientSecretRef:
           name: okta-client-secret
           namespace: gloo-system
