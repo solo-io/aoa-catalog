@@ -9,7 +9,7 @@ echo "To access applications, follow the methods below:"
 echo 
 echo "Method 1 - LoadBalancer External-IP: modify /etc/hosts on your local machine (this will require sudo privileges)"
 echo "cat <<EOF | sudo tee -a /etc/hosts"
-echo "$(kubectl -n istio-gateways get service istio-ingressgateway-${ISTIO_REVISION} -o jsonpath='{.status.loadBalancer.ingress[0].ip}') argocd-local.glootest.com gmui-local.glootest.com bank-local.glootest.com"
+echo "$(kubectl -n istio-gateways get service istio-ingressgateway-${ISTIO_REVISION} -o jsonpath='{.status.loadBalancer.ingress[0].ip}') argocd-local.glootest.com gmui-local.glootest.com solowallet-local.glootest.com"
 echo "EOF"
 echo
 echo "Method 2 - K3d LB Integration: modify /etc/hosts on your local machine (this will require sudo privileges)"
@@ -19,7 +19,7 @@ echo "EOF"
 echo
 echo "access argocd at https://argocd-local.glootest.com/argo"
 echo "access Gloo Mesh UI at https://gmui-local.glootest.com"
-echo "access the bank application at: https://bank-local.glootest.com"
+echo "access the bank application at: https://solowallet-local.glootest.com"
 echo
 echo "Method 3: use port-forwarding"
 echo "alternatively, access argocd using port-forward command:" 
