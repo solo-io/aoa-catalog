@@ -5,4 +5,3 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - ../../base/active/
-- httpbin-oauth-rt-443.yaml

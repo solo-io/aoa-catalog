@@ -22,7 +22,7 @@ spec:
       - name: glooMeshAgent.enabled
         value: 'false'
     repoURL: https://storage.googleapis.com/gloo-mesh-enterprise/gloo-mesh-agent
-    targetRevision: 2.1.2
+    targetRevision: 2.2.0
   syncPolicy:
     automated:
       prune: true
