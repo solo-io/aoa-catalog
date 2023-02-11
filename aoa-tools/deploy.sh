@@ -173,7 +173,7 @@ while getopts "f:o:hi" option; do
       i) # infra
          install_infra=true;;
       o) # overlay
-         environment_overlay=${OPTARG};;
+         export environment_overlay=${OPTARG};;
      \?) # Invalid option
          echo "Error: Invalid option"
          help
