@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: istio-ingressgateway
-    istio: ingressgateway
+    istio: mgmt-ingressgateway
     revision: 1-14
   name: istio-ingressgateway
   namespace: istio-gateways
@@ -19,6 +19,6 @@ spec:
     targetPort: 8443
   selector:
     app: istio-ingressgateway
-    istio: ingressgateway
+    istio: mgmt-ingressgateway
     revision: 1-14
   type: LoadBalancer

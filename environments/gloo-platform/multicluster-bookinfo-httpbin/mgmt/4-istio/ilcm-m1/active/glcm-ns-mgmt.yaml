@@ -28,6 +28,8 @@ spec:
             - name: istio-ingressgateway
               namespace: istio-gateways
               enabled: true
+              label:
+                istio: mgmt-ingressgateway
               k8s:
                 service:
                   ports:
@@ -41,4 +43,4 @@ spec:
                       targetPort: 8443
                   type: LoadBalancer
                   selector:
-                    istio: ingressgateway
+                    istio: mgmt-ingressgateway

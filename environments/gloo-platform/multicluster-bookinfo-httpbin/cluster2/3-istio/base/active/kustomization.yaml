@@ -8,6 +8,7 @@ resources:
 - grafana.yaml
 - istio-base.yaml
 - istio-eastwestgateway.yaml
+- istio-ingressgateway.yaml
 - istiod.yaml
 - kiali.yaml
 - prometheus.yaml

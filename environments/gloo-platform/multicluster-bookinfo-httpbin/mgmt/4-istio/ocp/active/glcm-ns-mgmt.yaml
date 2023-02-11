@@ -25,4 +25,4 @@ spec:
               namespace: istio-gateways
               enabled: true
               label:
-                istio: ingressgateway
+                istio: mgmt-ingressgateway
