@@ -28,6 +28,8 @@ spec:
             - name: istio-ingressgateway
               namespace: istio-gateways
               enabled: true
+              label:
+                istio: mgmt-ingressgateway
               k8s:
                 service:
                   ports:
