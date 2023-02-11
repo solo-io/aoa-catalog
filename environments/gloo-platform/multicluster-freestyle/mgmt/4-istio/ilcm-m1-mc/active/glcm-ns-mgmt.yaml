@@ -43,4 +43,4 @@ spec:
                       targetPort: 8443
                   type: LoadBalancer
                   selector:
-                    istio: ingressgateway
+                    istio: mgmt-ingressgateway
