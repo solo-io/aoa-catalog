@@ -9,7 +9,7 @@ When applied alone, the control plane is deployed and configured with the `ops-t
 ### Multi-Cluster Architecture Diagram
 When applied with `aoa-cluster1` and `aoa-cluster2` environments, here is a high level diagram of the architecture
 
-![Multicluster High Level Architecture](.images/multicluster-full-arch-1b.png)
+![Multicluster High Level Architecture](.images/multicluster-full-arch-1a.png)
 
 ### Prerequisites
 - 1 Kubernetes Cluster
