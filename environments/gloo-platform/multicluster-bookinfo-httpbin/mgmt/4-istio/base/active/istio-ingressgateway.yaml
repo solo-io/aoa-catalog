@@ -51,7 +51,7 @@ spec:
         # Labels to apply to all resources
         labels:
           istio.io/rev: 1-15
-          istio: ingressgateway
+          istio: mgmt-ingressgateway
   syncPolicy:
     automated:
       prune: true

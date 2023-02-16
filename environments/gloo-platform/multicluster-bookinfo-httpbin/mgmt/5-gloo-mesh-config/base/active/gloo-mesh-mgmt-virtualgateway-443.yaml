@@ -15,4 +15,4 @@ spec:
   - selector:
       cluster: mgmt
       labels:
-        istio: ingressgateway
+        istio: mgmt-ingressgateway

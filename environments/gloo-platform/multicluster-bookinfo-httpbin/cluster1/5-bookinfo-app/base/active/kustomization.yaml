@@ -6,7 +6,6 @@ kind: Kustomization
 resources:
 - bookinfo-backends-dyaml.yaml
 - bookinfo-frontends-dyaml.yaml
-- bookinfo-cluster1-virtualgateway-443.yaml
 
 # remove reviews-v3
 patchesStrategicMerge:

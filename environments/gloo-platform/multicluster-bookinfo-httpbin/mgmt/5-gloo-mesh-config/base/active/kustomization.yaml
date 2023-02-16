@@ -15,3 +15,4 @@ resources:
 - grafana-rt-443.yaml
 #- roottrustpolicy-generated.yaml
 - roottrustpolicy-secretref.yaml
+- workload-vg-443.yaml
