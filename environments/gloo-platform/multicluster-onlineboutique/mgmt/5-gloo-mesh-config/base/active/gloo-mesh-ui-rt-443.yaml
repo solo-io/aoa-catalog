@@ -1,0 +1,63 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  labels:
+    expose: "true"
+  name: gm-ui-rt-443
+  namespace: gloo-mesh
+spec:
+  hosts:
+  - '*'
+  http:
+  - name: gloo-mesh-ui-main
+    labels:
+    matchers:
+    - uri:
+        prefix: /welcome
+    - uri:
+        prefix: /login
+    - uri:
+        prefix: /graph
+    - uri:
+        prefix: /gateways
+    - uri:
+        prefix: /policies
+    - uri:
+        prefix: /static
+    - uri:
+        prefix: /workspace
+    - uri:
+        exact: /favicon.ico
+    - uri:
+        exact: /manifest.json
+    - uri:
+        regex: /rpc.gloo.solo.io.*
+    - uri:
+        prefix: /oidc-callback
+    - uri:
+        exact: /
+    forwardTo:
+      destinations:
+      - ref:
+          name: gloo-mesh-ui
+          namespace: gloo-mesh
+        port:
+          number: 8090
+  - name: gmui-rewrite
+    labels:
+    matchers:
+    - uri:
+        prefix: /gmui
+    forwardTo:
+      pathRewrite: /
+      destinations:
+      - ref:
+          name: gloo-mesh-ui
+          namespace: gloo-mesh
+        port:
+          number: 8090
+  virtualGateways:
+  - cluster: mgmt
+    name: mgmt-north-south-gw-443
+    namespace: istio-gateways
+  workloadSelectors: []

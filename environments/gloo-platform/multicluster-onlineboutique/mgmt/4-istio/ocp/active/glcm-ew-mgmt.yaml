@@ -1,0 +1,35 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: GatewayLifecycleManager
+metadata:
+  name: mgmt-eastwest
+  namespace: gloo-mesh
+  annotations:
+    argocd.argoproj.io/sync-wave: "-7"
+spec:
+  installations:
+    - clusters:
+      - name: mgmt
+        activeGateway: false
+      gatewayRevision: 1-14
+      istioOperatorSpec:
+        profile: empty
+        hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
+        tag: 1.14.5-solo
+        values:
+          gateways:
+            istio-ingressgateway:
+              customService: true
+        components:
+          ingressGateways:
+            - name: istio-eastwestgateway
+              namespace: istio-gateways
+              enabled: true
+              label:
+                istio: eastwestgateway
+                topology.istio.io/network: mgmt
+              k8s:
+                env:
+                  - name: ISTIO_META_ROUTER_MODE
+                    value: "sni-dnat"
+                  - name: ISTIO_META_REQUESTED_NETWORK_VIEW
+                    value: mgmt
