@@ -9,7 +9,7 @@ spec:
     namespace: gloo-mesh
   source:
     repoURL: 'https://storage.googleapis.com/gloo-mesh-enterprise/gloo-mesh-agent'
-    targetRevision: 2.2.0
+    targetRevision: 2.2.4
     chart: gloo-mesh-agent
     helm:
       skipCrds: true
