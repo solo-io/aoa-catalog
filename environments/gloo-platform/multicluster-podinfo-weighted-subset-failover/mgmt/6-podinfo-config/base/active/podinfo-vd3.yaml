@@ -1,0 +1,23 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: podinfo-vd3
+  namespace: podinfo-team-config
+  labels:
+    failover: "true"
+spec:
+  hosts:
+  - podinfo.randomvalue3
+  services:
+  - namespace: podinfo
+    labels:
+      app: podinfo
+      version: v3
+    cluster: cluster1
+  - namespace: podinfo
+    labels:
+      app: podinfo
+    cluster: cluster2
+  ports:
+    - number: 9898
+      protocol: HTTP
