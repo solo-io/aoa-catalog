@@ -1,0 +1,7 @@
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: istio-cni
+  namespace: istio-gateways
+  annotations:
+    argocd.argoproj.io/sync-wave: "-10"

@@ -1,0 +1,36 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: httpbin-rt-443
+  namespace: httpbin
+  labels:
+    expose: "true"
+spec:
+  hosts:
+    - '*'
+  virtualGateways:
+    - name: cluster1-north-south-gw-443
+      namespace: istio-gateways
+      cluster: cluster1
+  workloadSelectors: []
+  http:
+    - name: httpbin
+      labels:
+        oauth: "true"
+        waf: "true"
+      matchers:
+      - uri:
+          exact: /get
+      - uri:
+          prefix: /callback
+      - uri:
+          prefix: /logout
+      - uri:
+          prefix: /anything
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
