@@ -26,6 +26,7 @@ When applied with `cluster1` and `cluster2` environments, here is a high level d
     - Configure Gloo Mesh addons
     - expose Gloo Mesh UI
     - expose ArgoCD UI
+- Wave 6 - Configures onlineboutique Gloo Platform config
 
 ## Overlay description
 - base:
@@ -56,6 +57,12 @@ On the `mgmt` cluster gateway:
     - password: solo.io
 - Gloo Mesh UI at `https://gmui-local.glootest.com`
 
+On the `cluster1` cluster gateway (at 8443 if using k3d LB integration) When deployed with `aoa-cluster1` and `aoa-cluster2`
+- onlineboutique at `https://shop-local.glootest.com:8443/get`
+
+On the `cluster2` cluster gateway (at 8444 if using k3d LB integration) When deployed with `aoa-cluster1` and `aoa-cluster2`
+- onlineboutique at `https://shop-local.glootest.com:8444/get`
+
 To access applications, follow the methods below:
 
 #### Method 1 - LoadBalancer External-IP
@@ -71,7 +78,7 @@ echo ${GATEWAY_IP}
 Modify /etc/hosts on your local machine (this will require sudo privileges), or configure DNS to point to your Ingress Gateway IP
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-${GATEWAY_IP} argocd-local.glootest.com gmui-local.glootest.com
+${GATEWAY_IP} argocd-local.glootest.com gmui-local.glootest.com shop-local.glootest.com
 EOF
 ```
 
@@ -79,7 +86,7 @@ EOF
 modify /etc/hosts on your local machine (this will require sudo privileges)
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-localhost argocd-local.glootest.com gmui-local.glootest.com
+localhost argocd-local.glootest.com gmui-local.glootest.com shop-local.glootest.com
 EOF
 ```
 
@@ -112,6 +119,6 @@ access the ingress gateway at https://localhost:8443
 Note: For routes that are configured with a specific host, pass in the Host header using curl `-H "Host: <host>` or add the following entry into your /etc/hosts when using this method
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-localhost argocd-local.glootest.com gmui-local.glootest.com
+localhost argocd-local.glootest.com gmui-local.glootest.com shop-local.glootest.com
 EOF
 ```

@@ -44,7 +44,7 @@ On the `mgmt` cluster gateway:
     - password: solo.io
 - Gloo Mesh UI at `https://gmui-local.glootest.com`
 
-On the `cluster1` cluster gateway (at 8443 if using k3d LB integration) When deployed with `aoa-cluster1` and `aoa-cluster2
+On the `cluster1` cluster gateway (at 8443 if using k3d LB integration) When deployed with `aoa-cluster1` and `aoa-cluster2`
 - httpbin at `https://httpbin-local.glootest.com:8443/get`
     - application lives on `cluster1` and `cluster2` and is exposed by the gateway on `cluster1`
 - bookinfo at `https://bookinfo-local.glootest.com:8443/productpage`
