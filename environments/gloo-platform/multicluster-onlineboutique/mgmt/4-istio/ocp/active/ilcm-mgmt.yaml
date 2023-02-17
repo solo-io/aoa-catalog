@@ -1,0 +1,65 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: IstioLifecycleManager
+metadata:
+  name: mgmt-installation
+  namespace: gloo-mesh
+  annotations:
+    argocd.argoproj.io/sync-wave: "-8"
+spec:
+  installations:
+    - clusters:
+      - name: mgmt
+        defaultRevision: true
+      revision: 1-14
+      istioOperatorSpec:
+        profile: minimal
+        hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
+        tag: 1.14.5-solo
+        namespace: istio-system
+        values:
+          global:
+            meshID: mesh1
+            multiCluster:
+              clusterName: mgmt
+            network: mgmt
+          cni:
+            excludeNamespaces:
+            - istio-system
+            - kube-system
+            logLevel: info
+            cniBinDir: /var/lib/cni/bin
+            cniConfDir: /etc/cni/multus/net.d
+            chained: false
+            cniConfFileName: "istio-cni.conf"
+          sidecarInjectorWebhook:
+            injectedAnnotations:
+              k8s.v1.cni.cncf.io/networks: istio-cni
+        meshConfig:
+          accessLogFile: /dev/stdout
+          defaultConfig:
+            envoyMetricsService:
+              address: gloo-mesh-agent.gloo-mesh:9977
+            envoyAccessLogService:
+              address: gloo-mesh-agent.gloo-mesh:9977
+            proxyMetadata:
+              ISTIO_META_DNS_CAPTURE: "true"
+              ISTIO_META_DNS_AUTO_ALLOCATE: "true"
+        components:
+          pilot:
+            k8s:
+              env:
+                - name: PILOT_ENABLE_K8S_SELECT_WORKLOAD_ENTRIES
+                  value: "false"
+          cni:
+            enabled: true
+            namespace: kube-system
+            k8s:
+              overlays:
+                - kind: DaemonSet
+                  name: istio-cni-node
+                  patches:
+                    - path: spec.template.spec.containers[0].securityContext.privileged
+                      value: true
+          ingressGateways:
+          - name: istio-ingressgateway
+            enabled: false
