@@ -29,19 +29,19 @@ When applied with `cluster1` and `cluster2` environments, here is a high level d
 
 ## Overlay description
 - base:
-    - gloo mesh 2.2.0
+    - gloo mesh 2.2.4
     - istio 1.15.3-solo (Helm)
     - revision: 1-15
 - ilcm:
-    - gloo mesh 2.2.0
+    - gloo mesh 2.2.4
     - istio 1.15.3-solo (ILCM)
     - revision: 1-15
 - ilcm-m1:
-    - gloo mesh 2.2.0
+    - gloo mesh 2.2.4
     - istio 1.15.3-solo-arm (ILCM)
     - revision: 1-15
 - m1:
-    - gloo mesh 2.2.0
+    - gloo mesh 2.2.4
     - istio 1.15.3-solo-arm (Helm)
     - revision: 1-15
 

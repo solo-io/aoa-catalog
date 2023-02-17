@@ -56,7 +56,7 @@ spec:
                     istio.io/rev: "1-15"
                     sidecar.istio.io/inject: "true"
     repoURL: https://storage.googleapis.com/gloo-mesh-enterprise/gloo-mesh-enterprise
-    targetRevision: 2.2.0
+    targetRevision: 2.2.4
   syncPolicy:
     automated:
       prune: true
