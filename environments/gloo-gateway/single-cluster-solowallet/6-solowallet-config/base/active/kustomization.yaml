@@ -4,6 +4,6 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- bank-demo-rt-443.yaml
+- solowallet-rt-443.yaml
 - bank-demo-workspace.yaml
 - bank-demo-workspacesettings.yaml

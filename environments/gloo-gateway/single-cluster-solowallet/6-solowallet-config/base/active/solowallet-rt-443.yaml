@@ -1,7 +1,7 @@
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
-  name: bank-demo-rt-443
+  name: solowallet-rt-443
   namespace: bank-demo
   labels:
     expose: "true"
@@ -14,7 +14,7 @@ spec:
       cluster: mgmt
   workloadSelectors: []
   http:
-    - name: bank-demo
+    - name: solowallet-main
       # set matchers to closely match https://github.com/GoogleCloudPlatform/bank-of-anthos/tree/main/src/frontend
       matchers:
       - uri:
