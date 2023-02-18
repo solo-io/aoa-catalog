@@ -4,15 +4,15 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- bank-accounts-db.yaml
-- bank-balance-reader.yaml
-- bank-config.yaml
-- bank-contacts.yaml
-- bank-demo-jwt-secret.yaml
+- solowallet-accounts-db.yaml
+- solowallet-balance-reader.yaml
+- solowallet-config.yaml
+- solowallet-contacts.yaml
+- solowallet-demo-jwt-secret.yaml
 - bank-demo-ns.yaml
-- bank-frontend.yaml
-- bank-ledger-db.yaml
-- bank-ledger-writer.yaml
-- bank-transaction-history.yaml
-- bank-userservice.yaml
+- solowallet-frontend.yaml
+- solowallet-ledger-db.yaml
+- solowallet-ledger-writer.yaml
+- solowallet-transaction-history.yaml
+- solowallet-userservice.yaml
 

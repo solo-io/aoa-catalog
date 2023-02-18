@@ -20,6 +20,8 @@ The `gloo-gateway/single-cluster-backstage` environment deploys the core compone
     - expose ArgoCD UI
 - Wave 6 - Deploy Backstage Application
 - Wave 6 - Deploy Backstage Mesh Config
+- Wave 7 - Deploy Homer dashboard Application
+- Wave 7 - Deploy Homer dashboard Mesh Config
 
 ## Overlay description
 - base:

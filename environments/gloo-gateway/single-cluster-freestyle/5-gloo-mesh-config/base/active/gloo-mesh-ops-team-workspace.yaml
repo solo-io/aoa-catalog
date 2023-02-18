@@ -11,6 +11,7 @@ spec:
     - name: gloo-mesh
     - name: istio-system
     - name: ops-team-config
+    - name: homer-portal
   - name: '*'
     namespaces:
     - name: istio-gateways
