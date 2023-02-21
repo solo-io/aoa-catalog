@@ -7,7 +7,7 @@ metadata:
   namespace: argocd
 spec:
   hosts:
-  - 'gmui-local.glootest.com'
+  - 'argocd-local.glootest.com'
   http:
   - name: argocd
     labels:
