@@ -7,12 +7,13 @@ spec:
   workloadClusters:
   - name: 'mgmt'
     namespaces:
-    - name: argocd
     - name: gloo-mesh
     - name: istio-system
     - name: ops-team-config
+    - name: homer-portal
   - name: '*'
     namespaces:
+    - name: argocd
     - name: istio-gateways
     - name: istio-eastwest
     - name: gloo-mesh-addons
