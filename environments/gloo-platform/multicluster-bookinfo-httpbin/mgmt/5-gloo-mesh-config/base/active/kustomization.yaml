@@ -4,6 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
+- argocd-cluster1-rt-443.yaml
+- argocd-cluster2-rt-443.yaml
 - argocd-mgmt-rt-443.yaml
 - gloo-mesh-global-workspacesettings.yaml
 - gloo-mesh-mgmt-extauthserver.yaml

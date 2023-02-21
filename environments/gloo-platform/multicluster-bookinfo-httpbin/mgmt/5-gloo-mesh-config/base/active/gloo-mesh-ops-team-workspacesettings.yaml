@@ -21,7 +21,8 @@ spec:
     - name: '*'
   options:
     federation:                     # federate only the gloo-mesh-addons
-      enabled: false
+      enabled: true
       hostSuffix: global
       serviceSelector:
       - namespace: gloo-mesh-addons
+      - namespace: argocd
