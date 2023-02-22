@@ -11,6 +11,9 @@ spec:
     tls:
       mode: SIMPLE
       secretName: tls-secret
+    # specify a host
+    #allowedRouteTables:
+    #  - host: bookinfo-local.glootest.com
   workloads:
   - selector:
       labels:
