@@ -13,7 +13,7 @@ namespace: argocd
 images:
 - name: quay.io/argoproj/argocd
   newTag: v2.6.2
-  digest: sha256:2d764e26f4a6874ca12c70cb6ad7e2961a44d1e2ff1352f851fcab57509380ee
+  digest: sha256:69d2ad5f62ae896f17217fcb9a81385cbce91927c3b3fe0b4a12fc10d176e741
 
 patchesJson6902:
 - path: overlays/application-controller-status-processors.yaml
