@@ -1,0 +1,30 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  labels:
+    expose: "true"
+  name: grafana-ui-443
+  namespace: gloo-mesh
+spec:
+  hosts:
+  - '*'
+  http:
+  - forwardTo:
+      destinations:
+      - port:
+          number: 3000
+        ref:
+          cluster: mgmt
+          name: grafana
+          namespace: istio-system
+    labels:
+      waf: "true"
+    name: grafana-ui
+    matchers:
+      - uri:
+          prefix: /grafana
+  virtualGateways:
+  - cluster: mgmt
+    name: mgmt-north-south-gw-443
+    namespace: istio-gateways
+  workloadSelectors: []

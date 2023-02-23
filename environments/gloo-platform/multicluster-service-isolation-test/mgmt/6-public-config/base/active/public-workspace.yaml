@@ -1,0 +1,16 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: Workspace
+metadata:
+  name: public
+  namespace: gloo-mesh
+  labels:
+    allow_ingress: "true"
+spec:
+  workloadClusters:
+  - name: 'mgmt'
+    namespaces:
+    - name: public-config
+  - name: '*'
+    namespaces:
+    - name: httpbin-public
+    - name: ubi8-public

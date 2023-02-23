@@ -1,0 +1,67 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: IstioLifecycleManager
+metadata:
+  name: istiod-control-plane-cluster1
+  namespace: gloo-mesh
+  #annotations:
+  #  argocd.argoproj.io/sync-wave: "-8"
+spec:
+  installations:
+      # The revision for this installation, such as 1-15
+    - revision: 1-15
+      # List all workload clusters to install Istio into
+      clusters:
+      - name: cluster1
+        # If set to true, the spec for this revision is applied in the cluster
+        defaultRevision: true
+      istioOperatorSpec:
+        # Only the control plane components are installed
+        # (https://istio.io/latest/docs/setup/additional-setup/config-profiles/)
+        profile: minimal
+        # Solo.io Istio distribution repository; required for Gloo Istio.
+        # You get the repo key from your Solo Account Representative.
+        hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
+        # Any Solo.io Gloo Istio tag
+        tag: 1.15.3-solo-arm
+        namespace: istio-system
+        # Mesh configuration
+        meshConfig:
+          # Enable access logging only if using.
+          accessLogFile: /dev/stdout
+          # Encoding for the proxy access log (TEXT or JSON). Default value is TEXT.
+          accessLogEncoding: JSON
+          # Enable span tracing only if using.
+          enableTracing: true
+          defaultConfig:
+            # Wait for the istio-proxy to start before starting application pods
+            holdApplicationUntilProxyStarts: true
+            # Enable Gloo metrics service. Required for Gloo UI
+            envoyMetricsService:
+              address: gloo-mesh-agent.gloo-mesh:9977
+            # Enable Gloo accesslog service. Required for Gloo Access Logging
+            envoyAccessLogService:
+              address: gloo-mesh-agent.gloo-mesh:9977
+            proxyMetadata:
+              # Enable Istio agent to handle DNS requests for known hosts
+              # Unknown hosts are automatically resolved using upstream DNS servers
+              # in resolv.conf (for proxy-dns)
+              ISTIO_META_DNS_CAPTURE: "true"
+              # Enable automatic address allocation (for proxy-dns)
+              ISTIO_META_DNS_AUTO_ALLOCATE: "true"
+          # Set the default behavior of the sidecar for handling outbound traffic
+          # from the application
+          outboundTrafficPolicy:
+            mode: ALLOW_ANY
+          # The administrative root namespace for Istio configuration
+          rootNamespace: istio-system
+        # Traffic management
+        components:
+          pilot:
+            k8s:
+              env:
+            # Allow multiple trust domains (Required for Gloo Mesh east/west routing)
+              - name: PILOT_SKIP_VALIDATE_TRUST_DOMAIN
+                value: "true"
+              # Reload cacerts when cert-manager changes it
+              - name: AUTO_RELOAD_PLUGIN_CERTS
+                value: "true"

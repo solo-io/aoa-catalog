@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: httpbin-public
+  namespace: httpbin-public
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpbin-public
+  namespace: httpbin-public
+  labels:
+    app: httpbin-public
+    service: httpbin-public
+spec:
+  ports:
+  - name: http
+    port: 8000
+    targetPort: 8000
+  selector:
+    app: httpbin-public
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpbin-public
+  namespace: httpbin-public
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpbin-public
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: httpbin-public
+        version: v1
+    spec:
+      serviceAccountName: httpbin-public
+      containers:
+      - image: docker.io/kennethreitz/httpbin
+        imagePullPolicy: IfNotPresent
+        name: httpbin-public
+        ports:
+        - containerPort: 8000
