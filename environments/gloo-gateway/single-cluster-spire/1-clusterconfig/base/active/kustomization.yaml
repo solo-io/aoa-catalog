@@ -1,0 +1,19 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- argocd-ns.yaml
+- cert-manager-ns.yaml
+- gateway-ca.yaml
+- gloo-mesh-addons-ns.yaml
+- gloo-mesh-ns.yaml
+- gloo-mesh-relay-root-ca.yaml
+- httpbin-ns.yaml
+- istio-eastwest-ns.yaml
+- istio-gateways-ns.yaml
+- istio-system-ns.yaml
+- oidc-client-secret.yaml
+- ops-team-config-ns.yaml
+
