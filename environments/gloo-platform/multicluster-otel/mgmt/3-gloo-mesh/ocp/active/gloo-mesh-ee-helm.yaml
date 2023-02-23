@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gloo-mesh-enterprise
+  namespace: argocd
+spec:
+  destination:
+    namespace: gloo-mesh
+    server: 'https://kubernetes.default.svc'
+  source:
+    repoURL: 'https://storage.googleapis.com/gloo-mesh-enterprise/gloo-mesh-enterprise'
+    targetRevision: 2.2.0
+    chart: gloo-mesh-enterprise
+    helm:
+      skipCrds: true
+      parameters:
+        #- name: licenseSecretName
+        #  value: 'gloo-mesh-license'
+        - name: glooMeshMgmtServer.relay.disableCA
+          value: 'false'
+        - name: glooMeshMgmtServer.relay.disableCaCertGeneration
+          value: 'false'
+        - name: glooMeshMgmtServer.relay.disableTokenGeneration
+          value: 'false'
+        #- name: glooMeshMgmtServer.relay.tlsSecret.name
+        #  value: 'gloo-server-tls-cert'
+        - name: glooMeshMgmtServer.ports.healthcheck
+          value: '8091'
+        - name: glooMeshRedis.floatingUserId
+          value: 'true'
+        - name: glooMeshUi.floatingUserId
+          value: 'true'
+        - name: glooMeshMgmtServer.floatingUserId
+          value: 'true'
+        - name: mgmtClusterName
+          value: mgmt
+        - name: global.cluster
+          value: mgmt
+        - name: prometheus.enabled
+          value: 'false'
+        - name: licenseKey
+          value: 'eyJhZGRPbnMiOiIiLCJleHAiOjE2NzM2NTQ0MDAsImlhdCI6MTY3MTA2MjQwMCwiayI6Ikl5bjR1dyIsImx0IjoidHJpYWwiLCJwcm9kdWN0IjoiZ2xvby1tZXNoLWdhdGV3YXkifQ.u51Wwf-E5U9JvOBRJcEfEdzJ3_c_7j6FZsSBbrHaY5k'
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

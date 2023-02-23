@@ -1,0 +1,18 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- bookinfo-backends-ns.yaml
+- bookinfo-frontends-ns.yaml
+- gateway-ca.yaml
+- gloo-mesh-addons-ns.yaml
+- gloo-mesh-ns.yaml
+- httpbin-ns.yaml
+- httpbin-oidc-client-secret.yaml
+- istio-gateways-ns.yaml
+- istio-system-ns.yaml
+- relay-identity-token-secret.yaml
+- relay-root-ca.yaml
+
