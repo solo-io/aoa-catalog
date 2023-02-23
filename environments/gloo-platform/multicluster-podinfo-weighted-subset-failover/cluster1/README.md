@@ -80,7 +80,7 @@ EOF
 modify /etc/hosts on your local machine (this will require sudo privileges)
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-localhost argocd-local.glootest.com cluster1-argocd-local.glootest.com cluster2-argocd-local.glootest.com gmui-local.glootest.com podinfo-local.glootest.com
+127.0.0.1 argocd-local.glootest.com cluster1-argocd-local.glootest.com cluster2-argocd-local.glootest.com gmui-local.glootest.com podinfo-local.glootest.com
 EOF
 ```
 
@@ -113,6 +113,6 @@ access the ingress gateway at https://localhost:8443
 Note: For routes that are configured with a specific host, pass in the Host header using curl `-H "Host: <host>` or add the following entry into your /etc/hosts when using this method
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-localhost argocd-local.glootest.com cluster1-argocd-local.glootest.com cluster2-argocd-local.glootest.com gmui-local.glootest.com podinfo-local.glootest.com
+127.0.0.1 argocd-local.glootest.com cluster1-argocd-local.glootest.com cluster2-argocd-local.glootest.com gmui-local.glootest.com podinfo-local.glootest.com
 EOF
 ```

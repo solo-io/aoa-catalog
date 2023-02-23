@@ -12,7 +12,7 @@ echo "EOF"
 echo
 echo "Method 2 - K3d LB Integration: modify /etc/hosts on your local machine (this will require sudo privileges)"
 echo "cat <<EOF | sudo tee -a /etc/hosts"
-echo "localhost argocd-local.glootest.com api-local.glootest.com apidev-local.glootest.com portal-local.glootest.com"
+echo "127.0.0.1 argocd-local.glootest.com api-local.glootest.com apidev-local.glootest.com portal-local.glootest.com"
 echo "EOF"
 echo
 echo "access argocd at https://argocd-local.glootest.com/argo"
