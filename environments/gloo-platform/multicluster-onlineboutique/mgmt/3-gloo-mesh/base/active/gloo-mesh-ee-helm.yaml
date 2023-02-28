@@ -53,7 +53,7 @@ spec:
                   annotations:
                     proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
                   labels:
-                    istio.io/rev: "1-15"
+                    istio.io/rev: "1-16"
                     sidecar.istio.io/inject: "true"
     repoURL: https://storage.googleapis.com/gloo-mesh-enterprise/gloo-mesh-enterprise
     targetRevision: 2.2.4

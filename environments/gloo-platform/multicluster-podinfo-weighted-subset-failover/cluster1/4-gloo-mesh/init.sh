@@ -7,7 +7,7 @@ echo "deploy and register gloo-mesh agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.1.0-beta27):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.2.4):"
     read gloo_mesh_version
 fi
 

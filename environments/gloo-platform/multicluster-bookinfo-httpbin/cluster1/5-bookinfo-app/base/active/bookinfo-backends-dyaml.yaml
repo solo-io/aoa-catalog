@@ -153,7 +153,7 @@ spec:
           value: /tmp/logs
         - name: CLUSTER_NAME
           value: cluster1
-        image: us-central1-docker.pkg.dev/solo-test-236622/jmunozro/examples-bookinfo-reviews-v1:1.16.2
+        image: docker.io/istio/examples-bookinfo-reviews-v1:1.17.0
         imagePullPolicy: IfNotPresent
         name: reviews
         ports:
@@ -198,7 +198,7 @@ spec:
           value: /tmp/logs
         - name: CLUSTER_NAME
           value: cluster1
-        image: us-central1-docker.pkg.dev/solo-test-236622/jmunozro/examples-bookinfo-reviews-v2:1.16.2
+        image: docker.io/istio/examples-bookinfo-reviews-v2:1.17.0
         imagePullPolicy: IfNotPresent
         name: reviews
         ports:
@@ -243,7 +243,7 @@ spec:
           value: /tmp/logs
         - name: CLUSTER_NAME
           value: cluster2
-        image: us-central1-docker.pkg.dev/solo-test-236622/jmunozro/examples-bookinfo-reviews-v3:1.16.2
+        image: docker.io/istio/examples-bookinfo-reviews-v3:1.17.0
         imagePullPolicy: IfNotPresent
         name: reviews
         ports:
