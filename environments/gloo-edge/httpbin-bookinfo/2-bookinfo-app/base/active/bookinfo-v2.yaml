@@ -211,7 +211,7 @@ spec:
       - env:
         - name: LOG_DIR
           value: /tmp/logs
-        image: docker.io/istio/examples-bookinfo-reviews-v1:1.16.2
+        image: docker.io/istio/examples-bookinfo-reviews-v1:1.17.0
         imagePullPolicy: IfNotPresent
         name: reviews
         ports:
@@ -252,7 +252,7 @@ spec:
       - env:
         - name: LOG_DIR
           value: /tmp/logs
-        image: docker.io/istio/examples-bookinfo-reviews-v2:1.16.2
+        image: docker.io/istio/examples-bookinfo-reviews-v2:1.17.0
         imagePullPolicy: IfNotPresent
         name: reviews
         ports:
@@ -293,7 +293,7 @@ spec:
       - env:
         - name: LOG_DIR
           value: /tmp/logs
-        image: docker.io/istio/examples-bookinfo-reviews-v3:1.16.2
+        image: docker.io/istio/examples-bookinfo-reviews-v3:1.17.0
         imagePullPolicy: IfNotPresent
         name: reviews
         ports:
