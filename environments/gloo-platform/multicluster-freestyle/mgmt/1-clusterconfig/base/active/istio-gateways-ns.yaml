@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: istio-gateways
   labels:
-    istio.io/rev: 1-15
+    istio.io/rev: 1-16

@@ -8,7 +8,7 @@ metadata:
 spec:
   installations:
       # The revision for this installation, such as 1-14
-    - gatewayRevision: 1-15
+    - gatewayRevision: 1-16
       # List all workload clusters to install Istio into
       clusters:
       - name: cluster2
@@ -21,7 +21,7 @@ spec:
         # You get the repo key from your Solo Account Representative.
         hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
         # The Solo.io Gloo Istio tag
-        tag: 1.15.1-solo
+        tag: 1.16.2-solo
         components:
           ingressGateways:
             - enabled: true
