@@ -32,11 +32,11 @@ The `gloo-gateway/single-cluster-httpbin` environment deploys the core component
     - revision: 1-16
 - ilcm-m1:
     - gloo mesh 2.2.4
-    - istio 1.16.2-solo-arm (ILCM)
+    - istio 1.16.2-solo (ILCM)
     - revision: 1-16
 - m1:
     - gloo mesh 2.2.4
-    - istio 1.16.2-solo-arm (Helm)
+    - istio 1.16.2-solo (Helm)
     - revision: 1-16
 - ocp:
     - gloo mesh 2.2.4
