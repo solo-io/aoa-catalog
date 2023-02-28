@@ -8,7 +8,13 @@ resources:
 - certmanager-selfsigned-issuer.yaml
 - gateway-cert.yaml
 - gateway-clusterissuer.yaml
+- glcm-ew-cluster1.yaml
+- glcm-ew-cluster2.yaml
 - glcm-ew-mgmt.yaml
+- glcm-ns-cluster1.yaml
+- glcm-ns-cluster2.yaml
 - glcm-ns-mgmt.yaml
+- ilcm-cluster1.yaml
+- ilcm-cluster2.yaml
 - ilcm-mgmt.yaml
 
