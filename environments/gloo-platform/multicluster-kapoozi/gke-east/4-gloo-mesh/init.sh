@@ -22,7 +22,7 @@ kubectl apply --context ${mgmt_context} -f- <<EOF
 apiVersion: admin.gloo.solo.io/v2
 kind: KubernetesCluster
 metadata:
-  name: cluster2
+  name: ${cluster_context}
   namespace: gloo-mesh
   labels:
     roottrust: shared
@@ -35,7 +35,7 @@ kubectl apply --context ${cluster_context} -f- <<EOF
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gm-enterprise-agent-cluster2
+  name: gm-enterprise-agent-${cluster_context}
   namespace: argocd
 spec:
   destination:
@@ -46,11 +46,12 @@ spec:
     targetRevision: ${gloo_mesh_version}
     chart: gloo-mesh-agent
     helm:
+      skipCrds: true
       valueFiles:
         - values.yaml
       parameters:
         - name: cluster
-          value: 'cluster2'
+          value: '${cluster_context}'
         - name: relay.serverAddress
           value: '${SVC}:9900'
         - name: relay.authority
