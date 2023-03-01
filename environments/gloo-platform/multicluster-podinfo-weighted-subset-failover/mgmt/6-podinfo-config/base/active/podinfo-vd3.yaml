@@ -12,7 +12,6 @@ spec:
   - namespace: podinfo
     labels:
       app: podinfo
-      version: v3
     cluster: cluster1
   - namespace: podinfo
     labels:
