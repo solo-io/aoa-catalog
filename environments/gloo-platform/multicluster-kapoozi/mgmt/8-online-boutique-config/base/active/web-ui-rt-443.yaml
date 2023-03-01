@@ -6,6 +6,7 @@ metadata:
 spec:
   hosts:
     - 'shop.kapoozi.com'
+    - 'shop-cluster1.kapoozi.com'
   virtualGateways:
     - name: north-south-gw
       namespace: istio-gateways
