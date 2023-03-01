@@ -13,7 +13,7 @@ spec:
       clusters:
       - name: mgmt
         # If set to true, the spec for this revision is applied in the cluster
-        activeGateway: true
+        activeGateway: false
       istioOperatorSpec:
         # No control plane components are installed
         profile: empty
@@ -22,23 +22,21 @@ spec:
         hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
         # The Solo.io Gloo Istio tag
         tag: 1.16.2-solo
+        values:
+          gateways:
+            istio-ingressgateway:
+              customService: true
         components:
           ingressGateways:
-            - enabled: true
-              name: istio-eastwestgateway
-              namespace: istio-eastwest
+            - name: istio-eastwestgateway
+              namespace: istio-gateways
+              enabled: true
               label:
                 istio: eastwestgateway
+                topology.istio.io/network: mgmt
               k8s:
                 env:
                   - name: ISTIO_META_ROUTER_MODE
-                    value: sni-dnat
-                service:
-                  ports:
-                    - port: 15443
-                      targetPort: 15443
-                      # Gloo Mesh looks for this default name 'tls' on a gateway
-                      name: tls
-                  selector:
-                    istio: eastwestgateway
-                  type: LoadBalancer
+                    value: "sni-dnat"
+                  - name: ISTIO_META_REQUESTED_NETWORK_VIEW
+                    value: mgmt

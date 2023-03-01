@@ -26,6 +26,10 @@ The `gloo-gateway/single-cluster-onlineboutique` environment deploys the core co
     - gloo mesh 2.2.4
     - istio 1.16.2-solo (Helm)
     - revision: 1-16
+- ilcm:
+    - gloo mesh 2.2.4
+    - istio 1.16.2-solo (ILCM)
+    - revision: 1-16
 
 ## Application description
 

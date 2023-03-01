@@ -8,7 +8,10 @@ resources:
 - certmanager-selfsigned-issuer.yaml
 - gateway-cert.yaml
 - gateway-clusterissuer.yaml
-- glcm-ew-mgmt.yaml
 - glcm-ns-mgmt.yaml
 - ilcm-mgmt.yaml
+- istio-ingressgateway-svc.yaml
+- grafana.yaml
+- kiali.yaml
+- prometheus.yaml
 

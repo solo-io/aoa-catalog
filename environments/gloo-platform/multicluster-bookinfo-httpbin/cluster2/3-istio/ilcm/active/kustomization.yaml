@@ -7,3 +7,5 @@ resources:
 #- ../../base/active/
 - gateway-cert.yaml
 - gateway-clusterissuer.yaml
+- istio-eastwestgateway-svc.yaml
+- istio-ingressgateway-svc.yaml
