@@ -12,4 +12,4 @@ resources:
 - istiod.yaml
 - kiali.yaml
 - prometheus.yaml
-- tls-secret-cert.yaml
+#- tls-secret-cert.yaml
