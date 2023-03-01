@@ -17,7 +17,7 @@ spec:
         ref:
           name: productpage
           namespace: bookinfo-frontends
-          cluster: cluster1
+          cluster: gke-east
     labels:
       waf: "true"
       oauth: "true"
@@ -36,7 +36,7 @@ spec:
         prefix: /callback
     name: productpage
   virtualGateways:
-  - cluster: cluster1
+  - cluster: gke-east
     name: cluster1-north-south-gw-443
     namespace: istio-gateways
   workloadSelectors: []

@@ -32,7 +32,7 @@ spec:
         prefix: /api/v1/products
     name: productpage
   virtualGateways:
-  - cluster: cluster1
+  - cluster: gke-east
     name: mgmt-north-south-gw-80
     namespace: istio-gateways
   workloadSelectors: []

@@ -20,7 +20,7 @@ spec:
       - port:
           number: 443
         ref:
-          cluster: cluster2
+          cluster: gke-central
           name: argocd-server
           namespace: argocd
   virtualGateways:

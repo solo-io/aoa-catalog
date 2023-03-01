@@ -12,11 +12,11 @@ spec:
   - namespace: podinfo
     labels:
       app: podinfo
-    cluster: cluster1
+    cluster: gke-east
   - namespace: podinfo
     labels:
       app: podinfo
-    cluster: cluster2
+    cluster: gke-central
   ports:
     - number: 9898
       protocol: HTTP
