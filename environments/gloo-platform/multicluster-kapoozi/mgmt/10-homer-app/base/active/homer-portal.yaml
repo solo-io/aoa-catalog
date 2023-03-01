@@ -206,11 +206,6 @@ spec:
                         tag: "prometheus-mgmt"
                         url: "https://mgmt-prometheus.kapoozi.com"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "backstage"
-                        icon: "fas fa-list-alt"
-                        tag: "backstage"
-                        url: "https://backstage.kapoozi.com"
-                        target: "_blank" # optional html a tag target attribute
                   
                   - name: "Web Applications"
                     icon: "fas fa-cloud"
@@ -250,6 +245,24 @@ spec:
                         tag: "httpbin-loadgen"
                         keywords: "httpbin-loadgen"
                         url: "https://httpbin.kapoozi.com/plow"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Bookinfo"
+                        #subtitle: "user: jdoe@solo.io / password: gloo-admin"
+                        icon: "fas fa-book-reader"
+                        tag: "bookinfo"
+                        url: "https://bookinfo.kapoozi.com/productpage"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "podinfo - cluster1"
+                        subtitle: "host: cluster1-podinfo.kapoozi.com"
+                        icon: "fas fa-info-circle"
+                        tag: "podinfo"
+                        url: "https://cluster1-podinfo.kapoozi.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "podinfo - cluster2"
+                        subtitle: "host: cluster2-podinfo.kapoozi.com"
+                        icon: "fas fa-info-circle"
+                        tag: "podinfo"
+                        url: "https://cluster2-podinfo.kapoozi.com"
                         target: "_blank" # optional html a tag target attribute
               
   syncPolicy:

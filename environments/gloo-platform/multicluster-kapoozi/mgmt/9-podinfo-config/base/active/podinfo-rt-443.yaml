@@ -7,7 +7,8 @@ metadata:
     expose: "true"
 spec:
   hosts:
-    - 'podinfo.kapoozi.com'
+    - 'cluster1-podinfo.kapoozi.com'
+    - 'cluster2-podinfo.kapoozi.com'
   virtualGateways:
     - name: north-south-gw
       namespace: istio-gateways

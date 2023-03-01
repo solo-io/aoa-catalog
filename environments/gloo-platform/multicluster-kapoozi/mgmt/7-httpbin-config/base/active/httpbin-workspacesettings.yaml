@@ -12,7 +12,7 @@ spec:
     - name: ops-team
   options:
     federation:                     # enable service federation of the web-ui namespace
-      enabled: true
+      enabled: false
       serviceSelector:
       - namespace: httpbin
     serviceIsolation:               # enable service isolation and Istio Sidecar resource

@@ -12,7 +12,6 @@ metadata:
   labels:
     app: in-mesh
     service: in-mesh
-    version: v1
 spec:
   ports:
   - name: http
@@ -27,8 +26,8 @@ metadata:
   name: in-mesh
   namespace: httpbin
   labels:
-    version: v1
     app: in-mesh
+    version: v1
 spec:
   replicas: 1
   selector:
@@ -40,9 +39,7 @@ spec:
       labels:
         app: in-mesh
         version: v1
-        istio.io/rev: 1-16
-      annotations:
-        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        istio.io/rev: 1-15
     spec:
       serviceAccountName: in-mesh
       containers:
@@ -58,8 +55,8 @@ metadata:
   name: in-mesh-canary
   namespace: httpbin
   labels:
-    version: v2
     app: in-mesh
+    version: v2
 spec:
   replicas: 1
   selector:
@@ -71,9 +68,7 @@ spec:
       labels:
         app: in-mesh
         version: v2
-        istio.io/rev: 1-16
-      annotations:
-        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        istio.io/rev: 1-15
     spec:
       serviceAccountName: in-mesh
       containers:

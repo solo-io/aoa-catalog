@@ -1,0 +1,82 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: httpbin-rt-443
+  namespace: httpbin
+  labels:
+    expose: "true"
+spec:
+  hosts:
+    - 'httpbin.kapoozi.com'
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
+  workloadSelectors: []
+  http:
+    - name: httpbin-protected
+      labels:
+        oauth: "true"
+        waf: "true"
+        ratelimited: "true"
+      matchers:
+      - uri:
+          exact: /get
+      - uri:
+          prefix: /callback
+      - uri:
+          prefix: /logout
+      - uri:
+          exact: /anything/protected
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
+    - name: httpbin-public
+      labels:
+        waf: "true"
+        ratelimited: "true"
+      matchers:
+      - uri:
+          prefix: /anything
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
+    - name: httpbin-plow-rewrite
+      labels:
+        waf: "true"
+        ratelimited: "true"
+      matchers:
+      - uri:
+          prefix: /plow
+      forwardTo:
+        pathRewrite: /
+        destinations:
+        - ref:
+            name: plow-httpbin
+            namespace: httpbin
+          port:
+            number: 18888
+    - name: httpbin-plow
+      labels:
+        waf: "true"
+        ratelimited: "true"
+      matchers:
+      - uri:
+          prefix: /data
+      - uri:
+          prefix: /echarts
+      forwardTo:
+        destinations:
+        - ref:
+            name: plow-httpbin
+            namespace: httpbin
+          port:
+            number: 18888

@@ -4,8 +4,19 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- httpbin-team-config-ns.yaml
+- httpbin-extauth-policy.yaml
+- httpbin-jwt-transformationpolicy.yaml
+- httpbin-jwtpolicy.yaml
+- httpbin-oauth-rt-443.yaml
+- httpbin-okta-jwks-externalendpoint.yaml
+- httpbin-okta-jwks-externalservice.yaml
+- httpbin-opa-policy.yaml
+- httpbin-ratelimit-transformationpolicy.yaml
+- httpbin-ratelimitclientconfig.yaml
+- httpbin-ratelimitpolicy.yaml
+- httpbin-ratelimitserverconfig.yaml
+- httpbin-ratelimitserversettings.yaml
+- httpbin-wafpolicy.yaml
 - httpbin-workspace.yaml
 - httpbin-workspacesettings.yaml
-- httpbin-rt-443.yaml
-- httpbin-vd.yaml
+- plow-loadgen-argo.yaml

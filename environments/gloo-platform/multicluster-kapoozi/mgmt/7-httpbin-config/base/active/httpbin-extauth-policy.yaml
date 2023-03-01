@@ -21,8 +21,8 @@ spec:
             callbackPath: /callback
             clientId: 0oa6qvzybcVCK6PcS5d7
             clientSecretRef:
-              name: httpbin-oidc-client-secret
-              namespace: httpbin
+              name: okta-client-secret
+              namespace: gloo-mesh
             issuerUrl: https://dev-22653158.okta.com/oauth2/default
             session:
               failOnFetchFailure: true
