@@ -210,13 +210,13 @@ spec:
                   - name: "Web Applications"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "Online Boutique - GCP"
+                      - name: "Online Boutique - gke-east"
                         #subtitle: "host: shop.kapoozi.com"
                         icon: "fas fa-shopping-cart"
                         tag: "onlineboutique"
                         url: "https://shop.kapoozi.com"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Online Boutique - AWS"
+                      - name: "Online Boutique - gke-central"
                         #subtitle: "host: shop-cluster1.kapoozi.com"
                         icon: "fas fa-shopping-cart"
                         tag: "onlineboutique"

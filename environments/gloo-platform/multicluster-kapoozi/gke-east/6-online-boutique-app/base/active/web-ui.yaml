@@ -102,7 +102,7 @@ spec:
             # # ENV_PLATFORM: One of: local, gcp, aws, azure, onprem
             # # When not set, defaults to "local" unless running in GKE, otherwies auto-sets to gcp 
             - name: ENV_PLATFORM 
-              value: "onprem"
+              value: "gcp"
             - name: DISABLE_TRACING
               value: "1"
             - name: DISABLE_PROFILER
@@ -120,4 +120,4 @@ spec:
                 fieldRef:
                   fieldPath: metadata.namespace
             - name: KUBERNETES_CLUSTER_NAME
-              value: onprem-v1
+              value: gke-east-v1
