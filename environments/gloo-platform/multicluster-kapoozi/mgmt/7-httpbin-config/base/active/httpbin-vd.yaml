@@ -1,0 +1,20 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: httpbin-vd
+  namespace: httpbin
+spec:
+  hosts:
+  - httpbin.randomvalue
+  services:
+  - namespace: httpbin
+    labels:
+      app: in-mesh
+    cluster: cluster1
+  - namespace: httpbin
+    labels:
+      app: in-mesh
+    cluster: cluster2
+  ports:
+    - number: 8000
+      protocol: HTTP
