@@ -201,7 +201,7 @@ spec:
             - name: DISABLE_PROFILER
               value: "1"
             - name: KUBERNETES_CLUSTER_NAME
-              value: aws
+              value: gke-central
           # - name: JAEGER_SERVICE_ADDR
           #   value: "jaeger-collector:14268"
           resources:
