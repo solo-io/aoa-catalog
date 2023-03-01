@@ -71,3 +71,5 @@ spec:
               # Reload cacerts when cert-manager changes it
               - name: AUTO_RELOAD_PLUGIN_CERTS
                 value: "true"
+              - name: PILOT_ENABLE_K8S_SELECT_WORKLOAD_ENTRIES
+                value: "false"

@@ -14,7 +14,7 @@ spec:
       clusters:
       - name: mgmt
         # If set to true, the spec for this revision is applied in the cluster
-        activeGateway: true
+        activeGateway: false
       istioOperatorSpec:
         # No control plane components are installed
         profile: empty
@@ -23,22 +23,14 @@ spec:
         hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
         # The Solo.io Gloo Istio tag
         tag: 1.16.2-solo
+        values:
+          gateways:
+            istio-ingressgateway:
+              customService: true
         components:
           ingressGateways:
             - name: istio-ingressgateway
               namespace: istio-gateways
               enabled: true
-              k8s:
-                service:
-                  ports:
-                    - name: http2
-                      port: 80
-                      protocol: TCP
-                      targetPort: 8080
-                    - name: https
-                      port: 443
-                      protocol: TCP
-                      targetPort: 8443
-                  type: LoadBalancer
-                  selector:
-                    istio: ingressgateway
+              label:
+                istio: ingressgateway
