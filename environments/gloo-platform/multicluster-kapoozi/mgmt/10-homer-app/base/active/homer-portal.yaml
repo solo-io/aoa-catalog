@@ -214,13 +214,13 @@ spec:
                         #subtitle: "host: shop.kapoozi.com"
                         icon: "fas fa-shopping-cart"
                         tag: "onlineboutique"
-                        url: "https://shop.kapoozi.com"
+                        url: "https://shop-east.kapoozi.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Online Boutique - gke-central"
                         #subtitle: "host: shop-cluster1.kapoozi.com"
                         icon: "fas fa-shopping-cart"
                         tag: "onlineboutique"
-                        url: "https://shop-cluster1.kapoozi.com"
+                        url: "https://shop-central.kapoozi.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "httpbin /get"
                         subtitle: "username: jdoe@solo.io / password: gloo-admin"

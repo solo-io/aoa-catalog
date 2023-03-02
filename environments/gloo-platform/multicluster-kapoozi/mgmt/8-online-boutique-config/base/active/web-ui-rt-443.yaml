@@ -5,8 +5,8 @@ metadata:
   namespace: web-team
 spec:
   hosts:
-    - 'shop.kapoozi.com'
-    - 'shop-cluster1.kapoozi.com'
+    - 'shop-east.kapoozi.com'
+    - 'shop-central.kapoozi.com'
   virtualGateways:
     - name: north-south-gw
       namespace: istio-gateways
