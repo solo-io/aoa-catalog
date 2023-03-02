@@ -56,6 +56,16 @@ To demonstrate an automated rollback, curl the `/status/500` endpoint with the c
 for i in {1..200}; do curl -k https://podinfo-local.glootest.com/status/500 -H "Host: podinfo-local.glootest.com"; sleep 2; done
 ```
 
+To list all rollouts with kubectl:
+```
+kubectl argo rollouts list rollouts -A
+```
+
+To watch the status of the podinfo rollout:
+```
+kubectl argo rollouts get rollout podinfo -n podinfo -w
+```
+
 To access applications, follow the methods below:
 
 #### Method 1 - LoadBalancer External-IP
