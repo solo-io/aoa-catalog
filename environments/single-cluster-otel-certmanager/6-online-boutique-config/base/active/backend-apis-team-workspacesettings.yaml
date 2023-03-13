@@ -1,0 +1,21 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: WorkspaceSettings
+metadata:
+  name: backend-apis-team
+  namespace: backend-apis
+spec:
+  exportTo:
+  - workspaces:
+    - name: web-team
+  importFrom:
+  - workspaces:
+    - name: ops-team
+  options:
+    eastWestGateways:
+    - selector:
+        labels:
+          istio: eastwestgateway
+    # disabled to show how to use Auth Policies
+    serviceIsolation:
+      enabled: false
+      trimProxyConfig: false
