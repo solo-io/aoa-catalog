@@ -35,10 +35,10 @@ spec:
         - name: legacyMetricsPipeline.enabled
           value: 'true' 
         # otel
-        - name: metricscollector.enabled
-          value: 'false'
-        - name: metricscollector.config.exporters.otlp.endpoint
-          value: '"gloo-metrics-gateway.gloo-mesh.svc.cluster.local:4317"'   
+        #- name: metricscollector.enabled
+        #  value: 'false'
+        #- name: metricscollector.config.exporters.otlp.endpoint
+        #  value: '"gloo-metrics-gateway.gloo-mesh.svc.cluster.local:4317"'   
         # set requests/limits    
         #- name: metricscollector.resources.requests.cpu
         #  value: '500m'   
