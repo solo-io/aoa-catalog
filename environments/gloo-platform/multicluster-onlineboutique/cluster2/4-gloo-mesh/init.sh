@@ -76,7 +76,9 @@ spec:
         - name: metricscollector.enabled
           value: 'true'
         - name: metricscollector.config.exporters.otlp.endpoint
-          value: '${METRICS}'          
+          value: '${METRICS}'   
+        - name: 'metricscollector.extraVolumes[0].secret.secretName'
+          value: relay-root-ca          
   syncPolicy:
     automated:
       prune: false
