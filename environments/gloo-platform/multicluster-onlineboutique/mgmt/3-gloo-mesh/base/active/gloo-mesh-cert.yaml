@@ -1,0 +1,23 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: gloo-mesh-mgmt-server
+  namespace: gloo-mesh
+spec:
+  commonName: gloo-mesh-mgmt-server
+  dnsNames:
+    - "*.gloo-mesh"
+  # 1 year life
+  duration: 8760h0m0s
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: relay-root-ca
+  renewBefore: 8736h0m0s
+  secretName: gloo-server-tls-cert
+  usages:
+    - server auth
+    - client auth
+  privateKey:
+    algorithm: "RSA"
+    size: 4096

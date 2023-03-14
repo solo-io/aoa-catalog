@@ -1,0 +1,95 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-v2
+  namespace: web-ui
+  labels:
+    app: frontend-v2
+spec:
+  selector:
+    app: frontend-v2
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-v2
+  namespace: web-ui
+  labels:
+    app: frontend-v2
+spec:
+  selector:
+    matchLabels:
+      app: frontend-v2
+  template:
+    metadata:
+      labels:
+        app: frontend-v2
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"
+    spec:
+      serviceAccountName: frontend
+      containers:
+        - name: server
+          image: gcr.io/solo-test-236622/frontend:solo-build
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            initialDelaySeconds: 10
+            httpGet:
+              path: "/_healthz"
+              port: 8080
+              httpHeaders:
+                - name: "Cookie"
+                  value: "shop_session-id=x-readiness-probe"
+          livenessProbe:
+            initialDelaySeconds: 10
+            httpGet:
+              path: "/_healthz"
+              port: 8080
+              httpHeaders:
+                - name: "Cookie"
+                  value: "shop_session-id=x-liveness-probe"
+          env:
+            - name: PORT
+              value: "8080"
+            - name: AD_SERVICE_ADDR
+              value: "adservice.backend-apis.svc.cluster.local:9555"
+            - name: CART_SERVICE_ADDR
+              value: "cartservice.backend-apis.svc.cluster.local:7070"
+            - name: RECOMMENDATION_SERVICE_ADDR
+              value: "recommendationservice.backend-apis.svc.cluster.local:8080"
+            - name: SHIPPING_SERVICE_ADDR
+              value: "shipping.backend-apis-team.solo-io.mesh:80"
+            - name: CHECKOUT_SERVICE_ADDR
+              value: "checkout.backend-apis-team.solo-io.mesh:80"
+            - name: PRODUCT_CATALOG_SERVICE_ADDR
+              value: "productcatalogservice.backend-apis.svc.cluster.local:3550"
+            - name: CURRENCY_SERVICE_ADDR
+              value: "currencyservice.backend-apis.svc.cluster.local:7000"
+            # # ENV_PLATFORM: One of: local, gcp, aws, azure, onprem
+            # # When not set, defaults to "local" unless running in GKE, otherwies auto-sets to gcp 
+            - name: ENV_PLATFORM 
+              value: "onprem"
+            - name: DISABLE_TRACING
+              value: "1"
+            - name: DISABLE_PROFILER
+              value: "1"
+            - name: KUBERNETES_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: KUBERNETES_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: KUBERNETES_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: KUBERNETES_CLUSTER_NAME
+              value: onprem-v2
