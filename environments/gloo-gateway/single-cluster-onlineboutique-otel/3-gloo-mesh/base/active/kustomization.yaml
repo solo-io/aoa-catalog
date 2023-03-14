@@ -6,7 +6,7 @@ kind: Kustomization
 resources:
 - gloo-mesh-addons.yaml
 - gloo-mesh-agent-cert.yaml
-- gloo-mesh-agent.yaml
+#- gloo-mesh-agent.yaml
 - gloo-mesh-cert.yaml
 - gloo-mesh-crds.yaml
 - gloo-mesh-ee-helm.yaml
