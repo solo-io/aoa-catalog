@@ -18,6 +18,13 @@ until [ "${SVC}" != "" ]; do
   sleep 2
 done
 
+# discover gloo mesh metrics endpoint with kubectl
+until [ "${METRICS}" != "" ]; do
+  METRICS=$(kubectl --context ${mgmt_context} -n gloo-mesh get svc gloo-metrics-gateway -o jsonpath='{.status.loadBalancer.ingress[0].*}')
+  echo waiting for gloo mesh metrics gateway LoadBalancer IP to be detected
+  sleep 2
+done
+
 kubectl apply --context ${mgmt_context} -f- <<EOF
 apiVersion: admin.gloo.solo.io/v2
 kind: KubernetesCluster
@@ -66,6 +73,10 @@ spec:
         # enabled for future vault integration
         - name: istiodSidecar.createRoleBinding
           value: 'true'
+        - name: metricscollector.enabled
+          value: 'true'
+        - name: metricscollector.config.exporters.otlp.endpoint
+          value: '${METRICS}'          
   syncPolicy:
     automated:
       prune: false
