@@ -1,0 +1,13 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: Workspace
+metadata:
+  name: backend-apis-team
+  namespace: gloo-mesh
+spec:
+  workloadClusters:
+  - name: 'mgmt'
+    namespaces:
+    - name: backend-apis-team
+  - name: '*'
+    namespaces:
+    - name: backend-apis

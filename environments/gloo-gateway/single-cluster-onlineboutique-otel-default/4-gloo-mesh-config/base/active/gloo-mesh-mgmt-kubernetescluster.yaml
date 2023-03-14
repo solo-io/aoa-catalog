@@ -1,0 +1,9 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: KubernetesCluster
+metadata:
+  name: mgmt
+  namespace: gloo-mesh
+  labels:
+    roottrust: notshared
+spec:
+  clusterDomain: cluster.local
