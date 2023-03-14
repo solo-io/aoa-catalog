@@ -1,0 +1,17 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- argocd-mgmt-rt-443.yaml
+- gloo-mesh-global-workspacesettings.yaml
+- gloo-mesh-mgmt-extauthserver.yaml
+- gloo-mesh-mgmt-kubernetescluster.yaml
+- gloo-mesh-mgmt-virtualgateway-443.yaml
+- gloo-mesh-ops-team-workspace.yaml
+- gloo-mesh-ops-team-workspacesettings.yaml
+- gloo-mesh-ui-rt-443.yaml
+- grafana-rt-443.yaml
+#- roottrustpolicy-generated.yaml
+- roottrustpolicy-secretref.yaml

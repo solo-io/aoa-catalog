@@ -1,0 +1,22 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: RateLimitServerConfig
+metadata:
+  name: frontend
+  namespace: gloo-mesh-addons
+spec:
+  destinationServers:
+  - port:
+      name: grpc
+    ref:
+      cluster: mgmt
+      name: rate-limiter
+      namespace: gloo-mesh-addons
+  raw:
+    descriptors:
+      - key: generic_key
+        value: "per-minute"
+        descriptors:
+          - key: remote_address
+            rateLimit:
+              requestsPerUnit: 200
+              unit: MINUTE
