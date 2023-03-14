@@ -56,7 +56,7 @@ spec:
                     istio.io/rev: "1-16"
                     sidecar.istio.io/inject: "true"
         legacyMetricsPipeline:
-          enabled: false
+          enabled: true
         metricsgateway:
           enabled: true
           #resources:
