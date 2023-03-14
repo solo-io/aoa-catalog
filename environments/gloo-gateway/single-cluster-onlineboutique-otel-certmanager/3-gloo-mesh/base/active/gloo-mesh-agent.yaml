@@ -40,8 +40,8 @@ spec:
         - name: istiodSidecar.createRoleBinding
           value: 'false'
         # legacy metrics pipeline
-        - name: legacyMetricsPipeline.enabled
-          value: 'false'  
+        #- name: legacyMetricsPipeline.enabled
+        #  value: 'false'  
         # otel
         #- name: metricscollector.enabled
         #  value: 'false'
