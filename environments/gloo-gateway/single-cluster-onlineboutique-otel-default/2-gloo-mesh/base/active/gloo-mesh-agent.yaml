@@ -33,7 +33,7 @@ spec:
           value: 'false'
         # legacy metrics pipeline
         - name: legacyMetricsPipeline.enabled
-          value: 'false' 
+          value: 'true' 
         # otel
         - name: metricscollector.enabled
           value: 'false'
