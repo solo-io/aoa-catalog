@@ -48,7 +48,7 @@ spec:
         - name: metricscollector.config.exporters.otlp.endpoint
           value: '"gloo-metrics-gateway.gloo-mesh.svc.cluster.local:4317"'
         - name: 'metricscollector.extraVolumes[0].secret.secretName'
-          value: relay-root-ca      
+          value: gloo-metrics-gateway-tls-secret
         # set requests/limits    
         #- name: metricscollector.resources.requests.cpu
         #  value: '500m'   
