@@ -36,7 +36,7 @@ spec:
           value: 'false' 
         # otel
         - name: metricscollector.enabled
-          value: 'false'
+          value: 'true'
         - name: metricscollector.config.exporters.otlp.endpoint
           value: '"gloo-metrics-gateway.gloo-mesh.svc.cluster.local:4317"'   
         # set requests/limits    
