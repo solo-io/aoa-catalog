@@ -44,7 +44,7 @@ spec:
           value: 'false'  
         # otel
         - name: metricscollector.enabled
-          value: 'false'
+          value: 'true'
         - name: metricscollectorCustomization.disableCertGeneration
           value: 'true'
         - name: metricscollector.config.exporters.otlp.endpoint
