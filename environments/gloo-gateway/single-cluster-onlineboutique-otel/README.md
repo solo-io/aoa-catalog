@@ -1,7 +1,7 @@
 # Environment Description
-The `gloo-gateway/single-cluster-freestyle` environment deploys the core components of a single cluster Gloo Platform demo, without any applications deployed. This is a great starting ground to get a barebones demo setup where you can bring your own application example into the mesh.
+The `gloo-gateway/single-cluster-onlineboutique` environment deploys the core components of a single cluster Gloo Platform demo, without any applications deployed. This is a great starting ground to get a barebones demo setup where you can bring your own application example into the mesh.
 
-![High Level Architecture](.images/single-cluster-freestyle-arch-1a.png)
+![High Level Architecture](.images/single-cluster-onlineboutique-arch-1a.png)
 
 ### Prerequisites
 - 1 Kubernetes Cluster
@@ -18,6 +18,8 @@ The `gloo-gateway/single-cluster-freestyle` environment deploys the core compone
     - Configure Gloo Mesh addons
     - expose Gloo Mesh UI
     - expose ArgoCD UI
+- Wave 6 - Deploys Online Boutique Application
+- Wave 6 - Configures Online Boutique Mesh Config
 
 ## Overlay description
 - base:
@@ -28,10 +30,6 @@ The `gloo-gateway/single-cluster-freestyle` environment deploys the core compone
     - gloo mesh 2.2.4
     - istio 1.16.2-solo (ILCM)
     - revision: 1-16
-- ocp:
-    - gloo mesh 2.2.4
-    - istio 1.14.5-solo (ILCM)
-    - revision: 1-14
 
 ## Application description
 
@@ -43,6 +41,7 @@ Applications Exposed using this demo:
     - user: admin
     - password: solo.io
 - Gloo Mesh UI at `https://gmui-local.glootest.com`
+- Online Boutique at `https://shop-local.glootest.com`
 
 To access applications, follow the methods below:
 
@@ -59,7 +58,7 @@ echo ${GATEWAY_IP}
 Modify /etc/hosts on your local machine (this will require sudo privileges), or configure DNS to point to your Ingress Gateway IP
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-${GATEWAY_IP} argocd-local.glootest.com gmui-local.glootest.com
+${GATEWAY_IP} argocd-local.glootest.com gmui-local.glootest.com shop-local.glootest.com
 EOF
 ```
 
@@ -67,7 +66,7 @@ EOF
 modify /etc/hosts on your local machine (this will require sudo privileges)
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com
+127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com shop-local.glootest.com
 EOF
 ```
 
@@ -100,6 +99,6 @@ access the ingress gateway at https://localhost:8443
 Note: For routes that are configured with a specific host, pass in the Host header using curl `-H "Host: <host>` or add the following entry into your /etc/hosts when using this method
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com
+127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com shop-local.glootest.com
 EOF
 ```
