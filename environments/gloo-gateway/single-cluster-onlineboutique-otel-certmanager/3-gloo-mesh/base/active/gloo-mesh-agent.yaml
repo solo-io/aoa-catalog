@@ -42,13 +42,19 @@ spec:
         # legacy metrics pipeline
         - name: legacyMetricsPipeline.enabled
           value: 'false'  
+        - name: metricscollector.configMap.create
+          value: 'true'
+        - name: metricscollector.enabled
+          value: 'true'
+        #- name: 'metricscollector.extraVolumes[0].secret.secretName'
+        #  value: gloo-metrics-gateway-tls-secret
         # otel
         #- name: metricscollector.enabled
         #  value: 'false'
         #- name: metricscollectorCustomization.disableCertGeneration
         #  value: 'true'
-        #- name: metricscollector.config.exporters.otlp.endpoint
-        #  value: '"gloo-metrics-gateway.gloo-mesh.svc.cluster.local:4317"'
+        - name: metricscollector.config.exporters.otlp.endpoint
+          value: '"gloo-metrics-gateway.gloo-mesh.svc.cluster.local:4317"'
         #- name: 'metricscollector.extraVolumes[0].name'
         #  value: root-ca
         #- name: 'metricscollector.extraVolumes[0].secret.secretName'
