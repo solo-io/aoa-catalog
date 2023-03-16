@@ -1,7 +1,7 @@
 # Environment Description
-The `gloo-gateway/single-cluster-freestyle` environment deploys the core components of a single cluster Gloo Platform demo, without any applications deployed. This is a great starting ground to get a barebones demo setup where you can bring your own application example into the mesh.
+The `gloo-gateway/freestyle` environment deploys the core components of a single cluster Gloo Platform demo, without any applications deployed. This is a great starting ground to get a barebones demo setup where you can bring your own application example into the mesh.
 
-![High Level Architecture](.images/single-cluster-freestyle-arch-1a.png)
+![High Level Architecture](.images/freestyle-arch-1a.png)
 
 ### Prerequisites
 - 1 Kubernetes Cluster
