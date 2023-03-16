@@ -1,7 +1,7 @@
 # Environment Description
-The `gloo-gateway/single-cluster-solowallet` environment deploys the core components of a single cluster Gloo Platform demo, along with the solowallet sample application.
+The `gloo-gateway/solowallet` environment deploys the core components of a single cluster Gloo Platform demo, along with the solowallet sample application.
 
-![High Level Architecture](.images/single-cluster-solowallet-arch-1a.png)
+![High Level Architecture](.images/solowallet-arch-1a.png)
 
 ### Prerequisites
 - 1 Kubernetes Cluster
