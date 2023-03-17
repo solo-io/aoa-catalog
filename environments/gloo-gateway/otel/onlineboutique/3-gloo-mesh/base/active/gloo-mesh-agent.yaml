@@ -1,0 +1,82 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gm-enterprise-agent-mgmt
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gloo-mesh
+  source:
+    repoURL: 'https://storage.googleapis.com/gloo-mesh-enterprise/gloo-mesh-agent'
+    targetRevision: 2.2.4
+    chart: gloo-mesh-agent
+    helm:
+      skipCrds: true
+      #valueFiles:
+      #  - values.yaml
+      parameters:
+        - name: cluster
+          value: 'mgmt'
+        - name: relay.serverAddress
+          value: 'gloo-mesh-mgmt-server.gloo-mesh.svc.cluster.local:9900'
+        - name: relay.authority
+          value: 'gloo-mesh-mgmt-server.gloo-mesh'
+        - name: relay.clientTlsSecret.name
+          value: 'gloo-agent-tls-cert'
+        - name: relay.clientTlsSecret.namespace
+          value: 'gloo-mesh'
+        - name: relay.rootTlsSecret.name
+          value: 'relay-root-ca'
+        - name: relay.rootTlsSecret.namespace
+          value: 'gloo-mesh'
+        - name: ext-auth-service.enabled
+          value: 'false'
+        - name: rate-limiter.enabled
+          value: 'false'
+        - name: glooMeshAgent.enabled
+          value: 'true'
+        # enabled for future vault integration
+        - name: istiodSidecar.createRoleBinding
+          value: 'false'
+        # legacy metrics pipeline
+        - name: legacyMetricsPipeline.enabled
+          value: 'false'  
+        # otel
+        - name: metricscollector.enabled
+          value: 'true'
+        - name: metricscollectorCustomization.disableCertGeneration
+          value: 'true'
+        - name: metricscollector.config.exporters.otlp.endpoint
+          value: '"gloo-metrics-gateway.gloo-mesh.svc.cluster.local:4317"'
+        - name: 'metricscollector.extraVolumes[0].name'
+          value: 'root-ca'
+        - name: 'metricscollector.extraVolumes[0].secret.defaultMode'
+          value: '420'
+        - name: 'metricscollector.extraVolumes[0].secret.secretName'
+          value: 'gloo-metrics-gateway-tls-secret'
+        - name: 'metricscollector.extraVolumes[1].configMap.items[0].key'
+          value: 'relay'
+        - name: 'metricscollector.extraVolumes[1].configMap.items[0].path'
+          value: 'relay.yaml'
+        - name: 'metricscollector.extraVolumes[1].configMap.name'
+          value: 'gloo-metrics-collector-config'
+        - name: 'metricscollector.extraVolumes[1].name'
+          value: 'metrics-configmap'
+        # set requests/limits    
+        #- name: metricscollector.resources.requests.cpu
+        #  value: '500m'   
+        #- name: metricscollector.resources.requests.memory
+        #  value: '"1Gi"'   
+        #- name: metricscollector.resources.limits.cpu
+        #  value: '2'   
+        #  - name: metricscollector.resources.limits.memory
+        #  value: '2Gi'  
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - Replace=true
+    - ApplyOutOfSyncOnly=true
+  project: default

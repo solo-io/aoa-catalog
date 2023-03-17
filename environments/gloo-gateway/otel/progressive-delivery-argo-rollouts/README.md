@@ -1,7 +1,7 @@
 # Environment Description
-The `gloo-gateway/onlineboutique` environment deploys the core components of a single cluster Gloo Platform demo, without any applications deployed. This is a great starting ground to get a barebones demo setup where you can bring your own application example into the mesh.
+The `gloo-gateway/otel/progressive-delivery-argo-rollouts` environment deploys the core components of a single cluster Gloo Platform demo, Argo Rollouts, and a Helloworld application Rollout. This environment can be used to demonstrate Progressive Delivery with GitOps using ArgoCD + Argo Rollouts + Gloo Platform + Istio
 
-![High Level Architecture](.images/onlineboutique-arch-1b.png)
+![High Level Architecture](.images/progressive-delivery-argo-rollouts-arch-1a.png)
 
 ### Prerequisites
 - 1 Kubernetes Cluster
@@ -18,17 +18,16 @@ The `gloo-gateway/onlineboutique` environment deploys the core components of a s
     - Configure Gloo Mesh addons
     - expose Gloo Mesh UI
     - expose ArgoCD UI
-- Wave 6 - Deploys Online Boutique Application
-- Wave 6 - Configures Online Boutique Mesh Config
+- Wave 6 - Deploys Argo Rollouts
+- Wave 7 - Deploys and Configures Helloworld Rollouts Demo
+- Wave 8 - Deploys Homer Link Dashboard
+- Wave 8 - Configures Homer Link Dashboard
+
 
 ## Overlay description
 - base:
     - gloo mesh 2.2.4
     - istio 1.16.2-solo (Helm)
-    - revision: 1-16
-- ilcm:
-    - gloo mesh 2.2.4
-    - istio 1.16.2-solo (ILCM)
     - revision: 1-16
 
 ## Application description
@@ -36,12 +35,36 @@ The `gloo-gateway/onlineboutique` environment deploys the core components of a s
 The RouteTables for applications exposed in this demo are defining non-wildcard hosts which follow the pattern `<app>-local.glootest.com`. You can map these hostnames to your gateway IP address in your DNS service of choice (i.e. Route53, Cloudflare), or you can follow the methods below to modify your `/etc/hosts` locally depending on your cluster LoadBalancer configuration.
 
 Applications Exposed using this demo:
+- Homer Dashboard at `https://<GATEWAY_IP>.com` or `https://localhost` if running locally on K3d
 - ArgoCD at `https://argocd-local.glootest.com/argo`
     - argocd credentials:
     - user: admin
     - password: solo.io
 - Gloo Mesh UI at `https://gmui-local.glootest.com`
-- Online Boutique at `https://shop-local.glootest.com`
+- Grafana UI at `https://grafana-local.glootest.com`
+- Podinfo Application at `https://podinfo-local.glootest.com`
+
+## Useful Commands
+
+To repeatedly send traffic to the podinfo application using curl you can use the command below
+```
+for i in {1..200}; do curl -k https://podinfo-local.glootest.com -H "Host: podinfo-local.glootest.com"; sleep 2; done
+```
+
+To demonstrate an automated rollback, curl the `/status/500` endpoint with the command below. This will cause the Prometheus metrics in the `AnalysisTemplate` to go below the accepted threshold of < 95%
+```
+for i in {1..200}; do curl -k https://podinfo-local.glootest.com/status/500 -H "Host: podinfo-local.glootest.com"; sleep 2; done
+```
+
+To list all rollouts with kubectl:
+```
+kubectl argo rollouts list rollouts -A
+```
+
+To watch the status of the podinfo rollout:
+```
+kubectl argo rollouts get rollout podinfo -n podinfo -w
+```
 
 To access applications, follow the methods below:
 
@@ -58,7 +81,7 @@ echo ${GATEWAY_IP}
 Modify /etc/hosts on your local machine (this will require sudo privileges), or configure DNS to point to your Ingress Gateway IP
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-${GATEWAY_IP} argocd-local.glootest.com gmui-local.glootest.com shop-local.glootest.com
+${GATEWAY_IP} argocd-local.glootest.com gmui-local.glootest.com
 EOF
 ```
 
@@ -66,7 +89,7 @@ EOF
 modify /etc/hosts on your local machine (this will require sudo privileges)
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com shop-local.glootest.com
+127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com
 EOF
 ```
 
@@ -99,6 +122,6 @@ access the ingress gateway at https://localhost:8443
 Note: For routes that are configured with a specific host, pass in the Host header using curl `-H "Host: <host>` or add the following entry into your /etc/hosts when using this method
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com shop-local.glootest.com
+127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com
 EOF
 ```
