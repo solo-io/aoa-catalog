@@ -1,7 +1,7 @@
 # Environment Description
-The `gloo-gateway/onlineboutique` environment deploys the core components of a single cluster Gloo Platform demo, without any applications deployed. This is a great starting ground to get a barebones demo setup where you can bring your own application example into the mesh.
+The `gloo-platform/multicluster-onlineboutique-otel/cluster1` environment deploys the `cluster1` worker for a multi-cluster Gloo Platform demo, which deploys Istio with ingress gateways and configures the Gloo Mesh Agent to communicate with the Gloo Mesh Control Plane served by the `multicluster-onlineboutique-otel/mgmt` environment
 
-![High Level Architecture](.images/onlineboutique-arch-1b.png)
+![High Level Architecture](.images/multicluster-onlineboutique-cluster1-arch-1a.png)
 
 ### Prerequisites
 - 1 Kubernetes Cluster
@@ -10,16 +10,9 @@ The `gloo-gateway/onlineboutique` environment deploys the core components of a s
 
 - Wave 1 - Configures cluster-config and namespaces
 - Wave 2 - Deploys cert-manager
-- Wave 3 - Deploys Gloo Mesh and register Agents
-- Wave 4 - Deploys Istio and Ingress Gateway(s)
-- Wave 5 - Configures initial Gloo Mesh components
-    - Set up `ops-team` workspace
-    - Configure Gateway on 443
-    - Configure Gloo Mesh addons
-    - expose Gloo Mesh UI
-    - expose ArgoCD UI
-- Wave 6 - Deploys Online Boutique Application
-- Wave 6 - Configures Online Boutique Mesh Config
+- Wave 3 - Deploys Istio, Ingress Gateway, and Eastwest Gateway
+- Wave 4 - Configures Gloo Mesh Agent and Gloo Mesh Addons
+- Wave 5 - Deploys onlineboutique app
 
 ## Overlay description
 - base:
@@ -35,13 +28,15 @@ The `gloo-gateway/onlineboutique` environment deploys the core components of a s
 
 The RouteTables for applications exposed in this demo are defining non-wildcard hosts which follow the pattern `<app>-local.glootest.com`. You can map these hostnames to your gateway IP address in your DNS service of choice (i.e. Route53, Cloudflare), or you can follow the methods below to modify your `/etc/hosts` locally depending on your cluster LoadBalancer configuration.
 
-Applications Exposed using this demo:
+On the `mgmt` cluster gateway:
 - ArgoCD at `https://argocd-local.glootest.com/argo`
     - argocd credentials:
     - user: admin
     - password: solo.io
 - Gloo Mesh UI at `https://gmui-local.glootest.com`
-- Online Boutique at `https://shop-local.glootest.com`
+
+On the `cluster1` cluster gateway (at 8443 if using k3d LB integration) When deployed with `aoa-cluster1` and `aoa-cluster2`
+- onlineboutique at `https://shop-local.glootest.com:8443/get`
 
 To access applications, follow the methods below:
 

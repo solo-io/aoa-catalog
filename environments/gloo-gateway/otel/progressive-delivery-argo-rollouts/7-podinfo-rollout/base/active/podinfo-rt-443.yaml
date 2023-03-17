@@ -1,0 +1,38 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: podinfo-rt-443
+  namespace: podinfo
+spec:
+  hosts:
+    - 'podinfo-local.glootest.com'
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
+  workloadSelectors: []
+  http:
+    - name: podinfo
+      matchers:
+      - uri:
+          prefix: /
+      forwardTo:
+        destinations:
+        - ref:
+            name: podinfo
+            namespace: podinfo
+            cluster: mgmt
+          port:
+            number: 9898
+          subset: 
+            version: stable
+          weight: 100
+        - ref:
+            name: podinfo
+            namespace: podinfo
+            cluster: mgmt
+          port:
+            number: 9898
+          subset:
+            version: canary
+          weight: 0
