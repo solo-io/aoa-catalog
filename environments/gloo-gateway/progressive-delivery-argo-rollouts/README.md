@@ -1,5 +1,5 @@
 # Environment Description
-The `gloo-gateway/progressive-delivery-argo-rollouts` environment deploys the core components of a single cluster Gloo Platform demo, Argo Rollouts, and a Helloworld application Rollout. This environment can be used to demonstrate Progressive Delivery with GitOps using ArgoCD + Argo Rollouts + Gloo Platform + Istio
+The `gloo-gateway/progressive-delivery-argo-rollouts` environment deploys the core components of a single cluster Gloo Platform demo, Argo Rollouts, and a Podinfo application Rollout. This environment can be used to demonstrate Progressive Delivery with GitOps using ArgoCD + Argo Rollouts + Gloo Platform + Istio
 
 ![High Level Architecture](.images/progressive-delivery-argo-rollouts-arch-1a.png)
 
@@ -19,7 +19,7 @@ The `gloo-gateway/progressive-delivery-argo-rollouts` environment deploys the co
     - expose Gloo Mesh UI
     - expose ArgoCD UI
 - Wave 6 - Deploys Argo Rollouts
-- Wave 7 - Deploys and Configures Helloworld Rollouts Demo
+- Wave 7 - Deploys and Configures Podinfo Rollouts Demo
 - Wave 8 - Deploys Homer Link Dashboard
 - Wave 8 - Configures Homer Link Dashboard
 
@@ -81,7 +81,7 @@ echo ${GATEWAY_IP}
 Modify /etc/hosts on your local machine (this will require sudo privileges), or configure DNS to point to your Ingress Gateway IP
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-${GATEWAY_IP} argocd-local.glootest.com gmui-local.glootest.com
+${GATEWAY_IP} argocd-local.glootest.com gmui-local.glootest.com podinfo-local.glootest.com grafana-local.glootest.com
 EOF
 ```
 
@@ -89,7 +89,7 @@ EOF
 modify /etc/hosts on your local machine (this will require sudo privileges)
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com
+127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com podinfo-local.glootest.com grafana-local.glootest.com
 EOF
 ```
 
@@ -122,6 +122,6 @@ access the ingress gateway at https://localhost:8443
 Note: For routes that are configured with a specific host, pass in the Host header using curl `-H "Host: <host>` or add the following entry into your /etc/hosts when using this method
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com
+127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com podinfo-local.glootest.com grafana-local.glootest.com
 EOF
 ```
