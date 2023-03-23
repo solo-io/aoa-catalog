@@ -14,11 +14,10 @@ YELLOW='\033[0;33m'
 GREEN='\033[0;32m'
 NO_COLOR='\033[0m'
 
-############################################################
 
-############################################################
-# Help                                                     #
-############################################################
+
+####################### Functions ##########################
+
 help()
 {
    # Display Help
@@ -161,7 +160,26 @@ install_infra()
       fi 
 }
 
-############################################################
+
+destroy_infra()
+{
+   check_env
+   echo "Destroying infra..."
+   source $SCRIPT_DIR/tools/k3d-install.sh
+
+   if [ -d "$env/.infra" ]
+   then
+      cd $env/.infra
+      for i in $(ls | sort -n); do 
+            delete-k3d-cluster $(cat $i | yq .name) ${i}
+      done      
+      fi 
+}
+
+
+parse_opt()
+{
+
 # Get the options
 while getopts "f:o:hi" option; do
    case $option in
@@ -181,6 +199,13 @@ while getopts "f:o:hi" option; do
    esac
 done
 
+}
+
+deploy()
+{
+
+############################################################
+parse_opt $@
 pre_install
 
 if [[ ${install_infra} == true ]]
@@ -235,4 +260,43 @@ for i in $(ls | sort -n); do
 done
 
 echo "END."
+}
 
+
+destroy()
+{
+   parse_opt $@
+   check_env
+  
+   echo "------------------------------------------------------------"
+   echo "--------------   AoA Installer - Env Destroy   -------------"
+   echo "The following environemnt will be destroyed: $env"
+
+   echo "Continue? [y/N]"
+
+   read should_continue
+   if [[ ${should_continue} =~ ^([yY])$ ]]
+   then
+      echo ""
+   else
+      exit 0
+   fi
+
+   destroy_infra
+}
+
+######################## Main ##############################
+
+case $1 in
+  deploy)
+    deploy "${@:2}"
+    ;;
+
+  destroy)
+    destroy "${@:2}"
+    ;;
+
+  *)
+    help
+    ;;
+esac
