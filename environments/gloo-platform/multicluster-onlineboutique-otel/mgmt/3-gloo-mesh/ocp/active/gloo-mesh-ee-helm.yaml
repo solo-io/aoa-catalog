@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     repoURL: 'https://storage.googleapis.com/gloo-mesh-enterprise/gloo-mesh-enterprise'
-    targetRevision: 2.2.4
+    targetRevision: 2.2.6
     chart: gloo-mesh-enterprise
     helm:
       skipCrds: true
