@@ -58,6 +58,6 @@ spec:
           number: 8090
   virtualGateways:
   - cluster: mgmt
-    name: north-south-gw
+    name: mgmt-north-south-gw-443
     namespace: istio-gateways
   workloadSelectors: []

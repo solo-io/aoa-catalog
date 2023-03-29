@@ -1,7 +1,7 @@
 apiVersion: networking.gloo.solo.io/v2
 kind: VirtualGateway
 metadata:
-  name: north-south-gw
+  name: mgmt-north-south-gw-443
   namespace: istio-gateways
 spec:
   listeners:
@@ -13,5 +13,6 @@ spec:
       secretName: tls-secret
   workloads:
   - selector:
+      cluster: mgmt
       labels:
         istio: ingressgateway

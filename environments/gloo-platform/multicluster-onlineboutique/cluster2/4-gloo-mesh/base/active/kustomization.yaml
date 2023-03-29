@@ -6,4 +6,5 @@ kind: Kustomization
 resources:
 - agent-cert.yaml
 - gloo-mesh-crds.yaml
+- gloo-metrics-gateway-cert.yaml
 - issuer.yaml

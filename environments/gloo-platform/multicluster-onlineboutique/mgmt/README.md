@@ -4,12 +4,12 @@ The `gloo-platform/multicluster-onlineboutique/mgmt` environment deploys the mgm
 ### What this deploys
 When applied alone, the control plane is deployed and configured with just the `ops-team` workspace.
 
-![High Level Architecture](.images/multicluster-onlineboutique-mgmt-arch-1a.png)
+![High Level Architecture](.images/multicluster-onlineboutique-otel-mgmt-arch-1a.png)
 
 ### Multi-Cluster Architecture Diagram
 When applied with `cluster1` and `cluster2` environments, here is a high level diagram of the architecture
 
-![Multicluster High Level Architecture](.images/multicluster-onlineboutique-full-arch-1a.png)
+![Multicluster High Level Architecture](.images/multicluster-onlineboutique-otel-otel-full-arch-1a.png)
 
 ### Prerequisites
 - 1 Kubernetes Cluster

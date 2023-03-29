@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
 - backend-apis-ns.yaml
 - backend-apis.yaml
+- loadgenerator.yaml
 - web-ui-ns.yaml
 - web-ui.yaml
 - web-ui-v2.yaml
