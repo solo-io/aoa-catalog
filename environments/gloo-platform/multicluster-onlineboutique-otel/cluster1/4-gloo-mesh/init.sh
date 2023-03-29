@@ -7,7 +7,7 @@ echo "deploy and register gloo-mesh agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.2.4):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.2.6):"
     read gloo_mesh_version
 fi
 
@@ -53,6 +53,7 @@ spec:
     targetRevision: ${gloo_mesh_version}
     chart: gloo-mesh-agent
     helm:
+      skipCrds: true
       valueFiles:
         - values.yaml
       parameters:

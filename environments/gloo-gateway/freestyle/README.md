@@ -21,15 +21,15 @@ The `gloo-gateway/freestyle` environment deploys the core components of a single
 
 ## Overlay description
 - base:
-    - gloo mesh 2.2.4
+    - gloo mesh 2.2.6
     - istio 1.16.2-solo (Helm)
     - revision: 1-16
 - ilcm:
-    - gloo mesh 2.2.4
+    - gloo mesh 2.2.6
     - istio 1.16.2-solo (ILCM)
     - revision: 1-16
 - ocp:
-    - gloo mesh 2.2.4
+    - gloo mesh 2.2.6
     - istio 1.14.5-solo (ILCM)
     - revision: 1-14
 
