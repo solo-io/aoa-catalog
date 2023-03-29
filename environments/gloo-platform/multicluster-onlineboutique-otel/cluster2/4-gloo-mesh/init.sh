@@ -53,6 +53,7 @@ spec:
     targetRevision: ${gloo_mesh_version}
     chart: gloo-mesh-agent
     helm:
+      skipCrds: true
       valueFiles:
         - values.yaml
       parameters:
