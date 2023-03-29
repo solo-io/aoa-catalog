@@ -11,3 +11,5 @@ resources:
 - gloo-mesh-crds.yaml
 - gloo-mesh-ee-helm.yaml
 - gloo-mesh-relay-issuer.yaml
+- gloo-metrics-gateway-cert.yaml
+- relay-root-tls-secret-cert.yaml

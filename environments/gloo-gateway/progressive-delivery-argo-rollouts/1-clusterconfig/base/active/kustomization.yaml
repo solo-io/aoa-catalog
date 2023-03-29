@@ -15,4 +15,5 @@ resources:
 - istio-gateways-ns.yaml
 - istio-system-ns.yaml
 - ops-team-config-ns.yaml
+- oidc-client-secret.yaml
 

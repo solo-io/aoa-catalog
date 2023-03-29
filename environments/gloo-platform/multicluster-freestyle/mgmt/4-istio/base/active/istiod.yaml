@@ -31,8 +31,6 @@ spec:
           accessLogFile: /dev/stdout
           enableAutoMtls: true
           defaultConfig:
-            envoyMetricsService:
-              address: gloo-mesh-agent.gloo-mesh:9977
             envoyAccessLogService:
               address: gloo-mesh-agent.gloo-mesh:9977
             proxyMetadata:

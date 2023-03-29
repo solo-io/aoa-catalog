@@ -1,5 +1,5 @@
 # Environment Description
-The `gloo-platform/multicluster-onlineboutique/cluster2` environment deploys the `cluster2` worker for a multi-cluster Gloo Platform demo, which deploys Istio with ingress gateways and configures the Gloo Mesh Agent to communicate with the Gloo Mesh Control Plane served by the `multicluster-onlineboutique/aoa-mgmt` environment
+The `gloo-platform/multicluster-onlineboutique/cluster2` environment deploys the `cluster2` worker for a multi-cluster Gloo Platform demo, which deploys Istio with ingress gateways and configures the Gloo Mesh Agent to communicate with the Gloo Mesh Control Plane served by the `multicluster-onlineboutique-otel/aoa-mgmt` environment
 
 ![High Level Architecture](.images/multicluster-onlineboutique-cluster2-arch-1a.png)
 
