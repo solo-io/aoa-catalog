@@ -1,0 +1,13 @@
+
+waves:
+  - location: $env_path/clusterconfig/base/active
+  - name: certmanager
+    location: $env_path/certmanager/base/active
+  - name: gloo-mesh
+    location: $env_path/gloo-mesh/base/active
+  - name: istio
+    location: $env_path/istio/base/active
+  - name: gloo-mesh-config
+    location: $env_path/gloo-mesh-config/base/active        
+  - name: homer-app
+    location: $env_path/homer-app/base/active
