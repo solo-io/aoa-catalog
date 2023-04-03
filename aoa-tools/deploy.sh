@@ -5,8 +5,6 @@
 # Defaults
 install_infra=false
 export SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-environment_overlay="base"
-
 
 #Colors
 RED='\033[0;31m'
@@ -21,12 +19,11 @@ NO_COLOR='\033[0m'
 help()
 {
    # Display Help
-   echo "AoA installer."
+   echo "aoa-catalog installer."
    echo
    echo "Syntax: installer [-f|-o|-i|-h]"
    echo "options:"
-   echo "-f     path to AoA files"
-   echo "-o     overlay"   
+   echo "-f     path to environment files"
    echo "-i     install infra"
    echo "-h     print help"
    echo
@@ -42,7 +39,6 @@ echo "------------------------------------------------------------"
 echo "--------------   AoA Installer - Pre-install   -------------"
 echo "Environemnt: $env"
 echo "Install infra: $install_infra"
-echo "Overlay: $environment_overlay"
 check_git
 echo ""
 echo "Github Account: $github_username"
@@ -135,14 +131,6 @@ unset env
 export env=$tmp_env
 unset tmp_env
 
-# check to see if environment overlay variable was passed through, if not prompt for it
-if [[ ${environment_overlay} == "" ]]
-  then
-    # provide environment overlay
-    echo "Please provide the environment overlay to use (i.e. prod, dev):"
-    read environment_overlay
-fi
-
 }
 
 install_infra()
@@ -181,7 +169,7 @@ parse_opt()
 {
 
 # Get the options
-while getopts "f:o:hi" option; do
+while getopts "f:hi" option; do
    case $option in
       h) # display Help
          help
@@ -190,8 +178,6 @@ while getopts "f:o:hi" option; do
          env=${OPTARG};;
       i) # infra
          install_infra=true;;
-      o) # overlay
-         export environment_overlay=${OPTARG};;
      \?) # Invalid option
          echo "Error: Invalid option"
          help
@@ -231,7 +217,8 @@ then
 fi
 
 # install argocd
-#TODO: refactor the install-argocd.sh to no relay on cd
+#TODO: this will not work since we removed overlays, so we need probably a flag to trigger this
+# Suggestion, adding a flag -k8s-type=base/ocp.... and --env-type=k3s/gke/eks... 
 cd $SCRIPT_DIR/bootstrap-argocd
 if [ "${environment_overlay}" == "ocp" ] ; then 
      $SCRIPT_DIR/bootstrap-argocd/install-argocd.sh insecure-rootpath-ocp ${cluster_context}
@@ -241,27 +228,33 @@ if [ "${environment_overlay}" == "ocp" ] ; then
 
 # wait for argo cluster rollout
 $SCRIPT_DIR/tools/wait-for-rollout.sh deployment argocd-server argocd 20 ${cluster_context}
-
 cd $env
-# deploy app of app waves
-for i in $(ls | sort -n); do 
-  if [[ ${i:0:1}  == "." ]] || [[ ${i} == "vars.env" ]] || [[ ${i} == "README.md" ]]
-  then
-      continue
-  fi 
 
-  echo "starting ${i}"
+waves_count=`cat catalog.yaml | yq ".waves | length"`
+
+for (( c=0; c<$waves_count; c++ ))
+do 
+  wave_name=`cat catalog.yaml | yq ".waves[$c].name"`
+  if [ "${wave_name}" == "null" ] ; then 
+     wave_name=$c
+  else
+     wave_name="$c-$wave_name"
+  fi  
+
+  wave_location=`cat catalog.yaml | yq ".waves[$c].location"`
+  normalized_wave_location=$(eval echo $wave_location) 
+
+  echo "starting ${wave_name}"
   # run init script if it exists
-  [[ -f "${i}/init.sh" ]] && ${i}/init.sh 
+  [[ -f "${normalized_wave_location}/init.sh" ]] && ${normalized_wave_location}/init.sh 
   # deploy aoa wave
-  $SCRIPT_DIR/tools/configure-wave.sh ${env_path} ${i} ${environment_overlay} ${cluster_context} ${github_username} ${repo_name} ${target_branch}
+  $SCRIPT_DIR/tools/configure-wave.sh ${normalized_wave_location} ${wave_name} ${cluster_context} ${github_username} ${repo_name} ${target_branch}
   # run test script if it exists
-  [[ -f "${i}/test.sh" ]] && ${i}/test.sh
+  [[ -f "${normalized_wave_location}/test.sh" ]] && ${normalized_wave_location}/test.sh
 done
 
 echo "END."
 }
-
 
 destroy()
 {
