@@ -241,16 +241,31 @@ do
      wave_name="$c-$wave_name"
   fi  
 
-  wave_location=`cat catalog.yaml | yq ".waves[$c].location"`
-  normalized_wave_location=$(eval echo $wave_location) 
+   wave_location=`cat catalog.yaml | yq ".waves[$c].location"`
+   normalized_wave_location=$(eval echo $wave_location) 
 
-  echo "starting ${wave_name}"
-  # run init script if it exists
-  [[ -f "${normalized_wave_location}/init.sh" ]] && ${normalized_wave_location}/init.sh 
+   echo "starting ${wave_name}"
+  # Pre deploy scripts
+   script_count=`cat catalog.yaml | yq ".waves[$c].scripts.pre_deploy | length"`
+   for (( s=0; s<$script_count; s++ ))
+   do 
+   script_location=`cat catalog.yaml | yq ".waves[$c].scripts.pre_deploy[$s]"`
+   normalized_script_location=$(eval echo $script_location)  
+   [[ -f "${git_root}${normalized_script_location}" ]] && ${git_root}/${normalized_script_location} 
+   done 
+
   # deploy aoa wave
   $SCRIPT_DIR/tools/configure-wave.sh ${normalized_wave_location} ${wave_name} ${cluster_context} ${github_username} ${repo_name} ${target_branch}
-  # run test script if it exists
-  [[ -f "${normalized_wave_location}/test.sh" ]] && ${normalized_wave_location}/test.sh
+  # TODO: extract the pre and post script deploy in a function to avoid dup 
+  # Post deploy scripts
+   script_count=`cat catalog.yaml | yq ".waves[$c].scripts.post_deploy | length"`
+   for (( s=0; s<$script_count; s++ ))
+   do 
+   script_location=`cat catalog.yaml | yq ".waves[$c].scripts.pre_deploy[$s]"`
+   normalized_script_location=$(eval echo $script_location)
+   [[ -f "${git_root}${normalized_script_location}" ]] && ${git_root}/${normalized_script_location} 
+   done 
+
 done
 
 echo "END."
