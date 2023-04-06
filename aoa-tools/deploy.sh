@@ -261,7 +261,7 @@ do
    script_count=`cat catalog.yaml | yq ".waves[$c].scripts.post_deploy | length"`
    for (( s=0; s<$script_count; s++ ))
    do 
-   script_location=`cat catalog.yaml | yq ".waves[$c].scripts.pre_deploy[$s]"`
+   script_location=`cat catalog.yaml | yq ".waves[$c].scripts.post_deploy[$s]"`
    normalized_script_location=$(eval echo $script_location)
    [[ -f "${git_root}${normalized_script_location}" ]] && ${git_root}/${normalized_script_location} 
    done 
