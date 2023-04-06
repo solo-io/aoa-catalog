@@ -1,5 +1,5 @@
 # Environment Description
-The `gloo-gateway/progressive-delivery-argo-rollouts` environment deploys the core components of a single cluster Gloo Platform demo, Argo Rollouts, and a Podinfo application Rollout. This environment can be used to demonstrate Progressive Delivery with GitOps using ArgoCD + Argo Rollouts + Gloo Platform + Istio
+The `gloo-gateway/otel/progressive-delivery-argo-rollouts` environment deploys the core components of a single cluster Gloo Platform demo, Argo Rollouts, and a Podinfo application Rollout. This environment can be used to demonstrate Progressive Delivery with GitOps using ArgoCD + Argo Rollouts + Gloo Platform + Istio
 
 ![High Level Architecture](.images/progressive-delivery-argo-rollouts-arch-1a.png)
 
@@ -26,7 +26,7 @@ The `gloo-gateway/progressive-delivery-argo-rollouts` environment deploys the co
 
 ## Overlay description
 - base:
-    - gloo mesh 2.2.4
+    - gloo mesh 2.2.6
     - istio 1.16.2-solo (Helm)
     - revision: 1-16
 

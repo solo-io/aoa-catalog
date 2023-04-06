@@ -1,0 +1,66 @@
+
+waves:
+  # core 
+  - location: $env_path/../core/clusterconfig/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../core/clusterconfig/init.sh
+      post_deploy:
+      -  $env_path/../core/clusterconfig/test.sh  
+  - name: certmanager
+    scripts:
+      pre_deploy: 
+      -  $env_path/../core/certmanager/init.sh
+      post_deploy:
+      -  $env_path/../core/certmanager/test.sh
+    location: $env_path/../core/certmanager/base/active
+  - name: gloo-mesh
+    location: $env_path/../core/gloo-mesh/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../core/gloo-mesh/init.sh
+      post_deploy:
+      -  $env_path/../core/gloo-mesh/test.sh    
+  - name: istio
+    location: $env_path/../core/istio/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../core/istio/init.sh
+      post_deploy:
+      -  $env_path/../core/istio/test.sh    
+  - name: gloo-mesh-config
+    location: $env_path/../core/gloo-mesh-config/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../core/gloo-mesh-config/init.sh
+      post_deploy:
+      -  $env_path/../core/gloo-mesh-config/test.sh
+  # additional    
+  - name: argo-rollouts
+    location: $env_path/argo-rollouts-app/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/argo-rollouts/init.sh
+      post_deploy:
+      -  $env_path/argo-rollouts/test.sh 
+  - name: podinfo-rollout
+    location: $env_path/podinfo-rollout/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/podinfo-rollout/init.sh
+      post_deploy:
+      -  $env_path/podinfo-rollout/test.sh 
+  - name: homer-app
+    location: $env_path/homer-app/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer-app/init.sh
+      post_deploy:
+      -  $env_path/homer-app/test.sh 
+  - name: homer-config
+    location: $env_path/homer-config/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer-config/init.sh
+      post_deploy:
+      -  $env_path/homer-config/test.sh 

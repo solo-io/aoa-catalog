@@ -1,7 +1,7 @@
 # Environment Description
-The `gloo-gateway/solowallet` environment deploys the core components of a single cluster Gloo Platform demo, along with the solowallet sample application.
+The `gloo-gateway/backstage-bookinfo-httpbin` environment deploys the core components of a single cluster Gloo Platform demo, without any applications deployed. This is a great starting ground to get a barebones demo setup where you can bring your own application example into the mesh.
 
-![High Level Architecture](.images/solowallet-arch-1a.png)
+![High Level Architecture](.images/backstage-bookinfo-httpbin-arch-1a.png)
 
 ### Prerequisites
 - 1 Kubernetes Cluster
@@ -18,18 +18,28 @@ The `gloo-gateway/solowallet` environment deploys the core components of a singl
     - Configure Gloo Mesh addons
     - expose Gloo Mesh UI
     - expose ArgoCD UI
-- Wave 6 - Deploys solowallet Application
-- Wave 6 - Configures solowallet Gloo Platform Config
+- Wave 6 - Deploys backstage app
+- Wave 6 - Configures backstage Config
+- Wave 6 - Deploys bookinfo app
+- Wave 6 - Configures bookinfo Config
+- Wave 6 - Deploys httpbin app
+- Wave 6 - Configures httpbin Config
+- Wave 7 - Deploys homer app
+- Wave 7 - Configures homer Config
 
 ## Overlay description
 - base:
-    - gloo mesh 2.2.6
+    - gloo mesh 2.2.4
     - istio 1.16.2-solo (Helm)
     - revision: 1-16
 - ilcm:
-    - gloo mesh 2.2.6
+    - gloo mesh 2.2.4
     - istio 1.16.2-solo (ILCM)
     - revision: 1-16
+- ocp:
+    - gloo mesh 2.2.4
+    - istio 1.14.5-solo (ILCM)
+    - revision: 1-14
 
 ## Application description
 
@@ -41,7 +51,10 @@ Applications Exposed using this demo:
     - user: admin
     - password: solo.io
 - Gloo Mesh UI at `https://gmui-local.glootest.com`
-- solowallet at `https://solowallet-local.glootest.com/get`
+- Backstage at `https://backstage-local.glootest.com`
+- Bookinfo at `https://bookinfo-local.glootest.com/productpage`
+- httpbin at `https://httpbin-local.glootest.com/get` and `https://httpbin-local.glootest.com/anything`
+- Homer link dashboard at `https://<GATEWAY_IP>` or `https://localhost` if using K3d integration
 
 To access applications, follow the methods below:
 
@@ -58,7 +71,7 @@ echo ${GATEWAY_IP}
 Modify /etc/hosts on your local machine (this will require sudo privileges), or configure DNS to point to your Ingress Gateway IP
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-${GATEWAY_IP} argocd-local.glootest.com gmui-local.glootest.com solowallet-local.glootest.com
+${GATEWAY_IP} argocd-local.glootest.com gmui-local.glootest.com backstage-local.glootest.com bookinfo-local.glootest.com httpbin-local.glootest
 EOF
 ```
 
@@ -66,7 +79,7 @@ EOF
 modify /etc/hosts on your local machine (this will require sudo privileges)
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com solowallet-local.glootest.com
+127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com backstage-local.glootest.com bookinfo-local.glootest.com httpbin-local.glootest
 EOF
 ```
 
@@ -99,6 +112,6 @@ access the ingress gateway at https://localhost:8443
 Note: For routes that are configured with a specific host, pass in the Host header using curl `-H "Host: <host>` or add the following entry into your /etc/hosts when using this method
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com solowallet-local.glootest.com
+127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com backstage-local.glootest.com bookinfo-local.glootest.com httpbin-local.glootest
 EOF
 ```
