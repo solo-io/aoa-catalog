@@ -194,9 +194,9 @@ spec:
                     items:
                       - name: "httpbin"
                         subtitle: "user: jdoe@solo.io / password: gloo-admin"
-                        icon: "fas fa-book-reader"
+                        icon: "far fa-window-maximize"
                         tag: "httpbin"
-                        url: "https://httpbin-local.glootest.com/productpage"
+                        url: "https://httpbin-local.glootest.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "httpbin /get"
                         subtitle: "user: jdoe@solo.io / password: gloo-admin"

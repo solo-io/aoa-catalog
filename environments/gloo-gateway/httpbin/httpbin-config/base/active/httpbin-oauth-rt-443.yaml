@@ -21,6 +21,8 @@ spec:
         ratelimited: "true"
       matchers:
       - uri:
+          prefix: /
+      - uri:
           exact: /get
       - uri:
           prefix: /callback
