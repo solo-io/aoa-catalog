@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/solo-io/gitops-library
     targetRevision: HEAD
-    path: gloo-mesh/gloo-mesh-crds/2.2.4/
+    path: gloo-mesh/gloo-mesh-crds/2.2.6/
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:

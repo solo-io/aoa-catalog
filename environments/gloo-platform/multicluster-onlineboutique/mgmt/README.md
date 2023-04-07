@@ -9,7 +9,7 @@ When applied alone, the control plane is deployed and configured with just the `
 ### Multi-Cluster Architecture Diagram
 When applied with `cluster1` and `cluster2` environments, here is a high level diagram of the architecture
 
-![Multicluster High Level Architecture](.images/multicluster-onlineboutique-full-arch-1a.png)
+![Multicluster High Level Architecture](.images/multicluster-onlineboutique-otel-full-arch-1a.png)
 
 ### Prerequisites
 - 1 Kubernetes Cluster
@@ -30,11 +30,11 @@ When applied with `cluster1` and `cluster2` environments, here is a high level d
 
 ## Overlay description
 - base:
-    - gloo mesh 2.2.4
+    - gloo mesh 2.2.6
     - istio 1.16.2-solo (Helm)
     - revision: 1-16
 - ilcm:
-    - gloo mesh 2.2.4
+    - gloo mesh 2.2.6
     - istio 1.16.2-solo (ILCM)
     - revision: 1-16
 

@@ -7,7 +7,7 @@ echo "deploy and register gloo-mesh agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.2.4):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.2.6):"
     read gloo_mesh_version
 fi
 
@@ -15,6 +15,13 @@ fi
 until [ "${SVC}" != "" ]; do
   SVC=$(kubectl --context ${mgmt_context} -n gloo-mesh get svc gloo-mesh-mgmt-server -o jsonpath='{.status.loadBalancer.ingress[0].*}')
   echo waiting for gloo mesh management server LoadBalancer IP to be detected
+  sleep 2
+done
+
+# discover gloo mesh metrics endpoint with kubectl
+until [ "${METRICS}" != "" ]; do
+  METRICS=$(kubectl --context ${mgmt_context} -n gloo-mesh get svc gloo-metrics-gateway -o jsonpath='{.status.loadBalancer.ingress[0].*}')
+  echo waiting for gloo mesh metrics gateway LoadBalancer IP to be detected
   sleep 2
 done
 
@@ -46,6 +53,7 @@ spec:
     targetRevision: ${gloo_mesh_version}
     chart: gloo-mesh-agent
     helm:
+      skipCrds: true
       valueFiles:
         - values.yaml
       parameters:
@@ -66,6 +74,36 @@ spec:
         # enabled for future vault integration
         - name: istiodSidecar.createRoleBinding
           value: 'true'
+        # otel
+        - name: metricscollector.enabled
+          value: 'true'
+        - name: metricscollectorCustomization.disableCertGeneration
+          value: 'true'
+        - name: metricscollector.config.exporters.otlp.endpoint
+          value: '${METRICS}:4317'
+        - name: 'metricscollector.extraVolumes[0].name'
+          value: 'root-ca'
+        - name: 'metricscollector.extraVolumes[0].secret.defaultMode'
+          value: '420'
+        - name: 'metricscollector.extraVolumes[0].secret.secretName'
+          value: 'gloo-metrics-gateway-tls-secret'
+        - name: 'metricscollector.extraVolumes[1].configMap.items[0].key'
+          value: 'relay'
+        - name: 'metricscollector.extraVolumes[1].configMap.items[0].path'
+          value: 'relay.yaml'
+        - name: 'metricscollector.extraVolumes[1].configMap.name'
+          value: 'gloo-metrics-collector-config'
+        - name: 'metricscollector.extraVolumes[1].name'
+          value: 'metrics-configmap'
+        # set requests/limits    
+        #- name: metricscollector.resources.requests.cpu
+        #  value: '500m'   
+        #- name: metricscollector.resources.requests.memory
+        #  value: '"1Gi"'   
+        #- name: metricscollector.resources.limits.cpu
+        #  value: '2'   
+        #  - name: metricscollector.resources.limits.memory
+        #  value: '2Gi'
   syncPolicy:
     automated:
       prune: false
