@@ -37,7 +37,7 @@ source_env_vars
 
 echo "------------------------------------------------------------"
 echo "--------------   AoA Installer - Pre-install   -------------"
-echo "Environemnt: $env"
+echo "Environment: $env"
 echo "Install infra: $install_infra"
 check_git
 echo ""
