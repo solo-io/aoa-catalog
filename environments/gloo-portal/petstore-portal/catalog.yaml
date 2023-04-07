@@ -1,0 +1,24 @@
+
+waves:
+  - name: gloo-edge-app
+    location: $env_path/gloo-portal/petstore-portal/gloo-edge-app/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-portal/petstore-portal/gloo-edge-app/init.sh
+      post_deploy:
+      -  $env_path/gloo-portal/petstore-portal/gloo-edge-app/test.sh  
+  - name: gloo-edge-config
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-portal/petstore-portal/gloo-edge-config/init.sh
+      post_deploy:
+      -  $env_path/gloo-portal/petstore-portal/gloo-edge-config/test.sh
+    location: $env_path/gloo-portal/petstore-portal/gloo-edge-config/base/active
+  
+  - name: flagger-demo
+    location: $env_path/gloo-portal/petstore-portal/flagger-demo/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-portal/petstore-portal/flagger-demo/init.sh
+      post_deploy:
+      -  $env_path/gloo-portal/petstore-portal/flagger-demo/test.sh
