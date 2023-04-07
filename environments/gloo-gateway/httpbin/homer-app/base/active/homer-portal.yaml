@@ -144,7 +144,7 @@ spec:
                   style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
                   title: "Welcome!"
                   icon: "fa fa-grin"
-                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Platform!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com grafana-local.glootest.com backstage-local.glootest.com bookinfo-local.glootest.com httpbin-local.glootest.com<br /><br />Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-gateway/backstage-bookinfo-httpbin#application-description'>here</a>"
+                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Platform!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com grafana-local.glootest.com backstage-local.glootest.com httpbin-local.glootest.com httpbin-local.glootest.com<br /><br />Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-gateway/backstage-httpbin-httpbin#application-description'>here</a>"
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
@@ -192,11 +192,23 @@ spec:
                   - name: "Web Applications"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "Bookinfo"
+                      - name: "httpbin"
                         subtitle: "user: jdoe@solo.io / password: gloo-admin"
                         icon: "fas fa-book-reader"
-                        tag: "bookinfo"
-                        url: "https://bookinfo-local.glootest.com/productpage"
+                        tag: "httpbin"
+                        url: "https://httpbin-local.glootest.com/productpage"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "httpbin /get"
+                        subtitle: "user: jdoe@solo.io / password: gloo-admin"
+                        icon: "far fa-window-maximize"
+                        tag: "httpbin"
+                        url: "https://httpbin-local.glootest.com/get"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "httpbin /anything"
+                        subtitle: "user: jdoe@solo.io / password: gloo-admin"
+                        icon: "far fa-window-maximize"
+                        tag: "httpbin"
+                        url: "https://httpbin-local.glootest.com/anything"
                         target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
