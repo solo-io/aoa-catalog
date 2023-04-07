@@ -1,7 +1,8 @@
 
 waves:
   # core 
-  - location: $env_path/../core/clusterconfig/base/active
+  - name: cluster-config
+    location: $env_path/../core/clusterconfig/base/active
     scripts:
       pre_deploy: 
       -  $env_path/../core/clusterconfig/init.sh
