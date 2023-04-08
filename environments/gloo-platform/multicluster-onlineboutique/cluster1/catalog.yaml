@@ -1,0 +1,39 @@
+
+waves:
+  # core 
+  - name: clusterconfig
+    location: $env_path/../../core/cluster1/clusterconfig/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/cluster1/clusterconfig/init.sh
+      post_deploy:
+      -  $env_path/../../core/cluster1/clusterconfig/test.sh  
+  - name: certmanager
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/cluster1/certmanager/init.sh
+      post_deploy:
+      -  $env_path/../../core/cluster1/certmanager/test.sh
+    location: $env_path/../../core/cluster1/certmanager/base/active
+  - name: istio
+    location: $env_path/../../core/cluster1/istio/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/cluster1/istio/init.sh
+      post_deploy:
+      -  $env_path/../../core/cluster1/istio/test.sh  
+  - name: gloo-mesh
+    location: $env_path/../../core/cluster1/gloo-mesh/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/cluster1/gloo-mesh/init.sh
+      post_deploy:
+      -  $env_path/../../core/cluster1/gloo-mesh/test.sh    
+# additional    
+  - name: online-boutique-app
+    location: $env_path/online-boutique-app/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/online-boutique-app/init.sh
+      post_deploy:
+      -  $env_path/online-boutique-app/test.sh
