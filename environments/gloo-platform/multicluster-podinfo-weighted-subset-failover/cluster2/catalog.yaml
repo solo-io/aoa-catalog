@@ -31,9 +31,9 @@ waves:
       -  $env_path/../../core/cluster2/gloo-mesh/test.sh    
 # additional    
   - name: podinfo-app
-    location: $env_path/../../core/cluster2/podinfo-app/base/active
+    location: $env_path/podinfo-app/base/active
     scripts:
       pre_deploy: 
-      -  $env_path/../../core/cluster2/podinfo-app/init.sh
+      -  $env_path/podinfo-app/init.sh
       post_deploy:
-      -  $env_path/../../core/cluster2/podinfo-app/test.sh
+      -  $env_path/podinfo-app/test.sh

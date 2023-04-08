@@ -1,6 +1,6 @@
 
 waves:
-  - name: cluster-config
+  - name: clusterconfig
     location: $env_path/clusterconfig/base/active
     scripts:
       pre_deploy: 
