@@ -21,6 +21,8 @@ spec:
         revision: 1-16
         global:
           meshID: mesh1
+          multiCluster:
+            clusterName: mgmt
           network: network1
           hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
           tag: 1.16.2-solo
@@ -29,8 +31,6 @@ spec:
           accessLogFile: /dev/stdout
           enableAutoMtls: true
           defaultConfig:
-            envoyMetricsService:
-              address: gloo-mesh-agent.gloo-mesh:9977
             envoyAccessLogService:
               address: gloo-mesh-agent.gloo-mesh:9977
             proxyMetadata:
