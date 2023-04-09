@@ -20,6 +20,6 @@ spec:
     name: homer
   virtualGateways:
   - cluster: mgmt
-    name: mgmt-north-south-gw
+    name: mgmt-north-south-gw-443
     namespace: istio-gateways
   workloadSelectors: []
