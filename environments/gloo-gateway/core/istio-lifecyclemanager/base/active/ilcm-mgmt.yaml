@@ -61,6 +61,11 @@ spec:
           # The administrative root namespace for Istio configuration
           rootNamespace: istio-system
         # Traffic management
+        values:
+          global:
+            meshID: mesh1
+            network: "network1"
+        # Traffic management
         components:
           pilot:
             k8s:
