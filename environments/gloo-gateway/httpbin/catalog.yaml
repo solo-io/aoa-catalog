@@ -22,13 +22,13 @@ waves:
       -  $env_path/../core/gloo-mesh/init.sh
       post_deploy:
       -  $env_path/../core/gloo-mesh/test.sh    
-  - name: istio-helm-helm-helm-helm
-    location: $env_path/../core/istio-helm-helm-helm-helm/base/active
+  - name: istio-helm
+    location: $env_path/../core/istio-helm/base/active
     scripts:
       pre_deploy: 
-      -  $env_path/../core/istio-helm-helm-helm-helm/init.sh
+      -  $env_path/../core/istio-helm/init.sh
       post_deploy:
-      -  $env_path/../core/istio-helm-helm-helm-helm/test.sh    
+      -  $env_path/../core/istio-helm/test.sh    
   - name: gloo-mesh-config
     location: $env_path/../core/gloo-mesh-config/base/active
     scripts:
