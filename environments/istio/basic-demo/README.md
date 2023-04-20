@@ -6,16 +6,9 @@ The `istio/basic-demo` environment deploys cert-manager, Istio (with revisions),
 ### Prerequisites
 - 1 Kubernetes Cluster
     - This demo has been tested on 1x `n2-standard-2` (gke), `m5.large` (aws) instance, and using K3d locally on M1 and Intel Macbook Pro
-    - Kubernetes version 1.23 and 1.24
+    - Kubernetes version 1.23-1.25
 
-### Wave description
-- Wave 1 - Deploys cert-manager
-- Wave 2 - Deploys Istio and Ingress Gateway(s) along with sample add-ons Grafana, Kiali, and Prometheus
-- Wave 3 - Configures the cluster services above to be exposed by the Istio Ingress gateway
-- Wave 4 - Deploy and configure routing for httpbin application
-- Wave 5 - Deploy and configure routing for homer dashboard application
-
-## Overlay description
+## Environment description
 - base:
     - istio 1.16.2-solo (Helm)
     - revision: 1-16

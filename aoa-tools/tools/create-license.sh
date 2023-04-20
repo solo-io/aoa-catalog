@@ -35,10 +35,13 @@ kubectl create ns gloo-mesh --context ${cluster_context}
 kubectl apply --context ${cluster_context} -f - <<EOF
 apiVersion: v1
 data:
+  gloo-gateway-license-key: ${BASE64_LICENSE_KEY}
+  gloo-mesh-license-key: ${BASE64_LICENSE_KEY}
+  gloo-network-license-key: ${BASE64_LICENSE_KEY}
   gloo-trial-license-key: ${BASE64_LICENSE_KEY}
 kind: Secret
 metadata:
-  name: gloo-mesh-license
+  name: license-keys
   namespace: gloo-mesh
 type: Opaque
 EOF
