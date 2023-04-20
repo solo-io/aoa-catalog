@@ -1,34 +1,21 @@
 # Environment Description
 The `gloo-gateway/solowallet` environment deploys the core components of a single cluster Gloo Platform demo, along with the solowallet sample application.
 
-![High Level Architecture](.images/solowallet-arch-1a.png)
+![High Level Architecture](.images/solowallet-arch-1b.png)
 
 ### Prerequisites
 - 1 Kubernetes Cluster
     - This demo has been tested on 1x `n2-standard-4` (gke), `m5.xlarge` (aws), or `Standard_DS3_v2` (azure) instance, and using K3d locally on M1 and Intel Macbook Pro
-    - Kubernetes version 1.23 and 1.24
+    - Kubernetes version 1.23-1.25
 
-- Wave 1 - Configures cluster-config and namespaces
-- Wave 2 - Deploys cert-manager
-- Wave 3 - Deploys Gloo Mesh and register Agents
-- Wave 4 - Deploys Istio and Ingress Gateway(s)
-- Wave 5 - Configures initial Gloo Mesh components
-    - Set up `ops-team` workspace
-    - Configure Gateway on 443
-    - Configure Gloo Mesh addons
-    - expose Gloo Mesh UI
-    - expose ArgoCD UI
-- Wave 6 - Deploys solowallet Application
-- Wave 6 - Configures solowallet Gloo Platform Config
-
-## Overlay description
+## Environment descriptions
 - base:
-    - gloo mesh 2.2.6
+    - gloo mesh 2.3.0
     - istio 1.16.2-solo (Helm)
     - revision: 1-16
-- ilcm:
-    - gloo mesh 2.2.6
-    - istio 1.16.2-solo (ILCM)
+- ilm:
+    - gloo mesh 2.3.0
+    - istio 1.16.2-solo (ILM)
     - revision: 1-16
 
 ## Application description
@@ -36,6 +23,8 @@ The `gloo-gateway/solowallet` environment deploys the core components of a singl
 The RouteTables for applications exposed in this demo are defining non-wildcard hosts which follow the pattern `<app>-local.glootest.com`. You can map these hostnames to your gateway IP address in your DNS service of choice (i.e. Route53, Cloudflare), or you can follow the methods below to modify your `/etc/hosts` locally depending on your cluster LoadBalancer configuration.
 
 Applications Exposed using this demo:
+- Homer Link Dashboard at `https://localhost` or `https://<LB Address>`
+- Grafana at `https://grafana-local.glootest.com`
 - ArgoCD at `https://argocd-local.glootest.com/argo`
     - argocd credentials:
     - user: admin

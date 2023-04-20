@@ -1,13 +1,12 @@
 #!/bin/bash
 #set -e
 
-env_path=${1:-""}
+path=${1:-""}
 wave_name=${2:-""}
-environment_overlay=${3:-""} # prod, dev, base
-cluster_context=${4:-""}
-github_username=${5:-""}
-repo_name=${6:-""}
-target_branch=${7:-""}
+cluster_context=${3:-""}
+github_username=${4:-""}
+repo_name=${5:-""}
+target_branch=${6:-""}
 
 # check to see if wave name variable was passed through, if not prompt for it
 if [[ ${wave_name} == "" ]]
@@ -15,14 +14,6 @@ if [[ ${wave_name} == "" ]]
     # provide license key
     echo "Please provide the wave name:"
     read wave_name
-fi
-
-# check to see if environment overlay variable was passed through, if not prompt for it
-if [[ ${environment_overlay} == "" ]]
-  then
-    # provide environment overlay
-    echo "Please provide the environment overlay to use (i.e. prod, dev):"
-    read environment_overlay
 fi
 
 # check to see if cluster context variable was passed through, if not prompt for it
@@ -70,7 +61,7 @@ spec:
   source:
     repoURL: https://github.com/${github_username}/${repo_name}/
     targetRevision: ${target_branch}
-    path: $env_path/${wave_name}/${environment_overlay}/active/
+    path: $path
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:

@@ -31,15 +31,19 @@ kubectl config rename-context k3d-your_mgmt_cluster_name mgmt
 
 ## To deploy
 ```
-./aoa-tools/deploy.sh -f <environment directory>
+./aoa-tools/deploy.sh deploy -f <environment directory>
 ```
 
 ### Installer options
 ```
-Syntax: installer [-f|-o|-i|-h]
+Syntax: installer [-f|-i|-h]
+
+commands:
+deploy     deploys an environment with the speficied path
+destroy    deploys an environment with the speficied path
+
 options:
--f     path to AoA files
--o     overlay
+-f     path to environment files
 -i     install infra
 -h     print help
 ```

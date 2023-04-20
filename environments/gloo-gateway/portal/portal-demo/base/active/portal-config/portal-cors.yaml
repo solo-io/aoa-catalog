@@ -1,0 +1,27 @@
+apiVersion: security.policy.gloo.solo.io/v2
+kind: CORSPolicy
+metadata:
+  name: dev-portal-cors
+  namespace: portal
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        route: portal-api
+  config:
+    allowCredentials: true
+    allowHeaders:
+      - api-key
+      - Authorization
+      - accept
+      - content-type
+      - referer
+      - user-agent
+      - Acess-Control-Allow-Origin
+    allowMethods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+    allowOrigins:
+      - exact: 'https://solo-dev-portal.glootest.com'
