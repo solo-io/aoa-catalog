@@ -1,0 +1,39 @@
+
+waves:
+  # core 
+  - name: clusterconfig
+    location: $env_path/../../core/cluster2/clusterconfig/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/cluster2/clusterconfig/init.sh
+      post_deploy:
+      -  $env_path/../../core/cluster2/clusterconfig/test.sh  
+  - name: certmanager
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/cluster2/certmanager/init.sh
+      post_deploy:
+      -  $env_path/../../core/cluster2/certmanager/test.sh
+    location: $env_path/../../core/cluster2/certmanager/base/active
+  - name: istio
+    location: $env_path/../../core/cluster2/istio/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/cluster2/istio/init.sh
+      post_deploy:
+      -  $env_path/../../core/cluster2/istio/test.sh  
+  - name: gloo-mesh
+    location: $env_path/../../core/cluster2/gloo-mesh/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/cluster2/gloo-mesh/init.sh
+      post_deploy:
+      -  $env_path/../../core/cluster2/gloo-mesh/test.sh    
+# additional    
+  - name: podinfo-app
+    location: $env_path/podinfo-app/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/podinfo-app/init.sh
+      post_deploy:
+      -  $env_path/podinfo-app/test.sh

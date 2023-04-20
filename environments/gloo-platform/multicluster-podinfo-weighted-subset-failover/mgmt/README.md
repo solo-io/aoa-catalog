@@ -2,39 +2,25 @@
 The `gloo-platform/multicluster-podinfo-weighted-subset-failover/mgmt` environment deploys the mgmt cluster control plane for a multi-cluster Gloo Platform demo, with Istio exposing admin applications on the cluster. This environment can be used in conjunction with `gloo-platform/multicluster-podinfo-weighted-subset-failover/cluster1` and `gloo-platform/multicluster-podinfo-weighted-subset-failover/cluster2` to demonstrate cluster onboarding, secure cross-cluster communication, failover, and other mesh-focused use cases
 
 ### What this deploys
-When applied alone, the control plane is deployed and configured with just the `ops-team` workspace.
-
-![High Level Architecture](.images/multicluster-podinfo-mgmt-arch-1a.png)
+When applied alone, the control plane is deployed and configured with the `ops-team` and `podinfo` workspaces, no workload applications are deployed on the `mgmt` cluster itself. Applications are deployed and onboarded to the multi-cluster mesh when workload clusters `cluster1` and `cluster2` are deployed.
 
 ### Multi-Cluster Architecture Diagram
 When applied with `cluster1` and `cluster2` environments, here is a high level diagram of the architecture
 
-![Multicluster High Level Architecture](.images/multicluster-podinfo-full-arch-1a.png)
+![High Level Architecture](../.images/gloo-platform-multicluster-podinfo-weighted-subset-failover-full-arch-1a.png)
 
 ### Prerequisites
 - 1 Kubernetes Cluster
     - This demo has been tested on 1x `n2-standard-4` (gke), `m5.xlarge` (aws), or `Standard_DS3_v2` (azure) instance, and using K3d locally on M1 and Intel Macbook Pro
-    - Kubernetes version 1.23 and 1.24
+    - Kubernetes version 1.23-1.25
 
-- Wave 1 - Configures cluster-config and namespaces
-- Wave 2 - Deploys cert-manager
-- Wave 3 - Deploys Gloo Mesh and register Agents
-- Wave 4 - Deploys Istio and Ingress Gateway(s)
-- Wave 5 - Configures initial Gloo Mesh components
-    - Set up `ops-team` workspace
-    - Configure Gateway on 443
-    - Configure Gloo Mesh addons
-    - expose Gloo Mesh UI
-    - expose ArgoCD UI
-- Wave 6 - Configures podinfo-weighted-subset-failover Gloo Platform config
-
-## Overlay description
+## Environment description
 - base:
-    - gloo mesh 2.2.4
+    - gloo mesh 2.2.6
     - istio 1.16.2-solo (Helm)
     - revision: 1-16
 - ilcm:
-    - gloo mesh 2.2.4
+    - gloo mesh 2.2.6
     - istio 1.16.2-solo (ILCM)
     - revision: 1-16
 
@@ -43,25 +29,21 @@ When applied with `cluster1` and `cluster2` environments, here is a high level d
 The RouteTables for applications exposed in this demo are defining non-wildcard hosts which follow the pattern `<app>-local.glootest.com`. You can map these hostnames to your gateway IP address in your DNS service of choice (i.e. Route53, Cloudflare), or you can follow the methods below to modify your `/etc/hosts` locally depending on your cluster LoadBalancer configuration.
 
 On the `mgmt` cluster gateway:
+- Homer Link Dashboard at `https://localhost` or `https://<LB Address>`
+- Grafana at `https://grafana-local.glootest.com`
 - ArgoCD at `https://argocd-local.glootest.com/argo`
     - argocd credentials:
     - user: admin
     - password: solo.io
 - Gloo Mesh UI at `https://gmui-local.glootest.com`
 
-On the `cluster1` cluster gateway (at 8443 if using k3d LB integration) When deployed with `aoa-cluster1` and `aoa-cluster2`
-- ArgoCD at `https://cluster1-argocd-local.glootest.com/argo`
-    - argocd credentials:
-    - user: admin
-    - password: solo.io
-- podinfo application at `https://podinfo-local.glootest.com:8443/get`
+On the `cluster1` cluster gateway (at 8443 if using k3d LB integration) When deployed with `cluster1`
+- onlineboutique at `https://podinfo-local.glootest.com:8443/get`
+    - application lives on `cluster1` and `cluster2` and is exposed by the gateway on `cluster1`
 
-On the `cluster2` cluster gateway (at 8444 if using k3d LB integration) When deployed with `aoa-cluster1` and `aoa-cluster2`
-- ArgoCD at `https://cluster2-argocd-local.glootest.com/argo`
-    - argocd credentials:
-    - user: admin
-    - password: solo.io
-- podinfo application at `https://podinfo-local.glootest.com:8444/get`
+On the `cluster2` cluster gateway (at 8444 if using k3d LB integration) When deployed with `cluster2`
+- onlineboutique at `https://podinfo-local.glootest.com:8444/get`
+    - application lives on `cluster1` and `cluster2` and is exposed by the gateway on `cluster1`
 
 To access applications, follow the methods below:
 
@@ -78,7 +60,7 @@ echo ${GATEWAY_IP}
 Modify /etc/hosts on your local machine (this will require sudo privileges), or configure DNS to point to your Ingress Gateway IP
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-${GATEWAY_IP} argocd-local.glootest.com cluster1-argocd-local.glootest.com cluster2-argocd-local.glootest.com gmui-local.glootest.com podinfo-local.glootest.com
+${GATEWAY_IP} argocd-local.glootest.com gmui-local.glootest.com grafana-local.glootest.com podinfo-local.glootest.com
 EOF
 ```
 
@@ -86,7 +68,7 @@ EOF
 modify /etc/hosts on your local machine (this will require sudo privileges)
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com cluster1-argocd-local.glootest.com cluster2-argocd-local.glootest.com gmui-local.glootest.com podinfo-local.glootest.com
+127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com grafana-local.glootest.com podinfo-local.glootest.com
 EOF
 ```
 
@@ -119,6 +101,6 @@ access the ingress gateway at https://localhost:8443
 Note: For routes that are configured with a specific host, pass in the Host header using curl `-H "Host: <host>` or add the following entry into your /etc/hosts when using this method
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com cluster1-argocd-local.glootest.com cluster2-argocd-local.glootest.com gmui-local.glootest.com podinfo-local.glootest.com
+127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com grafana-local.glootest.com podinfo-local.glootest.com
 EOF
 ```

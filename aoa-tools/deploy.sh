@@ -21,7 +21,12 @@ help()
    # Display Help
    echo "aoa-catalog installer."
    echo
-   echo "Syntax: installer [-f|-o|-i|-h]"
+   echo "Syntax: installer [-f|-i|-h]"
+   echo
+   echo "commands:"
+   echo "deploy     deploys an environment with the speficied path"
+   echo "destroy    deploys an environment with the speficied path"
+   echo
    echo "options:"
    echo "-f     path to environment files"
    echo "-i     install infra"
@@ -37,7 +42,7 @@ source_env_vars
 
 echo "------------------------------------------------------------"
 echo "--------------   AoA Installer - Pre-install   -------------"
-echo "Environemnt: $env"
+echo "Environment: $env"
 echo "Install infra: $install_infra"
 check_git
 echo ""

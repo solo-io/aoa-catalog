@@ -6,11 +6,7 @@ The `gloo-edge/flagger-podinfo` environment deploys Gloo Edge along with flagger
 ### Prerequisites
 - 1 Kubernetes Cluster
     - This demo has been tested on 1x `n2-standard-4` (gke), `m5.xlarge` (aws), or `Standard_DS3_v2` (azure) instance, and using K3d locally on M1 and Intel Macbook Pro
-    - Kubernetes version 1.23 and 1.24
-
-- Wave 1 - Deploy and Configure Gloo Edge Enterprise
-- Wave 2 - Deploys Flagger Application
-- Wave 3 - Configures Flagger Demo with Podinfo app
+    - Kubernetes version 1.23-1.25
 
 ## Overlay description
 - base:

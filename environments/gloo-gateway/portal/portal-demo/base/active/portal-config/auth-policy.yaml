@@ -1,0 +1,30 @@
+apiVersion: security.policy.gloo.solo.io/v2
+kind: ExtAuthPolicy
+metadata:
+  name: api-key-auth
+  namespace: portal
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        usagePlans: dev-portal
+  config:
+    server:
+      name: mgmt-ext-auth-server
+      namespace: gloo-mesh
+    glooAuth:
+      configs:
+        - apiKeyAuth:
+            headerName: api-key
+            headersFromMetadataEntry:
+              x-solo-plan: 
+                name: usagePlan
+                required: true
+            # used to select k8s api-key secret instead of generating 
+            # api-key in the portal which is stored in redis
+            #k8sSecretApikeyStorage:
+            #  labelSelector:
+            #    extauth: apikey
+            #  apiKeySecretRefs:
+            #    name: "user-id-12345"
+            #    namespace: "petstore"

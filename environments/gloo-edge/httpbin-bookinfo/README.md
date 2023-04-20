@@ -6,13 +6,7 @@ The `gloo-edge/httpbin-bookinfo` environment deploys Gloo Edge along with the bo
 ### Prerequisites
 - 1 Kubernetes Cluster
     - This demo has been tested on 1x `n2-standard-4` (gke), `m5.xlarge` (aws), or `Standard_DS3_v2` (azure) instance, and using K3d locally on M1 and Intel Macbook Pro
-    - Kubernetes version 1.23 and 1.24
-
-- Wave 1 - Deploy and Configure Gloo Edge Enterprise
-- Wave 2 - Deploys Bookinfo Application
-- Wave 2 - Configures Bookinfo Gloo Edge routes
-- Wave 3 - Deploys httpbin Application
-- Wave 3 - Configures httpbin Gloo Edge routes
+    - Kubernetes version 1.23-1.25
 
 ## Overlay description
 - base:
