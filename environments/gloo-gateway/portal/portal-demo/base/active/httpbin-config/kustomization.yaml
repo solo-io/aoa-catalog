@@ -5,4 +5,6 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - httpbin-rt.yaml
+- httpbin-vd.yaml
+- vd-apidoc.yaml
 

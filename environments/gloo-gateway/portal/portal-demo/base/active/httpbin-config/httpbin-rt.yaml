@@ -29,9 +29,18 @@ spec:
         prefix: /
     forwardTo:
       pathRewrite: /
+      # uncomment to use direct ref
+      #destinations:
+      #- ref:
+      #    name: httpbin
+      #    namespace: httpbin
+      #  port:
+      #    number: 8000
+      # uncomment to use virtual destination
       destinations:
       - ref:
-          name: httpbin
+          name: httpbin-vd
           namespace: httpbin
+        kind: VIRTUAL_DESTINATION
         port:
           number: 8000

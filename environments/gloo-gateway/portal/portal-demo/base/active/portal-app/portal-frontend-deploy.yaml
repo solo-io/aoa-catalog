@@ -37,7 +37,7 @@ spec:
     spec:
       serviceAccountName: portal-frontend
       containers:
-        - image: kcbabo/portal-frontend-nick:latest
+        - image: gcr.io/solo-public/docs/portal-frontend:latest
           args: ["--host", "0.0.0.0"]
           imagePullPolicy: Always
           name: portal-frontend

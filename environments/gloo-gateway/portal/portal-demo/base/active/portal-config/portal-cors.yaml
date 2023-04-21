@@ -17,7 +17,7 @@ spec:
       - content-type
       - referer
       - user-agent
-      - Acess-Control-Allow-Origin
+      - Access-Control-Allow-Origin
     allowMethods:
       - GET
       - POST

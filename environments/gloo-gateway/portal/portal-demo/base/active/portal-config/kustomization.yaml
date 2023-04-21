@@ -10,7 +10,8 @@ resources:
 #- dev-portal-noplans.yaml
 - dev-portal-plans.yaml
 - portal-cors.yaml
-- portal-group.yaml
+- dev-portal-group.yaml
+- admin-portal-group.yaml
 - portal-oidc-auth.yaml
 - portal-rt.yaml
 - portal-workspace.yaml
