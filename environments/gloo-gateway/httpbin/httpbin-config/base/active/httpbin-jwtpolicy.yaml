@@ -7,7 +7,7 @@ spec:
   applyToRoutes:
   - route:
       labels:
-        oauth: "true"
+        httpbin-oauth: "true"
   config:
     phase:
       postAuthz:
