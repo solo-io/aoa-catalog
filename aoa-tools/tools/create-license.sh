@@ -41,7 +41,7 @@ data:
   gloo-trial-license-key: ${BASE64_LICENSE_KEY}
 kind: Secret
 metadata:
-  name: license-keys
+  name: gloo-license
   namespace: gloo-mesh
 type: Opaque
 EOF

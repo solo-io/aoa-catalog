@@ -9,7 +9,7 @@ metadata:
      # uncomment if you want to hide this API from the portal
      #portal-visibility: private
 spec:
-  # workaround for 2.3.0 try-it-now is to add https:// in the host
+  # workaround for 2.3.4 try-it-now is to add https:// in the host
   hosts:
     - 'https://httpbin-local.glootest.com'
     - httpbin-local.glootest.com

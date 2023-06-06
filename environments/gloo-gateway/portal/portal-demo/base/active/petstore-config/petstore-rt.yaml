@@ -7,7 +7,7 @@ metadata:
      portal: dev-portal
      api: petstore
 spec:
-  # workaround for 2.3.0 try-it-now is to add https:// in the host
+  # workaround for 2.3.4 try-it-now is to add https:// in the host
   hosts:
     - 'https://petstore-local.glootest.com'
     - petstore-local.glootest.com
