@@ -70,7 +70,7 @@ spec:
                     namespace: gloo-mesh
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.3.0-rc1
+    targetRevision: 2.3.4
   syncPolicy:
     automated:
       prune: true
@@ -174,7 +174,7 @@ spec:
                       endpoint: 0.0.0.0:4318
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.3.0-rc1
+    targetRevision: 2.3.4
   syncPolicy:
     automated:
       prune: true

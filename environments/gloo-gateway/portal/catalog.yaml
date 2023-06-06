@@ -22,7 +22,7 @@ waves:
       -  $env_path/../core/gloo-platform/init.sh
       post_deploy:
       -  $env_path/../core/gloo-platform/test.sh   
-  - name: istio-helm
+  - name: istio
     location: $env_path/../core/istio/helm/base/active
     scripts:
       pre_deploy: 

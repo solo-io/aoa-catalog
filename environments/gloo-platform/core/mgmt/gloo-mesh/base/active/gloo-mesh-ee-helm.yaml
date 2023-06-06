@@ -15,7 +15,7 @@ spec:
     helm:
       skipCrds: true
       values: |
-        licenseSecretName: license-keys
+        licenseSecretName: gloo-license
         global:
           cluster: mgmt
         mgmtClusterName: mgmt
