@@ -1,14 +1,9 @@
 # aoa-catalog
 This repo serves as a collection of Solo.io demo environments driven by GitOps using the ArgoCD app-of-apps pattern.
 
-### Demo
+### Demo Video Link
 
-
-
-https://user-images.githubusercontent.com/5981604/217685510-e4410308-eafd-47a4-a67c-ab48c679244f.mp4
-
-
-
+[![Youtube Video Demonstration](aoa-tools/images/youtube1.png)](https://youtu.be/c4wgigSihJI)
 
 ### Prerequisites
 - `yq` - `brew install yq` or see here (https://mikefarah.gitbook.io/yq/v/v3.x/)
