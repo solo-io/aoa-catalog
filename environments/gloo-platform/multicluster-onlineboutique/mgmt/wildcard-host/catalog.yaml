@@ -48,9 +48,9 @@ waves:
     location: $env_path/../homer-app/localhost/active
     scripts:
       pre_deploy: 
-      -  $env_path/homer-app/init.sh
+      -  $env_path/../homer-app/init.sh
       post_deploy:
-      -  $env_path/homer-app/test.sh 
+      -  $env_path/../homer-app/test.sh 
   - name: homer-config
     location: $env_path/../../../core/shared-components/homer-config/base/active
     scripts:
