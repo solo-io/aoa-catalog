@@ -28,7 +28,7 @@ waves:
       pre_deploy: 
       -  $env_path/../../
       post_deploy:
-      -  $env_path/../../core/istio/base/test.sh    
+      -  $env_path/../../core/istio/helm/test.sh    
   - name: gloo-platform-config
     location: $env_path/../../core/gloo-platform-config/glootest.com/active
     scripts:
