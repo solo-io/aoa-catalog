@@ -30,7 +30,7 @@ spec:
           # -- image repository
           repository: b4bz/homer
           # -- image tag
-          tag: 21.09.2
+          tag: v23.05.1
           # -- image pull policy
           pullPolicy: IfNotPresent
         
@@ -43,10 +43,12 @@ spec:
           UID: "1001"
           # -- Specify the group ID the application will run as
           GID: "1001"
+          # -- Specify the basepath the application will run at
+          SUBFOLDER: /solo
         
         # -- Set labels on the pod
         #podLabels:
-        #  istio.io/rev: 1-16
+        #  istio.io/rev: 1-18
         
         # -- Set annotations on the pod
         podAnnotations:
@@ -144,7 +146,7 @@ spec:
                   style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
                   title: "Welcome!"
                   icon: "fa fa-grin"
-                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Platform!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com grafana-local.glootest.com<br /><br />Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-platform/multicluster-freestyle/mgmt#application-description'>here</a>"
+                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Platform!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />When using K3d locally with the -i flag, the loadbalancer integration will map the wildcard host '*' to localhost in your browser<br /><br />The following ports are used by the gateways on each cluster (HTTP/HTTPS):<br /><br />mgmt - 80/443<br />cluster1 - 8080/8443<br />cluster2 - 8081/8444<br /><br />More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-platform/multicluster-onlineboutique/mgmt/#application-description'>here</a>"
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
@@ -166,8 +168,8 @@ spec:
                 # First level array represent a group.
                 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
                 services:
-                  
-                  - name: "DNS Integrated Apps (port 443)"
+
+                  - name: "Admin Applications"
                     icon: "fas fa-cloud"
                     items:
                       - name: "ArgoCD - mgmt"
@@ -175,55 +177,35 @@ spec:
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
-                        url: "https://mgmt-argocd-local.glootest.com/argo"
+                        url: "https://localhost/argo"
                         target: "_blank" # optional html a tag target attribute
                       - name: "ArgoCD - cluster1"
                         subtitle: "username: admin / password: solo.io"
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
-                        url: "https://cluster1-argocd-local.glootest.com/argo"
+                        url: "https://localhost:8443/argo"
                         target: "_blank" # optional html a tag target attribute
                       - name: "ArgoCD - cluster2"
                         subtitle: "username: admin / password: solo.io"
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
-                        url: "https://cluster2-argocd-local.glootest.com/argo"
+                        url: "https://localhost:8444/argo"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Gloo Mesh UI"
                         #subtitle: "Another application"
                         icon: "fab fa-earlybirds"
                         tag: "gmui"
-                        url: "https://gmui-local.glootest.com/gmui"
+                        url: "https://localhost/gmui"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Grafana - mgmt"
                         #subtitle: "Another application"
                         icon: "fas fa-chart-area"
                         tag: "grafana-mgmt"
-                        url: "https://grafana-local.glootest.com/grafana"
+                        url: "https://localhost/grafana"
                         target: "_blank" # optional html a tag target attribute
-                
-                  
-                  - name: "K3d Integrated Apps (port 8443/8444)"
-                    subtitle: "cluster1: 8443 / cluster2 8444"
-                    icon: "fas fa-cloud"
-                    items:
-                      - name: "ArgoCD (cluster1)"
-                        subtitle: "username: admin / password: solo.io"
-                        icon: "fab fa-git-alt"
-                        tag: "argo"
-                        keywords: "argocd"
-                        url: "https://cluster1-argocd-local.glootest.com:8443/argo"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "ArgoCD (cluster2)"
-                        subtitle: "username: admin / password: solo.io"
-                        icon: "fab fa-git-alt"
-                        tag: "argo"
-                        keywords: "argocd"
-                        url: "https://cluster2-argocd-local.glootest.com:8444/argo"
-                        target: "_blank" # optional html a tag target attribute
-                    
+              
   syncPolicy:
     automated:
       prune: true

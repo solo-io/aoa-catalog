@@ -41,7 +41,7 @@ spec:
         app: httpbin
         version: v1
         # uncomment for pod label injection
-        istio.io/rev: 1-16
+        istio.io/rev: 1-18
     spec:
       containers:
       - image: docker.io/kennethreitz/httpbin

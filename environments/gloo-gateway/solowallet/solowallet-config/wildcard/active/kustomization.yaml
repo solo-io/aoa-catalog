@@ -6,6 +6,3 @@ kind: Kustomization
 resources:
 - ../../base/active
 
-patchesStrategicMerge:
-- routetable-patch.yaml
-

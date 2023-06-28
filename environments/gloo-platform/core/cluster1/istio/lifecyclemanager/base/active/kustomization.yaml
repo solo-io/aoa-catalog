@@ -4,8 +4,5 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-#- ../../base/active/
-- gateway-cert.yaml
-- gateway-clusterissuer.yaml
+- ../../../../../shared-components/istio/lifecyclemanager/base/active
 - istio-eastwestgateway-svc.yaml
-- istio-ingressgateway-svc.yaml

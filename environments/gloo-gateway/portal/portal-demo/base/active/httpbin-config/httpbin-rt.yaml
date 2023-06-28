@@ -11,8 +11,8 @@ metadata:
 spec:
   # workaround for 2.3.5 try-it-now is to add https:// in the host
   hosts:
-    - 'https://httpbin-local.glootest.com'
-    - httpbin-local.glootest.com
+    - 'https://httpbin.glootest.com'
+    - httpbin.glootest.com
   virtualGateways:
     - name: mgmt-north-south-gw-443
       namespace: istio-gateways

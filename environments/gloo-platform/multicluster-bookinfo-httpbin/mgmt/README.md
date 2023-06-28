@@ -16,37 +16,37 @@ When applied with `cluster1` and `cluster2` environments, here is a high level d
 
 ## Environment description
 - base:
-    - gloo mesh 2.2.6
-    - istio 1.16.2-solo (Helm)
-    - revision: 1-16
+    - gloo mesh 2.3.5
+    - istio 1.18.0-solo (Helm)
+    - revision: 1-18
 - ilcm:
-    - gloo mesh 2.2.6
-    - istio 1.16.2-solo (ILCM)
-    - revision: 1-16
+    - gloo mesh 2.3.5
+    - istio 1.18.0-solo (ILCM)
+    - revision: 1-18
 
 ## Application description
 
-The RouteTables for applications exposed in this demo are defining non-wildcard hosts which follow the pattern `<app>-local.glootest.com`. You can map these hostnames to your gateway IP address in your DNS service of choice (i.e. Route53, Cloudflare), or you can follow the methods below to modify your `/etc/hosts` locally depending on your cluster LoadBalancer configuration.
+The RouteTables for applications exposed in this demo are defining non-wildcard hosts which follow the pattern `<app>.glootest.com`. You can map these hostnames to your gateway IP address in your DNS service of choice (i.e. Route53, Cloudflare), or you can follow the methods below to modify your `/etc/hosts` locally depending on your cluster LoadBalancer configuration.
 
 On the `mgmt` cluster gateway:
 - Homer Link Dashboard at `https://localhost` or `https://<LB Address>`
-- Grafana at `https://grafana-local.glootest.com`
-- ArgoCD at `https://argocd-local.glootest.com/argo`
+- Grafana at `https://grafana.glootest.com`
+- ArgoCD at `https://argocd.glootest.com/argo`
     - argocd credentials:
     - user: admin
     - password: solo.io
-- Gloo Mesh UI at `https://gmui-local.glootest.com`
+- Gloo Mesh UI at `https://gmui.glootest.com`
 
 On the `cluster1` cluster gateway (at 8443 if using k3d LB integration) When deployed with `cluster1`
-- httpbin at `https://httpbin-local.glootest.com:8443/get`
+- httpbin at `https://httpbin.glootest.com:8443/get`
     - application lives on `cluster1` and `cluster2` and is exposed by the gateway on `cluster1`
-- bookinfo at `https://bookinfo-local.glootest.com:8443/productpage`
+- bookinfo at `https://bookinfo.glootest.com:8443/productpage`
     - application lives on `cluster1` and `cluster2` and is exposed by the gateway on `cluster1`
 
 On the `cluster2` cluster gateway (at 8444 if using k3d LB integration) When deployed with `cluster2`
-- httpbin at `https://httpbin-local.glootest.com:8444/get`
+- httpbin at `https://httpbin.glootest.com:8444/get`
     - application lives on `cluster1` and `cluster2` and is exposed by the gateway on `cluster1`
-- bookinfo at `https://bookinfo-local.glootest.com:8444/productpage`
+- bookinfo at `https://bookinfo.glootest.com:8444/productpage`
     - application lives on `cluster1` and `cluster2` and is exposed by the gateway on `cluster1`
 
 To access applications, follow the methods below:
@@ -55,7 +55,7 @@ To access applications, follow the methods below:
 
 Discover your gateway IP address
 ```
-ISTIO_REVISION=1-16
+ISTIO_REVISION=1-18
 GATEWAY_IP=$(kubectl -n istio-gateways get service istio-ingressgateway-${ISTIO_REVISION} -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 
 echo ${GATEWAY_IP}
@@ -64,7 +64,7 @@ echo ${GATEWAY_IP}
 Modify /etc/hosts on your local machine (this will require sudo privileges), or configure DNS to point to your Ingress Gateway IP
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-${GATEWAY_IP} argocd-local.glootest.com gmui-local.glootest.com grafana-local.glootest.com httpbin-local.glootest.com bookinfo-local.glootest.com
+${GATEWAY_IP} argocd.glootest.com gmui.glootest.com grafana.glootest.com httpbin.glootest.com bookinfo.glootest.com
 EOF
 ```
 
@@ -72,7 +72,7 @@ EOF
 modify /etc/hosts on your local machine (this will require sudo privileges)
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com grafana-local.glootest.com httpbin-local.glootest.com bookinfo-local.glootest.com
+127.0.0.1 argocd.glootest.com gmui.glootest.com grafana.glootest.com httpbin.glootest.com bookinfo.glootest.com
 EOF
 ```
 
@@ -96,7 +96,7 @@ access gloo mesh ui at https://localhost:8090"
 
 To access Istio Ingress Gateway using port-forward command:
 ```
-ISTIO_REVISION=1-16
+ISTIO_REVISION=1-18
 kubectl port-forward -n istio-gateways svc/istio-ingressgateway-${ISTIO_REVISION} 8443:443 --context <cluster_name>
 ```
 access the ingress gateway at https://localhost:8443
@@ -105,6 +105,6 @@ access the ingress gateway at https://localhost:8443
 Note: For routes that are configured with a specific host, pass in the Host header using curl `-H "Host: <host>` or add the following entry into your /etc/hosts when using this method
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com grafana-local.glootest.com httpbin-local.glootest.com bookinfo-local.glootest.com
+127.0.0.1 argocd.glootest.com gmui.glootest.com grafana.glootest.com httpbin.glootest.com bookinfo.glootest.com
 EOF
 ```

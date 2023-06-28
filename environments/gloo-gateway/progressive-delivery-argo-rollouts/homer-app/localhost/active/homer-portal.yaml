@@ -24,7 +24,7 @@ spec:
         #
 
         controller:
-          replicas: 2
+          replicas: 1
         
         image:
           # -- image repository
@@ -44,11 +44,11 @@ spec:
           # -- Specify the group ID the application will run as
           GID: "1001"
           # -- Specify the basepath the application will run at
-          SUBFOLDER: /homer
+          SUBFOLDER: /solo
         
         # -- Set labels on the pod
         #podLabels:
-        #  istio.io/rev: 1-16
+        #  istio.io/rev: 1-18
         
         # -- Set annotations on the pod
         podAnnotations:

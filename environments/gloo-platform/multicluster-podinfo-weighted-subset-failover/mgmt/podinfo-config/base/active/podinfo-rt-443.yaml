@@ -7,9 +7,12 @@ metadata:
     expose: "true"
 spec:
   hosts:
-    - 'podinfo-local.glootest.com'
+    - '*'
   virtualGateways:
-    - name: north-south-gw
+    - name: cluster1-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
+    - name: cluster2-north-south-gw-443
       namespace: istio-gateways
       cluster: mgmt
   workloadSelectors: []

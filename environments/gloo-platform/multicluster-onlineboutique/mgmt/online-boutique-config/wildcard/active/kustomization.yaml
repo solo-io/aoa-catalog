@@ -5,7 +5,3 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - ../../base/active
-
-patchesStrategicMerge:
-- routetable-patch.yaml
-

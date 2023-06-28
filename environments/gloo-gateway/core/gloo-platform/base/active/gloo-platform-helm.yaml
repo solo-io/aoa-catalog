@@ -46,7 +46,7 @@ spec:
                 backend: oidc
                 enabled: false
                 oidc:
-                    appUrl: https://gmui-local.glootest.com/gmui
+                    appUrl: https://gmui.glootest.com/gmui
                     clientId: 0oa5zoq0xoGKtOSpg5d7
                     clientSecret: _MS9PJ52NpUJo8Hj2nE4zj90hX4BFkW61SdaXJfE
                     clientSecretName: dashboard
@@ -58,7 +58,7 @@ spec:
                             annotations:
                                 proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
                             labels:
-                                istio.io/rev: 1-16
+                                istio.io/rev: 1-18
                                 sidecar.istio.io/inject: "true"
             enabled: true
             serviceType: ClusterIP

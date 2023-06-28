@@ -17,7 +17,7 @@ spec:
       configs:
       - oauth2:
           oidcAuthorizationCode:
-            appUrl: https://bookinfo-local.glootest.com
+            appUrl: https://localhost
             callbackPath: /callback
             clientId: 0oa6qvzybcVCK6PcS5d7
             clientSecretRef:

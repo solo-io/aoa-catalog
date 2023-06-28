@@ -30,7 +30,7 @@ waves:
       post_deploy:
       -  $env_path/../core/istio/helm/test.sh    
   - name: gloo-platform-config
-    location: $env_path/../core/gloo-platform-config/base/active
+    location: $env_path/../core/gloo-platform-config/glootest.com/active
     scripts:
       pre_deploy: 
       -  $env_path/../core/gloo-platform-config/init.sh
@@ -52,9 +52,9 @@ waves:
       post_deploy:
       -  $env_path/homer-app/test.sh 
   - name: homer-config
-    location: $env_path/homer-config/base/active
+    location: $env_path/../core/homer-config/base/active
     scripts:
       pre_deploy: 
-      -  $env_path/homer-config/init.sh
+      -  $env_path/../core/homer-config/init.sh
       post_deploy:
-      -  $env_path/homer-config/test.sh 
+      -  $env_path/../core/homer-config/test.sh 

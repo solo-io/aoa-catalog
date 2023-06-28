@@ -9,8 +9,8 @@ metadata:
 spec:
   # workaround for 2.3.5 try-it-now is to add https:// in the host
   hosts:
-    - 'https://petstore-local.glootest.com'
-    - petstore-local.glootest.com
+    - 'https://petstore.glootest.com'
+    - petstore.glootest.com
   virtualGateways:
     - name: mgmt-north-south-gw-443
       namespace: istio-gateways

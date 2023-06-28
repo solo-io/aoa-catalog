@@ -6,16 +6,10 @@ kind: Kustomization
 resources:
 - certmanager-istio-ca-cert.yaml
 - certmanager-selfsigned-issuer.yaml
-- gateway-cert.yaml
-- gateway-clusterissuer.yaml
 - glcm-ew-mgmt.yaml
 - glcm-ns-mgmt.yaml
 - ilcm-mgmt.yaml
 - istio-eastwestgateway-svc.yaml
-- istio-ingressgateway-svc.yaml
-- grafana.yaml
-- kiali.yaml
-- prometheus.yaml
 - glcm-ew-cluster1.yaml
 - glcm-ew-cluster2.yaml
 - glcm-ns-cluster1.yaml

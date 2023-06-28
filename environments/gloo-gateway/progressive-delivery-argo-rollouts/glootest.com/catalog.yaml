@@ -1,0 +1,67 @@
+
+waves:
+  # core 
+  - name: clusterconfig
+    location: $env_path/../../core/clusterconfig/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/clusterconfig/init.sh
+      post_deploy:
+      -  $env_path/../../core/clusterconfig/test.sh  
+  - name: certmanager
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/certmanager/init.sh
+      post_deploy:
+      -  $env_path/../../core/certmanager/test.sh
+    location: $env_path/../../core/certmanager/base/active
+  - name: gloo-platform
+    location: $env_path/../../core/gloo-platform/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/gloo-platform/init.sh
+      post_deploy:
+      -  $env_path/../../core/gloo-platform/test.sh    
+  - name: istio
+    location: $env_path/../../core/istio/helm/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/istio/base/init.sh
+      post_deploy:
+      -  $env_path/../../core/istio/base/test.sh    
+  - name: gloo-platform-config
+    location: $env_path/../../core/gloo-platform-config/glootest.com/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/gloo-platform-config/init.sh
+      post_deploy:
+      -  $env_path/../../core/gloo-platform-config/test.sh
+  # additional    
+  - name: argo-rollouts
+    location: $env_path/../argo-rollouts/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../argo-rollouts/init.sh
+      post_deploy:
+      -  $env_path/../argo-rollouts/test.sh
+  - name: podinfo-rollout
+    location: $env_path/../podinfo-rollout/glootest.com/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../podinfo-rollout/init.sh
+      post_deploy:
+      -  $env_path/../podinfo-rollout/test.sh 
+  - name: homer-app
+    location: $env_path/../homer-app/glootest.com/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../homer-app/glootest.com/init.sh
+      post_deploy:
+      -  $env_path/../homer-app/glootest.com/test.sh
+  - name: homer-config
+    location: $env_path/../../core/homer-config/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/homer-config/init.sh
+      post_deploy:
+      -  $env_path/../../corehomer-config/test.sh 

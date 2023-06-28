@@ -45,7 +45,7 @@ waves:
       post_deploy:
       -  $env_path/../online-boutique-app/test.sh
   - name: online-boutique-config
-    location: $env_path/../online-boutique-config/base/active
+    location: $env_path/../online-boutique-config/glootest.com/active
     scripts:
       pre_deploy: 
       -  $env_path/../online-boutique-config/init.sh

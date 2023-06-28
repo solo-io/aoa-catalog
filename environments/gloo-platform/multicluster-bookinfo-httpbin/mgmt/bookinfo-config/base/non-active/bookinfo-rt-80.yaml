@@ -7,7 +7,7 @@ metadata:
   namespace: bookinfo-frontends
 spec:
   hosts:
-  - 'bookinfo-local.glootest.com'
+  - '*'
   http:
   - forwardTo:
       destinations:
