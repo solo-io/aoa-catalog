@@ -1,0 +1,20 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: Workspace
+metadata:
+  name: ops-team
+  namespace: gloo-mesh
+spec:
+  workloadClusters:
+  - name: 'mgmt'
+    namespaces:
+    - name: argocd
+    - name: gloo-mesh
+    - name: istio-system
+    - name: ops-team-config
+    - name: homer-portal
+  - name: '*'
+    namespaces:
+    - name: istio-gateways
+    - name: istio-eastwest
+    - name: gloo-mesh-addons
+    - name: cert-manager

@@ -45,7 +45,7 @@ waves:
       post_deploy:
       -  $env_path/portal-demo/test.sh 
   - name: homer-app
-    location: $env_path/homer-app/base/active
+    location: $env_path/homer-app/glootest.com/active
     scripts:
       pre_deploy: 
       -  $env_path/homer-app/init.sh
