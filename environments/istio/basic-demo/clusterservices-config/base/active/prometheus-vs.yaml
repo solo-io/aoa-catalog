@@ -5,11 +5,15 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - "prometheus-local.glootest.com"
+  - "*"
   gateways:
   - istio-system/https-gateway
   http:
-  - route:
+  - name: prometheus-ui
+    match:
+    - uri:
+        prefix: /prometheus
+    route:
     - destination:
         host: prometheus
         port:

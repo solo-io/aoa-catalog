@@ -9,7 +9,11 @@ spec:
   gateways:
   - istio-system/https-gateway
   http:
-  - route:
+  - name: demo-dashboard
+    match:
+    - uri:
+        prefix: "/solo"
+    route:
     - destination:
         host: homer-portal
         port:
