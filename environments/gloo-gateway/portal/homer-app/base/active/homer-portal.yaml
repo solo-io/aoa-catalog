@@ -46,7 +46,7 @@ spec:
         
         # -- Set labels on the pod
         #podLabels:
-        #  istio.io/rev: 1-16
+        #  istio.io/rev: 1-18
         
         # -- Set annotations on the pod
         podAnnotations:
@@ -144,7 +144,7 @@ spec:
                   style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
                   title: "Welcome!"
                   icon: "fa fa-grin"
-                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Platform!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />127.0.0.1 argocd-local.glootest.com gmui-local.glootest.com grafana-local.glootest.com solo-dev-portal.glootest.com petstore-local.glootest.com tracks-local.glootest.com httpbin-local.glootest.com<br /><br />Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-gateway/freestyle#application-description'>here</a>"
+                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Platform!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />127.0.0.1 argocd.glootest.com gmui.glootest.com grafana.glootest.com solo-dev-portal.glootest.com petstore.glootest.com tracks.glootest.com httpbin.glootest.com<br /><br />Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-gateway/freestyle#application-description'>here</a>"
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
@@ -174,50 +174,63 @@ spec:
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
-                        url: "https://argocd-local.glootest.com/argo"
+                        url: "https://argocd.glootest.com/argo"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Gloo Mesh UI"
                         #subtitle: "Another application"
                         icon: "fab fa-earlybirds"
                         tag: "gmui"
-                        url: "https://gmui-local.glootest.com/gmui"
+                        url: "https://gmui.glootest.com/gmui"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Grafana - mgmt"
                         #subtitle: "Another application"
                         icon: "fas fa-chart-area"
                         tag: "grafana-mgmt"
-                        url: "https://grafana-local.glootest.com/grafana"
+                        url: "https://grafana.glootest.com/grafana"
                         target: "_blank" # optional html a tag target attribute
                       
-                  - name: "Web Applications"
+                  - name: "Portal Applications"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "Solo Dev Portal"
+                      - name: "Httpbin Portal"
                         icon: "fab fa-connectdevelop"
-                        tag: "solo-dev-portal"
-                        url: "https://solo-dev-portal.glootest.com"
+                        tag: "httpbin-portal"
+                        url: "https://httpbin-portal.glootest.com"
                         target: "_blank" # optional html a tag target attribute
+
+                      - name: "Petstore Portal"
+                        icon: "fab fa-connectdevelop"
+                        tag: "httpbin-portal"
+                        url: "https://petstore-portal.glootest.com"
+                        target: "_blank" # optional html a tag target attribute
+                      
+                      - name: "Backstage"
+                        icon: "fab fa-connectdevelop"
+                        tag: "backstage"
+                        url: "https://backstage.glootest.com"
+                        target: "_blank" # optional html a tag target attribute
+                        
                   
                   - name: "APIs - test endpoints"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "httpbin REST API"
+                      - name: "httpbin v1 REST API"
                         subtitle: "requires valid api-key"
                         icon: "fab fa-connectdevelop"
                         tag: "httpbin-rest-api"
-                        url: "https://httpbin-local.glootest.com/get"
+                        url: "https://httpbin.glootest.com/v1/get"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "httpbin v2 REST API"
+                        subtitle: "requires valid api-key"
+                        icon: "fab fa-connectdevelop"
+                        tag: "httpbin-rest-api"
+                        url: "https://httpbin.glootest.com/v2/get"
                         target: "_blank" # optional html a tag target attribute
                       - name: "petstore REST API"
                         subtitle: "requires valid api-key"
                         icon: "fab fa-connectdevelop"
                         tag: "petstore-rest-api"
-                        url: "https://petstore-local.glootest.com/pet"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "tracks REST API"
-                        subtitle: "requires valid api-key"
-                        icon: "fab fa-connectdevelop"
-                        tag: "petstore-rest-api"
-                        url: "https://tracks-local.glootest.com/tracks"
+                        url: "https://petstore.glootest.com/pet"
                         target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:

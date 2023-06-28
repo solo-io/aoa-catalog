@@ -7,7 +7,7 @@ metadata:
     expose: "true"
 spec:
   hosts:
-    - 'httpbin-local.glootest.com'
+    - '*'
   virtualGateways:
     - name: mgmt-north-south-gw-443
       namespace: istio-gateways

@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: portal-frontend
+  namespace: httpbin
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portal-frontend
+  namespace: httpbin
+  labels:
+    app: portal-frontend
+    service: portal-frontend
+spec:
+  ports:
+    - name: http
+      port: 4000
+      targetPort: 4000
+  selector:
+    app: portal-frontend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portal-frontend
+  namespace: httpbin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portal-frontend
+  template:
+    metadata:
+      labels:
+        app: portal-frontend
+    spec:
+      serviceAccountName: portal-frontend
+      containers:
+        - image: gcr.io/solo-public/docs/portal-frontend:latest
+          args: ["--host", "0.0.0.0"]
+          imagePullPolicy: Always
+          name: portal-frontend
+          ports:
+            - containerPort: 4000

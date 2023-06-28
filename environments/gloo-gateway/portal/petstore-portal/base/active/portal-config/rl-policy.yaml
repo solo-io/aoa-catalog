@@ -1,0 +1,26 @@
+apiVersion: trafficcontrol.policy.gloo.solo.io/v2
+kind: RateLimitPolicy
+metadata:
+  name: portal-rate-limit
+  namespace: petstore
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        usagePlans: petstore-portal
+  config:
+    ratelimitServerConfig:
+      name: usage-plans
+      namespace: petstore
+      cluster: mgmt
+    ratelimitClientConfig:
+      name: usage-plans
+      namespace: petstore
+      cluster: mgmt
+    serverSettings:
+      name: ratelimit-server
+      namespace: petstore
+      cluster: mgmt
+    phase:
+      postAuthz:
+        priority: 1

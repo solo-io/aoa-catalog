@@ -1,0 +1,58 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: petstore-rt
+  namespace: petstore
+  labels:
+     portal: petstore-portal
+     api: petstore
+spec:
+  hosts:
+    - petstore.glootest.com
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
+  portalMetadata:
+    title: Petstore REST API
+    description: Totally awesome API for all things pets!
+  http:
+  - name: pets-api
+    labels:
+      usagePlans: petstore-portal
+    matchers:
+    - uri:
+        prefix: /pet
+    forwardTo:
+      destinations:
+      - ref:
+          name: pets-rest-api
+          namespace: petstore
+        port:
+          number: 5000
+  - name: users-api
+    labels:
+      usagePlans: petstore-portal
+    matchers:
+    - uri:
+        prefix: /user
+    forwardTo:
+      destinations:
+      - ref:
+          name: users-rest-api
+          namespace: petstore
+        port:
+          number: 5000
+  - name: store-api
+    labels:
+      usagePlans: petstore-portal
+    matchers:
+    - uri:
+        prefix: /store
+    forwardTo:
+      destinations:
+      - ref:
+          name: store-rest-api
+          namespace: petstore
+        port:
+          number: 5000

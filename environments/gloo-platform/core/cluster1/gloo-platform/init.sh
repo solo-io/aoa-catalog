@@ -7,7 +7,7 @@ echo "deploy and register gloo-mesh agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.2.6):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.3.5):"
     read gloo_mesh_version
 fi
 
@@ -111,13 +111,13 @@ spec:
             service: 
               type: ClusterIP
             podLabels:
-              istio.io/rev: 1-16
+              istio.io/rev: 1-18
             podAnnotations:
               proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.2.6
+              tag: 2.3.5
             config:
                 exporters:
                     otlp:

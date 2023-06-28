@@ -4,15 +4,6 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- argocd-ns.yaml
-- cert-manager-ns.yaml
-- gateway-ca.yaml
-- gloo-mesh-addons-ns.yaml
-- gloo-mesh-ns.yaml
+- ../../../../shared-components/clusterconfig/base/active
 - gloo-mesh-relay-root-ca.yaml
-- httpbin-ns.yaml
-- istio-eastwest-ns.yaml
-- istio-gateways-ns.yaml
-- istio-system-ns.yaml
 - ops-team-config-ns.yaml
-

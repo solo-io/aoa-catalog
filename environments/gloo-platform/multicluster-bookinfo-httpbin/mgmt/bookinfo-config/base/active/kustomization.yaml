@@ -8,7 +8,7 @@ resources:
 - bookinfo-workspace.yaml
 - bookinfo-workspacesettings.yaml
 - bookinfo-failoverpolicy.yaml
-- bookinfo-oauth-failover-rt-443.yaml
+- bookinfo-rt-443.yaml
 - bookinfo-outlierdetectionpolicy.yaml
 - productpage-virtualdestination-443.yaml
 

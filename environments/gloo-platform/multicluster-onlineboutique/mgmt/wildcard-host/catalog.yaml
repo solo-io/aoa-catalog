@@ -9,12 +9,12 @@ waves:
       post_deploy:
       -  $env_path/../../../core/mgmt/clusterconfig/test.sh  
   - name: certmanager
+    location: $env_path/../../../core/shared-components/certmanager/base/active
     scripts:
       pre_deploy: 
-      -  $env_path/../../../core/mgmt/certmanager/init.sh
+      -  $env_path/../../../core/shared-components/certmanager/init.sh
       post_deploy:
-      -  $env_path/../../../core/mgmt/certmanager/test.sh
-    location: $env_path/../../../core/mgmt/certmanager/base/active
+      -  $env_path/../../../core/shared-components/certmanager/test.sh
   - name: gloo-platform
     location: $env_path/../../../core/mgmt/gloo-platform/base/active
     scripts:
@@ -52,9 +52,9 @@ waves:
       post_deploy:
       -  $env_path/homer-app/test.sh 
   - name: homer-config
-    location: $env_path/../homer-config/base/active
+    location: $env_path/../../../core/shared-components/homer-config/base/active
     scripts:
       pre_deploy: 
-      -  $env_path/../homer-config/init.sh
+      -  $env_path/../../../core/shared-components/homer-config/init.sh
       post_deploy:
-      -  $env_path/../homer-config/test.sh 
+      -  $env_path/../../../core/shared-components/homer-config/test.sh 

@@ -4,9 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- clusterissuer.yaml
-- istio-base.yaml
+- ../../../../../shared-components/istio/helm/base/active
 - istio-eastwestgateway.yaml
-- istio-ingressgateway.yaml
+
+patchesStrategicMerge:
 - istiod.yaml
-- tls-secret-cert.yaml

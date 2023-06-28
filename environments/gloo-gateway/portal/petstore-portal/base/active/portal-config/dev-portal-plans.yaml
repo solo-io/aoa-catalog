@@ -1,0 +1,32 @@
+apiVersion: apimanagement.gloo.solo.io/v2
+kind: Portal
+metadata:
+  name: petstore-portal
+  namespace: petstore
+spec:
+  visibility:
+    public: true
+    privateAPILabels:
+      portal-visibility: private
+  domains:
+    - petstore-portal.glootest.com
+  portalBackendSelectors:
+    - selector:
+        labels:
+          app: gloo-mesh-portal-server
+  usagePlans:
+    - name: "bronze"
+      displayName: "Bronze Plan"
+      description: "A basic usage plan"
+    - name: "silver"
+      displayName: "Silver Plan"
+      description: "A better usage plan"
+    - name: "gold"
+      displayName: "Gold Plan"
+      description: "The best usage plan!"
+    - name: "admin"
+      displayName: "Admin Plan"
+      description: "for admin use only"
+  apis:
+    - labels:
+        api: petstore

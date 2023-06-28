@@ -18,5 +18,3 @@ resources:
 #- roottrustpolicy-generated.yaml
 - roottrustpolicy-secretref.yaml
 - workload-vg-443.yaml
-- jaeger-rt-443.yaml
-- telemetry.yaml
