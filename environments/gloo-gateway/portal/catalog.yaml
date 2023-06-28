@@ -16,12 +16,12 @@ waves:
       -  $env_path/../core/certmanager/test.sh
     location: $env_path/../core/certmanager/base/active 
   - name: gloo-platform
-    location: $env_path/../core/gloo-platform/portal/active
+    location: $env_path/gloo-platform/portal/active
     scripts:
       pre_deploy: 
-      -  $env_path/../core/gloo-platform/init.sh
+      -  $env_path/gloo-platform/init.sh
       post_deploy:
-      -  $env_path/../core/gloo-platform/test.sh   
+      -  $env_path/core/gloo-platform/test.sh   
   - name: istio
     location: $env_path/../core/istio/helm/base/active
     scripts:
@@ -30,31 +30,52 @@ waves:
       post_deploy:
       -  $env_path/../core/istio/helm/test.sh    
   - name: gloo-platform-config
-    location: $env_path/../core/gloo-platform-config/glootest.com/active
+    location: $env_path/gloo-platform-config/base/active
     scripts:
       pre_deploy: 
-      -  $env_path/../core/gloo-platform-config/init.sh
+      -  $env_path/gloo-platform-config/init.sh
       post_deploy:
-      -  $env_path/../core/gloo-platform-config/test.sh
+      -  $env_path/gloo-platform-config/test.sh
   # additional    
-  - name: portal-demo
-    location: $env_path/portal-demo/base/active
+  - name: httpbin-portal
+    location: $env_path/httpbin-portal/base/active
     scripts:
       pre_deploy: 
-      -  $env_path/portal-demo/init.sh
+      -  $env_path/httpbin-portal/init.sh
       post_deploy:
-      -  $env_path/portal-demo/test.sh 
+      -  $env_path/httpbin-portal/test.sh 
+  - name: petstore-portal
+    location: $env_path/petstore-portal/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/petstore-portal/init.sh
+      post_deploy:
+      -  $env_path/petstore-portal/test.sh
+  - name: backstage-app
+    location: $env_path/backstage-app/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/backstage-app/init.sh
+      post_deploy:
+      -  $env_path/backstage-app/test.sh 
+  - name: backstage-config
+    location: $env_path/backstage-config/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/backstage-config/init.sh
+      post_deploy:
+      -  $env_path/backstage-config/test.sh 
   - name: homer-app
-    location: $env_path/homer-app/glootest.com/active
+    location: $env_path/homer-app/base/active
     scripts:
       pre_deploy: 
       -  $env_path/homer-app/init.sh
       post_deploy:
       -  $env_path/homer-app/test.sh 
   - name: homer-config
-    location: $env_path/../core/homer-config/base/active
+    location: $env_path/homer-config/base/active
     scripts:
       pre_deploy: 
-      -  $env_path/../core/homer-config/init.sh
+      -  $env_path/homer-config/init.sh
       post_deploy:
-      -  $env_path/../core/homer-config/test.sh 
+      -  $env_path/homer-config/test.sh 
