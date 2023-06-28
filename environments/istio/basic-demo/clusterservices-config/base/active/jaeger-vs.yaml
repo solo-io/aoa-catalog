@@ -5,11 +5,15 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - "jaeger-local.glootest.com"
+  - "*"
   gateways:
   - istio-system/https-gateway
   http:
-  - route:
+  - name: jaeger-ui
+    match:
+    - uri:
+        prefix: /jaeger
+    route:
     - destination:
         host: tracing
         port:
