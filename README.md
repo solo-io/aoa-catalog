@@ -14,7 +14,7 @@ This repo serves as a collection of Solo.io demo environments driven by GitOps u
 For environments that require an Enterprise product license, export your license key with the commands below
 ```
 export GLOO_LICENSE_KEY="<INSERT_LICENSE_KEY_HERE>"
-export GLOO_MESH_LICENSE_KEY="<INSERT_LICENSE_KEY_HERE>"
+export GLOO_PLATFORM_LICENSE_KEY="<INSERT_LICENSE_KEY_HERE>"
 ```
 
 #### Renaming Cluster Context
