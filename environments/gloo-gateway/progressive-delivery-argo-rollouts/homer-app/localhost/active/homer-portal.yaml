@@ -180,7 +180,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute
                       - name: "Gloo Mesh UI"
                         #subtitle: "Another application"
-                        icon: "fab fa-earlybirds"
+                        icon: "fas fa-arrows-alt"
                         tag: "gmui"
                         url: "http://localhost"
                         target: "_blank" # optional html a tag target attribute
