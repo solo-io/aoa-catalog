@@ -16,23 +16,15 @@ spec:
       matchers:
       - uri:
           prefix: /
+      labels:
+        route: podinfo
       forwardTo:
         destinations:
         - ref:
-            name: podinfo
+            name: podinfo-stable
             namespace: podinfo
             cluster: mgmt
           port:
             number: 9898
           subset: 
             version: stable
-          weight: 100
-        - ref:
-            name: podinfo
-            namespace: podinfo
-            cluster: mgmt
-          port:
-            number: 9898
-          subset:
-            version: canary
-          weight: 0
