@@ -7,7 +7,23 @@ metadata:
 apiVersion: v1
 kind: Service
 metadata:
-  name: podinfo
+  name: podinfo-stable
+  namespace: podinfo
+  labels:
+    app: podinfo
+    service: podinfo
+spec:
+  ports:
+  - name: http
+    port: 9898
+    targetPort: 9898
+  selector:
+    app: podinfo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: podinfo-canary
   namespace: podinfo
   labels:
     app: podinfo
@@ -61,21 +77,32 @@ spec:
       app: podinfo
   strategy:
     canary:
-      ###########################
-      # uncomment below to add steps
+      canaryService: podinfo-canary
+      stableService: podinfo-stable
+      trafficRouting:
+        plugins:
+          solo-io/glooplatformAPI:
+            routeTableName: podinfo-rt-443
+            routeTableNamespace: podinfo
+            destinationKind: SERVICE
+            destinationNamespace: podinfo
       steps:
-      - setWeight: 20
-      - pause: {duration: 10}
-      - setWeight: 40
-      - pause: {duration: 10}
-      - setWeight: 60
-      - pause: {duration: 10}
+      - setWeight: 10
+      - pause: {duration: 15}
+      - setWeight: 25
+      - pause: {duration: 15}
+      - setWeight: 50
+      - pause: {duration: 15}
+      - setWeight: 75
+      - pause: {duration: 15}
+      - setWeight: 100
+      - pause: {duration: 15}
       ###########################
       # uncomment below to use AnalysisTemplate
       analysis:
         args:
         - name: service
-          value: podinfo
+          value: podinfo-canary
         - name: namespace
           valueFrom:
             fieldRef:
@@ -84,14 +111,6 @@ spec:
         templates:
         - templateName: istio-success-rate
       ###########################
-      trafficRouting:
-        istio:
-          destinationRule:
-            canarySubsetName: version-canary
-            name: rollout-destrule
-            stableSubsetName: version-stable
-          virtualService:
-            name: routetable-podinfo-rt-443-podinfo-mgmt-ops-team.istio-gateways
   template:
     metadata:
       labels:
