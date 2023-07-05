@@ -10,7 +10,6 @@ spec:
     - name: mgmt-north-south-gw-443
       namespace: istio-gateways
       cluster: mgmt
-  workloadSelectors: []
   http:
     - name: podinfo
       matchers:
@@ -28,3 +27,9 @@ spec:
             number: 9898
           subset: 
             version: stable
+          weight: 100	
+        - ref:	
+            name: podinfo-canary	
+            namespace: podinfo
+          port:	
+            number: 9898	
