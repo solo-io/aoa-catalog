@@ -64,4 +64,4 @@ waves:
       pre_deploy: 
       -  $env_path/../../core/homer-config/init.sh
       post_deploy:
-      -  $env_path/../../corehomer-config/test.sh 
+      -  $env_path/../../core/homer-config/test.sh 
