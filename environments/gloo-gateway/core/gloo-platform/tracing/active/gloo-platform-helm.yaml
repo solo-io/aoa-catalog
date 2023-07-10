@@ -237,7 +237,7 @@ spec:
                       endpoint: 0.0.0.0:4318
 
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.3.5
+    targetRevision: 2.3.7
   syncPolicy:
     automated:
       prune: true
