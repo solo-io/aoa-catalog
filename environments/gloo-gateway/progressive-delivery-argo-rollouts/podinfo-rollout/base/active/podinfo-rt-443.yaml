@@ -3,6 +3,8 @@ kind: RouteTable
 metadata:
   name: podinfo-rt-443
   namespace: podinfo
+  labels:
+    app: podinfo
 spec:
   hosts:
     - '*'
