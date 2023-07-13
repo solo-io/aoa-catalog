@@ -198,7 +198,12 @@ spec:
                         icon: "fas fa-globe-americas"
                         tag: "podinfo"
                         url: "https://podinfo.glootest.com"
-                        target: "_blank" # optional html a tag target attribute           
+                        target: "_blank" # optional html a tag target attribute  
+                      - name: "Helloworld"
+                        icon: "fas fa-globe-americas"
+                        tag: "helloworld"
+                        url: "https://helloworld.glootest.com/hello"
+                        target: "_blank" # optional html a tag target attribute         
                     
   syncPolicy:
     automated:

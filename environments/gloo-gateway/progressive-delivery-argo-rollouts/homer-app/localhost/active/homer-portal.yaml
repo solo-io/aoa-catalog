@@ -199,6 +199,11 @@ spec:
                         tag: "podinfo"
                         url: "https://localhost"
                         target: "_blank" # optional html a tag target attribute 
+                      - name: "Helloworld"
+                        icon: "fas fa-globe-americas"
+                        tag: "helloworld"
+                        url: "https://localhost/hello"
+                        target: "_blank" # optional html a tag target attribute 
                     
   syncPolicy:
     automated:
