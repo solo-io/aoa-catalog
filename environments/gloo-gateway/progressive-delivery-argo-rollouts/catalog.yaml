@@ -51,6 +51,13 @@ waves:
       -  $env_path/podinfo-rollout/init.sh
       post_deploy:
       -  $env_path/podinfo-rollout/test.sh 
+  - name: helloworld-rollout
+    location: $env_path/helloworld-rollout/wildcard/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/helloworld-rollout/init.sh
+      post_deploy:
+      -  $env_path/helloworld-rollout/test.sh 
   - name: homer-app
     location: $env_path/homer-app/localhost/active
     scripts:
