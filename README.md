@@ -15,6 +15,7 @@ For environments that require an Enterprise product license, export your license
 ```
 export GLOO_LICENSE_KEY="<INSERT_LICENSE_KEY_HERE>"
 export GLOO_PLATFORM_LICENSE_KEY="<INSERT_LICENSE_KEY_HERE>"
+export LICENSE_KEY="<INSERT_LICENSE_KEY_HERE>"
 ```
 
 #### Renaming Cluster Context
