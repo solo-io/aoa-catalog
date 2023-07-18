@@ -37,7 +37,7 @@ spec:
     spec:
       serviceAccountName: portal-frontend
       containers:
-        - image: gcr.io/solo-public/docs/portal-frontend:latest
+        - image: gcr.io/solo-public/docs/portal-frontend:usage-plans-fix
           args: ["--host", "0.0.0.0"]
           imagePullPolicy: Always
           name: portal-frontend
