@@ -85,6 +85,8 @@ spec:
                   host: redis.gloo-mesh-addons:6379
               secretKey: xyz987
               configPath: /etc/redis/config.yaml
+          image:
+            tag: 2.3.9
         legacyMetricsPipeline:
             enabled: false
         licensing:
