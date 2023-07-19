@@ -9,14 +9,14 @@ spec:
   hosts:
     - '*'
   virtualGateways:
-    - name: mgmt-north-south-gw-443
+    - name: mgmt-north-south-gw-80
       namespace: istio-gateways
       cluster: mgmt
   http:
     - name: rollouts-demo-ui
       matchers:
       - uri:
-          prefix: /rollouts
+          prefix: /
       labels:
         route: rollouts-demo-ui
       forwardTo:
