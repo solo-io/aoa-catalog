@@ -3,7 +3,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: prefix-match
-  namespace: bookinfo
+  namespace: bookinfo-frontends
   # Label for the sub-table set
   labels:
     table: myapp
@@ -20,7 +20,7 @@ spec:
         destinations:
           - ref:
               name: productpage
-              namespace: bookinfo
+              namespace: bookinfo-frontends
               cluster: mgmt
             port:
               number: 9080
@@ -30,7 +30,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: query-parameters-match
-  namespace: bookinfo
+  namespace: bookinfo-frontends
   # Label for the sub-table set
   labels:
     table: myapp
@@ -49,7 +49,7 @@ spec:
         destinations:
           - ref:
               name: productpage
-              namespace: bookinfo
+              namespace: bookinfo-frontends
               cluster: mgmt
             port:
               number: 9080
@@ -59,7 +59,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: delegate-weight
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   hosts:
     - '*'
@@ -81,7 +81,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: exact-match
-  namespace: bookinfo
+  namespace: bookinfo-frontends
   # Label for the sub-table set
   labels:
     table: myapp
@@ -97,7 +97,7 @@ spec:
         destinations:
           - ref:
               name: productpage
-              namespace: bookinfo
+              namespace: bookinfo-frontends
               cluster: mgmt
             port:
               number: 9080
@@ -107,7 +107,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: delegate-specificity
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   hosts:
     - '*'
@@ -128,7 +128,7 @@ apiVersion: security.policy.gloo.solo.io/v2
 kind: AccessPolicy
 metadata:
   name: access-reviews
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToDestinations:
     - port:
@@ -151,7 +151,7 @@ apiVersion: security.policy.gloo.solo.io/v2
 kind: AccessPolicy
 metadata:
   name: access-ratings
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToDestinations:
     - port:
@@ -177,7 +177,7 @@ apiVersion: security.policy.gloo.solo.io/v2
 kind: AccessPolicy
 metadata:
   name: access-details
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToDestinations:
     - selector:
@@ -199,7 +199,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: bookinfo-eastwest-routes
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   hosts:
     - "reviews.bookinfo.svc.cluster.local"
@@ -214,14 +214,14 @@ spec:
         destinations:
           - ref:
               name: reviews
-              namespace: bookinfo
+              namespace: bookinfo-frontends
               cluster: mgmt
             port:
               number: 9080
             weight: 50
           - ref:
               name: reviews
-              namespace: bookinfo
+              namespace: bookinfo-frontends
               cluster: ${REMOTE_CLUSTER2}
             port:
               number: 9080
@@ -231,7 +231,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: ExternalService
 metadata:
   name: json-external
-  namespace: bookinfo-experiments
+  namespace: bookinfo-frontends-backends
 spec:
   hosts:
     - jsonplaceholder.typicode.com
@@ -244,7 +244,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: bookinfo-eastwest-ratings-routes
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   hosts:
     - "ratings.bookinfo.svc.cluster.local"
@@ -259,7 +259,7 @@ spec:
         destinations:
           - ref:
               name: ratings
-              namespace: bookinfo
+              namespace: bookinfo-frontends
               cluster: mgmt
             port:
               number: 9080
@@ -268,14 +268,14 @@ apiVersion: observability.policy.gloo.solo.io/v2
 kind: AccessLogPolicy
 metadata:
   name: access-log-policy
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToWorkloads:
     - selector:
         cluster: mgmt
         labels:
           app: reviews
-        namespace: bookinfo
+        namespace: bookinfo-frontends
   config:
     filters:
       #- statusCodeMatcher:
@@ -300,7 +300,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: simple-cors
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToRoutes:
     - route:
@@ -323,7 +323,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: transformation-policy
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToRoutes:
     - route:
@@ -345,7 +345,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: external-service
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   hosts:
     - httpbin.org
@@ -360,7 +360,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: external-service-northsouth
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   defaultDestination:
     kind: EXTERNAL_SERVICE
@@ -368,7 +368,7 @@ spec:
       number: 80
     ref:
       name: external-service
-      namespace: bookinfo
+      namespace: bookinfo-frontends
   hosts:
     - www.example.com
   http:
@@ -393,7 +393,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: httpbin-routetable
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   hosts:
     - '*'
@@ -408,7 +408,7 @@ spec:
         destinations:
           - ref:
               name: external-service
-              namespace: bookinfo
+              namespace: bookinfo-frontends
         pathRewrite: /anything
   virtualGateways:
     - cluster: mgmt
@@ -421,7 +421,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: basic-ext-auth
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToDestinations:
     - port:
@@ -447,7 +447,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: default-server
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   destinationServer:
     port:
@@ -463,7 +463,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: locality-based-failover
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToDestinations:
     - kind: VIRTUAL_DESTINATION
@@ -481,7 +481,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: faultinjection-basic
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToRoutes:
     - route:
@@ -498,7 +498,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: modify-header-hsts
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToRoutes:
     - route:
@@ -524,7 +524,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: reviews-mirror-rt
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   hosts:
     - reviews
@@ -533,7 +533,7 @@ spec:
         destinations:
           - ref:
               name: reviews
-              namespace: bookinfo
+              namespace: bookinfo-frontends
       labels:
         route: reviews-federated
   workloadSelectors:
@@ -545,7 +545,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: mirror-policy
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToRoutes:
     - route:
@@ -558,7 +558,7 @@ spec:
       ref:
         cluster: mgmt
         name: reviews
-        namespace: bookinfo
+        namespace: bookinfo-frontends
 ---
 apiVersion: resilience.policy.gloo.solo.io/v2
 kind: OutlierDetectionPolicy
@@ -566,7 +566,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: outlier-detection
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToDestinations:
     - kind: VIRTUAL_DESTINATION
@@ -601,7 +601,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: "mgmt"
   name: csrf-policy
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToRoutes:
     - route:
@@ -618,7 +618,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: jwt-policy
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToRoutes:
     - route:
@@ -651,7 +651,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: http-buffer
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToRoutes:
     - route:
@@ -666,7 +666,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: basic-waf-auth
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToRoutes:
     - route:
@@ -687,7 +687,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: ""
   name: dlp-policy-custom-actions
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToRoutes:
     - route:
@@ -704,7 +704,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: client-tls-policy
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToDestinations:
     - port:
@@ -722,7 +722,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: rl-client-config
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   raw:
     rateLimits:
@@ -736,7 +736,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: rl-policy
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToRoutes:
     - route:
@@ -759,7 +759,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: rl-reviews-policy
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToRoutes:
     - route:
@@ -828,7 +828,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: rl-server
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   destinationServer:
     port:
@@ -844,7 +844,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: retry-only
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToRoutes:
     - route:
@@ -865,7 +865,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: retry-timeout
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToRoutes:
     - route:
@@ -880,7 +880,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: tcp-keepalive
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   applyToDestinations:
     - kind: VIRTUAL_DESTINATION
@@ -898,14 +898,14 @@ spec:
 #  annotations:
 #    cluster.solo.io/cluster: mgmt
 #  name: wasm-deployment-policy
-#  namespace: bookinfo
+#  namespace: bookinfo-frontends
 #spec:
 #  applyToWorkloads:
 #  - selector:
 #      cluster: mgmt
 #      labels:
 #        app: ratings
-#      namespace: bookinfo
+#      namespace: bookinfo-frontends
 #  config:
 #    filters:
 #    - filterContext: SIDECAR_INBOUND
@@ -918,7 +918,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: rest-resolvermap
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   types:
     Query:
@@ -932,7 +932,7 @@ spec:
                     ref:
                       cluster: mgmt
                       name: productpage
-                      namespace: bookinfo
+                      namespace: bookinfo-frontends
                 request:
                   headers:
                     :path:
@@ -953,7 +953,7 @@ spec:
                     ref:
                       cluster: mgmt
                       name: reviews
-                      namespace: bookinfo
+                      namespace: bookinfo-frontends
                 request:
                   headers:
                     :path:
@@ -974,7 +974,7 @@ spec:
                     ref:
                       cluster: mgmt
                       name: ratings
-                      namespace: bookinfo
+                      namespace: bookinfo-frontends
                 request:
                   headers:
                     :path:
@@ -988,7 +988,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: rest-graphqlsdl
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   graphql:
     schemaDefinition: |-
@@ -1036,7 +1036,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: rest-graphqlschema
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   resolved:
     options:
@@ -1044,11 +1044,11 @@ spec:
     resolverMapRefs:
       - clusterName: mgmt
         name: rest-resolvermap
-        namespace: bookinfo
+        namespace: bookinfo-frontends
   schemaRef:
     clusterName: mgmt
     name: rest-graphqlsdl
-    namespace: bookinfo
+    namespace: bookinfo-frontends
 ---
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
@@ -1056,7 +1056,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: graphql-routetable
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   hosts:
     - '*'
@@ -1070,7 +1070,7 @@ spec:
         schema:
           clusterName: mgmt
           name: rest-graphqlschema
-          namespace: bookinfo
+          namespace: bookinfo-frontends
       matchers:
         - uri:
             prefix: /graphql
@@ -1085,7 +1085,7 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: aws-provider
-  namespace: bookinfo
+  namespace: bookinfo-frontends
 spec:
   aws:
     stsEndpoint: sts.amazonaws.com
@@ -1100,7 +1100,7 @@ spec:
 #  annotations:
 #    cluster.solo.io/cluster: mgmt
 #  name: aws-resources
-#  namespace: bookinfo
+#  namespace: bookinfo-frontends
 #spec:
 #  provider: aws-provider
 #  lambda:
