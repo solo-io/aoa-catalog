@@ -1,0 +1,44 @@
+
+waves:
+  - name: certmanager
+    location: $env_path/certmanager/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/certmanager/init.sh
+      post_deploy:
+      -  $env_path/certmanager/test.sh  
+  - name: istio-operator
+    location: $env_path/istio-operator/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/istio-operator/init.sh
+      post_deploy:
+      -  $env_path/istio-operator/test.sh
+  - name: istio
+    location: $env_path/istio/ambient/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/istio/init.sh
+      post_deploy:
+      -  $env_path/istio/test.sh
+  - name: httpbin
+    location: $env_path/httpbin/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/httpbin/init.sh
+      post_deploy:
+      -  $env_path/httpbin/test.sh  
+  - name: clusterservices-config
+    location: $env_path/clusterservices-config/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/clusterservices-config/init.sh
+      post_deploy:
+      -  $env_path/clusterservices-config/test.sh 
+  - name: homer
+    location: $env_path/homer/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer/init.sh
+      post_deploy:
+      -  $env_path/homer/test.sh 
