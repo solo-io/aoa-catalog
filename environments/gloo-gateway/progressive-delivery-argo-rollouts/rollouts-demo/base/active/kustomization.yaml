@@ -7,5 +7,5 @@ resources:
 - rollouts-demo-rt-443.yaml
 - rollouts-demo-workspace.yaml
 - rollouts-demo-workspacesettings.yaml
-- rollouts-ui
+#- rollouts-ui
 
