@@ -34,4 +34,18 @@ spec:
             name: rollouts-demo-canary	
             namespace: rollouts-demo
           port:	
-            number: 8080	
+            number: 8080
+    - name: rollouts-demo-ui
+      matchers:
+      - uri:
+          prefix: /rollouts
+      labels:
+        route: rollouts-demo-ui
+      forwardTo:
+        destinations:
+        - ref:
+            name: argo-rollouts-dashboard
+            namespace: rollouts-demo
+            cluster: mgmt
+          port:
+            number: 3100	

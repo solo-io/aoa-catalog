@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
 - rollouts-ui-deploy.yaml
 - rbac.yaml
-- routetable.yaml
+#- routetable.yaml
