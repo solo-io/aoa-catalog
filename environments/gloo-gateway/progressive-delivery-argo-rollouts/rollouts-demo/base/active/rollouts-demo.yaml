@@ -1,0 +1,161 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: rollouts-demo
+  namespace: rollouts-demo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rollouts-demo-stable
+  namespace: rollouts-demo
+  labels:
+    app: rollouts-demo
+    service: rollouts-demo
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: rollouts-demo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rollouts-demo-canary
+  namespace: rollouts-demo
+  labels:
+    app: rollouts-demo
+    service: rollouts-demo
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: rollouts-demo
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: istio-success-rate
+  namespace: rollouts-demo
+spec:
+  args:
+  - name: service
+  - name: namespace
+  metrics:
+  - initialDelay: 60s
+    interval: 20s
+    name: success-rate
+    provider:
+      prometheus:
+        address: http://prometheus.istio-system:9090
+        query: >+
+          sum(irate(istio_requests_total{
+            reporter="source",
+            destination_service=~"{{args.service}}.{{args.namespace}}.svc.cluster.local",
+            response_code!~"2.*"}[30s])
+          )
+          /
+          sum(irate(istio_requests_total{
+            reporter="source",
+            destination_service=~"{{args.service}}.{{args.namespace}}.svc.cluster.local"}[30s])
+          )
+    successCondition: result[0] < 0.05
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: rollouts-demo
+  namespace: rollouts-demo
+spec:
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  strategy:
+    canary:
+      canaryService: rollouts-demo-canary
+      stableService: rollouts-demo-stable
+      trafficRouting:
+        plugins:
+          solo-io/glooplatformAPI:
+            routeTableSelector:
+              labels:
+                app: rollouts-demo
+              namespace: rollouts-demo
+              # name: rollouts-demo-rt-443
+              # namespace: rollouts-demo
+            routeSelector:
+              labels:
+                route: rollouts-demo
+              # name: rollouts-demo
+      steps:
+      - setWeight: 10
+      - pause: {duration: 15}
+      - setWeight: 25
+      - pause: {duration: 15}
+      - setWeight: 50
+      - pause: {duration: 15}
+      - setWeight: 75
+      - pause: {duration: 15}
+      - setWeight: 100
+      - pause: {duration: 15}
+      ###########################
+      # uncomment below to use AnalysisTemplate
+      analysis:
+        args:
+        - name: service
+          value: rollouts-demo-canary
+        - name: namespace
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        startingStep: 1
+        templates:
+        - templateName: istio-success-rate
+      ###########################
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+        version: stable
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    spec:
+      containers:
+      - name: rollouts-demo
+        image: argoproj/rollouts-demo:blue
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: rollout-destrule
+  namespace: rollouts-demo
+spec:
+  host: rollouts-demo
+  subsets:
+  - labels:
+      app: rollouts-demo
+    name: version-stable
+  - labels:
+      app: rollouts-demo
+    name: version-canary
