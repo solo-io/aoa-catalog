@@ -137,13 +137,6 @@ spec:
           requests:
             cpu: 5m
             memory: 32Mi
-      nodeSelector:
-        gke-spot: "true"
-      tolerations:
-      - key: cloud.google.com/gke-spot
-        operator: Equal
-        value: "true"
-        effect: NoSchedule
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
