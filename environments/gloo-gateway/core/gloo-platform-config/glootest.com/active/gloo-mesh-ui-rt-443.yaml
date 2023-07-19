@@ -8,6 +8,7 @@ metadata:
 spec:
   hosts:
   - 'gmui.glootest.com'
+  - 'gloo-platform-test.solo.io'
   http:
   - name: gloo-mesh-ui-main
     labels:

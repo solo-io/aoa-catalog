@@ -1,0 +1,125 @@
+## Delegated Route Tables
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: prefix-match
+  namespace: bookinfo-frontends
+  # Label for the sub-table set
+  labels:
+    table: myapp
+spec:
+  # Lower weight means second priority in the sub-table order
+  weight: 90
+  http:
+    # Table routes any requests to 'one.solo.io/myapp/.*'
+    - matchers:
+        - uri:
+            prefix: /myapp
+            ignoreCase: true
+      forwardTo:
+        destinations:
+          - ref:
+              name: productpage
+              namespace: bookinfo-frontends
+              cluster: mgmt
+            port:
+              number: 9080
+            kind: SERVICE
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: query-parameters-match
+  namespace: bookinfo-frontends
+  # Label for the sub-table set
+  labels:
+    table: myapp
+spec:
+  # Lower weight means second priority in the sub-table order
+  weight: 80
+  http:
+    # Table routes any requests to 'one.solo.io/myapp/.*?version=stage'
+    - matchers:
+        - uri:
+            prefix: /myapp
+        - queryParameters:
+            - name: version
+              value: stage
+      forwardTo:
+        destinations:
+          - ref:
+              name: productpage
+              namespace: bookinfo-frontends
+              cluster: mgmt
+            port:
+              number: 9080
+            kind: SERVICE
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: delegate-weight
+  namespace: bookinfo-frontends
+spec:
+  hosts:
+    - '*'
+  virtualGateways:
+    - cluster: mgmt
+      name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+  http:
+    - delegate:
+        # Selects tables based on label
+        routeTables:
+          - labels:
+              table: myapp
+        # Delegates based on order of weights
+        sortMethod: TABLE_WEIGHT
+
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: exact-match
+  namespace: bookinfo-frontends
+  # Label for the sub-table set
+  labels:
+    table: myapp
+spec:
+  # Higher weight means first priority in the sub-table order
+  weight: 100
+  http:
+    # Match only requests to exactly 'gloo-ambient-test-cluster-1.solo.io/myapp/foo'
+    - matchers:
+        - uri:
+            exact: /myapp/foo
+      forwardTo:
+        destinations:
+          - ref:
+              name: productpage
+              namespace: bookinfo-frontends
+              cluster: mgmt
+            port:
+              number: 9080
+            kind: SERVICE
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: delegate-specificity
+  namespace: bookinfo-frontends
+spec:
+  hosts:
+    - '*'
+  virtualGateways:
+    - cluster: mgmt
+      name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+  http:
+    - delegate:
+        # Selects tables based on label
+        routeTables:
+          - labels:
+              table: myapp
+        # Delegates based on route specificity
+        sortMethod: ROUTE_SPECIFICITY

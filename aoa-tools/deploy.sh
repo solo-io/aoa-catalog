@@ -24,8 +24,8 @@ help()
    echo "Syntax: installer [-f|-i|-h]"
    echo
    echo "commands:"
-   echo "deploy     deploys an environment with the speficied path"
-   echo "destroy    deploys an environment with the speficied path"
+   echo "deploy     deploys an environment with the specified path"
+   echo "destroy    destroys an environment with the specified path"
    echo
    echo "options:"
    echo "-f     path to environment files"
