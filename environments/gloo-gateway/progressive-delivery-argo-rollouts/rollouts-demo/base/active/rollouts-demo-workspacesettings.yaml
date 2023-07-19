@@ -1,8 +1,8 @@
 apiVersion: admin.gloo.solo.io/v2
 kind: WorkspaceSettings
 metadata:
-  name: podinfo-workspacesettings
-  namespace: podinfo
+  name: rollouts-demo-workspacesettings
+  namespace: rollouts-demo
 spec:
   exportTo:
   - workspaces:
@@ -14,7 +14,7 @@ spec:
     federation:                     # enable service federation of the web-ui namespace
       enabled: false
       serviceSelector:
-      - namespace: podinfo
+      - namespace: rollouts-demo
     serviceIsolation:               # enable service isolation and Istio Sidecar resource
       enabled: false
       trimProxyConfig: false

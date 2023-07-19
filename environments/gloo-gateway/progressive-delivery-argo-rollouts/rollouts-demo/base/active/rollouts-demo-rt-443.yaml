@@ -1,10 +1,10 @@
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
-  name: podinfo-rt-443
-  namespace: podinfo
+  name: rollouts-demo-rt-443
+  namespace: rollouts-demo
   labels:
-    app: podinfo
+    app: rollouts-demo
 spec:
   hosts:
     - '*'
@@ -13,25 +13,26 @@ spec:
       namespace: istio-gateways
       cluster: mgmt
   http:
-    - name: podinfo
+    - name: rollouts-demo
       matchers:
       - uri:
           prefix: /
       labels:
-        route: podinfo
+        route: rollouts-demo
       forwardTo:
         destinations:
         - ref:
-            name: podinfo-stable
-            namespace: podinfo
+            name: rollouts-demo-stable
+            namespace: rollouts-demo
             cluster: mgmt
           port:
-            number: 9898
+            number: 8080
           subset: 
             version: stable
           weight: 100	
         - ref:	
-            name: podinfo-canary	
-            namespace: podinfo
+            name: rollouts-demo-canary	
+            namespace: rollouts-demo
           port:	
-            number: 9898	
+            number: 8080
+    
