@@ -4,15 +4,15 @@ metadata:
   name: httpbin-main
   namespace: httpbin
   labels:
-     portal: httpbin-portal
      api: httpbin
 spec:
   hosts:
-    - httpbin.glootest.com
+    - "*"
+    - "httpbin.glootest.com"
   virtualGateways:
     - name: cluster1-north-south-gw-443
       namespace: istio-gateways
-      cluster: cluster1
+      cluster: mgmt
   http:
    - matchers:
      - uri:
@@ -42,7 +42,7 @@ metadata:
 spec:
   portalMetadata:
     title: httpbin v1 REST API
-    description: REST API for httpbin to retrieve data for httpbin, authors and modules.
+    description: V1 REST API for httpbin to retrieve data for httpbin, authors and modules.
   http:
   - name: httpbin-api-v1
     labels:
@@ -53,21 +53,21 @@ spec:
     forwardTo:
       pathRewrite: /
       # uncomment to use direct ref
+#      destinations:
+#      - ref:
+#          name: httpbin
+#          namespace: httpbin
+#          cluster: cluster1
+#        port:
+#          number: 8000
+      # uncomment to use virtual destination
       destinations:
       - ref:
-          name: httpbin
+          name: httpbin-vd
           namespace: httpbin
-          cluster: cluster1
+        kind: VIRTUAL_DESTINATION
         port:
           number: 8000
-      # uncomment to use virtual destination
-      #destinations:
-      #- ref:
-      #    name: httpbin-vd
-      #    namespace: httpbin
-      #  kind: VIRTUAL_DESTINATION
-      #  port:
-      #    number: 8000
 ---
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
@@ -82,7 +82,7 @@ metadata:
 spec:
   portalMetadata:
     title: httpbin v2 REST API
-    description: REST API for httpbin to retrieve data for httpbin, authors and modules.
+    description: V2 REST API for httpbin to retrieve data for httpbin, authors and modules.
   http:
   - name: httpbin-api-v2
     labels:
@@ -93,18 +93,18 @@ spec:
     forwardTo:
       pathRewrite: /
       # uncomment to use direct ref
+#      destinations:
+#      - ref:
+#          name: httpbin
+#          namespace: httpbin
+#          cluster: cluster1
+#        port:
+#          number: 8000
+      # uncomment to use virtual destination
       destinations:
       - ref:
-          name: httpbin
+          name: httpbin-vd-2
           namespace: httpbin
-          cluster: cluster1
+        kind: VIRTUAL_DESTINATION
         port:
           number: 8000
-      # uncomment to use virtual destination
-      #destinations:
-      #- ref:
-      #    name: httpbin-vd
-      #    namespace: httpbin
-      #  kind: VIRTUAL_DESTINATION
-      #  port:
-      #    number: 8000

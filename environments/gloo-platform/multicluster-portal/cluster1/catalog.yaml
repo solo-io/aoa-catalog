@@ -29,18 +29,18 @@ waves:
       -  $env_path/../../core/cluster1/gloo-platform/init.sh
       post_deploy:
       -  $env_path/../../core/cluster1/gloo-platform/test.sh    
-  # additional    
+  # additional
   #- name: online-boutique-app
   #  location: $env_path/online-boutique-app/base/active
   #  scripts:
-  #    pre_deploy: 
+  #    pre_deploy:
   #    -  $env_path/online-boutique-app/init.sh
   #    post_deploy:
   #    -  $env_path/online-boutique-app/test.sh
-  #- name: httpbin-portal
-  #  location: $env_path/httpbin-portal/base/active
-  #  scripts:
-  #    pre_deploy: 
-  #    -  $env_path/httpbin-portal/init.sh
-  #    post_deploy:
-  #    -  $env_path/httpbin-portal/test.sh
+  - name: httpbin-app
+    location: $env_path/httpbin-app/base/active
+    scripts:
+      pre_deploy:
+      -  $env_path/httpbin-app/init.sh
+      post_deploy:
+      -  $env_path/httpbin-app/test.sh

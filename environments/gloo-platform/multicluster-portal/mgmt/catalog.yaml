@@ -57,4 +57,9 @@ waves:
       pre_deploy: 
       -  $env_path/../../core/shared-components/homer-config/init.sh
       post_deploy:
-      -  $env_path/../../core/shared-components/homer-config/test.sh 
+      -  $env_path/../../core/shared-components/homer-config/test.sh
+  - name: httpbin-portal
+    location: $env_path/httpbin-portal/base/active
+    scripts:
+      pre_deploy:
+        -  $env_path/httpbin-portal/init.sh
