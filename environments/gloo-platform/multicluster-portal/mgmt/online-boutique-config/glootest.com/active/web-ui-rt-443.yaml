@@ -1,0 +1,51 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: frontend
+  namespace: web-team
+spec:
+  hosts:
+    - 'shop-local.glootest.com'
+  virtualGateways:
+  - name: cluster1-north-south-gw-443
+    namespace: istio-gateways
+    cluster: mgmt
+  - name: cluster2-north-south-gw-443
+    namespace: istio-gateways
+    cluster: mgmt
+  workloadSelectors: []
+  http:
+    - name: frontend
+      labels:
+        virtual-destination: frontend
+        route_name: frontend
+      matchers:
+      - uri:
+          prefix: /
+      forwardTo:
+        destinations:
+          - ref:
+              name: frontend
+              namespace: web-team
+            kind: VIRTUAL_DESTINATION
+            port:
+              number: 80
+    - name: frontend-v2
+      labels:
+        virtual-destination: frontend-v2
+        route_name: frontend-v2
+      matchers:
+      - uri:
+          prefix: /
+        headers:
+        - name: end-user
+          value: preferred
+      forwardTo:
+        destinations:
+          - ref:
+              name: frontend-v2
+              namespace: web-team
+            kind: VIRTUAL_DESTINATION
+            port:
+              number: 80
+    
