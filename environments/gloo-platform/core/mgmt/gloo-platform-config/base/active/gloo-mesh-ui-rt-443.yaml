@@ -35,6 +35,10 @@ spec:
     - uri:
         prefix: /oidc-callback
     - uri:
+        prefix: /portals
+    - uri:
+        prefix: /apis
+    - uri:
         exact: /
     forwardTo:
       destinations:
