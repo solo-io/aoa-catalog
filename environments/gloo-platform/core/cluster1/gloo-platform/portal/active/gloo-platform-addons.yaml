@@ -34,7 +34,7 @@ spec:
         rateLimiter:
             enabled: true
         glooPortalServer:
-            enabled: false
+            enabled: true
             apiKeyStorage:
                 type: redis
                 config:
