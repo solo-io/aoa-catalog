@@ -81,7 +81,7 @@ spec:
       stableService: rollouts-demo-stable
       trafficRouting:
         plugins:
-          solo-io/glooplatformAPI:
+          solo-io/glooplatform:
             routeTableSelector:
               labels:
                 app: rollouts-demo
