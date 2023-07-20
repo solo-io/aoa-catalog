@@ -37,10 +37,10 @@ waves:
   #    -  $env_path/online-boutique-app/init.sh
   #    post_deploy:
   #    -  $env_path/online-boutique-app/test.sh
-  - name: httpbin-portal
-    location: $env_path/httpbin-portal/base/active
-    scripts:
-      pre_deploy: 
-      -  $env_path/httpbin-portal/init.sh
-      post_deploy:
-      -  $env_path/httpbin-portal/test.sh
+  #- name: httpbin-portal
+  #  location: $env_path/httpbin-portal/base/active
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/httpbin-portal/init.sh
+  #    post_deploy:
+  #    -  $env_path/httpbin-portal/test.sh
