@@ -16,7 +16,7 @@ waves:
       post_deploy:
       -  $env_path/../../core/shared-components/certmanager/test.sh
   - name: gloo-platform
-    location: $env_path/../../core/mgmt/gloo-platform/base/active
+    location: $env_path/../../core/mgmt/gloo-platform/portal/active
     scripts:
       pre_deploy: 
       -  $env_path/../../core/mgmt/gloo-platform/init.sh
