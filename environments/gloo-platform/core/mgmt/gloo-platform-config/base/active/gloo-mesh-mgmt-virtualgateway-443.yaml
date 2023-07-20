@@ -6,6 +6,8 @@ metadata:
 spec:
   listeners:
   - http: {}
+    allowedRouteTables:
+      - host: "*"
     port:
       number: 443
     tls:
