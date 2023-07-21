@@ -65,14 +65,13 @@ waves:
         -  $env_path/httpbin-portal/httpbin-config/init.sh
       post_deploy:
         - $env_path/httpbin-portal/httpbin-config/test.sh
-# uncomment to deply portal app
-#  - name: httpbin-portal-app
-#    location: $env_path/httpbin-portal/portal-app/base/active
-#    scripts:
-#      pre_deploy:
-#        -  $env_path/httpbin-portal/portal-app/init.sh
-#      post_deploy:
-#        - $env_path/httpbin-portal/portal-app/test.sh
+  - name: httpbin-portal-app
+    location: $env_path/httpbin-portal/portal-app/base/active
+    scripts:
+      pre_deploy:
+        -  $env_path/httpbin-portal/portal-app/init.sh
+      post_deploy:
+        - $env_path/httpbin-portal/portal-app/test.sh
   - name: httpbin-portal-config
     location: $env_path/httpbin-portal/portal-config/base/active
     scripts:
