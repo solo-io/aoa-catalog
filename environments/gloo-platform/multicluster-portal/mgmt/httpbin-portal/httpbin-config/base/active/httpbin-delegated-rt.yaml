@@ -8,7 +8,6 @@ metadata:
 spec:
   hosts:
     - "*"
-    - "httpbin.glootest.com"
   virtualGateways:
     - name: cluster1-north-south-gw-443
       namespace: istio-gateways
