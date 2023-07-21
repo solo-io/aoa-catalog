@@ -23,7 +23,7 @@ waves:
       post_deploy:
       -  $env_path/../../core/cluster1/istio/helm/test.sh  
   - name: gloo-platform
-    location: $env_path/../../core/cluster1/gloo-platform/base/active
+    location: $env_path/../../core/cluster1/gloo-platform/portal/active
     scripts:
       pre_deploy: 
       -  $env_path/../../core/cluster1/gloo-platform/init.sh
