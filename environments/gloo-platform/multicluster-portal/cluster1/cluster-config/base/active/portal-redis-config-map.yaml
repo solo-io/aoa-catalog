@@ -1,0 +1,14 @@
+apiVersion: v1
+data:
+  config.yaml: "redis:\n  address: redis.gloo-mesh-addons:6379\n  db: 0\n  auth:\n
+    \   enabled: false\n  certs:\n    enabled: false\n    caCertFilename: \n  connection:
+    \n    connMaxIdleTime: 30m\n    connMaxLifetime: \"0\"\n    contextTimeoutEnabled:
+    false\n    dialTimeout: 5s\n    idleTimeout: 30m\n    masterName: \"\"\n    maxConnAge:
+    \"0\"\n    maxIdleConns: 0\n    maxRedirects: 3\n    maxRetries: 3\n    maxRetryBackoff:
+    512ms\n    minIdleConns: 0\n    minRetryBackoff: 8ms\n    poolFifo: false\n    poolSize:
+    0\n    poolTimeout: 4s\n    readOnly: false\n    readTimeout: 3s\n    routeByLatency:
+    false\n    routeRandomly: false\n    writeTimeout: 3s"
+kind: ConfigMap
+metadata:
+  name: portal-redis-config
+  namespace: gloo-mesh-addons

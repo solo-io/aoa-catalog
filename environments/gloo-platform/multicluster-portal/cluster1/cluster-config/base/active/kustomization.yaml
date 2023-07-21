@@ -4,5 +4,5 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- portal-storage-secret.yaml
-
+- portal-redis-cert.yaml
+- portal-redis-config-map.yaml

@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  redis.crt: ""
+kind: Secret
+metadata:
+  name: portal-redis-certs
+  namespace: gloo-mesh-addons
+type: Opaque
