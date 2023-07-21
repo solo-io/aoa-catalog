@@ -9,3 +9,4 @@ resources:
 - portal-server-vdest.yaml
 - portal-cors.yaml
 - portal-oidc-auth.yaml
+- httpbin-oidc-client-secret.yaml

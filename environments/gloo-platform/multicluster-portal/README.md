@@ -8,11 +8,15 @@ Add the following lines to your `/etc/hosts`
 ```
 
 ## To deploy
-Run the following commands in separate terminals.
+To prevent any unexpected errors, run the following command first
 
 ```
 ./aoa-tools/deploy.sh  deploy -i -f environments/gloo-platform/multicluster-portal/mgmt
+```
 
+Then run the following commands in separate terminals
+
+```
 ./aoa-tools/deploy.sh  deploy -i -f environments/gloo-platform/multicluster-portal/cluster1
 
 ./aoa-tools/deploy.sh  deploy -i -f environments/gloo-platform/multicluster-portal/cluster2
