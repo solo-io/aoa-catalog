@@ -12,6 +12,9 @@ spec:
     - name: cluster1-north-south-gw-443
       namespace: istio-gateways
       cluster: mgmt
+    - name: cluster2-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
   http:
    - matchers:
      - uri:
