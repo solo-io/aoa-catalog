@@ -1,0 +1,18 @@
+# Do not apply this
+# Rate limit policy currently does not support the use case
+# where the backing rate limiter is a NON KUBE SERVICE.
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: rl-vd
+  namespace: httpbin
+spec:
+  hosts:
+    - ratelimiter.randomvalue
+  services:
+    - namespace: gloo-mesh-addons
+      name: rate-limiter
+      cluster: cluster1
+  ports:
+    - number: 8083
+      protocol: GRPC

@@ -9,11 +9,21 @@ spec:
     privateAPILabels:
       portal-visibility: private
   domains:
-    - "*host"
+    - "httpbin-portal.glootest.com"
+    - "httpbin-portal.glootest.com:8443"
+    - "httpbin-portal.glootest.com:8444"
   portalBackendSelectors:
     - selector:
         labels:
           app: gloo-mesh-portal-server
+  usagePlans:
+    - name: bronze
+      displayName: "Bronze Plan"
+      description: "A basic usage plan"
+    - name: silver
+      description: "A better usage plan"
+    - name: gold
+      description: "The best usage plan!"
   apis:
     - labels:
         portal: httpbin-portal

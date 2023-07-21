@@ -1,0 +1,16 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: portal-frontend-vd
+  namespace: httpbin
+spec:
+  hosts:
+    - portalfrontend.randomvalue
+  services:
+    - namespace: httpbin
+      labels:
+        app: portal-frontend
+      cluster: cluster1
+  ports:
+    - number: 4000
+      protocol: HTTP

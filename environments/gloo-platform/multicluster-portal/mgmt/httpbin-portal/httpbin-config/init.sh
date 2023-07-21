@@ -1,4 +1,4 @@
 #!/bin/bash
 
 echo "wave description:"
-echo "deploying gloo platform portal demo http config"
+echo "deploying gloo platform portal demo httpbin config"

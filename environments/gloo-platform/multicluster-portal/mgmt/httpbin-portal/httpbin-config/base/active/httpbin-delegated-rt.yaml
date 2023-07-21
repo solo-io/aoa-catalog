@@ -8,6 +8,9 @@ metadata:
 spec:
   hosts:
     - "httpbin.glootest.com"
+    # workaround for local k3d try it now
+    - "httpbin.glootest.com:8443"
+    - "httpbin.glootest.com:8444"
   virtualGateways:
     - name: cluster1-north-south-gw-443
       namespace: istio-gateways

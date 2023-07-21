@@ -1,0 +1,52 @@
+apiVersion: security.policy.gloo.solo.io/v2
+kind: ExtAuthPolicy
+metadata:
+  name: api-key-auth
+  namespace: httpbin
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        usagePlans: httpbin-portal
+  config:
+    server:
+      name: ext-auth-server
+      namespace: gloo-mesh-addons
+      cluster: mgmt
+    glooAuth:
+      configs:
+        - apiKeyAuth:
+            headerName: api-key
+            headersFromMetadataEntry:
+              x-solo-plan:
+                name: usagePlan
+                required: true
+#            k8sSecretApikeyStorage:
+#              labelSelector:
+#                extauth: apikey
+#apiVersion: security.policy.gloo.solo.io/v2
+#kind: ExtAuthPolicy
+#metadata:
+#  name: api-key-auth
+#  namespace: default
+#spec:
+#  applyToRoutes:
+#    - route:
+#        labels:
+#          usagePlans: dev-portal
+#  config:
+#    server:
+#      name: ext-auth-server
+#      namespace: gloo-mesh-addons
+#      cluster: cluster-1
+#    glooAuth:
+#      configs:
+#        - oauth2:
+#            accessTokenValidation:
+#              jwt:
+#                localJwks:
+#                  inlineString: >-
+#                    {"keys":[{"kid":"waHFkSCFYB8XEtU00RwVG_dIhQEo-70XYlpxd1wF4aI","kty":"RSA","alg":"RS256","use":"sig","n":"5vfCwAB53hhFYqeGPYaBSUr98b1dtnrJjd37Yt7Fbb3zGawkR_JB0G6tofu5tL6Qiy9qZxgfIwnVhHnTSzu74veq_5FgZ8SXOmtlMIxDMqV15VEnOjWQ1HmQeuQqkxs2TdqY4PyA46q1wAahtMelbDXxUxHqsKIRjq0b1xqDqS35TV0ZnkuYmJ6JNHG7-8HnF0vzkXNbtIoFRRYBOyMT_dqUpVcvynaYsalXPNCfYNCIrUJi1HJYoy9yqJ17SJQRNRpAZKZmZjuKHSNpT7KQgShfiqFAkXFwuUAxKoxEjOiRgh6o2BYmJjyRiiuTq_XlBbXiDND5gkxf6PijL19AMw","e":"AQAB","x5c":["MIICmzCCAYMCBgGI+hk1yDANBgkqhkiG9w0BAQsFADARMQ8wDQYDVQQDDAZtYXN0ZXIwHhcNMjMwNjI2MjM0MzU2WhcNMzMwNjI2MjM0NTM2WjARMQ8wDQYDVQQDDAZtYXN0ZXIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDm98LAAHneGEVip4Y9hoFJSv3xvV22esmN3fti3sVtvfMZrCRH8kHQbq2h+7m0vpCLL2pnGB8jCdWEedNLO7vi96r/kWBnxJc6a2UwjEMypXXlUSc6NZDUeZB65CqTGzZN2pjg/IDjqrXABqG0x6VsNfFTEeqwohGOrRvXGoOpLflNXRmeS5iYnok0cbv7wecXS/ORc1u0igVFFgE7IxP92pSlVy/KdpixqVc80J9g0IitQmLUclijL3KonXtIlBE1GkBkpmZmO4odI2lPspCBKF+KoUCRcXC5QDEqjESM6JGCHqjYFiYmPJGKK5Or9eUFteIM0PmCTF/o+KMvX0AzAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAIyvrYQLKQr8tQif4TwycGqslEiUdc71xagTv6HKNS8TF110+6roowGHuU7X07xDq7N0CSutMUln6YZHcSF18wvw81HmmXeY6uW7HVQ+Xed8jZCqQwmXc/wsSVIBvnOoAdqRqqFVg+cSImr1MsVbew2xyOUQce/xnvlmN/CbshjWyf4755xDfpfPcD6Se+mpY+75b1rUTZvLe5tenUQl5s7K4r0Jh8b2GW8WtE2HmMLI8ZDS0+fHKIQwK8AGUODlFm7HkRE14HMc5mdCUCWZVo469MsKU4Di09ROT686HmJyVc8q1E73EKmVMMcgqQD32vJhsXF+mWzwN3MfKXWbYVA="],"x5t":"3ZlePweCK48xqtif0-Gver9SYJo","x5t#S256":"Ezr6Sj0CB0ryEwoU7RHTu0psO8GdVjOSRaFeTe4wP6I"}]}
+#              dynamicMetadataFromClaims:
+#                usagePlan: usagePlan
+#                userId: preferred_username

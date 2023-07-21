@@ -1,0 +1,15 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: extauth-vd
+  namespace: httpbin
+spec:
+  hosts:
+    - extauth.randomvalue
+  services:
+    - namespace: gloo-mesh-addons
+      labels:
+        app: ext-auth-service
+  ports:
+    - number: 8083
+      protocol: GRPC

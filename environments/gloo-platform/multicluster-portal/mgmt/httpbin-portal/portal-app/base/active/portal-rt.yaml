@@ -9,13 +9,15 @@ spec:
   virtualGateways:
     - name: cluster1-north-south-gw-443
       namespace: istio-gateways
+      cluster: mgmt
   defaultDestination:
     port:
       number: 8080
     ref:
-      name: gloo-mesh-portal-server
-      namespace: gloo-mesh
-      cluster: cluster1
+      name: portal-server-vd
+      namespace: httpbin
+      cluster: mgmt
+    kind: VIRTUAL_DESTINATION
   http:
     - name: portal-frontend-auth
       forwardTo:
@@ -23,9 +25,10 @@ spec:
           - port:
               number: 4000
             ref:
-              name: portal-frontend
+              name: portal-frontend-vd
               namespace: httpbin
-              cluster: cluster1
+              cluster: mgmt
+            kind: VIRTUAL_DESTINATION
       labels:
         oauth: "httpbin-portal" # apply ext auth policy
         route: portal-api
@@ -85,9 +88,10 @@ spec:
           - port:
               number: 4000
             ref:
-              name: portal-frontend
+              name: portal-frontend-vd
               namespace: httpbin
-              cluster: cluster1
+              cluster: mgmt
+            kind: VIRTUAL_DESTINATION
       matchers:
         - uri:
             prefix: /

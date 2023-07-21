@@ -1,0 +1,26 @@
+apiVersion: trafficcontrol.policy.gloo.solo.io/v2
+kind: RateLimitPolicy
+metadata:
+  name: httpbin-rate-limit
+  namespace: httpbin
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        usagePlans: httpbin-portal
+  config:
+    ratelimitServerConfig:
+      name: httpbin-rl-server-cfg
+      namespace: httpbin
+      cluster:  mgmt
+    ratelimitClientConfig:
+      name: httpbin-rl-client-cfg
+      namespace: httpbin
+      cluster:  mgmt
+    serverSettings:
+      name: rl-server-settings
+      namespace: httpbin
+      cluster: mgmt
+    phase:
+      postAuthz:
+        priority: 2

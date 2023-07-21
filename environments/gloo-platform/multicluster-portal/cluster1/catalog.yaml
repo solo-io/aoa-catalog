@@ -51,3 +51,10 @@ waves:
       -  $env_path/httpbin-app/init.sh
       post_deploy:
       -  $env_path/httpbin-app/test.sh
+  - name: portal-frontend-app
+    location: $env_path/portal-app/base/active
+    scripts:
+      pre_deploy:
+        -  $env_path/portal-app/init.sh
+      post_deploy:
+        -  $env_path/portal-app/test.sh
