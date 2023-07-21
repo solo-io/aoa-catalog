@@ -7,7 +7,6 @@ cluster_context=${3:-""}
 github_username=${4:-""}
 repo_name=${5:-""}
 target_branch=${6:-""}
-automatic_sync=${7:-""}
 
 # check to see if wave name variable was passed through, if not prompt for it
 if [[ ${wave_name} == "" ]]
@@ -67,8 +66,8 @@ spec:
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
-      prune: ${automatic_sync}
-      selfHeal: ${automatic_sync}
+      prune: true
+      selfHeal: true
     retry:
       limit: 2
       backoff:
