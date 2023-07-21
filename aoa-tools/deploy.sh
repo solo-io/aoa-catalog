@@ -49,6 +49,7 @@ echo ""
 echo "Github Account: $github_username"
 echo "Repo: $repo_name"
 echo "Branch: $target_branch"
+echo "Automatic Sync: $parent_app_sync"
 echo "------------------------------------------------------------"
 
 echo "Continue? [y/N]"
@@ -260,7 +261,7 @@ do
    done 
 
   # deploy aoa wave
-  $SCRIPT_DIR/tools/configure-wave.sh ${normalized_wave_location} ${wave_name} ${cluster_context} ${github_username} ${repo_name} ${target_branch}
+  $SCRIPT_DIR/tools/configure-wave.sh ${normalized_wave_location} ${wave_name} ${cluster_context} ${github_username} ${repo_name} ${target_branch} ${parent_app_sync}
   # TODO: extract the pre and post script deploy in a function to avoid dup 
   # Post deploy scripts
    script_count=`cat catalog.yaml | yq ".waves[$c].scripts.post_deploy | length"`

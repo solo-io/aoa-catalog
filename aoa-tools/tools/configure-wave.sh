@@ -7,6 +7,7 @@ cluster_context=${3:-""}
 github_username=${4:-""}
 repo_name=${5:-""}
 target_branch=${6:-""}
+parent_app_sync=$7
 
 # check to see if wave name variable was passed through, if not prompt for it
 if [[ ${wave_name} == "" ]]
@@ -48,6 +49,14 @@ if [[ ${target_branch} == "" ]]
     read target_branch
 fi
 
+# check to see if parent_app_sync variable was passed through, if not prompt for it
+if [[ ${parent_app_sync} == "" ]]
+  then
+    # provide parent_app_sync variable
+    echo "Please provide the parent_app_sync to use (i.e. HEAD):"
+    read parent_app_sync
+fi
+
 kubectl --context ${cluster_context} apply -f - <<EOF
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -61,13 +70,13 @@ spec:
   source:
     repoURL: https://github.com/${github_username}/${repo_name}/
     targetRevision: ${target_branch}
-    path: $path
+    path: ${path}
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
-      prune: true
-      selfHeal: true
+      prune: ${parent_app_sync}
+      selfHeal: ${parent_app_sync}
     retry:
       limit: 2
       backoff:
