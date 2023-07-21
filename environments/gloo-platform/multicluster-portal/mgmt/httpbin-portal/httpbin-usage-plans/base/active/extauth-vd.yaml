@@ -8,8 +8,11 @@ spec:
     - extauth.randomvalue
   services:
     - namespace: gloo-mesh-addons
-      labels:
-        app: ext-auth-service
+      name: ext-auth-service
+      cluster: cluster1
+#    - namespace: gloo-mesh-addons
+#      name: ext-auth-service
+#      cluster: cluster2
   ports:
     - number: 8083
       protocol: GRPC

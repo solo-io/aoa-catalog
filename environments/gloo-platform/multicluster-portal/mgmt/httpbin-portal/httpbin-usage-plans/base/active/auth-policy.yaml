@@ -21,24 +21,24 @@ spec:
               x-solo-plan:
                 name: usagePlan
                 required: true
-#            k8sSecretApikeyStorage:
-#              labelSelector:
-#                extauth: apikey
+#              k8sSecretApikeyStorage:
+#                labelSelector:
+#                  extauth: apikey
 #apiVersion: security.policy.gloo.solo.io/v2
 #kind: ExtAuthPolicy
 #metadata:
 #  name: api-key-auth
-#  namespace: default
+#  namespace: httpbin
 #spec:
 #  applyToRoutes:
 #    - route:
 #        labels:
-#          usagePlans: dev-portal
+#          usagePlans: httpbin-portal
 #  config:
 #    server:
 #      name: ext-auth-server
 #      namespace: gloo-mesh-addons
-#      cluster: cluster-1
+#      cluster: mgmt
 #    glooAuth:
 #      configs:
 #        - oauth2:

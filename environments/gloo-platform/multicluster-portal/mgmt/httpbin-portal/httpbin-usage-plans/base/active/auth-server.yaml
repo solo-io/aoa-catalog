@@ -6,8 +6,9 @@ metadata:
 spec:
   destinationServer:
     ref:
-      cluster: cluster1
-      name: ext-auth-service
-      namespace: gloo-mesh-addons
+      name: extauth-vd
+      namespace: httpbin
+      cluster: mgmt
+    kind: VIRTUAL_DESTINATION
     port:
-      name: grpc
+      number: 8083

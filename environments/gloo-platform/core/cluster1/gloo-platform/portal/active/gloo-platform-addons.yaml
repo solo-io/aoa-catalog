@@ -19,18 +19,15 @@ spec:
             addonNamespace: "gloo-mesh-addons"
             cluster: cluster1
         extAuthService:
-            enabled: true
-            extAuth:
-                apiKeyStorage:
-                    # Use the local gloo-mesh-addons Redis for backing storage
-                    name: redis
-                    config:
-                      connection:
-                        host: "redis.gloo-mesh-addons:6379"
-                        # Set to 0 to match the default database for the 'glooPortalServer.apiKeyStorage' configuration
-                        db: 0
-                    # Replace with a random string to use to generate hash values for other keys
-                    secretKey: "xyz987"
+          enabled: true
+          extAuth:
+            apiKeyStorage:
+              name: redis
+              enabled: true
+              config:
+                db: 0
+                host: redis.gloo-mesh-addons:6379
+              secretKey: xyz987
         rateLimiter:
             enabled: true
         glooPortalServer:
