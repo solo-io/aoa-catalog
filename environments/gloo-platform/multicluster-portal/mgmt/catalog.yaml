@@ -16,7 +16,7 @@ waves:
       post_deploy:
       -  $env_path/../../core/shared-components/certmanager/test.sh
   - name: gloo-platform
-    location: $env_path/../../core/mgmt/gloo-platform/portal/active
+    location: $env_path/../../core/mgmt/gloo-platform/base/active
     scripts:
       pre_deploy: 
       -  $env_path/../../core/mgmt/gloo-platform/init.sh
@@ -58,8 +58,25 @@ waves:
       -  $env_path/../../core/shared-components/homer-config/init.sh
       post_deploy:
       -  $env_path/../../core/shared-components/homer-config/test.sh
-  - name: httpbin-portal
-    location: $env_path/httpbin-portal/base/active
+  - name: httpbin-config
+    location: $env_path/httpbin-portal/httpbin-config/base/active
     scripts:
       pre_deploy:
-        -  $env_path/httpbin-portal/init.sh
+        -  $env_path/httpbin-portal/httpbin-config/init.sh
+      post_deploy:
+        - $env_path/httpbin-portal/httpbin-config/test.sh
+# uncomment to deply portal app
+#  - name: httpbin-portal-app
+#    location: $env_path/httpbin-portal/portal-app/base/active
+#    scripts:
+#      pre_deploy:
+#        -  $env_path/httpbin-portal/portal-app/init.sh
+#      post_deploy:
+#        - $env_path/httpbin-portal/portal-app/test.sh
+  - name: httpbin-portal-config
+    location: $env_path/httpbin-portal/portal-config/base/active
+    scripts:
+      pre_deploy:
+        -  $env_path/httpbin-portal/portal-config/init.sh
+      post_deploy:
+        - $env_path/httpbin-portal/portal-config/test.sh

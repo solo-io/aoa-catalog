@@ -5,7 +5,6 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - httpbin-delegated-rt.yaml
-- dev-portal.yaml
 - httpbin-vd.yaml
 - httbin-vd-2.yaml
 - vd-2-apidoc.yaml
