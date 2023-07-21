@@ -6,7 +6,8 @@ kind: Kustomization
 resources:
 - auth-policy.yaml
 - auth-server.yaml
-- extauth-vd.yaml
+# running into issues using extauth vd
+#- extauth-vd.yaml
 - rl-config.yaml
 - rl-policy.yaml
 - rl-server.yaml

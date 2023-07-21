@@ -7,3 +7,5 @@ resources:
 - portal-frontend-vdest.yaml
 - portal-rt.yaml
 - portal-server-vdest.yaml
+- portal-cors.yaml
+- portal-oidc-auth.yaml

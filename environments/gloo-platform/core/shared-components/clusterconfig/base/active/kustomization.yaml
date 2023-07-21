@@ -13,4 +13,5 @@ resources:
 - istio-eastwest-ns.yaml
 - istio-gateways-ns.yaml
 - istio-system-ns.yaml
+- httpbin-oidc-client-secret.yaml
 
