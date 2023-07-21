@@ -6,7 +6,7 @@ kind: Kustomization
 resources:
 - httpbin-delegated-rt.yaml
 - httpbin-vd.yaml
-- httbin-vd-2.yaml
+- httpbin-vd-2.yaml
 - vd-2-apidoc.yaml
 - vd-apidoc.yaml
 - httpbin-workspace.yaml
