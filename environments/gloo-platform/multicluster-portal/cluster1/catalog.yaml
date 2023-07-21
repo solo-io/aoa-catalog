@@ -28,7 +28,14 @@ waves:
       pre_deploy: 
       -  $env_path/../../core/cluster1/gloo-platform/init.sh
       post_deploy:
-      -  $env_path/../../core/cluster1/gloo-platform/test.sh    
+      -  $env_path/../../core/cluster1/gloo-platform/test.sh
+  - name: cluster1-config
+    location: $env_path/cluster-config/base/active
+    scripts:
+      pre_deploy:
+        -  $env_path/cluster-config/init.sh
+      post_deploy:
+        -  $env_path/cluster-config/test.sh
   # additional
   #- name: online-boutique-app
   #  location: $env_path/online-boutique-app/base/active
