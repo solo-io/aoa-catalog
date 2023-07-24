@@ -1,3 +1,30 @@
+## Test Virtual Gateway
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualGateway
+metadata:
+  name: mgmt-north-south-gw-443-test
+  namespace: istio-gateways
+spec:
+  listeners:
+    - http: {}
+      port:
+        number: 80
+      allowedRouteTables:
+        - host: '*'
+    - http: {}
+      port:
+        number: 443
+      allowedRouteTables:
+        - host: '*'
+      tls:
+        mode: SIMPLE
+        secretName: tls-secret
+  workloads:
+    - selector:
+        cluster: mgmt
+        labels:
+          istio: ingressgateway-nonexistent
+---
 ## Delegated Route Tables
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
@@ -65,7 +92,7 @@ spec:
     - '*'
   virtualGateways:
     - cluster: mgmt
-      name: mgmt-north-south-gw-443
+      name: mgmt-north-south-gw-443-test
       namespace: istio-gateways
   http:
     - delegate:
@@ -113,7 +140,7 @@ spec:
     - '*'
   virtualGateways:
     - cluster: mgmt
-      name: mgmt-north-south-gw-443
+      name: mgmt-north-south-gw-443-test
       namespace: istio-gateways
   http:
     - delegate:
@@ -198,7 +225,7 @@ spec:
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
-  name: bookinfo-eastwest-routes
+  name: bookinfo-routes
   namespace: bookinfo-frontends
 spec:
   hosts:
@@ -214,24 +241,30 @@ spec:
         destinations:
           - ref:
               name: reviews
-              namespace: bookinfo-frontends
+              namespace: bookinfo-backends
               cluster: mgmt
             port:
               number: 9080
-            weight: 50
+    - name: ratings
+      labels:
+        route: ratings
+      matchers:
+        - uri:
+            prefix: /ratings
+      forwardTo:
+        destinations:
           - ref:
-              name: reviews
-              namespace: bookinfo-frontends
-              cluster: ${REMOTE_CLUSTER2}
+              name: ratings
+              namespace: bookinfo-backends
+              cluster: mgmt
             port:
               number: 9080
-            weight: 50
 ---
 apiVersion: networking.gloo.solo.io/v2
 kind: ExternalService
 metadata:
   name: json-external
-  namespace: bookinfo-frontends-backends
+  namespace: bookinfo-backends
 spec:
   hosts:
     - jsonplaceholder.typicode.com
@@ -386,7 +419,7 @@ spec:
       name: external-service-northsouth
   virtualGateways:
     - cluster: mgmt
-      name: mgmt-north-south-gw-443
+      name: mgmt-north-south-gw-443-test
       namespace: istio-gateways
 ---
 apiVersion: networking.gloo.solo.io/v2
@@ -408,11 +441,11 @@ spec:
         destinations:
           - ref:
               name: external-service
-              namespace: bookinfo-frontends
+              namespace: bookinfo-backends
         pathRewrite: /anything
   virtualGateways:
     - cluster: mgmt
-      name: mgmt-north-south-gw-443
+      name: mgmt-north-south-gw-443-test
       namespace: istio-gateways
 ---
 apiVersion: security.policy.gloo.solo.io/v2
@@ -583,14 +616,14 @@ metadata:
   annotations:
     cluster.solo.io/cluster: mgmt
   name: haproxy-policy
-  namespace: gateway
+  namespace: istio-gateways
 spec:
   applyToListeners:
     - port:
         number: 80
       virtualGateway:
         cluster: mgmt
-        name: mgmt-north-south-gw-443
+        name: mgmt-north-south-gw-443-test
         namespace: istio-gateways
   config:
     enableProxyProtocol: true
@@ -1076,7 +1109,7 @@ spec:
             prefix: /graphql
   virtualGateways:
     - cluster: mgmt
-      name: mgmt-north-south-gw-443
+      name: mgmt-north-south-gw-443-test
       namespace: istio-gateways
 ---
 apiVersion: infrastructure.gloo.solo.io/v2

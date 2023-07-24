@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec2248f2-3a85-4174-8639-59733d3e4130" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-gateway/portal/bookinfo-config/ui-smoke-test/active/kustomization.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-gateway/portal/bookinfo-config/ui-smoke-test/active/kustomization.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/environments/gloo-gateway/portal/bookinfo-config/ui-smoke-test/active/ui-smoke-test.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-gateway/portal/bookinfo-config/ui-smoke-test/active/ui-smoke-test.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +19,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="KubernetesApiPersistence">
-    <option name="context" value="kind-mgmt-cluster" />
+    <option name="context" value="mgmt" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
