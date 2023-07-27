@@ -83,7 +83,6 @@ spec:
             enabled: true
             image:
               registry: gcr.io/gloo-mesh
-              repository: ext-auth-service
               tag: 2.4.0-rc1
         glooPortalServer:
           enabled: true
@@ -106,7 +105,7 @@ spec:
         redis:
             deployment:
                 enabled: true
-        telemetryGateway:
+        telemetryGaateway:
             enabled: true
             #image:
             #  pullPolicy: IfNotPresent
