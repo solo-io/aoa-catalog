@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec2248f2-3a85-4174-8639-59733d3e4130" name="Changes" comment="" />
+    <list default="true" id="ec2248f2-3a85-4174-8639-59733d3e4130" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-gateway/core/istio/lifecyclemanager/base/active/ilcm-mgmt.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-gateway/core/istio/lifecyclemanager/base/active/ilcm-mgmt.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-gateway/portal/bookinfo-config/ui-smoke-test/active/ui-smoke-test.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-gateway/portal/bookinfo-config/ui-smoke-test/active/ui-smoke-test.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

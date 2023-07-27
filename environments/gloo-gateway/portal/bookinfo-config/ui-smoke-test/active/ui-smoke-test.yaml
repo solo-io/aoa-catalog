@@ -229,8 +229,22 @@ metadata:
   namespace: bookinfo-frontends
 spec:
   hosts:
-    - "reviews.bookinfo.svc.cluster.local"
+    - "*"
   http:
+    - name: productpage
+      labels:
+        route: productpage
+      matchers:
+        - uri:
+            prefix: /productpage
+      forwardTo:
+        destinations:
+          - ref:
+              name: productpage
+              namespace: bookinfo-backends
+              cluster: mgmt
+            port:
+              number: 9080
     - name: reviews
       labels:
         route: reviews
@@ -273,30 +287,6 @@ spec:
       name: https
       protocol: HTTPS
 ---
-apiVersion: networking.gloo.solo.io/v2
-kind: RouteTable
-metadata:
-  name: bookinfo-eastwest-ratings-routes
-  namespace: bookinfo-frontends
-spec:
-  hosts:
-    - "ratings.bookinfo.svc.cluster.local"
-  http:
-    - name: ratings
-      labels:
-        route: ratings
-      matchers:
-        - uri:
-            prefix: /ratings
-      forwardTo:
-        destinations:
-          - ref:
-              name: ratings
-              namespace: bookinfo-frontends
-              cluster: mgmt
-            port:
-              number: 9080
----
 apiVersion: observability.policy.gloo.solo.io/v2
 kind: AccessLogPolicy
 metadata:
@@ -308,7 +298,7 @@ spec:
         cluster: mgmt
         labels:
           app: reviews
-        namespace: bookinfo-frontends
+        namespace: bookinfo-backends
   config:
     filters:
       #- statusCodeMatcher:
