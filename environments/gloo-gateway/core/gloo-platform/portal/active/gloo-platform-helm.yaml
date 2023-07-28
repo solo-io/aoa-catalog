@@ -68,7 +68,7 @@ spec:
                 image:
                   registry: gcr.io/gloo-mesh
                   repository: ext-auth-service
-                  tag: 2.3.10
+                  tag: 2.5.0-beta0-2023-07-27-main-dce906aaa
                 apiKeyStorage:
                     # Use the local gloo-mesh-addons Redis for backing storage
                     name: redis
@@ -83,7 +83,7 @@ spec:
             enabled: true
             image:
               registry: gcr.io/gloo-mesh
-              tag: 2.3.10
+              tag: 2.5.0-beta0-2023-07-27-main-dce906aaa
         glooPortalServer:
           enabled: true
           apiKeyStorage:
@@ -95,7 +95,7 @@ spec:
           image:
             registry: gcr.io/gloo-mesh
             repository: gloo-mesh-portal-server
-            tag: 2.3.10
+            tag: 2.5.0-beta0-2023-07-27-main-dce906aaa
         legacyMetricsPipeline:
             enabled: false
         licensing:
@@ -203,7 +203,7 @@ spec:
                                     - __meta_kubernetes_pod_phase
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.3.10
+    targetRevision: 2.5.0-beta0-2023-07-27-main-dce906aaa
   syncPolicy:
     automated:
       prune: true
