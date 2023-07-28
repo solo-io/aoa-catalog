@@ -7,7 +7,7 @@ echo "deploy and register gloo-mesh agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.4.0-beta2):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.3.10):"
     read gloo_mesh_version
 fi
 
@@ -70,7 +70,7 @@ spec:
                     namespace: gloo-mesh
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.4.0-beta2
+    targetRevision: 2.3.10
   syncPolicy:
     automated:
       prune: true
@@ -117,7 +117,7 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.4.0-beta2
+              tag: 2.3.10
             config:
                 exporters:
                     otlp:
@@ -174,7 +174,7 @@ spec:
                       endpoint: 0.0.0.0:4318
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.4.0-beta2
+    targetRevision: 2.3.10
   syncPolicy:
     automated:
       prune: true
