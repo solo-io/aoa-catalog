@@ -65,8 +65,6 @@ spec:
         extAuthService:
             enabled: true
             extAuth:
-                image:
-                  registry: gcr.io/gloo-mesh
                 apiKeyStorage:
                     # Use the local gloo-mesh-addons Redis for backing storage
                     name: redis
@@ -79,8 +77,6 @@ spec:
                     secretKey: "xyz987"
         rateLimiter:
             enabled: true
-            image:
-              registry: gcr.io/gloo-mesh
         glooPortalServer:
           enabled: true
           apiKeyStorage:
@@ -89,8 +85,6 @@ spec:
                   host: redis.gloo-mesh-addons:6379
               secretKey: xyz987
               configPath: /etc/redis/config.yaml
-          image:
-            registry: gcr.io/gloo-mesh
         legacyMetricsPipeline:
             enabled: false
         licensing:

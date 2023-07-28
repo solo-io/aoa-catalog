@@ -60,6 +60,9 @@ spec:
             mode: ALLOW_ANY
           # The administrative root namespace for Istio configuration
           rootNamespace: istio-system
+        global:
+          multiCluster:
+            clusterName: mgmt
         # Traffic management
         components:
           pilot:
