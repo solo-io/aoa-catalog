@@ -80,7 +80,6 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.5.0-beta0-2023-07-27-main-dce906aaa
         telemetryGatewayCustomization:
             disableCertGeneration: true
             extraExporters:
