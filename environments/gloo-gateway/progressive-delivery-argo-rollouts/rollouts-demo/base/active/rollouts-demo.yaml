@@ -1,46 +1,46 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: podinfo
-  namespace: podinfo
+  name: rollouts-demo
+  namespace: rollouts-demo
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: podinfo-stable
-  namespace: podinfo
+  name: rollouts-demo-stable
+  namespace: rollouts-demo
   labels:
-    app: podinfo
-    service: podinfo
+    app: rollouts-demo
+    service: rollouts-demo
 spec:
   ports:
   - name: http
-    port: 9898
-    targetPort: 9898
+    port: 8080
+    targetPort: 8080
   selector:
-    app: podinfo
+    app: rollouts-demo
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: podinfo-canary
-  namespace: podinfo
+  name: rollouts-demo-canary
+  namespace: rollouts-demo
   labels:
-    app: podinfo
-    service: podinfo
+    app: rollouts-demo
+    service: rollouts-demo
 spec:
   ports:
   - name: http
-    port: 9898
-    targetPort: 9898
+    port: 8080
+    targetPort: 8080
   selector:
-    app: podinfo
+    app: rollouts-demo
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
   name: istio-success-rate
-  namespace: podinfo
+  namespace: rollouts-demo
 spec:
   args:
   - name: service
@@ -68,30 +68,30 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: podinfo
-  namespace: podinfo
+  name: rollouts-demo
+  namespace: rollouts-demo
 spec:
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: podinfo
+      app: rollouts-demo
   strategy:
     canary:
-      canaryService: podinfo-canary
-      stableService: podinfo-stable
+      canaryService: rollouts-demo-canary
+      stableService: rollouts-demo-stable
       trafficRouting:
         plugins:
-          solo-io/glooplatformAPI:
+          solo-io/glooplatform:
             routeTableSelector:
               labels:
-                app: podinfo
-              namespace: podinfo
-              # name: podinfo-rt-443
-              # namespace: podinfo
+                app: rollouts-demo
+              namespace: rollouts-demo
+              # name: rollouts-demo-rt-443
+              # namespace: rollouts-demo
             routeSelector:
               labels:
-                route: podinfo
-              # name: podinfo
+                route: rollouts-demo
+              # name: rollouts-demo
       steps:
       - setWeight: 10
       - pause: {duration: 15}
@@ -108,7 +108,7 @@ spec:
       analysis:
         args:
         - name: service
-          value: podinfo-canary
+          value: rollouts-demo-canary
         - name: namespace
           valueFrom:
             fieldRef:
@@ -120,72 +120,35 @@ spec:
   template:
     metadata:
       labels:
-        app: podinfo
+        app: rollouts-demo
         version: stable
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:
       containers:
-      - name: podinfod
-        image: ghcr.io/stefanprodan/podinfo:6.0.0
+      - name: rollouts-demo
+        image: argoproj/rollouts-demo:blue
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
-          containerPort: 9898
+          containerPort: 8080
           protocol: TCP
-        - name: http-metrics
-          containerPort: 9797
-          protocol: TCP
-        - name: grpc
-          containerPort: 9999
-          protocol: TCP
-        command:
-        - ./podinfo
-        - --port=9898
-        - --port-metrics=9797
-        - --grpc-port=9999
-        - --grpc-service-name=podinfo
-        - --level=info
-        - --random-delay=false
-        - --random-error=false
-        env:
-        - name: PODINFO_UI_COLOR
-          value: "#34577c"
-        livenessProbe:
-          exec:
-            command:
-            - podcli
-            - check
-            - http
-            - localhost:9898/healthz
-          initialDelaySeconds: 5
-          timeoutSeconds: 5
-        readinessProbe:
-          exec:
-            command:
-            - podcli
-            - check
-            - http
-            - localhost:9898/readyz
-          initialDelaySeconds: 5
-          timeoutSeconds: 5
         resources:
-          limits:
-            cpu: 2000m
-            memory: 512Mi
           requests:
-            cpu: 100m
-            memory: 64Mi
+            cpu: 5m
+            memory: 32Mi
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: rollout-destrule
-  namespace: podinfo
+  namespace: rollouts-demo
 spec:
-  host: podinfo
+  host: rollouts-demo
   subsets:
   - labels:
-      app: podinfo
+      app: rollouts-demo
     name: version-stable
   - labels:
-      app: podinfo
+      app: rollouts-demo
     name: version-canary

@@ -81,7 +81,7 @@ spec:
       stableService: helloworld-stable
       trafficRouting:
         plugins:
-          solo-io/glooplatformAPI:
+          solo-io/glooplatform:
             routeTableSelector:
               labels:
                 app: helloworld

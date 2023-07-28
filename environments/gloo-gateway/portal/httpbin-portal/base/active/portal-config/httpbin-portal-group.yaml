@@ -10,6 +10,9 @@ spec:
     - claims:
         - key: groups
           value: throwaway-admin
+    - claims:
+        - key: groups
+          value: throwaway-dev
   accessLevel:
     apis:
     - labels:
