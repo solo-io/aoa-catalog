@@ -79,8 +79,9 @@ spec:
                     secretKey: "xyz987"
         rateLimiter:
             enabled: true
-            image:
-              registry: gcr.io/gloo-mesh
+            rateLimiter:
+                image:
+                    registry: gcr.io/gloo-mesh
         glooPortalServer:
           enabled: true
           apiKeyStorage:
