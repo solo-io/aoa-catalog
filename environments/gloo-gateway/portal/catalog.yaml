@@ -65,20 +65,6 @@ waves:
       -  $env_path/backstage-config/init.sh
       post_deploy:
       -  $env_path/backstage-config/test.sh
-  - name: bookinfo-app
-    location: $env_path/bookinfo-app/base/active
-    scripts:
-      pre_deploy:
-        -  $env_path/bookinfo-app/init.sh
-      post_deploy:
-        -  $env_path/bookinfo-app/test.sh
-  - name: bookinfo-config
-    location: $env_path/bookinfo-config/ui-smoke-test/active
-    scripts:
-      pre_deploy:
-        -  $env_path/bookinfo-config/init.sh
-      post_deploy:
-        -  $env_path/bookinfo-config/test.sh
   - name: homer-app
     location: $env_path/homer-app/base/active
     scripts:
