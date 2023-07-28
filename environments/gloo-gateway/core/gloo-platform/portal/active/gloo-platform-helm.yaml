@@ -68,7 +68,6 @@ spec:
                 image:
                   registry: gcr.io/gloo-mesh
                   repository: ext-auth-service
-                  tag: 2.3.10
                 apiKeyStorage:
                     # Use the local gloo-mesh-addons Redis for backing storage
                     name: redis
@@ -83,7 +82,6 @@ spec:
             enabled: true
             image:
               registry: gcr.io/gloo-mesh
-              tag: 2.3.10
         glooPortalServer:
           enabled: true
           apiKeyStorage:
@@ -95,7 +93,6 @@ spec:
           image:
             registry: gcr.io/gloo-mesh
             repository: gloo-mesh-portal-server
-            tag: 2.3.10
         legacyMetricsPipeline:
             enabled: false
         licensing:

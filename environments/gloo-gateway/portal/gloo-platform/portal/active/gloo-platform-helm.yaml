@@ -91,7 +91,6 @@ spec:
               configPath: /etc/redis/config.yaml
           image:
             registry: gcr.io/gloo-mesh
-            tag: 2.3.10
         legacyMetricsPipeline:
             enabled: false
         licensing:
