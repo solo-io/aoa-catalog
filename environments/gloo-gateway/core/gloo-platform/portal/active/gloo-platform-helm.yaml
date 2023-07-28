@@ -65,6 +65,9 @@ spec:
         extAuthService:
             enabled: true
             extAuth:
+                image:
+                  registry: gcr.io/gloo-mesh
+                  repository: ext-auth-service
                 apiKeyStorage:
                     # Use the local gloo-mesh-addons Redis for backing storage
                     name: redis
@@ -77,6 +80,8 @@ spec:
                     secretKey: "xyz987"
         rateLimiter:
             enabled: true
+            image:
+              registry: gcr.io/gloo-mesh
         glooPortalServer:
           enabled: true
           apiKeyStorage:
@@ -85,6 +90,9 @@ spec:
                   host: redis.gloo-mesh-addons:6379
               secretKey: xyz987
               configPath: /etc/redis/config.yaml
+          image:
+            registry: gcr.io/gloo-mesh
+            repository: gloo-mesh-portal-server
         legacyMetricsPipeline:
             enabled: false
         licensing:
@@ -94,7 +102,7 @@ spec:
         redis:
             deployment:
                 enabled: true
-        telemetryGateway:
+        telemetryGaateway:
             enabled: true
             #image:
             #  pullPolicy: IfNotPresent
@@ -192,7 +200,7 @@ spec:
                                     - __meta_kubernetes_pod_phase
 
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.3.7
+    targetRevision: 2.3.10
   syncPolicy:
     automated:
       prune: true

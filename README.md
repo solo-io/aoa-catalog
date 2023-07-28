@@ -15,6 +15,7 @@ For environments that require an Enterprise product license, export your license
 ```
 export GLOO_LICENSE_KEY="<INSERT_LICENSE_KEY_HERE>"
 export GLOO_PLATFORM_LICENSE_KEY="<INSERT_LICENSE_KEY_HERE>"
+export LICENSE_KEY="<INSERT_LICENSE_KEY_HERE>"
 ```
 
 #### Renaming Cluster Context
@@ -34,8 +35,8 @@ kubectl config rename-context k3d-your_mgmt_cluster_name mgmt
 Syntax: installer [-f|-i|-h]
 
 commands:
-deploy     deploys an environment with the speficied path
-destroy    deploys an environment with the speficied path
+deploy     deploys an environment with the specified path
+destroy    destroys an environment with the specified path
 
 options:
 -f     path to environment files

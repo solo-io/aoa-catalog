@@ -64,7 +64,7 @@ waves:
       pre_deploy: 
       -  $env_path/backstage-config/init.sh
       post_deploy:
-      -  $env_path/backstage-config/test.sh 
+      -  $env_path/backstage-config/test.sh
   - name: homer-app
     location: $env_path/homer-app/base/active
     scripts:

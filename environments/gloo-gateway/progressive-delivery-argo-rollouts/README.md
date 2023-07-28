@@ -10,12 +10,12 @@ The `gloo-gateway/progressive-delivery-argo-rollouts` environment deploys the co
 
 ## Environment descriptions
 - base:
-    - gloo mesh 2.3.7
-    - istio 1.18.0-solo (Helm)
+    - gloo mesh 2.3.10
+    - istio 1.18.1-solo (Helm)
     - revision: 1-18
 - ilm:
-    - gloo mesh 2.3.7
-    - istio 1.18.0-solo (ILM)
+    - gloo mesh 2.3.10
+    - istio 1.18.1-solo (ILM)
     - revision: 1-18
 
 ## Application description
