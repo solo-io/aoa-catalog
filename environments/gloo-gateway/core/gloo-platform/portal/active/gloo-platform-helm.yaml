@@ -99,7 +99,7 @@ spec:
         redis:
             deployment:
                 enabled: true
-        telemetryGaateway:
+        telemetryGateway:
             enabled: true
             #image:
             #  pullPolicy: IfNotPresent
@@ -126,6 +126,10 @@ spec:
                           path: relay.yaml
                     name: gloo-telemetry-collector-config
                   name: telemetry-configmap
+                - hostPath:
+                    path: /var/run/cilium
+                    type: DirectoryOrCreate
+                  name: cilium-run
         telemetryGatewayCustomization:
             disableCertGeneration: true
             extraPipelines:
