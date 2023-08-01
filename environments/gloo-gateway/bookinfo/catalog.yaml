@@ -22,20 +22,13 @@ waves:
       -  $env_path/../core/gloo-platform/init.sh
       post_deploy:
       -  $env_path/../core/gloo-platform/test.sh
-  - name: istio-operator
-    location: $env_path/../../istio/ambient/istio-operator/base/active
-    scripts:
-      pre_deploy:
-        -  $env_path/../../istio/ambient/istio-operator/init.sh
-      post_deploy:
-        -  $env_path/../../istio/ambient/istio-operator/test.sh
   - name: istio
-    location: $env_path/../../istio/ambient/istio/ambient/active
+    location: $env_path/../core/istio/helm/base/active
     scripts:
       pre_deploy: 
-      -  $env_path/../../istio/ambient/istio/init.sh
+      -  $env_path/../core/istio/helm/init.sh
       post_deploy:
-      -  $env_path/../../istio/ambient/istio/test.sh
+      -  $env_path/../core/istio/helm/test.sh
   - name: gloo-platform-config
     location: $env_path/../core/gloo-platform-config/wildcard/active
     scripts:
