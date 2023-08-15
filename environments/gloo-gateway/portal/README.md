@@ -10,7 +10,7 @@ The `gloo-gateway/portal` environment deploys the core components of a single cl
 
 ## Environment Description
 - gloo mesh 2.4.0-rc3
-- istio 1.18.2-solo (Helm)
+- istio 1.18.1-solo (Helm)
 - revision: 1-18
 
 ## Application description

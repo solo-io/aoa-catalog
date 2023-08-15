@@ -13,13 +13,13 @@ spec:
   source:
     repoURL: https://github.com/istio/istio.git
     path: manifests/charts/istio-operator
-    targetRevision: 1.18.2
+    targetRevision: 1.18.1
     helm:
       parameters:
         - name: "hub"
           value: "docker.io/istio"
         - name: "tag"
-          value: "1.18.2"
+          value: "1.18.1"
         - name: "operatorNamespace"
           value: "istio-operator"
         - name: "istioNamespace"

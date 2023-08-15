@@ -15,7 +15,7 @@ spec:
   source:
     chart: gateway
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.18.2
+    targetRevision: 1.18.1
     helm:
       values: |
         # Name allows overriding the release name. Generally this should not be set

@@ -21,7 +21,7 @@ spec:
         revision: 1-18
         global:
           hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
-          tag: 1.18.2-solo
+          tag: 1.18.1-solo
         meshConfig:
           accessLogFile: /dev/stdout
           enableAutoMtls: true
