@@ -10,12 +10,12 @@ The `gloo-gateway/backstage-bookinfo-httpbin` environment deploys the core compo
 
 ## Environment descriptions
 - base:
-    - gloo mesh 2.5.0-beta0-2023-07-30-main-60b897cd7
-    - istio 1.18.1-solo (Helm)
+    - gloo mesh 2.4.0-rc3
+    - istio 1.18.2-solo (Helm)
     - revision: 1-18
 - ilm:
-    - gloo mesh 2.5.0-beta0-2023-07-30-main-60b897cd7
-    - istio 1.18.1-solo (ILM)
+    - gloo mesh 2.4.0-rc3
+    - istio 1.18.2-solo (ILM)
     - revision: 1-18
 
 ## Application description

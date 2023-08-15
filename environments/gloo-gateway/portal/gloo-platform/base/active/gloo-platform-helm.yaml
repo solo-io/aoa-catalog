@@ -195,8 +195,8 @@ spec:
                                   source_labels:
                                     - __meta_kubernetes_pod_phase
 
-    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.5.0-beta0-2023-07-30-main-60b897cd7
+    repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
+    targetRevision: 2.4.0-rc3
   syncPolicy:
     automated:
       prune: true

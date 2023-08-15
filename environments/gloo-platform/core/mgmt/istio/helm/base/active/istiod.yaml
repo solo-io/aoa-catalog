@@ -25,7 +25,7 @@ spec:
             clusterName: mgmt
           network: mgmt
           hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
-          tag: 1.18.1-solo
+          tag: 1.18.2-solo
         meshConfig:
           trustDomain: mgmt
           accessLogFile: /dev/stdout

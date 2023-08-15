@@ -25,7 +25,7 @@ spec:
             clusterName: cluster2
           network: cluster2
           hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
-          tag: 1.18.1-solo
+          tag: 1.18.2-solo
         meshConfig:
           trustDomain: cluster2
           accessLogFile: /dev/stdout

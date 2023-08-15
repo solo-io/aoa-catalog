@@ -67,4 +67,7 @@ spec:
   - cluster: mgmt
     name: mgmt-north-south-gw-443
     namespace: istio-gateways
+  - cluster: mgmt
+    name: mgmt-north-south-gw-80
+    namespace: istio-gateways
   workloadSelectors: []
