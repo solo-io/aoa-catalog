@@ -116,8 +116,8 @@ spec:
               proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
             image:
               pullPolicy: IfNotPresent
-              repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.5.0-beta0-2023-08-14-main-6b61ce1c6
+#              repository: gcr.io/gloo-mesh/gloo-otel-collector
+#              tag: 2.5.0-beta0-2023-08-14-main-6b61ce1c6
             config:
                 exporters:
                     otlp:
