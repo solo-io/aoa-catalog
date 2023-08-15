@@ -79,7 +79,6 @@ spec:
             enabled: true
             image:
               pullPolicy: IfNotPresent
-              repository: gcr.io/gloo-mesh/gloo-otel-collector
         telemetryGatewayCustomization:
             disableCertGeneration: true
             extraExporters:
