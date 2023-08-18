@@ -32,8 +32,6 @@ spec:
                     namespace: gloo-mesh
         glooMgmtServer:
             enabled: true
-            ports:
-                healthcheck: 8091
             relay:
                 disableCa: true
                 disableCaCertGeneration: true
