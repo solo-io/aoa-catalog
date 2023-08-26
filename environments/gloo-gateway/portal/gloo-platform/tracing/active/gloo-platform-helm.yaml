@@ -78,7 +78,7 @@ spec:
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.2.6
+            #  tag: 2.3.15
         telemetryGatewayCustomization:
             disableCertGeneration: true
             extraExporters:
@@ -177,7 +177,7 @@ spec:
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.2.6
+            #  tag: 2.3.15
             config:
                 exporters:
                     otlp:
@@ -235,7 +235,7 @@ spec:
                       endpoint: 0.0.0.0:4318
 
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.3.10
+    targetRevision: 2.3.15
   syncPolicy:
     automated:
       prune: true
