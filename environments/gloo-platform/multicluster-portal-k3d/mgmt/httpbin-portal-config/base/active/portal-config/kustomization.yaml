@@ -1,0 +1,17 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+#- auth-policy.yaml
+- dev-portal-noplans.yaml
+#- dev-portal-plans.yaml
+- portal-cors.yaml
+#- httpbin-portal-group.yaml
+#- portal-oidc-auth.yaml
+- portal-rt.yaml
+#- rl-config.yaml
+#- rl-policy.yaml
+#- rl-server.yaml
+- cluster1-extauthserver.yaml

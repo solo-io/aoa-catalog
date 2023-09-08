@@ -121,7 +121,13 @@ spec:
     - uri:
         prefix: /oidc-callback
     - uri:
-        exact: /
+        prefix: /callback
+    - uri:
+        prefix: /portals
+    - uri:
+        prefix: /apis
+    - uri:
+        prefix: /
     forwardTo:
       destinations:
       - ref:

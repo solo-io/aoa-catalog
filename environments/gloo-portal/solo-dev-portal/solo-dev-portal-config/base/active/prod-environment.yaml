@@ -21,7 +21,7 @@ spec:
     description: This environment is meant to show production APIs.
     displayName: Production
   domains:
-  - api-local.glootest.com
+  - api.glootest.com
   gatewayConfig:
     disableRoutes: false
     options:
@@ -40,11 +40,11 @@ spec:
         - PUT
         - DELETE
         allowOrigin:
-        - https://portal-local.glootest.com
-        - https://api-local.glootest.com
+        - https://portal.glootest.com
+        - https://api.glootest.com
         #allowOriginRegex:
-        #- 'https://[a-zA-Z0-9]*-local.glootest.com'
-        #- 'http://[a-zA-Z0-9]*-local.glootest.com'
+        #- 'https://[a-zA-Z0-9]*.glootest.com'
+        #- 'http://[a-zA-Z0-9]*.glootest.com'
     tls:
       config:
         secretRef:

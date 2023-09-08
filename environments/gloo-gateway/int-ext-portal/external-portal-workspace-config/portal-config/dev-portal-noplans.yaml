@@ -1,0 +1,27 @@
+apiVersion: apimanagement.gloo.solo.io/v2
+kind: Portal
+metadata:
+  name: external-portal
+  namespace: external-portal-config
+spec:
+  visibility:
+    public: false
+    privateAPILabels:
+      portal-visibility: private
+  domains:
+    - external-portal.glootest.com
+  portalBackendSelectors:
+    - selector:
+        labels:
+          app: gloo-mesh-portal-server
+  #usagePlans:
+  #   - name: bronze
+  #     displayName: "Bronze Plan"
+  #     description: "A basic usage plan"
+  #   - name: silver
+  #     description: "A better usage plan"
+  #   - name: gold
+  #     description: "The best usage plan!"
+  apis:
+    - labels:
+        portal: external

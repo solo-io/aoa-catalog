@@ -149,7 +149,7 @@ install_infra()
    then
       cd $env/.infra
       for i in $(ls | sort -n); do 
-            create-k3d-cluster $(cat $i | yq .name) ${i}
+            create-k3d-cluster $(cat $i | yq .metadata.name) ${i}
       done      
       fi 
 }

@@ -10,19 +10,19 @@ The `gloo-portal/solo-dev-portal` environment deploys a Gloo Edge, Gloo Portal, 
 
 ## Environment description
 - base:
-    - Gloo Edge Enterprise 1.12.14
-    - Gloo Portal 1.2.9
+    - Gloo Edge Enterprise 1.13.23
+    - Gloo Portal 1.3.2
 
 ## Application description
 
-The RouteTables for applications exposed in this demo are defining non-wildcard hosts which follow the pattern `<app>-local.glootest.com`. You can map these hostnames to your gateway IP address in your DNS service of choice (i.e. Route53, Cloudflare), or you can follow the methods below to modify your `/etc/hosts` locally depending on your cluster LoadBalancer configuration.
+The RouteTables for applications exposed in this demo are defining non-wildcard hosts which follow the pattern `<app>.glootest.com`. You can map these hostnames to your gateway IP address in your DNS service of choice (i.e. Route53, Cloudflare), or you can follow the methods below to modify your `/etc/hosts` locally depending on your cluster LoadBalancer configuration.
 
 Applications Exposed using this demo:
-- ArgoCD at `https://argocd-local.glootest.com/argo`
+- ArgoCD at `https://argocd.glootest.com/argo`
     - argocd credentials:
     - user: admin
     - password: solo.io
-- Solo Dev Portal at `https://portal-local.glootest.com/get`
+- Solo Dev Portal at `https://portal.glootest.com/get`
 
 To access applications, follow the methods below:
 
@@ -38,7 +38,7 @@ echo ${GATEWAY_IP}
 Modify /etc/hosts on your local machine (this will require sudo privileges), or configure DNS to point to your Gateway IP
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-${GATEWAY_IP} argocd-local.glootest.com api-local.glootest.com apidev-local.glootest.com portal-local.glootest.com
+${GATEWAY_IP} argocd.glootest.com api.glootest.com apidev.glootest.com portal.glootest.com
 EOF
 ```
 
@@ -46,7 +46,7 @@ EOF
 modify /etc/hosts on your local machine (this will require sudo privileges)
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com api-local.glootest.com apidev-local.glootest.com portal-local.glootest.com
+127.0.0.1 argocd.glootest.com api.glootest.com apidev.glootest.com portal.glootest.com
 EOF
 ```
 
@@ -71,6 +71,6 @@ access the gateway at https://localhost:8443
 Note: For routes that are configured with a specific host, pass in the Host header using curl `-H "Host: <host>` or add the following entry into your /etc/hosts when using this method
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com api-local.glootest.com apidev-local.glootest.com portal-local.glootest.com
+127.0.0.1 argocd.glootest.com api.glootest.com apidev.glootest.com portal.glootest.com
 EOF
 ```

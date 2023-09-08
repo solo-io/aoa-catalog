@@ -65,9 +65,8 @@ spec:
           global:
             meshID: mesh1
             network: "network1"
-        global:
-          multiCluster:
-            clusterName: mgmt
+            multiCluster:
+              clusterName: mgmt
         # Traffic management
         components:
           pilot:

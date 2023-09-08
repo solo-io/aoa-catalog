@@ -7,7 +7,7 @@ spec:
   configs:
   - oauth2:
       oidcAuthorizationCode:
-        appUrl: https://httpbin-local.glootest.com/productpage
+        appUrl: https://httpbin.glootest.com/productpage
         callbackPath: /callback
         clientId: 0oa6qvzybcVCK6PcS5d7
         clientSecretRef:

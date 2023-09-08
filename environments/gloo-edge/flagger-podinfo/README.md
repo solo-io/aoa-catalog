@@ -10,18 +10,18 @@ The `gloo-edge/flagger-podinfo` environment deploys Gloo Edge along with flagger
 
 ## Overlay description
 - base:
-    - Gloo Edge Enterprise 1.12.14
+    - Gloo Edge Enterprise 1.13.23
 
 ## Application description
 
-The RouteTables for applications exposed in this demo are defining non-wildcard hosts which follow the pattern `<app>-local.glootest.com`. You can map these hostnames to your gateway IP address in your DNS service of choice (i.e. Route53, Cloudflare), or you can follow the methods below to modify your `/etc/hosts` locally depending on your cluster LoadBalancer configuration.
+The RouteTables for applications exposed in this demo are defining non-wildcard hosts which follow the pattern `<app>.glootest.com`. You can map these hostnames to your gateway IP address in your DNS service of choice (i.e. Route53, Cloudflare), or you can follow the methods below to modify your `/etc/hosts` locally depending on your cluster LoadBalancer configuration.
 
 Applications Exposed using this demo:
-- ArgoCD at `https://argocd-local.glootest.com/argo`
+- ArgoCD at `https://argocd.glootest.com/argo`
     - argocd credentials:
     - user: admin
     - password: solo.io
-- podinfo at `https://podinfo-local.glootest.com/productpage`
+- podinfo at `https://podinfo.glootest.com/productpage`
 
 To access applications, follow the methods below:
 
@@ -37,7 +37,7 @@ echo ${GATEWAY_IP}
 Modify /etc/hosts on your local machine (this will require sudo privileges), or configure DNS to point to your Gateway IP
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-${GATEWAY_IP} argocd-local.glootest.com podinfo-local.glootest.com
+${GATEWAY_IP} argocd.glootest.com podinfo.glootest.com
 EOF
 ```
 
@@ -45,7 +45,7 @@ EOF
 modify /etc/hosts on your local machine (this will require sudo privileges)
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com podinfo-local.glootest.com
+127.0.0.1 argocd.glootest.com podinfo.glootest.com
 EOF
 ```
 
@@ -70,6 +70,6 @@ access the gateway at https://localhost:8443
 Note: For routes that are configured with a specific host, pass in the Host header using curl `-H "Host: <host>` or add the following entry into your /etc/hosts when using this method
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd-local.glootest.com podinfo-local.glootest.com
+127.0.0.1 argocd.glootest.com podinfo.glootest.com
 EOF
 ```

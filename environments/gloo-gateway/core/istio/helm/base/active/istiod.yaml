@@ -15,7 +15,7 @@ spec:
   source:
     chart: istiod
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.18.0
+    targetRevision: 1.18.1
     helm:
       values: |
         revision: 1-18

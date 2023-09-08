@@ -26,7 +26,7 @@ spec:
     displayName: Development
   domains:
   # arbitrary portal generated vs host
-  - devapi-local.glootest.com
+  - devapi.glootest.com
   #- httpbin-cluster1.kapoozi.com
   gatewayConfig:
     disableRoutes: false
@@ -46,13 +46,13 @@ spec:
         - PUT
         - DELETE
         allowOrigin:
-        - https://portal-local.glootest.com
+        - https://portal.glootest.com
         # arbitrary portal generated vs host
-        - https://devapi-local.glootest.com
+        - https://devapi.glootest.com
         #- https://httpbin-cluster1.kapoozi.com
         #allowOriginRegex:
-        #- 'https://[a-zA-Z0-9]*-local.glootest.com'
-        #- 'http://[a-zA-Z0-9]*-local.glootest.com'
+        #- 'https://[a-zA-Z0-9]*.glootest.com'
+        #- 'http://[a-zA-Z0-9]*.glootest.com'
     tls:
       config:
         secretRef:

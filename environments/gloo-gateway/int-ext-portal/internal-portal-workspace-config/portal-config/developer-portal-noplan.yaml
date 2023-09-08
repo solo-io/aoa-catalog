@@ -1,0 +1,19 @@
+apiVersion: apimanagement.gloo.solo.io/v2
+kind: Portal
+metadata:
+  name: developer-portal
+  namespace: portal
+spec:
+  visibility:
+    public: true
+    privateAPILabels:
+      portal-visibility: private
+  domains:
+    - solo-dev-portal.glootest.com
+  portalBackendSelectors:
+    - selector:
+        labels:
+          app: gloo-mesh-portal-server
+  apis:
+    - labels:
+        portal: internal

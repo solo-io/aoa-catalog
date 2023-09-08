@@ -5,7 +5,7 @@ metadata:
   namespace: web-team
 spec:
   hosts:
-    - 'shop-local.glootest.com'
+    - 'shop.glootest.com'
   virtualGateways:
   - name: cluster1-north-south-gw-443
     namespace: istio-gateways

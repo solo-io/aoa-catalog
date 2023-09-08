@@ -30,6 +30,11 @@ spec:
                 rootTlsSecret:
                     name: relay-root-ca
                     namespace: gloo-mesh
+                # required to set to null in 2.4.x if providing server and client tls certificates
+                tokenSecret:
+                  key: null
+                  name: null
+                  namespace: null
         glooMgmtServer:
             enabled: true
             relay:
@@ -38,6 +43,11 @@ spec:
                 disableTokenGeneration: true
                 tlsSecret:
                     name: gloo-server-tls-cert
+                # required to set to null in 2.4.x if providing server and client tls certificates
+                tokenSecret:
+                  key: null
+                  name: null
+                  namespace: null
             serviceType: LoadBalancer
         glooUi:
             auth:
@@ -78,11 +88,11 @@ spec:
         glooPortalServer:
           enabled: false
           apiKeyStorage:
-              type: redis
-              config:
-                  host: redis.gloo-mesh-addons:6379
-              secretKey: xyz987
-              configPath: /etc/redis/config.yaml
+            secretKey: vzB8AdlHrvrAF
+            type: redis
+            redis:
+              address: redis.gloo-mesh-addons:6379
+              enabled: true
         legacyMetricsPipeline:
             enabled: false
         licensing:
@@ -97,13 +107,13 @@ spec:
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.3.15
+            #  tag: 2.4.0
         telemetryCollector:
             enabled: true
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.3.15
+            #  tag: 2.4.0
             config:
                 exporters:
                     otlp:
@@ -119,6 +129,10 @@ spec:
                           path: relay.yaml
                     name: gloo-telemetry-collector-config
                   name: telemetry-configmap
+                - hostPath:
+                    path: /var/run/cilium
+                    type: DirectoryOrCreate
+                  name: cilium-run
         telemetryGatewayCustomization:
             disableCertGeneration: true
             extraPipelines:
@@ -190,7 +204,7 @@ spec:
                                     - __meta_kubernetes_pod_phase
 
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.3.15
+    targetRevision: 2.4.0
   syncPolicy:
     automated:
       prune: true

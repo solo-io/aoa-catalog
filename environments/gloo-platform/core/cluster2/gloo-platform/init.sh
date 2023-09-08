@@ -7,7 +7,7 @@ echo "deploy and register gloo-mesh agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.3.15):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.4.0):"
     read gloo_mesh_version
 fi
 
@@ -68,9 +68,14 @@ spec:
                 clientTlsSecret:
                     name: gloo-agent-tls-cert
                     namespace: gloo-mesh
+                # required to set to null in 2.4.x if providing server and client tls certificates
+                tokenSecret:
+                  key: null
+                  name: null
+                  namespace: null
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.3.15
+    targetRevision: 2.4.0
   syncPolicy:
     automated:
       prune: true
@@ -117,7 +122,7 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.3.15
+              tag: 2.4.0
             config:
                 exporters:
                     otlp:
@@ -133,6 +138,10 @@ spec:
                           path: relay.yaml
                     name: gloo-telemetry-collector-config
                   name: telemetry-configmap
+                - hostPath:
+                      path: /var/run/cilium
+                      type: DirectoryOrCreate
+                  name: cilium-run
         telemetryCollectorCustomization:
             extraPipelines:
                 logs/gloo-mesh:
@@ -174,7 +183,7 @@ spec:
                       endpoint: 0.0.0.0:4318
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.3.15
+    targetRevision: 2.4.0
   syncPolicy:
     automated:
       prune: true

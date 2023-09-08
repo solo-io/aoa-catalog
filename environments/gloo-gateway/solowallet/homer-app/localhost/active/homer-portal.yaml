@@ -24,7 +24,7 @@ spec:
         #
 
         controller:
-          replicas: 2
+          replicas: 1
         
         image:
           # -- image repository

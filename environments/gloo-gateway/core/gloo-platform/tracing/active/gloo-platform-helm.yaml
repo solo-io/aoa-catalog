@@ -30,6 +30,11 @@ spec:
                 rootTlsSecret:
                     name: relay-root-ca
                     namespace: gloo-mesh
+                # required to set to null in 2.4.x if providing server and client tls certificates
+                tokenSecret:
+                  key: null
+                  name: null
+                  namespace: null
         glooMgmtServer:
             enabled: true
             relay:
@@ -38,6 +43,11 @@ spec:
                 disableTokenGeneration: true
                 tlsSecret:
                     name: gloo-server-tls-cert
+                # required to set to null in 2.4.x if providing server and client tls certificates
+                tokenSecret:
+                  key: null
+                  name: null
+                  namespace: null
             serviceType: LoadBalancer
         glooUi:
             auth:
@@ -78,7 +88,7 @@ spec:
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.3.15
+            #  tag: 2.4.0
         telemetryGatewayCustomization:
             disableCertGeneration: true
             extraExporters:
@@ -177,7 +187,7 @@ spec:
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.3.15
+            #  tag: 2.4.0
             config:
                 exporters:
                     otlp:
@@ -193,6 +203,10 @@ spec:
                           path: relay.yaml
                     name: gloo-telemetry-collector-config
                   name: telemetry-configmap
+                - hostPath:
+                    path: /var/run/cilium
+                    type: DirectoryOrCreate
+                  name: cilium-run
         
         telemetryCollectorCustomization:
             extraPipelines:
@@ -235,7 +249,7 @@ spec:
                       endpoint: 0.0.0.0:4318
 
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.3.15
+    targetRevision: 2.4.0
   syncPolicy:
     automated:
       prune: true
