@@ -1,0 +1,46 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- ../base
+
+transformers:
+- label-transformer.yaml
+- suffix-transformer.yaml
+
+patchesJSON6902:
+- target:
+    group: networking.gloo.solo.io
+    version: v2
+    kind: RouteTable
+    name: httpbin-main
+  patch: |-
+    - op: replace
+      path: /spec/hosts/0
+      value: httpbin.glootest.com
+
+# portal metadata patch      
+- target:
+    group: networking.gloo.solo.io
+    version: v2
+    kind: RouteTable
+    name: v1-httpbin-rt
+  patch: |-
+    - op: replace
+      path: /spec/portalMetadata/apiVersion
+      value: v1-prod
+
+# portal metadata patch      
+- target:
+    group: networking.gloo.solo.io
+    version: v2
+    kind: RouteTable
+    name: v2-httpbin-rt
+  patch: |-
+    - op: replace
+      path: /spec/portalMetadata/apiVersion
+      value: v2-prod
+
+namespace: httpbin-prod

@@ -24,7 +24,7 @@ spec:
         #
 
         controller:
-          replicas: 2
+          replicas: 1
         
         image:
           # -- image repository
@@ -216,14 +216,14 @@ spec:
                         subtitle: "host: podinfo.glootest.com:8443"
                         icon: "fas fa-info-circle"
                         tag: "podinfo"
-                        url: "https://podinfo.glootest.com:8443"
+                        url: "https://localhost:8443"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "podinfo (cluster2)"
                         subtitle: "host: podinfo.glootest.com:8444"
                         icon: "fas fa-info-circle"
                         tag: "podinfo"
-                        url: "https://podinfo.glootest.com:8444"
+                        url: "https://localhost:8444"
                         target: "_blank" # optional html a tag target attribute 
                       
   syncPolicy:

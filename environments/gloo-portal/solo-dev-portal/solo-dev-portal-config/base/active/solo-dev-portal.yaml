@@ -11,7 +11,7 @@ spec:
   description: Consolidated Dev Portal for various API teams
   displayName: Solo Dev Portal
   domains:
-  - portal-local.glootest.com
+  - portal.glootest.com
   favicon:
     fetchUrl: https://raw.githubusercontent.com/solo-io/gitops-library/main/assets/solo-logo-1.jpg
   primaryLogo:
@@ -56,4 +56,4 @@ spec:
       key: client-secret # this is the k8s secret we have created above
     groupClaimKey: groups # we will use the 'group' claim in the 'id_token' to associate the user with a group
     issuer: https://dev-22653158.okta.com/oauth2/default
-  portalUrlPrefix: https://portal-local.glootest.com/
+  portalUrlPrefix: https://portal.glootest.com/

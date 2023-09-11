@@ -27,6 +27,8 @@ spec:
     - uri:
         prefix: /workspace
     - uri:
+        prefix: /tracing
+    - uri:
         exact: /favicon.ico
     - uri:
         exact: /manifest.json

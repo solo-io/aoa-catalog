@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: store-rest-api
+  name: store-rest-api
+spec:
+  selector:
+    matchLabels:
+      app: store-rest-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: store-rest-api
+    spec:
+      containers:
+      - image: kcbabo/store-rest-api:latest
+        name: store-rest-api
+        ports:
+        - containerPort: 5000
+          name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    gloo.solo.io/scrape-openapi-source: /swagger.json
+    gloo.solo.io/scrape-openapi-retry-delay: "15s"
+    gloo.solo.io/scrape-openapi-pull-attempts: "10"
+    gloo.solo.io/scrape-openapi-use-backoff: "true"
+  name: store-rest-api
+  labels:
+    app: store-rest-api
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+  selector:
+    app: store-rest-api

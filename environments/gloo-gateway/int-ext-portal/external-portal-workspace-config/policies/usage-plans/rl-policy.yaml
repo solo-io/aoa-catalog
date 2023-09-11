@@ -1,0 +1,26 @@
+apiVersion: trafficcontrol.policy.gloo.solo.io/v2
+kind: RateLimitPolicy
+metadata:
+  name: portal-rate-limit
+  namespace: external-portal-config
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        portal: external
+  config:
+    ratelimitServerConfig:
+      name: usage-plans
+      namespace: external-portal-config
+      cluster: mgmt
+    ratelimitClientConfig:
+      name: usage-plans
+      namespace: external-portal-config
+      cluster: mgmt
+    serverSettings:
+      name: ratelimit-server
+      namespace: external-portal-config
+      cluster: mgmt
+    phase:
+      postAuthz:
+        priority: 1

@@ -10,7 +10,7 @@ spec:
       namespace: gloo-system
   virtualHost:
     domains:
-    - 'httpbin-local.glootest.com'
+    - 'httpbin.glootest.com'
     options:
       extauth:
         configRef:

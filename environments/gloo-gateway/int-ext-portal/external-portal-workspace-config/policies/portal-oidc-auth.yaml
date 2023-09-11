@@ -1,0 +1,23 @@
+apiVersion: security.policy.gloo.solo.io/v2
+kind: ExtAuthPolicy
+metadata:
+  name: oidc-auth
+  namespace: external-portal-config
+spec:
+  applyToRoutes:
+    - route:
+        labels:
+          auth: oidc
+  config:
+    server:
+      name: mgmt-ext-auth-server
+      namespace: gloo-mesh
+      cluster: mgmt
+    glooAuth:
+      configs:
+        - oauth2:
+            accessTokenValidation:
+              jwt:
+                localJwks:
+                  inlineString: >-
+                    {"keys":[{"kty":"RSA","alg":"RS256","kid":"f2qUU_ItzYPB-odlXAWZv0-7S92vG7jpAa4PWJ02ptw","use":"sig","e":"AQAB","n":"qnsue3OPPm21KKEqcF9cnjmg1H8DlljzuPRj_Si9gTWRSFvHWOmTHRvsx2gQa7l13cuJZJN-3o59-pzj3f3LeA7-awFl-DXNqKoY00uMLpXseZQQPrE5SjTClu4dgGo8Jtl39wnqgjoL1N3yD6OAzW0Le7hLslRHG5Zfu-Z01nLWbEOrM5gFfC9IxlChuMgTcPtEWzA1PcG1_gdRMUW6KV-guqBg1qqBAB-knTu4-gpUvTe1KQHkOlY63zh6ZMuX8jZT2IylHre54jrgPfx2pXwNvKrcsiPtAIvbotcG3MTYnze1mxRnDR1JiqtqRO_ix3lMPmjEi-FKLydlWZ8yMw"},{"kty":"RSA","alg":"RS256","kid":"FTenzhhhj_7Su1X4sGpdZz3wUGdlXsQueN-H-2nymYA","use":"sig","e":"AQAB","n":"uw0Icd_O36YZv7ejHHB9it1xm93PTZw8DCuk-8FAGX00DFl_AcRWMuzQsf6LANNVMeyKB8JynzbsIBF2j6XMNQADDpFaE-bQeRvJIytGU1JZ6dNNHqV5sqRCwck1qJVaxQ-nTW6sTO-ecMJo_21NI2dicl5XIPH2PxofO_u8ymXCKqsSEA97NPJImI998pOQ9hkYvJ2UlWoFaYJbxPj2Gvk1YiPdU_dxixZM0kdo41gWLrjjzwVGml_ThpYAA-Oas7GQbPWi8eOvgJDZVX7oSNG3ROkSYGDLGo7vqBmyFSaBGc6O-yCq7A-OV4ZfJ9HRsjnzDPVL4CdMHps-pkjbLQ"}]}

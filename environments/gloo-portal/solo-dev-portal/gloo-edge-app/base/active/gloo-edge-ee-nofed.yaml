@@ -33,7 +33,7 @@ spec:
                 stats:
                   enabled: true
     repoURL: http://storage.googleapis.com/gloo-ee-helm
-    targetRevision: 1.12.14
+    targetRevision: 1.13.23
   syncPolicy:
     automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).

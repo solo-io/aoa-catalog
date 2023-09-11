@@ -1,7 +1,8 @@
-apiVersion: k3d.io/v1alpha3
+apiVersion: k3d.io/v1alpha5
 kind: Simple
-name: cluster2
-image: rancher/k3s:v1.23.5-k3s1
+metadata:
+  name: cluster2
+image: rancher/k3s:v1.25.12-k3s1
 network: k3d-cluster-network
 ports:
   - port: 8081:80 # same as `--port '8081:80@loadbalancer'`

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pets-rest-api
+  name: pets-rest-api
+spec:
+  selector:
+    matchLabels:
+      app: pets-rest-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pets-rest-api
+    spec:
+      containers:
+      - image: kcbabo/pets-rest-api:latest
+        name: pets-rest-api
+        ports:
+        - containerPort: 5000
+          name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    gloo.solo.io/scrape-openapi-source: /swagger.json
+    gloo.solo.io/scrape-openapi-retry-delay: "15s"
+    gloo.solo.io/scrape-openapi-pull-attempts: "10"
+    gloo.solo.io/scrape-openapi-use-backoff: "true"
+  name: pets-rest-api
+  labels:
+    app: pets-rest-api
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+  selector:
+    app: pets-rest-api

@@ -1,0 +1,8 @@
+apiVersion: builtin
+kind: PrefixSuffixTransformer
+metadata:
+  name: suffix-transformer
+suffix: "-int"
+fieldSpecs:
+- path: metadata/name
+- path: spec/http[]/delegate/routeTables[]/name
