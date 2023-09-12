@@ -4,7 +4,7 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-#- dev-portal-noplans.yaml
-- dev-portal-plans.yaml
-- httpbin-portal-group.yaml
+#- external-dev-portal-noplans.yaml
+- external-dev-portal-plans.yaml
+- portal-group.yaml
 - portal-routetable.yaml
