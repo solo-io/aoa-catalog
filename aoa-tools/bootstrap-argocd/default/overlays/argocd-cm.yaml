@@ -28,3 +28,10 @@ data:
           end
         end
         return hs
+  resource.exclusions: |
+    - apiGroups:
+      - cilium.io
+      kinds:
+      - CiliumIdentity
+      clusters:
+      - "*"
