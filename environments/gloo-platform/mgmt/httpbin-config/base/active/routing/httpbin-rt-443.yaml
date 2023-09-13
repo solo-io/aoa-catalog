@@ -23,9 +23,25 @@ spec:
       - uri:
           exact: /get
       - uri:
+          exact: /delete
+      - uri:
+          exact: /patch
+      - uri:
+          exact: /post
+      - uri:
+          exact: /put
+      - uri:
           prefix: /anything
       - uri:
           prefix: /status
+      - uri:
+          exact: /headers
+      - uri:
+          exact: /ip
+      - uri:
+          exact: /user-agent
+      - uri:
+          prefix: /image
       - uri:
           prefix: /callback
       forwardTo:
