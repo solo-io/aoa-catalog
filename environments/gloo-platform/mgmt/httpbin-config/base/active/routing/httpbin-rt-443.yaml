@@ -39,7 +39,7 @@ spec:
         ratelimited: "true"
       matchers:
       - uri:
-          prefix: /
+          exact: /
       forwardTo:
         destinations:
         - ref:
