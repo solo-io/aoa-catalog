@@ -19,7 +19,6 @@ spec:
         oauth: httpbin.glooplatform.com
         waf: "true"
         ratelimited: "true"
-        opa: "true"
       matchers:
       - uri:
           exact: /get
@@ -38,7 +37,6 @@ spec:
       labels:
         waf: "true"
         ratelimited: "true"
-        opa: "true"
       matchers:
       - uri:
           prefix: /
