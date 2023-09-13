@@ -11,7 +11,7 @@ spec:
   config:
     server:
       name: mgmt-ext-auth-server
-      namespace: httpbin
+      namespace: gloo-mesh
       cluster: mgmt
     glooAuth:
       configs:
