@@ -209,7 +209,6 @@ cd $env
 git_root="$(git rev-parse --show-toplevel)/"
 export env_path=$(echo $PWD | sed -e "s+$git_root++g")
 
-
 ### If the cluster_context is not specified, simply use the default context.
 if [[ ${cluster_context} == "" ]]
 then
