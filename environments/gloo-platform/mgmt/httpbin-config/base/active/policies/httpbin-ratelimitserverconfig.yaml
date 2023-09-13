@@ -20,8 +20,8 @@ spec:
           requestsPerUnit: 1000
           unit: MINUTE
         value: counter
-      - key: generic_key
-        rateLimit:
-          requestsPerUnit: 15
-          unit: SECOND
-        value: counter
+      #- key: generic_key
+      #  rateLimit:
+      #    requestsPerUnit: 15
+      #    unit: SECOND
+      #  value: counter
