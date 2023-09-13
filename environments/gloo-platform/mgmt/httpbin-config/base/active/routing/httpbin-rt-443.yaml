@@ -42,6 +42,8 @@ spec:
           exact: /
       - uri:
           prefix: /flasgger_static
+      - uri:
+          exact: /spec.json
       forwardTo:
         destinations:
         - ref:
