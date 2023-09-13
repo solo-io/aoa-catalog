@@ -13,7 +13,8 @@ data:
         [header, payload, signature] = io.jwt.decode(input.state.jwt)
         endswith(payload["email"], "@solo.io")
         any({input.http_request.path == "/get",
-        startswith(input.http_request.path, "/anything")
+        startswith(input.http_request.path, "/anything"),
+        startswith(input.http_request.path, "/")
     })
         any({input.http_request.method == "GET",
              input.http_request.method == "POST",
