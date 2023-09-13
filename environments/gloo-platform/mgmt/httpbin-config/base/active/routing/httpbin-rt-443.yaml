@@ -23,13 +23,13 @@ spec:
       - uri:
           exact: /get
       - uri:
-          exact: /delete
+          prefix: /delete
       - uri:
-          exact: /patch
+          prefix: /patch
       - uri:
-          exact: /post
+          prefix: /post
       - uri:
-          exact: /put
+          prefix: /put
       - uri:
           prefix: /anything
       - uri:
