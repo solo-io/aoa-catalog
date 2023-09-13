@@ -296,6 +296,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Argo Rollouts Demo Dashboard"
+                        subtitle: "Use this dashboard to change image tag (i.e. blue > green)"
                         icon: "fab fa-git-alt"
                         tag: "argo-rollouts"
                         keywords: "argo-rollouts"
@@ -303,7 +304,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Argo Rollouts Demo"
-                        subtitle: "Change image in the Rollouts Demo Dashboard"
+                        subtitle: "Visualize Progressive Delivery in action"
                         icon: "fab fa-git-alt"
                         tag: "argo-rollouts"
                         keywords: "argo-rollouts"
