@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: applications
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: glooplatform-east
+        url: https://34.66.53.75
+      - cluster: glooplatform-central
+        url: https://34.139.252.74
+  template:
+    metadata:
+      name: {{cluster}}-bar
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/solo-io/aoa-catalog/'
+        targetRevision: glooplatform.com-2.4.x
+        path: idp-project/workspaces/bar/manifests/
+      destination:
+        server: '{{url}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
