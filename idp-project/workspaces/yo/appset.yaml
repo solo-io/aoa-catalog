@@ -13,13 +13,13 @@ spec:
         url: https://34.139.252.74
   template:
     metadata:
-      name: {{cluster}}-yo
+      name: '{{cluster}}-yo'
     spec:
       project: default
       source:
         repoURL: 'https://github.com/solo-io/aoa-catalog/'
         targetRevision: glooplatform.com-2.4.x
-        path: idp-project/workspaces/yo/manifests/
+        path: idp-project/workspaces/yo/manifests/base
       destination:
         server: '{{url}}'
       syncPolicy:
