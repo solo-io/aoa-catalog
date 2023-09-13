@@ -17,6 +17,6 @@ spec:
     descriptors:
       - key: generic_key
         rateLimit:
-          requestsPerUnit: 1000
+          requestsPerUnit: 40
           unit: MINUTE
         value: counter
