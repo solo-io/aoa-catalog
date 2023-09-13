@@ -29,5 +29,5 @@ spec:
         syncOptions:
           - ApplyOutOfSyncOnly=true
       ignoreDifferences:
-        - group: "backstage.io"
+        - group: "backstage.io/v1alpha1"
           kind: "Component"
