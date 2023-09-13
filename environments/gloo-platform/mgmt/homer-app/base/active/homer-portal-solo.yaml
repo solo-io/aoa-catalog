@@ -269,8 +269,8 @@ spec:
                         tag: "uptime"
                         url: "https://uptime.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-                  
-                  - name: "Web Applications"
+
+                  - name: "Gateway Capabilities - ExtAuth / JWT / OPA / Rate Limiting / WAF / Progressive Delivery"
                     icon: "fas fa-cloud"
                     items:
                       - name: "httpbin"
@@ -294,6 +294,25 @@ spec:
                         keywords: "httpbin-loadgen"
                         url: "https://plow.glooplatform.com/httpbin"
                         target: "_blank" # optional html a tag target attribute
+
+                      - name: "Argo Rollouts Demo Dashboard"
+                        icon: "fab fa-git-alt"
+                        tag: "argo-rollouts"
+                        keywords: "argo-rollouts"
+                        url: "https://rollouts-ui.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "Argo Rollouts Demo"
+                        subtitle: "Change image in the Rollouts Demo Dashboard"
+                        icon: "fab fa-git-alt"
+                        tag: "argo-rollouts"
+                        keywords: "argo-rollouts"
+                        url: "https://rollouts-demo.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute  
+
+                  - name: "Mesh Capabilities - Multicluster / Failover / OutlierDetection / Chaos and Resiliency Testing"
+                    icon: "fas fa-cloud"
+                    items:
 
                       - name: "Online Boutique - East"
                         subtitle: "glooplatform-east"
@@ -323,14 +342,6 @@ spec:
                         tag: "bookinfo - glooplatform-east"
                         url: "https://bookinfo.glooplatform.com/productpage"
                         target: "_blank" # optional html a tag target attribute
-                      
-                      - name: "Super Mario Bros."
-                        subtitle: "Cursor Controls to move + 's' to jump "
-                        icon: "fas fa-gamepad"
-                        tag: "supermario"
-                        keywords: "supermario"
-                        url: "https://supermario.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute
 
                   - name: "Developer Portals"
                     icon: "fab fa-connectdevelop"
@@ -347,23 +358,6 @@ spec:
                         tag: "external-portal"
                         url: "https://external-portal.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-
-                  - name: "Progressive Delivery using Argo Rollouts"
-                    icon: "fab fa-connectdevelop"
-                    items:
-                      - name: "Argo Rollouts Demo Dashboard"
-                        icon: "fab fa-git-alt"
-                        tag: "argo-rollouts"
-                        keywords: "argo-rollouts"
-                        url: "https://rollouts-ui.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Argo Rollouts Demo"
-                        subtitle: "Change image in the Rollouts Demo Dashboard"
-                        icon: "fab fa-git-alt"
-                        tag: "argo-rollouts"
-                        keywords: "argo-rollouts"
-                        url: "https://rollouts-demo.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute                      
                   
                   #- name: "Portal API Endpoints"
                   #  icon: "fas fa-cloud"
