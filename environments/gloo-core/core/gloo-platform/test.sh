@@ -15,6 +15,3 @@ until kubectl --context ${cluster_context} -n gloo-mesh wait --for condition=est
 # wait for gloo mesh mgmt server
 $SCRIPT_DIR/tools/wait-for-rollout.sh deployment gloo-mesh-mgmt-server gloo-mesh 10 ${cluster_context}
 
-# wait for gloo mesh addons
-$SCRIPT_DIR/tools/wait-for-rollout.sh deployment redis gloo-mesh-addons 10 ${cluster_context}
-
