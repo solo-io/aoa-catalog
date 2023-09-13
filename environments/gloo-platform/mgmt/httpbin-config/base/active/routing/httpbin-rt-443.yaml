@@ -40,6 +40,8 @@ spec:
       matchers:
       - uri:
           exact: /
+      - uri:
+          prefix: /flasgger_static
       forwardTo:
         destinations:
         - ref:
