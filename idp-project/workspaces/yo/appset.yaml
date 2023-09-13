@@ -28,6 +28,3 @@ spec:
           selfHeal: true
         syncOptions:
           - ApplyOutOfSyncOnly=true
-      ignoreDifferences:
-        - group: "backstage.io/v1alpha1"
-          kind: "Component"
