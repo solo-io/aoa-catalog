@@ -23,7 +23,7 @@ spec:
       - uri:
           exact: /get
       - uri:
-          prefix: /anything/protected
+          prefix: /anything
       - uri:
           prefix: /status
       - uri:
