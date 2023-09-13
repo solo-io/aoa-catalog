@@ -41,8 +41,8 @@ spec:
               idTokenHeader: Jwt
               #idTokenHeader: x-id-token
               #accessTokenHeader: x-access-token
-      #- opaAuth:
-      #    modules:
-      #    - name: httpbin-opa
-      #      namespace: httpbin
-      #    query: "data.ehs.allow == true"
+      - opaAuth:
+          modules:
+          - name: httpbin-opa
+            namespace: httpbin
+          query: "data.ehs.allow == true"
