@@ -22,6 +22,6 @@ spec:
         value: counter
       - key: generic_key
         rateLimit:
-          requestsPerUnit: 10
+          requestsPerUnit: 11
           unit: SECOND
         value: counter
