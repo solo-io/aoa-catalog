@@ -25,6 +25,8 @@ spec:
       - uri:
           exact: /anything/protected
       - uri:
+          prefix: /status
+      - uri:
           prefix: /callback
       forwardTo:
         destinations:
@@ -44,8 +46,6 @@ spec:
           prefix: /flasgger_static
       - uri:
           exact: /spec.json
-      - uri:
-          prefix: /status
       forwardTo:
         destinations:
         - ref:
