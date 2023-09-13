@@ -10,11 +10,9 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: idp-project/workspaces/
+    path: idp-project/workspaces/team-test/
     repoURL: https://github.com/solo-io/aoa-catalog/
     targetRevision: glooplatform.com-2.4.x
-    directory:
-      recurse: true
   syncPolicy:
     automated:
       prune: true
