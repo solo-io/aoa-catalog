@@ -1,0 +1,16 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: WorkspaceSettings
+metadata:
+  name: "yo"
+  namespace: yo-config
+spec:
+  exportTo:
+  - workspaces:
+    - name: ops-team
+  importFrom:
+  - workspaces:
+    - name: ops-team
+  options:
+    serviceIsolation: 
+      enabled: false
+      trimProxyConfig: false
