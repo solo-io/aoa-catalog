@@ -9,6 +9,9 @@ spec:
       name: in-mesh
       workspace: httpbin
   config:
+    phase:
+      postAuthz:
+        priority: 1
     server:
       name: mgmt-ext-auth-server
       namespace: gloo-mesh
