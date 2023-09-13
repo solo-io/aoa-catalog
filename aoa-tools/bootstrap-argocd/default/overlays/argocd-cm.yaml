@@ -31,9 +31,7 @@ data:
   resource.exclusions: |
     - apiGroups:
       - cilium.io
-      - backstage.io
       kinds:
       - CiliumIdentity
-      - Component
       clusters:
       - "*"
