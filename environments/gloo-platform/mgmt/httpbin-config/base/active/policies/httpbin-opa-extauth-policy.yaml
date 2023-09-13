@@ -7,7 +7,7 @@ spec:
   applyToRoutes:
   - route:
       labels:
-        opa: true
+        opa: "true"
   config:
     server:
       name: mgmt-ext-auth-server
