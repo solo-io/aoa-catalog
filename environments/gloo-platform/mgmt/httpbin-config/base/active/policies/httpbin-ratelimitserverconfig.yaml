@@ -17,11 +17,11 @@ spec:
     descriptors:
       - key: generic_key
         rateLimit:
-          requestsPerUnit: 650
+          requestsPerUnit: 1000
           unit: MINUTE
         value: counter
       - key: generic_key
         rateLimit:
-          requestsPerUnit: 11
+          requestsPerUnit: 15
           unit: SECOND
         value: counter
