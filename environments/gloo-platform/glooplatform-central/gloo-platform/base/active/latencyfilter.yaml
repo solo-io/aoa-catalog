@@ -1,0 +1,32 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: latency 
+  namespace: istio-system
+spec:
+  #workloadSelector:
+  #  labels:
+  #    app: istio-ingressgateway
+  configPatches:
+  - applyTo: HTTP_FILTER
+    match:
+      context: ANY
+      listener:
+        portNumber: 443
+        filterChain:
+          filter:
+            name: "envoy.filters.network.http_connection_manager"
+            subFilter:
+              name: "envoy.filters.http.router"
+    patch:
+      operation: INSERT_FIRST
+      value:
+        name: io.solo.filters.http.proxy_latency
+        typed_config:
+          "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+          type_url: "type.googleapis.com/envoy.config.filter.http.proxylatency.v2.ProxyLatency"
+          value:
+            request: "FIRST_INCOMING_FIRST_OUTGOING"
+            response: "FIRST_INCOMING_FIRST_OUTGOING"
+            measure_request_internally: true
+            emit_dynamic_metadata: true

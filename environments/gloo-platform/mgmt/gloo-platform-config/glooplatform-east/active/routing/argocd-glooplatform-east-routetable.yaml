@@ -1,0 +1,33 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  labels:
+    expose: "true"
+  name: glooplatform-east-argo-rt-443
+  namespace: argocd
+spec:
+  hosts:
+  - 'east-argocd.glooplatform.com'
+  http:
+  - name: argocd
+    labels:
+      waf: "true"
+      auth: east-argocd.glooplatform.com
+    matchers:
+    - uri:
+        prefix: /argo
+    - uri:
+        prefix: /callback
+    forwardTo:
+      destinations:
+      - port:
+          number: 443
+        ref:
+          cluster: glooplatform-east
+          name: argocd-server
+          namespace: argocd
+  virtualGateways:
+  - cluster: mgmt
+    name: north-south-gw
+    namespace: istio-gateways
+  workloadSelectors: []

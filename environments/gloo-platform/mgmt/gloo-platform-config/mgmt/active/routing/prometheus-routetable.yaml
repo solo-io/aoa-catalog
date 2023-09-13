@@ -1,0 +1,36 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  labels:
+    expose: "true"
+  name: prometheus-ui-443
+  namespace: gloo-mesh
+spec:
+  hosts:
+  - 'mgmt-prometheus.glooplatform.com'
+  http:
+  - forwardTo:
+      destinations:
+      - port:
+          number: 80
+        ref:
+          cluster: mgmt
+          name: prometheus-server
+          namespace: gloo-mesh
+    labels:
+      waf: "true"
+      auth: mgmt-prometheus.glooplatform.com
+    name: prometheus-ui
+    matchers:
+      - uri:
+          prefix: /
+        #headers:
+        #- name: user
+        #  value: preferred
+      - uri:
+          prefix: /callback
+  virtualGateways:
+  - cluster: mgmt
+    name: mgmt-north-south-gw-443
+    namespace: istio-gateways
+  workloadSelectors: []

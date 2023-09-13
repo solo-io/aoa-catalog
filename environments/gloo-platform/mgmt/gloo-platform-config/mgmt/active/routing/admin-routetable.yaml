@@ -1,0 +1,57 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  labels:
+    expose: "true"
+  name: admin-routetable
+  namespace: argocd
+spec:
+  hosts:
+  - 'admin.glooplatform.com'
+  http:
+  - name: argocd
+    labels:
+      waf: "true"
+      oauth: admin.glooplatform.com
+    matchers:
+    - uri:
+        prefix: /argo
+    - uri:
+        prefix: /callback
+    forwardTo:
+      destinations:
+      - port:
+          number: 443
+        ref:
+          cluster: mgmt
+          name: argocd-server
+          namespace: argocd
+  - name: grafana-ui
+    labels:
+      waf: "true"
+      oauth: admin.glooplatform.com
+    matchers:
+    - uri:
+        prefix: /mgmt-grafana
+    - uri:
+        prefix: /callback
+    forwardTo:
+      destinations:
+      - port:
+          number: 3000
+        ref:
+          cluster: mgmt
+          name: grafana
+          namespace: istio-system
+  - name: sanity
+    matchers:
+    - uri:
+        exact: /sanity
+    directResponse:
+      status: 200
+      body: "it's alive"
+  virtualGateways:
+  - cluster: mgmt
+    name: mgmt-north-south-gw-443
+    namespace: istio-gateways
+  workloadSelectors: []

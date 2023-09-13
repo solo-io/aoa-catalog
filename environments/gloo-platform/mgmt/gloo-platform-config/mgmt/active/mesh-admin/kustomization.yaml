@@ -1,0 +1,17 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- gloo-mesh-global-workspacesettings.yaml
+- gloo-mesh-mgmt-extauthserver.yaml
+- gloo-mesh-mgmt-kubernetescluster.yaml
+- gloo-mesh-mgmt-virtualgateway-443.yaml
+- gloo-mesh-ops-team-workspace.yaml
+- gloo-mesh-ops-team-workspacesettings.yaml
+- latencyfilter.yaml
+- relay-identity-token-secret.yaml
+#- roottrustpolicy-generated.yaml
+- roottrustpolicy-secretref.yaml
+

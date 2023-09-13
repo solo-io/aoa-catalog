@@ -1,0 +1,29 @@
+apiVersion: security.policy.gloo.solo.io/v2
+kind: WAFPolicy
+metadata:
+  name: httpbin-wafpolicy
+  namespace: httpbin
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        waf: "true"
+  config:
+    customInterventionMessage: WAF rule triggered. Please see the logs in the ingress gateway for more details. kubectl logs -n istio-gateways deploy/istio-ingressgateway-1-18 -f
+    customRuleSets:
+      - ruleStr: >-
+          SecRuleEngine On
+
+          SecRequestBodyAccess On
+
+          SecRule
+          REQUEST_LINE|ARGS|ARGS_NAMES|REQUEST_COOKIES|REQUEST_COOKIES_NAMES|REQUEST_BODY|REQUEST_HEADERS|XML:/*|XML://@*  
+            "@rx \${jndi:(?:ldaps?|iiop|dns|rmi)://" 
+            "id:1000,phase:2,deny,status:403,log,msg:'Potential Remote Command Execution: Log4j CVE-2021-44228'"
+
+          SecRule REQUEST_HEADERS:User-Agent "test([1-5])$"
+          "deny,status:403,id:1,phase:1,msg:'blocked scammer'"
+
+          SecRule REQUEST_HEADERS:User-Agent "scammer"
+          "deny,status:403,id:107,phase:1,log,msg:'blocked scammer'
+    disableCoreRuleSet: true

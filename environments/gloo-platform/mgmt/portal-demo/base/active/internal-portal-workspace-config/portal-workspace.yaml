@@ -1,0 +1,15 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: Workspace
+metadata:
+  name: internal-portal
+  namespace: gloo-mesh
+spec:
+  workloadClusters:
+  - name: 'mgmt'
+    namespaces:
+    - name: tracks
+    - name: petstore
+    - name: portal
+    - name: httpbin-portal
+    - name: backstage
+    - name: podinfo-portal

@@ -1,9 +1,14 @@
 # aoa-catalog
 This repo serves as a collection of Solo.io demo environments driven by GitOps using the ArgoCD app-of-apps pattern.
 
-### Demo Video Link
+### Demo
 
-[![Youtube Video Demonstration](aoa-tools/images/youtube1.png)](https://youtu.be/c4wgigSihJI)
+
+
+https://user-images.githubusercontent.com/5981604/217685510-e4410308-eafd-47a4-a67c-ab48c679244f.mp4
+
+
+
 
 ### Prerequisites
 - `yq` - `brew install yq` or see here (https://mikefarah.gitbook.io/yq/v/v3.x/)
@@ -15,7 +20,6 @@ For environments that require an Enterprise product license, export your license
 ```
 export GLOO_LICENSE_KEY="<INSERT_LICENSE_KEY_HERE>"
 export GLOO_PLATFORM_LICENSE_KEY="<INSERT_LICENSE_KEY_HERE>"
-export LICENSE_KEY="<INSERT_LICENSE_KEY_HERE>"
 ```
 
 #### Renaming Cluster Context
@@ -35,8 +39,8 @@ kubectl config rename-context k3d-your_mgmt_cluster_name mgmt
 Syntax: installer [-f|-i|-h]
 
 commands:
-deploy     deploys an environment with the specified path
-destroy    destroys an environment with the specified path
+deploy     deploys an environment with the speficied path
+destroy    deploys an environment with the speficied path
 
 options:
 -f     path to environment files

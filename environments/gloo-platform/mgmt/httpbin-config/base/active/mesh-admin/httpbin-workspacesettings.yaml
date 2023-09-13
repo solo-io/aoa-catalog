@@ -1,0 +1,22 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: WorkspaceSettings
+metadata:
+  name: httpbin
+  namespace: httpbin
+spec:
+  exportTo:
+  - workspaces:
+    - name: ops-team
+    - name: portal
+  importFrom:
+  - workspaces:
+    - name: ops-team
+    - name: portal
+  options:
+    federation:                     # enable service federation of the web-ui namespace
+      enabled: false
+      serviceSelector:
+      - namespace: httpbin
+    serviceIsolation:               # enable service isolation and Istio Sidecar resource
+      enabled: true
+      trimProxyConfig: true

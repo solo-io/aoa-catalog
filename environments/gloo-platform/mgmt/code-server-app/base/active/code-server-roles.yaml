@@ -1,0 +1,70 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  # "namespace" omitted since ClusterRoles are not namespaced
+  name: code-server-cluster-role
+rules:
+  - apiGroups: ["*"]
+    # at the HTTP level, the name of the resource for accessing Secret
+    # objects is "secrets"
+    resources:
+    - pods
+    - services
+    - deployments
+    - namespaces
+    - daemonsets
+    - statefulsets
+    - replicasets
+    - replicationcontrollers
+    - horizontalpodautoscalers
+    - cronjobs
+    - jobs
+    - accesslogpolicies
+    - accesspolicies
+    - externalendpoints
+    - externalservices
+    - failoverpolicies
+    - faultinjectionpolicies
+    - headermanipulationpolicies
+    - jwtpolicies
+    - ratelimitclientconfigs
+    - ratelimitconfigs
+    - ratelimitpolicies
+    - ratelimitserverconfigs
+    - ratelimitserversettings
+    - retrytimeoutpolicies
+    - routetables
+    - transformationpolicies
+    - virtualdestinations
+    - virtualgateways
+    - wafpolicies
+    - workspaces
+    - workspacesettings
+    - virtualservices
+    - gateways
+    - authorizationpolicies
+    - destinationrules
+    - peerauthentications
+    - requestauthentications
+    - serviceentries
+    - workloadentries
+    - extauthservers
+    - extauthpolicies
+    - kubernetesclusters
+    verbs:
+    - get
+    - watch
+    - list
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: code-server-cluster-role
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: code-server-cluster-role
+subjects:
+- kind: ServiceAccount
+  name: code-server
+  namespace: code-server

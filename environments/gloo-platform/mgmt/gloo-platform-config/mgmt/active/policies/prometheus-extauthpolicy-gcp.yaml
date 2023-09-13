@@ -1,0 +1,43 @@
+apiVersion: security.policy.gloo.solo.io/v2
+kind: ExtAuthPolicy
+metadata:
+  name: prometheus
+  namespace: gloo-mesh
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        auth: mgmt-prometheus.glooplatform.com
+  config:
+    server:
+      name: mgmt-ext-auth-server
+      namespace: gloo-mesh
+      cluster: mgmt
+    glooAuth:
+      configs:
+      - oauth2:
+          oidcAuthorizationCode:
+            appUrl: https://mgmt-prometheus.glooplatform.com
+            callbackPath: /callback
+            clientId: 967359009029-j7uts17vmc85kt3aaie8cnpodefql93t.apps.googleusercontent.com
+            clientSecretRef:
+              name: gcp-client-secret
+              namespace: gloo-mesh
+            issuerUrl: https://accounts.google.com
+            session:
+              failOnFetchFailure: true
+              redis:
+                cookieName: gcp-session
+                options:
+                  host: redis.gloo-mesh-addons:6379
+                allowRefreshing: true
+              cookieOptions:
+                maxAge: "3600"
+            scopes:
+            - email
+            logoutPath: /logout
+            afterLogoutUrl: /get
+            headers:
+              idTokenHeader: Jwt
+              #idTokenHeader: x-id-token
+              #accessTokenHeader: x-access-token

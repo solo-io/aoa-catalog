@@ -1,0 +1,82 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  labels:
+    expose: "true"
+  name: workload-grafana-ui-443
+  namespace: gloo-mesh
+spec:
+  hosts:
+  - 'grafana.glooplatform.com'
+  http:
+  - name: glooplatform-central-grafana-ui
+    labels:
+      waf: "true"
+      auth: grafana.glooplatform.com
+    matchers:
+      - uri:
+          prefix: /central
+      - uri:
+          prefix: /callback
+    forwardTo:
+      destinations:
+      - port:
+          number: 3000
+        ref:
+          name: glooplatform-central-grafana-vd
+          namespace: ops-team-config
+        kind: VIRTUAL_DESTINATION
+  - name: glooplatform-east-grafana-ui
+    labels:
+      waf: "true"
+      auth: grafana.glooplatform.com
+    matchers:
+      - uri:
+          prefix: /east
+      - uri:
+          prefix: /callback
+    forwardTo:
+      destinations:
+      - port:
+          number: 3000
+        ref:
+          name: glooplatform-east-grafana-vd
+          namespace: ops-team-config
+        kind: VIRTUAL_DESTINATION
+  virtualGateways:
+  - cluster: mgmt
+    name: north-south-gw
+    namespace: istio-gateways
+  workloadSelectors: []
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: glooplatform-central-grafana-vd
+  namespace: ops-team-config
+spec:
+  hosts:
+  - grafana.glooplatform-central.vd
+  services:
+  - namespace: istio-system
+    name: grafana
+    cluster: glooplatform-central
+  ports:
+    - number: 3000
+      protocol: HTTP
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: glooplatform-east-grafana-vd
+  namespace: ops-team-config
+spec:
+  hosts:
+  - grafana.glooplatform-east.vd
+  services:
+  - namespace: istio-system
+    name: grafana
+    cluster: glooplatform-east
+  ports:
+    - number: 3000
+      protocol: HTTP

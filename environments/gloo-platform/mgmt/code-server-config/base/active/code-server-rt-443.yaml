@@ -1,0 +1,31 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  labels:
+    expose: "true"
+  name: code-server-rt-443
+  namespace: code-server
+spec:
+  hosts:
+  - 'code-server.glooplatform.com'
+  http:
+  - forwardTo:
+      destinations:
+      - port:
+          number: 8080
+        ref:
+          name: code-server
+          namespace: code-server
+    name: vscode
+    labels:
+      auth: code-server.glooplatform.com
+    matchers:
+    - uri:
+        prefix: /
+    - uri:
+        prefix: /callback
+  virtualGateways:
+  - cluster: mgmt
+    name: mgmt-north-south-gw-443
+    namespace: istio-gateways
+  workloadSelectors: []
