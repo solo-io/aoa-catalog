@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "bar"
+spec:
+  type: workspace
+  system: default
+  owner: user:alex
+  lifecycle: experimental
+  region: "component:default/us-west-1"
