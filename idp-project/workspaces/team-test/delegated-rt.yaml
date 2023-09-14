@@ -21,19 +21,6 @@ metadata:
   name: idp-project-v1-httpbin-delegate
   namespace: idp-project-config
 spec:
-  # for future portal use
-  #portalMetadata:
-  #  apiProductId: "httpbin"
-  #  apiProductDisplayName: "Httpbin API Product - v1"
-  #  apiVersion: "$changeme"
-  #  title: "httpbin v1 REST API"
-  #  description: "REST API for httpbin to retrieve data for httpbin, authors and modules."
-  #  termsOfService: "Information about your Terms of Service."
-  #  contact: "changeme@email.com"
-  #  license: "ISC License"
-  #  customMetadata:
-  #    lifecyclePhase: "Stable"
-  #    compatibility: "Forwards"
   http:
   - name: idp-project-v1-httpbin-delegate
     matchers:
