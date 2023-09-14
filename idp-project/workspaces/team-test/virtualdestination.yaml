@@ -9,6 +9,7 @@ spec:
   services:
   - labels:
       app: httpbin
+    namespace: idp-project
   ports:
   - number: 80
     protocol: HTTP
