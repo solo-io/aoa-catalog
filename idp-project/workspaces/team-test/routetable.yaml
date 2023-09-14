@@ -2,7 +2,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: idp-project
-  namespace: idp-project
+  namespace: idp-project-config
 spec:
   hosts:
     - 'idp-project.glooplatform.com'
