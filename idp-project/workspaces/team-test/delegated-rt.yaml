@@ -11,9 +11,6 @@ spec:
       namespace: istio-gateways
       cluster: mgmt
   http:
-   - matchers:
-     - uri:
-         prefix: /httpbin
      delegate:
        routeTables:
          - name: idp-project-v1-httpbin-delegate
@@ -44,10 +41,6 @@ spec:
     matchers:
     - uri:
         prefix: /
-    - uri:
-        prefix: /flasgger_static
-    - uri:
-        exact: /spec.json
     forwardTo:
       pathRewrite: /
       destinations:
