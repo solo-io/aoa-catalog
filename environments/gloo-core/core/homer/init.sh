@@ -1,3 +1,20 @@
+#!/bin/bash
+
+echo "wave description:"
+echo "deploying homer portal app"
+
+LB_ADDRESS=$(kubectl get svc -n istio-system --selector=istio=ingressgateway -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}')
+
+kubectl apply --context ${cluster_context} -f- <<EOF
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: homer-portal
+  labels:
+    istio.io/dataplane-mode: ambient
+  annotations:
+    argocd.argoproj.io/sync-wave: "-5"
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -146,7 +163,7 @@ spec:
                   style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
                   title: "Welcome!"
                   icon: "fa fa-grin"
-                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Core!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />127.0.0.1 argocd.glootest.com gmui.glootest.com grafana.glootest.com<br /><br />Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-core/freestyle#application-description'>here</a>"
+                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Istio!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-platform/multicluster-onlineboutique/mgmt/#application-description'>here</a>"
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
@@ -168,30 +185,49 @@ spec:
                 # First level array represent a group.
                 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
                 services:
+
                   - name: "Admin Applications"
-                    icon: "fas fa-user-cog"
+                    icon: "fas fa-cloud"
                     items:
-                      - name: "ArgoCD - mgmt"
-                        #subtitle: "GitOps Tooling"
+                      - name: "ArgoCD"
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
-                        url: "https://argocd.glootest.com/argo"
+                        url: "https://$LB_ADDRESS/argo"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Gloo Mesh UI"
-                        #subtitle: "Another application"
-                        icon: "fas fa-arrows-alt"
-                        tag: "gmui"
-                        url: "https://gmui.glootest.com/gmui"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Grafana - mgmt"
-                        #subtitle: "Another application"
+                      - name: "Grafana"
                         icon: "fas fa-chart-area"
-                        tag: "grafana-mgmt"
-                        url: "https://grafana.glootest.com/grafana"
+                        tag: "grafana"
+                        url: "https://$LB_ADDRESS/grafana"
                         target: "_blank" # optional html a tag target attribute
-                    
+                      - name: "Prometheus"
+                        icon: "fas fa-chart-area"
+                        tag: "prometheus"
+                        url: "https://$LB_ADDRESS/prometheus"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Kiali"
+                        icon: "fas fa-chart-area"
+                        tag: "kiali"
+                        url: "https://$LB_ADDRESS/kiali"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Jaeger"
+                        icon: "fas fa-chart-area"
+                        tag: "jaeger"
+                        url: "https://$LB_ADDRESS/jaeger"
+                        target: "_blank" # optional html a tag target attribute
+
+                  
+                  - name: "Web Applications"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "httpbin"
+                        icon: "far fa-window-maximize"
+                        tag: "httpbin"
+                        url: "https://$LB_ADDRESS"
+                        target: "_blank" # optional html a tag target attribute             
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+EOF
+

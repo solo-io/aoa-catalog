@@ -21,10 +21,17 @@ waves:
       -  $env_path/gloo-platform/init.sh
       post_deploy:
       -  $env_path/gloo-platform/test.sh
+  - name: gloo-platform-config
+    location: $env_path/gloo-platform-config/base/active
+    scripts:
+      pre_deploy:
+        -  $env_path/gloo-platform-config/init.sh
+      post_deploy:
+        -  $env_path/gloo-platform-config/test.sh
   - name: homer-app
-    location: $env_path/homer-app/localhost/active
+    location: $env_path/homer/base/active
     scripts:
       pre_deploy: 
-      -  $env_path/homer-app/localhost/init.sh
+      -  $env_path/homer/init.sh
       post_deploy:
-      -  $env_path/homer-app/localhost/test.sh 
+      -  $env_path/homer/test.sh

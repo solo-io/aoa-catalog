@@ -4,5 +4,6 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- homer-rt-443.yaml
-
+#- homer-portal.yaml
+#- homer-portal-ns.yaml
+- homer-vs.yaml
