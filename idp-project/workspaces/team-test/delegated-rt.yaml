@@ -7,7 +7,7 @@ spec:
   hosts:
     - 'idp-project.glooplatform.com'
   virtualGateways:
-    - name: mgmt-north-south-gw-443
+    - name: north-south-gw
       namespace: istio-gateways
       cluster: mgmt
   http:
