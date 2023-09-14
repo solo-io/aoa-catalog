@@ -11,9 +11,9 @@ spec:
       namespace: istio-gateways
       cluster: mgmt
   http:
-     delegate:
-       routeTables:
-         - name: idp-project-v1-httpbin-delegate
+   - delegate:
+      routeTables:
+        - name: idp-project-v1-httpbin-delegate
 ---
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
