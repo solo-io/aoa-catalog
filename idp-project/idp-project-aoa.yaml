@@ -15,7 +15,7 @@ spec:
     targetRevision: glooplatform.com-2.4.x
     directory:
       recurse: true
-      exclude: '*/catalog-info.yaml'
+      exclude: '{*/catalog-info.yaml,*/manifests/*}'
   syncPolicy:
     automated:
       prune: true

@@ -1,0 +1,31 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: idp-project
+  namespace: idp-project
+spec:
+  hosts:
+    - 'idp-project.glooplatform.com'
+  virtualGateways:
+    - name: north-south-gw
+      namespace: istio-gateways
+      cluster: mgmt
+  workloadSelectors: []
+  http:
+    - name: httpbin
+      labels:
+        virtual-destination: httpbin
+        route_name: httpbin
+      matchers:
+      - uri:
+          prefix: /
+      forwardTo:
+        destinations:
+          - ref:
+              name: httpbin
+              namespace: idp-project-config
+            kind: VIRTUAL_DESTINATION
+            port:
+              number: 80
+
+    
