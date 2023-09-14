@@ -7,7 +7,7 @@ spec:
   hosts:
     - "*"
   gateways:
-    - gloo-mesh-gateway/https-gateway
+    - gloo-mesh-gateways/https-gateway
   http:
     - name: argo-ui
       match:
