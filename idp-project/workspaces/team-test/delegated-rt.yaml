@@ -13,7 +13,7 @@ spec:
   http:
    - matchers:
      - uri:
-         prefix: /httpbin
+         prefix: /
      delegate:
        routeTables:
          - name: idp-project-v1-httpbin-delegate
