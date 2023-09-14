@@ -45,7 +45,7 @@ spec:
     - uri:
         prefix: /
     forwardTo:
-      pathRewrite: /
+      #pathRewrite: /
       destinations:
       - ref:
           name: httpbin
