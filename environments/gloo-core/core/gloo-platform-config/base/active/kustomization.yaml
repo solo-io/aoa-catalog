@@ -5,7 +5,5 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - argocd-vs.yaml
-- gloo-mesh-global-workspacesettings.yaml
-- gloo-mesh-mgmt-kubernetescluster.yaml
 - gmui-vs.yaml
 - https-gateway.yaml
