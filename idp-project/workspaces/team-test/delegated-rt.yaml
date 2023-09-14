@@ -1,0 +1,54 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: idp-project-main
+  labels:
+spec:
+  hosts:
+    - 'idp-project.glooplatform.com'
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
+  http:
+   - matchers:
+     - uri:
+         prefix: /httpbin
+     delegate:
+       routeTables:
+         - name: idp-project-v1-httpbin-delegate
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: idp-project-v1-httpbin-delegate
+  labels:
+     # uncomment if you want to hide this API from the portal
+     #portal-visibility: private
+spec:
+  #portalMetadata:
+  #  apiProductId: "httpbin"
+  #  apiProductDisplayName: "Httpbin API Product - v1"
+  #  apiVersion: "$changeme"
+  #  title: "httpbin v1 REST API"
+  #  description: "REST API for httpbin to retrieve data for httpbin, authors and modules."
+  #  termsOfService: "Information about your Terms of Service."
+  #  contact: "changeme@email.com"
+  #  license: "ISC License"
+  #  customMetadata:
+  #    lifecyclePhase: "Stable"
+  #    compatibility: "Forwards"
+  http:
+  - name: idp-project-v1-httpbin-delegate
+    matchers:
+    - uri:
+        prefix: /
+    forwardTo:
+      pathRewrite: /
+      destinations:
+      - ref:
+          name: httpbin
+          namespace: idp-project-config
+        kind: VIRTUAL_DESTINATION
+        port:
+          number: 80
