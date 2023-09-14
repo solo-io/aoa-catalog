@@ -20,10 +20,8 @@ kind: RouteTable
 metadata:
   name: idp-project-v1-httpbin-delegate
   namespace: idp-project-config
-  #labels:
-  #   # uncomment if you want to hide this API from the portal
-  #   #portal-visibility: private
 spec:
+  # for future portal use
   #portalMetadata:
   #  apiProductId: "httpbin"
   #  apiProductDisplayName: "Httpbin API Product - v1"
