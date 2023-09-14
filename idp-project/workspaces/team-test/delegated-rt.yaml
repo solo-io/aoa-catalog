@@ -2,7 +2,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: idp-project-main
-  labels:
+  namespace: idp-project-config
 spec:
   hosts:
     - 'idp-project.glooplatform.com'
@@ -22,9 +22,10 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: idp-project-v1-httpbin-delegate
-  labels:
-     # uncomment if you want to hide this API from the portal
-     #portal-visibility: private
+  namespace: idp-project-config
+  #labels:
+  #   # uncomment if you want to hide this API from the portal
+  #   #portal-visibility: private
 spec:
   #portalMetadata:
   #  apiProductId: "httpbin"
