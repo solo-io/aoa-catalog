@@ -44,6 +44,10 @@ spec:
     matchers:
     - uri:
         prefix: /
+    - uri:
+        prefix: /flasgger_static
+    - uri:
+        exact: /spec.json
     forwardTo:
       pathRewrite: /
       destinations:
