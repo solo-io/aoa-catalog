@@ -13,7 +13,7 @@ spec:
   http:
    - matchers:
      - uri:
-         prefix: /
+         prefix: /httpbin
      delegate:
        routeTables:
          - name: idp-project-v1-httpbin-delegate
@@ -45,7 +45,7 @@ spec:
     - uri:
         prefix: /
     forwardTo:
-      #pathRewrite: /
+      pathRewrite: /
       destinations:
       - ref:
           name: httpbin
