@@ -4,6 +4,7 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
+- gateway-cert.yaml
 - gloo-agent-cert.yaml
 - gloo-mesh-cert.yaml
 - gloo-platform-crds.yaml

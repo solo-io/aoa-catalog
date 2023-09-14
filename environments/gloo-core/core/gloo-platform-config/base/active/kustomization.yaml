@@ -4,12 +4,14 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
+- argocd-vs.yaml
 - gloo-mesh-global-workspacesettings.yaml
 - gloo-mesh-mgmt-extauthserver.yaml
 - gloo-mesh-mgmt-kubernetescluster.yaml
 - gloo-mesh-mgmt-virtualgateway.yaml
 - gloo-mesh-ops-team-workspace.yaml
 - gloo-mesh-ops-team-workspacesettings.yaml
-- ops-routetable.yaml
+- https-gateway.yaml
+#- ops-routetable.yaml
 #- roottrustpolicy-generated.yaml
 - roottrustpolicy-secretref.yaml
