@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: team1
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: glooplatform-east
+        url: https://34.66.53.75
+      - cluster: glooplatform-central
+        url: https://34.139.252.74
+  template:
+    metadata:
+      name: '{{cluster}}-team1'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/solo-io/aoa-catalog/'
+        targetRevision: glooplatform.com-2.4.x
+        path: idp-project/workspaces/team1/base/
+        directory:
+          recurse: true
+          exclude: '{*/catalog-info.yaml}'
+      destination:
+        server: '{{url}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
+
+
+          https://github.com/solo-io/aoa-catalog/blob/workspace_bla_app_test-action/idp-project/workspaces/bla/apps/test-action/catalog-info.yaml
+          https://github.com/solo-io/aoa-catalog/blob/workspace_bla_app_test-action/idp-project/workspaces/bla/apps/test-actioncatalog-info.yaml
