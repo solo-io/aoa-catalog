@@ -1,0 +1,17 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: testing8
+  namespace: team1-config
+spec:
+  hosts:
+  - testing8.team1.solo-io.mesh
+  services:
+  - labels:
+      app: testing8
+    namespace: team1
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
