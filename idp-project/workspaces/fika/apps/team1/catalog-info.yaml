@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "team1"
+spec:
+  type: service_deployment
+  owner: user:alex
+  lifecycle: experimental
+

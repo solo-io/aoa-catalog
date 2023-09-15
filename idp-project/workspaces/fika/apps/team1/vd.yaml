@@ -1,0 +1,17 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: team1
+  namespace: fika-config
+spec:
+  hosts:
+  - team1.fika.solo-io.mesh
+  services:
+  - labels:
+      app: team1
+    namespace: fika
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
