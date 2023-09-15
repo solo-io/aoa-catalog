@@ -31,7 +31,3 @@ spec:
           selfHeal: true
         syncOptions:
           - ApplyOutOfSyncOnly=true
-
-
-          https://github.com/solo-io/aoa-catalog/blob/workspace_bla_app_test-action/idp-project/workspaces/bla/apps/test-action/catalog-info.yaml
-          https://github.com/solo-io/aoa-catalog/blob/workspace_bla_app_test-action/idp-project/workspaces/bla/apps/test-actioncatalog-info.yaml
