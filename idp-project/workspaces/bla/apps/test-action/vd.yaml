@@ -1,0 +1,17 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: test-action
+  namespace: bla-config
+spec:
+  hosts:
+  - test-action.bla.solo-io.mesh
+  services:
+  - labels:
+      app: test-action
+    namespace: bla
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
