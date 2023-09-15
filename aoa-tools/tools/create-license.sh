@@ -23,7 +23,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         BASE64_LICENSE_KEY=$(echo -n "${LICENSE_KEY}" | base64 -w 0)
 elif [[ "$OSTYPE" == "darwin"* ]]; then
         # Mac OSX
-        BASE64_LICENSE_KEY=$(echo -n "${LICENSE_KEY}" | base64)
+        BASE64_LICENSE_KEY=$(echo -n "${LICENSE_KEY}" | base64 | tr -d '[:space:]')
 else
         echo unknown OS type
         exit 1
