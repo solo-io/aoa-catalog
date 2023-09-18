@@ -15,13 +15,13 @@ spec:
   source:
     chart: istiod
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.18.1
+    targetRevision: 1.18.3
     helm:
       values: |
         revision: 1-18
         global:
           hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
-          tag: 1.18.1-solo
+          tag: 1.18.3-solo
         meshConfig:
           accessLogFile: /dev/stdout
           enableAutoMtls: true
