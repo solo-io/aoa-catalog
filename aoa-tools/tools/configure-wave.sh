@@ -66,7 +66,7 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: app-of-apps
   source:
     repoURL: https://github.com/${github_username}/${repo_name}/
     targetRevision: ${target_branch}
