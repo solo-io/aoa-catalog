@@ -8,6 +8,7 @@ metadata:
 spec:
   hosts:
   - 'argocd.glootest.com'
+  - 'gloo-platform-test.solo.io'
   http:
   - name: argocd
     labels:
