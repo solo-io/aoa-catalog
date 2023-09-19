@@ -5,7 +5,7 @@ metadata:
   namespace: gloo-mesh
 spec:
   hosts:
-    - "*"
+    - "gloo-core-test.solo.io"
   gateways:
     - gloo-mesh-gateways/https-gateway
   http:
