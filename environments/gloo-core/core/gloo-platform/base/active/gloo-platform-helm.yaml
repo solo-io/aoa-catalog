@@ -47,6 +47,7 @@ spec:
                     name: gloo-server-tls-cert
             serviceType: LoadBalancer
         glooUi:
+            basePath: /gmui
             auth:
                 backend: oidc
                 enabled: false

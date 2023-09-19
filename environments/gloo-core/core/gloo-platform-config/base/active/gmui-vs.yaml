@@ -12,7 +12,7 @@ spec:
     - name: gloo-mesh-ui
       match:
         - uri:
-            exact: /
+            prefix: /gmui
       route:
         - destination:
             host: gloo-mesh-ui
