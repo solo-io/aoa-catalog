@@ -1,0 +1,6 @@
+.config/
+.kube/
+.vscode/
+.yarnrc
+.zsh_history
+node_modules

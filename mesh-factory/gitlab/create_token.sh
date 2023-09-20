@@ -1,0 +1,2 @@
+# TODO: create users --> User.new(username: 'test_user', email: 'test@example.com', name: 'Test User', password: 'password', password_confirmation: 'password')
+kubectl exec -it deploy/gitlab -- gitlab-rails runner  "token = User.find_by_username('root').personal_access_tokens.create(scopes: ['api', 'read_api', 'read_user', 'create_runner', 'read_repository', 'write_repository', 'sudo', 'admin_mode' ], name: 'Automation token 2', expires_at: 365.days.from_now); token.set_token('solo-token-123'); token.save!"

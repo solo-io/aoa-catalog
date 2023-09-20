@@ -1,0 +1,25 @@
+common:
+  cluster: mgmt
+glooAgent:
+  enabled: true
+  relay:
+    serverAddress: gloo-mesh-mgmt-server.gloo-mesh:9900
+glooMgmtServer:
+  serviceType: LoadBalancer
+  registerCluster: true
+  enabled: true
+glooUi:
+  enabled: true
+istioInstallations:
+  enabled: true
+telemetryCollector:
+  config:
+    exporters:
+      otlp:
+        endpoint: gloo-telemetry-gateway.gloo-mesh:4317
+  enabled: true
+prometheus:
+  enabled: true
+redis:
+  deployment:
+    enabled: true
