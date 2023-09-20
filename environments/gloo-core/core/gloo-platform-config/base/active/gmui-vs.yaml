@@ -1,20 +1,23 @@
-apiVersion: networking.istio.io/v1alpha3
+apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
+  annotations:
+    cluster.solo.io/cluster: mgmt
   name: gmui-vs
   namespace: gloo-mesh
 spec:
-  hosts:
-    - "http://gmui.glootest.com/"
   gateways:
     - gloo-mesh-gateways/https-gateway
+  hosts:
+    - gmui.glootest.com
+    - gloo-core-test.solo.io
   http:
-    - name: gloo-mesh-ui
-      match:
+    - match:
         - uri:
-            prefix: /gmui
+            prefix: /
+      name: gmui-main
       route:
         - destination:
-            host: gloo-mesh-ui
+            host: gloo-mesh-ui.gloo-mesh.svc.cluster.local
             port:
               number: 8090
