@@ -1,4 +1,4 @@
-TOKEN=$(curl --request POST "http://git.example.com/api/v4/runners" --form "token=<registration_token>" --form "description=default-runner" --form "run_untagged=true" | jq '.token')
+TOKEN=$(curl --request POST "http://git.example.com/api/v4/runners" --form "token=solo-token-123" --form "description=default-runner" --form "run_untagged=true" | jq '.token')
 
 kubectl apply -f runner-role.yaml 
 
