@@ -32,6 +32,9 @@ spec:
                     namespace: gloo-mesh
         glooMgmtServer:
             enabled: true
+            istioController:
+                enabled: true
+                istioControllerImage: us-docker.pkg.dev/developers-369321/gloo-platform-dev/istio-controller:d2ac7090f366180842d0ff49ab06f5f390629d5-2023-09-20-main-3d2ac70
             ports:
                 healthcheck: 8091
             relay:
@@ -41,6 +44,8 @@ spec:
                 tlsSecret:
                     name: gloo-server-tls-cert
             serviceType: LoadBalancer
+        insights:
+            enabled: true
         glooUi:
             auth:
                 backend: oidc
