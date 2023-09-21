@@ -46,6 +46,8 @@ spec:
                 tlsSecret:
                     name: gloo-server-tls-cert
             serviceType: LoadBalancer
+        insights:
+            enabled: true
         glooUi:
             basePath: /gmui
             auth:
