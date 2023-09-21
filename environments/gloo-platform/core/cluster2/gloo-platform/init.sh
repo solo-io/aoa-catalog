@@ -7,7 +7,7 @@ echo "deploy and register gloo-mesh agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.5.0-beta0-2023-09-20-main-18e2a9569):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.5.0-beta0-2023-09-21-insights-engine-c982bdd49):"
     read gloo_mesh_version
 fi
 
@@ -70,7 +70,7 @@ spec:
                     namespace: gloo-mesh
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.5.0-beta0-2023-09-20-main-18e2a9569
+    targetRevision: 2.5.0-beta0-2023-09-21-insights-engine-c982bdd49
   syncPolicy:
     automated:
       prune: true
@@ -176,7 +176,7 @@ spec:
                       endpoint: 0.0.0.0:4318
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.5.0-beta0-2023-09-20-main-18e2a9569
+    targetRevision: 2.5.0-beta0-2023-09-21-insights-engine-c982bdd49
   syncPolicy:
     automated:
       prune: true

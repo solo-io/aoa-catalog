@@ -10,11 +10,11 @@ The `gloo-gateway/core` environment deploys the core components of a single clus
 
 ## Environment descriptions
 - base:
-    - gloo mesh 2.5.0-beta0-2023-09-20-main-18e2a9569
+    - gloo mesh 2.5.0-beta0-2023-09-21-insights-engine-c982bdd49
     - istio 1.18.3-solo (Helm)
     - revision: 1-18
 - lifecyclemanager:
-    - gloo mesh 2.5.0-beta0-2023-09-20-main-18e2a9569
+    - gloo mesh 2.5.0-beta0-2023-09-21-insights-engine-c982bdd49
     - istio 1.18.3-solo (ILM)
     - revision: 1-18
 
