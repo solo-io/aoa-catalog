@@ -28,10 +28,10 @@ waves:
         -  $env_path/gloo-platform-config/init.sh
       post_deploy:
         -  $env_path/gloo-platform-config/test.sh
-  - name: homer-app
-    location: $env_path/homer/base/active
+  - name: online-boutique-app
+    location: $env_path/../../gloo-gateway/onlineboutique/online-boutique-app/base/active
     scripts:
-      pre_deploy: 
-      -  $env_path/homer/init.sh
+      pre_deploy:
+        -  $env_path/../../gloo-gateway/onlineboutique/online-boutique-app/init.sh
       post_deploy:
-      -  $env_path/homer/test.sh
+        -  $env_path/../../gloo-gateway/onlineboutique/online-boutique-app/test.sh
