@@ -1,0 +1,405 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: homer-portal-solo
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: homer-portal
+  project: default
+  source:
+    chart: homer
+    repoURL: https://k8s-at-home.com/charts/
+    targetRevision: 7.3.0
+    helm:
+      values: |
+        #
+        # IMPORTANT NOTE
+        #
+        # This chart inherits from our common library chart. You can check the default values/options here:
+        # https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+        #
+
+        controller:
+          replicas: 1
+        
+        image:
+          # -- image repository
+          repository: b4bz/homer
+          # -- image tag
+          tag: v23.05.1
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+        
+        # -- environment variables.
+        # @default -- See below
+        env:
+          # -- Set the container timezone
+          TZ: UTC
+          # -- Specify the user ID the application will run as
+          UID: "1001"
+          # -- Specify the group ID the application will run as
+          GID: "1001"
+          # -- Specify the basepath the application will run at
+          SUBFOLDER: /solo
+        
+        # -- Set the resource requests / limits for the main container.
+        resources:
+          requests:
+            cpu: 30m
+            memory: 128Mi
+        
+        # -- Set labels on the pod
+        #podLabels:
+        #  istio.io/rev: 1-18
+        
+        # -- Node selection constraint
+        nodeSelector:
+          gke-spot: "true"
+
+        # -- Specify taint tolerations  
+        tolerations:
+        - key: cloud.google.com/gke-spot
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+        
+        # -- Set annotations on the pod
+        podAnnotations:
+          proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        
+        # -- Configures serviceAccount settings for the chart.
+        serviceAccount:
+          # -- Specifies whether a service account should be created
+          create: true
+        
+        # -- Configures service settings for the chart.
+        # @default -- See values.yaml
+        service:
+          main:
+            enabled: true
+            primary: true
+            type: ClusterIP
+            ports:
+              http:
+                enabled: true
+                port: 8080
+                protocol: HTTP
+                targetPort: 8080
+            labels:
+              expose: "true"
+        
+        ingress:
+          # -- Enable and configure ingress settings for the chart under this key.
+          # @default -- See values.yaml
+          main:
+            enabled: false
+        
+        # -- Configure persistence settings for the chart under this key.
+        # @default -- See values.yaml
+        persistence:
+          config:
+            enabled: false
+            mountPath: /www/assets
+        
+        configmap:
+          config:
+            # -- Store homer configuration as a ConfigMap
+            enabled: true
+            # -- Homer configuration. See [image documentation](https://github.com/bastienwirtz/homer/blob/main/docs/configuration.md) for more information.
+            # @default -- See values.yaml
+            data:
+              config.yml: |
+                #externalConfig: https://raw.githubusercontent.com/bastienwirtz/homer/main/public/assets/config.yml.dist
+                ---
+                # Homepage configuration
+                # See https://fontawesome.com/v5/search for icons options
+                
+                title: "Gloo Platform Demo Dashboard"
+                subtitle: "Every Connection, Every Direction, One API"
+                logo: "logo.png"
+                # icon: "fas fa-skull-crossbones" # Optional icon
+                
+                header: true
+                #footer: '<p>Created with <span class="has-text-danger">❤️</span> with <a href="https://bulma.io/">bulma</a>, <a href="https://vuejs.org/">vuejs</a> & <a href="https://fontawesome.com/">font awesome</a> // Fork me on <a href="https://github.com/bastienwirtz/homer"><i class="fab fa-github-alt"></i></a></p>' # set false if you want to hide it.
+                footer: false
+
+                # Set the default layout and color scheme
+                defaults:
+                  layout: list # Either 'columns', or 'list'
+                  colorTheme: dark # One of 'auto', 'light', or 'dark'
+        
+                # Optional theme customization
+                theme: default
+                colors:
+                  light:
+                    highlight-primary: "#3367d6"
+                    highlight-secondary: "#4285f4"
+                    highlight-hover: "#5a95f5"
+                    background: "#f5f5f5"
+                    card-background: "#ffffff"
+                    text: "#363636"
+                    text-header: "#ffffff"
+                    text-title: "#303030"
+                    text-subtitle: "#424242"
+                    card-shadow: rgba(0, 0, 0, 0.1)
+                    link: "#3273dc"
+                    link-hover: "#363636"
+                  dark:
+                    highlight-primary: "#3367d6"
+                    highlight-secondary: "#4285f4"
+                    highlight-hover: "#5a95f5"
+                    background: "#131313"
+                    card-background: "#2b2b2b"
+                    text: "#eaeaea"
+                    text-header: "#ffffff"
+                    text-title: "#fafafa"
+                    text-subtitle: "#f5f5f5"
+                    card-shadow: rgba(0, 0, 0, 0.4)
+                    link: "#3273dc"
+                    link-hover: "#ffdd57"
+                
+                # Optional message
+                message:
+                  #url: https://b4bz.io
+                  style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
+                  title: "Welcome!"
+                  icon: "fa fa-grin"
+                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Platform!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />Below are a few common usernames to explore the applications and portals:<br /><br />Username: jdoe@solo.io // Password: gloo-dev<br />Username: jdoe@gmail.com // Password: gloo-public<br /><br /> You can also sign up through Okta using self-service registration! "
+                
+                # Optional navbar
+                # links: [] # Allows for navbar (dark mode, layout, and search) without any links
+                links:
+                  - name: "Github Repo"
+                    icon: "fab fa-github"
+                    url: "https://github.com/solo-io/aoa-catalog"
+                    target: "_blank" # optional html a tag target attribute
+                  - name: "Gloo Mesh Documentation"
+                    icon: "fas fa-book"
+                    url: "https://docs.solo.io/gloo-mesh-enterprise"
+                    target: "_blank" # optional html a tag target attribute
+                  - name: "Gloo Gateway Documentation"
+                    icon: "fas fa-book"
+                    url: "https://docs.solo.io/gloo-gateway"
+                    target: "_blank" # optional html a tag target attribute
+                  - name: "Gloo Gateway Portal Documentation"
+                    icon: "fas fa-book"
+                    url: "https://docs.solo.io/gloo-gateway/latest/portal/"
+                    target: "_blank" # optional html a tag target attribute
+                  # this will link to a second homer page that will load config from additional-page.yml and keep default config values as in config.yml file
+                  # see url field and assets/additional-page.yml.dist used in this example:
+                  #- name: "another page!"
+                  #  icon: "fas fa-file-alt"
+                  #  url: "#additional-page" 
+                
+                # Services
+                # First level array represent a group.
+                # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
+                services:
+
+                  - name: "Gloo Mesh UI"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "Gloo Mesh UI (Google Auth)"
+                        icon: "fas fa-arrows-alt"
+                        tag: "gmui"
+                        url: "https://ui.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Gloo Mesh UI (Okta Auth)"
+                        subtitle: "Use Self Service Registration to Access UI"
+                        icon: "fas fa-arrows-alt"
+                        tag: "gmui"
+                        url: "https://public-ui.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Admin Applications"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "ArgoCD - mgmt"
+                        icon: "fab fa-git-alt"
+                        tag: "argo"
+                        keywords: "argocd"
+                        url: "https://admin.glooplatform.com/argo"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "ArgoCD - glooplatform-central"
+                        icon: "fab fa-git-alt"
+                        tag: "argo"
+                        keywords: "argocd"
+                        url: "https://argocd.central.glooplatform.com/argo"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "ArgoCD - glooplatform-east"
+                        icon: "fab fa-git-alt"
+                        tag: "argo"
+                        keywords: "argocd"
+                        url: "https://argocd.east.glooplatform.com/argo"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Grafana - mgmt"
+                        #subtitle: "Another application"
+                        icon: "fas fa-chart-area"
+                        tag: "grafana-mgmt"
+                        url: "https://admin.glooplatform.com/mgmt-grafana"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Grafana - glooplatform-central"
+                        icon: "fas fa-chart-area"
+                        tag: "grafana-central"
+                        url: "https://grafana.admin.glooplatform.com/central"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Grafana - glooplatform-east"
+                        icon: "fas fa-chart-area"
+                        tag: "grafana-east"
+                        url: "https://grafana.admin.glooplatform.com/east"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Prometheus"
+                        #subtitle: "Requires header user: preferred"
+                        icon: "fas fa-chart-area"
+                        tag: "prometheus-mgmt"
+                        url: "https://prometheus.admin.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "uptime dashboard"
+                        icon: "fas fa-heartbeat"
+                        tag: "uptime"
+                        url: "https://uptime.admin.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+
+                  - name: "Gateway Capabilities - ExtAuth / JWT / OPA / Rate Limiting / WAF / Progressive Delivery"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "httpbin"
+                        subtitle: "public endpoint"
+                        icon: "far fa-window-maximize"
+                        tag: "httpbin"
+                        url: "https://httpbin.demo.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "httpbin - protected /get"
+                        subtitle: "okta protected endpoint"
+                        icon: "far fa-window-maximize"
+                        tag: "httpbin"
+                        url: "https://httpbin.demo.glooplatform.com/get"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "httpbin-loadgenerator"
+                        #subtitle: "httpbin"
+                        icon: "fab fa-creative-commons-sampling"
+                        tag: "httpbin-loadgen"
+                        keywords: "httpbin-loadgen"
+                        url: "https://plow.demo.glooplatform.com/httpbin"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "Argo Rollouts Demo Dashboard"
+                        subtitle: "Use this dashboard to change image tag (i.e. blue > green)"
+                        icon: "fab fa-git-alt"
+                        tag: "argo-rollouts"
+                        keywords: "argo-rollouts"
+                        url: "https://rollouts-ui.demo.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "Argo Rollouts Demo"
+                        subtitle: "Visualize Progressive Delivery in action"
+                        icon: "fab fa-git-alt"
+                        tag: "argo-rollouts"
+                        keywords: "argo-rollouts"
+                        url: "https://rollouts.demo.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute  
+
+                  - name: "Mesh Capabilities - Multicluster / Failover / OutlierDetection / Chaos and Resiliency Testing"
+                    icon: "fas fa-cloud"
+                    items:
+
+                      - name: "Online Boutique - East"
+                        subtitle: "glooplatform-east"
+                        icon: "fas fa-shopping-cart"
+                        tag: "onlineboutique"
+                        url: "https://shop.east.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "Online Boutique - Central"
+                        subtitle: "glooplatform-central"
+                        icon: "fas fa-shopping-cart"
+                        tag: "onlineboutique"
+                        url: "https://shop.central.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      
+                      - name: "Kubeinvaders!"
+                        subtitle: "Chaos testing demo"
+                        icon: "fas fa-fighter-jet"
+                        tag: "kubeinvaders"
+                        keywords: "kubeinvaders"
+                        url: "https://chaos.demo.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "Bookinfo - East"
+                        subtitle: "glooplatform-east"
+                        icon: "fas fa-book-reader"
+                        tag: "bookinfo - glooplatform-east"
+                        url: "https://bookinfo.east.glooplatform.com/productpage"
+                        target: "_blank" # optional html a tag target attribute
+
+                  - name: "Developer Portals"
+                    icon: "fab fa-connectdevelop"
+                    items:
+                      - name: "Backstage"
+                        subtitle: "Internal Developer Portal"
+                        icon: "fab fa-git-alt"
+                        tag: "backstage"
+                        url: "https://backstage.glooplatform.com/gloo-platform-portal/apis"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "React Portal Frontend"
+                        subtitle: "External Developer Portal"
+                        icon: "fab fa-connectdevelop"
+                        tag: "external-portal"
+                        url: "https://external-portal.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                  
+                  #- name: "Portal API Endpoints"
+                  #  icon: "fas fa-cloud"
+                  #  items:
+                  #    - name: "Portal Server REST API"
+                  #      icon: "fab fa-connectdevelop"
+                  #      tag: "solo-dev-portal"
+                  #      url: "https://solo-dev-portal.int.glooplatform.com/portal-server/v1/apis"
+                  #      target: "_blank" # optional html a tag target attribute
+                  #    - name: "httpbin REST API - internal"
+                  #      subtitle: "requires valid api-key"
+                  #      icon: "fab fa-connectdevelop"
+                  #      tag: "httpbin-rest-api"
+                  #      url: "https://httpbin.int.glooplatform.com/v1/get"
+                  #      target: "_blank" # optional html a tag target attribute
+                  #    - name: "petstore REST API - internal"
+                  #      subtitle: "requires valid api-key"
+                  #      icon: "fab fa-connectdevelop"
+                  #      tag: "petstore-rest-api"
+                  #      url: "https://petstore.int.glooplatform.com/pet"
+                  #      target: "_blank" # optional html a tag target attribute
+                  #    - name: "tracks REST API - internal"
+                  #      subtitle: "requires valid api-key"
+                  #      icon: "fab fa-connectdevelop"
+                  #      tag: "petstore-rest-api"
+                  #      url: "https://tracks.int.glooplatform.com/tracks"
+                  #      target: "_blank" # optional html a tag target attribute
+                  #    - name: "httpbin REST API - external"
+                  #      subtitle: "requires valid api-key"
+                  #      icon: "fab fa-connectdevelop"
+                  #      tag: "httpbin-rest-api"
+                  #      url: "https://httpbin.ext.glooplatform.com/v1/get"
+                  #      target: "_blank" # optional html a tag target attribute
+                  #    - name: "petstore REST API - external"
+                  #      subtitle: "requires valid api-key"
+                  #      icon: "fab fa-connectdevelop"
+                  #      tag: "petstore-rest-api"
+                  #      url: "https://petstore.ext.glooplatform.com/pet"
+                  #      target: "_blank" # optional html a tag target attribute
+                  #    - name: "tracks REST API - external"
+                  #      subtitle: "requires valid api-key"
+                  #      icon: "fab fa-connectdevelop"
+                  #      tag: "petstore-rest-api"
+                  #      url: "https://tracks.ext.glooplatform.com/tracks"
+                  #      target: "_blank" # optional html a tag target attribute
+              
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

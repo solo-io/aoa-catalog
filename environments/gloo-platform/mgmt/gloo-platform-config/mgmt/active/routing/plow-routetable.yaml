@@ -1,0 +1,47 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: plow-loadgen
+  namespace: ops-team-config
+  labels:
+    expose: "true"
+spec:
+  hosts:
+    - 'plow.demo.glooplatform.com'
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
+  workloadSelectors: []
+  http:
+    - name: httpbin-plow-rewrite
+      labels:
+        waf: "true"
+        ratelimited: "true"
+      matchers:
+      - uri:
+          prefix: /httpbin
+      forwardTo:
+        pathRewrite: /
+        destinations:
+        - ref:
+            name: plow-httpbin
+            namespace: httpbin
+          port:
+            number: 18888
+    - name: httpbin-plow
+      labels:
+        waf: "true"
+        ratelimited: "true"
+      matchers:
+      - uri:
+          prefix: /data
+      - uri:
+          prefix: /echarts
+      forwardTo:
+        destinations:
+        - ref:
+            name: plow-httpbin
+            namespace: httpbin
+          port:
+            number: 18888

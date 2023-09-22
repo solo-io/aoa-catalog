@@ -1,0 +1,71 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: httpbin-rt-443
+  namespace: httpbin
+  labels:
+    expose: "true"
+spec:
+  hosts:
+    - 'httpbin.demo.glooplatform.com'
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
+  workloadSelectors: []
+  http:
+    - name: httpbin-protected
+      labels:
+        oauth: httpbin.demo.glooplatform.com
+        waf: "true"
+        ratelimited: "true"
+      matchers:
+      - uri:
+          exact: /get
+      - uri:
+          prefix: /delete
+      - uri:
+          prefix: /patch
+      - uri:
+          prefix: /post
+      - uri:
+          prefix: /put
+      - uri:
+          prefix: /status
+      - uri:
+          exact: /headers
+      - uri:
+          exact: /ip
+      - uri:
+          exact: /user-agent
+      - uri:
+          prefix: /image
+      - uri:
+          prefix: /callback
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
+    - name: httpbin-public
+      labels:
+        waf: "true"
+        ratelimited: "true"
+      matchers:
+      - uri:
+          exact: /
+      - uri:
+          prefix: /flasgger_static
+      - uri:
+          exact: /spec.json
+      - uri:
+          prefix: /anything
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000

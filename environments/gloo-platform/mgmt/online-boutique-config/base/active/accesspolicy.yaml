@@ -1,0 +1,42 @@
+apiVersion: security.policy.gloo.solo.io/v2
+kind: AccessPolicy
+metadata:
+  name: in-namespace-access
+  namespace: backend-apis-team
+spec:
+  applyToDestinations:
+  - selector:
+      workspace: backend-apis-team
+  config:
+    authz:
+      allowedClients:
+      - serviceAccountSelector:
+          namespace: backend-apis
+---
+apiVersion: security.policy.gloo.solo.io/v2
+kind: AccessPolicy
+metadata:
+  name: frontend-api-access
+  namespace: backend-apis-team
+spec:
+  applyToDestinations:
+  - selector:
+      workspace: backend-apis-team
+  config:
+    authz:
+      allowedClients:
+      - serviceAccountSelector:
+          workspace: web-team
+---
+apiVersion: security.policy.gloo.solo.io/v2
+kind: AccessPolicy
+metadata:
+  name: allow-nothing
+  namespace: backend-apis-team
+spec:
+  applyToWorkloads:
+  - {}
+  config:
+    authn:
+      tlsMode: STRICT
+    authz: {}

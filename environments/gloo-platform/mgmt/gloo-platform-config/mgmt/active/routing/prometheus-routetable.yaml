@@ -1,0 +1,51 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  labels:
+    expose: "true"
+  name: prometheus-ui-443
+  namespace: gloo-mesh
+spec:
+  hosts:
+  - 'prometheus.admin.glooplatform.com'
+  http:
+  - name: prometheus-health
+    labels:
+      waf: "true"
+    matchers:
+      - uri:
+          exact: /healthz
+    forwardTo:
+      pathRewrite: /-/ready
+      destinations:
+      - port:
+          number: 80
+        ref:
+          cluster: mgmt
+          name: prometheus-server
+          namespace: gloo-mesh
+  - name: prometheus-ui
+    labels:
+      waf: "true"
+      auth: prometheus.admin.glooplatform.com
+    matchers:
+      - uri:
+          prefix: /
+        #headers:
+        #- name: user
+        #  value: preferred
+      - uri:
+          prefix: /callback
+    forwardTo:
+      destinations:
+      - port:
+          number: 80
+        ref:
+          cluster: mgmt
+          name: prometheus-server
+          namespace: gloo-mesh
+  virtualGateways:
+  - cluster: mgmt
+    name: mgmt-north-south-gw-443
+    namespace: istio-gateways
+  workloadSelectors: []

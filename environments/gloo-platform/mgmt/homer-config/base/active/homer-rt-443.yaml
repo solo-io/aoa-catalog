@@ -1,0 +1,74 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  labels:
+    expose: "true"
+  name: homer-rt-kapoozi
+  namespace: homer-portal
+spec:
+  hosts:
+  - 'homer.kapoozi.com'
+  - 'glooplatform.com'
+  http:
+  - redirect:
+      hostRedirect: demo.glooplatform.com
+  virtualGateways:
+  - cluster: mgmt
+    name: mgmt-north-south-gw-443
+    namespace: istio-gateways
+  workloadSelectors: []
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  labels:
+    expose: "true"
+  name: homer-rt-glooplatform
+  namespace: homer-portal
+spec:
+  hosts:
+  - 'demo.glooplatform.com'
+  http:
+  - name: solo-homer
+    forwardTo:
+      destinations:
+      - port:
+          number: 8080
+        ref:
+          cluster: mgmt
+          name: homer-portal-solo
+          namespace: homer-portal
+    matchers:
+      - uri:
+          prefix: /solo
+      - uri:
+          prefix: /callback
+  - name: solo-howto
+    forwardTo:
+      destinations:
+      - port:
+          number: 8080
+        ref:
+          cluster: mgmt
+          name: homer-portal-howto
+          namespace: homer-portal
+    #labels:
+    #  gcp-oauth: "true"
+    matchers:
+      - uri:
+          prefix: /howto
+      - uri:
+          prefix: /callback
+  - name: redirect
+    # Prefix matching for the old path
+    matchers:
+    - uri:
+        prefix: /
+    # Redirection to the desired path
+    redirect:
+      pathRedirect: /solo
+  virtualGateways:
+  - cluster: mgmt
+    name: mgmt-north-south-gw-443
+    namespace: istio-gateways
+  workloadSelectors: []

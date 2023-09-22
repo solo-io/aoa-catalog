@@ -1,0 +1,130 @@
+
+waves:
+  # core 
+  - name: clusterconfig
+    location: $env_path/clusterconfig/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/clusterconfig/init.sh
+      post_deploy:
+      -  $env_path/clusterconfig/test.sh  
+  - name: certmanager
+    scripts:
+      pre_deploy: 
+      -  $env_path/certmanager/init.sh
+      post_deploy:
+      -  $env_path/certmanager/test.sh
+    location: $env_path/certmanager/base/active
+  - name: gloo-platform
+    location: $env_path/gloo-platform/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-platform/init.sh
+      post_deploy:
+      -  $env_path/gloo-platform/test.sh    
+  - name: istio
+    location: $env_path/istio/helm/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/istio/helm/init.sh
+      post_deploy:
+      -  $env_path/istio/helm/test.sh    
+  - name: gloo-platform-config
+    location: $env_path/gloo-platform-config/mgmt/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-platform-config/init.sh
+      post_deploy:
+      -  $env_path/gloo-platform-config/test.sh
+  # additional
+  - name: glooplatform-central-platform-config
+    location: $env_path/gloo-platform-config/glooplatform-central/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-platform-config/init.sh
+      post_deploy:
+      -  $env_path/gloo-platform-config/test.sh 
+  - name: glooplatform-east-platform-config
+    location: $env_path/gloo-platform-config/glooplatform-east/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-platform-config/init.sh
+      post_deploy:
+      -  $env_path/gloo-platform-config/test.sh 
+  - name: bookinfo-config
+    location: $env_path/bookinfo-config/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/bookinfo-config/init.sh
+      post_deploy:
+      -  $env_path/bookinfo-config/test.sh   
+  - name: httpbin-app
+    location: $env_path/httpbin-app/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/httpbin-app/init.sh
+      post_deploy:
+      -  $env_path/httpbin-app/test.sh   
+  - name: httpbin-config
+    location: $env_path/httpbin-config/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/httpbin-config/init.sh
+      post_deploy:
+      -  $env_path/httpbin-config/test.sh  
+  - name: online-boutique-config
+    location: $env_path/online-boutique-config/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/online-boutique-config/init.sh
+      post_deploy:
+      -  $env_path/online-boutique-config/test.sh     
+  - name: portal-demo
+    location: $env_path/portal-demo/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/portal-demo/init.sh
+      post_deploy:
+      -  $env_path/portal-demo/test.sh    
+  - name: mario-config
+    location: $env_path/mario-config/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/mario-config/init.sh
+      post_deploy:
+      -  $env_path/mario-config/test.sh 
+  - name: kubeinvaders-config
+    location: $env_path/kubeinvaders-config/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/kubeinvaders-config/init.sh
+      post_deploy:
+      -  $env_path/kubeinvaders-config/test.sh 
+  - name: argo-rollouts
+    location: $env_path/argo-rollouts/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/argo-rollouts/init.sh
+      post_deploy:
+      -  $env_path/argo-rollouts/test.sh
+  - name: rollouts-demo
+    location: $env_path/rollouts-demo/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/rollouts-demo/init.sh
+      post_deploy:
+      -  $env_path/rollouts-demo/test.sh
+  - name: homer-app
+    location: $env_path/homer-app/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer-app/init.sh
+      post_deploy:
+      -  $env_path/homer-app/test.sh 
+  - name: homer-config
+    location: $env_path/homer-config/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer-config/init.sh
+      post_deploy:
+      -  $env_path/homer-config/test.sh

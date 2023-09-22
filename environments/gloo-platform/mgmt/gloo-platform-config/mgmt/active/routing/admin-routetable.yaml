@@ -1,0 +1,91 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  labels:
+    expose: "true"
+  name: admin-routetable
+  namespace: argocd
+spec:
+  hosts:
+  - 'admin.glooplatform.com'
+  http:
+  - name: grafana-public
+    labels:
+      waf: "true"
+    matchers:
+      - uri:
+          prefix: /api/health
+      - uri:
+          prefix: /mgmt-grafana/api/ds
+      - uri:
+          prefix: /mgmt-grafana/api/live
+      - uri:
+          regex: /mgmt-grafana/api/annotations*
+    forwardTo:
+      destinations:
+      - port:
+          number: 3000
+        ref:
+          cluster: mgmt
+          name: grafana
+          namespace: istio-system
+  - name: argo-health-mgmt
+    labels:
+      waf: "true"
+    matchers:
+      - uri:
+          prefix: /healthz
+    forwardTo:
+      destinations:
+      - port:
+          number: 443
+        ref:
+          cluster: mgmt
+          name: argocd-server
+          namespace: argocd
+  - name: sanity
+    matchers:
+    - uri:
+        exact: /sanity
+    directResponse:
+      status: 200
+      body: "it's alive"
+  - name: argocd
+    labels:
+      waf: "true"
+      oauth: admin.glooplatform.com
+    matchers:
+    - uri:
+        prefix: /argo
+    - uri:
+        prefix: /callback
+    forwardTo:
+      destinations:
+      - port:
+          number: 443
+        ref:
+          cluster: mgmt
+          name: argocd-server
+          namespace: argocd
+  - name: grafana-ui
+    labels:
+      waf: "true"
+      oauth: admin.glooplatform.com
+    matchers:
+    - uri:
+        prefix: /mgmt-grafana
+    - uri:
+        prefix: /callback
+    forwardTo:
+      destinations:
+      - port:
+          number: 3000
+        ref:
+          cluster: mgmt
+          name: grafana
+          namespace: istio-system
+  virtualGateways:
+  - cluster: mgmt
+    name: mgmt-north-south-gw-443
+    namespace: istio-gateways
+  workloadSelectors: []

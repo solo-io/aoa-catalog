@@ -1,0 +1,79 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubeinvaders
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kubeinvaders
+  project: default
+  source:
+    chart: kubeinvaders
+    repoURL: https://lucky-sideburn.github.io/helm-charts/
+    targetRevision: 1.9.6
+    helm:
+      values: |
+        config:
+          # target_namespace where kubeinvaders should be allowed to kill pods
+          target_namespace: "web-ui,istio-gateways,podinfo"
+          alienProximity: 1
+          hitsLimit: 5
+          updateTime: 0.5
+        podAnnotations:
+          prometheus.io/scrape: "true"
+          proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        rbac:
+          # Specifies whether RBAC resources should be created
+          create: true
+        serviceAccount:
+          # Specifies whether a service account should be created
+          create: true
+          # The name of the service account to use.
+          # If not set and create is true, a name is generated using the fullname template
+          name: kubeinvaders
+        clusterRole:
+          create: false
+          # The name of a cluster role to bind to; if not set and create is
+          # true, a name based on fullname is generated
+          name: kubeinvaders
+        serviceMonitor:
+          enabled: false
+        deployment:
+          replicaCount: 1
+          image:
+            repository: luckysideburn/kubeinvaders
+            tag: v1.9.6
+            pullPolicy: Always
+            resources:
+              requests:
+                cpu: 100m
+                memory: 256Mi
+              limits:
+                cpu: 300m
+                memory: 1Gi
+          #extraEnv:
+          #- name: INSECURE_ENDPOINT
+          #  value: "true"
+          nodeSelector:
+            gke-spot: "true"
+          tolerations:
+          - key: cloud.google.com/gke-spot
+            operator: Equal
+            value: "true"
+            effect: NoSchedule
+        service:
+          type: ClusterIP
+          port: 8080
+          targetPort: 8080
+        ingress:
+          enabled: false
+        # Use route_host only if ingress is disabled
+        route_host: "chaos.demo.glooplatform.com"
+        
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -1,0 +1,17 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: httpbin
+  namespace: idp-project-config
+spec:
+  hosts:
+  - httpbin.idp-project.solo-io.mesh
+  services:
+  - labels:
+      app: httpbin
+    namespace: idp-project
+  ports:
+  - number: 80
+    protocol: HTTP
+    targetPort:
+      name: http
