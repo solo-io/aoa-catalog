@@ -36,7 +36,6 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    #automated: {}
   ignoreDifferences:
   - group: '*'
     kind: '*'
