@@ -1,0 +1,192 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gloo-platform-helm
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gloo-mesh
+  project: default
+  source:
+    chart: gloo-platform
+    helm:
+      skipCrds: true
+      values: |
+        common:
+            addonNamespace: "gloo-mesh-addons"
+            adminNamespace: "gloo-mesh"
+            cluster: mgmt
+        global: {}
+        glooAgent:
+            enabled: true
+            relay:
+                serverAddress: gloo-mesh-mgmt-server:9900
+                clientTlsSecret:
+                    name: gloo-agent-tls-cert
+                    namespace: gloo-mesh
+                rootTlsSecret:
+                    name: relay-root-ca
+                    namespace: gloo-mesh
+        glooMgmtServer:
+            enabled: true
+            registerCluster: true
+            createGlobalWorkspace: true
+            istioController:
+                enabled: true
+                istioControllerImage: us-docker.pkg.dev/developers-369321/gloo-platform-dev/istio-controller:d2ac7090f366180842d0ff49ab06f5f390629d5-2023-09-20-main-3d2ac70
+            ports:
+                healthcheck: 8091
+            relay:
+                disableCa: true
+                disableCaCertGeneration: true
+                disableTokenGeneration: true
+                tlsSecret:
+                    name: gloo-server-tls-cert
+            serviceType: LoadBalancer
+        insights:
+            enabled: true
+        glooUi:
+            basePath: /gmui
+            auth:
+                backend: oidc
+                enabled: false
+                oidc:
+                    appUrl: https://gmui.glootest.com/gmui
+                    clientId: 0oa5zoq0xoGKtOSpg5d7
+                    clientSecret: _MS9PJ52NpUJo8Hj2nE4zj90hX4BFkW61SdaXJfE
+                    clientSecretName: dashboard
+                    issuerUrl: https://dev-22653158.okta.com/oauth2/default
+            deploymentOverrides:
+                spec:
+                    template:
+                        metadata:
+                            annotations:
+                                proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+                            labels:
+                                istio.io/rev: 1-18
+                                sidecar.istio.io/inject: "true"
+            enabled: true
+            serviceType: ClusterIP
+        istioInstallations:
+            enabled: true
+        licensing:
+            licenseSecretName: "gloo-license"
+        prometheus:
+            enabled: true
+        redis:
+            deployment:
+                enabled: true
+        telemetryGateway:
+            enabled: true
+            #image:
+            #  pullPolicy: IfNotPresent
+            #  repository: gcr.io/gloo-mesh/gloo-otel-collector
+            #  tag: 2.2.6
+        telemetryCollector:
+            enabled: true
+            #image:
+            #  pullPolicy: IfNotPresent
+            #  repository: gcr.io/gloo-mesh/gloo-otel-collector
+            #  tag: 2.2.6
+            config:
+                exporters:
+                    otlp:
+                        endpoint: "gloo-telemetry-gateway.gloo-mesh.svc.cluster.local:4317"
+            extraVolumes:
+                - name: root-ca
+                  secret:
+                    defaultMode: 420
+                    secretName: gloo-telemetry-gateway-tls-secret
+                - configMap:
+                    items:
+                        - key: relay
+                          path: relay.yaml
+                    name: gloo-telemetry-collector-config
+                  name: telemetry-configmap
+                - hostPath:
+                    path: /var/run/cilium
+                    type: DirectoryOrCreate
+                  name: cilium-run
+        telemetryGatewayCustomization:
+            disableCertGeneration: true
+            extraPipelines:
+                metrics/gloo-mgmt:
+                    exporters:
+                        - prometheus
+                    processors:
+                        - memory_limiter
+                        - batch
+                    receivers:
+                        - prometheus/gloo-mgmt
+            extraReceivers:
+                prometheus/gloo-mgmt:
+                    config:
+                        scrape_configs:
+                            - honor_labels: true
+                              job_name: gloo-mesh-mgmt-server-otel
+                              kubernetes_sd_configs:
+                                - namespaces:
+                                    names:
+                                        - gloo-mesh
+                                  role: pod
+                              relabel_configs:
+                                - action: keep
+                                  regex: gloo-mesh-mgmt-server|gloo-mesh-ui
+                                  source_labels:
+                                    - __meta_kubernetes_pod_label_app
+                                - action: keep
+                                  regex: true
+                                  source_labels:
+                                    - __meta_kubernetes_pod_annotation_prometheus_io_scrape
+                                - action: drop
+                                  regex: true
+                                  source_labels:
+                                    - __meta_kubernetes_pod_annotation_prometheus_io_scrape_slow
+                                - action: replace
+                                  regex: (https?)
+                                  source_labels:
+                                    - __meta_kubernetes_pod_annotation_prometheus_io_scheme
+                                  target_label: __scheme__
+                                - action: replace
+                                  regex: (.+)
+                                  source_labels:
+                                    - __meta_kubernetes_pod_annotation_prometheus_io_path
+                                  target_label: __metrics_path__
+                                - action: replace
+                                  regex: ([^:]+)(?::\d+)?;(\d+)
+                                  replacement: $$1:$$2
+                                  source_labels:
+                                    - __address__
+                                    - __meta_kubernetes_pod_annotation_prometheus_io_port
+                                  target_label: __address__
+                                - action: labelmap
+                                  regex: __meta_kubernetes_pod_annotation_prometheus_io_param_(.+)
+                                  replacement: __param_$$1
+                                - action: labelmap
+                                  regex: __meta_kubernetes_pod_label_(.+)
+                                - action: replace
+                                  source_labels:
+                                    - __meta_kubernetes_namespace
+                                  target_label: namespace
+                                - action: replace
+                                  source_labels:
+                                    - __meta_kubernetes_pod_name
+                                  target_label: pod
+                                - action: drop
+                                  regex: Pending|Succeeded|Failed|Completed
+                                  source_labels:
+                                    - __meta_kubernetes_pod_phase
+
+    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
+    targetRevision: 2.5.0-beta0-2023-09-25-main-0be4c473a
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  # ignore the self-signed certs that are being generated automatically    
+  ignoreDifferences:
+  - group: v1
+    kind: Secret
