@@ -1,0 +1,50 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istiod
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  project: default
+  source:
+    chart: cilium
+    repoURL: https://helm.cilium.io/
+    targetRevision: 1.13.2
+    helm:
+      values: |
+        nodeinit:
+          enabled: true
+          reconfigureKubelet: true
+          removeCbrBridge: true
+        cni:
+          binPath: /home/kubernetes/bin
+        gke:
+          enabled: true
+        ipam:
+          mode: kubernetes
+        prometheus:
+          enabled: false
+        operator:
+          prometheus:
+            enabled: false
+        hubble:
+          enabled: true
+          metrics:
+            enabled: "{dns:destinationContext=pod;sourceContext=pod,drop:destinationContext=pod;sourceContext=pod,tcp:destinationContext=pod;sourceContext=pod,flow:destinationContext=pod;sourceContext=pod,port-distribution:destinationContext=pod;sourceContext=pod}"
+        customCalls:
+          enabled: true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  ignoreDifferences:
+  - group: '*'
+    kind: '*'
+    managedFieldsManagers:
+    - argocd-application-controller
