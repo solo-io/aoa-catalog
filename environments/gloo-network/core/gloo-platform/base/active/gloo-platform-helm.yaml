@@ -33,10 +33,6 @@ spec:
         glooMgmtServer:
             enabled: true
             registerCluster: true
-            createGlobalWorkspace: true
-            istioController:
-                enabled: true
-                istioControllerImage: us-docker.pkg.dev/developers-369321/gloo-platform-dev/istio-controller:464d0dc6c8c7030e56a88032dcdbfef84a25878-2023-09-25-main-9464d0d
             ports:
                 healthcheck: 8091
             relay:
@@ -46,8 +42,6 @@ spec:
                 tlsSecret:
                     name: gloo-server-tls-cert
             serviceType: LoadBalancer
-        insights:
-            enabled: true
         glooUi:
             basePath: /gmui
             auth:
