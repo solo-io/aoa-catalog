@@ -26,11 +26,7 @@ spec:
     - uri:
         prefix: /static
     - uri:
-        prefix: /workspace
-    - uri:
-        prefix: /apis
-    - uri:
-        prefix: /portals
+        prefix: /insights
     - uri:
         exact: /favicon.ico
     - uri:
