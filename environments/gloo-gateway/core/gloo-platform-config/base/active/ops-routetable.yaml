@@ -11,13 +11,17 @@ spec:
       namespace: istio-gateways
       cluster: mgmt
   http:
-   - matchers:
-     - uri:
-         prefix: /
-     delegate:
-       routeTables:
-         - name: gm-ui-rt
-           namespace: gloo-mesh
+  - matchers:
+      - uri:
+          prefix: /
+    delegate:
+      routeTables:
+        - name: mgmt-argo-rt
+          namespace: argocd
+        - name: grafana-ui
+          namespace: gloo-mesh
+        - name: homer-web-portal-rt
+          namespace: ops-team-config
 ---
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
@@ -32,17 +36,13 @@ spec:
       namespace: istio-gateways
       cluster: mgmt
   http:
-   - matchers:
-     - uri:
-         prefix: /
-     delegate:
-       routeTables:
-         - name: mgmt-argo-rt
-           namespace: argocd
-         - name: grafana-ui
-           namespace: gloo-mesh
-         - name: homer-web-portal-rt
-           namespace: ops-team-config
+  - matchers:
+      - uri:
+          prefix: /
+    delegate:
+      routeTables:
+        - name: gm-ui-rt
+          namespace: gloo-mesh
 ---
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
