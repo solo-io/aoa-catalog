@@ -64,8 +64,6 @@ spec:
                                 sidecar.istio.io/inject: "true"
             enabled: true
             serviceType: ClusterIP
-        istioInstallations:
-            enabled: true
         licensing:
             licenseSecretName: "gloo-license"
         prometheus:
