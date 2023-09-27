@@ -11,10 +11,8 @@ spec:
   http:
     - match:
         - uri:
-            prefix: /prometheus
+            prefix: /
       name: prometheus-ui
-      rewrite:
-        uri: /graph
       route:
         - destination:
             host: prometheus-server

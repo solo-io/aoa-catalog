@@ -36,7 +36,7 @@ spec:
             createGlobalWorkspace: true
             istioController:
                 enabled: true
-                istioControllerImage: us-docker.pkg.dev/developers-369321/gloo-platform-dev/istio-controller:d24ef4cdda3e8c10721b73f6402761d4ac197ef-2023-09-27-certificate-chain-information-7d24ef4
+                istioControllerImage: us-docker.pkg.dev/developers-369321/gloo-platform-dev/istio-controller:464d0dc6c8c7030e56a88032dcdbfef84a25878-2023-09-22-main-9464d0d
             ports:
                 healthcheck: 8091
             relay:

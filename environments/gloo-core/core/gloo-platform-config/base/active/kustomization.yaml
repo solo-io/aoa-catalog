@@ -6,5 +6,4 @@ kind: Kustomization
 resources:
 - argocd-vs.yaml
 - gmui-vs.yaml
-- prometheus-vs.yaml
 - https-gateway.yaml
