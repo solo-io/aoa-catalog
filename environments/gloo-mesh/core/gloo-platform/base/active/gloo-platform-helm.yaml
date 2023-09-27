@@ -33,10 +33,6 @@ spec:
         glooMgmtServer:
             enabled: true
             registerCluster: true
-            createGlobalWorkspace: true
-            istioController:
-                enabled: true
-                istioControllerImage: us-docker.pkg.dev/developers-369321/gloo-platform-dev/istio-controller:464d0dc6c8c7030e56a88032dcdbfef84a25878-2023-09-25-main-9464d0d
             ports:
                 healthcheck: 8091
             relay:
@@ -46,14 +42,28 @@ spec:
                 tlsSecret:
                     name: gloo-server-tls-cert
             serviceType: LoadBalancer
-        insights:
-            enabled: true
         glooUi:
             basePath: /gmui
+            auth:
+                backend: oidc
+                enabled: false
+                oidc:
+                    appUrl: https://gmui.glootest.com/gmui
+                    clientId: 0oa5zoq0xoGKtOSpg5d7
+                    clientSecret: _MS9PJ52NpUJo8Hj2nE4zj90hX4BFkW61SdaXJfE
+                    clientSecretName: dashboard
+                    issuerUrl: https://dev-22653158.okta.com/oauth2/default
+            deploymentOverrides:
+                spec:
+                    template:
+                        metadata:
+                            annotations:
+                                proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+                            labels:
+                                istio.io/rev: 1-18
+                                sidecar.istio.io/inject: "true"
             enabled: true
             serviceType: ClusterIP
-        istioInstallations:
-            enabled: true
         licensing:
             licenseSecretName: "gloo-license"
         prometheus:
@@ -154,8 +164,8 @@ spec:
                                   source_labels:
                                     - __meta_kubernetes_pod_phase
 
-    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.5.0-beta0-2023-09-26-ashleywang1-post-codegen-istio-insights-merge-to-main-e973cc9b4
+    repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
+    targetRevision: 2.4.2
   syncPolicy:
     automated:
       prune: true
