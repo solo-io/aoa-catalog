@@ -1,22 +1,22 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  annotations:
-    cluster.solo.io/cluster: mgmt
-  name: gmui-vs
+  name: prometheus-vs
   namespace: gloo-mesh
 spec:
+  hosts:
+    - '*'
   gateways:
     - gloo-mesh-gateways/https-gateway
-  hosts:
-    - "*"
   http:
     - match:
         - uri:
-            prefix: /
-      name: gmui-main
+            prefix: /prometheus
+      name: prometheus-ui
+      rewrite:
+        uri: /graph
       route:
         - destination:
-            host: gloo-mesh-ui.gloo-mesh.svc.cluster.local
+            host: prometheus-server
             port:
-              number: 8090
+              number: 80
