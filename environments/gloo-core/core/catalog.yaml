@@ -29,9 +29,9 @@ waves:
       post_deploy:
         -  $env_path/gloo-platform-config/test.sh
   - name: online-boutique-app
-    location: $env_path/../../gloo-gateway/onlineboutique/online-boutique-app/base/active
+    location: $env_path/online-boutique-app/base/active
     scripts:
       pre_deploy:
-        -  $env_path/../../gloo-gateway/onlineboutique/online-boutique-app/init.sh
+        -  $env_path/online-boutique-app/init.sh
       post_deploy:
-        -  $env_path/../../gloo-gateway/onlineboutique/online-boutique-app/test.sh
+        -  $env_path/online-boutique-app/test.sh
