@@ -1,5 +1,12 @@
 
 waves:
+  - name: certmanager
+    scripts:
+      pre_deploy:
+        -  $env_path/../../gloo-gateway/core/certmanager/init.sh
+      post_deploy:
+        -  $env_path/../../gloo-gateway/core/certmanager/test.sh
+    location: $env_path/../../gloo-gateway/core/certmanager/base/active
   - name: clusterconfig
     location: $env_path/../../gloo-gateway/core/clusterconfig/base/active
     scripts:
@@ -7,13 +14,6 @@ waves:
       -  $env_path/../../gloo-gateway/core/clusterconfig/init.sh
       post_deploy:
       -  $env_path/../../gloo-gateway/core/clusterconfig/test.sh
-  - name: certmanager
-    scripts:
-      pre_deploy: 
-      -  $env_path/../../gloo-gateway/core/certmanager/init.sh
-      post_deploy:
-      -  $env_path/../../gloo-gateway/core/certmanager/test.sh
-    location: $env_path/../../gloo-gateway/core/certmanager/base/active
   - name: istio
     location: $env_path/../../gloo-gateway/core/istio/helm/base/active
     scripts:
