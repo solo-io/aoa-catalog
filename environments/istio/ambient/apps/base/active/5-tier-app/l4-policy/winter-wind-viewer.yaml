@@ -1,0 +1,15 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+ name: winter-wind-viewer
+ namespace: ns-1
+spec:
+ selector:
+   matchLabels:
+     app: winter-wind
+ action: ALLOW
+ rules:
+ - from:
+   - source:
+       principals:
+       - cluster.local/ns/ns-1/sa/floral-dawn

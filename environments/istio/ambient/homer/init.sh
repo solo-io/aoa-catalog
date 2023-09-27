@@ -220,10 +220,10 @@ spec:
                   - name: "Web Applications"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "httpbin"
+                      - name: "5 Tier App"
                         icon: "far fa-window-maximize"
-                        tag: "httpbin"
-                        url: "https://$LB_ADDRESS"
+                        tag: "5tierapp"
+                        url: "http://$LB_ADDRESS/ui"
                         target: "_blank" # optional html a tag target attribute             
   syncPolicy:
     automated:

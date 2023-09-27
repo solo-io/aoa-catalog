@@ -1,0 +1,18 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- divine-cloud-viewer.yaml
+- floral-dawn.yaml
+- little-flower-viewer.yaml
+- nameless-breeze-viewer.yaml
+- polished-feather-viewer.yaml
+- quiet-sun-viewer.yaml
+- still-voice-viewer.yaml
+- summer-forest-viewer.yaml
+- throbbing-field-viewer.yaml
+- winter-wind-viewer.yaml
+#- restless-sky-viewer.yaml
+#- sparkling-paper-viewer.yaml

@@ -4,4 +4,9 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- istio-operator-1-19.yaml
+- ns-1-ns.yaml
+#- 5-tier-app.yaml
+- 5-tier-app-gke-spot.yaml
+- 5-tier-vs.yaml
+- l4-policy
+- l7-policy

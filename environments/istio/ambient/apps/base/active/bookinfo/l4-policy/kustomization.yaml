@@ -4,4 +4,7 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- istio-operator-1-19.yaml
+- details-viewer.yaml
+- productpage-viewer.yaml
+- ratings-viewer.yaml
+- reviews-viewer.yaml

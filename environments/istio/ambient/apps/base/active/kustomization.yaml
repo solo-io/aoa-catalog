@@ -4,4 +4,7 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- istio-operator-1-19.yaml
+- 5-tier-app
+- client
+#- bookinfo
+#- httpbin

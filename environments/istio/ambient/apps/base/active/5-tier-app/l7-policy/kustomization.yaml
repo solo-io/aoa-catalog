@@ -4,4 +4,7 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- istio-operator-1-19.yaml
+- restless-sky-viewer.yaml
+- restless-sky-waypoint.yaml
+- sparkling-paper-viewer.yaml
+- sparkling-paper-waypoint.yaml

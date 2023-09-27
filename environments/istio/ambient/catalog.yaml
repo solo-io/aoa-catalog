@@ -21,13 +21,13 @@ waves:
       -  $env_path/istio/init.sh
       post_deploy:
       -  $env_path/istio/test.sh
-  - name: httpbin
-    location: $env_path/httpbin/base/active
+  - name: apps
+    location: $env_path/apps/base/active
     scripts:
       pre_deploy: 
-      -  $env_path/httpbin/init.sh
+      -  $env_path/apps/init.sh
       post_deploy:
-      -  $env_path/httpbin/test.sh  
+      -  $env_path/apps/test.sh  
   - name: clusterservices-config
     location: $env_path/clusterservices-config/base/active
     scripts:

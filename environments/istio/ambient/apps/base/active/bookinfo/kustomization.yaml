@@ -4,4 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- istio-operator-1-19.yaml
+- bookinfo-ns.yaml
+- bookinfo.yaml
+- bookinfo-vs.yaml
+- bookinfo-waypoint.yaml
+#- l4-policy

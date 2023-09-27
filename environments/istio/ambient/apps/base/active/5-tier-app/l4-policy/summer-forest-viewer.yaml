@@ -1,0 +1,15 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+ name: summer-forest-viewer
+ namespace: ns-1
+spec:
+ selector:
+   matchLabels:
+     app: summer-forest
+ action: ALLOW
+ rules:
+ - from:
+   - source:
+       principals:
+       - cluster.local/ns/ns-1/sa/still-voice

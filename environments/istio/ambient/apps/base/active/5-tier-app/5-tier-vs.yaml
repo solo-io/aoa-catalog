@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: 5-tier-vs
+  namespace: ns-1
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-system/http-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: sparkling-paper
+        port:
+          number: 8080

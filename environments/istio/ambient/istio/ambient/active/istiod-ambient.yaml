@@ -4,8 +4,8 @@ metadata:
   name: istio-control-plane
   namespace: istio-system
 spec:
-  hub: us-docker.pkg.dev/solo-io-ambient/istio
-  tag: 1.18-alpha.7a0a9645756b07aec92afcc7f0c6ea490f2bdf88
+  hub: us-docker.pkg.dev/gloo-mesh/istio-bf39a24ed9df
+  tag: 1.19.0-patch0-solo
   profile: ambient
   meshConfig:
     accessLogFile: /dev/stdout
