@@ -1,0 +1,38 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: IstioLifecycleManager
+metadata:
+  name: istio-ilm
+  namespace: gloo-mesh
+spec:
+  installations:
+    - clusters:
+        - defaultRevision: true
+          name: mgmt
+      istioOperatorSpec:
+        components:
+          pilot:
+            k8s:
+              env:
+                - name: PILOT_SKIP_VALIDATE_TRUST_DOMAIN
+                  value: "true"
+        meshConfig:
+          accessLogFile: /dev/stdout
+          defaultConfig:
+            envoyAccessLogService:
+              address: gloo-mesh-agent.gloo-mesh:9977
+            envoyMetricsService:
+              address: gloo-mesh-agent.gloo-mesh:9977
+            holdApplicationUntilProxyStarts: true
+            proxyMetadata:
+              ISTIO_META_DNS_AUTO_ALLOCATE: "true"
+              ISTIO_META_DNS_CAPTURE: "true"
+          outboundTrafficPolicy:
+            mode: ALLOW_ANY
+          trustDomain: mgmt
+        namespace: istio-system
+        profile: minimal
+        values:
+          global:
+            multiCluster:
+              clusterName: mgmt
+            network: mgmt

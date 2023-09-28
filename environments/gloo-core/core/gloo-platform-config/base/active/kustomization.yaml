@@ -7,3 +7,5 @@ resources:
 - argocd-vs.yaml
 - gmui-vs.yaml
 - https-gateway.yaml
+- istio-ilm.yaml
+- istio-glm.yaml
