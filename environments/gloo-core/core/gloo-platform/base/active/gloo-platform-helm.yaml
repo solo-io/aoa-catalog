@@ -49,7 +49,6 @@ spec:
         insights:
             enabled: true
         glooUi:
-            basePath: /gmui
             auth:
                 backend: oidc
                 enabled: false
