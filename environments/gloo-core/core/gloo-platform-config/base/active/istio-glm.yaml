@@ -9,6 +9,8 @@ spec:
     - activeGateway: true
       name: mgmt
     istioOperatorSpec:
+      hub: us-docker.pkg.dev/gloo-mesh/istio-bfdc38fe20c3
+      tag: "1.18.3-solo"
       components:
         ingressGateways:
         - enabled: true
