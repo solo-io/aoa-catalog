@@ -2,5 +2,3 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: backend-apis
-  labels:
-    gloo.solo.io.istio_revision: 1-18-2
