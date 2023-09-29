@@ -1,0 +1,31 @@
+
+waves:
+  # core
+  - name: certmanager
+    location: $env_path/../core/certmanager/base/active
+    scripts:
+      pre_deploy:
+        -  $env_path/../core/certmanager/init.sh
+      post_deploy:
+        -  $env_path/../core/certmanager/test.sh
+  - name: clusterconfig
+    location: $env_path/clusterconfig/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/clusterconfig/init.sh
+      post_deploy:
+      -  $env_path/clusterconfig/test.sh
+  - name: istio
+    location: $env_path/istio/helm/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/istio/helm/init.sh
+      post_deploy:
+      -  $env_path/istio/helm/test.sh  
+  - name: gloo-platform
+    location: $env_path/gloo-platform/base/active
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-platform/init.sh
+      post_deploy:
+      -  $env_path/gloo-platform/test.sh
