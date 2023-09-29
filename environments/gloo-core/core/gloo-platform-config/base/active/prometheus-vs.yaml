@@ -7,7 +7,7 @@ spec:
   hosts:
     - '*'
   gateways:
-    - gloo-mesh-gateways/https-gateway
+    - gloo-mesh-gateways/http-gateway
   http:
     - match:
         - uri:
