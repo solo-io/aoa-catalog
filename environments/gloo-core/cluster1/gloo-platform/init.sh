@@ -57,7 +57,6 @@ spec:
       skipCrds: true
       values: |
         common:
-            addonNamespace: "gloo-mesh-addons"
             adminNamespace: "gloo-mesh"
             cluster: cluster1
         global: {}
@@ -135,45 +134,6 @@ spec:
                     path: /var/run/cilium
                     type: DirectoryOrCreate
                   name: cilium-run
-        telemetryCollectorCustomization:
-            extraPipelines:
-                logs/gloo-mesh:
-                    receivers: [otlp/gloo-mesh]
-                    processors: [batch]
-                    exporters: 
-                        - logging/gloo-mesh
-                        # - <Add here your exporter>
-                traces/gloo-mesh: 
-                    receivers: [zipkin/gloo-mesh]
-                    processors: [batch]
-                    exporters:
-                        - otlp
-                        # - <Add here your exporter>
-                metrics/gloo-mesh:
-                    receivers: [prometheus]
-                    processors:
-                        - memory_limiter
-                        - filter/min
-                        - batch
-                        - attributes/drop_extra_istio_labels # Add this to drop labels not needed for Gloo Mesh UI.
-                        - attributes/drop_extra_otel_labels # Add this to drop some labels from the OTel collector itself.
-                        - gloo_metrics_processor
-                    exporters:
-                        - otlp
-            extraExporters:
-                logging/gloo-mesh:
-                    verbosity: normal
-                    sampling_initial: 5
-                    sampling_thereafter: 200
-            extraReceivers:
-                zipkin/gloo-mesh:
-                    endpoint: 0.0.0.0:9411
-                otlp/gloo-mesh:
-                  protocols:
-                    grpc:
-                      endpoint: 0.0.0.0:4317
-                    http:
-                      endpoint: 0.0.0.0:4318
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
     targetRevision: 2.5.0-gloo-core-alpha1
