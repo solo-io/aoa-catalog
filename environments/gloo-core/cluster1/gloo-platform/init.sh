@@ -109,8 +109,6 @@ spec:
             mode: deployment
             service: 
               type: ClusterIP
-            podLabels:
-              istio.io/rev: 1-18
             podAnnotations:
               proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
             image:

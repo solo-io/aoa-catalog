@@ -83,7 +83,7 @@ spec:
             config:
                 exporters:
                     otlp:
-                        endpoint: "gloo-telemetry-gateway.gloo-mesh.svc.cluster.local:4317"
+                        endpoint: "gloo-telemetry-gateway.gloo-mesh:4317"
             extraVolumes:
                 - name: root-ca
                   secret:
