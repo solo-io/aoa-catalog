@@ -145,35 +145,35 @@ spec:
                       path: /var/run/cilium
                       type: DirectoryOrCreate
                   name: cilium-run
-        telemetryCollectorCustomization:
-            extraProcessors:
-              batch/istiod:
-                send_batch_size: 10000
-                timeout: 10s
-              filter/istiod:
-                metrics:
-                  include:
-                    match_type: regexp
-                    metric_names:
-                      - "pilot.*"
-                      - "process.*"
-                      - "go.*"
-                      - "container.*"
-                      - "envoy.*"
-                      - "galley.*"
-                      - "sidecar.*"
-                      - "istio_build.*"
-                      - ".*proxy_latency.*"
-            extraPipelines:
-              metrics/istiod:
-                receivers:
-                - prometheus
-                processors:
-                - memory_limiter
-                - batch/istiod
-                - filter/istiod
-                exporters:
-                - otlp
+        #telemetryCollectorCustomization:
+        #    extraProcessors:
+        #      batch/istiod:
+        #        send_batch_size: 10000
+        #        timeout: 10s
+        #      filter/istiod:
+        #        metrics:
+        #          include:
+        #            match_type: regexp
+        #            metric_names:
+        #              - "pilot.*"
+        #              - "process.*"
+        #              - "go.*"
+        #              - "container.*"
+        #              - "envoy.*"
+        #              - "galley.*"
+        #              - "sidecar.*"
+        #              - "istio_build.*"
+        #              - ".*proxy_latency.*"
+        #    extraPipelines:
+        #      metrics/istiod:
+        #        receivers:
+        #        - prometheus
+        #        processors:
+        #        - memory_limiter
+        #        - batch/istiod
+        #        - filter/istiod
+        #        exporters:
+        #        - otlp
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
     targetRevision: 2.4.2
