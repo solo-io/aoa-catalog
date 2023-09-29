@@ -10,11 +10,11 @@ The `gloo-core/core` environment deploys the core components of a single cluster
 
 ## Environment descriptions
 - base:
-    - gloo mesh 2.5.0-gloo-core-alpha0
+    - gloo mesh 2.5.0-gloo-core-alpha1
     - istio 1.18.3-solo (Helm)
     - revision: 1-18
 - lifecyclemanager:
-    - gloo mesh 2.5.0-gloo-core-alpha0
+    - gloo mesh 2.5.0-gloo-core-alpha1
     - istio 1.18.3-solo (ILM)
     - revision: 1-18
 
