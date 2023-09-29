@@ -181,33 +181,33 @@ spec:
                     type: DirectoryOrCreate
                   name: cilium-run
         
-        telemetryCollectorCustomization:
-            extraProcessors:
-                batch/istiod:
-                    send_batch_size: 10000
-                    timeout: 10s
-                filter/istiod:
-                    metrics:
-                        include:
-                            match_type: regexp
-                            metric_names:
-                              - "pilot.*"
-                              - "process.*"
-                              - "go.*"
-                              - "container.*"
-                              - "envoy.*"
-                              - "galley.*"
-                              - "sidecar.*"
-                              - "istio_build.*"
-            extraReceivers:
-                zipkin/gloo-mesh:
-                    endpoint: 0.0.0.0:9411
-                otlp/gloo-mesh:
-                  protocols:
-                    grpc:
-                      endpoint: 0.0.0.0:4317
-                    http:
-                      endpoint: 0.0.0.0:4318
+        #telemetryCollectorCustomization:
+        #    extraProcessors:
+        #        batch/istiod:
+        #            send_batch_size: 10000
+        #            timeout: 10s
+        #        filter/istiod:
+        #            metrics:
+        #                include:
+        #                    match_type: regexp
+        #                    metric_names:
+        #                      - "pilot.*"
+        #                      - "process.*"
+        #                      - "go.*"
+        #                      - "container.*"
+        #                      - "envoy.*"
+        #                      - "galley.*"
+        #                      - "sidecar.*"
+        #                      - "istio_build.*"
+        #    extraReceivers:
+        #        zipkin/gloo-mesh:
+        #            endpoint: 0.0.0.0:9411
+        #        otlp/gloo-mesh:
+        #          protocols:
+        #            grpc:
+        #              endpoint: 0.0.0.0:4317
+        #            http:
+        #              endpoint: 0.0.0.0:4318
             #extraProcessors:
             #    batch/istiod:
             #        send_batch_size: 10000
