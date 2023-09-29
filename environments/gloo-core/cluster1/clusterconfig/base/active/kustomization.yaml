@@ -4,10 +4,16 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- ../../../../shared-components/clusterconfig/base/active
-- bookinfo-backends-ns.yaml
-- bookinfo-frontends-ns.yaml
-- httpbin-oidc-client-secret.yaml
-- relay-identity-token-secret.yaml
-- relay-root-ca.yaml
+- argocd-ns.yaml
+- cert-manager-ns.yaml
+- gateway-ca.yaml
+- gloo-mesh-addons-ns.yaml
+- gloo-mesh-ns.yaml
+- gloo-mesh-relay-root-ca.yaml
+- httpbin-ns.yaml
+- istio-eastwest-ns.yaml
+- istio-gateways-ns.yaml
+- istio-system-ns.yaml
+- oidc-client-secret.yaml
+- ops-team-config-ns.yaml
 
