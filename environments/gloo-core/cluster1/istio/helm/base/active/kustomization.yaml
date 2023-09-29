@@ -4,8 +4,11 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- ../../../../../shared-components/istio/helm/base/active
-- istio-eastwestgateway.yaml
-
-patchesStrategicMerge:
+- gateway-cert.yaml
+- gateway-clusterissuer.yaml
+- grafana.yaml
+- istio-base.yaml
+- istio-ingressgateway.yaml
 - istiod.yaml
+- kiali.yaml
+- prometheus.yaml
