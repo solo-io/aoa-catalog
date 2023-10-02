@@ -33,9 +33,8 @@ spec:
         glooMgmtServer:
             enabled: true
             registerCluster: true
-            createGlobalWorkspace: true
             istioController:
-                enabled: true
+                enabled: false
                 istioControllerImage: us-docker.pkg.dev/developers-369321/gloo-platform-dev/istio-controller:5602de42cba50fdce2c74d56185557812235c48-2023-09-29-main-c5602de
             ports:
                 healthcheck: 8091
