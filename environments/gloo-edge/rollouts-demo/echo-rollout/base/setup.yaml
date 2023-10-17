@@ -1,0 +1,110 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-v1
+  namespace: echo
+  labels:
+    app: echo
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: echo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-v2
+  namespace: echo
+  labels:
+    app: echo
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: echo
+---
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: echo-v1
+  namespace: echo
+spec:
+  kube:
+    selector:
+      app: echo
+    serviceName: echo-v1
+    serviceNamespace: echo
+    servicePort: 80
+---
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: echo-v2
+  namespace: echo
+spec:
+  kube:
+    selector:
+      app: echo
+    serviceName: echo-v2
+    serviceNamespace: echo
+    servicePort: 80
+---
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  name: echo
+  namespace: gloo-system
+spec:
+  virtualHost:
+    domains:
+    - '*'
+    routes:
+    - matchers:
+      - prefix: /a
+      name: route-a
+      routeAction:
+        multi:
+          destinations:
+          - destination:
+              upstream:
+                name: echo-v1
+                namespace: echo
+            weight: 100
+    - matchers:
+      - prefix: /b
+      name: route-b
+      routeAction:
+        single:
+          upstream:
+            name: echo-v1
+            namespace: echo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-v1
+  namespace: echo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo
+  template:
+    metadata:
+      labels:
+        app: echo
+    spec:
+      containers:
+        - image: hashicorp/http-echo
+          args:
+            - "-text=version:v1"
+            - -listen=:8080
+          imagePullPolicy: Always
+          name: echo-v1
+          ports:
+            - containerPort: 8080
