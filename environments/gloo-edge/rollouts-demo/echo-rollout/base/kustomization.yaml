@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
 - echo-ns.yaml
-#- echo-rollout.yaml
+- echo-rollout.yaml
 #- echo-vs.yaml
 - setup.yaml
 
