@@ -62,7 +62,7 @@ metadata:
 spec:
   virtualHost:
     domains:
-    - '*'
+    - 'echo.glootest.com'
     routes:
     - matchers:
       - prefix: /a
