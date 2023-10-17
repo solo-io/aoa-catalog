@@ -2,7 +2,7 @@
 waves:
   # core 
   - name: clusterconfig
-    location: $env_path/../../core/clusterconfig/base/active
+    location: $env_path/../../core/clusterconfig/base
     scripts:
       pre_deploy: 
       -  $env_path/../../core/clusterconfig/init.sh
@@ -14,23 +14,23 @@ waves:
       -  $env_path/../../core/certmanager/init.sh
       post_deploy:
       -  $env_path/../../core/certmanager/test.sh
-    location: $env_path/../../core/certmanager/base/active
+    location: $env_path/../../core/certmanager/base
   - name: gloo-platform
-    location: $env_path/../../core/gloo-platform/base/active
+    location: $env_path/../../core/gloo-platform/base
     scripts:
       pre_deploy: 
       -  $env_path/../../core/gloo-platform/init.sh
       post_deploy:
       -  $env_path/../../core/gloo-platform/test.sh    
   - name: istio-lifecyclemanager
-    location: $env_path/../../core/istio/lifecyclemanager/base/active
+    location: $env_path/../../core/istio/lifecyclemanager/base
     scripts:
       pre_deploy: 
       -  $env_path/../../core/istio/lifecyclemanager/init.sh
       post_deploy:
       -  $env_path/../../core/istio/lifecyclemanager/test.sh    
   - name: gloo-platform-config
-    location: $env_path/../../core/gloo-platform-config/base/active
+    location: $env_path/../../core/gloo-platform-config/base
     scripts:
       pre_deploy: 
       -  $env_path/../../core/gloo-platform-config/init.sh
@@ -38,28 +38,28 @@ waves:
       -  $env_path/../../core/gloo-platform-config/test.sh
   # additional    
   - name: argo-rollouts
-    location: $env_path/../argo-rollouts/base/active
+    location: $env_path/../argo-rollouts/base
     scripts:
       pre_deploy: 
       -  $env_path/../argo-rollouts/init.sh
       post_deploy:
       -  $env_path/../argo-rollouts/test.sh
   - name: podinfo-rollout
-    location: $env_path/../podinfo-rollout/base/active
+    location: $env_path/../podinfo-rollout/base
     scripts:
       pre_deploy: 
       -  $env_path/../podinfo-rollout/init.sh
       post_deploy:
       -  $env_path/../podinfo-rollout/test.sh 
   - name: homer-app
-    location: $env_path/../homer-app/base/active
+    location: $env_path/../homer-app/base
     scripts:
       pre_deploy: 
       -  $env_path/../homer-app/init.sh
       post_deploy:
       -  $env_path/../homer-app/test.sh 
   - name: homer-config
-    location: $env_path/../homer-config/base/active
+    location: $env_path/../homer-config/base
     scripts:
       pre_deploy: 
       -  $env_path/../homer-config/init.sh
