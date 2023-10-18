@@ -15,10 +15,10 @@ spec:
       containers:
         - image: hashicorp/http-echo
           args:
-            - "-text=version:v3"
+            - "-text=version:v1"
             - -listen=:8080
           imagePullPolicy: Always
-          name: http-echo
+          name: echo-v1
           ports:
             - containerPort: 8080
   strategy:
@@ -36,6 +36,8 @@ spec:
               - route-b
       steps:
         - setWeight: 10
-        - pause: {}
-        - setWeight: 90
-        - pause: {}
+        - pause: {duration: 15}
+        - setWeight: 50
+        - pause: {duration: 15}
+        - setWeight: 100
+        - pause: {duration: 15}
