@@ -15,10 +15,10 @@ spec:
       containers:
         - image: hashicorp/http-echo
           args:
-            - "-text=version:v2"
+            - "-text=version:v3"
             - -listen=:8080
           imagePullPolicy: Always
-          name: echo
+          name: http-echo
           ports:
             - containerPort: 8080
   strategy:
