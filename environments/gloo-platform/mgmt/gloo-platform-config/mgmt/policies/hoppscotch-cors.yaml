@@ -7,7 +7,7 @@ spec:
   applyToRoutes:
   - route:
       labels:
-        cors: true
+        portal: external
   config:
     allowCredentials: true
     allowHeaders:
