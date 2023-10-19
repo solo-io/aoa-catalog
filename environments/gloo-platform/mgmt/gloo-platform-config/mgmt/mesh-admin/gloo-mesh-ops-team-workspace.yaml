@@ -11,7 +11,7 @@ spec:
     - name: istio-system
     - name: ops-team-config
     - name: homer-portal
-    #- name: uptime
+    - name: hoppscotch
   - name: '*'
     namespaces:
     - name: argocd
