@@ -1,0 +1,25 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: hoppscotch-routetable
+  namespace: hoppscotch
+spec:
+  hosts:
+  - 'hoppscotch.glooplatform.com'
+  http:
+  - name: hoppscotch
+    matchers:
+    - uri:
+        prefix: /
+    forwardTo:
+      destinations:
+      - ref:
+          name: hoppscotch
+          namespace: hoppscotch
+        port:
+          number: 80
+  virtualGateways:
+  - cluster: mgmt
+    name: mgmt-north-south-gw-443
+    namespace: istio-gateways
+  workloadSelectors: []
