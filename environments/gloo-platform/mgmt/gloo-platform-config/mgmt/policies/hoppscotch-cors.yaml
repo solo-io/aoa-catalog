@@ -7,7 +7,7 @@ spec:
   applyToRoutes:
   - route:
       labels:
-        portal: external
+        route: hoppscotch
   config:
     allowCredentials: true
     allowHeaders:
