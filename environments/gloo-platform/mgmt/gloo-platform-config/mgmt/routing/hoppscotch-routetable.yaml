@@ -8,8 +8,6 @@ spec:
   - 'hoppscotch.glooplatform.com'
   http:
   - name: hoppscotch
-    labels:
-      route: hoppscotch
     matchers:
     - uri:
         prefix: /

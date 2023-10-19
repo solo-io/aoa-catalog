@@ -9,7 +9,6 @@ resources:
 - gloo-mesh-ui-extauthpolicy-okta.yaml
 - prometheus-extauthpolicy-gcp.yaml
 - workload-clusters-grafana-extauthpolicy-gcp.yaml
-- hoppscotch-cors.yaml
 
 
 
