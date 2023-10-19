@@ -25,3 +25,4 @@ spec:
       - DELETE
     allowOrigins:
       - prefix: 'https://external-portal.glooplatform.com'
+      - prefix: 'https://hoppscotch.glooplatform.com'
