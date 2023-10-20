@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-v1
+  namespace: echo
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: echo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-v2
+  namespace: echo
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: echo
