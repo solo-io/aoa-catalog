@@ -1,0 +1,60 @@
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: echo-stable
+  namespace: echo 
+spec:
+  kube:
+    selector:
+      app: echo
+    serviceName: echo-stable
+    serviceNamespace: echo
+    servicePort: 80
+---
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: echo-canary
+  namespace: echo
+spec:
+  kube:
+    selector:
+      app: echo
+    serviceName: echo-canary
+    serviceNamespace: echo
+    servicePort: 80
+---
+apiVersion: gateway.solo.io/v1
+kind: RouteTable
+metadata:
+  name: echo-routes
+  namespace: echo
+spec:
+  routes:
+    - matchers:
+      - prefix: /
+      routeAction:
+        multi:
+          destinations:
+          - destination:
+              upstream:
+                name: echo-stable
+                namespace: echo
+            weight: 100
+---
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  name: echo
+  namespace: gloo-system
+spec:
+  virtualHost:
+    domains:
+    - '*'
+    routes:
+    - matchers:
+      - prefix: /
+      delegateAction:
+        ref:
+          name: echo-routes
+          namespace: echo

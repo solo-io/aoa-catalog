@@ -1,0 +1,122 @@
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: echo-stable
+  namespace: echo 
+spec:
+  kube:
+    selector:
+      app: echo
+    serviceName: echo-stable
+    serviceNamespace: echo
+    servicePort: 80
+---
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: echo-canary
+  namespace: echo
+spec:
+  kube:
+    selector:
+      app: echo
+    serviceName: echo-canary
+    serviceNamespace: echo
+    servicePort: 80
+---
+apiVersion: gateway.solo.io/v1
+kind: RouteTable
+metadata:
+  name: echo-routes-a
+  namespace: echo
+  labels:
+    test-label: label-1
+    another-label: label-another
+spec:
+  routes:
+    - matchers:
+      - prefix: /a/b
+      name: route-b
+      routeAction:
+        multi:
+          destinations:
+          - destination:
+              upstream:
+                name: echo-stable
+                namespace: echo
+            weight: 100
+    - matchers:
+      - prefix: /a/c
+      name: route-c
+      routeAction:
+        multi:
+          destinations:
+          - destination:
+              upstream:
+                name: echo-stable
+                namespace: echo
+            weight: 100
+          - destination:
+              upstream:
+                name: echo-canary
+                namespace: echo
+            weight: 0
+---
+apiVersion: gateway.solo.io/v1
+kind: RouteTable
+metadata:
+  name: echo-routes-b
+  namespace: echo
+  labels:
+    test-label: label-1
+    yet-another-label: label-another-yet
+spec:
+  routes:
+    - matchers:
+      - prefix: /b/b
+      name: route-b
+      routeAction:
+        single:
+          upstream:
+            name: echo-stable
+            namespace: echo
+    - matchers:
+      - prefix: /b/c
+      name: route-c
+      routeAction:
+        multi:
+          destinations:
+          - destination:
+              upstream:
+                name: echo-stable
+                namespace: echo
+            weight: 100
+          - destination:
+              upstream:
+                name: echo-canary
+                namespace: echo
+            weight: 0
+
+---
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  name: echo
+  namespace: gloo-system
+spec:
+  virtualHost:
+    domains:
+    - '*'
+    routes:
+    - matchers:
+      - prefix: /a
+      delegateAction:
+        ref:
+          name: echo-routes-a
+          namespace: echo
+    - matchers:
+      - prefix: /b
+      delegateAction:
+        ref:
+          name: echo-routes-b
+          namespace: echo

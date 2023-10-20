@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: rollouts-demo-rollout
+  namespace: rollouts-demo
+spec:
+  selector:
+    matchLabels:
+      app: rollouts-demo
+  template:
+    metadata:
+      labels:
+        app: rollouts-demo
+    spec:
+      containers:
+      - name: rollouts-demo
+        image: argoproj/rollouts-demo:blue
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+  strategy:
+    canary:
+      canaryService: rollouts-demo-canary
+      stableService: rollouts-demo-stable
+      trafficRouting:
+        plugins:
+          solo-io/glooedge:
+            routeTable:
+              name: rollouts-demo-routes
+              namespace: rollouts-demo
+      steps:
+        - setWeight: 10
+        - pause: {duration: 5}
+        - setWeight: 25
+        - pause: {duration: 5}
+        - setWeight: 50
+        - pause: {duration: 5}
+        - setWeight: 75
+        - pause: {duration: 5}
+        - setWeight: 100
+        - pause: {duration: 5}
