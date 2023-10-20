@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-stable
+  namespace: echo
+  labels:
+    app: echo
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: echo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-canary
+  namespace: echo
+  labels:
+    app: echo
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: echo
