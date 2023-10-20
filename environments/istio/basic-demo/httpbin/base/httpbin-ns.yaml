@@ -3,6 +3,6 @@ kind: Namespace
 metadata:
   name: httpbin
   labels:
-    istio.io/rev: 1-18
+    istio.io/rev: 1-19
   annotations:
     argocd.argoproj.io/sync-wave: "-5"

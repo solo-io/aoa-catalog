@@ -4,7 +4,7 @@ metadata:
   labels:
     app: istio-ingressgateway
     istio: eastwestgateway
-    revision: 1-18
+    revision: 1-19
     topology.istio.io/network: cluster2
   name: istio-eastwestgateway
   namespace: istio-gateways
@@ -33,6 +33,6 @@ spec:
   selector:
     app: istio-ingressgateway
     istio: eastwestgateway
-    revision: 1-18
+    revision: 1-19
     topology.istio.io/network: cluster2
   type: LoadBalancer

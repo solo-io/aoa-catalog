@@ -40,7 +40,7 @@ spec:
       labels:
         app: in-mesh
         version: v1
-        istio.io/rev: 1-18
+        istio.io/rev: 1-19
       annotations:
         proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:
@@ -71,7 +71,7 @@ spec:
       labels:
         app: in-mesh
         version: v2
-        istio.io/rev: 1-18
+        istio.io/rev: 1-19
       annotations:
         proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:
