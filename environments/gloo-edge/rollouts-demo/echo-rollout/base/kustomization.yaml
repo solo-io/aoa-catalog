@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
 #- blue-green
 #- canary-vs
-- canary-single-rt
-#- canary-multi-rt
+#- canary-single-rt
+- canary-multi-rt
 
