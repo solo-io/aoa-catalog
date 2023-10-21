@@ -4,4 +4,4 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- istio-operator-1-18-0.yaml
+- istio-operator-1-19-0.yaml

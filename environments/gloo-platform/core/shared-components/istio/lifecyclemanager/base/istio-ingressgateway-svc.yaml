@@ -4,8 +4,8 @@ metadata:
   labels:
     app: istio-ingressgateway
     istio: ingressgateway
-    revision: 1-18
-  name: istio-ingressgateway-1-18
+    revision: 1-19
+  name: istio-ingressgateway-1-19
   namespace: istio-gateways
 spec:
   ports:
@@ -20,5 +20,5 @@ spec:
   selector:
     app: istio-ingressgateway
     istio: ingressgateway
-    revision: 1-18
+    revision: 1-19
   type: LoadBalancer
