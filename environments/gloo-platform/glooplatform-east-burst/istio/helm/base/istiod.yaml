@@ -15,7 +15,7 @@ spec:
   source:
     chart: istiod
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.18.2
+    targetRevision: 1.18.3
     helm:
       values: |
         revision: 1-18
@@ -30,7 +30,7 @@ spec:
             clusterName: glooplatform-east-burst
           network: glooplatform-east-burst
           hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
-          tag: 1.18.2-solo
+          tag: 1.18.3-solo
         meshConfig:
           trustDomain: glooplatform-east-burst
           accessLogFile: /dev/stdout
