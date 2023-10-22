@@ -5,3 +5,4 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - uptime-ns.yaml
+- gloo-mesh-glooplatform-central-extauthserver.yaml

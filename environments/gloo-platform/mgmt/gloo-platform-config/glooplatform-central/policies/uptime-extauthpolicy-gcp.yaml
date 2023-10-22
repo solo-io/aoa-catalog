@@ -10,7 +10,7 @@ spec:
         auth: uptime.admin.glooplatform.com
   config:
     server:
-      name: glooplatform-east-ext-auth-server
+      name: glooplatform-central-ext-auth-server
       namespace: gloo-mesh
       cluster: mgmt
     glooAuth:
