@@ -13,5 +13,6 @@ resources:
 - prometheus.yaml
 - grafana.yaml
 - istio-ingressgateway.yaml
+- istio-ingressgateway-svc.yaml
 #- kiali.yaml
 - jaeger.yaml
