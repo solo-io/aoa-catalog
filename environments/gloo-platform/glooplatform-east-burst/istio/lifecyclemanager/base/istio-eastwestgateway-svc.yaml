@@ -5,7 +5,7 @@ metadata:
     app: istio-ingressgateway
     istio: eastwestgateway
     topology.istio.io/network: glooplatform-east-burst
-    istio.io/rev: 1-18
+    istio.io/rev: 1-19
   name: istio-eastwestgateway
   namespace: istio-gateways
 spec:
@@ -33,6 +33,6 @@ spec:
   selector:
     app: istio-ingressgateway
     istio: eastwestgateway
-    #revision: 1-18
+    #revision: 1-19
     #topology.istio.io/network: glooplatform-east-burst
   type: LoadBalancer
