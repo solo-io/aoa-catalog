@@ -10,7 +10,7 @@ spec:
         auth: argocd.central.glooplatform.com
   config:
     server:
-      name: glooplatform-central-ext-auth-server
+      name: glooplatform-east-ext-auth-server
       namespace: gloo-mesh
       cluster: mgmt
     glooAuth:

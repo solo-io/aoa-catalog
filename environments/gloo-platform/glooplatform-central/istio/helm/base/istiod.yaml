@@ -15,10 +15,10 @@ spec:
   source:
     chart: istiod
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.19.3
+    targetRevision: 1.18.3
     helm:
       values: |
-        revision: 1-19
+        revision: 1-18
         global:
           proxy:
             resources:
@@ -30,7 +30,7 @@ spec:
             clusterName: glooplatform-central
           network: glooplatform-central
           hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
-          tag: 1.19.3-solo
+          tag: 1.18.3-solo
         meshConfig:
           trustDomain: glooplatform-central
           accessLogFile: /dev/stdout
@@ -48,8 +48,7 @@ spec:
         pilot:
           env:
             PILOT_ENABLE_K8S_SELECT_WORKLOAD_ENTRIES: "false"
-          extraContainerArgs:
-            - --log_output_level=default:info,authorization:error
+            PILOT_SKIP_VALIDATE_TRUST_DOMAIN: "true"
   syncPolicy:
     automated:
       prune: true
