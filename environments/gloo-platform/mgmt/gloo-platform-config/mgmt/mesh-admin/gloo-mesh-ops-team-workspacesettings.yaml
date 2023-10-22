@@ -34,3 +34,7 @@ spec:
           namespace: gloo-mesh-addons
         - cluster: glooplatform-central
           namespace: uptime
+        - cluster: glooplatform-central
+          namespace: istio-system
+        - cluster: glooplatform-east
+          namespace: istio-system
