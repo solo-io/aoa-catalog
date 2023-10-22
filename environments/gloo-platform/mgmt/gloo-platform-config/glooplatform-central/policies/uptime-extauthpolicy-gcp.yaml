@@ -7,7 +7,7 @@ spec:
   applyToRoutes:
   - route:
       labels:
-        auth: uptime.admin.glooplatform.com
+        auth: uptime.central.glooplatform.com
   config:
     server:
       name: glooplatform-central-ext-auth-server
@@ -17,7 +17,7 @@ spec:
       configs:
       - oauth2:
           oidcAuthorizationCode:
-            appUrl: https://uptime.admin.glooplatform.com
+            appUrl: https://uptime.central.glooplatform.com
             callbackPath: /callback
             clientId: 967359009029-j7uts17vmc85kt3aaie8cnpodefql93t.apps.googleusercontent.com
             clientSecretRef:
