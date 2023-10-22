@@ -48,7 +48,8 @@ spec:
         pilot:
           env:
             PILOT_ENABLE_K8S_SELECT_WORKLOAD_ENTRIES: "false"
-            PILOT_SKIP_VALIDATE_TRUST_DOMAIN: "true"
+          extraContainerArgs:
+            - --log_output_level=default:info,authorization:error
   syncPolicy:
     automated:
       prune: true
