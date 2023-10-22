@@ -5,7 +5,7 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - agent-cert.yaml
-#- gloo-platform-addons.yaml
+- gloo-platform-addons.yaml
 - gloo-platform-crds.yaml
 - gloo-telemetry-gateway-cert.yaml
 - issuer.yaml
