@@ -89,7 +89,7 @@ spec:
   - grafana.glooplatform-central.vd
   services:
   - namespace: istio-system
-    name: grafana
+    name: grafana-central
     cluster: glooplatform-central
   ports:
     - number: 3000
@@ -105,7 +105,7 @@ spec:
   - grafana.glooplatform-east.vd
   services:
   - namespace: istio-system
-    name: grafana
+    name: grafana-east
     cluster: glooplatform-east
   ports:
     - number: 3000
