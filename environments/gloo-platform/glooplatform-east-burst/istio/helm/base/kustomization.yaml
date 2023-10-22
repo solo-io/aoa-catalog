@@ -8,6 +8,7 @@ resources:
 - istio-base.yaml
 - istio-eastwestgateway.yaml
 - istio-ingressgateway.yaml
+- istio-ingressgateway-svc.yaml
 - istiod.yaml
 #- tls-secret-cert.yaml
 #- prometheus.yaml
