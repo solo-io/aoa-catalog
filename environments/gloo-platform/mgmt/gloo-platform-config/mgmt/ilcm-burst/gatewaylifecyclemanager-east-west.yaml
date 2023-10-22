@@ -7,8 +7,8 @@ metadata:
     argocd.argoproj.io/sync-wave: "-7"
 spec:
   installations:
-      # The revision for this installation, such as 1-18
-    - gatewayRevision: 1-18
+      # The revision for this installation, such as 1-19
+    - gatewayRevision: 1-19
       # List all workload clusters to install Istio into
       clusters:
       - name: glooplatform-east-burst

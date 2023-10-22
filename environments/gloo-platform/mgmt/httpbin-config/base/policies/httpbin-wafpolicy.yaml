@@ -9,7 +9,7 @@ spec:
       labels:
         waf: "true"
   config:
-    customInterventionMessage: WAF rule triggered. Please see the logs in the ingress gateway for more details. kubectl logs -n istio-gateways deploy/istio-ingressgateway-1-18 -f
+    customInterventionMessage: WAF rule triggered. Please see the logs in the ingress gateway for more details. kubectl logs -n istio-gateways deploy/istio-ingressgateway-1-19 -f
     customRuleSets:
       - ruleStr: >-
           SecRuleEngine On
