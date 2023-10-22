@@ -28,9 +28,9 @@ spec:
           namespace: argocd
         - cluster: glooplatform-central
           namespace: argocd
-        #- cluster: glooplatform-central
-        #  namespace: gloo-mesh-addons
-        #- cluster: glooplatform-east
-        #  namespace: gloo-mesh-addons
+        - cluster: glooplatform-central
+          namespace: gloo-mesh-addons
+        - cluster: glooplatform-east
+          namespace: gloo-mesh-addons
         - cluster: glooplatform-central
           namespace: uptime
