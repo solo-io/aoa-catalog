@@ -9,12 +9,10 @@ metadata:
 spec:
   ports:
   - name: http2
-    nodePort: 30706
     port: 80
     protocol: TCP
     targetPort: 80
   - name: https
-    nodePort: 30530
     port: 443
     protocol: TCP
     targetPort: 443
