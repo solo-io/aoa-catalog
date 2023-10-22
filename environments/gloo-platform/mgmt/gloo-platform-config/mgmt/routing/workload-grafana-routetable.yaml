@@ -58,7 +58,6 @@ spec:
           name: grafana
           namespace: istio-system
           cluster: glooplatform-central
-        kind: VIRTUAL_DESTINATION
   - name: grafana-health-east
     labels:
       waf: "true"
@@ -74,7 +73,6 @@ spec:
           name: grafana
           namespace: istio-system
           cluster: glooplatform-east
-        kind: VIRTUAL_DESTINATION
   virtualGateways:
   - cluster: mgmt
     name: north-south-gw
