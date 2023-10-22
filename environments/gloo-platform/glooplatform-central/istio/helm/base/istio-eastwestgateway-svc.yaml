@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: istio-ingressgateway
+    istio: eastwestgateway
+    topology.istio.io/network: glooplatform-central
+  name: istio-eastwestgateway-1-18
+  namespace: istio-gateways
+spec:
+  ports:
+  - name: tcp-status-port
+    port: 15021
+    protocol: TCP
+    targetPort: 15021
+  - name: tls
+    port: 15443
+    protocol: TCP
+    targetPort: 15443
+  - name: tcp-istiod
+    port: 15012
+    protocol: TCP
+    targetPort: 15012
+  - name: tcp-webhook
+    port: 15017
+    protocol: TCP
+    targetPort: 15017
+  selector:
+    app: istio-eastwestgateway-1-18
+    istio: eastwestgateway
+  type: LoadBalancer

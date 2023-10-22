@@ -7,6 +7,7 @@ resources:
 - clusterissuer.yaml
 - istio-base.yaml
 - istio-eastwestgateway.yaml
+- istio-eastwestgateway-svc.yaml
 - istio-ingressgateway.yaml
 - istio-ingressgateway-svc.yaml
 - istiod.yaml
