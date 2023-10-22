@@ -23,9 +23,9 @@ spec:
       - port:
           number: 3000
         ref:
-          name: glooplatform-central-grafana-vd
-          namespace: ops-team-config
-        kind: VIRTUAL_DESTINATION
+          name: grafana
+          namespace: istio-system
+          cluster: glooplatform-central
   - name: glooplatform-east-grafana-ui
     labels:
       waf: "true"
@@ -40,9 +40,9 @@ spec:
       - port:
           number: 3000
         ref:
-          name: glooplatform-east-grafana-vd
-          namespace: ops-team-config
-        kind: VIRTUAL_DESTINATION
+          name: grafana
+          namespace: istio-system
+          cluster: glooplatform-east
   - name: grafana-health-central
     labels:
       waf: "true"
@@ -55,8 +55,9 @@ spec:
       - port:
           number: 3000
         ref:
-          name: glooplatform-central-grafana-vd
-          namespace: ops-team-config
+          name: grafana
+          namespace: istio-system
+          cluster: glooplatform-central
         kind: VIRTUAL_DESTINATION
   - name: grafana-health-east
     labels:
@@ -70,8 +71,9 @@ spec:
       - port:
           number: 3000
         ref:
-          name: glooplatform-east-grafana-vd
-          namespace: ops-team-config
+          name: grafana
+          namespace: istio-system
+          cluster: glooplatform-east
         kind: VIRTUAL_DESTINATION
   virtualGateways:
   - cluster: mgmt
