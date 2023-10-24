@@ -1,0 +1,190 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-83
+  labels:
+    seed: "1695851827348614000"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: aged-silence
+  namespace: ns-83
+  labels:
+    app: aged-silence
+    tier: "1"
+    seed: "1695851827348614000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aged-silence
+  namespace: ns-83
+  labels:
+    app: aged-silence
+    tier: "1"
+    seed: "1695851827348614000"
+spec:
+  selector:
+    app: aged-silence
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aged-silence-v1
+  namespace: ns-83
+  labels:
+    app: aged-silence
+    version: v1
+    tier: "1"
+    seed: "1695851827348614000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: aged-silence
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: aged-silence
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: aged-silence
+      containers:
+      - name: aged-silence
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "aged-silence-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From aged-silence (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://spring-breeze.ns-83.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: spring-breeze
+  namespace: ns-83
+  labels:
+    app: spring-breeze
+    tier: "2"
+    seed: "1695851827348614000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-breeze
+  namespace: ns-83
+  labels:
+    app: spring-breeze
+    tier: "2"
+    seed: "1695851827348614000"
+spec:
+  selector:
+    app: spring-breeze
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-breeze-v1
+  namespace: ns-83
+  labels:
+    app: spring-breeze
+    version: v1
+    tier: "2"
+    seed: "1695851827348614000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: spring-breeze
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: spring-breeze
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: spring-breeze
+      containers:
+      - name: spring-breeze
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "spring-breeze-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From spring-breeze (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://throbbing-field.ns-2.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---

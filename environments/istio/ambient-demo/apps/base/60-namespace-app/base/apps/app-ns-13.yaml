@@ -1,0 +1,743 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-13
+  labels:
+    seed: "1695849434450986000"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: autumn-fog
+  namespace: ns-13
+  labels:
+    app: autumn-fog
+    tier: "2"
+    seed: "1695849434450986000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: autumn-fog
+  namespace: ns-13
+  labels:
+    app: autumn-fog
+    tier: "2"
+    seed: "1695849434450986000"
+spec:
+  selector:
+    app: autumn-fog
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: autumn-fog-v1
+  namespace: ns-13
+  labels:
+    app: autumn-fog
+    version: v1
+    tier: "2"
+    seed: "1695849434450986000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: autumn-fog
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: autumn-fog
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: autumn-fog
+      containers:
+      - name: autumn-fog
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "autumn-fog-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From autumn-fog (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://withered-fog.ns-13.svc.cluster.local.:8080,http://twilight-leaf.ns-13.svc.cluster.local.:8080,http://winter-surf.ns-3.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cold-star
+  namespace: ns-13
+  labels:
+    app: cold-star
+    tier: "3"
+    seed: "1695849434450986000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cold-star
+  namespace: ns-13
+  labels:
+    app: cold-star
+    tier: "3"
+    seed: "1695849434450986000"
+spec:
+  selector:
+    app: cold-star
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cold-star-v1
+  namespace: ns-13
+  labels:
+    app: cold-star
+    version: v1
+    tier: "3"
+    seed: "1695849434450986000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: cold-star
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: cold-star
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: cold-star
+      containers:
+      - name: cold-star
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "cold-star-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From cold-star (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: dry-shape
+  namespace: ns-13
+  labels:
+    app: dry-shape
+    tier: "2"
+    seed: "1695849434450986000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dry-shape
+  namespace: ns-13
+  labels:
+    app: dry-shape
+    tier: "2"
+    seed: "1695849434450986000"
+spec:
+  selector:
+    app: dry-shape
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dry-shape-v1
+  namespace: ns-13
+  labels:
+    app: dry-shape
+    version: v1
+    tier: "2"
+    seed: "1695849434450986000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: dry-shape
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: dry-shape
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: dry-shape
+      containers:
+      - name: dry-shape
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "dry-shape-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From dry-shape (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://cold-star.ns-13.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dry-shape-v2
+  namespace: ns-13
+  labels:
+    app: dry-shape
+    version: v2
+    tier: "2"
+    seed: "1695849434450986000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: dry-shape
+        version: v2
+  template:
+    metadata:
+      labels:
+        app: dry-shape
+        version: v2
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: dry-shape
+      containers:
+      - name: dry-shape
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "dry-shape-v2"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From dry-shape (v2)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://cold-star.ns-13.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nameless-tree
+  namespace: ns-13
+  labels:
+    app: nameless-tree
+    tier: "1"
+    seed: "1695849434450986000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nameless-tree
+  namespace: ns-13
+  labels:
+    app: nameless-tree
+    tier: "1"
+    seed: "1695849434450986000"
+spec:
+  selector:
+    app: nameless-tree
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nameless-tree-v1
+  namespace: ns-13
+  labels:
+    app: nameless-tree
+    version: v1
+    tier: "1"
+    seed: "1695849434450986000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: nameless-tree
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: nameless-tree
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: nameless-tree
+      containers:
+      - name: nameless-tree
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "nameless-tree-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From nameless-tree (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://autumn-fog.ns-13.svc.cluster.local.:8080,http://dry-shape.ns-13.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nameless-tree-v2
+  namespace: ns-13
+  labels:
+    app: nameless-tree
+    version: v2
+    tier: "1"
+    seed: "1695849434450986000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: nameless-tree
+        version: v2
+  template:
+    metadata:
+      labels:
+        app: nameless-tree
+        version: v2
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: nameless-tree
+      containers:
+      - name: nameless-tree
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "nameless-tree-v2"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From nameless-tree (v2)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://autumn-fog.ns-13.svc.cluster.local.:8080,http://dry-shape.ns-13.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nameless-tree-v3
+  namespace: ns-13
+  labels:
+    app: nameless-tree
+    version: v3
+    tier: "1"
+    seed: "1695849434450986000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: nameless-tree
+        version: v3
+  template:
+    metadata:
+      labels:
+        app: nameless-tree
+        version: v3
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: nameless-tree
+      containers:
+      - name: nameless-tree
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "nameless-tree-v3"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From nameless-tree (v3)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://autumn-fog.ns-13.svc.cluster.local.:8080,http://dry-shape.ns-13.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: twilight-leaf
+  namespace: ns-13
+  labels:
+    app: twilight-leaf
+    tier: "3"
+    seed: "1695849434450986000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: twilight-leaf
+  namespace: ns-13
+  labels:
+    app: twilight-leaf
+    tier: "3"
+    seed: "1695849434450986000"
+spec:
+  selector:
+    app: twilight-leaf
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twilight-leaf-v1
+  namespace: ns-13
+  labels:
+    app: twilight-leaf
+    version: v1
+    tier: "3"
+    seed: "1695849434450986000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: twilight-leaf
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: twilight-leaf
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: twilight-leaf
+      containers:
+      - name: twilight-leaf
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "twilight-leaf-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From twilight-leaf (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: withered-fog
+  namespace: ns-13
+  labels:
+    app: withered-fog
+    tier: "3"
+    seed: "1695849434450986000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: withered-fog
+  namespace: ns-13
+  labels:
+    app: withered-fog
+    tier: "3"
+    seed: "1695849434450986000"
+spec:
+  selector:
+    app: withered-fog
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: withered-fog-v1
+  namespace: ns-13
+  labels:
+    app: withered-fog
+    version: v1
+    tier: "3"
+    seed: "1695849434450986000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: withered-fog
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: withered-fog
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: withered-fog
+      containers:
+      - name: withered-fog
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "withered-fog-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From withered-fog (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://dry-brook.ns-56.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---

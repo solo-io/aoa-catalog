@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bombardier
+  name: bombardier-ns-81
+  namespace: ns-81
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bombardier
+  template:
+    metadata:
+      labels:
+        app: bombardier
+    spec:
+      containers:
+      - name: bombardier
+        image: alpine/bombardier
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/sh"]
+        resources:
+            requests:
+              cpu: 20m
+              memory: 25Mi
+        args: ["-c", "for run in $(seq 1 100000); do bombardier -c 5 -d 60s -r 1 -p i,p,r http://istio-ingressgateway.istio-system.svc.cluster.local/ns-81; done"]

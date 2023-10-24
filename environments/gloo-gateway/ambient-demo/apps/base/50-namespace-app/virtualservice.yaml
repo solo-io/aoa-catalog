@@ -1,0 +1,466 @@
+
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: ingress-gw
+  namespace: istio-system
+  labels:
+    seed: "1695848925151071000"
+spec:
+  hosts:
+    - "*"
+  gateways:
+  - istio-gateways/http-gateway
+  http:
+  - name: "ns-1"
+    match:
+    - uri:
+        exact: "/ns-1"
+    route:
+    - destination:
+        host: polished-feather.ns-1.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-10"
+    match:
+    - uri:
+        exact: "/ns-10"
+    route:
+    - destination:
+        host: red-surf.ns-10.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-11"
+    match:
+    - uri:
+        exact: "/ns-11"
+    route:
+    - destination:
+        host: twilight-leaf.ns-11.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-12"
+    match:
+    - uri:
+        exact: "/ns-12"
+    route:
+    - destination:
+        host: wispy-rain.ns-12.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-13"
+    match:
+    - uri:
+        exact: "/ns-13"
+    route:
+    - destination:
+        host: icy-surf.ns-13.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-14"
+    match:
+    - uri:
+        exact: "/ns-14"
+    route:
+    - destination:
+        host: ancient-meadow.ns-14.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-15"
+    match:
+    - uri:
+        exact: "/ns-15"
+    route:
+    - destination:
+        host: red-frog.ns-15.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-16"
+    match:
+    - uri:
+        exact: "/ns-16"
+    route:
+    - destination:
+        host: shy-sky.ns-16.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-17"
+    match:
+    - uri:
+        exact: "/ns-17"
+    route:
+    - destination:
+        host: fragrant-lake.ns-17.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-18"
+    match:
+    - uri:
+        exact: "/ns-18"
+    route:
+    - destination:
+        host: lingering-firefly.ns-18.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-19"
+    match:
+    - uri:
+        exact: "/ns-19"
+    route:
+    - destination:
+        host: dawn-sky.ns-19.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-2"
+    match:
+    - uri:
+        exact: "/ns-2"
+    route:
+    - destination:
+        host: little-flower.ns-2.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-20"
+    match:
+    - uri:
+        exact: "/ns-20"
+    route:
+    - destination:
+        host: solitary-cloud.ns-20.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-21"
+    match:
+    - uri:
+        exact: "/ns-21"
+    route:
+    - destination:
+        host: summer-star.ns-21.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-22"
+    match:
+    - uri:
+        exact: "/ns-22"
+    route:
+    - destination:
+        host: long-snowflake.ns-22.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-23"
+    match:
+    - uri:
+        exact: "/ns-23"
+    route:
+    - destination:
+        host: white-surf.ns-23.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-24"
+    match:
+    - uri:
+        exact: "/ns-24"
+    route:
+    - destination:
+        host: bold-lake.ns-24.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-25"
+    match:
+    - uri:
+        exact: "/ns-25"
+    route:
+    - destination:
+        host: purple-resonance.ns-25.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-26"
+    match:
+    - uri:
+        exact: "/ns-26"
+    route:
+    - destination:
+        host: billowing-wood.ns-26.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-27"
+    match:
+    - uri:
+        exact: "/ns-27"
+    route:
+    - destination:
+        host: white-violet.ns-27.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-28"
+    match:
+    - uri:
+        exact: "/ns-28"
+    route:
+    - destination:
+        host: floral-resonance.ns-28.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-29"
+    match:
+    - uri:
+        exact: "/ns-29"
+    route:
+    - destination:
+        host: icy-dust.ns-29.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-3"
+    match:
+    - uri:
+        exact: "/ns-3"
+    route:
+    - destination:
+        host: purple-water.ns-3.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-30"
+    match:
+    - uri:
+        exact: "/ns-30"
+    route:
+    - destination:
+        host: wild-dust.ns-30.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-31"
+    match:
+    - uri:
+        exact: "/ns-31"
+    route:
+    - destination:
+        host: nameless-lake.ns-31.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-32"
+    match:
+    - uri:
+        exact: "/ns-32"
+    route:
+    - destination:
+        host: spring-firefly.ns-32.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-33"
+    match:
+    - uri:
+        exact: "/ns-33"
+    route:
+    - destination:
+        host: fragrant-tree.ns-33.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-34"
+    match:
+    - uri:
+        exact: "/ns-34"
+    route:
+    - destination:
+        host: lingering-night.ns-34.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-35"
+    match:
+    - uri:
+        exact: "/ns-35"
+    route:
+    - destination:
+        host: empty-wind.ns-35.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-36"
+    match:
+    - uri:
+        exact: "/ns-36"
+    route:
+    - destination:
+        host: damp-moon.ns-36.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-37"
+    match:
+    - uri:
+        exact: "/ns-37"
+    route:
+    - destination:
+        host: snowy-sky.ns-37.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-38"
+    match:
+    - uri:
+        exact: "/ns-38"
+    route:
+    - destination:
+        host: still-wave.ns-38.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-39"
+    match:
+    - uri:
+        exact: "/ns-39"
+    route:
+    - destination:
+        host: broken-grass.ns-39.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-4"
+    match:
+    - uri:
+        exact: "/ns-4"
+    route:
+    - destination:
+        host: delicate-wildflower.ns-4.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-40"
+    match:
+    - uri:
+        exact: "/ns-40"
+    route:
+    - destination:
+        host: lingering-glade.ns-40.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-41"
+    match:
+    - uri:
+        exact: "/ns-41"
+    route:
+    - destination:
+        host: wispy-fire.ns-41.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-42"
+    match:
+    - uri:
+        exact: "/ns-42"
+    route:
+    - destination:
+        host: white-waterfall.ns-42.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-43"
+    match:
+    - uri:
+        exact: "/ns-43"
+    route:
+    - destination:
+        host: summer-water.ns-43.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-44"
+    match:
+    - uri:
+        exact: "/ns-44"
+    route:
+    - destination:
+        host: old-violet.ns-44.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-45"
+    match:
+    - uri:
+        exact: "/ns-45"
+    route:
+    - destination:
+        host: dry-cloud.ns-45.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-46"
+    match:
+    - uri:
+        exact: "/ns-46"
+    route:
+    - destination:
+        host: white-star.ns-46.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-47"
+    match:
+    - uri:
+        exact: "/ns-47"
+    route:
+    - destination:
+        host: silent-moon.ns-47.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-48"
+    match:
+    - uri:
+        exact: "/ns-48"
+    route:
+    - destination:
+        host: snowy-moon.ns-48.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-49"
+    match:
+    - uri:
+        exact: "/ns-49"
+    route:
+    - destination:
+        host: damp-wind.ns-49.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-5"
+    match:
+    - uri:
+        exact: "/ns-5"
+    route:
+    - destination:
+        host: rough-forest.ns-5.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-50"
+    match:
+    - uri:
+        exact: "/ns-50"
+    route:
+    - destination:
+        host: still-glitter.ns-50.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-6"
+    match:
+    - uri:
+        exact: "/ns-6"
+    route:
+    - destination:
+        host: icy-paper.ns-6.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-7"
+    match:
+    - uri:
+        exact: "/ns-7"
+    route:
+    - destination:
+        host: silent-wave.ns-7.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-8"
+    match:
+    - uri:
+        exact: "/ns-8"
+    route:
+    - destination:
+        host: quiet-pond.ns-8.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-9"
+    match:
+    - uri:
+        exact: "/ns-9"
+    route:
+    - destination:
+        host: damp-bird.ns-9.svc.cluster.local
+        port:
+          number: 8080
+---

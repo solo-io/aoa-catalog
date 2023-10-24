@@ -1,0 +1,435 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-20
+  labels:
+    seed: "1695851930340087000"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: autumn-smoke
+  namespace: ns-20
+  labels:
+    app: autumn-smoke
+    tier: "2"
+    seed: "1695851930340087000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: autumn-smoke
+  namespace: ns-20
+  labels:
+    app: autumn-smoke
+    tier: "2"
+    seed: "1695851930340087000"
+spec:
+  selector:
+    app: autumn-smoke
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: autumn-smoke-v1
+  namespace: ns-20
+  labels:
+    app: autumn-smoke
+    version: v1
+    tier: "2"
+    seed: "1695851930340087000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: autumn-smoke
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: autumn-smoke
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: autumn-smoke
+      containers:
+      - name: autumn-smoke
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "autumn-smoke-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From autumn-smoke (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: autumn-smoke-v2
+  namespace: ns-20
+  labels:
+    app: autumn-smoke
+    version: v2
+    tier: "2"
+    seed: "1695851930340087000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: autumn-smoke
+        version: v2
+  template:
+    metadata:
+      labels:
+        app: autumn-smoke
+        version: v2
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: autumn-smoke
+      containers:
+      - name: autumn-smoke
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "autumn-smoke-v2"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From autumn-smoke (v2)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cool-sea
+  namespace: ns-20
+  labels:
+    app: cool-sea
+    tier: "2"
+    seed: "1695851930340087000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cool-sea
+  namespace: ns-20
+  labels:
+    app: cool-sea
+    tier: "2"
+    seed: "1695851930340087000"
+spec:
+  selector:
+    app: cool-sea
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cool-sea-v1
+  namespace: ns-20
+  labels:
+    app: cool-sea
+    version: v1
+    tier: "2"
+    seed: "1695851930340087000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: cool-sea
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: cool-sea
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: cool-sea
+      containers:
+      - name: cool-sea
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "cool-sea-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From cool-sea (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: dawn-sky
+  namespace: ns-20
+  labels:
+    app: dawn-sky
+    tier: "2"
+    seed: "1695851930340087000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dawn-sky
+  namespace: ns-20
+  labels:
+    app: dawn-sky
+    tier: "2"
+    seed: "1695851930340087000"
+spec:
+  selector:
+    app: dawn-sky
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dawn-sky-v1
+  namespace: ns-20
+  labels:
+    app: dawn-sky
+    version: v1
+    tier: "2"
+    seed: "1695851930340087000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: dawn-sky
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: dawn-sky
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: dawn-sky
+      containers:
+      - name: dawn-sky
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "dawn-sky-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From dawn-sky (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: weathered-breeze
+  namespace: ns-20
+  labels:
+    app: weathered-breeze
+    tier: "1"
+    seed: "1695851930340087000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: weathered-breeze
+  namespace: ns-20
+  labels:
+    app: weathered-breeze
+    tier: "1"
+    seed: "1695851930340087000"
+spec:
+  selector:
+    app: weathered-breeze
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weathered-breeze-v1
+  namespace: ns-20
+  labels:
+    app: weathered-breeze
+    version: v1
+    tier: "1"
+    seed: "1695851930340087000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: weathered-breeze
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: weathered-breeze
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: weathered-breeze
+      containers:
+      - name: weathered-breeze
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "weathered-breeze-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From weathered-breeze (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://cool-sea.ns-20.svc.cluster.local.:8080,http://autumn-smoke.ns-20.svc.cluster.local.:8080,http://dawn-sky.ns-20.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
