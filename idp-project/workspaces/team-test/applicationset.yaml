@@ -19,7 +19,7 @@ spec:
       source:
         repoURL: 'https://github.com/solo-io/aoa-catalog/'
         targetRevision: glooplatform.com-2.4.x
-        path: idp-project/workspaces/team-test/manifests/
+        path: idp-project/workspaces/team-test/managed-workload-manifests/
       destination:
         server: '{{url}}'
       syncPolicy:
