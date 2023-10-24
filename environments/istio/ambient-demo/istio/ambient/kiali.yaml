@@ -72,9 +72,8 @@ data:
       namespace: istio-system
       node_selector: {}
       pod_annotations: {}
-      pod_labels:
-        sidecar.istio.io/inject: "true"
-        istio.io/rev: 1-18
+      #pod_labels:
+      #  sidecar.istio.io/inject: "true"
       priority_class_name: ""
       replicas: 1
       resources:
@@ -116,9 +115,9 @@ data:
         url: http://prometheus:9090/prometheus
       ### add the following if using revisioned based istio installation
       istio:
-        config_map_name: istio-1-18
-        istio_sidecar_injector_config_map_name: istio-sidecar-injector-1-18
-        istiod_deployment_name: istiod-1-18
+        config_map_name: istio-1-19
+        istio_sidecar_injector_config_map_name: istio-sidecar-injector-1-19
+        istiod_deployment_name: istiod-1-19
         root_namespace: istio-system
     identity:
       cert_file: ""

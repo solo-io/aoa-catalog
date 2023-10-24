@@ -65,7 +65,6 @@ spec:
         
         # -- Set labels on the pod
         #podLabels:
-        #  istio.io/rev: 1-18
         
         # -- Set annotations on the pod
         podAnnotations:
