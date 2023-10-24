@@ -1,0 +1,26 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: IstioLifecycleManager
+metadata:
+  name: istiod-control-plane
+  namespace: gloo-mesh
+spec:
+  installations:
+  - clusters:
+    - name: mgmt
+      defaultRevision: false
+    istioOperatorSpec:
+      profile: ambient
+      hub: us-docker.pkg.dev/gloo-mesh/istio-bf39a24ed9df
+      tag: 1.19.3
+      namespace: istio-system
+      meshConfig:
+        accessLogFile: /dev/stdout
+        rootNamespace: istio-system
+      values:
+        ztunnel:
+          env:
+            ZERO_COPY_DISABLED: true
+      components:
+        cni: 
+          enabled: true
+          namespace: kube-system
