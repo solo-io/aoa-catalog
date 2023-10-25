@@ -10,6 +10,11 @@ spec:
   - labels:
       app: httpbin
     namespace: idp-project
+    cluster: glooplatform-east
+  - labels:
+      app: httpbin
+    namespace: idp-project
+    cluster: glooplatform-central
   ports:
   - number: 80
     protocol: HTTP
