@@ -8,7 +8,7 @@ spec:
   - httpbin.idp-project.solo-io.mesh
   services:
   - labels:
-      app: httpbin-idp
+      app: httpbin
     namespace: idp-project
   ports:
   - number: 80
