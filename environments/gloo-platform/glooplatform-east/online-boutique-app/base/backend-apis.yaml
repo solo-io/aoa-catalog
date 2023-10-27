@@ -311,23 +311,23 @@ spec:
             - name: PORT
               value: "5050"
             - name: PRODUCT_CATALOG_SERVICE_ADDR
-              #value: "productcatalogservice.backend-apis.svc.cluster.local:3550"
-              value: "product-catalog.backend-apis-team.solo-io.mesh:80"
+              value: "productcatalogservice.backend-apis.svc.cluster.local:3550"
+              #value: "product-catalog.backend-apis-team.solo-io.mesh:80"
             - name: SHIPPING_SERVICE_ADDR
-              #value: "shippingservice.backend-apis.svc.cluster.local:50051"
-              value: "shipping.backend-apis-team.solo-io.mesh:80"
+              value: "shippingservice.backend-apis.svc.cluster.local:50051"
+              #value: "shipping.backend-apis-team.solo-io.mesh:80"
             - name: PAYMENT_SERVICE_ADDR
-              #value: "paymentservice.backend-apis.svc.cluster.local:50051"
-              value: "paymentservice.backend-apis-team.solo-io.mesh:80"
+              value: "paymentservice.backend-apis.svc.cluster.local:50051"
+              #value: "paymentservice.backend-apis-team.solo-io.mesh:80"
             - name: EMAIL_SERVICE_ADDR
-              #value: "emailservice.backend-apis.svc.cluster.local:5000"
-              value: "emailservice.backend-apis-team.solo-io.mesh:80"
+              value: "emailservice.backend-apis.svc.cluster.local:5000"
+              #value: "emailservice.backend-apis-team.solo-io.mesh:80"
             - name: CURRENCY_SERVICE_ADDR
-              #value: "currencyservice.backend-apis.svc.cluster.local:7000"
-              value: "currency.backend-apis-team.solo-io.mesh:80"
+              value: "currencyservice.backend-apis.svc.cluster.local:7000"
+              #value: "currency.backend-apis-team.solo-io.mesh:80"
             - name: CART_SERVICE_ADDR
-              #value: "cartservice.backend-apis.svc.cluster.local:7070"
-              value: "cart.backend-apis-team.solo-io.mesh:80"
+              value: "cartservice.backend-apis.svc.cluster.local:7070"
+              #value: "cart.backend-apis-team.solo-io.mesh:80"
             - name: DISABLE_STATS
               value: "1"
             - name: DISABLE_TRACING
