@@ -26,7 +26,7 @@ spec:
               namespace: web-team
             kind: VIRTUAL_DESTINATION
             port:
-              number: 80
+              number: 8080
 ---
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable

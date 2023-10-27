@@ -1,8 +1,8 @@
 apiVersion: networking.gloo.solo.io/v2
 kind: VirtualDestination
 metadata:
-  name: restless-sky
-  namespace: tiered-app-ws-config
+  name: restless-sky-vd
+  namespace: ns-1
 spec:
   hosts:
   - restless-sky-vd.solo-io.mesh

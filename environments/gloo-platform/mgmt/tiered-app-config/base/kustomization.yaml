@@ -9,3 +9,4 @@ resources:
 - tiered-app-workspacesettings.yaml
 - tiered-app-ws-config-ns.yaml
 - tiered-app-rt-443.yaml
+- vd.yaml

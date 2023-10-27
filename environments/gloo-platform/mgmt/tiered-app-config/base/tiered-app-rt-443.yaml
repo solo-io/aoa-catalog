@@ -21,8 +21,8 @@ spec:
       forwardTo:
         destinations:
         - ref:
-            name: restless-sky
+            name: restless-sky-vd
             namespace: ns-1
-            cluster: glooplatform-central
+          kind: VIRTUAL_DESTINATION
           port:
             number: 8080
