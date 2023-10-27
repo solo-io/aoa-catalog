@@ -65,3 +65,10 @@ waves:
       -  $env_path/kubeinvaders-app/init.sh
       post_deploy:
       -  $env_path/kubeinvaders-app/test.sh   
+  - name: tiered-app
+    location: $env_path/tiered-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/tiered-app/init.sh
+      post_deploy:
+      -  $env_path/tiered-app/test.sh   
