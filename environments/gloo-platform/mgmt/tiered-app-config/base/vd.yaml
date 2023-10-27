@@ -1,0 +1,16 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: restless-sky
+  namespace: tiered-app-ws-config
+spec:
+  hosts:
+  - restless-sky-vd.solo-io.mesh
+  services:
+  - labels:
+      app: restless-sky
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
