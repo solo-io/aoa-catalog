@@ -4,7 +4,7 @@ metadata:
   labels:
     app: istio-ingressgateway
     istio: ingressgateway
-  name: istio-ingressgateway-1-18
+  name: istio-ingressgateway-1-19
   namespace: istio-gateways
 spec:
   ports:
@@ -17,6 +17,6 @@ spec:
     protocol: TCP
     targetPort: 443
   selector:
-    app: istio-ingressgateway-1-18
+    app: istio-ingressgateway-1-19
     istio: ingressgateway
   type: LoadBalancer
