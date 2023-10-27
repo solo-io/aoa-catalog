@@ -22,7 +22,7 @@ spec:
         destinations:
         - ref:
             name: restless-sky-vd
-            namespace: ns-1
+            namespace: tiered-app-ws-config
           kind: VIRTUAL_DESTINATION
           port:
             number: 8080
