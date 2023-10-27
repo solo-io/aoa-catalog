@@ -197,6 +197,8 @@ spec:
           value: "20ms"
         - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
           value: "30s"
+        - name: "UI_PATH"
+          value: "/ns-3/ui/"
         resources:
           requests:
             memory: "100Mi"
@@ -367,7 +369,7 @@ spec:
       serviceAccountName: nameless-breeze
       containers:
       - name: nameless-breeze
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
