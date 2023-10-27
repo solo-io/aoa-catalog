@@ -12,7 +12,7 @@ spec:
   - name: argocd
     labels:
       waf: "true"
-      #auth: argocd.central.glooplatform.com
+      auth: argocd.central.glooplatform.com
     matchers:
     - uri:
         prefix: /argo

@@ -19,7 +19,7 @@ spec:
           namespace: uptime
     labels:
       waf: "true"
-      #auth: uptime.admin.glooplatform.com
+      auth: uptime.admin.glooplatform.com
     name: uptime
     matchers:
       - uri:

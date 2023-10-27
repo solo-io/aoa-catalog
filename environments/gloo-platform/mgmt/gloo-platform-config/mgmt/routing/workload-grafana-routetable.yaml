@@ -12,7 +12,7 @@ spec:
   - name: glooplatform-central-grafana-ui
     labels:
       waf: "true"
-      #auth: grafana.admin.glooplatform.com
+      auth: grafana.admin.glooplatform.com
     matchers:
       - uri:
           prefix: /central
@@ -29,7 +29,7 @@ spec:
   - name: glooplatform-east-grafana-ui
     labels:
       waf: "true"
-      #auth: grafana.admin.glooplatform.com
+      auth: grafana.admin.glooplatform.com
     matchers:
       - uri:
           prefix: /east
