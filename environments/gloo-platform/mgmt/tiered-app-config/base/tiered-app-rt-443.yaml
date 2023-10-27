@@ -14,12 +14,11 @@ spec:
       cluster: mgmt
   workloadSelectors: []
   http:
-    - name: ns-1
+    - name: ns-1-ui
       matchers:
       - uri:
-          prefix: /ns-1
+          prefix: /ns-1/ui
       forwardTo:
-        pathRewrite: /
         destinations:
         - ref:
             name: restless-sky-vd
@@ -27,11 +26,12 @@ spec:
           kind: VIRTUAL_DESTINATION
           port:
             number: 8080
-    - name: ns-1-ui
+    - name: ns-1
       matchers:
       - uri:
-          prefix: /ns-1/ui
+          exact: /ns-1
       forwardTo:
+        pathRewrite: /
         destinations:
         - ref:
             name: restless-sky-vd
