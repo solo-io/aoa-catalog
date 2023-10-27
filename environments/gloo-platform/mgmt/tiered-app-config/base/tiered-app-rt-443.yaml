@@ -14,24 +14,11 @@ spec:
       cluster: mgmt
   workloadSelectors: []
   http:
-    - name: ns-1-ui
-      matchers:
-      - uri:
-          prefix: /ns-1/ui
-      forwardTo:
-        destinations:
-        - ref:
-            name: restless-sky-vd
-            namespace: tiered-app-ws-config
-          kind: VIRTUAL_DESTINATION
-          port:
-            number: 8080
     - name: ns-1
       matchers:
       - uri:
           exact: /ns-1
       forwardTo:
-        #pathRewrite: /
         destinations:
         - ref:
             name: restless-sky-vd
@@ -44,7 +31,6 @@ spec:
       - uri:
           prefix: /ns-2
       forwardTo:
-        pathRewrite: /
         destinations:
         - ref:
             name: throbbing-field-vd
@@ -57,7 +43,6 @@ spec:
       - uri:
           prefix: /ns-3
       forwardTo:
-        pathRewrite: /
         destinations:
         - ref:
             name: hidden-sky-vd
@@ -70,7 +55,6 @@ spec:
       - uri:
           prefix: /ns-4
       forwardTo:
-        pathRewrite: /
         destinations:
         - ref:
             name: blue-hill-vd
@@ -83,7 +67,6 @@ spec:
       - uri:
           prefix: /ns-5
       forwardTo:
-        pathRewrite: /
         destinations:
         - ref:
             name: winter-field-vd
