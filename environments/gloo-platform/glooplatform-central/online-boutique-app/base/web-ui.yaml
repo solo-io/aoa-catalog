@@ -96,26 +96,26 @@ spec:
             - name: PORT
               value: "8080"
             - name: AD_SERVICE_ADDR
-              #value: "adservice.backend-apis.svc.cluster.local:9555"
-              value: "ads.backend-apis-team.solo-io.mesh:80"
+              value: "adservice.backend-apis.svc.cluster.local:9555"
+              #value: "ads.backend-apis-team.solo-io.mesh:80"
             - name: CART_SERVICE_ADDR
-              #value: "cartservice.backend-apis.svc.cluster.local:7070"
-              value: "cart.backend-apis-team.solo-io.mesh:80"
+              value: "cartservice.backend-apis.svc.cluster.local:7070"
+              #value: "cart.backend-apis-team.solo-io.mesh:80"
             - name: RECOMMENDATION_SERVICE_ADDR
-              #value: "recommendationservice.backend-apis.svc.cluster.local:8080"
-              value: "recommendations.backend-apis-team.solo-io.mesh:80"
+              value: "recommendationservice.backend-apis.svc.cluster.local:8080"
+              #value: "recommendations.backend-apis-team.solo-io.mesh:80"
             - name: SHIPPING_SERVICE_ADDR
-              #value: "shippingservice.backend-apis.svc.cluster.local:50051"
-              value: "shipping.backend-apis-team.solo-io.mesh:80"
+              value: "shippingservice.backend-apis.svc.cluster.local:50051"
+              #value: "shipping.backend-apis-team.solo-io.mesh:80"
             - name: CHECKOUT_SERVICE_ADDR
-              #value: "checkoutservice.backend-apis.svc.cluster.local:5050"
-              value: "checkout.backend-apis-team.solo-io.mesh:80"
+              value: "checkoutservice.backend-apis.svc.cluster.local:5050"
+              #value: "checkout.backend-apis-team.solo-io.mesh:80"
             - name: PRODUCT_CATALOG_SERVICE_ADDR
-              #value: "productcatalogservice.backend-apis.svc.cluster.local:3550"
-              value: "product-catalog.backend-apis-team.solo-io.mesh:80"
+              value: "productcatalogservice.backend-apis.svc.cluster.local:3550"
+              #value: "product-catalog.backend-apis-team.solo-io.mesh:80"
             - name: CURRENCY_SERVICE_ADDR
-              #value: "currencyservice.backend-apis.svc.cluster.local:7000"
-              value: "currency.backend-apis-team.solo-io.mesh:80"
+              value: "currencyservice.backend-apis.svc.cluster.local:7000"
+              #value: "currency.backend-apis-team.solo-io.mesh:80"
             # # ENV_PLATFORM: One of: local, gcp, aws, azure, onprem
             # # When not set, defaults to "local" unless running in GKE, otherwies auto-sets to gcp 
             - name: ENV_PLATFORM 
