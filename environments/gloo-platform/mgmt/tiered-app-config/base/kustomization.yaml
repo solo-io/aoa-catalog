@@ -8,4 +8,4 @@ resources:
 - tiered-app-workspace.yaml
 - tiered-app-workspacesettings.yaml
 - tiered-app-ws-config-ns.yaml
-#- tiered-app-rt-443.yaml
+- tiered-app-rt-443.yaml

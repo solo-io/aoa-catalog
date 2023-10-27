@@ -14,29 +14,14 @@ spec:
       cluster: mgmt
   workloadSelectors: []
   http:
-    - name: healthcheck-endpoint
+    - name: ns-1
       matchers:
       - uri:
-          exact: /images/favicon.ico
+          exact: "ns-1"
       forwardTo:
         destinations:
         - ref:
-            name: tiered-app
-            namespace: tiered-app
-            cluster: glooplatform-central
-          port:
-            number: 8080
-    - name: tiered-app
-      labels:
-        oauth: tiered-app.demo.glooplatform.com
-      matchers:
-      - uri:
-          prefix: /
-      forwardTo:
-        destinations:
-        - ref:
-            name: tiered-app
-            namespace: tiered-app
-            cluster: glooplatform-central
+            name: restless-sky
+            namespace: ns-1
           port:
             number: 8080
