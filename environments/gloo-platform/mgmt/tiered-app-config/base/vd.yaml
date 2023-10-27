@@ -14,3 +14,71 @@ spec:
     protocol: HTTP
     targetPort:
       name: http
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: throbbing-field-vd
+  namespace: tiered-app-ws-config
+spec:
+  hosts:
+  - throbbing-field-vd.solo-io.mesh
+  services:
+  - labels:
+      app: throbbing-field
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: hidden-sky-vd
+  namespace: tiered-app-ws-config
+spec:
+  hosts:
+  - hidden-sky-vd.solo-io.mesh
+  services:
+  - labels:
+      app: hidden-sky
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: blue-hill-vd
+  namespace: tiered-app-ws-config
+spec:
+  hosts:
+  - blue-hill-vd.solo-io.mesh
+  services:
+  - labels:
+      app: blue-hill
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: winter-field-vd
+  namespace: tiered-app-ws-config
+spec:
+  hosts:
+  - winter-field-vd.solo-io.mesh
+  services:
+  - labels:
+      app: winter-field
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http

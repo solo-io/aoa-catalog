@@ -27,3 +27,16 @@ spec:
           kind: VIRTUAL_DESTINATION
           port:
             number: 8080
+    - name: ns-2
+      matchers:
+      - uri:
+          prefix: /ns-2
+      forwardTo:
+        pathRewrite: /
+        destinations:
+        - ref:
+            name: restless-sky-vd
+            namespace: tiered-app-ws-config
+          kind: VIRTUAL_DESTINATION
+          port:
+            number: 8080
