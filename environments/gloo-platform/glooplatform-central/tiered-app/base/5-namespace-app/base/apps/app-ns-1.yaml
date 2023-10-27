@@ -241,7 +241,7 @@ spec:
       serviceAccountName: restless-sky
       containers:
       - name: restless-sky
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
