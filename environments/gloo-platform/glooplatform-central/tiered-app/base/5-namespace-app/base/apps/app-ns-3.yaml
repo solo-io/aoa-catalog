@@ -45,6 +45,13 @@ metadata:
     tier: "4"
     seed: "1696442875193501000"
 spec:
+  nodeSelector:
+    gke-spot: "true"
+  tolerations:
+  - key: cloud.google.com/gke-spot
+    operator: Equal
+    value: "true"
+    effect: NoSchedule
   replicas: 1
   strategy:
     type: Recreate
@@ -136,6 +143,13 @@ metadata:
     tier: "1"
     seed: "1696442875193501000"
 spec:
+  nodeSelector:
+    gke-spot: "true"
+  tolerations:
+  - key: cloud.google.com/gke-spot
+    operator: Equal
+    value: "true"
+    effect: NoSchedule
   replicas: 1
   strategy:
     type: Recreate
@@ -227,6 +241,13 @@ metadata:
     tier: "3"
     seed: "1696442875193501000"
 spec:
+  nodeSelector:
+    gke-spot: "true"
+  tolerations:
+  - key: cloud.google.com/gke-spot
+    operator: Equal
+    value: "true"
+    effect: NoSchedule
   replicas: 1
   strategy:
     type: Recreate
@@ -318,6 +339,13 @@ metadata:
     tier: "4"
     seed: "1696442875193501000"
 spec:
+  nodeSelector:
+    gke-spot: "true"
+  tolerations:
+  - key: cloud.google.com/gke-spot
+    operator: Equal
+    value: "true"
+    effect: NoSchedule
   replicas: 1
   strategy:
     type: Recreate
@@ -409,6 +437,13 @@ metadata:
     tier: "2"
     seed: "1696442875193501000"
 spec:
+  nodeSelector:
+    gke-spot: "true"
+  tolerations:
+  - key: cloud.google.com/gke-spot
+    operator: Equal
+    value: "true"
+    effect: NoSchedule
   replicas: 1
   strategy:
     type: Recreate
@@ -472,6 +507,13 @@ metadata:
     tier: "2"
     seed: "1696442875193501000"
 spec:
+  nodeSelector:
+    gke-spot: "true"
+  tolerations:
+  - key: cloud.google.com/gke-spot
+    operator: Equal
+    value: "true"
+    effect: NoSchedule
   replicas: 1
   strategy:
     type: Recreate
@@ -563,6 +605,13 @@ metadata:
     tier: "2"
     seed: "1696442875193501000"
 spec:
+  nodeSelector:
+    gke-spot: "true"
+  tolerations:
+  - key: cloud.google.com/gke-spot
+    operator: Equal
+    value: "true"
+    effect: NoSchedule
   replicas: 1
   strategy:
     type: Recreate
