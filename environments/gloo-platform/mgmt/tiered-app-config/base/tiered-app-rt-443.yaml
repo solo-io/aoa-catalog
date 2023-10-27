@@ -35,7 +35,7 @@ spec:
         pathRewrite: /
         destinations:
         - ref:
-            name: restless-sky-vd
+            name: throbbing-field-vd
             namespace: tiered-app-ws-config
           kind: VIRTUAL_DESTINATION
           port:
