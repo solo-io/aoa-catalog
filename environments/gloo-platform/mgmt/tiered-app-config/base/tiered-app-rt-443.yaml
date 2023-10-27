@@ -1,0 +1,42 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: tiered-app-rt-443
+  namespace: tiered-app-ws-config
+  labels:
+    expose: "true"
+spec:
+  hosts:
+    - 'tiered-app.demo.glooplatform.com'
+  virtualGateways:
+    - name: north-south-gw
+      namespace: istio-gateways
+      cluster: mgmt
+  workloadSelectors: []
+  http:
+    - name: healthcheck-endpoint
+      matchers:
+      - uri:
+          exact: /images/favicon.ico
+      forwardTo:
+        destinations:
+        - ref:
+            name: tiered-app
+            namespace: tiered-app
+            cluster: glooplatform-central
+          port:
+            number: 8080
+    - name: tiered-app
+      labels:
+        oauth: tiered-app.demo.glooplatform.com
+      matchers:
+      - uri:
+          prefix: /
+      forwardTo:
+        destinations:
+        - ref:
+            name: tiered-app
+            namespace: tiered-app
+            cluster: glooplatform-central
+          port:
+            number: 8080

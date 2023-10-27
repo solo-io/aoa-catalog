@@ -114,6 +114,13 @@ waves:
       -  $env_path/rollouts-demo/init.sh
       post_deploy:
       -  $env_path/rollouts-demo/test.sh
+  - name: tiered-app-config
+    location: $env_path/tiered-app-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/tiered-app-config/init.sh
+      post_deploy:
+      -  $env_path/tiered-app-config/test.sh
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:
