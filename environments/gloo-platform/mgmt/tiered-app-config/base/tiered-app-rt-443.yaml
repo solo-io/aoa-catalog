@@ -17,8 +17,9 @@ spec:
     - name: ns-1
       matchers:
       - uri:
-          exact: /"ns-1"
+          prefix: /"ns-1"
       forwardTo:
+        pathRewrite: /
         destinations:
         - ref:
             name: restless-sky-vd
