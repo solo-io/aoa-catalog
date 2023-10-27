@@ -17,8 +17,7 @@ spec:
     - name: ns-1
       matchers:
       - uri:
-          #exact: /"ns-1"
-          prefix: /
+          exact: /"ns-1"
       forwardTo:
         destinations:
         - ref:
