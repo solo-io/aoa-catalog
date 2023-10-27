@@ -23,5 +23,6 @@ spec:
         - ref:
             name: restless-sky
             namespace: ns-1
+            cluster: glooplatform-central
           port:
             number: 8080
