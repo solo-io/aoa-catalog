@@ -317,7 +317,7 @@ spec:
       serviceAccountName: hidden-paper
       containers:
       - name: hidden-paper
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -387,7 +387,7 @@ spec:
       serviceAccountName: hidden-paper
       containers:
       - name: hidden-paper
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -485,7 +485,7 @@ spec:
       serviceAccountName: lingering-forest
       containers:
       - name: lingering-forest
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -583,7 +583,7 @@ spec:
       serviceAccountName: wandering-night
       containers:
       - name: wandering-night
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -681,7 +681,7 @@ spec:
       serviceAccountName: winter-surf
       containers:
       - name: winter-surf
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -751,7 +751,7 @@ spec:
       serviceAccountName: winter-surf
       containers:
       - name: winter-surf
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:

@@ -73,7 +73,7 @@ spec:
       serviceAccountName: polished-feather
       containers:
       - name: polished-feather
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -171,7 +171,7 @@ spec:
       serviceAccountName: still-voice
       containers:
       - name: still-voice
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -269,7 +269,7 @@ spec:
       serviceAccountName: summer-forest
       containers:
       - name: summer-forest
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -467,7 +467,7 @@ spec:
       serviceAccountName: winter-wind
       containers:
       - name: winter-wind
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:

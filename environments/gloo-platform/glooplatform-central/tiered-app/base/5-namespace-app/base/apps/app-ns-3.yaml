@@ -73,7 +73,7 @@ spec:
       serviceAccountName: floral-dawn
       containers:
       - name: floral-dawn
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -271,7 +271,7 @@ spec:
       serviceAccountName: little-flower
       containers:
       - name: little-flower
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -369,7 +369,7 @@ spec:
       serviceAccountName: nameless-breeze
       containers:
       - name: nameless-breeze
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -467,7 +467,7 @@ spec:
       serviceAccountName: quiet-sun
       containers:
       - name: quiet-sun
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -537,7 +537,7 @@ spec:
       serviceAccountName: quiet-sun
       containers:
       - name: quiet-sun
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -635,7 +635,7 @@ spec:
       serviceAccountName: sparkling-paper
       containers:
       - name: sparkling-paper
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
