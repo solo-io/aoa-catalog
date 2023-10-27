@@ -40,3 +40,42 @@ spec:
           kind: VIRTUAL_DESTINATION
           port:
             number: 8080
+    - name: ns-3
+      matchers:
+      - uri:
+          prefix: /ns-3
+      forwardTo:
+        pathRewrite: /
+        destinations:
+        - ref:
+            name: hidden-sky-vd
+            namespace: tiered-app-ws-config
+          kind: VIRTUAL_DESTINATION
+          port:
+            number: 8080
+    - name: ns-4
+      matchers:
+      - uri:
+          prefix: /ns-4
+      forwardTo:
+        pathRewrite: /
+        destinations:
+        - ref:
+            name: blue-hill-vd
+            namespace: tiered-app-ws-config
+          kind: VIRTUAL_DESTINATION
+          port:
+            number: 8080
+    - name: ns-5
+      matchers:
+      - uri:
+          prefix: /ns-5
+      forwardTo:
+        pathRewrite: /
+        destinations:
+        - ref:
+            name: winter-field-vd
+            namespace: tiered-app-ws-config
+          kind: VIRTUAL_DESTINATION
+          port:
+            number: 8080
