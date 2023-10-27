@@ -267,6 +267,8 @@ spec:
           value: "20ms"
         - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
           value: "30s"
+        - name: "UI_PATH"
+          value: "/ns-1/ui/"
         resources:
           requests:
             memory: "100Mi"
