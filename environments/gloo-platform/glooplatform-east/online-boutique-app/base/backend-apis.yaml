@@ -714,8 +714,8 @@ spec:
         - name: PORT
           value: "8080"
         - name: PRODUCT_CATALOG_SERVICE_ADDR
-          #value: "productcatalogservice.backend-apis.svc.cluster.local:3550"
-          value: "product-catalog.backend-apis-team.solo-io.mesh:80"
+          value: "productcatalogservice.backend-apis.svc.cluster.local:3550"
+          #value: "product-catalog.backend-apis-team.solo-io.mesh:80"
         - name: DISABLE_TRACING
           value: "1"
         - name: DISABLE_PROFILER
