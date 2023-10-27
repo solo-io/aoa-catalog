@@ -171,7 +171,7 @@ spec:
       serviceAccountName: hidden-sky
       containers:
       - name: hidden-sky
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -369,7 +369,7 @@ spec:
       serviceAccountName: nameless-breeze
       containers:
       - name: nameless-breeze
-        image: nicholasjackson/fake-service:v0.26.0
+        image: ghcr.io/nmnellis/fake-service:v2
         ports:
         - containerPort: 8080
         securityContext:
