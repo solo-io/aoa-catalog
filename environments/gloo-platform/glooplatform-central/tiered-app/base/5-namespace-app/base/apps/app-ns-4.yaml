@@ -63,6 +63,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: blue-hill
       containers:
       - name: blue-hill
@@ -126,6 +133,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: blue-hill
       containers:
       - name: blue-hill
@@ -189,6 +203,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: blue-hill
       containers:
       - name: blue-hill
@@ -280,6 +301,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: hidden-paper
       containers:
       - name: hidden-paper
@@ -343,6 +371,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: hidden-paper
       containers:
       - name: hidden-paper
@@ -434,6 +469,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: lingering-forest
       containers:
       - name: lingering-forest
@@ -525,6 +567,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: wandering-night
       containers:
       - name: wandering-night
@@ -616,6 +665,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: winter-surf
       containers:
       - name: winter-surf
@@ -679,6 +735,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: winter-surf
       containers:
       - name: winter-surf

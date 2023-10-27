@@ -63,6 +63,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: purple-water
       containers:
       - name: purple-water
@@ -126,6 +133,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: purple-water
       containers:
       - name: purple-water
@@ -217,6 +231,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: still-violet
       containers:
       - name: still-violet
@@ -308,6 +329,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: winter-field
       containers:
       - name: winter-field

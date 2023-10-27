@@ -63,6 +63,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: divine-cloud
       containers:
       - name: divine-cloud
@@ -126,6 +133,20 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: divine-cloud
       containers:
       - name: divine-cloud
@@ -217,6 +238,13 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.istio.io/proxyCPU: "100m"
     spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       serviceAccountName: restless-sky
       containers:
       - name: restless-sky
