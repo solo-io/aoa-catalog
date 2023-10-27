@@ -5,6 +5,7 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - 5-namespace-app
+- 5-loadgenerators
 #- 15-namespace-app
 #- 50-namespace-app
 #- 60-namespace-app
