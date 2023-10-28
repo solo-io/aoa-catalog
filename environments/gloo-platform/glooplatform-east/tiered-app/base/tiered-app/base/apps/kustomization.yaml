@@ -6,3 +6,4 @@ kind: Kustomization
 resources:
 - app-ns-1.yaml
 - app-ns-2.yaml
+- app-ns-3.yaml
