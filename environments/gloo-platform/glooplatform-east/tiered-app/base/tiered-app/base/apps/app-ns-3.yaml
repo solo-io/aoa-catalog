@@ -88,7 +88,7 @@ spec:
         - name: "MESSAGE"
           value: "Hello From dahlia-seed (v1)!"
         - name: "UPSTREAM_URIS"
-          value: ""
+          value: "http://butter-cookie.ns-3.svc.cluster.local:8080,http://anime-fan.ns-3.svc.cluster.local:8080"
         - name: "UPSTREAM_WORKERS"
           value: "10"
         - name: "TIMING_50_PERCENTILE"
@@ -101,6 +101,202 @@ spec:
           value: "30s"
         - name: "UI_PATH"
           value: "/ns-3/ui/"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: butter-cookie
+  namespace: ns-3
+  labels:
+    app: butter-cookie
+    tier: "2"
+    
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: butter-cookie
+  namespace: ns-3
+  labels:
+    app: butter-cookie
+    tier: "2"
+    
+spec:
+  selector:
+    app: butter-cookie
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: butter-cookie-v1
+  namespace: ns-3
+  labels:
+    app: butter-cookie
+    version: v1
+    tier: "2"
+    
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: butter-cookie
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: butter-cookie
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
+    spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
+      serviceAccountName: butter-cookie
+      containers:
+      - name: butter-cookie
+        image: nicholasjackson/fake-service:v0.26.0
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "butter-cookie-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From butter-cookie (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: anime-fan
+  namespace: ns-3
+  labels:
+    app: anime-fan
+    tier: "2"
+    
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: anime-fan
+  namespace: ns-3
+  labels:
+    app: anime-fan
+    tier: "2"
+    
+spec:
+  selector:
+    app: anime-fan
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: anime-fan-v1
+  namespace: ns-3
+  labels:
+    app: anime-fan
+    version: v1
+    tier: "2"
+    
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: anime-fan
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: anime-fan
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
+    spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
+      serviceAccountName: anime-fan
+      containers:
+      - name: anime-fan
+        image: nicholasjackson/fake-service:v0.26.0
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "anime-fan-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From anime-fan (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
         resources:
           requests:
             memory: "50Mi"
