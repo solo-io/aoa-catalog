@@ -8,4 +8,4 @@ resources:
 - app-ns-2.yaml
 - app-ns-3.yaml
 - app-ns-4.yaml
-- app-ns-5.yaml
+#- app-ns-5.yaml

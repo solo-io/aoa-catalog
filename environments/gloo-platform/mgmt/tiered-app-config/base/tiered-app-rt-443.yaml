@@ -62,15 +62,3 @@ spec:
           kind: VIRTUAL_DESTINATION
           port:
             number: 8080
-    - name: ns-5
-      matchers:
-      - uri:
-          prefix: /ns-5
-      forwardTo:
-        destinations:
-        - ref:
-            name: winter-field-vd
-            namespace: tiered-app-ws-config
-          kind: VIRTUAL_DESTINATION
-          port:
-            number: 8080
