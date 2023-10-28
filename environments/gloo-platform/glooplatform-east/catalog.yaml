@@ -43,4 +43,11 @@ waves:
       pre_deploy: 
       -  $env_path/online-boutique-app/init.sh
       post_deploy:
-      -  $env_path/online-boutique-app/test.sh   
+      -  $env_path/online-boutique-app/test.sh  
+  - name: tiered-app
+    location: $env_path/tiered-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/tiered-app/init.sh
+      post_deploy:
+      -  $env_path/tiered-app/test.sh   

@@ -65,3 +65,20 @@ spec:
     protocol: HTTP
     targetPort:
       name: http
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: friendly-guy-vd
+  namespace: tiered-app-ws-config
+spec:
+  hosts:
+  - friendly-guy-vd.solo-io.mesh
+  services:
+  - labels:
+      app: friendly-guy
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
