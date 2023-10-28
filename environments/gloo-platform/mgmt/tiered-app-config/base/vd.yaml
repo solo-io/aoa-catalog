@@ -82,3 +82,20 @@ spec:
     protocol: HTTP
     targetPort:
       name: http
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: random-treeline-vd
+  namespace: tiered-app-ws-config
+spec:
+  hosts:
+  - random-treeline-vd.solo-io.mesh
+  services:
+  - labels:
+      app: random-treeline
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
