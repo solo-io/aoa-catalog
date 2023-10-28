@@ -59,9 +59,9 @@ spec:
         version: v1
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         gke-spot: "true"
@@ -103,8 +103,8 @@ spec:
           value: "/ns-4/ui/"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -131,9 +131,9 @@ spec:
         version: v2
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         gke-spot: "true"
@@ -175,8 +175,8 @@ spec:
           value: "/ns-4/ui/"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -203,9 +203,9 @@ spec:
         version: v3
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         gke-spot: "true"
@@ -247,8 +247,8 @@ spec:
           value: "/ns-4/ui/"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -303,9 +303,9 @@ spec:
         version: v1
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         gke-spot: "true"
@@ -345,8 +345,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -373,9 +373,9 @@ spec:
         version: v2
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         gke-spot: "true"
@@ -415,8 +415,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -471,9 +471,9 @@ spec:
         version: v1
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         gke-spot: "true"
@@ -513,8 +513,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -569,9 +569,9 @@ spec:
         version: v1
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         gke-spot: "true"
@@ -611,8 +611,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -667,9 +667,9 @@ spec:
         version: v1
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         gke-spot: "true"
@@ -709,8 +709,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -737,9 +737,9 @@ spec:
         version: v2
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         gke-spot: "true"
@@ -779,6 +779,6 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
