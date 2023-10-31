@@ -331,6 +331,19 @@ spec:
                         url: "https://chaos.demo.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
 
+                      - name: "Tiered Mesh Application"
+                        subtitle: "change path number: /ns-#"
+                        icon: "fab fa-connectdevelop"
+                        tag: "tiered-app"
+                        url: "https://tiered-app.demo.glooplatform.com/ns-1/ui/"
+                        target: "_blank" # optional html a tag target attribute  
+
+                      - name: "Tiered Mesh Application - Gloo UI"
+                        icon: "fas fa-arrows-alt"
+                        tag: "gloo-ui"
+                        url: "https://ui.glooplatform.com/graph/?workspace=tiered-app"
+                        target: "_blank" # optional html a tag target attribute   
+
                       - name: "Bookinfo - East"
                         subtitle: "glooplatform-east"
                         icon: "fas fa-book-reader"
