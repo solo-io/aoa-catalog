@@ -1,0 +1,12 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- pets-api.yaml
+- store-api.yaml
+- users-api.yaml
+
+namespace: petstore
+

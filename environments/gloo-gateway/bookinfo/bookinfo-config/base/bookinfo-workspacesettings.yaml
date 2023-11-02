@@ -1,0 +1,20 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: WorkspaceSettings
+metadata:
+  name: bookinfo
+  namespace: bookinfo-frontends
+spec:
+  exportTo:
+  - workspaces:
+    - name: ops-team
+  importFrom:
+  - workspaces:
+    - name: ops-team
+  options:
+    federation:                     # enable service federation of the web-ui namespace
+      enabled: false
+      serviceSelector:
+      - namespace: bookinfo-frontends
+    serviceIsolation:               # enable service isolation and Istio Sidecar resource
+      enabled: false
+      trimProxyConfig: false

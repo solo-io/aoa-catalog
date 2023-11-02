@@ -1,0 +1,28 @@
+apiVersion: flagger.app/v1beta1
+kind: MetricTemplate
+metadata:
+  name: podinfo-prometheus
+  namespace: test
+spec:
+  provider:
+    type: prometheus
+    address: http://glooe-prometheus-server.gloo-system:80
+  query: |
+    sum(
+        rate(
+            envoy_cluster_upstream_rq{
+              envoy_cluster_name="{{ namespace }}-{{ target }}-primaryupstream-9898_{{ namespace }}", 
+              envoy_response_code!="200", 
+              kubernetes_namespace="gloo-system", 
+              }[{{ interval }}]
+        )
+    )
+    /
+    sum(
+        rate(
+            envoy_cluster_upstream_rq{
+              envoy_cluster_name="{{ namespace }}-{{ target }}-primaryupstream-9898_{{ namespace }}", 
+              kubernetes_namespace="gloo-system", 
+              }[{{ interval }}]
+        )
+    ) * 100

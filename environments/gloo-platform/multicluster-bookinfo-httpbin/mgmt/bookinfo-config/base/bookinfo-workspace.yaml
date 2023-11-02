@@ -1,0 +1,14 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: Workspace
+metadata:
+  name: bookinfo
+  namespace: gloo-mesh
+spec:
+  workloadClusters:
+  - name: 'mgmt'
+    namespaces:
+    - name: bookinfo-team-config
+  - name: '*'
+    namespaces:
+    - name: bookinfo-frontends
+    - name: bookinfo-backends

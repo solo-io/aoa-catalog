@@ -1,0 +1,29 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: rollouts-demo-ui-rt-443
+  namespace: rollouts-demo
+  labels:
+    app: rollouts-demo
+spec:
+  hosts:
+    - '*'
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
+  http:
+    - name: rollouts-demo-ui
+      matchers:
+      - uri:
+          prefix: /rollouts
+      labels:
+        route: rollouts-demo-ui
+      forwardTo:
+        destinations:
+        - ref:
+            name: argo-rollouts-dashboard
+            namespace: rollouts-demo
+            cluster: mgmt
+          port:
+            number: 3100

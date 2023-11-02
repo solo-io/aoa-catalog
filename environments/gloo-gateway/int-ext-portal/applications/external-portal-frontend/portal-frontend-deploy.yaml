@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: portal-frontend
+  namespace: external-portal
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portal-frontend
+  namespace: external-portal
+  labels:
+    app: portal-frontend
+    service: portal-frontend
+spec:
+  ports:
+    - name: http
+      port: 4000
+      targetPort: 4000
+  selector:
+    app: portal-frontend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portal-frontend
+  namespace: external-portal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portal-frontend
+  template:
+    metadata:
+      labels:
+        app: portal-frontend
+    spec:
+      serviceAccountName: portal-frontend
+      containers:
+        - #image: gcr.io/solo-public/docs/portal-frontend:v0.0.17
+          image: ably77/solo-dev-portal-frontend:0.1.0
+          args: ["--host", "0.0.0.0"]
+          env:
+            - name: VITE_PORTAL_SERVER_URL
+              value: https://external-portal.glootest.com/portal-server/v1
+            - name: VITE_CLIENT_ID
+              value: 0oaafbtuwfy9lG7gr5d7
+            - name: VITE_TOKEN_ENDPOINT
+              value: https://dev-22653158.okta.com/oauth2/default/v1/token
+            - name: VITE_AUTH_ENDPOINT
+              value: https://dev-22653158.okta.com/oauth2/default/v1/authorize
+            - name: VITE_LOGOUT_ENDPOINT
+              value: https://dev-22653158.okta.com/oauth2/default/v1/logout
+          imagePullPolicy: Always
+          name: portal-frontend
+          ports:
+            - containerPort: 4000

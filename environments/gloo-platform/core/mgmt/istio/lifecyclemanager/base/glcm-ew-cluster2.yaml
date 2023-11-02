@@ -1,0 +1,36 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: GatewayLifecycleManager
+metadata:
+  name: istio-eastwestgateway-cluster2
+  namespace: gloo-mesh
+  annotations:
+    argocd.argoproj.io/sync-wave: "-7"
+spec:
+  installations:
+      # The revision for this installation, such as 1-19
+    - gatewayRevision: 1-19
+      # List all workload clusters to install Istio into
+      clusters:
+      - name: cluster2
+        # If set to true, the spec for this revision is applied in the cluster
+        activeGateway: false
+      istioOperatorSpec:
+        # No control plane components are installed
+        profile: empty
+        # Solo.io Istio distribution repository; required for Gloo Istio.
+        # You get the repo key from your Solo Account Representative.
+        hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
+        # The Solo.io Gloo Istio tag
+        tag: 1.19.3-solo
+        values:
+          gateways:
+            istio-ingressgateway:
+              customService: true
+        components:
+          ingressGateways:
+            - name: istio-eastwestgateway
+              namespace: istio-gateways
+              enabled: true
+              label:
+                istio: eastwestgateway
+                topology.istio.io/network: cluster2

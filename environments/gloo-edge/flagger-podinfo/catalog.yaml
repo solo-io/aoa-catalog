@@ -1,0 +1,30 @@
+
+waves:
+  - name: gloo-edge-app
+    location: $env_path/gloo-edge-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-edge-app/init.sh
+      post_deploy:
+      -  $env_path/gloo-edge-app/test.sh  
+  - name: gloo-edge-config
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-edge-config/init.sh
+      post_deploy:
+      -  $env_path/gloo-edge-config/test.sh
+    location: $env_path/gloo-edge-config/base
+  - name: flagger
+    location: $env_path/flagger/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/flagger/init.sh
+      post_deploy:
+      -  $env_path/flagger/test.sh    
+  - name: flagger-demo
+    location: $env_path/flagger-demo/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/flagger-demo/init.sh
+      post_deploy:
+      -  $env_path/flagger-demo/test.sh

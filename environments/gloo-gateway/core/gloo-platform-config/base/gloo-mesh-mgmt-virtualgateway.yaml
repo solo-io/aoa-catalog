@@ -1,0 +1,38 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualGateway
+metadata:
+  name: mgmt-north-south-gw-80
+  namespace: istio-gateways
+spec:
+  listeners:
+    - http: {}
+      port:
+        number: 80
+      allowedRouteTables:
+        - host: '*'
+  workloads:
+  - selector:
+      cluster: mgmt
+      labels:
+        istio: ingressgateway
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualGateway
+metadata:
+  name: mgmt-north-south-gw-443
+  namespace: istio-gateways
+spec:
+  listeners:
+    - http: {}
+      port:
+        number: 443
+      allowedRouteTables:
+          - host: '*'
+      tls:
+        mode: SIMPLE
+        secretName: tls-secret
+  workloads:
+  - selector:
+      cluster: mgmt
+      labels:
+        istio: ingressgateway

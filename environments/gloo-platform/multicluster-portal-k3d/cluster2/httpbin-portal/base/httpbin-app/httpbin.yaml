@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: httpbin
+  namespace: httpbin
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: httpbin
+  #annotations:
+  #  gloo.solo.io/scrape-openapi-source: /spec.json
+  #  gloo.solo.io/scrape-openapi-retry-delay: "15s"
+  #  gloo.solo.io/scrape-openapi-pull-attempts: "10"
+  #  gloo.solo.io/scrape-openapi-use-backoff: "true"
+  name: httpbin
+  namespace: httpbin
+spec:
+  ports:
+  - name: http
+    port: 8000
+    targetPort: 80
+  selector:
+    app: httpbin
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpbin
+  namespace: httpbin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpbin
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: httpbin
+        version: v1
+        # uncomment for pod label injection
+        istio.io/rev: 1-19
+    spec:
+      containers:
+      - image: docker.io/kennethreitz/httpbin
+        imagePullPolicy: IfNotPresent
+        name: httpbin
+        ports:
+        - containerPort: 80
+      serviceAccountName: httpbin
