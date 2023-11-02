@@ -61,6 +61,18 @@ data:
       orgId: 1
       type: loki
       url: http://loki:3100
+    - name: ClickHouse
+      type: grafana-clickhouse-datasource
+      isDefault: false
+      uid: clickhouse-access-logs
+      jsonData:
+        defaultDatabase: default
+        port: 9000
+        server: clickhouse.gloo-mesh
+        username: default
+        tlsSkipVerify: true
+      secureJsonData:
+        password: password
   dashboardproviders.yaml: |
     apiVersion: 1
     providers:
