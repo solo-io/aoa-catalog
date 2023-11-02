@@ -6,7 +6,7 @@ metadata:
 spec:
   workloadSelector:
     labels:
-      istio: ingressgateway
+      istio: mgmt-ingressgateway
   configPatches:
   - applyTo: NETWORK_FILTER
     match:
