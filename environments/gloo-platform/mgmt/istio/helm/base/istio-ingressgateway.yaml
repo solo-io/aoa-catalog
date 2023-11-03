@@ -32,8 +32,7 @@ spec:
         # Pod environment variables
         env: {}
 
-        annotations:
-          proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        podAnnotations:
           proxy.istio.io/config: '{"gatewayTopology" : { "numTrustedProxies": 1 } }'
         
         # Labels to apply to all resources
