@@ -11,6 +11,7 @@ resources:
 - prometheus-routetable.yaml
 - workload-grafana-routetable.yaml
 - clickhouse-grafana-routetable.yaml
+- clickhouse-admin-routetable.yaml
 
 
 
