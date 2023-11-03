@@ -25,7 +25,6 @@ metadata:
     app.kubernetes.io/version: "9.5.5"
     app.kubernetes.io/managed-by: Helm
 data:
-  plugins: grafana-clickhouse-datasource
   grafana.ini: |
     [analytics]
     check_for_updates = true
@@ -62,18 +61,18 @@ data:
       orgId: 1
       type: loki
       url: http://loki:3100
-    - isDefault: false
+    - name: ClickHouse
+      type: grafana-clickhouse-datasource
+      isDefault: false
+      uid: clickhouse-access-logs
       jsonData:
         defaultDatabase: default
         port: 9000
         server: clickhouse.gloo-mesh
-        tlsSkipVerify: true
         username: default
-      name: ClickHouse
+        tlsSkipVerify: true
       secureJsonData:
         password: password
-      type: grafana-clickhouse-datasource
-      uid: clickhouse-access-logs
   dashboardproviders.yaml: |
     apiVersion: 1
     providers:
@@ -89,13 +88,6 @@ data:
       name: istio-services
       options:
         path: /var/lib/grafana/dashboards/istio-services
-      orgId: 1
-      type: file
-    - disableDeletion: false
-      folder: clickhouse
-      name: clickhouse
-      options:
-        path: /var/lib/grafana/dashboards/clickhouse
       orgId: 1
       type: file
 ---
@@ -194,8 +186,6 @@ spec:
               mountPath: "/var/lib/grafana/dashboards/istio"
             - name: dashboards-istio-services
               mountPath: "/var/lib/grafana/dashboards/istio-services"
-            - name: dashboards-clickhouse
-              mountPath: "/var/lib/grafana/dashboards/clickhouse"
             - name: config
               mountPath: "/etc/grafana/provisioning/datasources/datasources.yaml"
               subPath: "datasources.yaml"
@@ -256,9 +246,6 @@ spec:
         - name: dashboards-istio-services
           configMap:
             name: istio-services-grafana-dashboards
-        - name: dashboards-clickhouse
-          configMap:
-            name: portal-api-analytics
         - name: storage
           emptyDir: {}
 

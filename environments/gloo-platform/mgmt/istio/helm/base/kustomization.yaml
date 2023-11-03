@@ -17,4 +17,3 @@ resources:
 #- kiali.yaml
 - jaeger.yaml
 - clickhouse-envoyfilter.yaml
-- portal-api-analytics-cm.yaml
