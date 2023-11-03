@@ -1,7 +1,7 @@
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
-  name: clickhouse-grafana-routetable
+  name: clickhouse-admin-routetable
   namespace: gloo-mesh
 spec:
   hosts:
