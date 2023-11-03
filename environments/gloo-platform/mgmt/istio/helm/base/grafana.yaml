@@ -25,6 +25,8 @@ metadata:
     app.kubernetes.io/version: "9.5.5"
     app.kubernetes.io/managed-by: Helm
 data:
+  plugins:
+  - grafana-clickhouse-datasource
   grafana.ini: |
     [analytics]
     check_for_updates = true
@@ -90,6 +92,13 @@ data:
         path: /var/lib/grafana/dashboards/istio-services
       orgId: 1
       type: file
+    - name: "clickhouse"
+      orgId: 1
+      folder: "clickhouse"
+      type: file
+      disableDeletion: false
+      options:
+        path: /var/lib/grafana/dashboards/clickhouse
 ---
 # Source: grafana/templates/service.yaml
 apiVersion: v1
