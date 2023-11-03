@@ -10,6 +10,7 @@ resources:
 - plow-routetable.yaml
 - prometheus-routetable.yaml
 - workload-grafana-routetable.yaml
+- clickhouse-grafana-routetable.yaml
 
 
 
