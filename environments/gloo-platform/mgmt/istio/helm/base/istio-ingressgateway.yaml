@@ -34,7 +34,7 @@ spec:
 
         annotations:
           proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
-          proxy.istio.io/config: '{"gatewayTopology" : { "numTrustedProxies": 3 } }'
+          proxy.istio.io/config: '{"gatewayTopology" : { "numTrustedProxies": 1 } }'
         
         # Labels to apply to all resources
         labels:
