@@ -84,6 +84,18 @@ spec:
           cluster: mgmt
           name: grafana
           namespace: istio-system
+  - name: grafana-clickhouse
+    matchers:
+    - uri:
+        prefix: /clickhouse
+    forwardTo:
+      destinations:
+      - port:
+          number: 3000
+        ref:
+          cluster: mgmt
+          name: grafana
+          namespace: gloo-mesh
   virtualGateways:
   - cluster: mgmt
     name: mgmt-north-south-gw-443
