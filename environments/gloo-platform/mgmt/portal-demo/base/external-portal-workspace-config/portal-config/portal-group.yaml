@@ -39,3 +39,4 @@ spec:
     usagePlans:
     - bronze
     - silver
+    - admin
