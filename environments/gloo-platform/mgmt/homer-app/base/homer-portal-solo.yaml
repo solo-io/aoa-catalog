@@ -370,7 +370,7 @@ spec:
                         #subtitle: "External Developer Portal"
                         icon: "fas fa-chart-area"
                         tag: "external-portal"
-                        url: "https://clickhouse.demo.glooplatform.com/d/db93be88-8cd4-4c32-8a37-83fbca40e3f0/api-dashboard?orgId=1"
+                        url: "https://clickhouse.demo.glooplatform.com/d/db93be88-8cd4-4c32-8a37-83fbca40e3f0/api-dashboard?orgId=1&from=now-24h&to=now"
                         target: "_blank" # optional html a tag target attribute
                   
                   #- name: "Portal API Endpoints"
