@@ -10,7 +10,7 @@ spec:
   - name: clickhouse-grafana-ui
     matchers:
     - uri:
-        prefix: /
+        prefix: /mgmt-grafana
     forwardTo:
       destinations:
       - ref:
