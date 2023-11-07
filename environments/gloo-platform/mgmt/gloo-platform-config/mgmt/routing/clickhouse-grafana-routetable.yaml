@@ -6,7 +6,6 @@ metadata:
 spec:
   hosts:
   - 'clickhouse.demo.glooplatform.com'
-  - 'grafana.demo.glooplatform.com'
   http:
   - name: clickhouse-grafana-ui
     matchers:
