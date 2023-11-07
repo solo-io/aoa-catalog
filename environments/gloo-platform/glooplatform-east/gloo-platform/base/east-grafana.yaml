@@ -88,8 +88,6 @@ spec:
           operator: Equal
           value: "true"
           effect: NoSchedule
-        podLabels:
-          istio.io/rev: 1-19
   project: default
   syncPolicy:
     automated:
@@ -103,3 +101,6 @@ spec:
         factor: 2
     syncOptions:
       - CreateNamespace=true
+    managedNamespaceMetadata:
+      labels: # The labels to set on the application namespace
+        istio.io/rev: 1-19
