@@ -128,6 +128,3 @@ spec:
         duration: 5s
         maxDuration: 3m0s
         factor: 2
-    managedNamespaceMetadata:
-      labels: # The labels to set on the application namespace
-        istio.io/rev: 1-19

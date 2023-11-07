@@ -1,4 +1,11 @@
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: grafana
+  labels:
+    istio.io/rev: 1-19
+---
+apiVersion: v1
 kind: Secret
 metadata:
   name: grafana
@@ -101,6 +108,3 @@ spec:
         factor: 2
     syncOptions:
       - CreateNamespace=true
-    managedNamespaceMetadata:
-      labels: # The labels to set on the application namespace
-        istio.io/rev: 1-19
