@@ -14,6 +14,8 @@ spec:
       waf: "true"
     matchers:
       - uri:
+          prefix: /mgmt-grafana
+      - uri:
           prefix: /api/health
       - uri:
           prefix: /mgmt-grafana/api/ds
@@ -28,7 +30,7 @@ spec:
         ref:
           cluster: mgmt
           name: grafana
-          namespace: istio-system
+          namespace: gloo-mesh
   - name: argo-health-mgmt
     labels:
       waf: "true"
@@ -67,23 +69,23 @@ spec:
           cluster: mgmt
           name: argocd-server
           namespace: argocd
-  - name: grafana-ui
-    labels:
-      waf: "true"
-      oauth: admin.glooplatform.com
-    matchers:
-    - uri:
-        prefix: /mgmt-grafana
-    - uri:
-        prefix: /callback
-    forwardTo:
-      destinations:
-      - port:
-          number: 3000
-        ref:
-          cluster: mgmt
-          name: grafana
-          namespace: istio-system
+  #- name: grafana-ui
+  #  labels:
+  #    waf: "true"
+  #    oauth: admin.glooplatform.com
+  #  matchers:
+  #  - uri:
+  #      prefix: /mgmt-grafana
+  #  - uri:
+  #      prefix: /callback
+  #  forwardTo:
+  #    destinations:
+  #    - port:
+  #        number: 3000
+  #      ref:
+  #        cluster: mgmt
+  #        name: grafana
+  #        namespace: istio-system
   virtualGateways:
   - cluster: mgmt
     name: mgmt-north-south-gw-443
