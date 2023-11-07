@@ -81,7 +81,9 @@ spec:
       - port:
           number: 3000
         ref:
+          cluster: mgmt
           name: grafana
+          #namespace: istio-system
           namespace: gloo-mesh
   virtualGateways:
   - cluster: mgmt
