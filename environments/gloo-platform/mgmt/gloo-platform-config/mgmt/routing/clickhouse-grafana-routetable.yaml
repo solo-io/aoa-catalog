@@ -7,6 +7,7 @@ spec:
   hosts:
   - 'clickhouse.demo.glooplatform.com'
   - 'foo.admin.glooplatform.com'
+  - 'grafana.admin.glooplatform.com'
   http:
   - name: clickhouse-grafana-ui
     matchers:
