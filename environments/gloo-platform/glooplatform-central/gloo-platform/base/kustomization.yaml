@@ -12,3 +12,5 @@ resources:
 - relay-root-tls-secret-cert.yaml
 - telemetry.yaml
 - latencyfilter.yaml
+- grafana-dashboard-configmaps
+- central-grafana.yaml
