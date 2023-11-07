@@ -93,6 +93,13 @@ spec:
           server:
             root_url: https://*.glooplatform.com/mgmt-grafana/
             serve_from_sub_path: true
+        nodeSelector:
+          gke-spot: "true"
+        tolerations:
+        - key: cloud.google.com/gke-spot
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
   project: default
   syncPolicy:
     automated:
