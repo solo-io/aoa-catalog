@@ -89,7 +89,7 @@ spec:
   - grafana.glooplatform-central.vd
   services:
   - namespace: gloo-mesh
-    name: grafana-central
+    name: grafana
     cluster: glooplatform-central
   ports:
     - number: 3000
@@ -105,7 +105,7 @@ spec:
   - grafana.glooplatform-east.vd
   services:
   - namespace: gloo-mesh
-    name: grafana-east
+    name: grafana
     cluster: glooplatform-east
   ports:
     - number: 3000
