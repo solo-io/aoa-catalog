@@ -64,12 +64,20 @@ spec:
                 disableDeletion: false
                 options:
                   path: /var/lib/grafana/dashboards/istio
+              - name: kubernetes
+                orgId: 1
+                disableDeletion: false
+                folder: kubernetes
+                type: file
+                disableDeletion: false
+                options:
+                  path: /var/lib/grafana/dashboards/kubernetes
                 
         dashboardsConfigMaps:
           clickhouse: portal-api-analytics
           #istio: istio-services-grafana-dashboards
           istio: istio-grafana-dashboards
-          General: kubernetes-dashboard
+          kubernetes: kubernetes-dashboard
         defaultDashboardsEnabled: false
         grafana.ini:
           auth.anonymous:
