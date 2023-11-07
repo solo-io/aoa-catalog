@@ -88,7 +88,7 @@ spec:
         - name: "MESSAGE"
           value: "Hello From dahlia-seed (v1)!"
         - name: "UPSTREAM_URIS"
-          value: "http://butter-cookie.ns-3.svc.cluster.local:8080,http://anime-fan.ns-3.svc.cluster.local:8080"
+          value: "http://butter-cookie.ns-3.svc.cluster.local:8080,http://anime-fan.ns-3.svc.cluster.local:8080,http://steve-jobs.ns-3.svc.cluster.local:8080"
         - name: "UPSTREAM_WORKERS"
           value: "10"
         - name: "TIMING_50_PERCENTILE"
@@ -285,6 +285,104 @@ spec:
           value: "http"
         - name: "MESSAGE"
           value: "Hello From anime-fan (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: steve-jobs
+  namespace: ns-3
+  labels:
+    app: steve-jobs
+    tier: "2"
+    
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: steve-jobs
+  namespace: ns-3
+  labels:
+    app: steve-jobs
+    tier: "2"
+    
+spec:
+  selector:
+    app: steve-jobs
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: steve-jobs-v1
+  namespace: ns-3
+  labels:
+    app: steve-jobs
+    version: v1
+    tier: "2"
+    
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: steve-jobs
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: steve-jobs
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
+    spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
+      serviceAccountName: steve-jobs
+      containers:
+      - name: steve-jobs
+        image: nicholasjackson/fake-service:v0.26.0
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "steve-jobs-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From steve-jobs (v1)!"
         - name: "UPSTREAM_URIS"
           value: ""
         - name: "UPSTREAM_WORKERS"
