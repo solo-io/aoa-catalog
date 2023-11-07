@@ -68,22 +68,21 @@ spec:
           name: argocd-server
           namespace: argocd
   - name: grafana-ui
-    labels:
-      waf: "true"
-      oauth: admin.glooplatform.com
+    #labels:
+    #  waf: "true"
+    #  oauth: admin.glooplatform.com
     matchers:
     - uri:
         prefix: /mgmt-grafana
-    - uri:
-        prefix: /callback
+    #- uri:
+    #    prefix: /callback
     forwardTo:
       destinations:
       - port:
           number: 3000
         ref:
-          cluster: mgmt
           name: grafana
-          namespace: istio-system
+          namespace: gloo-mesh
   virtualGateways:
   - cluster: mgmt
     name: mgmt-north-south-gw-443
