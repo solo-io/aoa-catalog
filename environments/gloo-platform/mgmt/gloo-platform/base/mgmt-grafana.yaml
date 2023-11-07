@@ -1,3 +1,13 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: grafana
+  namespace: gloo-mesh
+data:
+  admin-user: YWRtaW4=
+  admin-password: c3VwZXJzZWNyZXRwYXNzd29yZA==
+type: Opaque
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
