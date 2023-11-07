@@ -88,7 +88,7 @@ spec:
   hosts:
   - grafana.glooplatform-central.vd
   services:
-  - namespace: istio-system
+  - namespace: gloo-mesh
     name: grafana-central
     cluster: glooplatform-central
   ports:
@@ -104,7 +104,7 @@ spec:
   hosts:
   - grafana.glooplatform-east.vd
   services:
-  - namespace: istio-system
+  - namespace: gloo-mesh
     name: grafana-east
     cluster: glooplatform-east
   ports:
