@@ -44,7 +44,7 @@ spec:
               name: Prometheus
               orgId: 1
               type: prometheus
-              url: http://prometheus-server:80
+              url: http://prometheus.istio-system:9090
         dashboardProviders:
           dashboardproviders.yaml:
             apiVersion: 1
