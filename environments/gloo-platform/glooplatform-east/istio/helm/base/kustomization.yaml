@@ -12,5 +12,5 @@ resources:
 - istio-ingressgateway-svc.yaml
 - istiod.yaml
 #- tls-secret-cert.yaml
-- grafana.yaml
+#- grafana.yaml
 - prometheus.yaml
