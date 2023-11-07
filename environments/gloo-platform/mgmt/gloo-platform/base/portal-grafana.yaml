@@ -91,6 +91,9 @@ spec:
         grafana.ini:
           auth.anonymous:
             enabled: true
+          server:
+            root_url: %(protocol)s://%(domain)s:%(http_port)s/mgmt-grafana/
+            serve_from_sub_path: true
   project: default
   syncPolicy:
     automated:

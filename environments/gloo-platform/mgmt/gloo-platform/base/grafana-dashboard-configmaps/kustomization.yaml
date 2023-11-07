@@ -4,8 +4,7 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- istio-grafana-dashboards.yaml
-- istio-services-grafana-dashboards.yaml
+- istio-grafana-dashboards-cm.yaml
 - portal-api-analytics-dashboard-cm.yaml
-- kubernetes-dashboard.yaml
-- solo-istio-dashboard.yaml
+- kubernetes-dashboard-cm.yaml
+- solo-istio-dashboard-cm.yaml
