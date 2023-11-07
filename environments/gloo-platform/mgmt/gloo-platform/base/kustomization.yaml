@@ -11,3 +11,4 @@ resources:
 - gloo-telemetry-gateway-cert.yaml
 - relay-root-ca.yaml
 - clickhouse-auth.yaml
+- portal-grafana.yaml
