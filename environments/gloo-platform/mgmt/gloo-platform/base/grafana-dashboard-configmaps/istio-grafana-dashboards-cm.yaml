@@ -900,6 +900,6 @@ data:
 kind: ConfigMap
 metadata:
   name: istio-grafana-dashboards
-  namespace: gloo-mesh
+  namespace: grafana
   labels:
     grafana_dashboard: "1"

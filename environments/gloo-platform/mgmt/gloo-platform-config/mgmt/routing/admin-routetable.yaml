@@ -30,7 +30,7 @@ spec:
         ref:
           cluster: mgmt
           name: grafana
-          namespace: gloo-mesh
+          namespace: grafana
   - name: argo-health-mgmt
     labels:
       waf: "true"

@@ -3446,4 +3446,4 @@ data:
 kind: ConfigMap
 metadata:
   name: portal-api-analytics
-  namespace: gloo-mesh
+  namespace: grafana
