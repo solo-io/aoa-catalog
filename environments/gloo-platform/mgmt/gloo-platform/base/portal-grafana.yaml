@@ -92,7 +92,7 @@ spec:
           auth.anonymous:
             enabled: true
           server:
-            root_url: %(protocol)s://%(domain)s:%(http_port)s/mgmt-grafana/
+            root_url: https://clickhouse.demo.glooplatform.com/mgmt-grafana/
             serve_from_sub_path: true
   project: default
   syncPolicy:
