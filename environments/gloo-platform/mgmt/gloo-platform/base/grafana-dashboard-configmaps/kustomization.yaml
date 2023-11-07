@@ -8,3 +8,4 @@ resources:
 - istio-services-grafana-dashboards.yaml
 - portal-api-analytics-dashboard-cm.yaml
 - kubernetes-dashboard.yaml
+- solo-istio-dashboard.yaml

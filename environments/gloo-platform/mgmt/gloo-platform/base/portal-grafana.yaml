@@ -64,6 +64,14 @@ spec:
                 disableDeletion: false
                 options:
                   path: /var/lib/grafana/dashboards/istio
+              - name: solo
+                orgId: 1
+                disableDeletion: false
+                folder: istio
+                type: file
+                disableDeletion: false
+                options:
+                  path: /var/lib/grafana/dashboards/solo
               - name: kubernetes
                 orgId: 1
                 disableDeletion: false
@@ -77,6 +85,7 @@ spec:
           clickhouse: portal-api-analytics
           #istio: istio-services-grafana-dashboards
           istio: istio-grafana-dashboards
+          solo: solo-istio-dashboard
           kubernetes: kubernetes-dashboard
         defaultDashboardsEnabled: false
         grafana.ini:
