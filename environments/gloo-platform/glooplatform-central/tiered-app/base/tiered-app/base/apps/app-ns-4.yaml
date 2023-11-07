@@ -500,7 +500,7 @@ spec:
         - name: "MESSAGE"
           value: "Hello From lingering-forest (v1)!"
         - name: "UPSTREAM_URIS"
-          value: "http://friendly-guy-vd.solo-io.mesh:8080"
+          value: "http://strangler-pattern-vd.solo-io.mesh:8080"
         - name: "UPSTREAM_WORKERS"
           value: "10"
         - name: "TIMING_50_PERCENTILE"
