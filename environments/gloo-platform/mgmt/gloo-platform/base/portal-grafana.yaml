@@ -47,31 +47,26 @@ spec:
                 disableDeletion: false
                 options:
                   path: /var/lib/grafana/dashboards/clickhouse
-              - disableDeletion: false
+              - name: istio
+                orgId: 1
+                disableDeletion: false
                 folder: istio
-                name: istio
+                type: file
+                disableDeletion: false
                 options:
                   path: /var/lib/grafana/dashboards/istio
-                orgId: 1
-                type: file
-              - disableDeletion: false
-                folder: istio
-                name: istio-services
-                options:
-                  path: /var/lib/grafana/dashboards/istio-services
-                orgId: 1
-                type: file
+                
         dashboardsConfigMaps:
           clickhouse: portal-api-analytics
           #istio: istio-services-grafana-dashboards
-          #istio: istio-grafana-dashboards
+          istio: istio-grafana-dashboards
         defaultDashboardsEnabled: false
         grafana.ini:
           auth.anonymous:
             enabled: true
-        #extraVolumeMounts:
-        #  - name: dashboards-istio
-        #    mountPath: /var/lib/grafana/dashboards/istio
+        extraVolumeMounts:
+          - name: dashboards-istio
+            mountPath: /var/lib/grafana/dashboards/istio
         #  - name: dashboards-istio-services
         #    mountPath: /var/lib/grafana/dashboards/istio-services
   project: default

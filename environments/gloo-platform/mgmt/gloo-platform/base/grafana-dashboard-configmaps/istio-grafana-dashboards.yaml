@@ -13,3 +13,5 @@ kind: ConfigMap
 metadata:
   name: istio-grafana-dashboards
   namespace: gloo-mesh
+  labels:
+    grafana_dashboard: "1"
