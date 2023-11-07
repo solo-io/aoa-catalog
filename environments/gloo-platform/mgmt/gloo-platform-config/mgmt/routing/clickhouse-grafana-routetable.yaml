@@ -15,7 +15,7 @@ spec:
       destinations:
       - ref:
           name: grafana
-          namespace: gloo-mesh
+          namespace: grafana
         port:
           number: 3000
   virtualGateways:
