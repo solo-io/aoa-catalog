@@ -88,12 +88,12 @@ spec:
   hosts:
   - grafana.glooplatform-central.vd
   services:
-  - namespace: gloo-mesh
+  - namespace: grafana
     name: grafana
     cluster: glooplatform-central
   ports:
     - number: 3000
-      protocol: TCP
+      protocol: HTTP
 ---
 apiVersion: networking.gloo.solo.io/v2
 kind: VirtualDestination
@@ -104,7 +104,7 @@ spec:
   hosts:
   - grafana.glooplatform-east.vd
   services:
-  - namespace: gloo-mesh
+  - namespace: grafana
     name: grafana
     cluster: glooplatform-east
   ports:

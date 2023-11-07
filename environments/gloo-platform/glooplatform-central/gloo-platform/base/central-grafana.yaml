@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: grafana
-  namespace: gloo-mesh
+  namespace: grafana
 data:
   admin-user: YWRtaW4=
   admin-password: c3VwZXJzZWNyZXRwYXNzd29yZA==
@@ -15,7 +15,7 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: gloo-mesh
+    namespace: grafana
     server: 'https://kubernetes.default.svc'
   source:
     repoURL: 'https://grafana.github.io/helm-charts'
@@ -101,3 +101,5 @@ spec:
         duration: 5s
         maxDuration: 3m0s
         factor: 2
+    syncOptions:
+      - CreateNamespace=true
