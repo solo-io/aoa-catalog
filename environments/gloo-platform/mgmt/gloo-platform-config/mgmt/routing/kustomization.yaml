@@ -12,7 +12,6 @@ resources:
 - workload-grafana-routetable.yaml
 - clickhouse-grafana-routetable.yaml
 - clickhouse-admin-routetable.yaml
-- clickhouse-grafana-routetable-test.yaml
 
 
 
