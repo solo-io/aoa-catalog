@@ -93,7 +93,7 @@ spec:
     cluster: glooplatform-central
   ports:
     - number: 3000
-      protocol: HTTP
+      protocol: TCP
 ---
 apiVersion: networking.gloo.solo.io/v2
 kind: VirtualDestination
