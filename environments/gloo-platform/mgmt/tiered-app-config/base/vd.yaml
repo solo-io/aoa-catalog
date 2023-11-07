@@ -69,14 +69,14 @@ spec:
 apiVersion: networking.gloo.solo.io/v2
 kind: VirtualDestination
 metadata:
-  name: friendly-guy-vd
+  name: strangler-pattern-vd
   namespace: tiered-app-ws-config
 spec:
   hosts:
-  - friendly-guy-vd.solo-io.mesh
+  - strangler-pattern-vd.solo-io.mesh
   services:
   - labels:
-      app: friendly-guy
+      app: strangler-pattern
   ports:
   - number: 8080
     protocol: HTTP
