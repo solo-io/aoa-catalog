@@ -5,7 +5,7 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - admin-gcp-extauthpolicy.yaml
-- gloo-mesh-ui-extauthpolicy-gcp.yaml
+#- gloo-mesh-ui-extauthpolicy-gcp.yaml
 - gloo-mesh-ui-extauthpolicy-okta.yaml
 - prometheus-extauthpolicy-gcp.yaml
 - workload-clusters-grafana-extauthpolicy-gcp.yaml
