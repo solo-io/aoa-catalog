@@ -83,7 +83,6 @@ spec:
                 
         dashboardsConfigMaps:
           clickhouse: portal-api-analytics
-          #istio: istio-services-grafana-dashboards
           istio: istio-grafana-dashboards
           solo: solo-istio-dashboard
           kubernetes: kubernetes-dashboard
