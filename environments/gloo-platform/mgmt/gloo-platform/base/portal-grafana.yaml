@@ -69,6 +69,7 @@ spec:
           clickhouse: portal-api-analytics
           #istio: istio-services-grafana-dashboards
           istio: istio-grafana-dashboards
+          istio: kubernetes-dashboard
         defaultDashboardsEnabled: false
         grafana.ini:
           auth.anonymous:
