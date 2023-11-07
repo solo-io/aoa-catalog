@@ -36,15 +36,15 @@ spec:
                 tlsSkipVerify: true
               secureJsonData:
                 password: password
-            #- access: proxy
-            #  editable: true
-            #  isDefault: false
-            #  jsonData:
-            #    timeInterval: 5s
-            #  name: Prometheus
-            #  orgId: 1
-            #  type: prometheus
-            #  url: http://prometheus.istio-system:9090
+            - access: proxy
+              editable: true
+              isDefault: false
+              jsonData:
+                timeInterval: 5s
+              name: Prometheus
+              orgId: 1
+              type: prometheus
+              url: http://prometheus.istio-system:9090
         dashboardProviders:
           dashboardproviders.yaml:
             apiVersion: 1
@@ -56,43 +56,43 @@ spec:
                 disableDeletion: false
                 options:
                   path: /var/lib/grafana/dashboards/clickhouse
-              #- name: istio
-              #  orgId: 1
-              #  disableDeletion: false
-              #  folder: istio
-              #  type: file
-              #  disableDeletion: false
-              #  options:
-              #    path: /var/lib/grafana/dashboards/istio
-              #- name: solo
-              #  orgId: 1
-              #  disableDeletion: false
-              #  folder: istio
-              #  type: file
-              #  disableDeletion: false
-              #  options:
-              #    path: /var/lib/grafana/dashboards/solo
-              #- name: kubernetes
-              #  orgId: 1
-              #  disableDeletion: false
-              #  folder: kubernetes
-              #  type: file
-              #  disableDeletion: false
-              #  options:
-              #    path: /var/lib/grafana/dashboards/kubernetes
+              - name: istio
+                orgId: 1
+                disableDeletion: false
+                folder: istio
+                type: file
+                disableDeletion: false
+                options:
+                  path: /var/lib/grafana/dashboards/istio
+              - name: solo
+                orgId: 1
+                disableDeletion: false
+                folder: istio
+                type: file
+                disableDeletion: false
+                options:
+                  path: /var/lib/grafana/dashboards/solo
+              - name: kubernetes
+                orgId: 1
+                disableDeletion: false
+                folder: kubernetes
+                type: file
+                disableDeletion: false
+                options:
+                  path: /var/lib/grafana/dashboards/kubernetes
                 
         dashboardsConfigMaps:
           clickhouse: portal-api-analytics
-          #istio: istio-grafana-dashboards
-          #solo: solo-istio-dashboard
-          #kubernetes: kubernetes-dashboard
+          istio: istio-grafana-dashboards
+          solo: solo-istio-dashboard
+          kubernetes: kubernetes-dashboard
         defaultDashboardsEnabled: false
         grafana.ini:
           auth.anonymous:
             enabled: true
-          #server:
-          #  root_url: https://clickhouse.demo.glooplatform.com/mgmt-grafana/
-          #  serve_from_sub_path: true
+          server:
+            root_url: https://clickhouse.demo.glooplatform.com/mgmt-grafana/
+            serve_from_sub_path: true
   project: default
   syncPolicy:
     automated:
