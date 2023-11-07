@@ -36,6 +36,15 @@ spec:
                 tlsSkipVerify: true
               secureJsonData:
                 password: password
+            - access: proxy
+              editable: true
+              isDefault: false
+              jsonData:
+                timeInterval: 5s
+              name: Prometheus
+              orgId: 1
+              type: prometheus
+              url: http://prometheus-server:80
         dashboardProviders:
           dashboardproviders.yaml:
             apiVersion: 1
@@ -64,11 +73,6 @@ spec:
         grafana.ini:
           auth.anonymous:
             enabled: true
-        #extraVolumeMounts:
-        #  - name: dashboards-istio
-        #    mountPath: /var/lib/grafana/dashboards/istio
-        #  - name: dashboards-istio-services
-        #    mountPath: /var/lib/grafana/dashboards/istio-services
   project: default
   syncPolicy:
     automated:
