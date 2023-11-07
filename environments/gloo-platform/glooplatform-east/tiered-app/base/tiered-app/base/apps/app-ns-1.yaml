@@ -9,25 +9,25 @@ metadata:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: friendly-guy
+  name: strangler-pattern
   namespace: ns-1
   labels:
-    app: friendly-guy
+    app: strangler-pattern
     tier: "1"
     seed: "1696442875193501000"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: friendly-guy
+  name: strangler-pattern
   namespace: ns-1
   labels:
-    app: friendly-guy
+    app: strangler-pattern
     tier: "1"
     seed: "1696442875193501000"
 spec:
   selector:
-    app: friendly-guy
+    app: strangler-pattern
   ports:
   - name: http
     protocol: TCP
@@ -37,10 +37,10 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: friendly-guy-v1
+  name: strangler-pattern-v1
   namespace: ns-1
   labels:
-    app: friendly-guy
+    app: strangler-pattern
     version: v1
     tier: "1"
     seed: "1696442875193501000"
@@ -50,12 +50,12 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-        app: friendly-guy
+        app: strangler-pattern
         version: v1
   template:
     metadata:
       labels:
-        app: friendly-guy
+        app: strangler-pattern
         version: v1
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
@@ -70,9 +70,9 @@ spec:
         operator: Equal
         value: "true"
         effect: NoSchedule
-      serviceAccountName: friendly-guy
+      serviceAccountName: strangler-pattern
       containers:
-      - name: friendly-guy
+      - name: strangler-pattern
         image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
@@ -82,11 +82,11 @@ spec:
         - name: "LISTEN_ADDR"
           value: "0.0.0.0:8080"
         - name: "NAME"
-          value: "friendly-guy-v1"
+          value: "strangler-pattern-v1"
         - name: "SERVER_TYPE"
           value: "http"
         - name: "MESSAGE"
-          value: "Hello From friendly-guy (v1)!"
+          value: "Hello From strangler-pattern (v1)!"
         - name: "UPSTREAM_URIS"
           value: "http://random-treeline-vd.solo-io.mesh:8080"
         - name: "UPSTREAM_WORKERS"
