@@ -49,8 +49,8 @@ spec:
                   path: /var/lib/grafana/dashboards/clickhouse
         dashboardsConfigMaps:
           clickhouse: portal-api-analytics
-          istio: istio-services-grafana-dashboards
-          istio: istio-grafana-dashboards
+          #istio: istio-services-grafana-dashboards
+          #istio: istio-grafana-dashboards
         defaultDashboardsEnabled: false
         grafana.ini:
           auth.anonymous:
