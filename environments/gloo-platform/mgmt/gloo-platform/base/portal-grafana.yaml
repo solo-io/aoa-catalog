@@ -69,6 +69,13 @@ spec:
         grafana.ini:
           auth.anonymous:
             enabled: true
+        extraVolumeMounts:
+          - name: dashboards-istio
+            mountPath: /var/lib/grafana/dashboards/istio
+            readOnly: true
+          - name: dashboards-istio-services
+            mountPath: /var/lib/grafana/dashboards/istio-services
+            readOnly: true
   project: default
   syncPolicy:
     automated:
