@@ -12,4 +12,4 @@ resources:
 - relay-root-ca.yaml
 - clickhouse-auth.yaml
 - portal-grafana.yaml
-- portal-api-analytics-dashboard-cm.yaml
+- grafana-dashboard-configmaps

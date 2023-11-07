@@ -1,0 +1,9 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- istio-grafana-dashboards.yaml
+- istio-services-grafana-dashboards.yaml
+- portal-api-analytics-dashboard-cm.yaml
