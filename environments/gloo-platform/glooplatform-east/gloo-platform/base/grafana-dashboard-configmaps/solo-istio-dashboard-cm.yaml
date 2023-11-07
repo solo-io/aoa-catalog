@@ -6,6 +6,6 @@ data:
 kind: ConfigMap
 metadata:
   name: solo-istio-dashboard
-  namespace: gloo-mesh
+  namespace: grafana
   labels:
     grafana_dashboard: "1"
