@@ -27,6 +27,7 @@ data:
         "editable": true,
         "fiscalYearStartMonth": 0,
         "graphTooltip": 0,
+        "id": 4,
         "links": [],
         "liveNow": false,
         "panels": [
@@ -522,6 +523,343 @@ data:
               "type": "grafana-clickhouse-datasource",
               "uid": "clickhouse-access-logs"
             },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                },
+                "custom": {
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 11,
+              "x": 0,
+              "y": 5
+            },
+            "id": 211,
+            "options": {
+              "basemap": {
+                "config": {},
+                "name": "Layer 0",
+                "type": "default"
+              },
+              "controls": {
+                "mouseWheelZoom": true,
+                "showAttribution": true,
+                "showDebug": false,
+                "showMeasure": true,
+                "showScale": false,
+                "showZoom": true
+              },
+              "layers": [
+                {
+                  "config": {
+                    "blur": 15,
+                    "radius": 18,
+                    "weight": {
+                      "fixed": 1,
+                      "max": 1,
+                      "min": 0
+                    }
+                  },
+                  "filterData": {
+                    "id": "byRefId",
+                    "options": "A"
+                  },
+                  "location": {
+                    "geohash": "hash",
+                    "mode": "geohash"
+                  },
+                  "name": "Layer 1",
+                  "opacity": 0.9,
+                  "tooltip": true,
+                  "type": "heatmap"
+                }
+              ],
+              "tooltip": {
+                "mode": "details"
+              },
+              "view": {
+                "allLayers": true,
+                "id": "europe",
+                "lat": 46,
+                "lon": 14,
+                "zoom": 4
+              }
+            },
+            "pluginVersion": "10.0.3",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-clickhouse-datasource",
+                  "uid": "clickhouse-access-logs"
+                },
+                "format": 1,
+                "meta": {
+                  "builderOptions": {
+                    "fields": [],
+                    "limit": 100,
+                    "mode": "list"
+                  }
+                },
+                "queryType": "sql",
+                "rawSql": "with coords as (\n    select\n        CAST(LogAttributes['client_address'] AS IPv6) as client_address,\n        dictGet(\n            'ip_trie',\n            ('latitude', 'longitude'),\n            tuple(client_address)\n        ) as coords,\n        coords.1 as latitude,\n        coords.2 as longitude,\n        geohashEncode(longitude,latitude,4) as hash\n    from \n        gloo_api_logs\n    where\n        longitude != 0 \n        and latitude != 0\n) \nselect \n    hash, \n    count() as heat, \n    round(log10(heat),2) as adj_heat \nfrom \n    coords \ngroup by \n    hash;",
+                "refId": "A",
+                "selectedFormat": 4
+              }
+            ],
+            "title": "Client IPs",
+            "type": "geomap"
+          },
+          {
+            "datasource": {
+              "type": "grafana-clickhouse-datasource",
+              "uid": "clickhouse-access-logs"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "inspect": false
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 7,
+              "x": 11,
+              "y": 5
+            },
+            "id": 221,
+            "options": {
+              "cellHeight": "sm",
+              "footer": {
+                "countRows": false,
+                "fields": "",
+                "reducer": [
+                  "sum"
+                ],
+                "show": false
+              },
+              "showHeader": true
+            },
+            "pluginVersion": "10.0.3",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-clickhouse-datasource",
+                  "uid": "clickhouse-access-logs"
+                },
+                "format": 1,
+                "meta": {
+                  "builderOptions": {
+                    "fields": [],
+                    "limit": 100,
+                    "mode": "list"
+                  }
+                },
+                "queryType": "sql",
+                "rawSql": "select\n    CAST(LogAttributes['client_address'] AS IPv6) as client_address,\n    dictGet(\n        'ip_trie',\n        ('country_code', 'latitude', 'longitude'),\n        tuple(client_address)\n    ).1 as country,\n    formatReadableQuantity(count()) as num_requests\nfrom gloo_api_logs\ngroup by client_address\norder by count() desc limit 10;",
+                "refId": "A",
+                "selectedFormat": 4
+              }
+            ],
+            "title": "Top 10 countries by clients",
+            "type": "table"
+          },
+          {
+            "datasource": {
+              "type": "grafana-clickhouse-datasource",
+              "uid": "clickhouse-access-logs"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "thresholds"
+                },
+                "custom": {
+                  "align": "auto",
+                  "cellOptions": {
+                    "type": "auto"
+                  },
+                  "filterable": false,
+                  "inspect": false
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "#6ED0E0",
+                      "value": 1000
+                    },
+                    {
+                      "color": "light-blue",
+                      "value": 2000
+                    },
+                    {
+                      "color": "light-orange",
+                      "value": 5000
+                    },
+                    {
+                      "color": "orange",
+                      "value": 10000
+                    },
+                    {
+                      "color": "semi-dark-orange",
+                      "value": 20000
+                    },
+                    {
+                      "color": "light-red",
+                      "value": 50000
+                    },
+                    {
+                      "color": "red",
+                      "value": 100000
+                    },
+                    {
+                      "color": "dark-red",
+                      "value": 1000000
+                    }
+                  ]
+                },
+                "unit": "none"
+              },
+              "overrides": [
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "Count"
+                  },
+                  "properties": [
+                    {
+                      "id": "custom.cellOptions",
+                      "value": {
+                        "mode": "gradient",
+                        "type": "gauge",
+                        "valueDisplayMode": "text"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "matcher": {
+                    "id": "byName",
+                    "options": "User"
+                  },
+                  "properties": [
+                    {
+                      "id": "custom.width",
+                      "value": 216
+                    }
+                  ]
+                }
+              ]
+            },
+            "gridPos": {
+              "h": 8,
+              "w": 6,
+              "x": 18,
+              "y": 5
+            },
+            "id": 200,
+            "options": {
+              "cellHeight": "sm",
+              "footer": {
+                "countRows": false,
+                "enablePagination": false,
+                "fields": [
+                  "count"
+                ],
+                "reducer": [
+                  "sum"
+                ],
+                "show": true
+              },
+              "showHeader": true,
+              "sortBy": [
+                {
+                  "desc": true,
+                  "displayName": "Count"
+                }
+              ]
+            },
+            "pluginVersion": "10.0.3",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-clickhouse-datasource",
+                  "uid": "clickhouse-access-logs"
+                },
+                "format": 1,
+                "meta": {
+                  "builderOptions": {
+                    "fields": [],
+                    "limit": 100,
+                    "mode": "list"
+                  }
+                },
+                "queryType": "sql",
+                "rawSql": "SELECT\n  CAST(LogAttributes['user_agent'] AS VARCHAR) as user_agent,\n  count(*) AS Count\nFROM\n  gloo_api_logs\nWHERE\n  $__timeFilter(Timestamp) AND\n  LogAttributes['api_id'] IN ($api_id) AND\n  LogAttributes['usage_plan'] IN ($usage_plan) AND\n  LogAttributes['status_code'] IN ($status_code) AND\n  LogAttributes['request_command'] IN ($http_method) AND\n  LogAttributes['request_uri'] IN ($request_uri) AND\n  ('$user_id' = 'All' OR LogAttributes['user_id'] = '$user_id')\nGROUP BY\n  user_agent\nORDER BY\n  Count Desc",
+                "refId": "A",
+                "selectedFormat": 4
+              }
+            ],
+            "title": "Top User Agents",
+            "type": "table"
+          },
+          {
+            "datasource": {
+              "type": "grafana-clickhouse-datasource",
+              "uid": "clickhouse-access-logs"
+            },
             "fieldConfig": {
               "defaults": {
                 "color": {
@@ -580,7 +918,7 @@ data:
               "h": 7,
               "w": 7,
               "x": 0,
-              "y": 5
+              "y": 13
             },
             "id": 197,
             "options": {
@@ -785,7 +1123,7 @@ data:
               "h": 7,
               "w": 4,
               "x": 7,
-              "y": 5
+              "y": 13
             },
             "id": 2,
             "interval": "1h",
@@ -976,171 +1314,6 @@ data:
               "type": "grafana-clickhouse-datasource",
               "uid": "clickhouse-access-logs"
             },
-            "gridPos": {
-              "h": 7,
-              "w": 13,
-              "x": 11,
-              "y": 5
-            },
-            "id": 196,
-            "options": {
-              "dedupStrategy": "none",
-              "enableLogDetails": true,
-              "prettifyLogMessage": false,
-              "showCommonLabels": false,
-              "showLabels": false,
-              "showTime": false,
-              "sortOrder": "Descending",
-              "wrapLogMessage": false
-            },
-            "targets": [
-              {
-                "datasource": {
-                  "type": "grafana-clickhouse-datasource",
-                  "uid": "clickhouse-access-logs"
-                },
-                "format": 2,
-                "meta": {
-                  "builderOptions": {
-                    "fields": [],
-                    "limit": 100,
-                    "mode": "list"
-                  }
-                },
-                "queryType": "sql",
-                "rawSql": "SELECT \n*\nFROM \n  gloo_api_logs\nWHERE \n  $__timeFilter(Timestamp)",
-                "refId": "A",
-                "selectedFormat": 2
-              }
-            ],
-            "title": "Recent requests",
-            "transformations": [
-              {
-                "id": "organize",
-                "options": {
-                  "excludeByName": {
-                    "Body": true,
-                    "ServiceName": true,
-                    "SeverityNumber": true,
-                    "SeverityText": true,
-                    "SpanId": true,
-                    "TraceFlags": true,
-                    "TraceId": true
-                  },
-                  "indexByName": {},
-                  "renameByName": {}
-                }
-              }
-            ],
-            "type": "logs"
-          },
-          {
-            "datasource": {
-              "type": "grafana-clickhouse-datasource",
-              "uid": "clickhouse-access-logs"
-            },
-            "description": "",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "palette-classic"
-                },
-                "custom": {
-                  "axisCenteredZero": false,
-                  "axisColorMode": "text",
-                  "axisLabel": "",
-                  "axisPlacement": "auto",
-                  "barAlignment": 0,
-                  "drawStyle": "line",
-                  "fillOpacity": 67,
-                  "gradientMode": "opacity",
-                  "hideFrom": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": false
-                  },
-                  "lineInterpolation": "linear",
-                  "lineWidth": 3,
-                  "pointSize": 5,
-                  "scaleDistribution": {
-                    "type": "linear"
-                  },
-                  "showPoints": "auto",
-                  "spanNulls": false,
-                  "stacking": {
-                    "group": "A",
-                    "mode": "none"
-                  },
-                  "thresholdsStyle": {
-                    "mode": "off"
-                  }
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": null
-                    },
-                    {
-                      "color": "red",
-                      "value": 10000
-                    }
-                  ]
-                },
-                "unit": "bytes"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 7,
-              "w": 11,
-              "x": 0,
-              "y": 12
-            },
-            "id": 201,
-            "options": {
-              "legend": {
-                "calcs": [],
-                "displayMode": "list",
-                "placement": "bottom",
-                "showLegend": true
-              },
-              "tooltip": {
-                "mode": "single",
-                "sort": "none"
-              }
-            },
-            "pluginVersion": "10.0.3",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "grafana-clickhouse-datasource",
-                  "uid": "clickhouse-access-logs"
-                },
-                "format": 1,
-                "meta": {
-                  "builderOptions": {
-                    "fields": [],
-                    "limit": 100,
-                    "mode": "list"
-                  }
-                },
-                "queryType": "sql",
-                "rawSql": "SELECT\n  LogAttributes['bytes_sent'] as bytes_sent,\n  $__timeInterval(Timestamp) AS time,\n  count(*) AS bytes\nFROM\n  gloo_api_logs\nWHERE\n  $__timeFilter(Timestamp) AND\n  LogAttributes['api_id'] IN ($api_id) AND\n  LogAttributes['usage_plan'] IN ($usage_plan) AND\n  LogAttributes['request_command'] IN ($http_method) AND\n  LogAttributes['request_uri'] IN ($request_uri) AND\n  ('$user_id' = 'All' OR LogAttributes['user_id'] = '$user_id')\nGROUP BY \n bytes_sent,\n time\nORDER BY \n  time ASC\n",
-                "refId": "A",
-                "selectedFormat": 4
-              }
-            ],
-            "title": "Bytes sent over time",
-            "type": "timeseries"
-          },
-          {
-            "datasource": {
-              "type": "grafana-clickhouse-datasource",
-              "uid": "clickhouse-access-logs"
-            },
             "description": "",
             "fieldConfig": {
               "defaults": {
@@ -1198,9 +1371,9 @@ data:
             },
             "gridPos": {
               "h": 7,
-              "w": 13,
+              "w": 7,
               "x": 11,
-              "y": 12
+              "y": 13
             },
             "id": 132,
             "options": {
@@ -1574,156 +1747,12 @@ data:
               ]
             },
             "gridPos": {
-              "h": 11,
-              "w": 7,
-              "x": 0,
-              "y": 19
+              "h": 7,
+              "w": 6,
+              "x": 18,
+              "y": 13
             },
             "id": 18,
-            "options": {
-              "cellHeight": "sm",
-              "footer": {
-                "countRows": false,
-                "enablePagination": false,
-                "fields": [
-                  "count"
-                ],
-                "reducer": [
-                  "sum"
-                ],
-                "show": true
-              },
-              "showHeader": true,
-              "sortBy": [
-                {
-                  "desc": true,
-                  "displayName": "Count"
-                }
-              ]
-            },
-            "pluginVersion": "10.0.3",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "grafana-clickhouse-datasource",
-                  "uid": "7XaPngu4k"
-                },
-                "meta": {
-                  "builderOptions": {
-                    "fields": [],
-                    "limit": 100,
-                    "mode": "list"
-                  }
-                },
-                "queryType": "sql",
-                "rawSql": "SELECT\n  CAST(LogAttributes['user_id'] AS VARCHAR) as User,\n  count(*) AS Count\nFROM\n  gloo_api_logs\nWHERE\n  $__timeFilter(Timestamp) AND\n  LogAttributes['api_id'] IN ($api_id) AND\n  LogAttributes['usage_plan'] IN ($usage_plan) AND\n  LogAttributes['status_code'] IN ($status_code) AND\n  LogAttributes['request_command'] IN ($http_method) AND\n  LogAttributes['request_uri'] IN ($request_uri) AND\n  ('$user_id' = 'All' OR LogAttributes['user_id'] = '$user_id')\nGROUP BY\n  User\nORDER BY\n  Count Desc",
-                "refId": "A"
-              }
-            ],
-            "title": "Top API consumers",
-            "type": "table"
-          },
-          {
-            "datasource": {
-              "type": "grafana-clickhouse-datasource",
-              "uid": "clickhouse-access-logs"
-            },
-            "description": "",
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "custom": {
-                  "align": "auto",
-                  "cellOptions": {
-                    "type": "auto"
-                  },
-                  "filterable": false,
-                  "inspect": false
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green",
-                      "value": null
-                    },
-                    {
-                      "color": "#6ED0E0",
-                      "value": 1000
-                    },
-                    {
-                      "color": "light-blue",
-                      "value": 2000
-                    },
-                    {
-                      "color": "light-orange",
-                      "value": 5000
-                    },
-                    {
-                      "color": "orange",
-                      "value": 10000
-                    },
-                    {
-                      "color": "semi-dark-orange",
-                      "value": 20000
-                    },
-                    {
-                      "color": "light-red",
-                      "value": 50000
-                    },
-                    {
-                      "color": "red",
-                      "value": 100000
-                    },
-                    {
-                      "color": "dark-red",
-                      "value": 1000000
-                    }
-                  ]
-                },
-                "unit": "none"
-              },
-              "overrides": [
-                {
-                  "matcher": {
-                    "id": "byName",
-                    "options": "Count"
-                  },
-                  "properties": [
-                    {
-                      "id": "custom.cellOptions",
-                      "value": {
-                        "mode": "gradient",
-                        "type": "gauge",
-                        "valueDisplayMode": "text"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "matcher": {
-                    "id": "byName",
-                    "options": "User"
-                  },
-                  "properties": [
-                    {
-                      "id": "custom.width",
-                      "value": 216
-                    }
-                  ]
-                }
-              ]
-            },
-            "gridPos": {
-              "h": 11,
-              "w": 7,
-              "x": 7,
-              "y": 19
-            },
-            "id": 200,
             "options": {
               "cellHeight": "sm",
               "footer": {
@@ -1761,13 +1790,178 @@ data:
                   }
                 },
                 "queryType": "sql",
-                "rawSql": "SELECT\n  CAST(LogAttributes['user_agent'] AS VARCHAR) as user_agent,\n  count(*) AS Count\nFROM\n  gloo_api_logs\nWHERE\n  $__timeFilter(Timestamp) AND\n  LogAttributes['api_id'] IN ($api_id) AND\n  LogAttributes['usage_plan'] IN ($usage_plan) AND\n  LogAttributes['status_code'] IN ($status_code) AND\n  LogAttributes['request_command'] IN ($http_method) AND\n  LogAttributes['request_uri'] IN ($request_uri) AND\n  ('$user_id' = 'All' OR LogAttributes['user_id'] = '$user_id')\nGROUP BY\n  user_agent\nORDER BY\n  Count Desc",
+                "rawSql": "SELECT\n  CAST(LogAttributes['user_id'] AS VARCHAR) as User,\n  count(*) AS Count\nFROM\n  gloo_api_logs\nWHERE\n  $__timeFilter(Timestamp) AND\n  LogAttributes['api_id'] IN ($api_id) AND\n  LogAttributes['usage_plan'] IN ($usage_plan) AND\n  LogAttributes['status_code'] IN ($status_code) AND\n  LogAttributes['request_command'] IN ($http_method) AND\n  LogAttributes['request_uri'] IN ($request_uri) AND\n  ('$user_id' = 'All' OR LogAttributes['user_id'] = '$user_id')\nGROUP BY\n  User\nORDER BY\n  Count Desc",
                 "refId": "A",
                 "selectedFormat": 4
               }
             ],
-            "title": "Top User Agents",
+            "title": "Top API consumers",
             "type": "table"
+          },
+          {
+            "datasource": {
+              "type": "grafana-clickhouse-datasource",
+              "uid": "clickhouse-access-logs"
+            },
+            "description": "",
+            "fieldConfig": {
+              "defaults": {
+                "color": {
+                  "mode": "palette-classic"
+                },
+                "custom": {
+                  "axisCenteredZero": false,
+                  "axisColorMode": "text",
+                  "axisLabel": "",
+                  "axisPlacement": "auto",
+                  "barAlignment": 0,
+                  "drawStyle": "line",
+                  "fillOpacity": 67,
+                  "gradientMode": "opacity",
+                  "hideFrom": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": false
+                  },
+                  "lineInterpolation": "linear",
+                  "lineWidth": 3,
+                  "pointSize": 5,
+                  "scaleDistribution": {
+                    "type": "linear"
+                  },
+                  "showPoints": "auto",
+                  "spanNulls": false,
+                  "stacking": {
+                    "group": "A",
+                    "mode": "none"
+                  },
+                  "thresholdsStyle": {
+                    "mode": "off"
+                  }
+                },
+                "mappings": [],
+                "thresholds": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 10000
+                    }
+                  ]
+                },
+                "unit": "bytes"
+              },
+              "overrides": []
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 11,
+              "x": 0,
+              "y": 20
+            },
+            "id": 201,
+            "options": {
+              "legend": {
+                "calcs": [],
+                "displayMode": "list",
+                "placement": "bottom",
+                "showLegend": true
+              },
+              "tooltip": {
+                "mode": "single",
+                "sort": "none"
+              }
+            },
+            "pluginVersion": "10.0.3",
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-clickhouse-datasource",
+                  "uid": "clickhouse-access-logs"
+                },
+                "format": 1,
+                "meta": {
+                  "builderOptions": {
+                    "fields": [],
+                    "limit": 100,
+                    "mode": "list"
+                  }
+                },
+                "queryType": "sql",
+                "rawSql": "SELECT\n  LogAttributes['bytes_sent'] as bytes_sent,\n  $__timeInterval(Timestamp) AS time,\n  count(*) AS bytes\nFROM\n  gloo_api_logs\nWHERE\n  $__timeFilter(Timestamp) AND\n  LogAttributes['api_id'] IN ($api_id) AND\n  LogAttributes['usage_plan'] IN ($usage_plan) AND\n  LogAttributes['request_command'] IN ($http_method) AND\n  LogAttributes['request_uri'] IN ($request_uri) AND\n  ('$user_id' = 'All' OR LogAttributes['user_id'] = '$user_id')\nGROUP BY \n bytes_sent,\n time\nORDER BY \n  time ASC\n",
+                "refId": "A",
+                "selectedFormat": 4
+              }
+            ],
+            "title": "Bytes sent over time",
+            "type": "timeseries"
+          },
+          {
+            "datasource": {
+              "type": "grafana-clickhouse-datasource",
+              "uid": "clickhouse-access-logs"
+            },
+            "gridPos": {
+              "h": 7,
+              "w": 13,
+              "x": 11,
+              "y": 20
+            },
+            "id": 196,
+            "options": {
+              "dedupStrategy": "none",
+              "enableLogDetails": true,
+              "prettifyLogMessage": false,
+              "showCommonLabels": false,
+              "showLabels": false,
+              "showTime": false,
+              "sortOrder": "Descending",
+              "wrapLogMessage": false
+            },
+            "targets": [
+              {
+                "datasource": {
+                  "type": "grafana-clickhouse-datasource",
+                  "uid": "clickhouse-access-logs"
+                },
+                "format": 2,
+                "meta": {
+                  "builderOptions": {
+                    "fields": [],
+                    "limit": 100,
+                    "mode": "list"
+                  }
+                },
+                "queryType": "sql",
+                "rawSql": "SELECT \n*\nFROM \n  gloo_api_logs\nWHERE \n  $__timeFilter(Timestamp)",
+                "refId": "A",
+                "selectedFormat": 2
+              }
+            ],
+            "title": "Recent requests",
+            "transformations": [
+              {
+                "id": "organize",
+                "options": {
+                  "excludeByName": {
+                    "Body": true,
+                    "ServiceName": true,
+                    "SeverityNumber": true,
+                    "SeverityText": true,
+                    "SpanId": true,
+                    "TraceFlags": true,
+                    "TraceId": true
+                  },
+                  "indexByName": {},
+                  "renameByName": {}
+                }
+              }
+            ],
+            "type": "logs"
           },
           {
             "collapsed": true,
@@ -1775,7 +1969,7 @@ data:
               "h": 1,
               "w": 24,
               "x": 0,
-              "y": 30
+              "y": 27
             },
             "id": 11,
             "panels": [
@@ -1795,8 +1989,7 @@ data:
                       "mode": "absolute",
                       "steps": [
                         {
-                          "color": "green",
-                          "value": null
+                          "color": "green"
                         },
                         {
                           "color": "#EAB839",
@@ -1815,7 +2008,7 @@ data:
                   "h": 4,
                   "w": 4,
                   "x": 0,
-                  "y": 31
+                  "y": 39
                 },
                 "id": 4,
                 "options": {
@@ -1871,8 +2064,7 @@ data:
                       "mode": "absolute",
                       "steps": [
                         {
-                          "color": "light-green",
-                          "value": null
+                          "color": "light-green"
                         },
                         {
                           "color": "green",
@@ -1904,7 +2096,7 @@ data:
                   "h": 4,
                   "w": 4,
                   "x": 4,
-                  "y": 31
+                  "y": 39
                 },
                 "id": 195,
                 "options": {
@@ -1960,8 +2152,7 @@ data:
                       "mode": "absolute",
                       "steps": [
                         {
-                          "color": "red",
-                          "value": null
+                          "color": "red"
                         },
                         {
                           "color": "dark-red",
@@ -1976,7 +2167,7 @@ data:
                   "h": 4,
                   "w": 4,
                   "x": 8,
-                  "y": 31
+                  "y": 39
                 },
                 "id": 68,
                 "options": {
@@ -2032,8 +2223,7 @@ data:
                       "mode": "absolute",
                       "steps": [
                         {
-                          "color": "red",
-                          "value": null
+                          "color": "red"
                         },
                         {
                           "color": "dark-red",
@@ -2048,7 +2238,7 @@ data:
                   "h": 4,
                   "w": 4,
                   "x": 12,
-                  "y": 31
+                  "y": 39
                 },
                 "id": 55,
                 "options": {
@@ -2112,8 +2302,7 @@ data:
                       "mode": "absolute",
                       "steps": [
                         {
-                          "color": "green",
-                          "value": null
+                          "color": "green"
                         },
                         {
                           "color": "#6ED0E0",
@@ -2186,7 +2375,7 @@ data:
                   "h": 11,
                   "w": 7,
                   "x": 0,
-                  "y": 35
+                  "y": 43
                 },
                 "id": 170,
                 "options": {
@@ -2268,8 +2457,7 @@ data:
                       "mode": "absolute",
                       "steps": [
                         {
-                          "color": "green",
-                          "value": null
+                          "color": "green"
                         },
                         {
                           "color": "red",
@@ -2285,7 +2473,7 @@ data:
                   "h": 11,
                   "w": 7,
                   "x": 7,
-                  "y": 35
+                  "y": 43
                 },
                 "id": 168,
                 "interval": "15m",
@@ -2523,7 +2711,7 @@ data:
                   "h": 11,
                   "w": 7,
                   "x": 0,
-                  "y": 46
+                  "y": 54
                 },
                 "id": 169,
                 "interval": "30m",
@@ -2772,7 +2960,7 @@ data:
                   "h": 11,
                   "w": 7,
                   "x": 7,
-                  "y": 46
+                  "y": 54
                 },
                 "id": 149,
                 "options": {
@@ -3087,10 +3275,10 @@ data:
               "current": {
                 "selected": true,
                 "text": [
-                  "gold"
+                  "All"
                 ],
                 "value": [
-                  "gold"
+                  "$__all"
                 ]
               },
               "datasource": {
@@ -3250,9 +3438,9 @@ data:
         },
         "timepicker": {},
         "timezone": "",
-        "title": "API Dashboard",
-        "uid": "db93be88-8cd4-4c32-8a37-83fbca40e3f0",
-        "version": 1,
+        "title": "API Dashboard - GeoMap",
+        "uid": "db93be88-8cd4-4c32-8a37-83fbca40e3f0a",
+        "version": 3,
         "weekStart": ""
       }
 kind: ConfigMap
