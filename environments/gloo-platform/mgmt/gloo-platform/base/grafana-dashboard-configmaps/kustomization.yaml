@@ -8,4 +8,4 @@ resources:
 - portal-api-analytics-dashboard-cm.yaml
 - kubernetes-dashboard-cm.yaml
 - solo-istio-dashboard-cm.yaml
-- gloo-platform-ops-dashboard-cm.yaml
+- gloo-platform-dashboard-cm.yaml
