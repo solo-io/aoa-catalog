@@ -2313,12 +2313,12 @@ data:
       },
       "timepicker": {},
       "timezone": "",
-      "title": "Gloo Platform Operations",
+      "title": "Gloo Platform Operations foo",
       "uid": "9Zx09Zg45z",
       "version": 1,
       "weekStart": ""
-}  
-      
+    }
+  
 kind: ConfigMap
 metadata:
   name: gloo-platform-dashboard
