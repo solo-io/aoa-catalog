@@ -119,7 +119,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/solo-test-236622/recommendationservice:solo-build
+        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/recommendationservice:1.8
         ports:
         - containerPort: 8080
         readinessProbe:
@@ -168,7 +168,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/solo-test-236622/productcatalogservice:solo-build
+        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/productcatalogservice:1.8
         ports:
         - containerPort: 3550
         env:
@@ -212,7 +212,7 @@ spec:
       serviceAccountName: email
       containers:
       - name: server
-        image: gcr.io/solo-test-236622/emailservice:solo-build
+        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/emailservice:1.8
         ports:
         - containerPort: 8080
         env:
@@ -257,7 +257,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/solo-test-236622/currencyservice:solo-build
+        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/currencyservice:1.8
         ports:
         - name: grpc
           containerPort: 7000
@@ -303,7 +303,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/solo-test-236622/cartservice:solo-build
+        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/cartservice:1.8
         ports:
         - containerPort: 7070
         env:
@@ -345,7 +345,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
         - name: server
-          image: gcr.io/solo-test-236622/adservice:solo-build
+          image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/adservice:1.8
           ports:
             - containerPort: 9555
           env:

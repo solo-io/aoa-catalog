@@ -75,7 +75,7 @@ spec:
       serviceAccountName: shipping
       containers:
       - name: server
-        image: gcr.io/solo-test-236622/shippingservice:solo-build
+        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/shippingservice:1.8
         ports:
         - containerPort: 50051
         env:
@@ -127,7 +127,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gcr.io/solo-test-236622/paymentservice:solo-build
+        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/paymentservice:1.8
         ports:
         - containerPort: 50051
         env:
@@ -175,7 +175,7 @@ spec:
       serviceAccountName: checkout
       containers:
         - name: server
-          image: gcr.io/solo-test-236622/checkoutservice:solo-build
+          image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/checkoutservice:1.8
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5050

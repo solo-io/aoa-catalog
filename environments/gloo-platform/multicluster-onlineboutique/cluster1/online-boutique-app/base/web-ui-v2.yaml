@@ -35,7 +35,7 @@ spec:
       serviceAccountName: frontend
       containers:
         - name: server
-          image: gcr.io/solo-test-236622/frontend:solo-build
+          image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/frontend:1.8
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
