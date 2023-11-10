@@ -59,7 +59,7 @@ waves:
       post_deploy:
       -  $env_path/../rollouts-demo/test.sh 
   - name: homer-app
-    location: $env_path/../homer-app/wildcard
+    location: $env_path/../homer-app/localhost
     scripts:
       pre_deploy: 
       -  $env_path/../homer-app/localhost/init.sh
