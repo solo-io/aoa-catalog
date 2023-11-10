@@ -10,6 +10,6 @@ resources:
 - grafana-dashboard-configmaps
 - grafana-helm.yaml
 
-patches:
+patchesStrategicMerge:
 - istiod.yaml
 - istio-ingressgateway.yaml
