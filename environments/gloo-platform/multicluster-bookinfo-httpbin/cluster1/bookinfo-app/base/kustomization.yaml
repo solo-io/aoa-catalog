@@ -8,7 +8,7 @@ resources:
 - bookinfo-frontends-dyaml.yaml
 
 # remove reviews-v3
-patch:
+patchesStrategicMerge:
 - |-
   apiVersion: apps/v1
   kind: Deployment

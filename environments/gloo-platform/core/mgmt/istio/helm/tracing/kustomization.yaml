@@ -7,5 +7,5 @@ resources:
 - ../base/
 - jaeger.yaml
 
-patch:
+patchesStrategicMerge:
 - istiod.yaml

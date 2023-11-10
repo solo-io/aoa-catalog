@@ -6,5 +6,5 @@ kind: Kustomization
 resources:
 - ../base
 
-patch:
+patchesStrategicMerge:
 - istiod.yaml
