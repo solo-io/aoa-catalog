@@ -6,6 +6,8 @@ kind: Kustomization
 resources:
 - ../../../../shared-components/istio/helm/base
 - istio-eastwestgateway.yaml
+- grafana-helm.yaml
+- grafana-dashboard-configmaps
 
 patchesStrategicMerge:
 - istiod.yaml

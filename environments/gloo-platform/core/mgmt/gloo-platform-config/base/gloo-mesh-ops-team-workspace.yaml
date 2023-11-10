@@ -18,3 +18,4 @@ spec:
     - name: istio-eastwest
     - name: gloo-mesh-addons
     - name: cert-manager
+    - name: grafana

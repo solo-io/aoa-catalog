@@ -16,4 +16,6 @@ resources:
 - glcm-ns-cluster2.yaml
 - ilcm-cluster1.yaml
 - ilcm-cluster2.yaml
+- grafana-helm.yaml
+- grafana-dashboard-configmaps
 

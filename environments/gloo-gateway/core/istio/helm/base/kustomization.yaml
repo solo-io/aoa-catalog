@@ -11,6 +11,6 @@ resources:
 - istio-base.yaml
 - istiod.yaml
 - prometheus.yaml
-- grafana.yaml
+#- grafana.yaml
 - istio-ingressgateway.yaml
 - kiali.yaml

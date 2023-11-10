@@ -194,11 +194,12 @@ spec:
                   - name: "Web Applications"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "Podinfo"
+                      - name: "Argo Rollouts Demo Application"
+                        subtitle: "modify image tag in ArgoCD"
                         icon: "fas fa-globe-americas"
-                        tag: "podinfo"
-                        url: "https://podinfo.glootest.com"
-                        target: "_blank" # optional html a tag target attribute  
+                        tag: "rollouts"
+                        url: "https://rollouts-demo.glootest.com"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "Helloworld"
                         icon: "fas fa-globe-americas"
                         tag: "helloworld"

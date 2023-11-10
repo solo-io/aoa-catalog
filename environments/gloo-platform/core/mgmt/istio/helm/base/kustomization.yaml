@@ -7,6 +7,8 @@ resources:
 - ../../../../shared-components/istio/helm/base
 - certmanager-istio-ca-cert.yaml
 - certmanager-selfsigned-issuer.yaml
+- grafana-dashboard-configmaps
+- grafana-helm.yaml
 
 patchesStrategicMerge:
 - istiod.yaml

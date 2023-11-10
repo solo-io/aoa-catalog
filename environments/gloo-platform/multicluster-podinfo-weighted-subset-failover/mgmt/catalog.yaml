@@ -15,13 +15,6 @@ waves:
       -  $env_path/../../core/shared-components/certmanager/init.sh
       post_deploy:
       -  $env_path/../../core/shared-components/certmanager/test.sh
-  - name: gloo-platform
-    location: $env_path/../../core/mgmt/gloo-platform/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/../../core/mgmt/gloo-platform/init.sh
-      post_deploy:
-      -  $env_path/../../core/mgmt/gloo-platform/test.sh    
   - name: istio
     location: $env_path/../../core/mgmt/istio/helm/base
     scripts:
@@ -29,6 +22,13 @@ waves:
       -  $env_path/../../core/mgmt/istio/helm/init.sh
       post_deploy:
       -  $env_path/../../core/mgmt/istio/helm/test.sh    
+  - name: gloo-platform
+    location: $env_path/../../core/mgmt/gloo-platform/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/mgmt/gloo-platform/init.sh
+      post_deploy:
+      -  $env_path/../../core/mgmt/gloo-platform/test.sh    
   - name: gloo-platform-config
     location: $env_path/../../core/mgmt/gloo-platform-config/wildcard
     scripts:

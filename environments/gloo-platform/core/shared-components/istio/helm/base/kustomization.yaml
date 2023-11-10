@@ -6,7 +6,7 @@ kind: Kustomization
 resources:
 - gateway-cert.yaml
 - gateway-clusterissuer.yaml
-- grafana.yaml
+#- grafana.yaml
 - istio-base.yaml
 - istio-ingressgateway.yaml
 - istiod.yaml

@@ -103,6 +103,10 @@ spec:
         redis:
             deployment:
                 enabled: true
+        clickhouse:
+            enabled: true
+            persistence:
+                enabled: false
         telemetryGateway:
             enabled: true
             #image:
@@ -111,6 +115,10 @@ spec:
             #  tag: 2.4.4
         telemetryCollector:
             enabled: true
+            presets:
+                logsCollection:
+                    enabled: true
+                    storeCheckpoints: true
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
@@ -134,7 +142,17 @@ spec:
                     path: /var/run/cilium
                     type: DirectoryOrCreate
                   name: cilium-run
+        telemetryCollectorCustomization:
+            pipelines:
+                logs/istio_access_logs:
+                    enabled: true
         telemetryGatewayCustomization:
+            pipelines:
+                logs/clickhouse:
+                  enabled: true
+            extraExporters:
+                clickhouse:
+                  password: password
             disableCertGeneration: true
             extraPipelines:
                 metrics/gloo-mgmt:
