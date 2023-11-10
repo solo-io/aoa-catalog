@@ -6,7 +6,7 @@ kind: Kustomization
 resources:
 - ../base
 
-patchesStrategicMerge:
+patch:
 - bookinfo-rt-443.yaml
 
 

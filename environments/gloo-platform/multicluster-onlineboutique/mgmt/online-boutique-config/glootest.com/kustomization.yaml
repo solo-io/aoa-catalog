@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
 - ../base
 
-patchesStrategicMerge:
+patch:
 - web-ui-rt-443.yaml
 

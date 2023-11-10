@@ -6,7 +6,7 @@ kind: Kustomization
 resources:
 - ../base
 
-patchesStrategicMerge:
+patch:
 - argocd-cluster1-rt-443.yaml
 - argocd-cluster2-rt-443.yaml
 - argocd-mgmt-rt-443.yaml
