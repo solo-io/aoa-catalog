@@ -65,3 +65,10 @@ waves:
       -  $env_path/../homer-app/localhost/init.sh
       post_deploy:
       -  $env_path/../homer-app/localhost/test.sh
+  - name: homer-config
+    location: $env_path/../../core/homer-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/../../core/homer-config/init.sh
+      post_deploy:
+      -  $env_path/../../core/homer-config/test.sh 
