@@ -6,7 +6,7 @@ resources:
 
 namespace: argocd
 
-patchesStrategicMerge:
+patches:
 - overlays/argocd-cmd-params-cm.yaml
 
 #patchesJson6902:

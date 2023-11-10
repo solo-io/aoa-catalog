@@ -9,5 +9,5 @@ resources:
 - grafana-helm.yaml
 - grafana-dashboard-configmaps
 
-patchesStrategicMerge:
+patches:
 - istiod.yaml
