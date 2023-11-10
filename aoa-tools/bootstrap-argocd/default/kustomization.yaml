@@ -23,6 +23,6 @@ images:
 #    name: argocd-application-controller
 #    version: v1
 
-patches:
+patchesStrategicMerge:
 - overlays/argocd-cm.yaml
 - overlays/argocd-cmd-params-cm.yaml
