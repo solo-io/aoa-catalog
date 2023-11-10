@@ -52,7 +52,7 @@ waves:
       post_deploy:
       -  $env_path/../helloworld-rollout/test.sh 
   - name: rollouts-demo
-    location: $env_path/../rollouts-demo/wildcard
+    location: $env_path/../rollouts-demo/glootest.com
     scripts:
       pre_deploy: 
       -  $env_path/../rollouts-demo/init.sh
