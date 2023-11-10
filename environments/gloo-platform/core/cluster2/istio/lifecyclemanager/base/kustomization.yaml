@@ -6,3 +6,5 @@ kind: Kustomization
 resources:
 - ../../../../shared-components/istio/lifecyclemanager/base
 - istio-eastwestgateway-svc.yaml
+- grafana-helm.yaml
+- grafana-dashboard-configmaps

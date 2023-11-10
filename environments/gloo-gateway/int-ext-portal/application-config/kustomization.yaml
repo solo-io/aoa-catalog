@@ -7,4 +7,5 @@ resources:
 - httpbin-config
 - petstore-config
 - tracks-config
+- clickhouse-envoyfilter.yaml
 

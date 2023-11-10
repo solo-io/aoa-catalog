@@ -80,7 +80,7 @@ spec:
         ref:
           cluster: mgmt
           name: grafana
-          namespace: istio-system
+          namespace: grafana
     labels:
       waf: "true"
     name: grafana-ui
