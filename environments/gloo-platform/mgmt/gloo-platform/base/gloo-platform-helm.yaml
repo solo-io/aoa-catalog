@@ -120,7 +120,7 @@ spec:
             deployment:
                 enabled: true
         clickhouse:
-            enabled: false
+            enabled: true
             persistence:
                 enabled: false
         telemetryGateway:
