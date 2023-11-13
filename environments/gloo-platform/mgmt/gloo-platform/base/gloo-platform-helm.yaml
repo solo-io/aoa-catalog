@@ -132,6 +132,12 @@ spec:
                 limits:
                     cpu: 1
                     memory: 2Gi
+            extraEnvs:
+            - name: CLICKHOUSE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: clickhouse-auth
             #podLabels:
             #    istio.io/rev: 1-19
             #podAnnotations:
