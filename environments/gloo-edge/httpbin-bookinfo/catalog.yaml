@@ -43,7 +43,7 @@ waves:
       post_deploy:
       -  $env_path/httpbin-config/test.sh   
   - name: homer-app
-    location: $env_path/homer-app/localhost
+    location: $env_path/homer-app/glootest.com
     scripts:
       pre_deploy: 
       -  $env_path/homer-app/init.sh
