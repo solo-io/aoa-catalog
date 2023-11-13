@@ -9,3 +9,15 @@
 - set istio before gloo-platform in catalog.yaml for gloo-platform environments so that gloo-mesh-addons start up with istio-proxy sidecars
 - update onlineboutique images to `us-central1-docker.pkg.dev/field-engineering-us/online-boutique` builds in `environments/gloo-gateway`
 - validate all `gloo-gateway` environments (localhost / hostname / ILM overlays) working locally with k3d on x86 and M1 Macbook Pro
+---
+
+0.1.1 (11-13-23)
+---
+- update onlineboutique images to us-central1-docker.pkg.dev/field-engineering-us/online-boutique builds in `environments/gloo-platform/multicluster-onlineboutique`
+- validate all `gloo-platform` environments (localhost / hostname ) working locally with k3d on x86 and M1 Macbook Pro
+- update gloo-edge and gloo-portal environments to latest versions
+    - gloo-edge/argo-rollouts to 1.15.7
+    - gloo-edge/httpbin-bookinfo to 1.15.7
+    - gloo-edge/flagger-podinfo to 1.15.7
+    - gloo-portal/solo-dev-portal to gloo edge 1.15.7
+- add homer portal to gloo-edge/httpbin-bookinfo to simplify navigation

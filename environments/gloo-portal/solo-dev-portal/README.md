@@ -10,7 +10,7 @@ The `gloo-portal/solo-dev-portal` environment deploys a Gloo Edge, Gloo Portal, 
 
 ## Environment description
 - base:
-    - Gloo Edge Enterprise 1.13.23
+    - Gloo Edge Enterprise 1.15.7
     - Gloo Portal 1.3.2
 
 ## Application description
