@@ -4,7 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- admin-vs.yaml
-- okta-client-secret.yaml
-- ratelimitconfig.yaml
-- upstream-tls.yaml
+- ../base
+
+patchesStrategicMerge:
+- vs-patch.yaml
+
