@@ -28,10 +28,10 @@ spec:
           upstream:
             name: homer-portal-homer-portal-8080
             namespace: gloo-system
-    - matchers:
-      - prefix: /
-      routeAction:
-        single:
-          upstream:
-            name: rollouts-demo-argo-rollouts-dashboard-3100
-            namespace: gloo-system
+    #- matchers:
+    #  - prefix: /
+    #  routeAction:
+    #    single:
+    #      upstream:
+    #        name: rollouts-demo-argo-rollouts-dashboard-3100
+    #        namespace: gloo-system
