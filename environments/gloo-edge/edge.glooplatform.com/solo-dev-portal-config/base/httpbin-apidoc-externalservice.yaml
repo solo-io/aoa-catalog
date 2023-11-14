@@ -1,0 +1,9 @@
+apiVersion: portal.gloo.solo.io/v1beta1
+kind: APIDoc
+metadata:
+  name: httpbin-openapi-externalservice
+  namespace: httpbin
+spec:
+  openApi:
+    content:
+      fetchUrl: https://httpbin-cluster1.kapoozi.com/spec.json

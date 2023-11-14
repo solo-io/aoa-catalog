@@ -55,7 +55,28 @@ waves:
       pre_deploy: 
       -  $env_path/httpbin-config/init.sh
       post_deploy:
-      -  $env_path/httpbin-config/test.sh   
+      -  $env_path/httpbin-config/test.sh
+  - name: gloo-portal-app
+    location: $env_path/gloo-portal-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-portal-app/init.sh
+      post_deploy:
+      -  $env_path/gloo-portal-app/test.sh
+  - name: solo-dev-portal-app
+    location: $env_path/solo-dev-portal-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/solo-dev-portal-app/init.sh
+      post_deploy:
+      -  $env_path/solo-dev-portal-app/test.sh    
+  - name: solo-dev-portal-config
+    location: $env_path/solo-dev-portal-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/solo-dev-portal-config/init.sh
+      post_deploy:
+      -  $env_path/solo-dev-portal-config/test.sh    
   - name: homer-app
     location: $env_path/homer-app/glootest.com
     scripts:
