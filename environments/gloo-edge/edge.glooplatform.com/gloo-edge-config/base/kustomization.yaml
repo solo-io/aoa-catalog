@@ -7,4 +7,4 @@ resources:
 - admin-vs.yaml
 - okta-client-secret.yaml
 - ratelimitconfig.yaml
-- cf-advanced-tls-secret.yaml
+#- tls-secret.yaml
