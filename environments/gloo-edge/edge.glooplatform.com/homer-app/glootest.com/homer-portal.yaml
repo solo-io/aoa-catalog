@@ -210,10 +210,10 @@ spec:
                   - name: "Rollout Strategies"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "Argo Rollouts Plugin Diagrams"
+                      - name: "Argo Rollouts Canary Diagram"
                         icon: "fab fa-git-alt"
                         tag: "rollouts-demo"
-                        url: "https://github.com/ably77/gloo-edge-argo-rollouts-blog#blue-green-rollout-diagram"
+                        url: "https://github.com/ably77/gloo-edge-argo-rollouts-blog#canary-rollout-diagram"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Argo Rollouts Demo Dashboard"
                         subtitle: "Use this dashboard to change image tag (i.e. blue > green)"
