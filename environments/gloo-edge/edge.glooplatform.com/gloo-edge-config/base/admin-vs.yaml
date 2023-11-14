@@ -10,7 +10,7 @@ spec:
       namespace: gloo-system
   virtualHost:
     domains:
-    - '*'
+    - 'edge-demo.glooplatform.com'
     routes:
     - matchers:
       - prefix: /argo
