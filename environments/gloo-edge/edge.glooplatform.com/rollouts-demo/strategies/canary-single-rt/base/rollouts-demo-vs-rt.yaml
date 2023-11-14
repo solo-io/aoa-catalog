@@ -1,26 +1,26 @@
 apiVersion: gloo.solo.io/v1
 kind: Upstream
 metadata:
-  name: rollouts-demo-stable
+  name: rollouts-demo-active
   namespace: rollouts-demo 
 spec:
   kube:
     selector:
       app: rollouts-demo
-    serviceName: rollouts-demo-stable
+    serviceName: rollouts-demo-active
     serviceNamespace: rollouts-demo
     servicePort: 8080
 ---
 apiVersion: gloo.solo.io/v1
 kind: Upstream
 metadata:
-  name: rollouts-demo-canary
+  name: rollouts-demo-preview
   namespace: rollouts-demo
 spec:
   kube:
     selector:
       app: rollouts-demo
-    serviceName: rollouts-demo-canary
+    serviceName: rollouts-demo-preview
     serviceNamespace: rollouts-demo
     servicePort: 8080
 ---
@@ -28,7 +28,7 @@ apiVersion: gateway.solo.io/v1
 kind: RouteTable
 metadata:
   name: rollouts-demo-routes
-  namespace: rollouts-demo
+  namespace: gloo-system
 spec:
   routes:
     - matchers:
@@ -38,7 +38,7 @@ spec:
           destinations:
           - destination:
               upstream:
-                name: rollouts-demo-stable
+                name: rollouts-demo-active
                 namespace: rollouts-demo
             weight: 100
 ---
@@ -57,4 +57,4 @@ spec:
       delegateAction:
         ref:
           name: rollouts-demo-routes
-          namespace: rollouts-demo
+          namespace: gloo-system

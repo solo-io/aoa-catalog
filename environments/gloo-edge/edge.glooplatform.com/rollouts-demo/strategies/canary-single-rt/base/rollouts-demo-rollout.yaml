@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: rollouts-demo-rollout
+  name: rollouts-demo
   namespace: rollouts-demo
 spec:
   selector:
@@ -24,16 +24,17 @@ spec:
           requests:
             cpu: 5m
             memory: 32Mi
+      serviceAccount: rollouts-demo
   strategy:
     canary:
-      canaryService: rollouts-demo-canary
-      stableService: rollouts-demo-stable
+      stableService: rollouts-demo-active
+      canaryService: rollouts-demo-preview
       trafficRouting:
         plugins:
           solo-io/glooedge:
             routeTable:
               name: rollouts-demo-routes
-              namespace: rollouts-demo
+              namespace: gloo-system
       steps:
         - setWeight: 10
         - pause: {duration: 5}
