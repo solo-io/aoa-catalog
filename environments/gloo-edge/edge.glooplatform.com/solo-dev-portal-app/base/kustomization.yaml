@@ -4,7 +4,7 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- httpbin-ns.yaml
+- httpbin-portal-ns.yaml
 - httpbin.yaml
 - petstore-ns.yaml
 - petstore-deploy-dev.yaml

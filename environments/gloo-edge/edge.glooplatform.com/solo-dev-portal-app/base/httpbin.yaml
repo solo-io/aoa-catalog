@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: httpbin
-  namespace: httpbin
+  namespace: httpbin-portal
 ---
 apiVersion: v1
 kind: Service
@@ -10,7 +10,7 @@ metadata:
   labels:
     app: httpbin
   name: httpbin
-  namespace: httpbin
+  namespace: httpbin-portal
 spec:
   ports:
   - name: http
@@ -23,7 +23,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: httpbin
-  namespace: httpbin
+  namespace: httpbin-portal
 spec:
   replicas: 1
   selector:
