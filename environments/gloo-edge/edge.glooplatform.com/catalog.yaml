@@ -1,0 +1,65 @@
+
+waves:
+  - name: gloo-edge-app
+    location: $env_path/gloo-edge-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-edge-app/init.sh
+      post_deploy:
+      -  $env_path/gloo-edge-app/test.sh  
+  - name: argo-rollouts
+    location: $env_path/argo-rollouts/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/argo-rollouts/init.sh
+      post_deploy:
+      -  $env_path/argo-rollouts/test.sh 
+  - name: gloo-edge-config
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-edge-config/init.sh
+      post_deploy:
+      -  $env_path/gloo-edge-config/test.sh
+    location: $env_path/gloo-edge-config/base
+  - name: rollouts-demo
+    location: $env_path/rollouts-demo/strategies
+    scripts:
+      pre_deploy: 
+      -  $env_path/rollouts-demo/init.sh
+      post_deploy:
+      -  $env_path/rollouts-demo/test.sh 
+  - name: bookinfo-app
+    location: $env_path/bookinfo-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/bookinfo-app/init.sh
+      post_deploy:
+      -  $env_path/bookinfo-app/test.sh 
+  - name: bookinfo-config
+    location: $env_path/bookinfo-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/bookinfo-config/init.sh
+      post_deploy:
+      -  $env_path/bookinfo-config/test.sh 
+  - name: httpbin-app
+    location: $env_path/httpbin-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/httpbin-app/init.sh
+      post_deploy:
+      -  $env_path/httpbin-app/test.sh    
+  - name: httpbin-config
+    location: $env_path/httpbin-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/httpbin-config/init.sh
+      post_deploy:
+      -  $env_path/httpbin-config/test.sh   
+  - name: homer-app
+    location: $env_path/homer-app/glootest.com
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer-app/init.sh
+      post_deploy:
+      -  $env_path/homer-app/test.sh 

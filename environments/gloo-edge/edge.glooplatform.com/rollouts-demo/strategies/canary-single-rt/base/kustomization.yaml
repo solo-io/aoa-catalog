@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- rollouts-demo-deploy.yaml
+- rollouts-demo-ns.yaml
+- rollouts-demo-rollout.yaml
+- rollouts-demo-service.yaml
+- rollouts-demo-vs-rt.yaml
+

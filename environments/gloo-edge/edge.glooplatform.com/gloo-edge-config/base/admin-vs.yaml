@@ -1,0 +1,37 @@
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  name: admin-vs
+  namespace: gloo-system
+spec:
+  sslConfig:
+    secretRef:
+      name: cf-advanced-tls-secret
+      namespace: gloo-system
+  virtualHost:
+    domains:
+    - '*'
+    routes:
+    - matchers:
+      - prefix: /argo
+      options:
+        prefixRewrite: /argo
+      routeAction:
+        single:
+          upstream:
+            name: argocd-argocd-server-443
+            namespace: gloo-system
+    - matchers:
+      - prefix: /solo
+      routeAction:
+        single:
+          upstream:
+            name: homer-portal-homer-portal-8080
+            namespace: gloo-system
+    - matchers:
+      - prefix: /
+      routeAction:
+        single:
+          upstream:
+            name: rollouts-demo-argo-rollouts-dashboard-3100
+            namespace: gloo-system
