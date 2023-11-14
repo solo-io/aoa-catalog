@@ -176,7 +176,7 @@ spec:
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
-                        url: "https://argocd.edge.glooplatform.com/argo"
+                        url: "https://edge-demo.glooplatform.com/argo"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Web Applications"
