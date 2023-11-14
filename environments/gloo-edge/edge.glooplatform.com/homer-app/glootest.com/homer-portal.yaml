@@ -210,11 +210,10 @@ spec:
                   - name: "Rollout Strategies"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "Argo Rollouts Demo (blue-green/canary)"
-                        subtitle: "Visualize Progressive Delivery in action"
+                      - name: "Argo Rollouts Plugin Diagrams"
                         icon: "fab fa-git-alt"
                         tag: "rollouts-demo"
-                        url: "http://rollouts-demo.edge.glooplatform.com"
+                        url: "https://github.com/ably77/gloo-edge-argo-rollouts-blog#blue-green-rollout-diagram"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Argo Rollouts Demo Dashboard"
                         subtitle: "Use this dashboard to change image tag (i.e. blue > green)"
@@ -222,6 +221,12 @@ spec:
                         tag: "argo-rollouts"
                         keywords: "argo-rollouts"
                         url: "https://rollouts-ui.edge.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Argo Rollouts Demo (blue-green/canary)"
+                        subtitle: "Visualize Progressive Delivery in action"
+                        icon: "fab fa-git-alt"
+                        tag: "rollouts-demo"
+                        url: "http://rollouts-demo.edge.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
