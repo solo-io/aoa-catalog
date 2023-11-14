@@ -46,13 +46,12 @@ spec:
       - pause: {duration: 5}
       - setWeight: 25
       - pause: {}
+      - analysis:
+          templates:
+          - templateName: pass
       - setWeight: 50
       - pause: {duration: 5}
       - setWeight: 75
       - pause: {duration: 5}
       - setWeight: 100
       - pause: {duration: 5}
-      analysis:
-        templates:
-        - templateName: pass
-        startingStep: 3
