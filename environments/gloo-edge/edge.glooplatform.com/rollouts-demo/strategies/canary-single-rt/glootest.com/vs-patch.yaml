@@ -4,6 +4,10 @@ metadata:
   name: rollouts-demo
   namespace: gloo-system
 spec:
+  sslConfig:
+    secretRef:
+      name: cf-advanced-tls-secret
+      namespace: gloo-system
   virtualHost:
     domains:
     - 'rollouts-demo.edge.glooplatform.com'
