@@ -46,7 +46,7 @@ spec:
     path: /user-info
   tls:
     secretRef:
-      name: upstream-tls
+      name: cf-advanced-tls-secret
       namespace: gloo-system
   oidcAuth:
     clientId: 0oa6qvzybcVCK6PcS5d7

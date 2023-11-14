@@ -48,7 +48,7 @@ spec:
     tls:
       config:
         secretRef:
-          name: upstream-tls
+          name: cf-advanced-tls-secret
           namespace: gloo-system
         sniDomains:
         - '*'
