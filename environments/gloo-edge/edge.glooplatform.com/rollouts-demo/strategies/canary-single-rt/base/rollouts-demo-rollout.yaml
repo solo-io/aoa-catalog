@@ -52,3 +52,7 @@ spec:
       - pause: {duration: 5}
       - setWeight: 100
       - pause: {duration: 5}
+      analysis:
+        templates:
+        - templateName: pass
+        startingStep: 3
