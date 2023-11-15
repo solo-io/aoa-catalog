@@ -28,7 +28,7 @@ spec:
     displayName: Development
   domains:
   # arbitrary portal generated vs host
-  - httpbin-portal.edge.glooplatform.com
+  - petstore-portal.edge.glooplatform.com
   gatewayConfig:
     disableRoutes: false
     options:
@@ -49,7 +49,7 @@ spec:
         allowOrigin:
         - https://portal.edge.glooplatform.com
         # arbitrary portal generated vs host
-        - httpbin-portal.edge.glooplatform.com
+        - petstore-portal.edge.glooplatform.com
         
         #allowOriginRegex:
         #- 'https://[a-zA-Z0-9]*.edge.glooplatform.com'
