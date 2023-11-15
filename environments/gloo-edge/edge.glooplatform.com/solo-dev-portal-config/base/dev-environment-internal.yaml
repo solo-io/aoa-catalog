@@ -46,7 +46,7 @@ spec:
         - PUT
         - DELETE
         allowOrigin:
-        - https://portal.edge.glooplatform.com
+        - https://solo-dev-portal.edge.glooplatform.com
         # arbitrary portal generated vs host
         - https://devapi.edge.glooplatform.com
         #

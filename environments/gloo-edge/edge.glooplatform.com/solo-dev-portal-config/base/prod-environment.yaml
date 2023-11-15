@@ -40,7 +40,7 @@ spec:
         - PUT
         - DELETE
         allowOrigin:
-        - https://portal.edge.glooplatform.com
+        - https://solo-dev-portal.edge.glooplatform.com
         - https://api.edge.glooplatform.com
         #allowOriginRegex:
         #- 'https://[a-zA-Z0-9]*.edge.glooplatform.com'

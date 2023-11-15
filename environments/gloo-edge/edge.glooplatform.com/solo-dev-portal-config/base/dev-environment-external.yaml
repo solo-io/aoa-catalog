@@ -47,7 +47,7 @@ spec:
         - PUT
         - DELETE
         allowOrigin:
-        - https://portal.edge.glooplatform.com
+        - https://solo-dev-portal.edge.glooplatform.com
         # arbitrary portal generated vs host
         - petstore-portal.edge.glooplatform.com
         
