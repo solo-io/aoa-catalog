@@ -3,11 +3,10 @@ kind: RouteTable
 metadata:
   labels:
     expose: "true"
-  name: homer-rt-kapoozi
+  name: homer-redirect-rt
   namespace: homer-portal
 spec:
   hosts:
-  - 'homer.kapoozi.com'
   - 'glooplatform.com'
   http:
   - redirect:
