@@ -3,25 +3,6 @@ kind: RouteTable
 metadata:
   labels:
     expose: "true"
-  name: gmui-kapoozi-redirect
-  namespace: homer-portal
-spec:
-  hosts:
-  - 'gmui.kapoozi.com'
-  http:
-  - redirect:
-      hostRedirect: ui.glooplatform.com
-  virtualGateways:
-  - cluster: mgmt
-    name: mgmt-north-south-gw-443
-    namespace: istio-gateways
-  workloadSelectors: []
----
-apiVersion: networking.gloo.solo.io/v2
-kind: RouteTable
-metadata:
-  labels:
-    expose: "true"
   name: gm-ui-rt-443
   namespace: gloo-mesh
 spec:
