@@ -228,6 +228,16 @@ spec:
                         tag: "rollouts-demo"
                         url: "http://rollouts-demo.edge.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Gloo Portal"
+                    icon: "fab fa-connectdevelop"
+                    items:
+                      - name: "Solo Dev Portal"
+                        subtitle: "External Developer Portal"
+                        icon: "fab fa-connectdevelop"
+                        tag: "external-portal"
+                        url: "https://solo-dev-portal.edge.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
     automated:
