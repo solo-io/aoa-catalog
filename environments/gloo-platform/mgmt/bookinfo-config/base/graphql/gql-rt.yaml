@@ -5,7 +5,7 @@ metadata:
   namespace: bookinfo-team-config
 spec:
   hosts:
-  - 'bookinfo-gql.central.glooplatform.com'
+  - 'bookinfo-gql.east.glooplatform.com'
   http:
   - name: graphql-bookinfo
     labels:
@@ -19,5 +19,5 @@ spec:
     - uri:
         prefix: /graphql
   virtualGateways:
-  - name: north-south-gw-443
+  - name: north-south-gw
     namespace: istio-gateways
