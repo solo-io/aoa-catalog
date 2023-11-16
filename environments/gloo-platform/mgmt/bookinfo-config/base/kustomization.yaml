@@ -11,4 +11,5 @@ resources:
 - bookinfo-oauth-failover-rt-443.yaml
 - bookinfo-outlierdetectionpolicy.yaml
 - productpage-virtualdestination-443.yaml
+- graphql
 

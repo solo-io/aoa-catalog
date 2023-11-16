@@ -1,0 +1,16 @@
+apiVersion: apimanagement.gloo.solo.io/v2
+kind: GraphQLSchema
+metadata:
+  name: bookinfo-rest-graphqlschema
+  namespace: bookinfo-frontends
+spec:
+  resolved:
+    options: {}
+    resolverMapRefs:
+    - name: bookinfo-rest-resolvermap
+      namespace: bookinfo-frontends
+      clusterName: mgmt
+  schemaRef:
+    name: bookinfo-rest-apidoc
+    namespace: bookinfo-frontends
+    clusterName: mgmt
