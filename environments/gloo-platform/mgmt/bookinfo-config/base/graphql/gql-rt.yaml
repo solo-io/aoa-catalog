@@ -2,7 +2,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: graphql-bookinfo
-  namespace: bookinfo-frontends
+  namespace: bookinfo-team-config
 spec:
   hosts:
   - 'bookinfo-gql.demo.glooplatform.com'
@@ -13,7 +13,7 @@ spec:
     graphql:
       schema:
         name: bookinfo-rest-graphqlschema
-        namespace: bookinfo-frontends
+        namespace: bookinfo-team-config
         clusterName: mgmt
     matchers:
     - uri:

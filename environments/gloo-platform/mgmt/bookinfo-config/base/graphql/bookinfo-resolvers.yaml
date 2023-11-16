@@ -2,7 +2,7 @@ apiVersion: apimanagement.gloo.solo.io/v2
 kind: GraphQLResolverMap
 metadata:
   name: bookinfo-rest-resolvermap
-  namespace: bookinfo-frontends
+  namespace: bookinfo-team-config
 spec:
   types:
     # Top-level query type

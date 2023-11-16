@@ -2,7 +2,7 @@ apiVersion: apimanagement.gloo.solo.io/v2
 kind: ApiDoc
 metadata:
   name: bookinfo-rest-apidoc
-  namespace: bookinfo-frontends
+  namespace: bookinfo-team-config
 spec:
   graphql:
     schemaDefinition: |-
