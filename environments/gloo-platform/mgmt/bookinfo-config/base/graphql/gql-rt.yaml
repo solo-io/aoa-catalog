@@ -5,7 +5,7 @@ metadata:
   namespace: bookinfo-team-config
 spec:
   hosts:
-  - 'bookinfo-gql.east.glooplatform.com'
+  - 'bookinfo-gql.central.glooplatform.com'
   http:
   - name: graphql-bookinfo
     labels:
