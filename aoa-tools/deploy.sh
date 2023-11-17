@@ -31,8 +31,10 @@ help()
    echo "options:"
    echo "-f     path to environment files"
    echo "-i     install infra"
-   echo "-n     do not install argo"
    echo "-h     print help"
+   echo
+   echo "additional flags:"
+   echo "--no-argo  skip argo installation"
    echo
 }
 
@@ -191,7 +193,7 @@ parse_opt()
 {
 
 # Get the options
-while getopts "f:hin" option; do
+ while getopts "f:hi-:" option; do
     case $option in
       f) # env
          env=${OPTARG};;
@@ -200,8 +202,15 @@ while getopts "f:hin" option; do
       h) # display Help
          help
          exit;;
-      n) # no-argo logic
-         install_argo=false;;
+      -) # long options
+         case "${OPTARG}" in
+           no-argo) # --no-argo logic
+             install_argo=false;;
+           *) # handle other long options
+             echo "Invalid option: --${OPTARG}"
+             help
+             exit;;
+         esac;;
       \?) # Invalid option
          echo "Error: Invalid option"
          help
