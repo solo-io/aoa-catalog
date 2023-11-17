@@ -23,48 +23,48 @@ spec:
                   :path:
                     jq: '"/api/v1/products"'
     # Product object type
-    #Product:
-    #  fields:
-    #    ratings:
-    #      resolvers:
-    #      - resolverResultTransform:
-    #          jq: '.resolverResultVar.ratings | to_entries | map(.reviewer=.key | .numStars=.value | del(.key,.value))'
-    #        restResolver:
-    #          destinations:
-    #            - kind: VIRTUAL_DESTINATION
-    #              port:
-    #                number: 9080
-    #              ref:
-    #                name: ratings-vd
-    #                namespace: bookinfo-team-config
-    #                cluster: mgmt
-    #          request:
-    #            headers:
-    #              :path:
-    #                jq: '"/ratings/" + (.parentVar.id | tostring)'
-    #      variables:
-    #        parentVar:
-    #          graphqlParent: {}
-    #        resolverResultVar:
-    #          resolverResult: {}
-    #    reviews:
-    #      resolvers:
-    #      - resolverResultTransform:
-    #          jq: '.resolverResultVar.reviews'
-    #        restResolver:
-    #          destinations:
-    #            - kind: VIRTUAL_DESTINATION
-    #              port:
-    #                number: 9080
-    #              ref:
-    #                name: reviews-vd
-    #                namespace: bookinfo-team-config
-    #          request:
-    #            headers:
-    #              :path:
-    #                jq: '"/reviews/" + (.parentVar.id | tostring)'
-    #      variables:
-    #        parentVar:
-    #          graphqlParent: {}
-    #        resolverResultVar:
-    #          resolverResult: {}
+    Product:
+      fields:
+        ratings:
+          resolvers:
+          - resolverResultTransform:
+              jq: '.resolverResultVar.ratings | to_entries | map(.reviewer=.key | .numStars=.value | del(.key,.value))'
+            restResolver:
+              destinations:
+                - kind: VIRTUAL_DESTINATION
+                  port:
+                    number: 9080
+                  ref:
+                    name: ratings-vd
+                    namespace: bookinfo-team-config
+                    cluster: mgmt
+              request:
+                headers:
+                  :path:
+                    jq: '"/ratings/" + (.parentVar.id | tostring)'
+          variables:
+            parentVar:
+              graphqlParent: {}
+            resolverResultVar:
+              resolverResult: {}
+        reviews:
+          resolvers:
+          - resolverResultTransform:
+              jq: '.resolverResultVar.reviews'
+            restResolver:
+              destinations:
+                - kind: VIRTUAL_DESTINATION
+                  port:
+                    number: 9080
+                  ref:
+                    name: reviews-vd
+                    namespace: bookinfo-team-config
+              request:
+                headers:
+                  :path:
+                    jq: '"/reviews/" + (.parentVar.id | tostring)'
+          variables:
+            parentVar:
+              graphqlParent: {}
+            resolverResultVar:
+              resolverResult: {}
