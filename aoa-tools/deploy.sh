@@ -4,6 +4,7 @@
 ############################################################
 # Defaults
 install_infra=false
+install_argo=true
 export SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 #Colors
@@ -30,6 +31,7 @@ help()
    echo "options:"
    echo "-f     path to environment files"
    echo "-i     install infra"
+   echo "-n     do not install argo"
    echo "-h     print help"
    echo
 }
@@ -44,6 +46,7 @@ echo "------------------------------------------------------------"
 echo "--------------   AoA Installer - Pre-install   -------------"
 echo "Environment: $env"
 echo "Install infra: $install_infra"
+echo "Install argo: $install_argo"
 check_git
 echo ""
 echo "Github Account: $github_username"
@@ -170,26 +173,41 @@ destroy_infra()
       fi 
 }
 
+install_argo()
+{
+   check_env
+   echo "Deploying argo..."
+   cd $SCRIPT_DIR/bootstrap-argocd
+
+   $SCRIPT_DIR/bootstrap-argocd/install-argocd.sh insecure-rootpath ${cluster_context}
+
+   $SCRIPT_DIR/tools/wait-for-rollout.sh deployment argocd-server argocd 20 ${cluster_context}
+   cd $env
+
+}
+
 
 parse_opt()
 {
 
 # Get the options
-while getopts "f:hi" option; do
-   case $option in
-      h) # display Help
-         help
-         exit;;
+while getopts "f:hin" option; do
+    case $option in
       f) # env
          env=${OPTARG};;
       i) # infra
          install_infra=true;;
-     \?) # Invalid option
+      h) # display Help
+         help
+         exit;;
+      n) # no-argo logic
+         install_argo=false;;
+      \?) # Invalid option
          echo "Error: Invalid option"
          help
          exit;;
-   esac
-done
+    esac
+  done
 
 }
 
@@ -203,6 +221,11 @@ pre_install
 if [[ ${install_infra} == true ]]
 then
    install_infra
+fi 
+
+if [[ ${install_argo} == true ]]
+then
+   install_argo
 fi 
 
 cd $env
@@ -225,16 +248,16 @@ fi
 # install argocd
 #TODO: this will not work since we removed overlays, so we need probably a flag to trigger this
 # Suggestion, adding a flag -k8s-type=base/ocp.... and --env-type=k3s/gke/eks... 
-cd $SCRIPT_DIR/bootstrap-argocd
-if [ "${environment_overlay}" == "ocp" ] ; then 
-     $SCRIPT_DIR/bootstrap-argocd/install-argocd.sh insecure-rootpath-ocp ${cluster_context}
-  else
-     $SCRIPT_DIR/bootstrap-argocd/install-argocd.sh insecure-rootpath ${cluster_context}
-  fi
-
-# wait for argo cluster rollout
-$SCRIPT_DIR/tools/wait-for-rollout.sh deployment argocd-server argocd 20 ${cluster_context}
-cd $env
+#cd $SCRIPT_DIR/bootstrap-argocd
+#if [ "${environment_overlay}" == "ocp" ] ; then 
+#     $SCRIPT_DIR/bootstrap-argocd/install-argocd.sh insecure-rootpath-ocp ${cluster_context}
+#  else
+#     $SCRIPT_DIR/bootstrap-argocd/install-argocd.sh insecure-rootpath ${cluster_context}
+#  fi
+#
+## wait for argo cluster rollout
+#$SCRIPT_DIR/tools/wait-for-rollout.sh deployment argocd-server argocd 20 ${cluster_context}
+#cd $env
 
 waves_count=`cat catalog.yaml | yq ".waves | length"`
 
