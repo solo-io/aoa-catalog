@@ -7,81 +7,71 @@ install_infra=false
 install_argo=true
 export SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-#Colors
+# Colors
 RED='\033[0;31m'
 YELLOW='\033[0;33m'
 GREEN='\033[0;32m'
 NO_COLOR='\033[0m'
 
-
-
 ####################### Functions ##########################
 
-help()
-{
-   # Display Help
-   echo "aoa-catalog installer."
-   echo
-   echo "Syntax: installer [-f|-i|-h]"
-   echo
-   echo "commands:"
-   echo "deploy     deploys an environment with the specified path"
-   echo "destroy    destroys an environment with the specified path"
-   echo
-   echo "options:"
-   echo "-f     path to environment files"
-   echo "-i     install infra"
-   echo "-h     print help"
-   echo
-   echo "additional flags:"
-   echo "--skip-argo  skip argo installation"
-   echo
+help() {
+    # Display Help
+    echo "aoa-catalog installer."
+    echo
+    echo "Syntax: installer [-f|-i|-h]"
+    echo
+    echo "commands:"
+    echo "deploy     deploys an environment with the specified path"
+    echo "destroy    destroys an environment with the specified path"
+    echo
+    echo "options:"
+    echo "-f     path to environment files"
+    echo "-i     install infra"
+    echo "-h     print help"
+    echo
+    echo "additional flags:"
+    echo "--skip-argo  skip argo installation"
 }
 
-pre_install()
-{
+pre_install() {
+    check_env
+    source_env_vars
 
-check_env
-source_env_vars
+    echo "------------------------------------------------------------"
+    echo "--------------   AoA Installer - Pre-install   -------------"
+    echo "Environment: $env"
+    echo "Install infra: $install_infra"
+    echo "Install argo: $install_argo"
+    check_git
+    echo ""
+    echo "Github Account: $github_username"
+    echo "Repo: $repo_name"
+    echo "Branch: $target_branch"
+    echo "Automatic Sync: $parent_app_sync"
+    echo "------------------------------------------------------------"
 
-echo "------------------------------------------------------------"
-echo "--------------   AoA Installer - Pre-install   -------------"
-echo "Environment: $env"
-echo "Install infra: $install_infra"
-echo "Install argo: $install_argo"
-check_git
-echo ""
-echo "Github Account: $github_username"
-echo "Repo: $repo_name"
-echo "Branch: $target_branch"
-echo "Automatic Sync: $parent_app_sync"
-echo "------------------------------------------------------------"
+    echo "Continue? [y/N]"
 
-echo "Continue? [y/N]"
-
-read should_continue
-if [[ ${should_continue} =~ ^([yY])$ ]]
-  then
-   echo ""
-  else
-   exit 0
-fi
-   
+    read -r should_continue
+    if [[ ${should_continue} =~ ^([yY])$ ]]; then
+        echo ""
+    else
+        exit 0
+    fi
 }
 
-check_env()
-{
-  if [[ ${env} == "" ]] || [ ! -d "$env" ]
-  then
-    # provide vars file
-    printf "${RED}Error: env folder not found, please use -f to choose a valid env folder.${NO_COLOR}\n"
-    help
-    exit 1
-   fi
+check_env() {
+    if [[ ${env} == "" || ! -d "$env" ]]; then
+        # provide vars file
+        printf "${RED}Error: env folder not found, please use -f to choose a valid env folder.${NO_COLOR}\n"
+        help
+        exit 1
+    fi
 
-   #normalize path 
-   cd $env
-   env=$(pwd)
+    # Normalize path
+    cd "$env" || exit
+    env=$(pwd)
 }
 
 check_git()
@@ -280,6 +270,7 @@ do
 
   # deploy aoa wave
   $SCRIPT_DIR/tools/configure-wave.sh ${normalized_wave_location} ${wave_name} ${cluster_context} ${github_username} ${repo_name} ${target_branch} ${parent_app_sync}
+  
   # TODO: extract the pre and post script deploy in a function to avoid dup 
   # Post deploy scripts
    script_count=`cat catalog.yaml | yq ".waves[$c].scripts.post_deploy | length"`
@@ -320,15 +311,15 @@ destroy()
 ######################## Main ##############################
 
 case $1 in
-  deploy)
+deploy)
     deploy "${@:2}"
     ;;
 
-  destroy)
+destroy)
     destroy "${@:2}"
     ;;
 
-  *)
+*)
     help
     ;;
 esac
