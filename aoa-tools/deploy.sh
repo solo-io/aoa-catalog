@@ -34,7 +34,7 @@ help()
    echo "-h     print help"
    echo
    echo "additional flags:"
-   echo "--no-argo  skip argo installation"
+   echo "--skip-argo  skip argo installation"
    echo
 }
 
@@ -204,7 +204,7 @@ parse_opt()
          exit;;
       -) # long options
          case "${OPTARG}" in
-           no-argo) # --no-argo logic
+           skip-argo) # --skip-argo logic
              install_argo=false;;
            *) # handle other long options
              echo "Invalid option: --${OPTARG}"
