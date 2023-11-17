@@ -254,20 +254,6 @@ then
   echo "No context specified. Using default context of ${cluster_context}"
 fi
 
-# install argocd
-#TODO: this will not work since we removed overlays, so we need probably a flag to trigger this
-# Suggestion, adding a flag -k8s-type=base/ocp.... and --env-type=k3s/gke/eks... 
-#cd $SCRIPT_DIR/bootstrap-argocd
-#if [ "${environment_overlay}" == "ocp" ] ; then 
-#     $SCRIPT_DIR/bootstrap-argocd/install-argocd.sh insecure-rootpath-ocp ${cluster_context}
-#  else
-#     $SCRIPT_DIR/bootstrap-argocd/install-argocd.sh insecure-rootpath ${cluster_context}
-#  fi
-#
-## wait for argo cluster rollout
-#$SCRIPT_DIR/tools/wait-for-rollout.sh deployment argocd-server argocd 20 ${cluster_context}
-#cd $env
-
 waves_count=`cat catalog.yaml | yq ".waves | length"`
 
 for (( c=0; c<$waves_count; c++ ))
