@@ -37,6 +37,7 @@ spec:
                   ref:
                     name: ratings-vd
                     namespace: bookinfo-team-config
+                    cluster: mgmt
               request:
                 headers:
                   :path:
