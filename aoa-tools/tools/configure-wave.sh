@@ -1,63 +1,38 @@
 #!/bin/bash
 #set -e
 
+# Function to prompt user for input if the variable is not provided
+prompt_user_input() {
+    local variable_name=$1
+    local prompt_message=$2
+    local default_value=$3
+
+    if [[ -z ${!variable_name} ]]; then
+        read -p "${prompt_message} [Default: ${default_value}]: " user_input
+        # Use the default value if the user doesn't provide any input
+        eval "${variable_name}=${user_input:-${default_value}}"
+    fi
+}
+
+# Input variables with default values
 path=${1:-""}
 wave_name=${2:-""}
 cluster_context=${3:-""}
 github_username=${4:-""}
 repo_name=${5:-""}
 target_branch=${6:-""}
-parent_app_sync=$7
+parent_app_sync=${7:-""}
 
-# check to see if wave name variable was passed through, if not prompt for it
-if [[ ${wave_name} == "" ]]
-  then
-    # provide license key
-    echo "Please provide the wave name:"
-    read wave_name
-fi
+# Prompt user for input if variables are not provided
+prompt_user_input wave_name "Please provide the wave name" ""
+prompt_user_input cluster_context "Please provide the cluster context to use (i.e. mgmt, cluster1, cluster2)" ""
+prompt_user_input github_username "Please provide the GitHub username to use (i.e. solo-io)" ""
+prompt_user_input repo_name "Please provide the repo name to use (i.e. aoa-catalog)" ""
+prompt_user_input target_branch "Please provide the target branch to use (i.e. HEAD)" ""
+prompt_user_input parent_app_sync "Please provide the parent_app_sync to use (i.e. HEAD)" ""
 
-# check to see if cluster context variable was passed through, if not prompt for it
-if [[ ${cluster_context} == "" ]]
-  then
-    # provide cluster context overlay
-    echo "Please provide the cluster context to use (i.e. mgmt, cluster1, cluster2):"
-    read cluster_context
-fi
-
-# check to see if github_username variable was passed through, if not prompt for it
-if [[ ${github_username} == "" ]]
-  then
-    # provide github_username variable
-    echo "Please provide the github_username to use (i.e. solo-io):"
-    read github_username
-fi
-
-# check to see if repo_name variable was passed through, if not prompt for it
-if [[ ${repo_name} == "" ]]
-  then
-    # provide repo_name variable
-    echo "Please provide the repo_name to use (i.e. gloo-mesh-aoa):"
-    read repo_name
-fi
-
-# check to see if target_branch variable was passed through, if not prompt for it
-if [[ ${target_branch} == "" ]]
-  then
-    # provide target_branch variable
-    echo "Please provide the target_branch to use (i.e. HEAD):"
-    read target_branch
-fi
-
-# check to see if parent_app_sync variable was passed through, if not prompt for it
-if [[ ${parent_app_sync} == "" ]]
-  then
-    # provide parent_app_sync variable
-    echo "Please provide the parent_app_sync to use (i.e. HEAD):"
-    read parent_app_sync
-fi
-
-kubectl --context ${cluster_context} apply -f - <<EOF
+# Apply ArgoCD Application configuration
+kubectl --context "${cluster_context}" apply -f - <<EOF
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
