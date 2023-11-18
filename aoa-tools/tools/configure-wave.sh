@@ -8,7 +8,7 @@ prompt_user_input() {
     local default_value=$3
 
     if [[ -z ${!variable_name} ]]; then
-        read -p "${prompt_message} [Default: ${default_value}]: " user_input
+        read -p "${prompt_message}: " user_input
         # Use the default value if the user doesn't provide any input
         eval "${variable_name}=${user_input:-${default_value}}"
     fi
@@ -24,12 +24,12 @@ target_branch=${6:-""}
 parent_app_sync=${7:-""}
 
 # Prompt user for input if variables are not provided
-prompt_user_input wave_name "Please provide the wave name" ""
+prompt_user_input wave_name "Please provide the wave name " ""
 prompt_user_input cluster_context "Please provide the cluster context to use (i.e. mgmt, cluster1, cluster2)" ""
 prompt_user_input github_username "Please provide the GitHub username to use (i.e. solo-io)" ""
 prompt_user_input repo_name "Please provide the repo name to use (i.e. aoa-catalog)" ""
 prompt_user_input target_branch "Please provide the target branch to use (i.e. HEAD)" ""
-prompt_user_input parent_app_sync "Please provide the parent_app_sync to use (i.e. HEAD)" ""
+prompt_user_input parent_app_sync "Please provide the parent_app_sync to use (true/false)" ""
 
 # Apply ArgoCD Application configuration
 kubectl --context "${cluster_context}" apply -f - <<EOF
