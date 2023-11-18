@@ -32,6 +32,12 @@ spec:
               deployment:
                 stats:
                   enabled: true
+        grafana:
+          defaultInstallationEnabled: true
+          grafana.ini:
+            server:
+              root_url: https://*/grafana/
+              serve_from_sub_path: true
     repoURL: http://storage.googleapis.com/gloo-ee-helm
     targetRevision: 1.15.7
   syncPolicy:
