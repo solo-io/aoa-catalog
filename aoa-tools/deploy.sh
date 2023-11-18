@@ -244,43 +244,44 @@ then
   echo "No context specified. Using default context of ${cluster_context}"
 fi
 
-waves_count=`cat catalog.yaml | yq ".waves | length"`
+# Read catalog.yaml
+catalog_content=$(cat catalog.yaml)
 
-for (( c=0; c<$waves_count; c++ ))
-do 
-  wave_name=`cat catalog.yaml | yq ".waves[$c].name"`
-  if [ "${wave_name}" == "null" ] ; then 
-     wave_name=$c
-  else
-     wave_name="$c-$wave_name"
-  fi  
+waves_count=$(echo "$catalog_content" | yq ".waves | length")
 
-   wave_location=`cat catalog.yaml | yq ".waves[$c].location"`
-   normalized_wave_location=$(eval echo $wave_location) 
+# Function to execute pre/post deploy scripts
+execute_scripts() {
+  local script_type=$1
+  local count=$2
 
-   echo "starting ${wave_name}"
-  # Pre deploy scripts
-   script_count=`cat catalog.yaml | yq ".waves[$c].scripts.pre_deploy | length"`
-   for (( s=0; s<$script_count; s++ ))
-   do 
-   script_location=`cat catalog.yaml | yq ".waves[$c].scripts.pre_deploy[$s]"`
-   normalized_script_location=$(eval echo $script_location)  
-   [[ -f "${git_root}${normalized_script_location}" ]] && ${git_root}/${normalized_script_location} 
-   done 
+  for ((s = 0; s < $count; s++)); do
+    script_location=$(echo "$catalog_content" | yq ".waves[$c].scripts.$script_type[$s]")
+    normalized_script_location=$(eval echo $script_location)
 
-  # deploy aoa wave
+    [[ -f "${git_root}${normalized_script_location}" ]] && ${git_root}/${normalized_script_location}
+  done
+}
+
+for ((c = 0; c < $waves_count; c++)); do
+  wave_name=$(echo "$catalog_content" | yq -r ".waves[$c].name")
+  wave_name="${c}-${wave_name:-$c}"
+
+  wave_location=$(echo "$catalog_content" | yq -r ".waves[$c].location")
+  normalized_wave_location=$(eval echo $wave_location)
+
+  # Start wave
+  echo "Starting $wave_name"
+
+  # Execute pre deploy scripts
+  pre_script_count=$(echo "$catalog_content" | yq ".waves[$c].scripts.pre_deploy | length")
+  execute_scripts pre_deploy $pre_script_count
+
+  # Deploy aoa wave application
   $SCRIPT_DIR/tools/configure-wave.sh ${normalized_wave_location} ${wave_name} ${cluster_context} ${github_username} ${repo_name} ${target_branch} ${parent_app_sync}
-  
-  # TODO: extract the pre and post script deploy in a function to avoid dup 
-  # Post deploy scripts
-   script_count=`cat catalog.yaml | yq ".waves[$c].scripts.post_deploy | length"`
-   for (( s=0; s<$script_count; s++ ))
-   do 
-   script_location=`cat catalog.yaml | yq ".waves[$c].scripts.post_deploy[$s]"`
-   normalized_script_location=$(eval echo $script_location)
-   [[ -f "${git_root}${normalized_script_location}" ]] && ${git_root}/${normalized_script_location} 
-   done 
 
+  # Execute post deploy scripts
+  post_script_count=$(echo "$catalog_content" | yq ".waves[$c].scripts.post_deploy | length")
+  execute_scripts post_deploy $post_script_count
 done
 
 echo "END."
