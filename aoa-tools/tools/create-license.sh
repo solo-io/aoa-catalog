@@ -1,38 +1,41 @@
 #!/bin/bash
 #set -e
 
-# replace the parameter below with your designated cluster context
-# note that the character '_' is an invalid value
-#
-# please use `kubectl config rename-contexts <current_context> <target_context>` to
-# rename your context if necessary
+# Function to prompt user for input if the variable is not provided
+prompt_user_input() {
+    local variable_name=$1
+    local prompt_message=$2
+
+    if [[ -z ${!variable_name} ]]; then
+        read -p "${prompt_message}: " user_input
+        eval "${variable_name}=${user_input}"
+    fi
+}
+
+# Input variables with default values
 LICENSE_KEY=${1:-""}
-cluster_context=${2:-mgmt}
+cluster_context=${2:-"mgmt"}
 
-# check to see if license key variable was passed through, if not prompt for key
-if [[ ${LICENSE_KEY} == "" ]]
-  then
-    # provide license key
-    echo "Please provide your Gloo Mesh Enterprise License Key:"
-    read LICENSE_KEY
-fi
+# Prompt user for input if variables are not provided
+prompt_user_input LICENSE_KEY "Please provide your Gloo Mesh Enterprise License Key"
 
-# check OS type
+# Check OS type and encode the license key accordingly
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        # Linux
-        BASE64_LICENSE_KEY=$(echo -n "${LICENSE_KEY}" | base64 -w 0)
+    # Linux
+    BASE64_LICENSE_KEY=$(echo -n "${LICENSE_KEY}" | base64 -w 0)
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-        # Mac OSX
-        BASE64_LICENSE_KEY=$(echo -n "${LICENSE_KEY}" | base64 | tr -d '[:space:]')
+    # Mac OSX
+    BASE64_LICENSE_KEY=$(echo -n "${LICENSE_KEY}" | base64 | tr -d '[:space:]')
 else
-        echo unknown OS type
-        exit 1
+    echo "Unknown OS type"
+    exit 1
 fi
 
-# license stuff
-kubectl create ns gloo-mesh --context ${cluster_context}
+# Create namespace for Gloo Mesh
+kubectl create ns gloo-mesh --context "${cluster_context}"
 
-kubectl apply --context ${cluster_context} -f - <<EOF
+# Apply license keys as a Kubernetes secret
+kubectl apply --context "${cluster_context}" -f - <<EOF
 apiVersion: v1
 data:
   gloo-gateway-license-key: ${BASE64_LICENSE_KEY}

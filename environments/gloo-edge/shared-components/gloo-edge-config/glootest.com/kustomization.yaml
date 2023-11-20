@@ -6,7 +6,6 @@ kind: Kustomization
 resources:
 - ../base
 
-# adds the rollouts-demo-argo-rollouts-dashboard route
 patches:
 - patch: |-
       apiVersion: gateway.solo.io/v1

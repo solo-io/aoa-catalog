@@ -42,30 +42,23 @@ options:
 -f     path to environment files
 -i     install infra
 -h     print help
+
+additional flags:
+--skip-argo  skip argo installation
 ```
 
-Notes on defaults: 
+Notes on flag options: 
 - If `-i` is used, the installer will check for a folder named `.infra` in the environment directory and will install the infra before running the script. This currently only supports `k3d` for local deployments
-- If the overlay is not specified by passing the `-o` flag, the installer will default to `base`. This flag is useful for example to pass in the `-o m1` to use the `m1` overlays containing ARM based images
 
 ### vars.env
-The `vars.env` exists in each demo environment directory and the specified variables are treated as the source of truth for the installation. The installer will use any passed in flags and attempt to discover all of the necessary variables in the pre-check. Please verify the output before continuing.
-
-Note: All variables present in the `vars.env` will be exported and available everywhere for continued use
-
-#### vars.env overrides
-Below are a few override example variables that can be useful when forking this repo or specifying an `environment_overlay` directly
-
-to specify different cluster contexts and environment overlays as well as github username, repo name, and branch when using a fork of this repo.
+The `vars.env` exists in each demo environment directory with a few variables used in the installation such as inputting license keys, defining cluster contexts, and configuring app sync behavior. The installer will use any passed in flags and attempt to discover all of the necessary variables in the pre-check. Please verify the output before continuing.
 ```
-# git vars
-github_username="<a git username>"
-repo_name="<another repo>"
-target_branch="HEAD"
-
-# define overlay
-environment_overlay="m1"
+license_key="$GLOO_PLATFORM_LICENSE_KEY"
+cluster_context="mgmt"
+parent_app_sync="true"
 ```
+
+When `parent_app_sync="false"` the installer will disable ArgoCD `autosync` and `prune` features. This is particularly useful for development so manual changes using `kubectl` are not re-synced by ArgoCD.
 
 #### k3d loadbalancer port mapping
 K3d allows for exposing ports via docker and servicelb in local deployments. This provides local access to services with `type: LoadBalancer` in the browser at `localhost:<port>`. The k3d cluster config examples provided in the `.infra` folder are configured with the following mappings
@@ -101,9 +94,4 @@ stringData:
   # personal access token
   password: <access_token>
   username: solo-io
-```
-
-then in the `vars.env` point at your private repo before running the install script:
-```
-repo_name="aoa-lib-private"
 ```

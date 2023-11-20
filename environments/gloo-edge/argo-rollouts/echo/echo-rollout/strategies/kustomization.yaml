@@ -6,4 +6,5 @@ resources:
 #- canary-vs
 #- canary-single-rt
 - canary-multi-rt
+#- rollouts-ui
 

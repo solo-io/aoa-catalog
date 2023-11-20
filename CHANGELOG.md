@@ -1,5 +1,27 @@
 # Changelog
 
+0.1.3 (11-20-23)
+---
+aoa-tools:
+- refactor aoa-tools scripts
+    - refactor all tools scripts to be more user-friendly, handle default values better, and include comments for clarity
+    - refactor `install-argocd.sh` to run the argo install silently
+
+- Refactor main deploy.sh script
+    - add `--skip-argocd` flag
+    - The content of catalog.yaml is read once and stored in the variable catalog_content.
+    - The logic for creating wave_name is simplified.
+    - Common logic for executing scripts is extracted into the execute_scripts function.
+    - The loops for pre and post deploy scripts are combined to avoid duplication.
+    - Other small readability improvements
+
+readme:
+- Update README.md
+
+gloo-edge:
+- create `gloo-edge/shared-components` to reuse components across demo environments
+- expose OOTB Gloo Edge grafana dashboards and link in homer dashboard
+
 0.1.2 (11-16-23)
 ---
 - update gloo-portal/solo-dev-portal to use gloo-portal 1.3.3

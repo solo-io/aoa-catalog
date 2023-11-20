@@ -4,79 +4,74 @@
 ############################################################
 # Defaults
 install_infra=false
+install_argo=true
 export SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-#Colors
+# Colors
 RED='\033[0;31m'
 YELLOW='\033[0;33m'
 GREEN='\033[0;32m'
 NO_COLOR='\033[0m'
 
-
-
 ####################### Functions ##########################
 
-help()
-{
-   # Display Help
-   echo "aoa-catalog installer."
-   echo
-   echo "Syntax: installer [-f|-i|-h]"
-   echo
-   echo "commands:"
-   echo "deploy     deploys an environment with the specified path"
-   echo "destroy    destroys an environment with the specified path"
-   echo
-   echo "options:"
-   echo "-f     path to environment files"
-   echo "-i     install infra"
-   echo "-h     print help"
-   echo
+help() {
+    # Display Help
+    echo "aoa-catalog installer."
+    echo
+    echo "Syntax: installer [-f|-i|-h]"
+    echo
+    echo "commands:"
+    echo "deploy     deploys an environment with the specified path"
+    echo "destroy    destroys an environment with the specified path"
+    echo
+    echo "options:"
+    echo "-f     path to environment files"
+    echo "-i     install infra"
+    echo "-h     print help"
+    echo
+    echo "additional flags:"
+    echo "--skip-argo  skip argo installation"
 }
 
-pre_install()
-{
+pre_install() {
+    check_env
+    source_env_vars
 
-check_env
-source_env_vars
+    echo "------------------------------------------------------------"
+    echo "--------------   AoA Installer - Pre-install   -------------"
+    echo "Environment: $env"
+    echo "Install infra: $install_infra"
+    echo "Install argo: $install_argo"
+    check_git
+    echo ""
+    echo "Github Account: $github_username"
+    echo "Repo: $repo_name"
+    echo "Branch: $target_branch"
+    echo "Automatic Sync: $parent_app_sync"
+    echo "------------------------------------------------------------"
 
-echo "------------------------------------------------------------"
-echo "--------------   AoA Installer - Pre-install   -------------"
-echo "Environment: $env"
-echo "Install infra: $install_infra"
-check_git
-echo ""
-echo "Github Account: $github_username"
-echo "Repo: $repo_name"
-echo "Branch: $target_branch"
-echo "Automatic Sync: $parent_app_sync"
-echo "------------------------------------------------------------"
+    echo "Continue? [y/N]"
 
-echo "Continue? [y/N]"
-
-read should_continue
-if [[ ${should_continue} =~ ^([yY])$ ]]
-  then
-   echo ""
-  else
-   exit 0
-fi
-   
+    read -r should_continue
+    if [[ ${should_continue} =~ ^([yY])$ ]]; then
+        echo ""
+    else
+        exit 0
+    fi
 }
 
-check_env()
-{
-  if [[ ${env} == "" ]] || [ ! -d "$env" ]
-  then
-    # provide vars file
-    printf "${RED}Error: env folder not found, please use -f to choose a valid env folder.${NO_COLOR}\n"
-    help
-    exit 1
-   fi
+check_env() {
+    if [[ ${env} == "" || ! -d "$env" ]]; then
+        # provide vars file
+        printf "${RED}Error: env folder not found, please use -f to choose a valid env folder.${NO_COLOR}\n"
+        help
+        exit 1
+    fi
 
-   #normalize path 
-   cd $env
-   env=$(pwd)
+    # Normalize path
+    cd "$env" || exit
+    env=$(pwd)
 }
 
 check_git()
@@ -170,26 +165,48 @@ destroy_infra()
       fi 
 }
 
+install_argo()
+{
+   check_env
+   echo "Deploying argo..."
+   cd $SCRIPT_DIR/bootstrap-argocd
+
+   $SCRIPT_DIR/bootstrap-argocd/install-argocd.sh insecure-rootpath ${cluster_context}
+
+   $SCRIPT_DIR/tools/wait-for-rollout.sh deployment argocd-server argocd 20 ${cluster_context}
+   cd $env
+
+}
+
 
 parse_opt()
 {
 
 # Get the options
-while getopts "f:hi" option; do
-   case $option in
-      h) # display Help
-         help
-         exit;;
+ while getopts "f:hi-:" option; do
+    case $option in
       f) # env
          env=${OPTARG};;
       i) # infra
          install_infra=true;;
-     \?) # Invalid option
+      h) # display Help
+         help
+         exit;;
+      -) # long options
+         case "${OPTARG}" in
+           skip-argo) # --skip-argo logic
+             install_argo=false;;
+           *) # handle other long options
+             echo "Invalid option: --${OPTARG}"
+             help
+             exit;;
+         esac;;
+      \?) # Invalid option
          echo "Error: Invalid option"
          help
          exit;;
-   esac
-done
+    esac
+  done
 
 }
 
@@ -203,6 +220,11 @@ pre_install
 if [[ ${install_infra} == true ]]
 then
    install_infra
+fi 
+
+if [[ ${install_argo} == true ]]
+then
+   install_argo
 fi 
 
 cd $env
@@ -222,56 +244,44 @@ then
   echo "No context specified. Using default context of ${cluster_context}"
 fi
 
-# install argocd
-#TODO: this will not work since we removed overlays, so we need probably a flag to trigger this
-# Suggestion, adding a flag -k8s-type=base/ocp.... and --env-type=k3s/gke/eks... 
-cd $SCRIPT_DIR/bootstrap-argocd
-if [ "${environment_overlay}" == "ocp" ] ; then 
-     $SCRIPT_DIR/bootstrap-argocd/install-argocd.sh insecure-rootpath-ocp ${cluster_context}
-  else
-     $SCRIPT_DIR/bootstrap-argocd/install-argocd.sh insecure-rootpath ${cluster_context}
-  fi
+# Read catalog.yaml
+catalog_content=$(cat catalog.yaml)
 
-# wait for argo cluster rollout
-$SCRIPT_DIR/tools/wait-for-rollout.sh deployment argocd-server argocd 20 ${cluster_context}
-cd $env
+waves_count=$(echo "$catalog_content" | yq ".waves | length")
 
-waves_count=`cat catalog.yaml | yq ".waves | length"`
+# Function to execute pre/post deploy scripts
+execute_scripts() {
+  local script_type=$1
+  local count=$2
 
-for (( c=0; c<$waves_count; c++ ))
-do 
-  wave_name=`cat catalog.yaml | yq ".waves[$c].name"`
-  if [ "${wave_name}" == "null" ] ; then 
-     wave_name=$c
-  else
-     wave_name="$c-$wave_name"
-  fi  
+  for ((s = 0; s < $count; s++)); do
+    script_location=$(echo "$catalog_content" | yq ".waves[$c].scripts.$script_type[$s]")
+    normalized_script_location=$(eval echo $script_location)
 
-   wave_location=`cat catalog.yaml | yq ".waves[$c].location"`
-   normalized_wave_location=$(eval echo $wave_location) 
+    [[ -f "${git_root}${normalized_script_location}" ]] && ${git_root}/${normalized_script_location}
+  done
+}
 
-   echo "starting ${wave_name}"
-  # Pre deploy scripts
-   script_count=`cat catalog.yaml | yq ".waves[$c].scripts.pre_deploy | length"`
-   for (( s=0; s<$script_count; s++ ))
-   do 
-   script_location=`cat catalog.yaml | yq ".waves[$c].scripts.pre_deploy[$s]"`
-   normalized_script_location=$(eval echo $script_location)  
-   [[ -f "${git_root}${normalized_script_location}" ]] && ${git_root}/${normalized_script_location} 
-   done 
+for ((c = 0; c < $waves_count; c++)); do
+  wave_name=$(echo "$catalog_content" | yq -r ".waves[$c].name")
+  wave_name="${c}-${wave_name:-$c}"
 
-  # deploy aoa wave
+  wave_location=$(echo "$catalog_content" | yq -r ".waves[$c].location")
+  normalized_wave_location=$(eval echo $wave_location)
+
+  # Start wave
+  echo "Starting $wave_name"
+
+  # Execute pre deploy scripts
+  pre_script_count=$(echo "$catalog_content" | yq ".waves[$c].scripts.pre_deploy | length")
+  execute_scripts pre_deploy $pre_script_count
+
+  # Deploy aoa wave application
   $SCRIPT_DIR/tools/configure-wave.sh ${normalized_wave_location} ${wave_name} ${cluster_context} ${github_username} ${repo_name} ${target_branch} ${parent_app_sync}
-  # TODO: extract the pre and post script deploy in a function to avoid dup 
-  # Post deploy scripts
-   script_count=`cat catalog.yaml | yq ".waves[$c].scripts.post_deploy | length"`
-   for (( s=0; s<$script_count; s++ ))
-   do 
-   script_location=`cat catalog.yaml | yq ".waves[$c].scripts.post_deploy[$s]"`
-   normalized_script_location=$(eval echo $script_location)
-   [[ -f "${git_root}${normalized_script_location}" ]] && ${git_root}/${normalized_script_location} 
-   done 
 
+  # Execute post deploy scripts
+  post_script_count=$(echo "$catalog_content" | yq ".waves[$c].scripts.post_deploy | length")
+  execute_scripts post_deploy $post_script_count
 done
 
 echo "END."
@@ -302,15 +312,15 @@ destroy()
 ######################## Main ##############################
 
 case $1 in
-  deploy)
+deploy)
     deploy "${@:2}"
     ;;
 
-  destroy)
+destroy)
     destroy "${@:2}"
     ;;
 
-  *)
+*)
     help
     ;;
 esac

@@ -178,6 +178,13 @@ spec:
                         keywords: "argocd"
                         url: "https://localhost/argo"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Grafana"
+                        subtitle: "Observability dashboards"
+                        icon: "fas fa-chart-area"
+                        tag: "grafana"
+                        keywords: "grafana"
+                        url: "https://localhost/grafana"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "Rollouts Demo Dashboard"
                         #subtitle: "Change your image color tag here"
                         icon: "fab fa-git-alt"

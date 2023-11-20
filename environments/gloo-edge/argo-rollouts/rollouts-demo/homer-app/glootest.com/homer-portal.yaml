@@ -176,7 +176,21 @@ spec:
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
-                        url: "https://argocd.glootest.com/argo"
+                        url: "https://admin.glootest.com/argo"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Grafana"
+                        subtitle: "Observability dashboards"
+                        icon: "fas fa-chart-area"
+                        tag: "grafana"
+                        keywords: "grafana"
+                        url: "https://admin.glootest.com/grafana"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Rollouts Demo Dashboard"
+                        #subtitle: "Change your image color tag here"
+                        icon: "fab fa-git-alt"
+                        tag: "argo-rollouts"
+                        keywords: "argo-rollouts"
+                        url: "https://admin.glootest.com/rollouts"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Rollout Strategies"
