@@ -185,13 +185,6 @@ spec:
                         keywords: "grafana"
                         url: "https://localhost/grafana"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Rollouts Demo Dashboard"
-                        #subtitle: "Change your image color tag here"
-                        icon: "fab fa-git-alt"
-                        tag: "argo-rollouts"
-                        keywords: "argo-rollouts"
-                        url: "https://localhost/rollouts"
-                        target: "_blank" # optional html a tag target attribute
                   
                   - name: "Rollout Strategies"
                     icon: "fas fa-cloud"
