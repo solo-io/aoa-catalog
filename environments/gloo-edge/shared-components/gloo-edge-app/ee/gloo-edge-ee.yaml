@@ -35,6 +35,8 @@ spec:
         grafana:
           defaultInstallationEnabled: true
           grafana.ini:
+            auth.anonymous:
+              enabled: true
             server:
               root_url: https://*/grafana/
               serve_from_sub_path: true
