@@ -1,12 +1,12 @@
 
 waves:
   - name: gloo-edge-app
-    location: $env_path/../shared-components/gloo-edge-app/oss
+    location: $env_path/../../shared-components/gloo-edge-app/oss
     scripts:
       pre_deploy: 
-      -  $env_path/../shared-components/gloo-edge-app/init.sh
+      -  $env_path/../../shared-components/gloo-edge-app/init.sh
       post_deploy:
-      -  $env_path/../shared-components/gloo-edge-app/test.sh  
+      -  $env_path/../../shared-components/gloo-edge-app/test.sh  
   - name: argo-rollouts
     location: $env_path/argo-rollouts/base
     scripts:
