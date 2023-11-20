@@ -1,7 +1,7 @@
 
 waves:
   - name: gloo-edge-app
-    location: $env_path/../shared-components/gloo-edge-app/base
+    location: $env_path/../shared-components/gloo-edge-app/ee
     scripts:
       pre_deploy: 
       -  $env_path/../shared-components/gloo-edge-app/init.sh
