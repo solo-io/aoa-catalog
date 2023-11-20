@@ -1,19 +1,19 @@
 
 waves:
   - name: gloo-edge-app
-    location: $env_path/gloo-edge-app/base
+    location: $env_path/../shared-components/gloo-edge-app/base
     scripts:
       pre_deploy: 
-      -  $env_path/gloo-edge-app/init.sh
+      -  $env_path/../shared-components/gloo-edge-app/init.sh
       post_deploy:
-      -  $env_path/gloo-edge-app/test.sh  
+      -  $env_path/../shared-components/gloo-edge-app/test.sh  
   - name: gloo-edge-config
     scripts:
       pre_deploy: 
-      -  $env_path/gloo-edge-config/init.sh
+      -  $env_path/../shared-components/gloo-edge-config/init.sh
       post_deploy:
-      -  $env_path/gloo-edge-config/test.sh
-    location: $env_path/gloo-edge-config/base
+      -  $env_path/../shared-components/gloo-edge-config/test.sh
+    location: $env_path/../shared-components/gloo-edge-config/base
   - name: flagger
     location: $env_path/flagger/base
     scripts:
