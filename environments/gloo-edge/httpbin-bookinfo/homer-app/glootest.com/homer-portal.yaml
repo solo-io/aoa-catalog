@@ -176,14 +176,14 @@ spec:
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
-                        url: "https://argocd.glootest.com/argo"
+                        url: "https://admin.glootest.com/argo"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Grafana"
                         subtitle: "Observability dashboards"
                         icon: "fas fa-chart-area"
                         tag: "grafana"
                         keywords: "grafana"
-                        url: "https://grafana.glootest.com/grafana"
+                        url: "https://admin.glootest.com/grafana"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Web Applications"

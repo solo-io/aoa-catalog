@@ -6,6 +6,14 @@ kind: Kustomization
 resources:
 - ../base
 
-patchesStrategicMerge:
-- vs-patch.yaml
-
+patches:
+- patch: |-
+      apiVersion: gateway.solo.io/v1
+      kind: VirtualService
+      metadata:
+        name: admin-vs
+        namespace: gloo-system
+      spec:
+        virtualHost:
+          domains:
+          - 'admin.glootest.com'
