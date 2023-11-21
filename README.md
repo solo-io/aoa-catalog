@@ -50,6 +50,18 @@ additional flags:
 Notes on flag options: 
 - If `-i` is used, the installer will check for a folder named `.infra` in the environment directory and will install the infra before running the script. This currently only supports `k3d` for local deployments
 
+### catalog.yaml
+The `catalog.yaml` exists in each demo environment directory which provides a list of app-of-apps "waves" to be deployed in order by the installer. A wave consists of the `location` (relative to the root path of the selected environment) as well as `pre_deploy` and `post_deploy` scripts which can be optionally run which can be useful for tasks such as health checks, or waiting for pods to be ready or printing output.
+
+Example sequence of events:
+```
+(Wave 1)
+pre_deploy scripts > deploy app-of-app > post_deploy scripts
+(Wave 2)
+pre_deploy scripts > deploy app-of-app > post_deploy scripts
+<...>
+``````
+
 ### vars.env
 The `vars.env` exists in each demo environment directory with a few variables used in the installation such as inputting license keys, defining cluster contexts, and configuring app sync behavior. The installer will use any passed in flags and attempt to discover all of the necessary variables in the pre-check. Please verify the output before continuing.
 ```
