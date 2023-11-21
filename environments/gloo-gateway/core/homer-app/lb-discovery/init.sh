@@ -184,9 +184,6 @@ spec:
                 services:
 
                   - name: "Admin Applications"
-                    icon: "fas fa-cloud"
-                    items:
-                      - name: "Admin Applications"
                     icon: "fas fa-user-cog"
                     items:
                       - name: "ArgoCD - mgmt"
