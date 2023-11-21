@@ -6,6 +6,9 @@ metadata:
     istio: eastwestgateway
     revision: 1-19
     topology.istio.io/network: cluster1
+  annotations:
+    # AWS NLB Annotation
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
   name: istio-eastwestgateway
   namespace: istio-gateways
 spec:
