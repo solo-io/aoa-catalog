@@ -1,5 +1,35 @@
 # Changelog
 
+0.1.5 (11-21-23)
+---
+- provide section on `catalog.yaml` in the README
+- add note on `lb-discovery` in the README
+- add AWS NLB annotation `service.beta.kubernetes.io/aws-load-balancer-type: "nlb"` to `gloo-gateway`, `gloo-platform`, and `istio` environments by default to work OOTB with EKS deployments
+- (alpha) add `lb-discovery` overlay to `homer-app` in select gloo-gateway environments
+    - Valid for: `core`, `onlineboutique`, `progressive-delivery-argo-rollouts`, and `solowallet`
+    - Configuring the `catalog.yaml` to use the homer app `lb-discovery` overlay is useful in Cloud environments where wildcard hosts are used so that the homer dashboard links reflect the LB hostname or IP.
+    - Environments where Ext Auth capabilities are demonstrated cannot also have homer-app `lb-discovery`. Use `glootest.com` overlay instead which uses a stable hostname. This applies to `gloo-gateway/bookinfo`, `gloo-gateway/httpbin`, and `gloo-gateway/int-ext-portal`.
+
+An example `catalog.yaml` below shows an example where the default localhost `homer-app` commented out and the lb-discovery `homer-app` uncommented. The homer dashboard configuration is managed by the `pre_deploy` init script where the $LB_ADDRESS is discovered and injected
+```
+  # Uncomment to use localhost for link dashboard (k3d)
+  #- name: homer-app
+  #  location: $env_path/homer-app/localhost
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/homer-app/localhost/init.sh
+  #    post_deploy:
+  #    -  $env_path/homer-app/localhost/test.sh 
+  # Uncomment to use LB Discovery for link dashboard (Cloud)
+  - name: homer-app
+    location: $env_path/homer-app/lb-discovery
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer-app/lb-discovery/init.sh
+      post_deploy:
+      -  $env_path/homer-app/lb-discovery/test.sh 
+```
+
 0.1.4 (11-20-23)
 ---
 - update homer test.sh LB discovery to work for AWS and GCP LBs (hostname or IP)
