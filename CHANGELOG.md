@@ -1,5 +1,9 @@
 # Changelog
 
+0.1.4 (11-20-23)
+---
+- update homer test.sh LB discovery to work for AWS and GCP LBs (hostname or IP)
+
 0.1.3 (11-20-23)
 ---
 aoa-tools:

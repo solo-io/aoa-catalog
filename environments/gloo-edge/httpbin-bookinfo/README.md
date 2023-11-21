@@ -33,7 +33,7 @@ To access applications, follow the methods below:
 
 Discover your gateway IP address
 ```
-GATEWAY_IP=$(kubectl -n gloo-system get service gateway-proxy -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+GATEWAY_IP=$(kubectl -n gloo-system get service gateway-proxy -o jsonpath='{.status.loadBalancer.ingress[0].*}')
 
 echo ${GATEWAY_IP}
 ```
