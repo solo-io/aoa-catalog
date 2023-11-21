@@ -37,7 +37,9 @@ spec:
             port: 443
             protocol: TCP
             targetPort: 443
-          annotations: {}
+          annotations:
+            # AWS NLB Annotation
+            service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
           loadBalancerIP: ""
           loadBalancerSourceRanges: []
           externalTrafficPolicy: ""
