@@ -35,7 +35,7 @@ waves:
       -  $env_path/gloo-platform-config/init.sh
       post_deploy:
       -  $env_path/gloo-platform-config/test.sh
-  # Uncomment to use localhost for link dashboard
+  # Uncomment to use localhost for link dashboard (k3d)
   - name: homer-app
     location: $env_path/homer-app/localhost
     scripts:
@@ -43,7 +43,7 @@ waves:
       -  $env_path/homer-app/localhost/init.sh
       post_deploy:
       -  $env_path/homer-app/localhost/test.sh 
-  # Uncomment to use LB Discovery for link dashboard
+  # Uncomment to use LB Discovery for link dashboard (Cloud)
   #- name: homer-app
   #  location: $env_path/homer-app/lb-discovery
   #  scripts:
