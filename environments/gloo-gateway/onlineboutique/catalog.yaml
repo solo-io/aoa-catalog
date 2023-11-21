@@ -52,19 +52,19 @@ waves:
       post_deploy:
       -  $env_path/online-boutique-config/test.sh 
   # Uncomment to use localhost for link dashboard
-  - name: homer-app
-    location: $env_path/homer-app/localhost
-    scripts:
-      pre_deploy: 
-      -  $env_path/homer-app/localhost/init.sh
-      post_deploy:
-      -  $env_path/homer-app/localhost/test.sh 
-  # Uncomment to use LB Discovery for link dashboard
   #- name: homer-app
-  #  location: $env_path/homer-app/lb-discovery
+  #  location: $env_path/homer-app/localhost
   #  scripts:
   #    pre_deploy: 
-  #    -  $env_path/homer-app/lb-discovery/init.sh
+  #    -  $env_path/homer-app/localhost/init.sh
   #    post_deploy:
-  #    -  $env_path/homer-app/lb-discovery/test.sh 
+  #    -  $env_path/homer-app/localhost/test.sh 
+  # Uncomment to use LB Discovery for link dashboard
+  - name: homer-app
+    location: $env_path/homer-app/lb-discovery
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer-app/lb-discovery/init.sh
+      post_deploy:
+      -  $env_path/homer-app/lb-discovery/test.sh 
   
