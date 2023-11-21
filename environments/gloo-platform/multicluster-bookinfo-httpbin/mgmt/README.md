@@ -56,7 +56,7 @@ To access applications, follow the methods below:
 Discover your gateway IP address
 ```
 ISTIO_REVISION=1-19
-GATEWAY_IP=$(kubectl -n istio-gateways get service istio-ingressgateway-${ISTIO_REVISION} -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+GATEWAY_IP=$(kubectl -n istio-gateways get service istio-ingressgateway-${ISTIO_REVISION} -o jsonpath='{.status.loadBalancer.ingress[0].*}')
 
 echo ${GATEWAY_IP}
 ```
