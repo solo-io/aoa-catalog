@@ -1,5 +1,10 @@
 # Changelog
 
+0.1.6 (11-22-23)
+---
+- configure upstream istio grafana dashboards to be editable
+- configure anonymous grafana users to have edit permissions in `gloo-gateway`, `gloo-platform` and `istio` environments so that users can see the underlying queries when doing a demo or exploring around
+
 0.1.5 (11-21-23)
 ---
 - provide section on `catalog.yaml` in the README
