@@ -26,6 +26,9 @@ metadata:
     app.kubernetes.io/managed-by: Helm
 data:
   grafana.ini: |
+    [auth.anonymous]
+    enabled = true
+    org_role = Editor
     [analytics]
     check_for_updates = true
     [grafana_net]

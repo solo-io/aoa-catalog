@@ -103,6 +103,7 @@ spec:
         grafana.ini:
           auth.anonymous:
             enabled: true
+            org_role: Editor
           server:
             root_url: https://*/grafana/
             serve_from_sub_path: true

@@ -27,6 +27,9 @@ metadata:
 data:
   allow-snippet-annotations: "false"
   grafana.ini: |
+    [auth.anonymous]
+    enabled = true
+    org_role = Editor
     [analytics]
     check_for_updates = true
     [grafana_net]
