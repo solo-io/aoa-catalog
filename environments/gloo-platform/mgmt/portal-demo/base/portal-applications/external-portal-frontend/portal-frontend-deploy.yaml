@@ -37,8 +37,8 @@ spec:
     spec:
       serviceAccountName: portal-frontend
       containers:
-        - image: gcr.io/solo-public/docs/portal-frontend:v0.0.17
-          #image: ably77/solo-dev-portal-frontend:0.1.0
+        - #image: gcr.io/solo-public/docs/portal-frontend:v0.0.17
+          image: ably77/solo-dev-portal-frontend:0.1.0
           args: ["--host", "0.0.0.0"]
           env:
             - name: VITE_PORTAL_SERVER_URL
