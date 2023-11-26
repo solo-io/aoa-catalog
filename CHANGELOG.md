@@ -1,5 +1,9 @@
 # Changelog
 
+0.1.7 (11-26-23)
+---
+- update rotated portal-demo okta cert-keys
+
 0.1.6 (11-22-23)
 ---
 - configure upstream istio grafana dashboards to be editable
