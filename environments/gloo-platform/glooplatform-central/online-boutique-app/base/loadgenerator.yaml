@@ -2,13 +2,13 @@ apiVersion: v1
 kind: ServiceAccount
 metadata: 
   name: loadgenerator
-  namespace: web-ui
+  namespace: backend-apis
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: loadgenerator
-  namespace: web-ui
+  namespace: backend-apis
 spec:
   selector:
     matchLabels:
@@ -50,7 +50,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: loadgenerator
-  namespace: web-ui
+  namespace: backend-apis
   labels:
     app: loadgenerator
 spec:
