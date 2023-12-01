@@ -9,5 +9,5 @@ resources:
 #- 70-namespace-app
 #- 80-namespace-app
 #- 90-namespace-app
-- 100-namespace-app
+#- 100-namespace-app
 - client
