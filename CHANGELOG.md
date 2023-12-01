@@ -1,5 +1,10 @@
 # Changelog
 
+0.1.8 (11-30-23)
+---
+- Add upstream istio/ambient-demo environment to catalog
+- Update homer portal to use official helm chart specified in (Using Helm)[https://github.com/bastienwirtz/homer#using-helm]
+
 0.1.7 (11-26-23)
 ---
 - update rotated portal-demo okta cert-keys
