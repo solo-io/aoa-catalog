@@ -1,5 +1,10 @@
 # Changelog
 
+0.1.9 (12-1-23)
+---
+- remove the number suffix after each wave (i.e. wave-0-clusterconfig to wave-clusterconfig). This helps allows us to re-order the waves more easily. It is assumed that the `catalog.yaml` list will run in descending order.
+- update the wait command for Gloo Platform CRDs in `core/gloo-platform/test.sh` to run silently
+
 0.1.8 (11-30-23)
 ---
 - Add upstream istio/ambient-demo environment to catalog
