@@ -264,7 +264,7 @@ execute_scripts() {
 
 for ((c = 0; c < $waves_count; c++)); do
   wave_name=$(echo "$catalog_content" | yq -r ".waves[$c].name")
-  wave_name="${c}-${wave_name:-$c}"
+  wave_name="${wave_name:-$c}"
 
   wave_location=$(echo "$catalog_content" | yq -r ".waves[$c].location")
   normalized_wave_location=$(eval echo $wave_location)
