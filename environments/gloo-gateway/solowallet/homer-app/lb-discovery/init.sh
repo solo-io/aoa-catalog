@@ -27,8 +27,8 @@ spec:
   project: default
   source:
     chart: homer
-    repoURL: https://k8s-at-home.com/charts/
-    targetRevision: 7.3.0
+    repoURL: https://djjudas21.github.io/charts/
+    targetRevision: 8.1.9
     helm:
       values: |
         #
