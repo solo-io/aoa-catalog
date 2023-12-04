@@ -1,5 +1,10 @@
 # Changelog
 
+0.1.10 (12-4-23)
+---
+- remove OTEL tracing from default gloo-platform/core environment to fix later
+- remove Istio revision label from `gloo-mesh` namespace in `gloo-platform` environments as it is not required in most setups where Gloo Platform management components are in a cluster where Istio is not deployed
+
 0.1.9 (12-1-23)
 ---
 - remove the number suffix after each wave (i.e. wave-0-clusterconfig to wave-clusterconfig). This helps allows us to re-order the waves more easily. It is assumed that the `catalog.yaml` list will run in descending order.
