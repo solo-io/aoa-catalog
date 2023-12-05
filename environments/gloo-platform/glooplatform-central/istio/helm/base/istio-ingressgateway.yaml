@@ -61,9 +61,9 @@ spec:
         # hpa configuration
         autoscaling:
           enabled: true
-          minReplicas: 1
+          minReplicas: 2
           maxReplicas: 8
-          targetCPUUtilizationPercentage: 80
+          targetCPUUtilizationPercentage: 60
 
         # topology spread constraints
         topologySpreadConstraints:
