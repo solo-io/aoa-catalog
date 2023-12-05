@@ -47,18 +47,18 @@ spec:
             #    pullPolicy: IfNotPresent
             #    registry: gcr.io/gloo-mesh
             #    repository: gloo-mesh-apiserver
-            #    tag: 2.4.6
+            #    tag: 2.4.4
             #sidecars:
             #    console:
             #        image:
             #            registry: gcr.io/gloo-mesh
             #            repository: gloo-mesh-ui
-            #            tag: 2.4.6
+            #            tag: 2.4.4
             #    envoy:
             #        image:
             #            registry: gcr.io/gloo-mesh
             #            repository: gloo-mesh-envoy
-            #            tag: 2.4.6
+            #            tag: 2.4.4
             deploymentOverrides:
                 spec:
                     template:
@@ -149,7 +149,7 @@ spec:
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.4.6
+            #  tag: 2.4.4
         telemetryGatewayCustomization:
             pipelines:
                 logs/clickhouse:
@@ -177,7 +177,7 @@ spec:
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.4.6
+            #  tag: 2.4.4
             config:
                 exporters:
                     otlp:
@@ -247,7 +247,7 @@ spec:
             #                    - ".*proxy_latency.*"
 
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.4.6
+    targetRevision: 2.4.4
   syncPolicy:
     automated:
       prune: true
