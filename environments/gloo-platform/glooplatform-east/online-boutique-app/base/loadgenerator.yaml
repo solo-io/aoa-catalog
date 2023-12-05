@@ -37,7 +37,8 @@ spec:
         image: gcr.io/google-samples/microservices-demo/loadgenerator:v0.8.0
         env:
         - name: FRONTEND_ADDR
-          value: "frontend.web-ui.svc.cluster.local:80"
+          value: "frontend.web-ui-team.solo-io.mesh:80"
+          #value: "frontend.web-ui.svc.cluster.local:80"
         - name: USERS
           value: "2"
         resources:
