@@ -5,7 +5,7 @@ metadata:
   namespace: web-team
 spec:
   hosts:
-  - frontend.web-ui-team.solo-io.mesh
+  - frontend.web-team.internal
   services:
   - labels:
       app: frontend
