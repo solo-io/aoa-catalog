@@ -111,14 +111,15 @@ spec:
             cluster: ${cluster_context}
         telemetryCollector:
             enabled: true
-            replicaCount: 1
-            mode: deployment
-            service: 
-              type: ClusterIP
-            podLabels:
-              istio.io/rev: 1-19
-            podAnnotations:
-              proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+            # uncomment to use deployment mode instead of daemonset
+            #replicaCount: 1
+            #mode: deployment
+            #service: 
+            #  type: ClusterIP
+            #podLabels:
+            #  istio.io/rev: 1-19
+            #podAnnotations:
+            #  proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector

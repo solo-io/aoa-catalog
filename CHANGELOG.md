@@ -1,5 +1,9 @@
 # Changelog
 
+0.1.11 (12-4-23)
+---
+- switch back to using otel daemonset instead of deployment in gloo-platform environments
+
 0.1.10 (12-4-23)
 ---
 - remove OTEL tracing from default gloo-platform/core environment to fix later
