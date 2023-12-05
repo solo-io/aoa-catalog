@@ -1,7 +1,7 @@
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
-  name: frontend-east
+  name: frontend-routetable
   namespace: web-team
 spec:
   hosts:
