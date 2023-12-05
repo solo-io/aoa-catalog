@@ -102,7 +102,8 @@ spec:
             enabled: true
             image:
                 pullPolicy: IfNotPresent
-                repository: gcr.io/gloo-mesh/gloo-mesh-portal-server
+                registry: gcr.io/gloo-mesh
+                repository: gloo-mesh-portal-server
                 tag: 2.4.4
             apiKeyStorage:
                 secretKey: xyz987
