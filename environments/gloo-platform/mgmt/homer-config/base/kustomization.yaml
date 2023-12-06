@@ -5,3 +5,5 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - homer-rt-443.yaml
+- login-extauthpolicy.yaml
+- login-routetable.yaml

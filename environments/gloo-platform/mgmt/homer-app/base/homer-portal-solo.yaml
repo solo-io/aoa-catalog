@@ -200,6 +200,20 @@ spec:
                 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
                 services:
 
+                  - name: "SSO"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "GCP Login"
+                        icon: "fas fa-sign-in-alt"
+                        tag: "login"
+                        url: "https://login.glooplatform.com/gcp"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Okta Login"
+                        icon: "fas fa-sign-in-alt"
+                        tag: "login"
+                        url: "https://login.glooplatform.com/okta"
+                        target: "_blank" # optional html a tag target attribute
+
                   - name: "Gloo Mesh UI"
                     icon: "fas fa-cloud"
                     items:
