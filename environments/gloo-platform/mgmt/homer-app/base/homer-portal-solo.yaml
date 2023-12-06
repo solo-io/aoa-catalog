@@ -214,7 +214,18 @@ spec:
                         url: "https://login.glooplatform.com/okta"
                         target: "_blank" # optional html a tag target attribute
 
-                  - name: "Gloo Mesh UI"
+                  #- name: "Gloo Mesh UI"
+                  #  icon: "fas fa-cloud"
+                  #  items:
+                  #    
+                  #    - name: "Gloo Mesh UI (Okta Auth)"
+                  #      subtitle: "Use Self Service Registration to Access UI"
+                  #      icon: "fas fa-arrows-alt"
+                  #      tag: "gmui"
+                  #      url: "https://public-ui.glooplatform.com"
+                  #      target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Admin Applications"
                     icon: "fas fa-cloud"
                     items:
                       - name: "Gloo Mesh UI"
@@ -222,16 +233,17 @@ spec:
                         tag: "gmui"
                         url: "https://ui.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Gloo Mesh UI (Okta Auth)"
-                        subtitle: "Use Self Service Registration to Access UI"
-                        icon: "fas fa-arrows-alt"
-                        tag: "gmui"
-                        url: "https://public-ui.glooplatform.com"
+                      - name: "uptime dashboard"
+                        icon: "fas fa-heartbeat"
+                        tag: "uptime"
+                        url: "https://uptime.admin.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-                  
-                  - name: "Admin Applications"
-                    icon: "fas fa-cloud"
-                    items:
+                      - name: "Prometheus"
+                        #subtitle: "Requires header user: preferred"
+                        icon: "fas fa-chart-area"
+                        tag: "prometheus-mgmt"
+                        url: "https://prometheus.admin.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "ArgoCD - mgmt"
                         icon: "fab fa-git-alt"
                         tag: "argo"
@@ -265,17 +277,6 @@ spec:
                         icon: "fas fa-chart-area"
                         tag: "grafana-east"
                         url: "https://grafana.admin.glooplatform.com/east"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Prometheus"
-                        #subtitle: "Requires header user: preferred"
-                        icon: "fas fa-chart-area"
-                        tag: "prometheus-mgmt"
-                        url: "https://prometheus.admin.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "uptime dashboard"
-                        icon: "fas fa-heartbeat"
-                        tag: "uptime"
-                        url: "https://uptime.admin.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "Gateway Capabilities - ExtAuth / JWT / OPA / Rate Limiting / WAF / Progressive Delivery"
