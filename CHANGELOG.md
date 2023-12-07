@@ -1,5 +1,10 @@
 # Changelog
 
+0.1.12 (12-7-23)
+---
+- Specify `${mgmt_context}` cluster context for in the `gloo-platform/core/shared-components/homer-config/test.sh` to properly output the correct LB URL of the mgmt istio ingressgateway for the homer dashboard.
+- Specify `${cluster_context}` for in the `gloo-gateway/core/homer-config/test.sh` to ensure the correct LB URL of the istio ingressgateway for the homer dashboard.
+
 0.1.11 (12-4-23)
 ---
 - switch back to using otel daemonset instead of deployment in gloo-platform environments
