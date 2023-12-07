@@ -1,0 +1,11 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: gitlab
+spec:
+  hosts:
+  - git.example.com
+  http:
+  - route:
+    - destination:
+        host: gitlab.default.svc.cluster.local

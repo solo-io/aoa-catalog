@@ -7,7 +7,7 @@
 export GLOO_VERSION=2.4.0
 
 
-HOME=$PWD
+INSTALL_ROOT_DIR=$PWD
 helm repo add gloo-platform https://storage.googleapis.com/gloo-platform/helm-charts
 helm repo update
 
@@ -31,8 +31,8 @@ echo "Istio Ready"
 
 
 # Gitlab 
-kubectl apply -f $HOME/gitlab/gitlab.yaml 
-kubectl apply -f $HOME/gitlab/istio.yaml 
+kubectl apply -f $INSTALL_ROOT_DIR/gitlab/gitlab.yaml 
+kubectl apply -f $INSTALL_ROOT_DIR/gitlab/istio.yaml 
 
 # Wait for gitlab to be ready 
 echo "waiting for git.example.com to be ready " 
@@ -50,3 +50,9 @@ curl --request POST --header "PRIVATE-TOKEN: solo-token-123" \
      --header "Content-Type: application/json" --data '{
         "name": "infra", "description": "infra", "visibility": "public", "initialize_with_readme": "true"}' \
      --url "http://git.example.com/api/v4/projects/"
+
+# Backstage 
+cd $INSTALL_ROOT_DIR/backstage 
+yarn install 
+yarn dev
+cd $INSTALL_ROOT_DIR

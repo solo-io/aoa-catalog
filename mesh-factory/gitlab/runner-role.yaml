@@ -11,8 +11,13 @@ rules:
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 - apiGroups: [""]
   resources: ["pods"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+- apiGroups: [""]
+  resources: ["pods/exec"]
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]  
-
+- apiGroups: [""]
+  resources: ["pods/attach"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]  
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1

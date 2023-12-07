@@ -1,5 +1,4 @@
-TOKEN=$(curl --request POST "http://git.example.com/api/v4/runners" --form "token=solo-token-123" --form "description=default-runner" --form "run_untagged=true" | jq '.token')
-
+TOKEN=$(curl -k -H 'Private-token: solo-token-123' -X POST 'http://git.example.com/api/v4/user/runners?runner_type=instance_type&description=main&run_untagged=true' | jq -r '.token')
 kubectl apply -f runner-role.yaml 
 
 helm repo add gitlab https://charts.gitlab.io
