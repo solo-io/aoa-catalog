@@ -1,0 +1,27 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: ${{ values.name }}
+  namespace: ${{ values.workspace }}-config
+spec:
+  hosts:
+    - '${{ values.name }}.${{ values.workspace }}.idp.glooplatform.com'
+  virtualGateways:
+    - name: north-south-gw
+      namespace: istio-gateways
+      cluster: mgmt
+  http:
+  - name: ${{ values.name }}
+    matchers:
+    - uri:
+        prefix: /
+    forwardTo:
+      pathRewrite: /
+      destinations:
+      - ref:
+          name: ${{ values.name }}
+          namespace: ${{ values.workspace }}-config
+        kind: VIRTUAL_DESTINATION
+        port:
+          number: 8080
+---

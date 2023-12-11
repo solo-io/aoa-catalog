@@ -1,0 +1,63 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
+kind: Template
+metadata:
+  name: cluster
+  title: Create Cluster
+  description: Creating a Kubernetes cluster
+spec:
+  owner: group:platform
+  type: service
+
+  # These parameters are used to generate the input form in the frontend, and are
+  # used to gather input data for the execution of the template.
+  parameters:
+    - title: Create a Cluster
+      required:
+        - name
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique name of the component
+          ui:autofocus: true
+          ui:options:
+            rows: 5
+            
+  # These steps are executed in the scaffolder backend, using data that we gathered
+  # via the parameters above.
+  steps:
+    # Each step executes an action, in this case one templates files into the working directory.
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./content
+        values:
+          name: ${{ parameters.name }}
+
+    # This step publishes the contents of the working directory to GitHub.
+    - id: publish
+      name: Publish
+      action: publish:github:pull-request
+      input:
+        allowedHosts: ['github.com']
+        description: Adding cluster name ${{ parameters.name }}
+        repoUrl: github.com?repo=gloo-catalog&owner=asayah
+        targetPath: clusters/${{ parameters.name }}
+        branchName: cluster_${{ parameters.name }}
+        title: Adding Cluster = ${{ parameters.name }}
+
+    # The final step is to register our new component in the catalog.
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: https://github.com/asayah/gloo-catalog/blob/cluster_${{ parameters.name }}
+        catalogInfoPath: /clusters/${{ parameters.name }}/catalog-info.yaml
+
+  # Outputs are displayed to the user after a successful execution of the template.
+  output:
+    links:
+      - title: Review and approve the following PR
+        url: ${{ steps.publish.output.remoteUrl }}

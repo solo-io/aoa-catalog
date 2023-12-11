@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: ${{ values.workspace }}-${{ values.name }}
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - cluster: glooplatform-east
+        url: https://34.66.53.75
+      - cluster: glooplatform-central
+        url: https://34.139.252.74
+  template:
+    metadata:
+      name: '${{ "{{cluster}}-" + values.workspace + "-" +  values.name }}'
+    spec:
+      project: default
+      source:
+        repoURL: '${{ values.repo_url }}'
+        targetRevision: main
+        path: "manifests/kube"
+        directory:
+          exclude: '{*/catalog-info.yaml}'
+      destination:
+        server: '{{url}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - ApplyOutOfSyncOnly=true

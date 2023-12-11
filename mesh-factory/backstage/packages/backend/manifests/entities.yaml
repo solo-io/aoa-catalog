@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: default
+  description: Default system
+spec:
+  owner: platform
+  domain: default
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: us-west-1
+  description: "this is a region"
+spec:
+  type: region
+  system: default
+  owner: user:alex
+  lifecycle: experimental
+  cluster_name: cluster1
+  url: https://34.73.72.254

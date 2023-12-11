@@ -1,0 +1,17 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: ${{ values.name }}
+  namespace: ${{ values.workspace }}-config
+spec:
+  hosts:
+  - ${{ values.name }}.${{ values.workspace }}.solo-io.mesh
+  services:
+  - labels:
+      app: ${{ values.name }}
+    namespace: ${{ values.workspace }}
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http

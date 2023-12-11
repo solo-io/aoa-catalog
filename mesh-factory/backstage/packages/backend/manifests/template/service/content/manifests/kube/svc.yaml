@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${{ values.name  }}
+  namespace: ${{ values.team  }}
+  labels:
+    app: ${{ values.name  }}
+    service: ${{ values.name  }}
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: ${{ values.name  }}

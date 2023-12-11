@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ${{ values.name  }}
+  namespace: ${{ values.team  }}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${{ values.name  }}
+  namespace: ${{ values.team  }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ${{ values.name  }}
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: ${{ values.name  }}
+        version: v1
+    spec:
+      serviceAccountName: ${{ values.name  }}
+      containers:
+      - image: docker.io/asayahtest/${{ values.name  }}
+        imagePullPolicy: IfNotPresent
+        name: ${{ values.name  }}
+        ports:
+        - containerPort: 8080

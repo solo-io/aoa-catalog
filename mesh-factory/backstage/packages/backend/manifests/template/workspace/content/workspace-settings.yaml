@@ -1,0 +1,16 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: WorkspaceSettings
+metadata:
+  name: ${{ values.name | dump }}
+  namespace: ${{ values.name + "-config"}}
+spec:
+  exportTo:
+  - workspaces:
+    - name: "*"
+  importFrom:
+  - workspaces:
+    - name: "*"
+  options:
+    serviceIsolation: 
+      enabled: false
+      trimProxyConfig: false
