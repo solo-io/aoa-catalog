@@ -46,6 +46,10 @@ spec:
               inclusionRegexps:
                 - ".*proxy_latency.*"
         pilot:
+          pilot:
+            autoscaleEnabled: false
+            replicaCount: 2
+            rollingMaxUnavailable: 50%
           env:
             PILOT_ENABLE_K8S_SELECT_WORKLOAD_ENTRIES: "false"
             PILOT_SKIP_VALIDATE_TRUST_DOMAIN: "true"
