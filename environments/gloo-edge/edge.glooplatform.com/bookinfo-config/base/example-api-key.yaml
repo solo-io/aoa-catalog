@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+type: extauth.solo.io/apikey
+metadata:
+  labels:
+    team: infrastructure
+  name: infra-apikey
+  namespace: gloo-system
+data:
+  api-key: TjJZd01ESXhaVEV0TkdVek5TMWpOemd6TFRSa1lqQXRZakUyWXpSa1pHVm1OamN5

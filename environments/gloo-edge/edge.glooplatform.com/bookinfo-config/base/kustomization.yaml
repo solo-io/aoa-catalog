@@ -5,3 +5,5 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - bookinfo-vs.yaml
+- api-key-auth.yaml
+- example-api-key.yaml
