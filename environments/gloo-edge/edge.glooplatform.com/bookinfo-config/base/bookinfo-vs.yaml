@@ -14,8 +14,7 @@ spec:
     routes:
     - matchers:
       - headers:
-         - name: user
-           value: jason
+         - name: x-company
         prefix: /
       routeAction:
         single:
