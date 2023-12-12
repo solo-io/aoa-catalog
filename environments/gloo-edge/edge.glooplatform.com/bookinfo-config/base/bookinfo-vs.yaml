@@ -47,27 +47,27 @@ spec:
                name: wafrulesets
                namespace: gloo-system
         customInterventionMessage: 'ModSecurity intervention! Custom message details here..'
-      #jwt:
-      #  providers:
-      #    solo:
-      #      tokenSource:
-      #        headers:
-      #        - header: x-token
-      #        queryParams:
-      #        - token
-      #      claimsToHeaders:
-      #      - claim: user
-      #        header: subscriber
-      #      issuer: solo.io
-      #      jwks:
-      #        local:
-      #          key: |
-      #            -----BEGIN PUBLIC KEY-----
-      #            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6IA5LB7RG7eqoPyoP3GM
-      #            gWIdYKwIvYsekCHKf2Co3nCb7ii2kDsNNHJygTsHFO2v5Fqe0/z40A2Qtkf3GjKl
-      #            CnFJCoxWX22PZNqEC4b1g12xqZyv7AE8pqhLkp/EFfB1abZJtboIC1y280JVk+iK
-      #            iEYGYjC5/PxV3Ynk1QuqC+rcdu6XP6m76p/bzYygaBGVU6ekaDG5B3vheqOlAe/f
-      #            hq82aS9V0vjKZbob0uNJFB0diTgUVhFech+CN9lYX7ucUwA5OqRV7zpXTFzxo08c
-      #            K/WHCWcZX6TCsfcYHV90abTNl7v+n5JDJfxQJp4RKlVQ4CaEIKBwZtIj1dvbZ9wZ
-      #            gQIDAQAB
-      #            -----END PUBLIC KEY-----
+      jwt:
+        providers:
+          solo:
+            tokenSource:
+              headers:
+              - header: x-token
+              queryParams:
+              - token
+            claimsToHeaders:
+            - claim: user
+              header: subscriber
+            issuer: solo.io
+            jwks:
+              local:
+                key: |
+                  -----BEGIN PUBLIC KEY-----
+                  MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6IA5LB7RG7eqoPyoP3GM
+                  gWIdYKwIvYsekCHKf2Co3nCb7ii2kDsNNHJygTsHFO2v5Fqe0/z40A2Qtkf3GjKl
+                  CnFJCoxWX22PZNqEC4b1g12xqZyv7AE8pqhLkp/EFfB1abZJtboIC1y280JVk+iK
+                  iEYGYjC5/PxV3Ynk1QuqC+rcdu6XP6m76p/bzYygaBGVU6ekaDG5B3vheqOlAe/f
+                  hq82aS9V0vjKZbob0uNJFB0diTgUVhFech+CN9lYX7ucUwA5OqRV7zpXTFzxo08c
+                  K/WHCWcZX6TCsfcYHV90abTNl7v+n5JDJfxQJp4RKlVQ4CaEIKBwZtIj1dvbZ9wZ
+                  gQIDAQAB
+                  -----END PUBLIC KEY-----
