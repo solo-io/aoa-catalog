@@ -203,7 +203,7 @@ spec:
                     icon: "fas fa-cloud"
                     items:
                       - name: "Bookinfo"
-                        subtitle: "bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy"
+                        subtitle: "see api-key detail in welcome section"
                         icon: "fas fa-book-reader"
                         tag: "bookinfo"
                         url: "https://bookinfo.edge.glooplatform.com/productpage"
