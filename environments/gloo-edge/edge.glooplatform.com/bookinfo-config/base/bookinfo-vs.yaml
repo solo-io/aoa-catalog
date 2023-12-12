@@ -14,7 +14,7 @@ spec:
     routes:
     - matchers:
       - headers:
-         - name: x-company
+         - name: user
         prefix: /
       routeAction:
         single:
@@ -66,8 +66,8 @@ spec:
               queryParams:
               - token
             claimsToHeaders:
-            - claim: org
-              header: x-company
+            - claim: user
+              header: subscriber
             issuer: solo.io
             jwks:
               local:
