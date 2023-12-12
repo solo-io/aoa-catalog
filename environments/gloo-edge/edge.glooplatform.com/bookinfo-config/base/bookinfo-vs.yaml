@@ -21,22 +21,22 @@ spec:
               upstream:
                 name: bookinfo-v1-productpage-9080
                 namespace: gloo-system
-            weight: 5
+            weight: 100
           - destination:
               upstream:
                 name: bookinfo-v2-productpage-9080
                 namespace: gloo-system
-            weight: 5
-    - matchers:
-      - headers:
-         - name: end-user
-           value: subscriber
-        prefix: /
-      routeAction:
-        single:
-          upstream:
-            name: bookinfo-v2-productpage-9080
-            namespace: gloo-system
+            weight: 0
+    #- matchers:
+    #  - headers:
+    #     - name: end-user
+    #       value: subscriber
+    #    prefix: /
+    #  routeAction:
+    #    single:
+    #      upstream:
+    #        name: bookinfo-v2-productpage-9080
+    #        namespace: gloo-system
     options:
       extauth:
         configRef:
