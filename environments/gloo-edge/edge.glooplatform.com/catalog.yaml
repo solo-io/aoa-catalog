@@ -78,7 +78,7 @@ waves:
       post_deploy:
       -  $env_path/solo-dev-portal-config/test.sh    
   - name: homer-app
-    location: $env_path/homer-app/glootest.com
+    location: $env_path/homer-app/glooplatform.com
     scripts:
       pre_deploy: 
       -  $env_path/homer-app/init.sh

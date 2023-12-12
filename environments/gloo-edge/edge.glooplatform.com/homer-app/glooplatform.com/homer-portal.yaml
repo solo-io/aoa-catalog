@@ -190,7 +190,7 @@ spec:
                     icon: "fas fa-cloud"
                     items:
                       - name: "Bookinfo"
-                        subtitle: "user: jdoe@solo.io / password: gloo-admin"
+                        subtitle: "bookinfo-key: "N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy"
                         icon: "fas fa-book-reader"
                         tag: "bookinfo"
                         url: "https://bookinfo.edge.glooplatform.com/productpage"
