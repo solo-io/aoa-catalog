@@ -12,6 +12,11 @@ spec:
     domains:
     - 'bookinfo.edge.glooplatform.com'
     routes:
+    - matchers:
+         - prefix: /api-key
+        directResponseAction:
+          status: 200
+          body: "bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy"
     # if provided a valid api-key, jwt token, and logged in user then route to v2 upstream (red stars)
     - matchers:
       - headers:
