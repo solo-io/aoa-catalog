@@ -12,6 +12,7 @@ spec:
     domains:
     - 'bookinfo.edge.glooplatform.com'
     routes:
+    # if you are a logged in user, route to v2 (red stars)
     - matchers:
       - headers:
          - name: cookie
@@ -21,6 +22,7 @@ spec:
           upstream:
             name: bookinfo-v2-productpage-9080
             namespace: gloo-system
+    # if provided a valid api-key and jwt token, but are not logged in, route to v1 (no stars / red stars)
     - matchers:
       - prefix: /
       routeAction:
@@ -30,12 +32,12 @@ spec:
               upstream:
                 name: bookinfo-v1-productpage-9080
                 namespace: gloo-system
-            weight: 50
+            weight: 100
           - destination:
               upstream:
                 name: bookinfo-v2-productpage-9080
                 namespace: gloo-system
-            weight: 50
+            weight: 0
     options:
       extauth:
         configRef:
