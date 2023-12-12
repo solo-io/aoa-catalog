@@ -28,9 +28,8 @@ spec:
 
 
 
-
-
           Routing Config:
+          
           apiVersion: gateway.solo.io/v1
           kind: VirtualService
           metadata:
