@@ -13,6 +13,15 @@ spec:
     - 'bookinfo.edge.glooplatform.com'
     routes:
     - matchers:
+      - headers:
+         - name: end-user
+           value: subscriber
+      routeAction:
+        single:
+          upstream:
+            name: bookinfo-v2-productpage-9080
+            namespace: gloo-system
+    - matchers:
       - prefix: /
       routeAction:
         multi:
@@ -27,16 +36,6 @@ spec:
                 name: bookinfo-v2-productpage-9080
                 namespace: gloo-system
             weight: 100
-    #- matchers:
-    #  - headers:
-    #     - name: end-user
-    #       value: subscriber
-    #    prefix: /
-    #  routeAction:
-    #    single:
-    #      upstream:
-    #        name: bookinfo-v2-productpage-9080
-    #        namespace: gloo-system
     options:
       extauth:
         configRef:
