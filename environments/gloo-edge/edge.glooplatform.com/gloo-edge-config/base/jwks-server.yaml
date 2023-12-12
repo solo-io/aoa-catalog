@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jwks-server
+  name: jwks-server
+  namespace: gloo-system
+spec:
+  selector:
+    matchLabels:
+      app: jwks-server
+  template:
+    metadata:
+      labels:
+        app: jwks-server
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: jwks-vol
+      volumes:
+      - configMap:
+          name: jwks
+        name: jwks-vol
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: jwks-server
+  name: jwks-server
+  namespace: gloo-system
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: jwks-server

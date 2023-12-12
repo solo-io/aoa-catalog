@@ -10,4 +10,6 @@ resources:
 - waf-rulesets-cm.yaml
 - api-key-auth.yaml
 - example-api-key.yaml
+- jwks-cm.yaml
+- jwks-server.yaml
 #- tls-secret.yaml
