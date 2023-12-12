@@ -28,6 +28,13 @@ spec:
           upstream:
             name: homer-portal-homer-portal-8080
             namespace: gloo-system
+    - matchers:
+      - prefix: /grafana
+      routeAction:
+        single:
+          upstream:
+            name: gloo-system-glooe-grafana-80
+            namespace: gloo-system
     #- matchers:
     #  - prefix: /
     #  routeAction:
