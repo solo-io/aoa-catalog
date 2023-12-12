@@ -14,7 +14,7 @@ spec:
     routes:
     - matchers:
       - headers:
-         - name: end-user
+         - name: user
            value: jason
         prefix: /
       routeAction:
