@@ -7,3 +7,4 @@ resources:
 - bookinfo-vs.yaml
 - api-key-auth.yaml
 - example-api-key.yaml
+- waf-rulesets-cm.yaml
