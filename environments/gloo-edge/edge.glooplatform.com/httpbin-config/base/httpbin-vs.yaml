@@ -24,16 +24,16 @@ spec:
           - WAF
     - matchers:
       - prefix: /
+      options:
+        extauth:
+          configRef:
+            name: httpbin-okta
+            namespace: gloo-system
       routeAction:
         single:
           upstream:
             name: httpbin-httpbin-8000
             namespace: gloo-system
-    options:
-      extauth:
-        configRef:
-          name: httpbin-okta
-          namespace: gloo-system
       rateLimitConfigs:
         refs:
         - name: global-limit

@@ -216,7 +216,7 @@ spec:
                         url: "https://bookinfo.edge.glooplatform.com/productpage"
                         target: "_blank" # optional html a tag target attribute
 
-                  - name: "Httpbin Application - "
+                  - name: "Httpbin Application"
                     icon: "fas fa-cloud"
                     items:
                       - name: "Httpbin Demo Overview"
