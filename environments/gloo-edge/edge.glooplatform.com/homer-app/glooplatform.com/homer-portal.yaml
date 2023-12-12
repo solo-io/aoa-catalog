@@ -152,7 +152,7 @@ spec:
                             127.0.0.1 argocd.edge.glooplatform.com rollouts-demo.edge.glooplatform.com rollouts.edge.glooplatform.com<br /><br />
                             Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice
                             (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />
-                            More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-gateway/single-cluster-freestyle#application-description'>here</a>";
+                            More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-gateway/single-cluster-freestyle#application-description'>here</a>";"
 
                 
                 # Optional navbar
