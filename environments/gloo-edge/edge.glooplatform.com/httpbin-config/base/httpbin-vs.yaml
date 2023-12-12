@@ -29,12 +29,11 @@ spec:
           upstream:
             name: httpbin-httpbin-8000
             namespace: gloo-system
-      options:
-        extauth:
+    options:
+      extauth:
         configRef:
           name: httpbin-okta
           namespace: gloo-system
-    options:
       rateLimitConfigs:
         refs:
         - name: global-limit
