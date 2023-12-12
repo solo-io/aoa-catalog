@@ -16,8 +16,7 @@ spec:
       - headers:
          - name: end-user
            value: subscriber
-           invertMatch: true
-        #prefix: /
+        prefix: /
       routeAction:
         single:
           upstream:
