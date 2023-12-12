@@ -29,8 +29,8 @@ spec:
             weight: 5
     - matchers:
       - headers:
-         - name: user
-           value: preferred
+         - name: end-user
+           value: subscriber
         prefix: /
       routeAction:
         single:
