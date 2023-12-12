@@ -194,9 +194,15 @@ spec:
                         url: "https://edge-demo.glooplatform.com/grafana"
                         target: "_blank" # optional html a tag target attribute
                   
-                  - name: "Web Applications"
+                  - name: "Bookinfo Application"
                     icon: "fas fa-cloud"
                     items:
+                      - name: "Bookinfo Demo Overview"
+                        subtitle: "review use-cases"
+                        icon: "fas fa-book-reader"
+                        tag: "bookinfo"
+                        url: "https://bookinfo.edge.glooplatform.com/overview"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "Bookinfo Sample Keys"
                         subtitle: "api-key and jwt token"
                         icon: "fas fa-book-reader"
@@ -204,11 +210,15 @@ spec:
                         url: "https://bookinfo.edge.glooplatform.com/sample-keys"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Bookinfo"
-                        subtitle: "api-key and jwt headers required"
+                        subtitle: "api-key and jwt token headers required"
                         icon: "fas fa-book-reader"
                         tag: "bookinfo"
                         url: "https://bookinfo.edge.glooplatform.com/productpage"
                         target: "_blank" # optional html a tag target attribute
+
+                  - name: "Httpbin Application - "
+                    icon: "fas fa-cloud"
+                    items:
                       - name: "httpbin"
                         subtitle: "user: jdoe@solo.io / password: gloo-admin"
                         icon: "far fa-window-maximize"
@@ -220,12 +230,6 @@ spec:
                         icon: "far fa-window-maximize"
                         tag: "httpbin"
                         url: "https://httpbin.edge.glooplatform.com/get"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "httpbin /anything"
-                        subtitle: "user: jdoe@solo.io / password: gloo-admin"
-                        icon: "far fa-window-maximize"
-                        tag: "httpbin"
-                        url: "https://httpbin.edge.glooplatform.com/anything"
                         target: "_blank" # optional html a tag target attribute
                 
                   - name: "Rollout Strategies"

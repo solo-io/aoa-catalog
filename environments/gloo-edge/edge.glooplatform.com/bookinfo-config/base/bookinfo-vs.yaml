@@ -13,6 +13,19 @@ spec:
     - 'bookinfo.edge.glooplatform.com'
     routes:
     - matchers:
+       - prefix: /overview
+      directResponseAction:
+        status: 200
+        body: |
+          Bookinfo Demo Use-cases
+          - API-key Auth
+          - JWT validation
+          - Header Matching
+          - Multi Destination Routing
+          - WAF
+          - Claims to Headers
+
+    - matchers:
        - prefix: /sample-keys
       directResponseAction:
         status: 200
