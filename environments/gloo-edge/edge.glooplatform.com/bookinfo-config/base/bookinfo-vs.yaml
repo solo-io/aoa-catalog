@@ -34,7 +34,7 @@ spec:
           action: ALWAYS
           location: FILTER_STATE
         coreRuleSet:
-          customSettingsString: |-
+          customSettingsString: |
           # Default rules section
           SecRuleEngine On
           SecRequestBodyAccess On
