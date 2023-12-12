@@ -14,7 +14,7 @@ spec:
     routes:
     - matchers:
       - headers:
-         - name: user
+         - name: cookie
         prefix: /
       routeAction:
         single:
