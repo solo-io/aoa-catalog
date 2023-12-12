@@ -26,6 +26,10 @@ spec:
           - WAF
           - Claims to Headers
 
+
+
+
+
           Routing Config:
           apiVersion: gateway.solo.io/v1
           kind: VirtualService
