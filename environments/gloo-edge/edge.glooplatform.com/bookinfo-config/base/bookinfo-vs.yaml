@@ -17,7 +17,8 @@ spec:
       directResponseAction:
         status: 200
         body: |
-          bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy,
+          bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy
+          
           x-token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzb2xvLmlvIiwic3ViIjoiMDk4NzY1NDMyMiIsInVzZXIiOiJzdWJzY3JpYmVyIiwib3JnIjoib3RoZXJjb21wYW55LmNvbSJ9.jl0JpSKGVIBWLC1_UzyspnTS4z72N-mNpO8B2kr5sYZldDgW6A6qvyvPnI_0rINfiTzkRSNmKoCGZaY-qbFl6FAKyAoFf5ZrblZSw3CL9Akt3U8Ok8ts9J6zK8umqL2u7nDO_xLdejCUYYj4lpNp99wsLSRrk4KmBXUhJPIcM7sDX5AFnSda4IccIP1ms_B5LQbIZ24xAixxmIqtMaxEx4nYXv3t-wgynbKFJSzLwyNNxqxIN6gs6sqHWc7Ky81AZAE2DrcAkDWjAd-uVIX6ZbPwQrupjFi5zg9WJJEtxu4N7pN2tEk1IVGSI_H-RMZ1itnBGCyuyNFcSg7-xyBtLw"
 
     # if provided a valid api-key, jwt token, and logged in user then route to v2 upstream (red stars)
