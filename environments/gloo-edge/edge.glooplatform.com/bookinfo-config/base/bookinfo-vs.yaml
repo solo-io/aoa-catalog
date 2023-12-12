@@ -30,6 +30,7 @@ spec:
             weight: 5
     options:
       waf:
+        disabled: true
         auditLogging:
           action: ALWAYS
           location: FILTER_STATE
