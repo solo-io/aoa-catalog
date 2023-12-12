@@ -48,3 +48,13 @@ spec:
                name: wafrulesets
                namespace: gloo-system
         customInterventionMessage: 'ModSecurity intervention! Custom message details here..'
+      jwt:
+        providers:
+          solo-provider:
+            issuer: solo.io
+            jwks:
+              remote:
+                upstreamRef:
+                  name: gloo-system-jwks-server-80
+                  namespace: gloo-system
+                url: http://jwks-server/jwks.json
