@@ -42,6 +42,10 @@ spec:
               # Will block by default
               SecDefaultAction "phase:1,log,auditlog,deny,status:403"
               SecDefaultAction "phase:2,log,auditlog,deny,status:403"
+
+              # Deny when a semi-colon is found in the 'ip' parameter
+              SecRule ARGS:ip ";" "t:none,log,deny,msg:'semi-colon detected in ip parameter',id:2"
+
               # only allow http2 connections
               SecAction \
                 "id:900230,\
