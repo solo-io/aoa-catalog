@@ -33,12 +33,9 @@ spec:
           name: apikey-auth
           namespace: gloo-system
       waf:
-        auditLogging:
-          action: ALWAYS
-          location: FILTER_STATE
         customInterventionMessage: 'ModSecurity intervention! Custom message details here..'
-           ruleSets:
-           - ruleStr: |
-               # Turn rule engine on
-               SecRuleEngine On
-               SecRule REQUEST_HEADERS:User-Agent "scammer" "deny,status:403,id:107,phase:1,msg:'blocked scammer'"    
+        ruleSets:
+        - ruleStr: |
+            # Turn rule engine on
+            SecRuleEngine On
+            SecRule REQUEST_HEADERS:User-Agent "scammer" "deny,status:403,id:107,phase:1,msg:'blocked scammer'" 
