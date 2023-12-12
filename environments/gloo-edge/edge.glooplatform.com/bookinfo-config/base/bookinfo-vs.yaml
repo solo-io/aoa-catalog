@@ -49,6 +49,9 @@ spec:
               # block incoming request if argument `?param1=test`
               SecRule ARGS:param1 "test" "id:1,deny,msg:'failed test - param1=test'"
 
+              # block incoming request if header is set to User-Agent: scammer
+              SecRule REQUEST_HEADERS:User-Agent "scammer" "deny,status:403,id:107,phase:1,msg:'blocked scammer'"
+
               # allow only letters in username
               SecRule ARGS:/username/ "[^a-zA-Z]" "t:none,phase:2,deny,id:6,log,msg:'allow only letters in username'"
 
