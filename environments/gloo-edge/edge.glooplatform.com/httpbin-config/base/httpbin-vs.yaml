@@ -33,35 +33,66 @@ spec:
           action: ALWAYS
           location: FILTER_STATE
         coreRuleSet:
-          customSettingsString: "# default rules section\nSecRuleEngine On\nSecRequestBodyAccess
-            On\nSecDefaultAction \"phase:1,log,auditlog,pass,status:403\"\nSecDefaultAction
-            \"phase:2,log,auditlog,pass,status:403\"\n#\n# custom rules section\n#\n#
-            -=[ Deny when a semi-colon is found in the 'ip' parameter ]=-\nSecRule
-            ARGS:ip \";\" \"t:none,log,deny,msg:'semi-colon detected in ip parameter',id:2\"\n#\n#
-            \n# -=[ block incoming request if argument `?param1=test` ]=-\nSecRule
-            ARGS:param1 \"test\" \"id:1,deny,msg:'failed test - param1=test'\"\n#\n#
-            \n# -=[ block incoming request if header is set to User-Agent: scammer
-            ]=-\nSecRule REQUEST_HEADERS:User-Agent \"scammer\" \"deny,status:403,id:107,phase:1,msg:'blocked
-            scammer'\"\n#\n# \n# -=[ block incoming requests that do not match the
-            ip below ]=-\n#SecRule REMOTE_ADDR \"!@ipMatch 173.175.0.0/16\" \"phase:1,deny,status:403,id:1,msg:'block
-            ip'\"\n#\n# \n# -=[ only allow http2 connections ]=-\nSecAction \\\n  \"id:900230,\\\n
-            \   phase:1,\\\n    nolog,\\\n    pass,\\\n    t:none,\\\n    setvar:'tx.allowed_http_versions=HTTP/2
-            HTTP/2.0'\"\n#\n#\n# -=[ allow only letters in username ]=-\nSecRule ARGS:/username/
-            \"[^a-zA-Z]\" \"t:none,phase:2,deny,id:6,log,msg:'allow only letters in
-            username'\"\n#\n#\n# -=[ Block Countries ]=-\n# Rules in the IP Reputation
-            file can check the client against a list of high\n# risk country codes.
-            These countries have to be defined in the variable\n# tx.high_risk_country_codes
-            via their ISO 3166 two-letter country code:\n# https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements\n#SecAction
-            \\\n# \"id:900600,\\\n#  phase:1,\\\n#  nolog,\\\n#  pass,\\\n#  t:none,\\\n#
-            \ msg:'requests from this country code are not allowed',\\\n#  setvar:'tx.high_risk_country_codes=UA
-            ID YU LT EG RO BG TR RU PK MY CN'\"\n#\n#\n# -- [[ End of setup ]] --------------------------------------------------------\n#\n#
-            The CRS checks the tx.crs_setup_version variable to ensure that the setup\n#
-            has been loaded. If you are not planning to use this setup template,\n#
-            you must manually set the tx.crs_setup_version variable before including\n#
-            the CRS rules/* files.\n#\n# The variable is a numerical representation
-            of the CRS version number.\n# E.g., v3.0.0 is represented as 300.\n#\nSecAction
-            \\\n\"id:900990,\\\n  phase:1,\\\n  nolog,\\\n  pass,\\\n  t:none,\\\n
-            \     setvar:tx.crs_setup_version=310\"\n"
+          customSettingsString: |
+            # default rules section
+            SecRuleEngine On
+            SecRequestBodyAccess On
+            SecDefaultAction "phase:1,log,auditlog,pass,status:403"
+            SecDefaultAction "phase:2,log,auditlog,pass,status:403"
+
+            # custom rules section
+            -=[ Deny when a semi-colon is found in the 'ip' parameter ]=-
+            SecRule ARGS:ip ";" "t:none,log,deny,msg:'semi-colon detected in ip parameter',id:2"
+
+            # block incoming request if argument `?param1=test`
+            SecRule ARGS:param1 "test" "id:1,deny,msg:'failed test - param1=test'"
+
+            # block incoming request if header is set to User-Agent: scammer
+            SecRule REQUEST_HEADERS:User-Agent "scammer" "deny,status:403,id:107,phase:1,msg:'blocked scammer'"
+
+            # block incoming requests that do not match the ip below
+            # SecRule REMOTE_ADDR "!@ipMatch 173.175.0.0/16" "phase:1,deny,status:403,id:1,msg:'block ip'"
+
+            # only allow http2 connections
+            SecAction \
+              "id:900230,\
+              phase:1,\
+              nolog,\
+              pass,\
+              t:none,\
+              setvar:'tx.allowed_http_versions=HTTP/2 HTTP/2.0'"
+
+            # allow only letters in username
+            SecRule ARGS:/username/ "[^a-zA-Z]" "t:none,phase:2,deny,id:6,log,msg:'allow only letters in username'"
+
+            # block countries
+            # Rules in the IP Reputation file can check the client against a list of high
+            # risk country codes. These countries have to be defined in the variable
+            # tx.high_risk_country_codes via their ISO 3166 two-letter country code:
+            # https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements
+            # SecAction \
+            # "id:900600,\
+            #  phase:1,\
+            #  nolog,\
+            #  pass,\
+            #  t:none,\
+            #  msg:'requests from this country code are not allowed',\
+            #  setvar:'tx.high_risk_country_codes=UA ID YU LT EG RO BG TR RU PK MY CN'"
+
+            # -- [[ End of setup ]] --------------------------------------------------------
+            # The CRS checks the tx.crs_setup_version variable to ensure that the setup
+            # has been loaded. If you are not planning to use this setup template,
+            # you must manually set the tx.crs_setup_version variable before including
+            # the CRS rules/* files.
+            # The variable is a numerical representation of the CRS version number.
+            # E.g., v3.0.0 is represented as 300.
+            SecAction \
+              "id:900990,\
+              phase:1,\
+              nolog,\
+              pass,\
+              t:none,\
+              setvar:tx.crs_setup_version=310"
         customInterventionMessage: 'ModSecurity intervention! Please check access
           logs for more details: kubectl -n gloo-system logs deploy/gateway-proxy
           -f'
