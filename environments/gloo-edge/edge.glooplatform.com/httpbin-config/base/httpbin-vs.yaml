@@ -43,6 +43,68 @@ spec:
           - Rate Limiting
           - Transformations
           - WAF
+
+
+
+          Routing Config:
+
+          apiVersion: gateway.solo.io/v1
+          kind: VirtualService
+          metadata:
+            name: httpbin-vs
+            namespace: gloo-system
+          spec:
+            sslConfig:
+              secretRef:
+                name: cf-advanced-tls-secret
+                namespace: gloo-system
+            # virtual host level config and options
+            virtualHost:
+              domains:
+              - 'httpbin.edge.glooplatform.com'
+              options:
+                rateLimitConfigs:
+                  refs:
+                  - name: global-limit
+                    namespace: gloo-system
+                transformations:
+                  responseTransformation:
+                    transformationTemplate:
+                      body:
+                        text: '{% if header(":status") == "429" %}<html><body style="background-color:powderblue;"><h1>Too
+                          many Requests!</h1><p>Try again after 10 seconds</p></body></html>{%
+                          else %}{{ body() }}{% endif %}'
+                      parseBodyBehavior: DontParse
+                waf:
+                  configMapRuleSets:
+                     - configMapRef:
+                         name: wafrulesets
+                         namespace: gloo-system
+                  customInterventionMessage: 'ModSecurity intervention! Custom message details here..'
+              # route level config and options
+              routes:
+              - matchers:
+                 - exact: /overview
+                directResponseAction:
+                  status: 200
+                  body: |
+                    Httpbin Demo Use-cases
+                    - OIDC Auth w/ Okta
+                    - Rate Limiting
+                    - Transformations
+                    - WAF
+              - matchers:
+                - prefix: /
+                routeAction:
+                  single:
+                    upstream:
+                      name: httpbin-httpbin-8000
+                      namespace: gloo-system
+                options:
+                  extauth:
+                    configRef:
+                      name: httpbin-okta
+                      namespace: gloo-system
     - matchers:
       - prefix: /
       routeAction:
