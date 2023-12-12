@@ -183,7 +183,7 @@ spec:
                         icon: "fas fa-chart-area"
                         tag: "grafana"
                         keywords: "grafana"
-                        url: "https://edge-demo.glooplatform.com//grafana"
+                        url: "https://edge-demo.glooplatform.com/grafana"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Web Applications"
