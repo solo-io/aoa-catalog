@@ -27,6 +27,16 @@ spec:
                 name: bookinfo-v2-productpage-9080
                 namespace: gloo-system
             weight: 5
+    - matchers:
+      - headers:
+         - name: user
+           value: preferred
+        prefix: /
+      routeAction:
+        single:
+          upstream:
+            name: bookinfo-v2-productpage-9080
+            namespace: gloo-system
     options:
       extauth:
         configRef:
