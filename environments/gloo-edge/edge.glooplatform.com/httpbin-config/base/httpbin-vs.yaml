@@ -8,6 +8,7 @@ spec:
     secretRef:
       name: cf-advanced-tls-secret
       namespace: gloo-system
+  # virtual host level config and options
   virtualHost:
     domains:
     - 'httpbin.edge.glooplatform.com'
@@ -30,6 +31,7 @@ spec:
                name: wafrulesets
                namespace: gloo-system
         customInterventionMessage: 'ModSecurity intervention! Custom message details here..'
+    # route level config and options
     routes:
     - matchers:
        - exact: /overview
