@@ -29,6 +29,10 @@ spec:
                 namespace: gloo-system
             weight: 5
     options:
+      extauth:
+        configRef:
+          name: apikey-auth
+          namespace: gloo-system
       waf:
         auditLogging:
           action: ALWAYS
