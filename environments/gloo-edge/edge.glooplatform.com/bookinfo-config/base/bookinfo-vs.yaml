@@ -21,43 +21,8 @@ spec:
           upstream:
             name: bookinfo-v2-productpage-9080
             namespace: gloo-system
-    - matchers:
-      - prefix: /
-      routeAction:
-        multi:
-          destinations:
-          - destination:
-              upstream:
-                name: bookinfo-v1-productpage-9080
-                namespace: gloo-system
-            weight: 50
-          - destination:
-              upstream:
-                name: bookinfo-v2-productpage-9080
-                namespace: gloo-system
-            weight: 50
-    options:
-      extauth:
-        configRef:
-          name: apikey-auth
-          namespace: gloo-system
-      waf:
-        configMapRuleSets:
-           - configMapRef:
-               name: wafrulesets
-               namespace: gloo-system
-        customInterventionMessage: 'ModSecurity intervention! Custom message details here..'
-      #jwt:
-      #  providers:
-      #    solo-provider:
-      #      issuer: solo.io
-      #      jwks:
-      #        remote:
-      #          upstreamRef:
-      #            name: gloo-system-jwks-server-80
-      #            namespace: gloo-system
-      #          url: http://jwks-server/jwks.json
-      jwt:
+      routeOptions:
+        jwt:
         providers:
           solo:
             tokenSource:
@@ -81,3 +46,39 @@ spec:
                   K/WHCWcZX6TCsfcYHV90abTNl7v+n5JDJfxQJp4RKlVQ4CaEIKBwZtIj1dvbZ9wZ
                   gQIDAQAB
                   -----END PUBLIC KEY-----
+    - matchers:
+      - prefix: /
+      routeAction:
+        multi:
+          destinations:
+          - destination:
+              upstream:
+                name: bookinfo-v1-productpage-9080
+                namespace: gloo-system
+            weight: 100
+          - destination:
+              upstream:
+                name: bookinfo-v2-productpage-9080
+                namespace: gloo-system
+            weight: 0
+    options:
+      extauth:
+        configRef:
+          name: apikey-auth
+          namespace: gloo-system
+      waf:
+        configMapRuleSets:
+           - configMapRef:
+               name: wafrulesets
+               namespace: gloo-system
+        customInterventionMessage: 'ModSecurity intervention! Custom message details here..'
+      #jwt:
+      #  providers:
+      #    solo-provider:
+      #      issuer: solo.io
+      #      jwks:
+      #        remote:
+      #          upstreamRef:
+      #            name: gloo-system-jwks-server-80
+      #            namespace: gloo-system
+      #          url: http://jwks-server/jwks.json
