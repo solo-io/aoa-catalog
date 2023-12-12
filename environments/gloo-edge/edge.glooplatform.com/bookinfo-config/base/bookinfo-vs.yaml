@@ -66,4 +66,6 @@ spec:
             of the CRS version number.\n# E.g., v3.0.0 is represented as 300.\n#\nSecAction
             \\\n\"id:900990,\\\n  phase:1,\\\n  nolog,\\\n  pass,\\\n  t:none,\\\n
             \     setvar:tx.crs_setup_version=310\"\n"
-          customInterventionMessage: "ModSecurity intervention! Please check access logs for more details: kubectl -n gloo-system logs deploy/gateway-proxy -f"
+        customInterventionMessage: 'ModSecurity intervention! Please check access
+          logs for more details: kubectl -n gloo-system logs deploy/gateway-proxy
+          -f'
