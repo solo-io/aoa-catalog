@@ -46,6 +46,12 @@ spec:
               # Deny when a semi-colon is found in the 'ip' parameter
               SecRule ARGS:ip ";" "t:none,log,deny,msg:'semi-colon detected in ip parameter',id:2"
 
+              # block incoming request if argument `?param1=test`
+              SecRule ARGS:param1 "test" "id:1,deny,msg:'failed test - param1=test'"
+
+              # allow only letters in username
+              SecRule ARGS:/username/ "[^a-zA-Z]" "t:none,phase:2,deny,id:6,log,msg:'allow only letters in username'"
+
               # only allow http2 connections
               SecAction \
                 "id:900230,\
