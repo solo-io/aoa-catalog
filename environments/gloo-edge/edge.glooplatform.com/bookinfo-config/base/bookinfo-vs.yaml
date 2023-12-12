@@ -63,5 +63,4 @@ spec:
               pass, \
               t:none, \
               setvar:tx.crs_setup_version=310"
-          customInterventionMessage: >-
-            ModSecurity intervention! Please check access logs for more details: kubectl -n gloo-system logs deploy/gateway-proxy -f
+          customInterventionMessage: "ModSecurity intervention! Please check access logs for more details: kubectl -n gloo-system logs deploy/gateway-proxy -f"
