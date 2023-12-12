@@ -219,6 +219,12 @@ spec:
                   - name: "Httpbin Application - "
                     icon: "fas fa-cloud"
                     items:
+                      - name: "Httpbin Demo Overview"
+                        subtitle: "review use-cases"
+                        icon: "far fa-window-maximize"
+                        tag: "bookinfo"
+                        url: "https://httpbin.edge.glooplatform.com/overview"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "httpbin"
                         subtitle: "user: jdoe@solo.io / password: gloo-admin"
                         icon: "far fa-window-maximize"

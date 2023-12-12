@@ -11,6 +11,24 @@ spec:
   virtualHost:
     domains:
     - 'httpbin.edge.glooplatform.com'
+    routes:
+    - matchers:
+       - exact: /overview
+      directResponseAction:
+        status: 200
+        body: |
+          Httpbin Demo Use-cases
+          - OIDC Auth w/ Okta
+          - Rate Limiting
+          - Transformations
+          - WAF
+    - matchers:
+      - prefix: /
+      routeAction:
+        single:
+          upstream:
+            name: httpbin-httpbin-8000
+            namespace: gloo-system
     options:
       extauth:
         configRef:
@@ -34,11 +52,3 @@ spec:
                name: wafrulesets
                namespace: gloo-system
         customInterventionMessage: 'ModSecurity intervention! Custom message details here..'
-    routes:
-    - matchers:
-      - prefix: /
-      routeAction:
-        single:
-          upstream:
-            name: httpbin-httpbin-8000
-            namespace: gloo-system
