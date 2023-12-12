@@ -21,7 +21,7 @@ spec:
           upstream:
             name: bookinfo-v2-productpage-9080
             namespace: gloo-system
-      routeOptions:
+      options:
         jwt:
           providers:
             solo:
