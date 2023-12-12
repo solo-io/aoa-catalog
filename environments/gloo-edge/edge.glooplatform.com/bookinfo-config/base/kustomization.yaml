@@ -6,4 +6,4 @@ kind: Kustomization
 resources:
 - bookinfo-vs.yaml
 - api-key-auth.yaml
-#- example-api-key.yaml
+- example-api-key.yaml
