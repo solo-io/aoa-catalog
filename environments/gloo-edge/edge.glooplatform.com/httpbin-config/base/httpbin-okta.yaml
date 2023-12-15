@@ -25,7 +25,7 @@ spec:
           cookie:
             allowRefreshing: true
           cookieOptions:
-            maxAge: 10
+            maxAge: 60
           #redis:
           #  cookieName: session
           #  options:

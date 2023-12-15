@@ -13,10 +13,10 @@ spec:
     domains:
     - 'httpbin.edge.glooplatform.com'
     options:
-      rateLimitConfigs:
-        refs:
-        - name: global-limit
-          namespace: gloo-system
+      #rateLimitConfigs:
+      #  refs:
+      #  - name: global-limit
+      #    namespace: gloo-system
       transformations:
         responseTransformation:
           transformationTemplate:
