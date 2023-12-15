@@ -21,6 +21,8 @@ spec:
           accessTokenHeader: x-access-token
         session:
           failOnFetchFailure: true
+          cookie:
+            allowRefreshing: true
           cookieOptions:
             maxAge: 10
           #redis:
