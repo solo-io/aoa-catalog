@@ -17,7 +17,7 @@ spec:
         issuer: https://dev-22653158.okta.com/oauth2/default
         tokenSource:
           headers:
-          - name: jwt
+          - name: x-id-token
         remote:
           # url grabbed from https://dev-22653158.okta.com/oauth2/default/.well-known/oauth-authorization-server
           url: "https://dev-22653158.okta.com/oauth2/default/v1/keys/"

@@ -38,9 +38,9 @@ spec:
             logoutPath: /logout
             afterLogoutUrl: /get
             headers:
-              idTokenHeader: Jwt
-              #idTokenHeader: x-id-token
-              #accessTokenHeader: x-access-token
+              #idTokenHeader: Jwt
+              idTokenHeader: x-id-token
+              accessTokenHeader: x-access-token
       - opaAuth:
           modules:
           - name: httpbin-opa
