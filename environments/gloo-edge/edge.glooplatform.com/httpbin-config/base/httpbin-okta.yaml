@@ -19,3 +19,9 @@ spec:
         headers:
           idTokenHeader: x-id-token
           accessTokenHeader: x-access-token
+        session:
+          failOnFetchFailure: true
+          redis:
+            cookieName: session
+            options:
+              host: redis.gloo-system.svc.cluster.local:6379
