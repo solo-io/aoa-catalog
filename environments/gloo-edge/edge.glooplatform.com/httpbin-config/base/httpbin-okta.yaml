@@ -16,6 +16,7 @@ spec:
         issuerUrl: https://dev-22653158.okta.com/oauth2/default
         scopes:
         - email
+        - trust
         headers:
           idTokenHeader: x-id-token
           accessTokenHeader: x-access-token
