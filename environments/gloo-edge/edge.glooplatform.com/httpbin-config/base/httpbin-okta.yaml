@@ -25,6 +25,6 @@ spec:
             cookieName: session
             options:
               host: redis.gloo-system.svc.cluster.local:6379
-            allowRefreshing: true
+            allowRefreshing: false
           cookieOptions:
-            maxAge: 60
+            maxAge: 10
