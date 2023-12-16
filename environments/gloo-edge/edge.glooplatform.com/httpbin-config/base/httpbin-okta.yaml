@@ -23,7 +23,7 @@ spec:
         session:
           failOnFetchFailure: true
           cookie:
-            allowRefreshing: true
+            allowRefreshing: false
           cookieOptions:
             maxAge: 60
           #redis:
