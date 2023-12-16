@@ -37,6 +37,7 @@ spec:
                 maxAge: "3600"
             scopes:
             - email
+            - offline_access
             logoutPath: /logout
             afterLogoutUrl: /get
             headers:
