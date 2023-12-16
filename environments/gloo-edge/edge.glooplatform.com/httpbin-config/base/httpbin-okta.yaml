@@ -25,10 +25,11 @@ spec:
           cookie:
             # sets the refresh_token in set-cookie header
             allowRefreshing: true
+          # client side set-cookie options
           cookieOptions:
             maxAge: 0
-          #redis:
-          #  cookieName: session
-          #  options:
-          #    host: redis.gloo-system.svc.cluster.local:6379
-          #  allowRefreshing: true
+          redis:
+            cookieName: session
+            options:
+              host: redis.gloo-system.svc.cluster.local:6379
+            allowRefreshing: true
