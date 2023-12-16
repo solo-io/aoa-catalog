@@ -24,7 +24,7 @@ spec:
           failOnFetchFailure: true
           cookie:
             # sets the refresh_token in set-cookie header
-            allowRefreshing: false
+            allowRefreshing: true
           cookieOptions:
             maxAge: 1
           #redis:
