@@ -23,9 +23,10 @@ spec:
         session:
           failOnFetchFailure: true
           cookie:
+            # sets the refresh_token in set-cookie header
             allowRefreshing: false
           cookieOptions:
-            maxAge: 60
+            maxAge: 1
           #redis:
           #  cookieName: session
           #  options:
