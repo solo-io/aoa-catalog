@@ -23,7 +23,7 @@ spec:
         session:
           failOnFetchFailure: true
           cookie:
-            # sets the refresh_token in set-cookie header
+            # sets the refresh_token in cookie header
             allowRefreshing: true
           # client side set-cookie options
           cookieOptions:

@@ -26,12 +26,14 @@ spec:
             issuerUrl: https://dev-22653158.okta.com/oauth2/default
             session:
               failOnFetchFailure: true
+              cookie:   
+                allowRefreshing: true # sets the refresh_token in cookie header
               redis:
                 cookieName: okta-session
                 options:
                   host: redis.gloo-mesh-addons:6379
-                allowRefreshing: true
-              cookieOptions:
+                allowRefreshing: true        
+              cookieOptions: # client side set-cookie options
                 maxAge: "3600"
             scopes:
             - email
