@@ -1,5 +1,9 @@
 # Changelog
 
+0.1.13 (12-18-23)
+---
+- update rollouts-ui-dashboard to `quay.io/argoproj/kubectl-argo-rollouts:v1.6.4`
+
 0.1.12 (12-7-23)
 ---
 - Specify `${mgmt_context}` cluster context for in the `gloo-platform/core/shared-components/homer-config/test.sh` to properly output the correct LB URL of the mgmt istio ingressgateway for the homer dashboard.
