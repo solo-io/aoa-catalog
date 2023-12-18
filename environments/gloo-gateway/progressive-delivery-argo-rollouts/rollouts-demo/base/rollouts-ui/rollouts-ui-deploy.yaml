@@ -47,7 +47,7 @@ spec:
         proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:
       containers:
-      - image: quay.io/argoproj/kubectl-argo-rollouts:latest
+      - image: quay.io/argoproj/kubectl-argo-rollouts:v1.6.4
         name: argo-rollouts-dashboard
         ports:
         - containerPort: 3100
