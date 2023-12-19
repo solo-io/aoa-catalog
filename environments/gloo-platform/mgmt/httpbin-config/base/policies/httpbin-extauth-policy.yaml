@@ -44,10 +44,10 @@ spec:
               #idTokenHeader: Jwt
               idTokenHeader: x-id-token
               accessTokenHeader: x-access-token
-      - oauth2:
-          accessTokenValidation:
-            introspection:
-              introspectionUrl: https://dev-22653158.okta.com/oauth2/v1/introspect
+      #- oauth2:
+      #    accessTokenValidation:
+      #      introspection:
+      #        introspectionUrl: https://dev-22653158.okta.com/oauth2/v1/introspect
       - opaAuth:
           modules:
           - name: httpbin-opa
