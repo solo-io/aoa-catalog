@@ -44,9 +44,10 @@ spec:
               #idTokenHeader: Jwt
               idTokenHeader: x-id-token
               accessTokenHeader: x-access-token
-            authEndpoint: https://dev-22653158.okta.com/oauth2/default/v1/authorize
-            tokenEndpoint: https://dev-22653158.okta.com/oauth2/default/v1/token
-            revocationEndpoint: https://dev-22653158.okta.com/oauth2/v1/revoke
+              useBearerSchemaForAuthorization: true
+            #authEndpoint: https://dev-22653158.okta.com/oauth2/default/v1/authorize
+            #tokenEndpoint: https://dev-22653158.okta.com/oauth2/default/v1/token
+            #revocationEndpoint: https://dev-22653158.okta.com/oauth2/v1/revoke
 
       #- oauth2:
       #    accessTokenValidation:
