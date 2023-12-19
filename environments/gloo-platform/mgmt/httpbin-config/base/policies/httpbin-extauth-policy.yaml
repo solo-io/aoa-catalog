@@ -48,6 +48,12 @@ spec:
       #    accessTokenValidation:
       #      introspection:
       #        introspectionUrl: https://dev-22653158.okta.com/oauth2/v1/introspect
+      - oauth2:
+          accessTokenValidation:
+            jwt:
+              localJwks:
+                inlineString: >-
+                  {"keys":[{"kty":"RSA","alg":"RS256","kid":"FTenzhhhj_7Su1X4sGpdZz3wUGdlXsQueN-H-2nymYA","use":"sig","e":"AQAB","n":"uw0Icd_O36YZv7ejHHB9it1xm93PTZw8DCuk-8FAGX00DFl_AcRWMuzQsf6LANNVMeyKB8JynzbsIBF2j6XMNQADDpFaE-bQeRvJIytGU1JZ6dNNHqV5sqRCwck1qJVaxQ-nTW6sTO-ecMJo_21NI2dicl5XIPH2PxofO_u8ymXCKqsSEA97NPJImI998pOQ9hkYvJ2UlWoFaYJbxPj2Gvk1YiPdU_dxixZM0kdo41gWLrjjzwVGml_ThpYAA-Oas7GQbPWi8eOvgJDZVX7oSNG3ROkSYGDLGo7vqBmyFSaBGc6O-yCq7A-OV4ZfJ9HRsjnzDPVL4CdMHps-pkjbLQ"},{"kty":"RSA","alg":"RS256","kid":"976QN__CtMWZDJCnSCepGbHhyV4Bd2SZdIiNliGmIus","use":"sig","e":"AQAB","n":"wB9kGb2cuBlNsC-OcoKETHP7cpoCkgs2Ja2T-xmLxzrPOtrWwsyXBVbDEX_-JHNwvJsDaNY7qLg5kMjsuy6WXtfTUYtGSAZNRH8QsO9OOCWocYVX9bx9LH7N1qGJ3M_KqqD2uvsJlu8kqc0iJE1DW2H7YFh-IcWMZjJ7_5p-Acf_8uthedwxoIVBygwkGqq1r2U0j7MKflEofMIPlkosV8wtxJDpIpuOS0N1AUgg9Srw5K1bCNktmYhRSu13qBPDzTqPtxGQsK81-b3gH97l1haO_h8QQRIoq9JGHSbVC_GpLeWVAHuPkKwswlZKY9mpomcsj_Tld1XRFePz5KrlfQ"}]}
       - opaAuth:
           modules:
           - name: httpbin-opa
