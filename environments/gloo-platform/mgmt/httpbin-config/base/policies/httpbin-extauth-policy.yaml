@@ -27,14 +27,15 @@ spec:
             session:
               failOnFetchFailure: true
               cookie:   
-                allowRefreshing: true # sets the refresh_token in cookie header
-              redis:
-                cookieName: okta-session
-                options:
-                  host: redis.gloo-mesh-addons:6379
-                allowRefreshing: true        
+                allowRefreshing: true # sets the refresh_token in cookie header    
               cookieOptions: # client side set-cookie options
-                maxAge: "3600"
+                maxAge: "3600" # 60 mins
+              #redis:
+              #  cookieName: okta-session
+              #  options:
+              #    host: redis.gloo-mesh-addons:6379
+              #  allowRefreshing: true # sets refresh_token in redis-stored cookie
+              #  preExpiryBuffer: "2s" # default
             scopes:
             - email
             - offline_access
