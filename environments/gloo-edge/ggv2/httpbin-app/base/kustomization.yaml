@@ -7,3 +7,4 @@ resources:
 - httpbin.yaml
 - httpbin-ns.yaml
 - httpbin-https.yaml
+- httpbin-http.yaml
