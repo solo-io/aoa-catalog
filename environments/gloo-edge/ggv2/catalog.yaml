@@ -1,0 +1,16 @@
+
+waves:
+  - name: gloo-gateway-v2-app
+    location: $env_path/gloo-gateway-v2-app/helm
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-gateway-v2-app/init.sh
+      post_deploy:
+      -  $env_path/gloo-gateway-v2-app/test.sh  
+  #- name: gloo-gateway-v2-config
+  #  location: $env_path/gloo-gateway-v2-config/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/gloo-gateway-v2-config/init.sh
+  #    post_deploy:
+  #    -  $env_path/gloo-gateway-v2-config/test.sh
