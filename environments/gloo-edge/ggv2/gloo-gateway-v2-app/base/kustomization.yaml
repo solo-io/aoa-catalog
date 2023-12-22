@@ -4,5 +4,5 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-#- ggv2.yaml
-- ggv2-direct.yaml
+- ggv2.yaml
+#- ggv2-direct.yaml

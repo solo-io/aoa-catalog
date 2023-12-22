@@ -11,13 +11,16 @@ spec:
   syncPolicy:
     automated:
       prune: true
-  source:
-    path: environments/gloo-edge/shared-components/gloo-gateway-v2-app
+  sources:
+  - path: environments/gloo-edge/shared-components/gloo-gateway-v2-app
     repoURL: https://github.com/solo-io/aoa-catalog
     targetRevision: ggv2
     helm:
       valueFiles:
-      - values.yaml
+      - $values/environments/gloo-edge/ggv2/gloo-gateway-v2-app/base/values.yaml
+  - repoURL: 'https://github.com/solo-io/aoa-catalog'
+    targetRevision: ggv2
+    ref: values
   syncPolicy:
     automated:
       prune: true
