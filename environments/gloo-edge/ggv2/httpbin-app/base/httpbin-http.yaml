@@ -11,6 +11,10 @@ spec:
     - name: http
       namespace: gloo-system
   rules:
-    - backendRefs:
-        - name: httpbin
-          port: 8000
+    - matches:
+      - path:
+          type: PathPrefix
+          value: /get
+      backendRefs:
+      - name: httpbin
+        port: 8000
