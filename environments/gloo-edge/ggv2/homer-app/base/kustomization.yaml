@@ -4,5 +4,7 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- ../base
+- homer-portal-ns.yaml
+- homer-portal.yaml
+- homer-https.yaml
 

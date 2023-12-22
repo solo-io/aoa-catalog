@@ -14,3 +14,17 @@ waves:
       -  $env_path/gloo-gateway-v2-config/init.sh
       post_deploy:
       -  $env_path/gloo-gateway-v2-config/test.sh
+  - name: httpbin-app
+    location: $env_path/httpbin-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/httpbin-app/init.sh
+      post_deploy:
+      -  $env_path/httpbin-app/test.sh    
+  - name: homer-app
+    location: $env_path/homer-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer-app/init.sh
+      post_deploy:
+      -  $env_path/homer-app/test.sh 
