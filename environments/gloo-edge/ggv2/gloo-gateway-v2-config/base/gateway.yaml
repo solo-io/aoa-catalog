@@ -8,6 +8,9 @@ metadata:
 spec:
   gatewayClassName: gloo-gateway
   listeners:
+    - name: http
+      protocol: HTTP
+      port: 80
     - name: https
       port: 443
       protocol: HTTPS
