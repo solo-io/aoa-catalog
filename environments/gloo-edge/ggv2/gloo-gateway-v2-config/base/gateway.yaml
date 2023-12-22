@@ -11,7 +11,7 @@ spec:
     - name: https
       port: 443
       protocol: HTTPS
-      hostname: 'argocd.glootest.com'
+      #hostname: 'argocd.glootest.com'
       tls:
         mode: Terminate
         certificateRefs:
