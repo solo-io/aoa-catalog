@@ -7,6 +7,8 @@ metadata:
     example: argocd-route
     gateway: https
 spec:
+  hostnames:
+  - "argocd.glootest.com"
   parentRefs:
     - name: https
       namespace: gloo-system
