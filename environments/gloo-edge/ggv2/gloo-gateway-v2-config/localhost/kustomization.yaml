@@ -4,7 +4,5 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- httpbin.yaml
-- httpbin-ns.yaml
-- httpbin-https.yaml
-- httpbin-http.yaml
+- gateway-http.yaml
+- argocd-http.yaml

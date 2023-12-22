@@ -9,5 +9,5 @@ echo "if running locally with K3d:"
 echo "access the dashboard at http://localhost/solo"
 echo
 echo "If using LoadBalancer External-IP:"
-echo "access the dashboard at http://$(kubectl get svc -n gloo-system --selector=app.kubernetes.io/name=gloo-proxy-http -o jsonpath='{.items[*].status.loadBalancer.ingress[0].*}')/solo"
+echo "access the dashboard at https://homer.glootest.com/solo"
 echo
