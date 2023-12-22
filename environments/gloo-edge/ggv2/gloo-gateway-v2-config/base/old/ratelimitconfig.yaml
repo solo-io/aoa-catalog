@@ -1,0 +1,17 @@
+apiVersion: ratelimit.solo.io/v1alpha1
+kind: RateLimitConfig
+metadata:
+  name: global-limit
+  namespace: gloo-system
+spec:
+  raw:
+    descriptors:
+    - key: generic_key
+      rateLimit:
+        requestsPerUnit: 10
+        unit: MINUTE
+      value: count
+    rateLimits:
+    - actions:
+      - genericKey:
+          descriptorValue: count
