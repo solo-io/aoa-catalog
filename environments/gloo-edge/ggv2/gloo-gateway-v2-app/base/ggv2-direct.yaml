@@ -8,9 +8,6 @@ spec:
     namespace: gloo-system
     server: https://kubernetes.default.svc
   project: default
-  syncPolicy:
-    automated:
-      prune: true
   sources:
     - path: projects/gateway2/helm/gloo-gateway
       repoURL: https://github.com/solo-io/gloo
