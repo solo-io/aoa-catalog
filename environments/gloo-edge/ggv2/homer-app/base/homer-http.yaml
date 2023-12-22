@@ -11,6 +11,10 @@ spec:
     - name: http
       namespace: gloo-system
   rules:
-    - backendRefs:
-        - name: homer-portal
-          port: 8080
+    - matches:
+      - path:
+          type: PathPrefix
+          value: /solo
+      backendRefs:
+      - name: homer-portal
+        port: 8080

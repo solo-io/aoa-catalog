@@ -6,5 +6,5 @@ kind: Kustomization
 resources:
 - homer-portal-ns.yaml
 - homer-portal.yaml
-- homer-https.yaml
+- homer-http.yaml
 
