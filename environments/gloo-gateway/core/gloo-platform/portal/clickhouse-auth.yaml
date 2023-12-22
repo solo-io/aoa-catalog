@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: clickhouse-auth
-  namespace: gloo-mesh
-type: Opaque
-data:
-  # password = password
-  password: cGFzc3dvcmQ=
