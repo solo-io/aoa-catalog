@@ -8,9 +8,6 @@ spec:
     namespace: gloo-system
     server: https://kubernetes.default.svc
   project: default
-  syncPolicy:
-    automated:
-      prune: true
   sources:
   - path: environments/gloo-edge/shared-components/gloo-gateway-v2-app
     repoURL: https://github.com/solo-io/aoa-catalog
