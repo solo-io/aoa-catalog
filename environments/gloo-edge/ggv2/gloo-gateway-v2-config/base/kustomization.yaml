@@ -4,6 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- gateway.yaml
-- httproute.yaml
+- gateway-http.yaml
+- gateway-https.yaml
+- argocd-http.yaml
+- argocd-https.yaml
 - upstream-tls.yaml
