@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gloo-gateway-v2
+  namespace: argocd
+spec:
+  destination:
+    namespace: gloo-system
+    server: https://kubernetes.default.svc
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+  source:
+    path: environments/gloo-edge/shared-components/gloo-gateway-v2-app
+    repoURL: https://github.com/solo-io/aoa-catalog
+    targetRevision: ggv2
+    helm:
+      valueFiles:
+      - values.yaml
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
