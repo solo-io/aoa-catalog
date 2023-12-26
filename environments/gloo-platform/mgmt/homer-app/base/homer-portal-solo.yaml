@@ -229,7 +229,8 @@ spec:
                     icon: "fas fa-cloud"
                     items:
                       - name: "Gloo Mesh UI"
-                        icon: "fas fa-arrows-alt"
+                        #icon: "fas fa-arrows-alt"
+                        logo: "solo/glooy.png"
                         tag: "gmui"
                         url: "https://ui.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
@@ -377,7 +378,8 @@ spec:
                         target: "_blank" # optional html a tag target attribute
                       - name: "React Portal Frontend"
                         subtitle: "External Developer Portal"
-                        icon: "fab fa-connectdevelop"
+                        #icon: "fab fa-connectdevelop"
+                        logo: "solo/glooy.png"
                         tag: "external-portal"
                         url: "https://external-portal.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
