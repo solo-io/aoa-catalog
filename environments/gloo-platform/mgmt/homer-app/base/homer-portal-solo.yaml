@@ -30,7 +30,7 @@ spec:
           # -- image repository
           repository: ably77/homer
           # -- image tag
-          tag: 0.0.4
+          tag: 0.0.5
           # -- image pull policy
           pullPolicy: IfNotPresent
         
@@ -281,7 +281,8 @@ spec:
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "Gateway Capabilities - ExtAuth / JWT / OPA / Rate Limiting / WAF / Progressive Delivery"
-                    icon: "fas fa-cloud"
+                    #icon: "fas fa-cloud"
+                    logo: "solo/gloo-gateway.png"
                     items:
                       - name: "httpbin"
                         subtitle: "public endpoint"
