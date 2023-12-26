@@ -229,8 +229,7 @@ spec:
                     icon: "fas fa-cloud"
                     items:
                       - name: "Gloo Mesh UI"
-                        #icon: "fas fa-arrows-alt"
-                        logo: "solo/glooy.png"
+                        icon: "fas fa-arrows-alt"
                         tag: "gmui"
                         url: "https://ui.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
@@ -281,8 +280,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "Gateway Capabilities - ExtAuth / JWT / OPA / Rate Limiting / WAF / Progressive Delivery"
-                    #icon: "fas fa-cloud"
-                    logo: "solo/gloo-gateway-2.png"
+                    icon: "fas fa-cloud"
                     items:
                       - name: "httpbin"
                         subtitle: "public endpoint"
@@ -323,8 +321,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute  
 
                   - name: "Mesh Capabilities - Multicluster / Failover / OutlierDetection / Chaos and Resiliency Testing"
-                    #icon: "fas fa-cloud"
-                    logo: "solo/gloo-mesh-2.png"
+                    icon: "fas fa-cloud"
                     items:
 
                       - name: "Online Boutique - East"
@@ -370,8 +367,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "Developer Portals"
-                    #icon: "fab fa-connectdevelop"
-                    logo: "solo/gloo-portal-2.png"
+                    icon: "fab fa-connectdevelop"
                     items:
                       - name: "Backstage"
                         subtitle: "Internal Developer Portal"
@@ -381,8 +377,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute
                       - name: "React Portal Frontend"
                         subtitle: "External Developer Portal"
-                        #icon: "fab fa-connectdevelop"
-                        logo: "solo/glooy.png"
+                        icon: "fab fa-connectdevelop"
                         tag: "external-portal"
                         url: "https://external-portal.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
