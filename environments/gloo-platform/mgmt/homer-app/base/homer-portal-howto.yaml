@@ -30,7 +30,7 @@ spec:
           # -- image repository
           repository: ably77/homer
           # -- image tag
-          tag: 0.0.2
+          tag: 0.0.3
           # -- image pull policy
           pullPolicy: IfNotPresent
         
@@ -120,7 +120,7 @@ spec:
                 
                 title: "Gloo Platform Demo Tutorials"
                 subtitle: "Every Connection, Every Direction, One API"
-                logo: "logo.png"
+                logo: "solo-logo.png"
                 # icon: "fas fa-skull-crossbones" # Optional icon
                 
                 header: true
