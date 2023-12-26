@@ -30,7 +30,7 @@ spec:
           # -- image repository
           repository: ably77/homer
           # -- image tag
-          tag: 0.0.6
+          tag: 0.0.7
           # -- image pull policy
           pullPolicy: IfNotPresent
         
@@ -282,7 +282,7 @@ spec:
 
                   - name: "Gateway Capabilities - ExtAuth / JWT / OPA / Rate Limiting / WAF / Progressive Delivery"
                     #icon: "fas fa-cloud"
-                    logo: "solo/gloo-gateway.png"
+                    logo: "solo/gloo-gateway-2.png"
                     items:
                       - name: "httpbin"
                         subtitle: "public endpoint"
@@ -324,7 +324,7 @@ spec:
 
                   - name: "Mesh Capabilities - Multicluster / Failover / OutlierDetection / Chaos and Resiliency Testing"
                     #icon: "fas fa-cloud"
-                    logo: "solo/gloo-mesh.png"
+                    logo: "solo/gloo-mesh-2.png"
                     items:
 
                       - name: "Online Boutique - East"
@@ -371,7 +371,7 @@ spec:
 
                   - name: "Developer Portals"
                     #icon: "fab fa-connectdevelop"
-                    logo: "solo/gloo-portal.png"
+                    logo: "solo/gloo-portal-2.png"
                     items:
                       - name: "Backstage"
                         subtitle: "Internal Developer Portal"
