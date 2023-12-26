@@ -30,7 +30,7 @@ spec:
           # -- image repository
           repository: ably77/homer
           # -- image tag
-          tag: 0.0.7
+          tag: 0.0.3
           # -- image pull policy
           pullPolicy: IfNotPresent
         
