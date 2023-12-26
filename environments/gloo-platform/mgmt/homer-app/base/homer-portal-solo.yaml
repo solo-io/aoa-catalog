@@ -30,7 +30,7 @@ spec:
           # -- image repository
           repository: ably77/homer
           # -- image tag
-          tag: 0.0.5
+          tag: 0.0.6
           # -- image pull policy
           pullPolicy: IfNotPresent
         
@@ -323,7 +323,8 @@ spec:
                         target: "_blank" # optional html a tag target attribute  
 
                   - name: "Mesh Capabilities - Multicluster / Failover / OutlierDetection / Chaos and Resiliency Testing"
-                    icon: "fas fa-cloud"
+                    #icon: "fas fa-cloud"
+                    logo: "solo/gloo-mesh.png"
                     items:
 
                       - name: "Online Boutique - East"
@@ -369,7 +370,8 @@ spec:
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "Developer Portals"
-                    icon: "fab fa-connectdevelop"
+                    #icon: "fab fa-connectdevelop"
+                    logo: "solo/gloo-portal.png"
                     items:
                       - name: "Backstage"
                         subtitle: "Internal Developer Portal"
