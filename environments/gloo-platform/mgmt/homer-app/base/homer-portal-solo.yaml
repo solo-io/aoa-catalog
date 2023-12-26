@@ -28,9 +28,9 @@ spec:
         
         image:
           # -- image repository
-          repository: b4bz/homer
+          repository: ably77/homer
           # -- image tag
-          tag: v23.05.1
+          tag: 0.0.4
           # -- image pull policy
           pullPolicy: IfNotPresent
         
@@ -120,7 +120,7 @@ spec:
                 
                 title: "Gloo Platform Demo Dashboard"
                 subtitle: "Every Connection, Every Direction, One API"
-                logo: "logo.png"
+                logo: "solo/glooy.png"
                 # icon: "fas fa-skull-crossbones" # Optional icon
                 
                 header: true
