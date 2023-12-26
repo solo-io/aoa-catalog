@@ -182,15 +182,15 @@ spec:
                     url: "https://github.com/solo-io/aoa-catalog"
                     target: "_blank" # optional html a tag target attribute
                   - name: "Gloo Mesh Documentation"
-                    icon: "fas fa-book"
+                    logo: "solo/glooy.png"
                     url: "https://docs.solo.io/gloo-mesh-enterprise"
                     target: "_blank" # optional html a tag target attribute
                   - name: "Gloo Gateway Documentation"
-                    icon: "fas fa-book"
+                    logo: "solo/glooy.png"
                     url: "https://docs.solo.io/gloo-gateway"
                     target: "_blank" # optional html a tag target attribute
                   - name: "Gloo Gateway Portal Documentation"
-                    icon: "fas fa-book"
+                    logo: "solo/glooy.png"
                     url: "https://docs.solo.io/gloo-gateway/latest/portal/"
                     target: "_blank" # optional html a tag target attribute
                   # this will link to a second homer page that will load config from additional-page.yml and keep default config values as in config.yml file
@@ -205,7 +205,7 @@ spec:
                 services:
 
                   - name: "Navigate the Gloo Platform UI"
-                    icon: "fas fa-arrows-alt"
+                    logo: "solo/glooy.png"
                     items:
                       #- name: "Gloo Mesh UI (Google Auth)"
                       #  icon: "fas fa-arrows-alt"
