@@ -59,11 +59,11 @@ spec:
   #    - uri:
   #        prefix: /callback
   - name: solo-howto
-    labels:
-      homer: howto
     delegate:
       routeTables:
-      - namespace: homer-portal
+      - labels:
+          homer: howto
+        namespace: homer-portal
   - name: redirect
     # Prefix matching for the old path
     matchers:
