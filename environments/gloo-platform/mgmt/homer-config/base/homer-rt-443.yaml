@@ -42,22 +42,7 @@ spec:
           prefix: /solo
       - uri:
           prefix: /callback
-  #- name: solo-howto
-  #  forwardTo:
-  #    destinations:
-  #    - port:
-  #        number: 8080
-  #      ref:
-  #        cluster: mgmt
-  #        name: homer-portal-howto
-  #        namespace: homer-portal
-  #  #labels:
-  #  #  gcp-oauth: "true"
-  #  matchers:
-  #    - uri:
-  #        prefix: /howto
-  #    - uri:
-  #        prefix: /callback
+  # delegated to rt with label homer: howto in homer-portal namespace
   - name: solo-howto
     labels:
       homer: howto

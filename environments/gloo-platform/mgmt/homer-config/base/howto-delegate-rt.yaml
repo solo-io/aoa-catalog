@@ -11,8 +11,6 @@ spec:
       - uri:
           prefix: /howto
       name: howto-main
-      labels:
-        homer: howto
       forwardTo:
         destinations:
           - ref:
