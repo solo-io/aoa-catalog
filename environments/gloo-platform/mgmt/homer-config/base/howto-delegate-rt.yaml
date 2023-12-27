@@ -8,7 +8,6 @@ metadata:
 spec:
   http:
     - name: howto-ui
-      # Prefix matching
       matchers:
       - uri:
           exact: /howto/ui
@@ -54,6 +53,36 @@ spec:
             - WAF
             - WASM Deployment
           - Review Debug tab 
+        status: 200
+    - name: howto-admin
+      matchers:
+      - uri:
+          exact: /howto/admin
+      directResponse:
+        body: |
+          Admin Applications Walkthrough:
+
+          Uptime Dashboard:
+          Description: A self-hosted monitoring tool for applications running on glooplatform.com
+          - Login through Google Auth to access the Uptime Dashboard 
+          - View/Update the list of applications to monitor
+
+          Prometheus:
+          Description: Access to the Prometheus UI for querying metrics
+          - Login through Google Auth to access the Prometheus UI
+          - Provide a query to view metrics coming from the OTEL pipeline such as `istio_requests_total`
+
+          Argo CD:
+          Description: Access to the Argo CD UI for managing GitOps deployments
+          - Login through Google Auth to access the Argo CD UI
+          - Useful to view/edit apps that are synced with the aoa-catalog github repo
+          - Useful for viewing deployment configuration / logs / errors when troubleshooting
+          - Ability to turn on/off automatic sync of apps
+
+          Grafana:
+          Description: Access to the Grafana UI for viewing dashboards
+          - Login through Google Auth to access the Argo CD UI
+          - View dashboards for Gloo Platform Operations, Kubernetes Cluster, Istio, and Gloo Portal 
         status: 200
     - name: howto-main
       matchers:
