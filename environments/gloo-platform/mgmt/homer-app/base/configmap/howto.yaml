@@ -90,11 +90,11 @@ services:
   - name: "Navigate the Gloo Platform UI"
     icon: "fas fa-arrows-alt"
     items:
-      #- name: "Gloo Mesh UI (Google Auth)"
-      #  icon: "fas fa-arrows-alt"
-      #  tag: "gmui"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
+      - name: "Gloo Mesh UI - Feature Overview"
+        icon: "fas fa-arrows-alt"
+        tag: "gmui"
+        url: "https://demo.glooplatform.com/howto/ui"
+        target: "_blank" # optional html a tag target attribute
 
   - name: "Navigate the Admin Applications"
     icon: "fas fa-cloud"
