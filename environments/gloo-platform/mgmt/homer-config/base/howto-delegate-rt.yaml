@@ -3,6 +3,8 @@ kind: RouteTable
 metadata:
   name: homer-howto
   namespace: homer-portal
+  labels:
+    homer: howto
 spec:
   http:
     - matchers:
