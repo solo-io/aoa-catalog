@@ -87,17 +87,81 @@ message:
 # First level array represent a group.
 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
 services:
+  - name: "Navigate the Gloo Platform UI"
+    icon: "fas fa-arrows-alt"
+    items:
+      #- name: "Gloo Mesh UI (Google Auth)"
+      #  icon: "fas fa-arrows-alt"
+      #  tag: "gmui"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+
+  - name: "Navigate the Admin Applications"
+    icon: "fas fa-cloud"
+    items:
+      #- name: "Using ArgoCD"
+      #  icon: "fab fa-git-alt"
+      #  tag: "argocd"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+      #- name: "Using Grafana"
+      #  icon: "fas fa-chart-area"
+      #  tag: "grafana"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+      #- name: "Using Prometheus"
+      #  icon: "fas fa-chart-area"
+      #  tag: "prometheus"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+      #- name: "Using Code Server"
+      #  icon: "fas fa-cloud"
+      #  tag: "codeserver"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+      #- name: "Check Demo Health Using the Uptime Dashboard"
+      #  icon: "fas fa-heartbeat"
+      #  tag: "uptime"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+
+  - name: "Mesh Onboarding"
+    icon: "fab fa-connectdevelop"
+    items:
+      #- name: "Cluster Registration"
+      #  icon: "fab fa-connectdevelop"
+      #  tag: "glooplatform"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+      #- name: "Istio Lifecyclemanager"
+      #  icon: "fab fa-connectdevelop"
+      #  tag: "istio"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+
+  - name: "Demos using Gloo Gateway Portal"
+    icon: "fab fa-git-alt"
+    items:
+      - name: "Feature Overview"
+        icon: "fab fa-git-alt"
+        tag: "portal"
+        url: "https://www.youtube.com/watch?v=YL1aqjZDqGQ"
+        target: "_blank" # optional html a tag target attribute
+      #- name: "Backstage Integration"
+      #  icon: "fab fa-git-alt"
+      #  tag: "portal"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+      #- name: "Portal User Workflow"
+      #  icon: "fab fa-git-alt"
+      #  tag: "portal"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+
+
   - name: "Applications"
     icon: "fas fa-cloud"
     items:
-      - name: "Navigate the Gloo Platform UI"
-        icon: "fas fa-arrows-alt"
-        items:
-          #- name: "Gloo Mesh UI (Google Auth)"
-          #  icon: "fas fa-arrows-alt"
-          #  tag: "gmui"
-          #  url: "https://ui.glooplatform.com"
-          #  target: "_blank" # optional html a tag target attribute
       - name: "Awesome app"
         logo: "assets/tools/sample.png"
         subtitle: "Bookmark example"
