@@ -99,31 +99,11 @@ services:
   - name: "Navigate the Admin Applications"
     icon: "fas fa-cloud"
     items:
-      #- name: "Using ArgoCD"
-      #  icon: "fab fa-git-alt"
-      #  tag: "argocd"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
-      #- name: "Using Grafana"
-      #  icon: "fas fa-chart-area"
-      #  tag: "grafana"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
-      #- name: "Using Prometheus"
-      #  icon: "fas fa-chart-area"
-      #  tag: "prometheus"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
-      #- name: "Using Code Server"
-      #  icon: "fas fa-cloud"
-      #  tag: "codeserver"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
-      #- name: "Check Demo Health Using the Uptime Dashboard"
-      #  icon: "fas fa-heartbeat"
-      #  tag: "uptime"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
+      - name: "Admin Applications - Feature Overview"
+        icon: "fas fa-cloud"
+        tag: "admin-apps"
+        url: "https://demo.glooplatform.com/howto/admin"
+        target: "_blank" # optional html a tag target attribute
 
   - name: "Mesh Onboarding"
     icon: "fab fa-connectdevelop"
