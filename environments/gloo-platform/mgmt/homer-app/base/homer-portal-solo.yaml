@@ -32,7 +32,7 @@ spec:
           # -- image tag
           tag: 0.0.3
           # -- image pull policy
-          pullPolicy: IfNotPresent
+          pullPolicy: Always
         
         # -- environment variables.
         # @default -- See below
