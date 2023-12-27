@@ -87,190 +87,190 @@ links:
   # Services
   # First level array represent a group.
   # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
-  services:
+  #services:
 
-    - name: "Navigate the Gloo Platform UI"
-      icon: "fas fa-arrows-alt"
-      items:
-        #- name: "Gloo Mesh UI (Google Auth)"
-        #  icon: "fas fa-arrows-alt"
-        #  tag: "gmui"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
+  #  - name: "Navigate the Gloo Platform UI"
+  #    icon: "fas fa-arrows-alt"
+  #    items:
+  #      #- name: "Gloo Mesh UI (Google Auth)"
+  #      #  icon: "fas fa-arrows-alt"
+  #      #  tag: "gmui"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
 
-    - name: "Navigate the Admin Applications"
-      icon: "fas fa-cloud"
-      items:
-        #- name: "Using ArgoCD"
-        #  icon: "fab fa-git-alt"
-        #  tag: "argocd"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
-        #- name: "Using Grafana"
-        #  icon: "fas fa-chart-area"
-        #  tag: "grafana"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
-        #- name: "Using Prometheus"
-        #  icon: "fas fa-chart-area"
-        #  tag: "prometheus"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
-        #- name: "Using Code Server"
-        #  icon: "fas fa-cloud"
-        #  tag: "codeserver"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
-        #- name: "Check Demo Health Using the Uptime Dashboard"
-        #  icon: "fas fa-heartbeat"
-        #  tag: "uptime"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
+  #  - name: "Navigate the Admin Applications"
+  #    icon: "fas fa-cloud"
+  #    items:
+  #      #- name: "Using ArgoCD"
+  #      #  icon: "fab fa-git-alt"
+  #      #  tag: "argocd"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
+  #      #- name: "Using Grafana"
+  #      #  icon: "fas fa-chart-area"
+  #      #  tag: "grafana"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
+  #      #- name: "Using Prometheus"
+  #      #  icon: "fas fa-chart-area"
+  #      #  tag: "prometheus"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
+  #      #- name: "Using Code Server"
+  #      #  icon: "fas fa-cloud"
+  #      #  tag: "codeserver"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
+  #      #- name: "Check Demo Health Using the Uptime Dashboard"
+  #      #  icon: "fas fa-heartbeat"
+  #      #  tag: "uptime"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
 
-    - name: "Mesh Onboarding"
-      icon: "fab fa-connectdevelop"
-      items:
-        #- name: "Cluster Registration"
-        #  icon: "fab fa-connectdevelop"
-        #  tag: "glooplatform"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
-        #- name: "Istio Lifecyclemanager"
-        #  icon: "fab fa-connectdevelop"
-        #  tag: "istio"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
+  #  - name: "Mesh Onboarding"
+  #    icon: "fab fa-connectdevelop"
+  #    items:
+  #      #- name: "Cluster Registration"
+  #      #  icon: "fab fa-connectdevelop"
+  #      #  tag: "glooplatform"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
+  #      #- name: "Istio Lifecyclemanager"
+  #      #  icon: "fab fa-connectdevelop"
+  #      #  tag: "istio"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
 
-    - name: "Demos using Gloo Gateway Portal"
-      icon: "fab fa-git-alt"
-      items:
-        - name: "Feature Overview"
-          icon: "fab fa-git-alt"
-          tag: "portal"
-          url: "https://www.youtube.com/watch?v=YL1aqjZDqGQ"
-          target: "_blank" # optional html a tag target attribute
-        #- name: "Backstage Integration"
-        #  icon: "fab fa-git-alt"
-        #  tag: "portal"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
-        #- name: "Portal User Workflow"
-        #  icon: "fab fa-git-alt"
-        #  tag: "portal"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute    
-    
-    - name: "Demonstrate Progressive Delivery using Argo Rollouts"
-      icon: "fab fa-connectdevelop"
-      items:
-        #- name: "Using the Argo Rollouts Dashboard"
-        #  icon: "fab fa-connectdevelop"
-        #  tag: "rollouts"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
-        #- name: "Using the Argo Rollouts Demo Application"
-        #  icon: "fab fa-connectdevelop"
-        #  tag: "rollouts"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
+  #  - name: "Demos using Gloo Gateway Portal"
+  #    icon: "fab fa-git-alt"
+  #    items:
+  #      - name: "Feature Overview"
+  #        icon: "fab fa-git-alt"
+  #        tag: "portal"
+  #        url: "https://www.youtube.com/watch?v=YL1aqjZDqGQ"
+  #        target: "_blank" # optional html a tag target attribute
+  #      #- name: "Backstage Integration"
+  #      #  icon: "fab fa-git-alt"
+  #      #  tag: "portal"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
+  #      #- name: "Portal User Workflow"
+  #      #  icon: "fab fa-git-alt"
+  #      #  tag: "portal"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute    
+  #  
+  #  - name: "Demonstrate Progressive Delivery using Argo Rollouts"
+  #    icon: "fab fa-connectdevelop"
+  #    items:
+  #      #- name: "Using the Argo Rollouts Dashboard"
+  #      #  icon: "fab fa-connectdevelop"
+  #      #  tag: "rollouts"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
+  #      #- name: "Using the Argo Rollouts Demo Application"
+  #      #  icon: "fab fa-connectdevelop"
+  #      #  tag: "rollouts"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
 
-    - name: "Demos using Online Boutique"
-      icon: "fas fa-shopping-cart"
-      items:
-        - name: "Multicluster Traffic Routing"
-          icon: "fas fa-shopping-cart"
-          tag: "onlineboutique"
-          url: "https://www.youtube.com/watch?v=c4wgigSihJI&list=PLnUM8lhaIH4jQhjeVdmaplmnQMgePlUvb&t=544s"
-          target: "_blank" # optional html a tag target attribute
-        - name: "Locality and Failover"
-          icon: "fas fa-shopping-cart"
-          tag: "onlineboutique"
-          url: "https://www.youtube.com/watch?v=c4wgigSihJI&list=PLnUM8lhaIH4jQhjeVdmaplmnQMgePlUvb&t=629s"
-          target: "_blank" # optional html a tag target attribute
-        - name: "Chaos and Resiliency Testing"
-          icon: "fas fa-shopping-cart"
-          tag: "onlineboutique"
-          url: "https://youtu.be/ikkyE4yKF2U"
-          target: "_blank" # optional html a tag target attribute
-        #- name: "Access Policies"
-        #  icon: "fas fa-shopping-cart"
-        #  tag: "onlineboutique"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
-        #- name: "Workspace Isolation"
-        #  icon: "fas fa-shopping-cart"
-        #  tag: "onlineboutique"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
+  #  - name: "Demos using Online Boutique"
+  #    icon: "fas fa-shopping-cart"
+  #    items:
+  #      - name: "Multicluster Traffic Routing"
+  #        icon: "fas fa-shopping-cart"
+  #        tag: "onlineboutique"
+  #        url: "https://www.youtube.com/watch?v=c4wgigSihJI&list=PLnUM8lhaIH4jQhjeVdmaplmnQMgePlUvb&t=544s"
+  #        target: "_blank" # optional html a tag target attribute
+  #      - name: "Locality and Failover"
+  #        icon: "fas fa-shopping-cart"
+  #        tag: "onlineboutique"
+  #        url: "https://www.youtube.com/watch?v=c4wgigSihJI&list=PLnUM8lhaIH4jQhjeVdmaplmnQMgePlUvb&t=629s"
+  #        target: "_blank" # optional html a tag target attribute
+  #      - name: "Chaos and Resiliency Testing"
+  #        icon: "fas fa-shopping-cart"
+  #        tag: "onlineboutique"
+  #        url: "https://youtu.be/ikkyE4yKF2U"
+  #        target: "_blank" # optional html a tag target attribute
+  #      #- name: "Access Policies"
+  #      #  icon: "fas fa-shopping-cart"
+  #      #  tag: "onlineboutique"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
+  #      #- name: "Workspace Isolation"
+  #      #  icon: "fas fa-shopping-cart"
+  #      #  tag: "onlineboutique"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
 
-    - name: "Demos using Httpbin"
-      icon: "far fa-window-maximize"
-      items:
-        #- name: "ExtAuth with Okta"
-        #  icon: "far fa-window-maximize"
-        #  tag: "httpbin"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
-        #- name: "Rate Limiting"
-        #  icon: "far fa-window-maximize"
-        #  tag: "httpbin"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute   
-        #- name: "JWT Validation, ClaimsToHeaders, and Transformations"
-        #  icon: "far fa-window-maximize"
-        #  tag: "httpbin"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute  
-        #- name: "OPA AuthZ"
-        #  icon: "far fa-window-maximize"
-        #  tag: "httpbin"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute  
-        #- name: "WAFPolicy"
-        #  icon: "far fa-window-maximize"
-        #  tag: "httpbin"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
-        #- name: "Workspace Isolation"
-        #  icon: "far fa-window-maximize"
-        #  tag: "httpbin"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute  
-        #- name: "Plow Loadgenerator"
-        #  icon: "far fa-window-maximize"
-        #  tag: "httpbin"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute    
+  #  - name: "Demos using Httpbin"
+  #    icon: "far fa-window-maximize"
+  #    items:
+  #      #- name: "ExtAuth with Okta"
+  #      #  icon: "far fa-window-maximize"
+  #      #  tag: "httpbin"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
+  #      #- name: "Rate Limiting"
+  #      #  icon: "far fa-window-maximize"
+  #      #  tag: "httpbin"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute   
+  #      #- name: "JWT Validation, ClaimsToHeaders, and Transformations"
+  #      #  icon: "far fa-window-maximize"
+  #      #  tag: "httpbin"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute  
+  #      #- name: "OPA AuthZ"
+  #      #  icon: "far fa-window-maximize"
+  #      #  tag: "httpbin"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute  
+  #      #- name: "WAFPolicy"
+  #      #  icon: "far fa-window-maximize"
+  #      #  tag: "httpbin"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
+  #      #- name: "Workspace Isolation"
+  #      #  icon: "far fa-window-maximize"
+  #      #  tag: "httpbin"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute  
+  #      #- name: "Plow Loadgenerator"
+  #      #  icon: "far fa-window-maximize"
+  #      #  tag: "httpbin"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute    
 
-    - name: "Demos using Bookinfo"
-      icon: "fas fa-book-reader"
-      items:
-        #- name: "Multicluster Routing with VirtualDestinations"
-        #  icon: "fas fa-book-reader"
-        #  tag: "bookinfo"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute 
-        #- name: "Locality and Failover"
-        #  icon: "fas fa-book-reader"
-        #  tag: "bookinfo"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute 
-        #- name: "Workspace Isolation"
-        #  icon: "fas fa-shopping-cart"
-        #  tag: "onlineboutique"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
+  #  - name: "Demos using Bookinfo"
+  #    icon: "fas fa-book-reader"
+  #    items:
+  #      #- name: "Multicluster Routing with VirtualDestinations"
+  #      #  icon: "fas fa-book-reader"
+  #      #  tag: "bookinfo"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute 
+  #      #- name: "Locality and Failover"
+  #      #  icon: "fas fa-book-reader"
+  #      #  tag: "bookinfo"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute 
+  #      #- name: "Workspace Isolation"
+  #      #  icon: "fas fa-shopping-cart"
+  #      #  tag: "onlineboutique"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
 
-    - name: "Demos using Podinfo"
-      icon: "fas fa-info-circle"
-      items:
-        #- name: "Locality and Subset Failover"
-        #  icon: "fas fa-info-circle"
-        #  tag: "podinfo"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute
-        #- name: "Workspace Isolation"
-        #  icon: "fas fa-info-circle"
-        #  tag: "podinfo"
-        #  url: "https://ui.glooplatform.com"
-        #  target: "_blank" # optional html a tag target attribute 
+  #  - name: "Demos using Podinfo"
+  #    icon: "fas fa-info-circle"
+  #    items:
+  #      #- name: "Locality and Subset Failover"
+  #      #  icon: "fas fa-info-circle"
+  #      #  tag: "podinfo"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute
+  #      #- name: "Workspace Isolation"
+  #      #  icon: "fas fa-info-circle"
+  #      #  tag: "podinfo"
+  #      #  url: "https://ui.glooplatform.com"
+  #      #  target: "_blank" # optional html a tag target attribute 
