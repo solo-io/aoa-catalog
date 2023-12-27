@@ -158,23 +158,123 @@ services:
       #  url: "https://ui.glooplatform.com"
       #  target: "_blank" # optional html a tag target attribute
 
+  - name: "Demonstrate Progressive Delivery using Argo Rollouts"
+    icon: "fab fa-connectdevelop"
+    items:
+      #- name: "Using the Argo Rollouts Dashboard"
+      #  icon: "fab fa-connectdevelop"
+      #  tag: "rollouts"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+      #- name: "Using the Argo Rollouts Demo Application"
+      #  icon: "fab fa-connectdevelop"
+      #  tag: "rollouts"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+
+  - name: "Demos using Online Boutique"
+    icon: "fas fa-shopping-cart"
+    items:
+      - name: "Multicluster Traffic Routing"
+        icon: "fas fa-shopping-cart"
+        tag: "onlineboutique"
+        url: "https://www.youtube.com/watch?v=c4wgigSihJI&list=PLnUM8lhaIH4jQhjeVdmaplmnQMgePlUvb&t=544s"
+        target: "_blank" # optional html a tag target attribute
+      - name: "Locality and Failover"
+        icon: "fas fa-shopping-cart"
+        tag: "onlineboutique"
+        url: "https://www.youtube.com/watch?v=c4wgigSihJI&list=PLnUM8lhaIH4jQhjeVdmaplmnQMgePlUvb&t=629s"
+        target: "_blank" # optional html a tag target attribute
+      - name: "Chaos and Resiliency Testing"
+        icon: "fas fa-shopping-cart"
+        tag: "onlineboutique"
+        url: "https://youtu.be/ikkyE4yKF2U"
+        target: "_blank" # optional html a tag target attribute
+      #- name: "Access Policies"
+      #  icon: "fas fa-shopping-cart"
+      #  tag: "onlineboutique"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+      #- name: "Workspace Isolation"
+      #  icon: "fas fa-shopping-cart"
+      #  tag: "onlineboutique"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+
+  - name: "Demos using Httpbin"
+    icon: "far fa-window-maximize"
+    items:
+      #- name: "ExtAuth with Okta"
+      #  icon: "far fa-window-maximize"
+      #  tag: "httpbin"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+      #- name: "Rate Limiting"
+      #  icon: "far fa-window-maximize"
+      #  tag: "httpbin"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute   
+      #- name: "JWT Validation, ClaimsToHeaders, and Transformations"
+      #  icon: "far fa-window-maximize"
+      #  tag: "httpbin"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute  
+      #- name: "OPA AuthZ"
+      #  icon: "far fa-window-maximize"
+      #  tag: "httpbin"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute  
+      #- name: "WAFPolicy"
+      #  icon: "far fa-window-maximize"
+      #  tag: "httpbin"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+      #- name: "Workspace Isolation"
+      #  icon: "far fa-window-maximize"
+      #  tag: "httpbin"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute  
+      #- name: "Plow Loadgenerator"
+      #  icon: "far fa-window-maximize"
+      #  tag: "httpbin"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute  
+
+  - name: "Demos using Bookinfo"
+    icon: "fas fa-book-reader"
+    items:
+      #- name: "Multicluster Routing with VirtualDestinations"
+      #  icon: "fas fa-book-reader"
+      #  tag: "bookinfo"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute 
+      #- name: "Locality and Failover"
+      #  icon: "fas fa-book-reader"
+      #  tag: "bookinfo"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute 
+      #- name: "Workspace Isolation"
+      #  icon: "fas fa-shopping-cart"
+      #  tag: "onlineboutique"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute  
+
+  - name: "Demos using Podinfo"
+    icon: "fas fa-info-circle"
+    items:
+      #- name: "Locality and Subset Failover"
+      #  icon: "fas fa-info-circle"
+      #  tag: "podinfo"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute
+      #- name: "Workspace Isolation"
+      #  icon: "fas fa-info-circle"
+      #  tag: "podinfo"
+      #  url: "https://ui.glooplatform.com"
+      #  target: "_blank" # optional html a tag target attribute 
+
 
   - name: "Applications"
-    icon: "fas fa-cloud"
-    items:
-      - name: "Awesome app"
-        logo: "assets/tools/sample.png"
-        subtitle: "Bookmark example"
-        tag: "app"
-        keywords: "self hosted reddit"
-        url: "https://www.reddit.com/r/selfhosted/"
-        target: "_blank" # optional html a tag target attribute
-      - name: "Another one"
-        logo: "assets/tools/sample2.png"
-        subtitle: "Another application"
-        tag: "app"
-        url: "#"
-  - name: "blah"
     icon: "fas fa-cloud"
     items:
       - name: "Awesome app"
