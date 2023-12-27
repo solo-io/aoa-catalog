@@ -54,6 +54,7 @@ spec:
             - WAF
             - WASM Deployment
           - Review Debug tab 
+        status: 200
     - name: howto-main
       matchers:
       - uri:
