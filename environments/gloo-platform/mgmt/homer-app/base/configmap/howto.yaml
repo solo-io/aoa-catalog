@@ -1,3 +1,4 @@
+
 ---
 # Homepage configuration
 # See https://fontawesome.com/v5/search for icons options
@@ -8,12 +9,14 @@ logo: "solo/glooy.png"
 # icon: "fas fa-skull-crossbones" # Optional icon
                 
 header: true
-#footer: '<p>Created with <span class="has-text-danger">❤️</span> wi
+#footer: '<p>Created with <span class="has-text-danger">❤️</span> with <a href="https://bulma.io/">bulma</a>, <a href="https://vuejs.org/">vuejs</a> & <a href="https://fontawesome.com/">font awesome</a> // Fork me on <a href="https://github.com/bastienwirtz/homer"><i class="fab fa-github-alt"></i></a></p>' # set false if you want to hide it.
 footer: false
+
 # Set the default layout and color scheme
 defaults:
   layout: list # Either 'columns', or 'list'
   colorTheme: dark # One of 'auto', 'light', or 'dark'
+        
 # Optional theme customization
 theme: default
 colors:
@@ -43,17 +46,17 @@ colors:
     card-shadow: rgba(0, 0, 0, 0.4)
     link: "#3273dc"
     link-hover: "#ffdd57"
-                
+
 # Optional message
 message:
   #url: https://b4bz.io
-  style: "is-dark" # See https://bulma.io/documentation/components/m
+  style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
   title: "Welcome!"
   icon: "fa fa-grin"
-  content: "This page links out to YouTube videos on how to demonstr
+  content: "This page links out to YouTube videos on how to demonstrate features running on Gloo Platform demo website!<br /> <br />Below are a few common usernames to explore the applications and portals:<br /><br />Username: jdoe@solo.io // Password: gloo-dev<br />Username: jdoe@gmail.com // Password: gloo-public<br /><br />"
                 
 # Optional navbar
-# links: [] # Allows for navbar (dark mode, layout, and search) with
+# links: [] # Allows for navbar (dark mode, layout, and search) without any links
 links:
   - name: "Back to the Main Page!"
     icon: "fab fa-github"
@@ -75,16 +78,17 @@ links:
     icon: "fas fa-book"
     url: "https://docs.solo.io/gloo-gateway/latest/portal/"
     target: "_blank" # optional html a tag target attribute
-  # this will link to a second homer page that will load config from
-  # see url field and assets/additional-page.yml.dist used in this e
+  # this will link to a second homer page that will load config from additional-page.yml and keep default config values as in config.yml file
+  # see url field and assets/additional-page.yml.dist used in this example:
   #- name: "another page!"
   #  icon: "fas fa-file-alt"
   #  url: "#additional-page" 
                 
-# Services
-# First level array represent a group.
-# Leave only a "items" key if not using group (group name, icon & ta
-services:
+  # Services
+  # First level array represent a group.
+  # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
+  services:
+
   - name: "Navigate the Gloo Platform UI"
     icon: "fas fa-arrows-alt"
     items:
@@ -93,6 +97,7 @@ services:
       #  tag: "gmui"
       #  url: "https://ui.glooplatform.com"
       #  target: "_blank" # optional html a tag target attribute
+
   - name: "Navigate the Admin Applications"
     icon: "fas fa-cloud"
     items:
@@ -121,6 +126,7 @@ services:
       #  tag: "uptime"
       #  url: "https://ui.glooplatform.com"
       #  target: "_blank" # optional html a tag target attribute
+
   - name: "Mesh Onboarding"
     icon: "fab fa-connectdevelop"
     items:
@@ -134,6 +140,7 @@ services:
       #  tag: "istio"
       #  url: "https://ui.glooplatform.com"
       #  target: "_blank" # optional html a tag target attribute
+
   - name: "Demos using Gloo Gateway Portal"
     icon: "fab fa-git-alt"
     items:
@@ -152,7 +159,7 @@ services:
       #  tag: "portal"
       #  url: "https://ui.glooplatform.com"
       #  target: "_blank" # optional html a tag target attribute    
-  
+   
   - name: "Demonstrate Progressive Delivery using Argo Rollouts"
     icon: "fab fa-connectdevelop"
     items:
@@ -166,18 +173,19 @@ services:
       #  tag: "rollouts"
       #  url: "https://ui.glooplatform.com"
       #  target: "_blank" # optional html a tag target attribute
+
   - name: "Demos using Online Boutique"
     icon: "fas fa-shopping-cart"
     items:
       - name: "Multicluster Traffic Routing"
         icon: "fas fa-shopping-cart"
         tag: "onlineboutique"
-        url: "https://www.youtube.com/watch?v=c4wgigSihJI&list=PLnUM
+        url: "https://www.youtube.com/watch?v=c4wgigSihJI&list=PLnUM8lhaIH4jQhjeVdmaplmnQMgePlUvb&t=544s"
         target: "_blank" # optional html a tag target attribute
       - name: "Locality and Failover"
         icon: "fas fa-shopping-cart"
         tag: "onlineboutique"
-        url: "https://www.youtube.com/watch?v=c4wgigSihJI&list=PLnUM
+        url: "https://www.youtube.com/watch?v=c4wgigSihJI&list=PLnUM8lhaIH4jQhjeVdmaplmnQMgePlUvb&t=629s"
         target: "_blank" # optional html a tag target attribute
       - name: "Chaos and Resiliency Testing"
         icon: "fas fa-shopping-cart"
@@ -194,6 +202,7 @@ services:
       #  tag: "onlineboutique"
       #  url: "https://ui.glooplatform.com"
       #  target: "_blank" # optional html a tag target attribute
+
   - name: "Demos using Httpbin"
     icon: "far fa-window-maximize"
     items:
@@ -207,7 +216,7 @@ services:
       #  tag: "httpbin"
       #  url: "https://ui.glooplatform.com"
       #  target: "_blank" # optional html a tag target attribute   
-      #- name: "JWT Validation, ClaimsToHeaders, and Transformations
+      #- name: "JWT Validation, ClaimsToHeaders, and Transformations"
       #  icon: "far fa-window-maximize"
       #  tag: "httpbin"
       #  url: "https://ui.glooplatform.com"
@@ -232,6 +241,7 @@ services:
       #  tag: "httpbin"
       #  url: "https://ui.glooplatform.com"
       #  target: "_blank" # optional html a tag target attribute    
+
   - name: "Demos using Bookinfo"
     icon: "fas fa-book-reader"
     items:
@@ -250,6 +260,7 @@ services:
       #  tag: "onlineboutique"
       #  url: "https://ui.glooplatform.com"
       #  target: "_blank" # optional html a tag target attribute
+
   - name: "Demos using Podinfo"
     icon: "fas fa-info-circle"
     items:
