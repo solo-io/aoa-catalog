@@ -1,0 +1,20 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: homer-howto
+  namespace: homer-portal
+spec:
+  http:
+    - matchers:
+      - uri:
+          prefix: /howto
+      name: howto-main
+      labels:
+        homer: howto
+      forwardTo:
+        destinations:
+          - ref:
+              name: homer-portal-howto
+              namespace: homer-portal
+            port:
+              number: 8080

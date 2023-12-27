@@ -7,3 +7,4 @@ resources:
 - homer-rt-443.yaml
 - login-extauthpolicy.yaml
 - login-routetable.yaml
+- howto-delegate-rt.yaml
