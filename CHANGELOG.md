@@ -1,5 +1,13 @@
 # Changelog
 
+0.1.14 (12-27-23)
+---
+- update homer image to ably77/homer:0.1.0 (adds glooy logo)
+- add --context to homer output command: 
+```
+echo "access the dashboard at https://$(kubectl --context ${cluster_context} -n istio-gateways get service istio-ingressgateway-${ISTIO_REVISION} -o jsonpath='{.status.loadBalancer.ingress[0].*}')/solo"
+```
+
 0.1.13 (12-18-23)
 ---
 - update rollouts-ui-dashboard to `quay.io/argoproj/kubectl-argo-rollouts:v1.6.4`
