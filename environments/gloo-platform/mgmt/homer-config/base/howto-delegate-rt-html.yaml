@@ -365,111 +365,152 @@ spec:
           <head>
               <meta charset="UTF-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Gloo Platform Portal Demo Walkthrough</title>
+              <title>Portal Demo Walkthrough</title>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
               <style>
                   body {
                       font-family: 'Arial', sans-serif;
-                      margin: 20px;
+                      margin: 0;
+                      padding: 0;
+                      overflow-x: hidden;
+                  }          
+
+                  .parallax-container {
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                      height: 40vh;
+                      background: linear-gradient(45deg, #3498db, #9b59b6);
+                      color: #fff;
+                      text-align: center;
+                      position: relative;
+                  }          
+
+                  .parallax-content {
+                      position: relative;
+                      z-index: 2;
+                      padding: 20px;
+                  }          
+
+                  .parallax-bg {
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      z-index: 1;
+                      opacity: 0.5;
                   }          
 
                   h1 {
-                      color: #333;
+                      font-size: 36px;
+                      margin-bottom: 20px;
                   }          
 
                   h2 {
-                      color: #333;
-                      font-size: 18px;
-                  }          
-
-                  p {
-                      color: #666;
-                  }          
-
-                  ol {
-                      margin-bottom: 20px;
-                  }          
-
-                  li {
+                      font-size: 24px;
                       margin-bottom: 10px;
                   }          
 
+                  p {
+                      line-height: 1.6;
+                  }          
+
                   .note {
-                      background-color: #f0f0f0;
-                      padding: 10px;
-                      margin-bottom: 20px;
+                      background-color: rgba(255, 255, 255, 0.9);
+                      border-radius: 8px;
+                      padding: 20px;
+                      margin: 20px 0;
+                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                      transition: transform 0.3s ease-in-out;
+                  }          
+
+                  .note:hover {
+                      transform: scale(1.03);
                   }          
 
                   .highlight {
-                      color: #0066cc;
+                      color: #3498db;
                       font-weight: bold;
+                  }          
+
+                  .icon {
+                      font-size: 32px;
+                      margin-right: 10px;
+                      color: #3498db;
                   }
               </style>
           </head>          
 
           <body>
-              <h1>Gloo Platform Portal Demo Walkthrough</h1>          
-
-              <div class="note">
-                  <p><span class="highlight">Backstage:</span></p>
-                  <p><span class="highlight">Description:</span> Use the Gloo Platform Portal Backstage frontend plug-in to create a developer
-                      portal frontend for your developers so that they can view and access your REST API catalog. This demo uses Backstages as
-                      an example of an internal developer portal use-case. The APIs exposed through Gloo Gateway with the label `portal:
-                      internal` are automatically populated in the Backstage catalog. The APIs can be secured using external auth and rate
-                      limiting policies to implement a usage plan (i.e. 15 req/min) mapped to a grouping of users (i.e. bronze, silver, gold)</p>
-                  <ol>
-                      <li>Navigate to the Backstage UI > Gloo Portal > APIs tab to see publicly available APIs</li>
-                      <li>Review the Redoc and Swagger views for the APIs and note that the APIs are secured with Gloo Platform ExtAuthPolicy</li>
-                      <li>Navigate to the Backstage UI > Gloo Portal > Overview tab to log in
-                          - Use the username/password: <code>jdoe@solo.io</code>/<code>gloo-dev</code></li>
-                      <li>Note that the logged in user now has access to the Usage Plans tab</li>
-                      <li>Generate an API Key</li>
-                      <li>Navigate to the API associated with the API Key > Swagger UI > Authorize > Enter the API Key</li>
-                      <li>Now you can use the try-it-now feature to test the API</li>
-                      <li>Note that the API Key is rate limited after 15 requests/minute</li>
-                  </ol>
+              <div class="parallax-container">
+                  <div class="parallax-bg"></div>
+                  <div class="parallax-content">
+                      <h1>Portal Demo Walkthrough</h1>
+                  </div>
               </div>          
 
-              <div class="note">
-                  <p><span class="highlight">React External Portal Demo:</span></p>
-                  <p><span class="highlight">Description:</span> This is an example Solo.io Gloo Platform Dev Portal frontend app, built with
-                      Vite, and configured to use React and Typescript. It can be used to view information about your APIs and usage plans,
-                      add or delete API keys, and view your OpenAPI schemas using an embedded Redoc UI or Swagger UI view. It also can be
-                      personalized with images and colors to match your branding and preferences. The use case for this demo is similar to
-                      above, but serves as an external customer facing portal where the focus is more on accessing and consuming otherwise
-                      protected APIs. The APIs exposed through Gloo Gateway with the label `portal: external` are automatically populated
-                      in this External Portal.</p>
-                  <ol>
-                      <li>Navigate to the React Portal Frontend UI > APIs tab as an unauthenticated user to see that the APIs are not visible</li>
-                      <li>Login through Okta with the username/password: <code>jdoe@solo.io</code>/<code>gloo-dev</code></li>
-                      <li>Note that the logged in user now has APIs available to view</li>
-                      <li>Select the User icon > API Keys tab and generate an API Key for a product</li>
-                      <li>Navigate to the API associated with the API Key > Swagger UI > Authorize > Enter the API Key</li>
-                      <li>Now you can use the try-it-now feature to test the API</li>
-                      <li>Note that the API Key is rate limited based on usage plan used (i.e. bronze, silver, gold)</li>
-                  </ol>
+              <div class="parallax-content">
+                  <!-- Backstage -->
+                  <div class="note">
+                      <h2><i class="icon fab fa-git-alt"></i><span class="highlight">Backstage:</span></h2>
+                      <p><span class="highlight">Description:</span> Use the Gloo Platform Portal Backstage frontend plug-in to create a developer portal frontend for your developers so that they can view and access your REST API catalog. This demo uses Backstages as an example of an internal developer portal use-case. The APIs exposed through Gloo Gateway with the label `portal: internal` are automatically populated in the Backstage catalog. The APIs can be secured using external auth and rate limiting policies to implement a usage plan (i.e. 15 req/min) mapped to a grouping of users (i.e. bronze, silver, gold)</p>
+                      <ol>
+                          <li>Navigate to the Backstage UI > Gloo Portal > APIs tab to see publicly available APIs</li>
+                          <li>Review the Redoc and Swagger views for the APIs and note that the APIs are secured with Gloo Platform ExtAuthPolicy</li>
+                          <li>Navigate to the Backstage UI > Gloo Portal > Overview tab to log in
+                              <ul>
+                                  <li>Use the username/password: `jdoe@solo.io`/`gloo-dev`</li>
+                              </ul>
+                          </li>
+                          <li>Note that the logged in user now has access to the Usage Plans tab</li>
+                          <li>Generate an API Key</li>
+                          <li>Navigate to the API associated with the API Key > Swagger UI > Authorize > Enter the API Key</li>
+                          <li>Now you can use the try-it-now feature to test the API</li>
+                          <li>Note that the API Key is rate limited after 15 requests/minute</li>
+                      </ol>
+                  </div>          
+
+                  <!-- React External Portal Demo -->
+                  <div class="note">
+                      <h2><i class="icon fab fa-connectdevelop"></i><span class="highlight">React External Portal Demo:</span></h2>
+                      <p><span class="highlight">Description:</span> This is an example Solo.io Gloo Platform Dev Portal frontend app, built with Vite, and configured to use React and Typescript. It can be used to view information about your APIs and usage plans, add or delete API keys, and view your OpenAPI schemas using an embedded Redoc UI or Swagger UI view. It also can be personalized with images and colors to match your branding and preferences. The use case for this demo is similar to above but serves as an external customer facing portal where the focus is more on accessing and consuming otherwise protected APIs. The APIs exposed through Gloo Gateway with the label `portal: external` are automatically populated in this External Portal.</p>
+                      <ol>
+                          <li>Navigate to the React Portal Frontend UI > APIs tab as an unauthenticated user to see that the APIs are not visible</li>
+                          <li>Login through Okta with the username/password: `jdoe@solo.io`/`gloo-dev`</li>
+                          <li>Note that the logged in user now has APIs available to view</li>
+                          <li>Select the User icon > API Keys tab and generate an API Key for a product</li>
+                          <li>Navigate to the API associated with the API Key > Swagger UI > Authorize > Enter the API Key</li>
+                          <li>Now you can use the try-it-now feature to test the API</li>
+                          <li>Note that the API Key is rate limited based on usage plan used (i.e. bronze, silver, gold)</li>
+                      </ol>
+                  </div>          
+
+                  <!-- Clickhouse Portal Analytics -->
+                  <div class="note">
+                      <h2><i class="icon fas fa-chart-area"></i><span class="highlight">Clickhouse Portal Analytics:</span></h2>
+                      <p><span class="highlight">Description:</span> As an API product owner, you can collect analytics about your API usage. This way, you can identify ways to better monetize your API products based on actual usage. When the end user queries one of your APIs, your Gloo Gateway handles the request. You can enable the gateway to generate access logs. This way, the Open Telemetry (OTel) metrics pipeline that you set up can store the access logs in a Clickhouse storage database. As the Portal admin, you can then view usage information for your API products in the Gloo UI through a Grafana dashboard.</p>More information in the Docs: <a href="https://docs.solo.io/gloo-gateway/latest/portal/admin/monitor/" target="_blank">https://docs.solo.io/gloo-gateway/latest/portal/admin/monitor/</a></p>
+                      <ol>
+                          <li>Navigate to the Clickhouse Portal Analytics tab to see recent API Product usage globally. If you have been using the previous demos, you should see some usage.</li>
+                          <li>Note that these metrics are coming from the OTEL pipeline and can be configured declaratively using Helm values.</li>
+                          <li>This dashboard is tracking Geo-IP information, which can be seen on the map. (Scroll to US)</li>
+                          <li>Access logs are also captured and displayed in the recent requests panel</li>
+                      </ol>
+                  </div>          
+
               </div>          
 
-              <div class="note">
-                  <p><span class="highlight">Clickhouse Portal Analytics:</span></p>
-                  <p><span class="highlight">Description:</span> More information in the Docs: <a
-                          href="https://docs.solo.io/gloo-gateway/latest/portal/admin/monitor/" target="_blank">https://docs.solo.io/gloo-gateway/latest/portal/admin/monitor/</a>
-                      As an API product owner, you can collect analytics about your API usage. This way, you can identify ways to better
-                      monetize your API products based on actual usage. When the end user queries one of your APIs, your Gloo Gateway
-                      handles the request. You can enable the gateway to generate access logs. This way, the Open Telemetry (OTel) metrics
-                      pipeline that you set up can store the access logs in a Clickhouse storage database. As the Portal admin, you can
-                      then view usage information for your API products in the Gloo UI through a Grafana dashboard.</p>
-                  <ol>
-                      <li>Navigate to the Clickhouse Portal Analytics tab to see recent API Product usage globally. If you have been using
-                          the previous demos, you should see some usage.</li>
-                      <li>Note that these metrics are coming from the OTEL pipeline and can be configured declaratively using Helm values.</li>
-                      <li>This dashboard is tracking Geo-IP information, which can be seen on the map. (Scroll to US)</li>
-                      <li>Access logs are also captured and displayed in the recent requests panel</li>
-                  </ol>
-              </div>
+              <script>
+                  window.addEventListener('scroll', function () {
+                      var scrolled = window.scrollY;
+                      var parallaxBg = document.querySelector('.parallax-bg');
+                      parallaxBg.style.transform = 'translateY(' + scrolled * 0.5 + 'px)';
+                  });
+              </script>
           </body>          
 
           </html>
-
         status: 200
     - name: howto-rollouts-demo
       labels:
