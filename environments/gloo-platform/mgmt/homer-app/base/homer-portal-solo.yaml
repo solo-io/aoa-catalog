@@ -346,11 +346,18 @@ spec:
                         url: "https://chaos.demo.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
 
-                      - name: "Tiered Mesh Application"
+                      - name: "Tiered Mesh Application - Core"
                         subtitle: "change path number: /ns-#"
                         icon: "fab fa-connectdevelop"
                         tag: "tiered-app"
                         url: "https://tiered-app.demo.glooplatform.com/ns-1/ui/"
+                        target: "_blank" # optional html a tag target attribute  
+                      
+                      - name: "Tiered Mesh Application - Extended"
+                        subtitle: "Strangler Pattern Example"
+                        icon: "fab fa-connectdevelop"
+                        tag: "tiered-app"
+                        url: "https://tiered-app.demo.glooplatform.com/east/ns-1/ui/"
                         target: "_blank" # optional html a tag target attribute  
 
                       - name: "Tiered Mesh Application - Gloo UI"

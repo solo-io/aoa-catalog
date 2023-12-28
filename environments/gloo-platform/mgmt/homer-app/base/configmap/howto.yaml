@@ -132,16 +132,6 @@ services:
         tag: "portal"
         url: "https://www.youtube.com/watch?v=YL1aqjZDqGQ"
         target: "_blank" # optional html a tag target attribute
-      #- name: "Backstage Integration"
-      #  icon: "fab fa-git-alt"
-      #  tag: "portal"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
-      #- name: "Portal User Workflow"
-      #  icon: "fab fa-git-alt"
-      #  tag: "portal"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
 
   - name: "Demonstrate Progressive Delivery using Argo Rollouts"
     icon: "fab fa-connectdevelop"
@@ -180,6 +170,15 @@ services:
       #  tag: "onlineboutique"
       #  url: "https://ui.glooplatform.com"
       #  target: "_blank" # optional html a tag target attribute
+
+  - name: "Demos using Multicluster Tiered App"
+    icon: "fab fa-connectdevelop"
+    items:
+      - name: "Tiered App - Demo Walkthrough"
+        icon: "fab fa-connectdevelop"
+        tag: "tiered-app"
+        url: "https://demo.glooplatform.com/howto/tiered-app"
+        target: "_blank" # optional html a tag target attribute
 
   - name: "Demos using Httpbin"
     icon: "far fa-window-maximize"
