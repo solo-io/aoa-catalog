@@ -527,108 +527,150 @@ spec:
               <meta charset="UTF-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <title>Argo Rollouts Demo Walkthrough</title>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
               <style>
                   body {
                       font-family: 'Arial', sans-serif;
-                      margin: 20px;
+                      margin: 0;
+                      padding: 0;
+                      overflow-x: hidden;
+                  }          
+
+                  .parallax-container {
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                      height: 40vh;
+                      background: linear-gradient(45deg, #3498db, #9b59b6);
+                      color: #fff;
+                      text-align: center;
+                      position: relative;
+                  }          
+
+                  .parallax-content {
+                      position: relative;
+                      z-index: 2;
+                      padding: 20px;
+                  }          
+
+                  .parallax-bg {
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      z-index: 1;
+                      opacity: 0.5;
                   }          
 
                   h1 {
-                      color: #333;
+                      font-size: 36px;
+                      margin-bottom: 20px;
                   }          
 
                   h2 {
-                      color: #333;
-                      font-size: 18px;
-                  }          
-
-                  p {
-                      color: #666;
-                  }          
-
-                  ol {
-                      margin-bottom: 20px;
-                  }          
-
-                  li {
+                      font-size: 24px;
                       margin-bottom: 10px;
                   }          
 
+                  p {
+                      line-height: 1.6;
+                  }          
+
                   .note {
-                      background-color: #f0f0f0;
-                      padding: 10px;
-                      margin-bottom: 20px;
+                      background-color: rgba(255, 255, 255, 0.9);
+                      border-radius: 8px;
+                      padding: 20px;
+                      margin: 20px 0;
+                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                      transition: transform 0.3s ease-in-out;
+                  }          
+
+                  .note:hover {
+                      transform: scale(1.03);
                   }          
 
                   .highlight {
-                      color: #0066cc;
+                      color: #3498db;
                       font-weight: bold;
+                  }          
+
+                  .icon {
+                      font-size: 32px;
+                      margin-right: 10px;
+                      color: #3498db;
                   }
               </style>
           </head>          
 
           <body>
-              <h1>Argo Rollouts Demo Walkthrough</h1>          
-
-              <div class="note">
-                  <p><span class="highlight">Gloo Mesh Argo Rollouts Plugin:</span></p>
-                  <p>At Solo.io, we've integrated Argo Rollouts' traffic management capabilities with Gloo Mesh's advanced routing
-                      mechanisms through a supported plugin. Organizations can ensure a smooth and controlled transition from one version
-                      of an application to the next, minimizing downtime and reducing the risk of disruptions. This allows teams to adopt
-                      advanced deployment strategies like canary releases and blue-green deployments, allowing for safe experimentation
-                      with new features and configurations. The result? Faster innovation cycles, higher customer satisfaction, and
-                      ultimately, a stronger market position for the organization.</p>
-                  <p><span class="highlight">Additional Links:</span> <a href="https://github.com/ably77/gloo-platform-argo-rollouts-blog"
-                          target="_blank">https://github.com/ably77/gloo-platform-argo-rollouts-blog</a></p>
+              <div class="parallax-container">
+                  <div class="parallax-bg"></div>
+                  <div class="parallax-content">
+                      <h1>Argo Rollouts Demo Walkthrough</h1>
+                  </div>
               </div>          
 
-              <h2>Progressive Delivery Demo:</h2>
-              <ol>
-                  <li>In two separate windows (side-by-side) open up the Argo Rollouts Demo Dashboard and the Argo Rollouts Demo App</li>
-                  <li>In the Argo Rollouts Demo Dashboard select the rollouts-demo tile</li>
-                  <li>In the Containers tile on the top right, change the image tag to another color such as blue > green, any color should
-                      work. (i.e. argoproj/rollouts-demo:green) and click save. This will automatically trigger a new progressive rollout
-                      of the application</li>
-                  <li>In the Argo Rollouts Demo App, you will start to see the new version of the application being deployed, mapped to the
-                      weights specified in the rollout manifest as the blue squares start to shift to green squares.</li>
-                  <li>In the Argo Rollouts Demo Dashboard you can also see the progress steps in the left-hand sidebar</li>
-                  <li>Once the rollout is complete, you can see the new version of the application deployed in the Argo Rollouts Demo App</li>
-              </ol>          
+              <div class="parallax-content">
+                  <!-- Gloo Mesh Argo Rollouts Plugin -->
+                  <div class="note">
+                      <h2><i class="icon fab fa-git-alt"></i><span class="highlight">Gloo Mesh Argo Rollouts Plugin:</span></h2>
+                      <p>At Solo.io, we've integrated Argo Rollouts' traffic management capabilities with Gloo Mesh's advanced routing mechanisms through a supported plugin. Organizations can ensure a smooth and controlled transition from one version of an application to the next, minimizing downtime and reducing the risk of disruptions. This allows teams to adopt advanced deployment strategies like canary releases and blue-green deployments, allowing for safe experimentation with new features and configurations. The result? Faster innovation cycles, higher customer satisfaction, and ultimately, a stronger market position for the organization.</p>
+                      <p><span class="highlight">Additional Links:</span> <a href="https://github.com/ably77/gloo-platform-argo-rollouts-blog" target="_blank">https://github.com/ably77/gloo-platform-argo-rollouts-blog</a></p>
+                  </div>          
 
-              <h2>Rollback Demo:</h2>
-              <ol>
-                  <li>To demonstrate a rollback, change the image to a color tag prefixed with `bad-` such as
-                      `argoproj/rollouts-demo:bad-yellow`</li>
-                  <li>This will trigger a new progressive rollout of the application. You will see that the new yellow squares in the demo
-                      app will have a red border around them, indicating an app that is causing errors (non-200)</li>
-                  <li>Argo Rollouts will automatically detect this and rollback to the previous stable version of the application. If you
-                      take a look at the AnalysisTemplate, you will see that the rollout failed the analysis step which requires < 5% of the
-                      traffic to be non-200.</li>
-                  <li>Note that these metrics are coming from the Istio metrics that are queried using Prometheus</li>
-                  <li>To reset the demo, switch the image back to a stable state, preferably `argoproj/rollouts-demo:blue` for the next demo</li>
-              </ol>          
+                  <!-- Progressive Delivery Demo -->
+                  <div class="note">
+                      <h2><i class="icon fas fa-rocket"></i><span class="highlight">Progressive Delivery Demo:</span></h2>
+                      <ol>
+                          <li>In two separate windows (side-by-side) open up the Argo Rollouts Demo Dashboard and the Argo Rollouts Demo App</li>
+                          <li>In the Argo Rollouts Demo Dashboard select the rollouts-demo tile</li>
+                          <li>In the Containers tile on the top right, change the image tag to another color such as blue > green, any color should work. (i.e. argoproj/rollouts-demo:green) and click save. This will automatically trigger a new progressive rollout of the application</li>
+                          <li>In the Argo Rollouts Demo App, you will start to see the new version of the application being deployed, mapped to the weights specified in the rollout manifest as the blue squares start to shift to green squares.</li>
+                          <li>In the Argo Rollouts Demo Dashboard you can also see the progress steps in the left-hand sidebar</li>
+                          <li>Once the rollout is complete, you can see the new version of the application deployed in the Argo Rollouts Demo App</li>
+                      </ol>
+                  </div>          
 
-              <h2>Argo CD UI:</h2>
-              <ol>
-                  <li>Argo CD is not required to use Argo Rollouts but can be integrated together to provide a UI for managing GitOps
-                      deployments.</li>
-                  <li>Open the Argo CD UI in a third window and search for wave-rollouts-demo-aoa. The Argo CD UI is another place to watch
-                      the rollout in action.</li>
-                  <li>When triggering a new rollout, watch the Argo CD UI to see rollout steps as they progress. You should see a new pod
-                      being deployed as part of the Rollout and a new AnalysisTemplate that gets created</li>
-                  <li>Select the `rollouts-demo-rt-443` RouteTable tile to see that the Argo Rollouts plugin is controlling the weights
-                      of the routes according to the steps defined in the rollout manifest</li>
-                  <li>Selecting the `rollouts-demo` Rollout tile you can see the live manifest to see the declarative configuration of
-                      the rollout</li>
-                  <li>Additionally, if you select the more tab, you will see the integrated read-only version of the Argo Rollouts Demo
-                      Dashboard used earlier</li>
-                  <li>Discuss that in theory, if the sync on this Argo Application was turned on, that the rollout could be triggered by a
-                      git commit to the repo and synced automatically.</li>
-              </ol>
+                  <!-- Rollback Demo -->
+                  <div class="note">
+                      <h2><i class="icon fas fa-undo"></i><span class="highlight">Rollback Demo:</span></h2>
+                      <ol>
+                          <li>To demonstrate a rollback, change the image to a color tag prefixed with `bad-` such as `argoproj/rollouts-demo:bad-yellow`</li>
+                          <li>This will trigger a new progressive rollout of the application. You will see that the new yellow squares in the demo app will have a red border around them, indicating an app that is causing errors. (non-200)</li>
+                          <li>Argo Rollouts will automatically detect this and rollback to the previous stable version of the application. If you take a look at the AnalysisTemplate, you will see that the rollout failed the analysis step which requires < 5% of the traffic to be non-200.</li>
+                          <li>Note that these metrics are coming from the Istio metrics that are queried using Prometheus</li>
+                          <li>To reset the demo, switch the image back to a stable state, preferably `argoproj/rollouts-demo:blue` for the next demo</li>
+                      </ol>
+                  </div>          
+
+                  <!-- Argo CD UI -->
+                  <div class="note">
+                      <h2><i class="icon fab fa-git-alt"></i><span class="highlight">Argo CD UI:</span></h2>
+                      <p>Argo CD is not required in order to use Argo Rollouts, but can be integrated together to provide a UI for managing GitOps deployments. The following steps demonstrate how the two projects are well integrated and how they can be used together.</p>
+                      <ol>
+                          <li>Open the Argo CD UI in a third window and search for wave-rollouts-demo-aoa. The Argo CD UI is another place to watch the rollout in action.</li>
+                          <li>When triggering a new rollout, watch the Argo CD UI to see rollout steps as they progress. You should see a new pod being deployed as part of the Rollout, and a new AnalysisTemplate that gets created</li>
+                          <li>Select the `rollouts-demo-rt-443` RouteTable tile to see that the Argo Rollouts plugin is controlling the weights of the routes according to the steps defined in the rollout manifest</li>
+                          <li>Selecting the `rollouts-demo` Rollout tile you can see the live manifest to see the declarative configuration of the rollout</li>
+                          <li>Additionally, if you select the more tab, you will see the integrated read-only version of the Argo Rollouts Demo Dashboard used earlier</li>
+                          <li>Discuss that in theory, if the sync on this Argo Application was turned on, that the rollout could be triggered by a git commit to the repo and synced automatically.</li>
+                      </ol>
+                  </div>          
+
+              </div>          
+
+              <script>
+                  window.addEventListener('scroll', function () {
+                      var scrolled = window.scrollY;
+                      var parallaxBg = document.querySelector('.parallax-bg');
+                      parallaxBg.style.transform = 'translateY(' + scrolled * 0.5 + 'px)';
+                  });
+              </script>
           </body>          
 
           </html>
-
 
         status: 200
     - name: howto-tiered-app
