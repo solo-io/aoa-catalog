@@ -1,0 +1,12 @@
+kind: HeaderManipulationPolicy
+metadata:
+  name: header-manipulation
+  namespace: homer-portal
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        content-type: text/html
+  config:
+    appendResponseHeaders:
+      content-type: text/html

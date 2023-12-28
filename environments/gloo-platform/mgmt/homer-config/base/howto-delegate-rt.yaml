@@ -224,6 +224,8 @@ spec:
           <html><body style="background-color:powderblue;"><h1>Too many Requests!</h1><p>Try again after a minute</p></body></html>
         status: 200
     - name: howto-main
+      labels:
+        content-type: text/html
       matchers:
       - uri:
           prefix: /howto
