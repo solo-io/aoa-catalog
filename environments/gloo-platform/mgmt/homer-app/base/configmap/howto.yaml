@@ -237,17 +237,3 @@ services:
       #  tag: "onlineboutique"
       #  url: "https://ui.glooplatform.com"
       #  target: "_blank" # optional html a tag target attribute  
-
-  - name: "Demos using Podinfo"
-    icon: "fas fa-info-circle"
-    items:
-      #- name: "Locality and Subset Failover"
-      #  icon: "fas fa-info-circle"
-      #  tag: "podinfo"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
-      #- name: "Workspace Isolation"
-      #  icon: "fas fa-info-circle"
-      #  tag: "podinfo"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute 
