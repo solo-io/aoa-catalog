@@ -132,89 +132,142 @@ spec:
               <meta charset="UTF-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <title>Gloo Platform Admin Applications Walkthrough</title>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
               <style>
                   body {
                       font-family: 'Arial', sans-serif;
-                      margin: 20px;
+                      margin: 0;
+                      padding: 0;
+                      overflow-x: hidden;
+                  }          
+
+                  .parallax-container {
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                      height: 40vh;
+                      background: linear-gradient(45deg, #3498db, #9b59b6);
+                      color: #fff;
+                      text-align: center;
+                      position: relative;
+                  }          
+
+                  .parallax-content {
+                      position: relative;
+                      z-index: 2;
+                      padding: 20px;
+                  }          
+
+                  .parallax-bg {
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      z-index: 1;
+                      opacity: 0.5;
                   }          
 
                   h1 {
-                      color: #333;
+                      font-size: 36px;
+                      margin-bottom: 20px;
                   }          
 
                   h2 {
-                      color: #333;
-                      font-size: 18px;
-                  }          
-
-                  p {
-                      color: #666;
-                  }          
-
-                  ol {
-                      margin-bottom: 20px;
-                  }          
-
-                  li {
+                      font-size: 24px;
                       margin-bottom: 10px;
                   }          
 
+                  p {
+                      line-height: 1.6;
+                  }          
+
                   .note {
-                      background-color: #f0f0f0;
-                      padding: 10px;
-                      margin-bottom: 20px;
+                      background-color: rgba(255, 255, 255, 0.9);
+                      border-radius: 8px;
+                      padding: 20px;
+                      margin: 20px 0;
+                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                      transition: transform 0.3s ease-in-out;
+                  }          
+
+                  .note:hover {
+                      transform: scale(1.03);
                   }          
 
                   .highlight {
-                      color: #0066cc;
+                      color: #3498db;
                       font-weight: bold;
+                  }          
+
+                  .icon {
+                      font-size: 32px;
+                      margin-right: 10px;
+                      color: #3498db;
                   }
               </style>
           </head>          
 
           <body>
-              <h1>Gloo Platform Admin Applications Walkthrough</h1>          
-
-              <div class="note">
-                  <p><span class="highlight">Uptime Dashboard:</span></p>
-                  <p><span class="highlight">Description:</span> A self-hosted monitoring tool for applications running on glooplatform.com</p>
-                  <ol>
-                      <li>Login through Google Auth to access the Uptime Dashboard</li>
-                      <li>View/Update the list of applications to monitor</li>
-                  </ol>
+              <div class="parallax-container">
+                  <div class="parallax-bg"></div>
+                  <div class="parallax-content">
+                      <h1>Gloo Platform Admin Applications Walkthrough</h1>
+                  </div>
               </div>          
 
-              <div class="note">
-                  <p><span class="highlight">Prometheus:</span></p>
-                  <p><span class="highlight">Description:</span> Access to the Prometheus UI for querying metrics</p>
-                  <ol>
-                      <li>Login through Google Auth to access the Prometheus UI</li>
-                      <li>Provide a query to view metrics coming from the OTEL pipeline such as `istio_requests_total`</li>
-                  </ol>
+              <div class="parallax-content">
+                  <div class="note">
+                      <h2><i class="icon fas fas fa-heartbeat"></i><span class="highlight">Uptime Dashboard:</span></h2>
+                      <p><span class="highlight">Description:</span> A self-hosted monitoring tool for applications running on glooplatform.com</p>
+                      <ol>
+                          <li>Login through Google Auth to access the Uptime Dashboard</li>
+                          <li>View/Update the list of applications to monitor</li>
+                      </ol>
+                  </div>          
+
+                  <div class="note">
+                      <h2><i class="icon fas fa-chart-area"></i><span class="highlight">Prometheus:</span></h2>
+                      <p><span class="highlight">Description:</span> Access to the Prometheus UI for querying metrics</p>
+                      <ol>
+                          <li>Login through Google Auth to access the Prometheus UI</li>
+                          <li>Provide a query to view metrics coming from the OTEL pipeline such as `istio_requests_total`</li>
+                      </ol>
+                  </div>          
+
+                  <div class="note">
+                      <h2><i class="icon fab fa-git-alt"></i><span class="highlight">Argo CD:</span></h2>
+                      <p><span class="highlight">Description:</span> Access to the Argo CD UI for managing GitOps deployments</p>
+                      <ol>
+                          <li>Login through Google Auth to access the Argo CD UI</li>
+                          <li>Useful to view/edit apps that are synced with the aoa-catalog github repo</li>
+                          <li>Useful for viewing deployment configuration / logs / errors when troubleshooting</li>
+                          <li>Ability to turn on/off automatic sync of apps</li>
+                      </ol>
+                  </div>          
+
+                  <div class="note">
+                      <h2><i class="icon fas fa-chart-area"></i><span class="highlight">Grafana:</span></h2>
+                      <p><span class="highlight">Description:</span> Access to the Grafana UI for viewing dashboards</p>
+                      <ol>
+                          <li>Login through Google Auth to access the Argo CD UI</li>
+                          <li>View dashboards for Gloo Platform Operations, Kubernetes Cluster, Istio, and Gloo Portal</li>
+                      </ol>
+                  </div>
               </div>          
 
-              <div class="note">
-                  <p><span class="highlight">Argo CD:</span></p>
-                  <p><span class="highlight">Description:</span> Access to the Argo CD UI for managing GitOps deployments</p>
-                  <ol>
-                      <li>Login through Google Auth to access the Argo CD UI</li>
-                      <li>Useful to view/edit apps that are synced with the aoa-catalog github repo</li>
-                      <li>Useful for viewing deployment configuration / logs / errors when troubleshooting</li>
-                      <li>Ability to turn on/off automatic sync of apps</li>
-                  </ol>
-              </div>          
-
-              <div class="note">
-                  <p><span class="highlight">Grafana:</span></p>
-                  <p><span class="highlight">Description:</span> Access to the Grafana UI for viewing dashboards</p>
-                  <ol>
-                      <li>Login through Google Auth to access the Argo CD UI</li>
-                      <li>View dashboards for Gloo Platform Operations, Kubernetes Cluster, Istio, and Gloo Portal</li>
-                  </ol>
-              </div>
+              <script>
+                  window.addEventListener('scroll', function () {
+                      var scrolled = window.scrollY;
+                      var parallaxBg = document.querySelector('.parallax-bg');
+                      parallaxBg.style.transform = 'translateY(' + scrolled * 0.5 + 'px)';
+                  });
+              </script>
           </body>          
 
           </html>
+
 
         status: 200
     - name: howto-portal
