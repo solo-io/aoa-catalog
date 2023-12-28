@@ -219,12 +219,17 @@ spec:
       labels:
         content-type: text/html
       matchers:
-      - uri:
-          exact: /howto/html
+        - uri:
+            exact: /howto/html
       directResponse:
-        body: |-
-          <html><body style="background-color:powderblue;"><h1>Hello World!</h1><p>Happy New Years!</p></body></html>
         status: 200
+        body: |
+          <html>
+            <body style="background-color: powderblue;">
+              <h1>Hello World!</h1>
+              <p>Happy New Year!</p>
+            </body>
+          </html>
     - name: howto-main
       matchers:
       - uri:
