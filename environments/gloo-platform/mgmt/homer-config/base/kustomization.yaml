@@ -8,3 +8,4 @@ resources:
 - login-extauthpolicy.yaml
 - login-routetable.yaml
 - howto-delegate-rt.yaml
+- header-manipulation.yaml
