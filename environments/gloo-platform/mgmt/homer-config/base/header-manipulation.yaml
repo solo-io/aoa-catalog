@@ -11,3 +11,5 @@ spec:
   config:
     appendResponseHeaders:
       content-type: text/html
+    appendRequestHeaders:
+      content-type: text/html
