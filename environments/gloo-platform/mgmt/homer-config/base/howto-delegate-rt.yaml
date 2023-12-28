@@ -221,7 +221,7 @@ spec:
           exact: /howto/html
       directResponse:
         body: |-
-          <html><body style="background-color:powderblue;"><h1>Too many Requests!</h1><p>Try again after a minute</p></body></html>
+          <html><body style="background-color:powderblue;"><h1>Hello World!</h1><p>Happy New Years!</p></body></html>
         status: 200
     - name: howto-main
       labels:
