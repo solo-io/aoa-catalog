@@ -6,8 +6,9 @@ metadata:
 spec:
   applyToRoutes:
   - route:
-      labels:
-        content-type: text/html
+      namespace: homer-portal
+      #labels:
+      #  content-type: text/html
   config:
     appendResponseHeaders:
       content-type: text/html
