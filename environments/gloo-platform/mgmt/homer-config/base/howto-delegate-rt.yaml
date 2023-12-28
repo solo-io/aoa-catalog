@@ -144,7 +144,7 @@ spec:
         body: |
           Argo Rollouts Demo Walkthrough:
 
-          Backstage:
+          Gloo Mesh Argo Rollouts Plugin:
           At Solo.io, we've integrated Argo Rollouts' traffic management capabilities with Gloo Mesh's advanced routing 
           mechanisms through a supported plugin. organizations can ensure a smooth and controlled transition from one version 
           of an application to the next, minimizing downtime and reducing the risk of disruptions. This allows teams to adopt 
