@@ -88,7 +88,7 @@ spec:
         - name: "MESSAGE"
           value: "Hello From strangler-pattern (v1)!"
         - name: "UPSTREAM_URIS"
-          value: "http://random-treeline-vd.solo-io.mesh:8080"
+          value: "http://throbbing-field-vd.solo-io.mesh:8080,http://random-treeline-vd.solo-io.mesh:8080"
         - name: "UPSTREAM_WORKERS"
           value: "10"
         - name: "TIMING_50_PERCENTILE"
