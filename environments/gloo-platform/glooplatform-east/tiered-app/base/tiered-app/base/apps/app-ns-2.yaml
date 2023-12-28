@@ -88,7 +88,7 @@ spec:
         - name: "MESSAGE"
           value: "Hello From random-treeline (v1)!"
         - name: "UPSTREAM_URIS"
-          value: "http://dahlia-seed-vd.solo-io.mesh:8080,http://steve-jobs.ns-3.svc.cluster.local:8080"
+          value: "http://throbbing-field-vd.solo-io.mesh:8080,http://dahlia-seed-vd.solo-io.mesh:8080,http://steve-jobs.ns-3.svc.cluster.local:8080"
         - name: "UPSTREAM_WORKERS"
           value: "10"
         - name: "TIMING_50_PERCENTILE"
