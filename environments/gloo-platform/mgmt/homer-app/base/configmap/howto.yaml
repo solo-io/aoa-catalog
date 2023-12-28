@@ -90,7 +90,7 @@ services:
   - name: "Navigate the Gloo Platform UI"
     icon: "fas fa-arrows-alt"
     items:
-      - name: "Gloo Mesh UI - Feature Overview"
+      - name: "Gloo Mesh UI - Demo Walkthrough"
         icon: "fas fa-arrows-alt"
         tag: "gmui"
         url: "https://demo.glooplatform.com/howto/ui"
@@ -99,31 +99,36 @@ services:
   - name: "Navigate the Admin Applications"
     icon: "fas fa-cloud"
     items:
-      - name: "Admin Applications - Feature Overview"
+      - name: "Admin Applications - Demo Walkthrough"
         icon: "fas fa-cloud"
         tag: "admin-apps"
         url: "https://demo.glooplatform.com/howto/admin"
         target: "_blank" # optional html a tag target attribute
 
-  - name: "Mesh Onboarding"
-    icon: "fab fa-connectdevelop"
-    items:
-      #- name: "Cluster Registration"
-      #  icon: "fab fa-connectdevelop"
-      #  tag: "glooplatform"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
-      #- name: "Istio Lifecyclemanager"
-      #  icon: "fab fa-connectdevelop"
-      #  tag: "istio"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
+  #- name: "Mesh Onboarding"
+  #  icon: "fab fa-connectdevelop"
+  #  items:
+  #    - name: "Cluster Registration"
+  #      icon: "fab fa-connectdevelop"
+  #      tag: "glooplatform"
+  #      url: "https://ui.glooplatform.com"
+  #      target: "_blank" # optional html a tag target attribute
+  #    - name: "Istio Lifecyclemanager"
+  #      icon: "fab fa-connectdevelop"
+  #      tag: "istio"
+  #      url: "https://ui.glooplatform.com"
+  #      target: "_blank" # optional html a tag target attribute
 
   - name: "Demos using Gloo Gateway Portal"
-    icon: "fab fa-git-alt"
+    icon: "fab fa-connectdevelop"
     items:
-      - name: "Feature Overview"
-        icon: "fab fa-git-alt"
+      - name: "Gloo Portal - Demo Walkthrough"
+        icon: "fab fa-connectdevelop"
+        tag: "portal-demo"
+        url: "https://demo.glooplatform.com/howto/portal"
+        target: "_blank" # optional html a tag target attribute
+      - name: "Gloo Portal - Video Overview"
+        icon: "fab fa-connectdevelop"
         tag: "portal"
         url: "https://www.youtube.com/watch?v=YL1aqjZDqGQ"
         target: "_blank" # optional html a tag target attribute

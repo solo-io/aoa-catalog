@@ -84,6 +84,58 @@ spec:
           - Login through Google Auth to access the Argo CD UI
           - View dashboards for Gloo Platform Operations, Kubernetes Cluster, Istio, and Gloo Portal 
         status: 200
+    - name: howto-portal
+      matchers:
+      - uri:
+          exact: /howto/portal
+      directResponse:
+        body: |
+          Portal Demo Walkthrough:
+
+          Backstage:
+          Description: Use the Gloo Platform Portal Backstage frontend plug-in to create a developer portal frontend for your developers so that they can view and access your REST API catalog.
+          This demo uses Backstages as an example of an internal developer portal use-case. The APIs exposed through Gloo Gateway with the label `portal: internal` are automatically populated in
+          the Backstage catalog. The APIs can be secured using external auth and rate limiting policies to implement a usage plan (i.e. 15 req/min) mapped to a grouping of users (i.e. bronze, silver, gold)
+
+          1. Navigate to the Backstage UI > Gloo Portal > APIs tab to see publicly available APIs
+          2. Review the Redoc and Swagger views for the APIs and note that the APIs are secured with Gloo Platform ExtAuthPolicy
+          3. Navigate to the Backstage UI > Gloo Portal > Overview tab to log in
+             - Use the username/password: `jdoe@solo.io`/`gloo-dev`
+          4. Note that the logged in user now has access to the Usage Plans tab
+          5. Generate an API Key
+          6. Navigate to the API associated with the API Key > Swagger UI > Authorize > Enter the API Key
+          7. Now you can use the try-it-now feature to test the API
+          8. Note that the API Key is rate limited after 15 requests/minute
+
+          React External Portal Demo:
+
+          Description: This is an example Solo.io Gloo Platform Dev Portal frontend app, built with Vite, and configured to use React and Typescript. 
+          It can be used to view information about your APIs and usage plans, add or delete API keys, and view your OpenAPI schemas using an embedded 
+          Redoc UI or Swagger UI view. It also can be personalized with images and colors to match your branding and preferences. The use case for this
+          demo is similar to above, but serves as an external customer facing portal where the focus is more on accessing and consuming otherwise protected
+          APIs. The APIs exposed through Gloo Gateway with the label `portal: external` are automatically populated in this External Portal.
+
+          1. Navigate to the React Portal Frontend UI > APIs tab as an unauthenticated user to see that the APIs are not visible
+          2. Login through Okta with the username/password: `jdoe@solo.io`/`gloo-dev`
+          3. Note that the logged in user now has APIs available to view
+          4. Select the User icon > API Keys tab and generate an API Key for a product
+          5. Navigate to the API associated with the API Key > Swagger UI > Authorize > Enter the API Key
+          7. Now you can use the try-it-now feature to test the API
+          8. Note that the API Key is rate limited based on usage plan used (i.e. bronze, silver, gold)
+
+
+          Clickhouse Portal Analytics:
+          Description: More information in the Docs: https://docs.solo.io/gloo-gateway/latest/portal/admin/monitor/
+          As an API product owner, you can collect analytics about your API usage. This way, you can identify ways to better monetize your API products 
+          based on actual usage. When the end user queries one of your APIs, your Gloo Gateway handles the request. You can enable the gateway to generate access logs. 
+          This way, the Open Telemetry (OTel) metrics pipeline that you set up can store the access logs in a Clickhouse storage database. As the Portal admin, you 
+          can then view usage information for your API products in the Gloo UI through a Grafana dashboard.
+
+          1. Navigate to the Clickhouse Portal Analytics tab to see recent API Product usage globally. If you have been using the previous demos, you should see some usage.
+          2. Note that these metrics are coming from the OTEL pipeline and can be configured declaratively using Helm values.
+          3. This dashboard is tracking Geo-IP information, which can be seen on the map. (Scroll to US)
+          4. Access logs are also captured and displayed in the recent requests panel
+        status: 200
     - name: howto-main
       matchers:
       - uri:
