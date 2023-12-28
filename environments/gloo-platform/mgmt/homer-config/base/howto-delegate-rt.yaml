@@ -212,6 +212,9 @@ spec:
                       weights specified in the rollout manifest as the blue squares start to shift to green squares.</li>
                   <li>In the Argo Rollouts Demo Dashboard you can also see the progress steps in the left-hand sidebar</li>
                   <li>Once the rollout is complete, you can see the new version of the application deployed in the Argo Rollouts Demo App</li>
+              </ol>          
+
+              <ol>
                   <li><span class="highlight">Rollback Demo:</span></li>
                   <li>To demonstrate a rollback, change the image to a color tag prefixed with `bad-` such as
                       `argoproj/rollouts-demo:bad-yellow`</li>
@@ -222,6 +225,9 @@ spec:
                       traffic to be non-200.</li>
                   <li>Note that these metrics are coming from the Istio metrics that are queried using Prometheus</li>
                   <li>To reset the demo, switch the image back to a stable state, preferably `argoproj/rollouts-demo:blue` for the next demo</li>
+              </ol>          
+
+              <ol>
                   <li><span class="highlight">Argo CD UI:</span></li>
                   <li>Argo CD is not required to use Argo Rollouts but can be integrated together to provide a UI for managing GitOps
                       deployments.</li>
@@ -241,6 +247,7 @@ spec:
           </body>          
 
           </html>
+
         status: 200
     - name: howto-tiered-app
       labels:
