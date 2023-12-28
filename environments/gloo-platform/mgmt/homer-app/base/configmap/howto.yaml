@@ -146,7 +146,7 @@ services:
   - name: "Demonstrate Progressive Delivery using Argo Rollouts"
     icon: "fab fa-connectdevelop"
     items:
-      - name: "Admin Applications - Demo Walkthrough"
+      - name: "Argo Rollouts - Demo Walkthrough"
         icon: "fab fa-connectdevelop"
         tag: "rollouts"
         url: "https://demo.glooplatform.com/howto/rollouts"
