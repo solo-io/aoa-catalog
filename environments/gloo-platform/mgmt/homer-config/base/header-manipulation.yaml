@@ -13,3 +13,7 @@ spec:
       content-type: text/html
     appendRequestHeaders:
       content-type: text/html
+    removeRequestHeaders:
+      - content-type
+    removeResponseHeaders:
+      - content-type
