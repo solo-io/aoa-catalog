@@ -146,16 +146,11 @@ services:
   - name: "Demonstrate Progressive Delivery using Argo Rollouts"
     icon: "fab fa-connectdevelop"
     items:
-      #- name: "Using the Argo Rollouts Dashboard"
-      #  icon: "fab fa-connectdevelop"
-      #  tag: "rollouts"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
-      #- name: "Using the Argo Rollouts Demo Application"
-      #  icon: "fab fa-connectdevelop"
-      #  tag: "rollouts"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
+      - name: "Admin Applications - Demo Walkthrough"
+        icon: "fab fa-connectdevelop"
+        tag: "rollouts"
+        url: "https://demo.glooplatform.com/howto/rollouts"
+        target: "_blank" # optional html a tag target attribute
 
   - name: "Demos using Online Boutique"
     icon: "fas fa-shopping-cart"

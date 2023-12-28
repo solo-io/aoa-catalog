@@ -136,6 +136,60 @@ spec:
           3. This dashboard is tracking Geo-IP information, which can be seen on the map. (Scroll to US)
           4. Access logs are also captured and displayed in the recent requests panel
         status: 200
+    - name: howto-rollouts-demo
+      matchers:
+      - uri:
+          exact: /howto/rollouts
+      directResponse:
+        body: |
+          Argo Rollouts Demo Walkthrough:
+
+          Backstage:
+          At Solo.io, we've integrated Argo Rollouts' traffic management capabilities with Gloo Mesh's advanced routing 
+          mechanisms through a supported plugin. organizations can ensure a smooth and controlled transition from one version 
+          of an application to the next, minimizing downtime and reducing the risk of disruptions. This allows teams to adopt 
+          advanced deployment strategies like canary releases and blue-green deployments, allowing for safe experimentation 
+          with new features and configurations. The result? Faster innovation cycles, higher customer satisfaction, 
+          and ultimately, a stronger market position for the organization.
+
+          Additional Links:
+          https://github.com/ably77/gloo-platform-argo-rollouts-blog
+
+          Progressive Delivery Demo:
+          1. In two separate windows (side-by-side) open up the Argo Rollouts Demo Dashboard and the Argo Rollouts Demo App
+          2. In the Argo Rollouts Demo Dashboard select the rollouts-demo tile
+          3. in the Containers tile on the top right, change the image tag to another color such as blue > green, any color should work. 
+             (i.e. argoproj/rollouts-demo:green) and click save. This will automatically trigger a new progressive rollout of the application
+          4. In the Argo Rollouts Demo App, you will start to see the new version of the application being deployed, mapped to the weights specified
+             in the rollout manifest as the blue squares start to shift to green squares.
+          5. In the Argo Rollouts Demo Dashboard you can also see the progress steps in the left hand sidebar
+          6. Once the rollout is complete, you can see the new version of the application deployed in the Argo Rollouts Demo App
+
+
+          Rollback Demo:
+          1. To demonstrate a rollback, change the image to a color tag prefixed with `bad-` such as `argoproj/rollouts-demo:bad-yellow`
+          2. This will trigger a new progressive rollout of the application. You will see that the new yellow squares in the demo app will
+             have a red border around them, indicating an app that is causing errors. (non-200)
+          3. Argo Rollouts will automatically detect this and rollback to the previous stable version of the application. If you take a look
+             at the AnalysisTemplate you will see that the rollout failed the analysis step which requires < 5% of the traffic to be non-200.
+          4. Note that these metrics are coming from the Istio metrics that are queried using Prometheus
+          5. To reset the demo, switch the image back to a stable state, preferrably `argoproj/rollouts-demo:blue` for the next demo
+          
+          Argo CD UI:
+          Argo CD is not required in order to use Argo Rollouts, but can be integrated together to provide a UI for managing GitOps deployments.
+          The following steps demonstrate how the two projects are well integrated and how they can be used together.
+          
+          1. Open the Argo CD UI in a third window and search for wave-rollouts-demo-aoa. The Argo CD UI is another place to watch the
+          rollout in action.
+          2. When triggering a new rollout, watch the Argo CD UI to see rollout steps as they progress. You should see a new pod being deployed as
+             part of the Rollout, and a new AnalysisTemplate that gets created
+          3. Select the `rollouts-demo-rt-443` RouteTable tile to see that the Argo Rollouts plugin is controlling the weights of the routes according
+             to the steps defined in the rollout manifest
+          4. Selecting the `rollouts-demo` Rollout tile you can see the live manifest to see the declarative configuration of the rollout
+          5. Additionally, if you select the more tab, you will see the integrated read-only version of the Argo Rollouts Demo Dashboard used earlier
+          6. Discuss that in theory, if the sync on this Argo Application was turned on, that the rollout could be triggered by a git commit to the repo
+             and synced automatically. 
+        status: 200
     - name: howto-main
       matchers:
       - uri:
