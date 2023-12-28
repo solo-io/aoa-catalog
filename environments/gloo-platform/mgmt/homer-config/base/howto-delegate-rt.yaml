@@ -8,51 +8,114 @@ metadata:
 spec:
   http:
     - name: howto-ui
+      labels:
+        content-type: text/html
       matchers:
       - uri:
           exact: /howto/ui
       directResponse:
         body: |
-          Gloo Mesh UI Walkthrough:
-          - Review registered clusters
-          - Review discovered Istio resources
-          - Review Workspace concepts
-            - Grouping of clusters/namespaces
-            - Discovered services
-            - Import/export relationships between workspaces
-            - Workspace options (federation, service isolation, trimProxyConfig)
-          - Review Virtual Gateway concepts
-          - Review APIs tab (discovered Portal APIs and GraphQL APIs)
-          - Review Portals tab 
-          - Review Gloo Platform Policies
-            - Access
-            - Access Log
-            - Active Health Check
-            - Client TLS
-            - Connection
-            - CORS
-            - CSRF
-            - Data Loss Prevention
-            - Ext Auth
-            - Failover
-            - Fault Injection
-            - GraphQL Allowed Query
-            - GraphQL Persisted Query Cache
-            - Header Manipulation
-            - HTTP Buffer
-            - JWT
-            - Listener Connection
-            - Load Balancer
-            - Mirror
-            - Outlier Detection
-            - Proxy Protocol
-            - Rate Limit
-            - Retry Timeout
-            - Transformation
-            - Trim Proxy Config
-            - WAF
-            - WASM Deployment
-          - Review Debug tab 
+          <!DOCTYPE html>
+          <html lang="en">          
+
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Gloo Mesh UI Walkthrough</title>
+              <style>
+                  body {
+                      font-family: 'Arial', sans-serif;
+                      margin: 20px;
+                  }          
+
+                  h1 {
+                      color: #333;
+                  }          
+
+                  h2 {
+                      color: #333;
+                      font-size: 18px;
+                  }          
+
+                  p {
+                      color: #666;
+                  }          
+
+                  ol {
+                      margin-bottom: 20px;
+                  }          
+
+                  li {
+                      margin-bottom: 10px;
+                  }          
+
+                  .note {
+                      background-color: #f0f0f0;
+                      padding: 10px;
+                      margin-bottom: 20px;
+                  }          
+
+                  .highlight {
+                      color: #0066cc;
+                      font-weight: bold;
+                  }
+              </style>
+          </head>          
+
+          <body>
+              <h1>Gloo Mesh UI Walkthrough</h1>          
+
+              <ol>
+                  <li>Review registered clusters</li>
+                  <li>Review discovered Istio resources</li>
+                  <li>Review Workspace concepts
+                      <ol>
+                          <li>Grouping of clusters/namespaces</li>
+                          <li>Discovered services</li>
+                          <li>Import/export relationships between workspaces</li>
+                          <li>Workspace options (federation, service isolation, trimProxyConfig)</li>
+                      </ol>
+                  </li>
+                  <li>Review Virtual Gateway concepts</li>
+                  <li>Review APIs tab (discovered Portal APIs and GraphQL APIs)</li>
+                  <li>Review Portals tab</li>
+                  <li>Review Gloo Platform Policies
+                      <ol>
+                          <li>Access</li>
+                          <li>Access Log</li>
+                          <li>Active Health Check</li>
+                          <li>Client TLS</li>
+                          <li>Connection</li>
+                          <li>CORS</li>
+                          <li>CSRF</li>
+                          <li>Data Loss Prevention</li>
+                          <li>Ext Auth</li>
+                          <li>Failover</li>
+                          <li>Fault Injection</li>
+                          <li>GraphQL Allowed Query</li>
+                          <li>GraphQL Persisted Query Cache</li>
+                          <li>Header Manipulation</li>
+                          <li>HTTP Buffer</li>
+                          <li>JWT</li>
+                          <li>Listener Connection</li>
+                          <li>Load Balancer</li>
+                          <li>Mirror</li>
+                          <li>Outlier Detection</li>
+                          <li>Proxy Protocol</li>
+                          <li>Rate Limit</li>
+                          <li>Retry Timeout</li>
+                          <li>Transformation</li>
+                          <li>Trim Proxy Config</li>
+                          <li>WAF</li>
+                          <li>WASM Deployment</li>
+                      </ol>
+                  </li>
+                  <li>Review Debug tab</li>
+              </ol>
+          </body>          
+
+          </html>
+
         status: 200
     - name: howto-admin
       labels:
