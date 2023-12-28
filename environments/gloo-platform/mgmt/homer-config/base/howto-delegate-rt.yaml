@@ -220,9 +220,8 @@ spec:
       - uri:
           exact: /howto/html
       directResponse:
-        body: |
-          '<html><body style="background-color:powderblue;"><h1>Too
-            many Requests!</h1><p>Try again after a minute</p></body></html>'
+        body: |-
+          '<html><body style="background-color:powderblue;"><h1>Too many Requests!</h1><p>Try again after a minute</p></body></html>'
         status: 200
     
     - name: howto-main
