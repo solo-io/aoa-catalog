@@ -191,29 +191,90 @@ spec:
              and synced automatically. 
         status: 200
     - name: howto-rollouts-demo
+      labels:
+        content-type: text/html
       matchers:
       - uri:
           exact: /howto/tiered-app
       directResponse:
         body: |
-          Multicluster Tiered App Demo Walkthrough:
+          <!DOCTYPE html>
+          <html lang="en">          
 
-          Description: 
-          This demo shows a tiered application deployed across glooplatform-central and glooplatform-east, where the central region cluster holds the
-          "core" application which is self-contained in this region. The east region cluster extends the core application across multiple clusters and regions over mTLS.
-          This architecture provides flexibility for application deployments or migration patterns. For example, the developers in the glooplatform-east cluster can 
-          leverage the complete set of core application features, as well as extend the application with additional features that are only relevant to the east region.
-          For migrations, this architecture can be used for a phased migration of the core application from cluster to cluster by using a strangler pattern approach where
-          components of the core application can be migrated to the east region cluster in a phased approach.
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Multicluster Tiered App Demo Walkthrough</title>
+              <style>
+                  body {
+                      font-family: 'Arial', sans-serif;
+                      margin: 20px;
+                  }          
 
-          1. Select the Tiered Mesh Application tile to see the `/ns-1/ui` endpoint. Note that you can also use the `/ns-1` endpoint directly to see the direct API output
-          2. Note that you can also explore the other namespaces as well by changing between `/ns-1` and `/ns-4` endpoints
-          3. Select the Tiered Mesh Application - Gloo UI tile to open up the Gloo Mesh UI service graph
-          4. Note that the service graph shows the core application in the central region cluster, and the extended application in the east region cluster
-          5. Navigate to the strangler-pattern service UI in your browser at `/east/ns-1-ui` to see the extended application in the east region cluster
-          6. Note that the strangler-pattern service calls services in glooplatform-central as well as additional services in the local cluster as part of the
-             call chain. This can be visualized in the graph by the arrow direction from `strangler-pattern` to `throbbing-field`
-          7. Discuss advantages of this architecture for migrations and flexibility for developers
+                  h1 {
+                      color: #333;
+                  }          
+
+                  p {
+                      color: #666;
+                  }          
+
+                  ol {
+                      margin-bottom: 20px;
+                  }          
+
+                  li {
+                      margin-bottom: 10px;
+                  }          
+
+                  .note {
+                      background-color: #f0f0f0;
+                      padding: 10px;
+                      margin-bottom: 20px;
+                  }          
+
+                  .highlight {
+                      color: #0066cc;
+                      font-weight: bold;
+                  }
+              </style>
+          </head>          
+
+          <body>
+              <h1>Multicluster Tiered App Demo Walkthrough</h1>          
+
+              <div class="note">
+                  <p><span class="highlight">Description:</span></p>
+                  <p>This demo shows a tiered application deployed across glooplatform-central and glooplatform-east, where the central
+                      region cluster holds the "core" application which is self-contained in this region. The east region cluster extends
+                      the core application across multiple clusters and regions over mTLS. This architecture provides flexibility for
+                      application deployments or migration patterns. For example, the developers in the glooplatform-east cluster can leverage
+                      the complete set of core application features, as well as extend the application with additional features that are only
+                      relevant to the east region. For migrations, this architecture can be used for a phased migration of the core application
+                      from cluster to cluster by using a strangler pattern approach where components of the core application can be migrated
+                      to the east region cluster in a phased approach.</p>
+              </div>          
+
+              <ol>
+                  <li>Select the <span class="highlight">Tiered Mesh Application tile</span> to see the <span
+                          class="highlight">/ns-1/ui</span> endpoint. Note that you can also use the <span
+                          class="highlight">/ns-1</span> endpoint directly to see the direct API output</li>
+                  <li>Note that you can also explore the other namespaces as well by changing between <span
+                          class="highlight">/ns-1</span> and <span class="highlight">/ns-4</span> endpoints</li>
+                  <li>Select the <span class="highlight">Tiered Mesh Application - Gloo UI tile</span> to open up the <span
+                          class="highlight">Gloo Mesh UI service graph</span></li>
+                  <li>Note that the service graph shows the core application in the central region cluster, and the extended application
+                      in the east region cluster</li>
+                  <li>Navigate to the strangler-pattern service UI in your browser at <span
+                          class="highlight">/east/ns-1-ui</span> to see the extended application in the east region cluster</li>
+                  <li>Note that the strangler-pattern service calls services in glooplatform-central as well as additional services in
+                      the local cluster as part of the call chain. This can be visualized in the graph by the arrow direction from
+                      <span class="highlight">strangler-pattern</span> to <span class="highlight">throbbing-field</span></li>
+                  <li>Discuss advantages of this architecture for migrations and flexibility for developers</li>
+              </ol>
+          </body>          
+
+          </html>
         status: 200
     - name: howto-html
       labels:
