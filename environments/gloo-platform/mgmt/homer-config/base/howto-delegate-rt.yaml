@@ -137,6 +137,8 @@ spec:
           4. Access logs are also captured and displayed in the recent requests panel
         status: 200
     - name: howto-rollouts-demo
+      labels:
+        content-type: text/html
       matchers:
       - uri:
           exact: /howto/rollouts
