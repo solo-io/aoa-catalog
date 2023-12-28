@@ -224,6 +224,15 @@ spec:
                   #      tag: "gmui"
                   #      url: "https://public-ui.glooplatform.com"
                   #      target: "_blank" # optional html a tag target attribute
+
+                  - name: "Gloo Platform Demo Walkthroughs"
+                    logo: "solo/glooy.png"
+                    items:
+                      - name: "Walkthrough Demo Instructions"
+                        logo: "solo/glooy.png"
+                        tag: "howto"
+                        url: "https://demo.glooplatform.com/howto"
+                        target: "_blank" # optional html a tag target attribute
                   
                   - name: "Admin Applications"
                     icon: "fas fa-cloud"
