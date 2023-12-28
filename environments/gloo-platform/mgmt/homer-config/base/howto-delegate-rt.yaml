@@ -55,34 +55,104 @@ spec:
           - Review Debug tab 
         status: 200
     - name: howto-admin
+      labels:
+        content-type: text/html
       matchers:
       - uri:
           exact: /howto/admin
       directResponse:
         body: |
-          Admin Applications Walkthrough:
+          <!DOCTYPE html>
+          <html lang="en">          
 
-          Uptime Dashboard:
-          Description: A self-hosted monitoring tool for applications running on glooplatform.com
-          - Login through Google Auth to access the Uptime Dashboard 
-          - View/Update the list of applications to monitor
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Gloo Platform Admin Applications Walkthrough</title>
+              <style>
+                  body {
+                      font-family: 'Arial', sans-serif;
+                      margin: 20px;
+                  }          
 
-          Prometheus:
-          Description: Access to the Prometheus UI for querying metrics
-          - Login through Google Auth to access the Prometheus UI
-          - Provide a query to view metrics coming from the OTEL pipeline such as `istio_requests_total`
+                  h1 {
+                      color: #333;
+                  }          
 
-          Argo CD:
-          Description: Access to the Argo CD UI for managing GitOps deployments
-          - Login through Google Auth to access the Argo CD UI
-          - Useful to view/edit apps that are synced with the aoa-catalog github repo
-          - Useful for viewing deployment configuration / logs / errors when troubleshooting
-          - Ability to turn on/off automatic sync of apps
+                  h2 {
+                      color: #333;
+                      font-size: 18px;
+                  }          
 
-          Grafana:
-          Description: Access to the Grafana UI for viewing dashboards
-          - Login through Google Auth to access the Argo CD UI
-          - View dashboards for Gloo Platform Operations, Kubernetes Cluster, Istio, and Gloo Portal 
+                  p {
+                      color: #666;
+                  }          
+
+                  ol {
+                      margin-bottom: 20px;
+                  }          
+
+                  li {
+                      margin-bottom: 10px;
+                  }          
+
+                  .note {
+                      background-color: #f0f0f0;
+                      padding: 10px;
+                      margin-bottom: 20px;
+                  }          
+
+                  .highlight {
+                      color: #0066cc;
+                      font-weight: bold;
+                  }
+              </style>
+          </head>          
+
+          <body>
+              <h1>Gloo Platform Admin Applications Walkthrough</h1>          
+
+              <div class="note">
+                  <p><span class="highlight">Uptime Dashboard:</span></p>
+                  <p><span class="highlight">Description:</span> A self-hosted monitoring tool for applications running on glooplatform.com</p>
+                  <ol>
+                      <li>Login through Google Auth to access the Uptime Dashboard</li>
+                      <li>View/Update the list of applications to monitor</li>
+                  </ol>
+              </div>          
+
+              <div class="note">
+                  <p><span class="highlight">Prometheus:</span></p>
+                  <p><span class="highlight">Description:</span> Access to the Prometheus UI for querying metrics</p>
+                  <ol>
+                      <li>Login through Google Auth to access the Prometheus UI</li>
+                      <li>Provide a query to view metrics coming from the OTEL pipeline such as `istio_requests_total`</li>
+                  </ol>
+              </div>          
+
+              <div class="note">
+                  <p><span class="highlight">Argo CD:</span></p>
+                  <p><span class="highlight">Description:</span> Access to the Argo CD UI for managing GitOps deployments</p>
+                  <ol>
+                      <li>Login through Google Auth to access the Argo CD UI</li>
+                      <li>Useful to view/edit apps that are synced with the aoa-catalog github repo</li>
+                      <li>Useful for viewing deployment configuration / logs / errors when troubleshooting</li>
+                      <li>Ability to turn on/off automatic sync of apps</li>
+                  </ol>
+              </div>          
+
+              <div class="note">
+                  <p><span class="highlight">Grafana:</span></p>
+                  <p><span class="highlight">Description:</span> Access to the Grafana UI for viewing dashboards</p>
+                  <ol>
+                      <li>Login through Google Auth to access the Argo CD UI</li>
+                      <li>View dashboards for Gloo Platform Operations, Kubernetes Cluster, Istio, and Gloo Portal</li>
+                  </ol>
+              </div>
+          </body>          
+
+          </html>
+
         status: 200
     - name: howto-portal
       labels:
