@@ -216,6 +216,8 @@ spec:
           7. Discuss advantages of this architecture for migrations and flexibility for developers
         status: 200
     - name: howto-html
+      labels:
+        content-type: text/html
       matchers:
       - uri:
           exact: /howto/html
@@ -224,8 +226,6 @@ spec:
           <html><body style="background-color:powderblue;"><h1>Hello World!</h1><p>Happy New Years!</p></body></html>
         status: 200
     - name: howto-main
-      labels:
-        content-type: text/html
       matchers:
       - uri:
           prefix: /howto
