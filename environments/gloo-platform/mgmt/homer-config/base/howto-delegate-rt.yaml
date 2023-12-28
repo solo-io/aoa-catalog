@@ -161,6 +161,11 @@ spec:
                       color: #333;
                   }          
 
+                  h2 {
+                      color: #333;
+                      font-size: 18px;
+                  }          
+
                   p {
                       color: #666;
                   }          
@@ -201,8 +206,8 @@ spec:
                           target="_blank">https://github.com/ably77/gloo-platform-argo-rollouts-blog</a></p>
               </div>          
 
+              <h2>Progressive Delivery Demo:</h2>
               <ol>
-                  <li><span class="highlight">Progressive Delivery Demo:</span></li>
                   <li>In two separate windows (side-by-side) open up the Argo Rollouts Demo Dashboard and the Argo Rollouts Demo App</li>
                   <li>In the Argo Rollouts Demo Dashboard select the rollouts-demo tile</li>
                   <li>In the Containers tile on the top right, change the image tag to another color such as blue > green, any color should
@@ -214,8 +219,8 @@ spec:
                   <li>Once the rollout is complete, you can see the new version of the application deployed in the Argo Rollouts Demo App</li>
               </ol>          
 
+              <h2>Rollback Demo:</h2>
               <ol>
-                  <li><span class="highlight">Rollback Demo:</span></li>
                   <li>To demonstrate a rollback, change the image to a color tag prefixed with `bad-` such as
                       `argoproj/rollouts-demo:bad-yellow`</li>
                   <li>This will trigger a new progressive rollout of the application. You will see that the new yellow squares in the demo
@@ -227,8 +232,8 @@ spec:
                   <li>To reset the demo, switch the image back to a stable state, preferably `argoproj/rollouts-demo:blue` for the next demo</li>
               </ol>          
 
+              <h2>Argo CD UI:</h2>
               <ol>
-                  <li><span class="highlight">Argo CD UI:</span></li>
                   <li>Argo CD is not required to use Argo Rollouts but can be integrated together to provide a UI for managing GitOps
                       deployments.</li>
                   <li>Open the Argo CD UI in a third window and search for wave-rollouts-demo-aoa. The Argo CD UI is another place to watch
@@ -247,6 +252,7 @@ spec:
           </body>          
 
           </html>
+
 
         status: 200
     - name: howto-tiered-app
