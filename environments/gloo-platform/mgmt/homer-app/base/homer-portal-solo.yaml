@@ -168,7 +168,16 @@ spec:
                   style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
                   title: "Welcome!"
                   icon: "fa fa-grin"
-                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Platform!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />Below are a few common usernames to explore the applications and portals:<br /><br />Username: jdoe@solo.io // Password: gloo-dev<br />Username: jdoe@gmail.com // Password: gloo-public<br /><br /> You can also sign up through Okta using self-service registration! "
+                  content: |
+                    This is a simple navigation homepage for aoa-catalog demo apps running on the Gloo Platform!
+                    Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a>
+                    
+                    Below are a few common usernames to explore the applications and portals:
+                    
+                    Username: jdoe@solo.io // Password: gloo-dev
+                    Username: jdoe@gmail.com // Password: gloo-public
+                    
+                    You can also sign up through Okta using self-service registration!
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
@@ -228,7 +237,7 @@ spec:
                   - name: "Gloo Platform Demo Walkthroughs"
                     logo: "solo/glooy.png"
                     items:
-                      - name: "Walkthrough Demo Instructions"
+                      - name: "How to Use this Environment"
                         logo: "solo/glooy.png"
                         tag: "howto"
                         url: "https://demo.glooplatform.com/howto"
