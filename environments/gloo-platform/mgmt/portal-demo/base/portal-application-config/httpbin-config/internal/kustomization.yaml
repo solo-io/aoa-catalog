@@ -33,7 +33,7 @@ patchesJSON6902:
       value: v1
     - op: replace
       path: /spec/http/0/forwardTo/destinations/0/ref/namespace
-      value: httpbin
+      value: httpbin-portal
 
 # portal metadata patch      
 - target:
@@ -47,6 +47,6 @@ patchesJSON6902:
       value: v2
     - op: replace
       path: /spec/http/0/forwardTo/destinations/0/ref/namespace
-      value: httpbin
+      value: httpbin-portal
 
 namespace: httpbin-portal
