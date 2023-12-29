@@ -31,6 +31,9 @@ patches:
     - op: replace
       path: /spec/portalMetadata/apiVersion
       value: v1-prod
+    - op: replace
+      path: /spec/http/0/forwardTo/destinations/0/ref/namespace
+      value: podinfo-prod
 
 # portal metadata patch      
 - target:
@@ -42,5 +45,8 @@ patches:
     - op: replace
       path: /spec/portalMetadata/apiVersion
       value: v2-prod
+    - op: replace
+      path: /spec/http/0/forwardTo/destinations/0/ref/namespace
+      value: podinfo-prod
 
 namespace: podinfo-prod
