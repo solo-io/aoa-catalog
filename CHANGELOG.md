@@ -1,5 +1,11 @@
 # Changelog
 
+0.1.15 (12-29-23)
+---
+- bump from Gloo Platform 2.4.4 > 2.4.7
+    - required fix from #13158 to resolve issues with gloo mesh portal demo environments
+    - required additional kustomization patches for gloo-gateway/int-ext-portal. specifying destination namespace in the forwardTo is needed for portal discovery
+
 0.1.14 (12-27-23)
 ---
 - update homer image to ably77/homer:0.1.0 (adds glooy logo)
