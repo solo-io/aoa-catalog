@@ -32,5 +32,14 @@ patchesJSON6902:
     - op: replace
       path: /spec/portalMetadata/apiVersion
       value: v1-prod
+    - op: replace
+      path: /spec/http/0/forwardTo/destinations/0/ref/namespace
+      value: petstore-prod
+    - op: replace
+      path: /spec/http/1/forwardTo/destinations/0/ref/namespace
+      value: petstore-prod
+    - op: replace
+      path: /spec/http/2/forwardTo/destinations/0/ref/namespace
+      value: petstore-prod
 
 namespace: petstore-prod

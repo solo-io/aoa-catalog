@@ -28,9 +28,9 @@ spec:
         
         image:
           # -- image repository
-          repository: ably77/homer
+          repository: b4bz/homer
           # -- image tag
-          tag: 0.1.0
+          tag: v23.05.1
           # -- image pull policy
           pullPolicy: IfNotPresent
         
@@ -103,7 +103,7 @@ spec:
                 
                 title: "aoa-catalog demo dashboard"
                 subtitle: "Homepage"
-                logo: "solo/glooy.png"
+                logo: "logo.png"
                 # icon: "fas fa-skull-crossbones" # Optional icon
                 
                 header: true
