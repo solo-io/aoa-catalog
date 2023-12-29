@@ -200,21 +200,21 @@ services:
       #  url: "https://ui.glooplatform.com"
       #  target: "_blank" # optional html a tag target attribute  
 
-  - name: "Demos using Bookinfo"
-    icon: "fas fa-book-reader"
-    items:
-      #- name: "Multicluster Routing with VirtualDestinations"
-      #  icon: "fas fa-book-reader"
-      #  tag: "bookinfo"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute 
-      #- name: "Locality and Failover"
-      #  icon: "fas fa-book-reader"
-      #  tag: "bookinfo"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute 
-      #- name: "Workspace Isolation"
-      #  icon: "fas fa-shopping-cart"
-      #  tag: "onlineboutique"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute  
+  #- name: "Demos using Bookinfo"
+  #  icon: "fas fa-book-reader"
+  #  items:
+  #  - name: "Multicluster Routing with VirtualDestinations"
+  #    icon: "fas fa-book-reader"
+  #    tag: "bookinfo"
+  #    url: "https://ui.glooplatform.com"
+  #    target: "_blank" # optional html a tag target attribute 
+  #  - name: "Locality and Failover"
+  #    icon: "fas fa-book-reader"
+  #    tag: "bookinfo"
+  #    url: "https://ui.glooplatform.com"
+  #    target: "_blank" # optional html a tag target attribute 
+  #  - name: "Workspace Isolation"
+  #    icon: "fas fa-shopping-cart"
+  #    tag: "onlineboutique"
+  #    url: "https://ui.glooplatform.com"
+  #    target: "_blank" # optional html a tag target attribute  
