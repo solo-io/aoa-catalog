@@ -5,7 +5,7 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - httpbin-config
-#- petstore-config
+- petstore-config
 - tracks-config
 - clickhouse-envoyfilter.yaml
 
