@@ -833,7 +833,7 @@ spec:
                       flex-direction: column;
                       align-items: center;
                       justify-content: center;
-                      height: 40vh;
+                      height: 30vh;
                       background: linear-gradient(45deg, #3498db, #9b59b6);
                       color: #fff;
                       text-align: center;
