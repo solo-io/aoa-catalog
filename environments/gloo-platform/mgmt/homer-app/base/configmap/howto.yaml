@@ -189,37 +189,12 @@ services:
   - name: "Demos using Httpbin"
     icon: "far fa-window-maximize"
     items:
-      #- name: "ExtAuth with Okta"
-      #  icon: "far fa-window-maximize"
-      #  tag: "httpbin"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
-      #- name: "Rate Limiting"
-      #  icon: "far fa-window-maximize"
-      #  tag: "httpbin"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute   
-      #- name: "JWT Validation, ClaimsToHeaders, and Transformations"
-      #  icon: "far fa-window-maximize"
-      #  tag: "httpbin"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute  
-      #- name: "OPA AuthZ"
-      #  icon: "far fa-window-maximize"
-      #  tag: "httpbin"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute  
-      #- name: "WAFPolicy"
-      #  icon: "far fa-window-maximize"
-      #  tag: "httpbin"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute
+      - name: "Httpbin App - Demo Walkthrough"
+        icon: "far fa-window-maximize"
+        tag: "httpbin"
+        url: "https://demo.glooplatform.com/howto/httpbin"
+        target: "_blank" # optional html a tag target attribute
       #- name: "Workspace Isolation"
-      #  icon: "far fa-window-maximize"
-      #  tag: "httpbin"
-      #  url: "https://ui.glooplatform.com"
-      #  target: "_blank" # optional html a tag target attribute  
-      #- name: "Plow Loadgenerator"
       #  icon: "far fa-window-maximize"
       #  tag: "httpbin"
       #  url: "https://ui.glooplatform.com"
