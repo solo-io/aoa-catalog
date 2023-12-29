@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multicluster Tiered App Demo Walkthrough</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .parallax-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 40vh;
+            background: linear-gradient(45deg, #3498db, #9b59b6);
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        .parallax-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .note {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .note:hover {
+            transform: scale(1.03);
+        }
+
+        .highlight {
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .icon {
+            font-size: 32px;
+            margin-right: 10px;
+            color: #3498db;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parallax-container">
+        <div class="parallax-bg"></div>
+        <div class="parallax-content">
+            <h1>Multicluster Tiered App Demo Walkthrough</h1>
+        </div>
+    </div>
+
+    <div class="parallax-content">
+        <!-- Multicluster Tiered App Demo -->
+        <div class="note">
+            <h2><i class="icon fab fa-connectdevelop"></i><span class="highlight">Description:</span></h2>
+            <p>This demo shows a tiered application deployed across glooplatform-central and glooplatform-east, where the central region cluster holds the "core" application which is self-contained in this region. The east region cluster extends the core application across multiple clusters and regions over mTLS. This architecture provides flexibility for application deployments or migration patterns. For example, the developers in the glooplatform-east cluster can leverage the complete set of core application features, as well as extend the application with additional features that are only relevant to the east region. For migrations, this architecture can be used for a phased migration of the core application from cluster to cluster by using a strangler pattern approach where components of the core application can be migrated to the east region cluster in a phased approach.</p>
+            <ol>
+                <li>Select the Tiered Mesh Application tile to see the `/ns-1/ui` endpoint. Note that you can also use the `/ns-1` endpoint directly to see the direct API output</li>
+                <li>Note that you can also explore the other namespaces as well by changing between `/ns-1` and `/ns-4` endpoints</li>
+                <li>Select the Tiered Mesh Application - Gloo UI tile to open up the Gloo Mesh UI service graph</li>
+                <li>Note that the service graph shows the core application in the central region cluster, and the extended application in the east region cluster</li>
+                <li>Navigate to the strangler-pattern service UI in your browser at `/east/ns-1-ui` to see the extended application in the east region cluster</li>
+                <li>Note that the strangler-pattern service calls services in glooplatform-central as well as additional services in the local cluster as part of the call chain. This can be visualized in the graph by the arrow direction from `strangler-pattern` to `throbbing-field`</li>
+                <li>Discuss advantages of this architecture for migrations and flexibility for developers</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            var scrolled = window.scrollY;
+            var parallaxBg = document.querySelector('.parallax-bg');
+            parallaxBg.style.transform = 'translateY(' + scrolled * 0.5 + 'px)';
+        });
+    </script>
+</body>
+
+</html>
