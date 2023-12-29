@@ -52,7 +52,13 @@ message:
   style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
   title: "Welcome!"
   icon: "fa fa-grin"
-  content: "This page links out to YouTube videos on how to demonstrate features running on Gloo Platform demo website!<br /> <br />Below are a few common usernames to explore the applications and portals:<br /><br />Username: jdoe@solo.io // Password: gloo-dev<br />Username: jdoe@gmail.com // Password: gloo-public<br /><br />"
+  content: |
+    This page links out to Instructions as well as YouTube videos on how to demonstrate use-cases and features for applications running on the Gloo Platform demo website!<br /><br />
+    
+    Below are a few common usernames to explore the applications and portals:<br /><br />
+    
+    Username: jdoe@solo.io // Password: gloo-dev<br />
+    Username: jdoe@gmail.com // Password: gloo-public<br /><br />
 
 # Optional navbar
   # links: [] # Allows for navbar (dark mode, layout, and search) without any links
