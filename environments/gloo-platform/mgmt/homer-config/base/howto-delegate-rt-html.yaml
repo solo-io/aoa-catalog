@@ -804,12 +804,12 @@ spec:
 
         status: 200
 
-    - name: howto-tiered-app
+    - name: howto-httpbin
       labels:
         content-type: text/html
       matchers:
       - uri:
-          exact: /howto/tiered-app
+          exact: /howto/httpbin
       directResponse:
         body: |
           <!DOCTYPE html>
