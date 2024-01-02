@@ -4,5 +4,6 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
+- collaboration-tools-ns.yaml
 - ghost-blog.yaml
 - ghost-blog-pvc.yaml
