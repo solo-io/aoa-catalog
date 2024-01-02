@@ -1,0 +1,136 @@
+# Simple setup of Ghost in Kubernetes.
+#
+# Some points to consider:
+# - Content is stored in a single persistent disk, and database is SQLite. Using a dedicated database would be ideal
+#   for bigger deployments, and using distributed storage would allow pods to horizontally scale, e.g. GlusterFS, EFS.
+#
+# - A load balancer is provisioned for external traffic to access the blog service. For a multi-tenanted approach,
+#   nginx ingress controller (https://kubernetes.github.io/ingress-nginx/deploy/) could be used.
+#
+# - No TLS for the service. This could be accomplished using GCP, or AWS managed certs on the load balancer.
+#   A more flexible option that uses Let's Encrypt would be cert-manager (https://cert-manager.io/docs/) which is
+#   slightly more setup and management, but offers more flexibility.
+#
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: blog
+#  labels:
+#    app: blog
+#---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: blog
+  namespace: collaboration-tools
+  labels:
+    app: blog
+rules: []
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: blog
+  namespace: collaboration-tools
+  labels:
+    app: blog
+subjects:
+  - kind: ServiceAccount
+    name: blog
+roleRef:
+  kind: Role
+  name: blog
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: blog
+  namespace: collaboration-tools
+  labels:
+    app: blog
+automountServiceAccountToken: false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog
+  namespace: collaboration-tools
+  labels:
+    app: blog
+spec:
+  type: ClusterIP
+  #type: LoadBalancer
+  #externalTrafficPolicy: Cluster
+  ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 2368
+  selector:
+    app: blog
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog
+  namespace: collaboration-tools
+  labels:
+    app: blog
+spec:
+  selector:
+    matchLabels:
+      app: blog
+  revisionHistoryLimit: 10
+  minReadySeconds: 0
+  template:
+    metadata:
+      labels:
+        app: blog
+        istio.io/rev: 1-15
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    spec:
+      serviceAccountName: blog
+      securityContext:
+        fsGroup: 10001
+      volumes:
+        - name: content
+          persistentVolumeClaim:
+            claimName: ghost-content
+      containers:
+        - name: ghost
+          image: ghost:5.4.1-alpine
+          imagePullPolicy: Always
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+          volumeMounts:
+            - name: content
+              mountPath: /var/lib/ghost/content
+          ports:
+            - name: https
+              containerPort: 2368
+              protocol: TCP
+          env:
+            - name: url
+              value: https://ghost.kapoozi.com
+          #readinessProbe:
+          #  httpGet:
+          #    path: /
+          #    port: 2368
+          #    scheme: HTTP
+          #  initialDelaySeconds: 30
+          #  periodSeconds: 10
+          #  timeoutSeconds: 1
+          #  successThreshold: 1
+          #  failureThreshold: 3
+          resources:
+            requests:
+              cpu: 20m
+              memory: 170Mi

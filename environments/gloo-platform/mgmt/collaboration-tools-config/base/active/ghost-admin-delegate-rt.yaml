@@ -1,0 +1,24 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: ghost-admin-delegate
+  namespace: collaboration-tools
+spec:
+  http:
+    - name: ghost-admin-delegate
+      labels:
+        oauth: "true"
+        waf: "true"
+        ratelimited: "true"
+      matchers:
+      - uri:
+          prefix: /ghost
+      - uri:
+          prefix: /callback
+      forwardTo:
+        destinations:
+        - ref:
+            name: blog
+            namespace: collaboration-tools
+          port:
+            number: 443

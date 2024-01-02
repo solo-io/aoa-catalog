@@ -121,6 +121,20 @@ waves:
       -  $env_path/tiered-app-config/init.sh
       post_deploy:
       -  $env_path/tiered-app-config/test.sh
+  - name: collaboration-tools-app
+    location: $env_path/collaboration-tools-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/collaboration-tools-app/init.sh
+      post_deploy:
+      -  $env_path/collaboration-tools-app/test.sh 
+  - name: collaboration-tools-config
+    location: $env_path/collaboration-tools-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/collaboration-tools-config/init.sh
+      post_deploy:
+      -  $env_path/collaboration-tools-config/test.sh
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:

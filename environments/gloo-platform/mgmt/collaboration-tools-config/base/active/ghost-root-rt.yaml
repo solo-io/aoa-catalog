@@ -1,0 +1,35 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: ghost-root
+  namespace: collaboration-tools
+spec:
+  hosts:
+    - 'ghost.demo.glooplatform.com'
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
+  workloadSelectors: []
+  http:
+  - name: ghost-main-delegate
+    labels:
+      route_name: "ghost-main-delegate"
+    delegate:
+      # Selects tables based on name
+      routeTables:
+        - name: ghost-main-delegate
+          namespace: collaboration-tools
+      # Delegates based on order of weights
+      sortMethod: ROUTE_SPECIFICITY
+  - name: ghost-admin-delegate
+    labels:
+      route_name: "ghost-admin-delegate"
+      validate_jwt: "true"
+    delegate:
+      # Selects tables based on name
+      routeTables:
+        - name: ghost-admin-delegate
+          namespace: collaboration-tools
+      # Delegates based on order of weights
+      sortMethod: ROUTE_SPECIFICITY

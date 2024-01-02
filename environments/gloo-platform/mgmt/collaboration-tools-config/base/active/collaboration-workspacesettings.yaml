@@ -1,8 +1,8 @@
 apiVersion: admin.gloo.solo.io/v2
 kind: WorkspaceSettings
 metadata:
-  name: tiered-app-workspacesettings
-  namespace: tiered-app-ws-config
+  name: collaboration
+  namespace: collaboration-tools
 spec:
   exportTo:
   - workspaces:
@@ -12,9 +12,9 @@ spec:
     - name: ops-team
   options:
     federation:                     # enable service federation of the web-ui namespace
-      enabled: true
+      enabled: false
       serviceSelector:
-      - namespace: kubeinvaders
+      - namespace: collaboration-tools
     serviceIsolation:               # enable service isolation and Istio Sidecar resource
-      enabled: true
-      trimProxyConfig: true
+      enabled: false
+      trimProxyConfig: false
