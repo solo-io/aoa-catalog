@@ -87,7 +87,7 @@ spec:
     metadata:
       labels:
         app: blog
-        istio.io/rev: 1-15
+        istio.io/rev: 1-19
       annotations:
         proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:
@@ -119,7 +119,7 @@ spec:
               protocol: TCP
           env:
             - name: url
-              value: https://ghost.kapoozi.com
+              value: https://ghost.demo.glooplatform.com
           #readinessProbe:
           #  httpGet:
           #    path: /
