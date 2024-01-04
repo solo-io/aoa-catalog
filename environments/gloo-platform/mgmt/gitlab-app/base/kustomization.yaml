@@ -7,3 +7,4 @@ resources:
 - gitlab-ns.yaml
 - gitlab.yaml
 - runner-role.yaml
+- gitlab-routetable.yaml
