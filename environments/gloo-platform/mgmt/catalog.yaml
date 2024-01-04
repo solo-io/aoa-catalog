@@ -135,6 +135,13 @@ waves:
       -  $env_path/collaboration-tools-config/init.sh
       post_deploy:
       -  $env_path/collaboration-tools-config/test.sh
+  - name: gitlab-app
+    location: $env_path/gitlab-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gitlab-app/init.sh
+      post_deploy:
+      -  $env_path/gitlab-app/test.sh 
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:
