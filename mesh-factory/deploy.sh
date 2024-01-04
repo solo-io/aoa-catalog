@@ -5,6 +5,8 @@
 
 # ENV needed 
 export GLOO_VERSION=2.4.0
+export MGMT=mgmt
+export LICENSE_KEY=$GLOO_MESH_LICENSE_KEY
 
 
 INSTALL_ROOT_DIR=$PWD
