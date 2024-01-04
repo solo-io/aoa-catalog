@@ -11,6 +11,7 @@ spec:
     - name: istio-system
     - name: ops-team-config
     - name: homer-portal
+    - name: gitlab
   - name: '*'
     namespaces:
     - name: argocd
