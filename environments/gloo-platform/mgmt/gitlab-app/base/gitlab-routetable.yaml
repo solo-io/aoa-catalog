@@ -5,7 +5,7 @@ metadata:
   namespace: gitlab
 spec:
   hosts:
-    - 'gitlab.demo.glooplatform.com'
+    - 'git.glooplatform.com'
   virtualGateways:
     - name: mgmt-north-south-gw-443
       namespace: istio-gateways
