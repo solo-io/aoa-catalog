@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: backstage
+  name: mesh-factory-backstage
   namespace: argocd
 spec:
   destination:
