@@ -22,4 +22,4 @@ spec:
             name: backstage
             namespace: mesh-factory
           port:
-            number: backstage
+            number: 3000
