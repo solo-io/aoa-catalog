@@ -1,8 +1,8 @@
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
-  name: backstage-routetable
-  namespace: backstage
+  name: backstage-mesh-factory-routetable
+  namespace: mesh-factory
 spec:
   hosts:
     - 'mesh-factory.glooplatform.com'
@@ -20,6 +20,6 @@ spec:
         destinations:
         - ref:
             name: backstage
-            namespace: backstage
+            namespace: mesh-factory
           port:
             number: backstage

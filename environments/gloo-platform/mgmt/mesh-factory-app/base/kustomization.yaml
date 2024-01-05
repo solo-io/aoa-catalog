@@ -4,6 +4,5 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- backstage-ns.yaml
+- mesh-factory-ns.yaml
 - backstage.yaml
-- backstage-routetable.yaml

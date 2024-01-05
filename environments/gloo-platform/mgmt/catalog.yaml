@@ -142,13 +142,20 @@ waves:
       -  $env_path/gitlab-app/init.sh
       post_deploy:
       -  $env_path/gitlab-app/test.sh 
-  - name: backstage-app
-    location: $env_path/backstage-app/base
+  - name: mesh-factory-app
+    location: $env_path/mesh-factory-app/base
     scripts:
       pre_deploy: 
-      -  $env_path/backstage-app/init.sh
+      -  $env_path/mesh-factory-app/init.sh
       post_deploy:
-      -  $env_path/backstage-app/test.sh       
+      -  $env_path/mesh-factory-app/test.sh 
+  - name: mesh-factory-config
+    location: $env_path/mesh-factory-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/mesh-factory-config/init.sh
+      post_deploy:
+      -  $env_path/mesh-factory-config/test.sh       
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:

@@ -3,13 +3,13 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: backstage
-  namespace: backstage
+  namespace: mesh-factory
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: backstage
-  namespace: backstage
+  namespace: mesh-factory
   labels:
     app: backstage
     service: backstage
@@ -25,7 +25,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backstage
-  namespace: backstage
+  namespace: mesh-factory
 spec:
   replicas: 1
   selector:

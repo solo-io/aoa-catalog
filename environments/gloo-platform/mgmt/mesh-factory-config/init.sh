@@ -1,4 +1,4 @@
 #!/bin/bash
 
 echo "wave description:"
-echo "deploying backstage"
+echo "mesh-factory app config"
