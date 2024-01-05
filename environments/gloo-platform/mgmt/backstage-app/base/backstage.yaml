@@ -45,3 +45,10 @@ spec:
         name: backstage
         ports:
         - containerPort: 3000
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
