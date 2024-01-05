@@ -34,10 +34,10 @@ backend:
 
 integrations:
   gitlab:
-    - host: git.example.com
+    - host: git.glooplatform.com
       token: solo-token-123
-      apiBaseUrl: http://git.example.com/api/v4
-      baseUrl: http://git.example.com/
+      apiBaseUrl: https://git.glooplatform.com/api/v4
+      baseUrl: https://git.glooplatform.com/
 proxy:
   ### Example for how to add a proxy endpoint for the frontend.
   ### A typical reason to do this is to handle HTTPS and CORS for internal services.
