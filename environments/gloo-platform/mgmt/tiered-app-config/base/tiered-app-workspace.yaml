@@ -1,0 +1,17 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: Workspace
+metadata:
+  name: tiered-app
+  namespace: gloo-mesh
+spec:
+  workloadClusters:
+  - name: 'mgmt'
+    namespaces:
+    - name: tiered-app-ws-config
+  - name: '*'
+    namespaces:
+    - name: ns-1
+    - name: ns-2
+    - name: ns-3
+    - name: ns-4
+    - name: ns-5
