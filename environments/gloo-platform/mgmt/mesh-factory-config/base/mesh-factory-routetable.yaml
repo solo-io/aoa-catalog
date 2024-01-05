@@ -12,7 +12,7 @@ spec:
       cluster: mgmt
   workloadSelectors: []
   http:
-    - name: backstage
+    - name: backstage-meshfactory
       matchers:
       - uri:
           prefix: /
