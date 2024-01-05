@@ -40,7 +40,7 @@ spec:
     spec:
       serviceAccountName: backstage
       containers:
-      - image: ably77/mesh-factory-backstage
+      - image: ably77/mesh-factory-backstage:0.0.1
         imagePullPolicy: Always
         name: backstage
         ports:
