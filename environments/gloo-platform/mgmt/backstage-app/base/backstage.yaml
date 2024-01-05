@@ -1,0 +1,47 @@
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: backstage
+  namespace: backstage
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backstage
+  namespace: backstage
+  labels:
+    app: backstage
+    service: backstage
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 3000    
+  selector:
+    app: backstage
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backstage
+  namespace: backstage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backstage
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: backstage
+        version: v1
+    spec:
+      serviceAccountName: backstage
+      containers:
+      - image: ably77/mesh-factory-backstage
+        imagePullPolicy: Always
+        name: backstage
+        ports:
+        - containerPort: 3000

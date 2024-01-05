@@ -142,6 +142,13 @@ waves:
       -  $env_path/gitlab-app/init.sh
       post_deploy:
       -  $env_path/gitlab-app/test.sh 
+  - name: backstage-app
+    location: $env_path/backstage-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/backstage-app/init.sh
+      post_deploy:
+      -  $env_path/backstage-app/test.sh       
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:
