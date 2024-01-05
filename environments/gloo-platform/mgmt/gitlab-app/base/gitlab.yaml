@@ -56,6 +56,10 @@ spec:
         - containerPort: 80
         - containerPort: 443
         - containerPort: 22  
+        resources:
+            requests:
+              cpu: 500m
+              memory: 4000Mi
       nodeSelector:
         infra: "gitlab"
       tolerations:
