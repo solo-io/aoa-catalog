@@ -5,7 +5,7 @@ metadata:
   namespace: backstage
 spec:
   hosts:
-    - 'backstage.glooplatform.com'
+    - 'mesh-factory.glooplatform.com'
   virtualGateways:
     - name: mgmt-north-south-gw-443
       namespace: istio-gateways
