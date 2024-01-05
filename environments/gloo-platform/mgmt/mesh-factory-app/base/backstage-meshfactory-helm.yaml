@@ -18,7 +18,7 @@ spec:
             #registry: ghcr.io
             #repository: backstage/backstage
             #tag: latest
-            registry: hub.docker.com
+            #registry: docker.io
             repository: ably77/mesh-factory-backstage
             tag: 0.0.1
           podAnnotations:
