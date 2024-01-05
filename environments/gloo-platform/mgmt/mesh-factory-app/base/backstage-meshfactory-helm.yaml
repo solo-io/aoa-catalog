@@ -1,0 +1,70 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: backstage
+  namespace: argocd
+spec:
+  destination:
+    namespace: mesh-factory
+    server: 'https://kubernetes.default.svc'
+  source:
+    repoURL: 'https://backstage.github.io/charts'
+    targetRevision: 1.1.2
+    helm:
+      skipCrds: false
+      values: |
+        backstage:
+          image:
+            #registry: ghcr.io
+            #repository: backstage/backstage
+            #tag: latest
+            registry: hub.docker.com
+            repository: ably77/mesh-factory-backstage
+            tag: 0.0.1
+          podAnnotations:
+            proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+          extraEnvVars:
+            - name: 'APP_CONFIG_app_baseUrl'
+              value: 'https://{{ .Values.ingress.host }}'
+            - name: 'APP_CONFIG_backend_baseUrl'
+              value: 'https://{{ .Values.ingress.host }}'
+            - name: 'APP_CONFIG_backend_cors_origin'
+              value: 'https://{{ .Values.ingress.host }}`'
+            - name: 'APP_CONFIG_lighthouse_baseUrl'
+              value: 'https://{{ .Values.ingress.host }}/lighthouse-api`'
+            - name: 'APP_CONFIG_techdocs_storageUrl'
+              value: 'https://{{ .Values.ingress.host }}/api/techdocs/static/docs`'
+            - name: 'APP_CONFIG_techdocs_storageUrl'
+              value: 'https://{{ .Values.ingress.host }}/api/techdocs`'
+            - name: 'POSTGRES_SERVICE_HOST'
+              value: 'backstage-postgresql'
+            - name: 'POSTGRES_SERVICE_PORT'
+              value: '5432'
+            - name: 'APP_CONFIG_POSTGRES_PASSWORD'
+              value: 'backstage'
+         
+        ingress:
+          enabled: false
+          host: mesh-factory.glooplatform.com
+
+        postgresql:
+          enabled: true
+          auth: 
+            username: backstage
+            password: backstage
+          architecture: standalone
+
+    chart: backstage
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 2
+      backoff:
+        duration: 5s
+        maxDuration: 3m0s
+        factor: 2
