@@ -56,3 +56,10 @@ spec:
         - containerPort: 80
         - containerPort: 443
         - containerPort: 22  
+      nodeSelector:
+        infra: "gitlab"
+      tolerations:
+      - key: cloud.google.com/infra
+        operator: Equal
+        value: "gitlab"
+        effect: NoSchedule
