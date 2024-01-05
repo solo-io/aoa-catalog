@@ -1,7 +1,7 @@
 apiVersion: admin.gloo.solo.io/v2
 kind: Workspace
 metadata:
-  name: collaboration
+  name: mesh-factory
   namespace: gloo-mesh
 spec:
   workloadClusters:
