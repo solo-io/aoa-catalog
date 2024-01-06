@@ -51,7 +51,7 @@ spec:
       action: publish:gitlab
       input:
         description: This is ${{ parameters.name }}
-        repoUrl: git.example.com?repo=${{ parameters.name }}&owner=root
+        repoUrl: git.glooplatform.com?repo=${{ parameters.name }}&owner=root
         repoVisibility: public
         defaultBranch: main
 

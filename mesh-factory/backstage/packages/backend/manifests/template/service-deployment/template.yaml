@@ -56,7 +56,7 @@ spec:
       action: publish:github:pull-request
       input:
         description: Adding Service Deployment ${{ parameters.name }}
-        repoUrl: git.example.com?repo=infra&owner=root
+        repoUrl: git.glooplatform.com?repo=infra&owner=root
         targetPath: idp-project/workspaces/${{ parameters.workspace }}/apps/${{ parameters.name}}
         branchName: workspace_${{ parameters.workspace }}_app_${{ parameters.name }}
         title: Adding Service Deployment for ${{ parameters.name }}
@@ -67,7 +67,7 @@ spec:
       name: Register
       action: catalog:register
       input:
-        repoContentsUrl: http://git.example.com/root/infra/blob/workspace_${{ parameters.workspace }}_app_${{ parameters.name }}
+        repoContentsUrl: http://git.glooplatform.com/root/infra/blob/workspace_${{ parameters.workspace }}_app_${{ parameters.name }}
         catalogInfoPath: /idp-project/workspaces/${{ parameters.workspace }}/apps/${{ parameters.name}}/catalog-info.yaml
 
   # Outputs are displayed to the user after a successful execution of the template.
