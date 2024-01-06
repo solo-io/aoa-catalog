@@ -20,7 +20,7 @@ spec:
             #tag: latest
             registry: docker.io
             repository: ably77/mesh-factory-backstage
-            tag: 0.0.1
+            tag: 0.0.2
           podAnnotations:
             proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
           extraEnvVars:
