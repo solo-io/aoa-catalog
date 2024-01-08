@@ -67,7 +67,7 @@ spec:
       name: Register
       action: catalog:register
       input:
-        repoContentsUrl: http://git.glooplatform.com/root/infra/blob/workspace_${{ parameters.workspace }}_app_${{ parameters.name }}
+        repoContentsUrl: https://git.glooplatform.com/root/infra/blob/workspace_${{ parameters.workspace }}_app_${{ parameters.name }}
         catalogInfoPath: /idp-project/workspaces/${{ parameters.workspace }}/apps/${{ parameters.name}}/catalog-info.yaml
 
   # Outputs are displayed to the user after a successful execution of the template.
