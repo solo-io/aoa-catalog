@@ -51,7 +51,7 @@ spec:
         name: gitlab
         env:
         - name: GITLAB_OMNIBUS_CONFIG
-          value: "external_url 'http://git.glooplatform.com';"        
+          value: "external_url 'https://git.glooplatform.com';"        
         ports:
         - containerPort: 80
         - containerPort: 443
