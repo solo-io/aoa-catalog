@@ -3,9 +3,11 @@
 
 ############################################################
 # Defaults
-install_infra=false
+install_k3d=false
+install_colima=false
 install_argo=true
 export SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
 
 # Colors
 RED='\033[0;31m'
@@ -19,7 +21,7 @@ help() {
     # Display Help
     echo "aoa-catalog installer."
     echo
-    echo "Syntax: installer [-f|-i|-h]"
+    echo "Syntax: installer [-f|-i|-h|--colima]"
     echo
     echo "commands:"
     echo "deploy     deploys an environment with the specified path"
@@ -32,6 +34,7 @@ help() {
     echo
     echo "additional flags:"
     echo "--skip-argo  skip argo installation"
+    echo "--colima   execute colima-install.sh script instead of k3d-install.sh"
 }
 
 pre_install() {
@@ -41,7 +44,7 @@ pre_install() {
     echo "------------------------------------------------------------"
     echo "--------------   AoA Installer - Pre-install   -------------"
     echo "Environment: $env"
-    echo "Install infra: $install_infra"
+    echo "Install infra: $install_k3d"
     echo "Install argo: $install_argo"
     check_git
     echo ""
@@ -134,36 +137,62 @@ unset tmp_env
 
 }
 
-install_infra()
+install_k3d()
 {
    check_env
    echo "Deploying infra..."
-   source $SCRIPT_DIR/tools/k3d-install.sh
 
-   if [ -d "$env/.infra" ]
-   then
-      cd $env/.infra
-      for i in $(ls | sort -n); do 
-            create-k3d-cluster $(cat $i | yq .metadata.name) ${i}
-      done      
-      fi 
+   if [[ ${install_colima} == false ]]; then
+       source $SCRIPT_DIR/tools/k3d-install.sh
+
+       if [ -d "$env/.infra" ]
+       then
+          cd $env/.infra
+          for i in $(ls | sort -n); do 
+                create-k3d-cluster $(cat $i | yq .metadata.name) ${i}
+          done      
+       fi 
+   else
+       source $SCRIPT_DIR/tools/colima-install.sh
+   fi
 }
 
 
 destroy_infra()
 {
-   check_env
-   echo "Destroying infra..."
-   source $SCRIPT_DIR/tools/k3d-install.sh
+    check_env
+    echo "Destroying infra..."
 
-   if [ -d "$env/.infra" ]
-   then
-      cd $env/.infra
-      for i in $(ls | sort -n); do 
-            delete-k3d-cluster $(cat $i | yq .name) ${i}
-      done      
-      fi 
+    if [[ ${install_colima} == true ]]; then
+        colima delete --force
+        rm ~/.kube/config
+    elif [[ ${install_colima} == false ]]; then
+        if [ -d "$env/.infra" ]; then
+            cd $env/.infra
+            for i in $(ls | sort -n); do 
+                k3d cluster delete $(cat $i | yq .metadata.name) ${i}
+                kubectl config delete-context $(cat $i | yq .metadata.name)
+            done      
+        fi 
+    fi
 }
+
+
+
+#destroy_infra()
+#{
+#   check_env
+#   echo "Destroying infra..."
+#
+#   if [ -d "$env/.infra" ]
+#   then
+#      cd $env/.infra
+#      for i in $(ls | sort -n); do 
+#            delete-k3d-cluster $(cat $i | yq .name) ${i}
+#      done      
+#      fi 
+#}
+
 
 install_argo()
 {
@@ -188,12 +217,14 @@ parse_opt()
       f) # env
          env=${OPTARG};;
       i) # infra
-         install_infra=true;;
+         install_k3d=true;;
       h) # display Help
          help
          exit;;
       -) # long options
          case "${OPTARG}" in
+           colima) # --colima logic
+             install_colima=true;;
            skip-argo) # --skip-argo logic
              install_argo=false;;
            *) # handle other long options
@@ -217,9 +248,9 @@ deploy()
 parse_opt $@
 pre_install
 
-if [[ ${install_infra} == true ]]
+if [[ ${install_k3d} == true ]]
 then
-   install_infra
+   install_k3d
 fi 
 
 if [[ ${install_argo} == true ]]
