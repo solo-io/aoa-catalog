@@ -14,7 +14,7 @@ spec:
     routes:
     # direct response action
     - matchers:
-       - prefix: /overview
+       - exact: /overview
       directResponseAction:
         status: 200
         body: |
@@ -111,7 +111,7 @@ spec:
 
     # direct response action
     - matchers:
-       - prefix: /sample-keys
+       - exact: /sample-keys
       directResponseAction:
         status: 200
         body: |
@@ -147,6 +147,13 @@ spec:
                 name: bookinfo-v2-productpage-9080
                 namespace: gloo-system
             weight: 0
+      options:
+        # api-key ext auth
+        extauth:
+          configRef:
+            name: apikey-auth
+            namespace: gloo-system
+
     #options:
     #  # api-key ext auth
     #  extauth:
