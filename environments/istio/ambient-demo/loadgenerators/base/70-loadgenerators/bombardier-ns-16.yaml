@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: bombardier
-        image: alpine/bombardier
+        image: alpine/bombardier:v1.2.5
         imagePullPolicy: IfNotPresent
         command: ["/bin/sh"]
         resources:

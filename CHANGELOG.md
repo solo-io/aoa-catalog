@@ -1,5 +1,16 @@
 # Changelog
 
+0.1.17 (1-11-24)
+---
+- pin bombardier image tag to `alpine/bombardier:v1.2.5`
+
+0.1.16 (1-10-24)
+---
+- add colima install script at `aoa-tools/tools/colima-install.sh`
+- add colima as an additional infra option for local deployments. an additional --colima flag can be used in conjunction with -i in order to deploy colima + k3s instead of k3d + docker.
+- rename `install_infra` function in `deploy.sh` to `install_k3d`
+- fixed destroy function to destroy both colima and k3d options
+
 0.1.15 (12-29-23)
 ---
 - bump from Gloo Platform 2.4.4 > 2.4.7
