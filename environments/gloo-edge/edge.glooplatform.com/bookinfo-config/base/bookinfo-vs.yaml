@@ -11,6 +11,15 @@ spec:
   virtualHost:
     domains:
     - 'bookinfo.edge.glooplatform.com'
+    # options applied at the virtual host (across all routes)
+    options:
+      # web application firewall rules configured via configmap
+      waf:
+        configMapRuleSets:
+           - configMapRef:
+               name: wafrulesets
+               namespace: gloo-system
+        customInterventionMessage: 'ModSecurity intervention! Custom message details here..'
     routes:
     # direct response action
     - matchers:
@@ -26,89 +35,6 @@ spec:
           - WAF
           - Claims to Headers
 
-
-
-          Routing Config:
-          
-          apiVersion: gateway.solo.io/v1
-          kind: VirtualService
-          metadata:
-            name: bookinfo-vs
-            namespace: gloo-system
-          spec:
-            sslConfig:
-              secretRef:
-                name: <secret>
-                namespace: gloo-system
-            virtualHost:
-              domains:
-              - 'bookinfo.edge.glooplatform.com'
-              routes:
-              # if provided a valid api-key, jwt token, and logged in user then route to v2 upstream (red stars)
-              - matchers:
-                - headers:
-                   - name: cookie
-                  prefix: /
-                routeAction:
-                  single:
-                    upstream:
-                      name: bookinfo-v2-productpage-9080
-                      namespace: gloo-system
-              # if provided a valid api-key and jwt token, but are not logged in then route to v1 upstream (no stars / red stars)
-              - matchers:
-                - prefix: /
-                routeAction:
-                  multi:
-                    destinations:
-                    - destination:
-                        upstream:
-                          name: bookinfo-v1-productpage-9080
-                          namespace: gloo-system
-                      weight: 100
-                    - destination:
-                        upstream:
-                          name: bookinfo-v2-productpage-9080
-                          namespace: gloo-system
-                      weight: 0
-              options:
-                # api-key ext auth
-                extauth:
-                  configRef:
-                    name: apikey-auth
-                    namespace: gloo-system
-                # web application firewall
-                waf:
-                  configMapRuleSets:
-                     - configMapRef:
-                         name: wafrulesets
-                         namespace: gloo-system
-                  customInterventionMessage: 'ModSecurity intervention! Custom message details here..'
-                # jwt validation and claims to headers
-                jwt:
-                  providers:
-                    solo:
-                      tokenSource:
-                        headers:
-                        - header: x-token
-                        queryParams:
-                        - token
-                      claimsToHeaders:
-                      - claim: user
-                        header: subscriber
-                      issuer: solo.io
-                      jwks:
-                        local:
-                          key: |
-                            -----BEGIN PUBLIC KEY-----
-                            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6IA5LB7RG7eqoPyoP3GM
-                            gWIdYKwIvYsekCHKf2Co3nCb7ii2kDsNNHJygTsHFO2v5Fqe0/z40A2Qtkf3GjKl
-                            CnFJCoxWX22PZNqEC4b1g12xqZyv7AE8pqhLkp/EFfB1abZJtboIC1y280JVk+iK
-                            iEYGYjC5/PxV3Ynk1QuqC+rcdu6XP6m76p/bzYygaBGVU6ekaDG5B3vheqOlAe/f
-                            hq82aS9V0vjKZbob0uNJFB0diTgUVhFech+CN9lYX7ucUwA5OqRV7zpXTFzxo08c
-                            K/WHCWcZX6TCsfcYHV90abTNl7v+n5JDJfxQJp4RKlVQ4CaEIKBwZtIj1dvbZ9wZ
-                            gQIDAQAB
-                            -----END PUBLIC KEY-----
-
     # direct response action
     - matchers:
        - exact: /sample-keys
@@ -120,8 +46,9 @@ spec:
           
           Bookinfo JWT header:
           "x-token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzb2xvLmlvIiwic3ViIjoiMDk4NzY1NDMyMiIsInVzZXIiOiJzdWJzY3JpYmVyIiwib3JnIjoib3RoZXJjb21wYW55LmNvbSJ9.jl0JpSKGVIBWLC1_UzyspnTS4z72N-mNpO8B2kr5sYZldDgW6A6qvyvPnI_0rINfiTzkRSNmKoCGZaY-qbFl6FAKyAoFf5ZrblZSw3CL9Akt3U8Ok8ts9J6zK8umqL2u7nDO_xLdejCUYYj4lpNp99wsLSRrk4KmBXUhJPIcM7sDX5AFnSda4IccIP1ms_B5LQbIZ24xAixxmIqtMaxEx4nYXv3t-wgynbKFJSzLwyNNxqxIN6gs6sqHWc7Ky81AZAE2DrcAkDWjAd-uVIX6ZbPwQrupjFi5zg9WJJEtxu4N7pN2tEk1IVGSI_H-RMZ1itnBGCyuyNFcSg7-xyBtLw"
-
-    # if provided a valid api-key, jwt token, and logged in user then route to v2 upstream (red stars)
+    
+    # header matching
+    # if provided a valid api-key, jwt token, and logged in (with a cookie: header) user then route to v2 upstream (red stars)
     - matchers:
       - headers:
          - name: cookie
@@ -131,7 +58,41 @@ spec:
           upstream:
             name: bookinfo-v2-productpage-9080
             namespace: gloo-system
-    # if provided a valid api-key and jwt token, but are not logged in then route to v1 upstream (no stars / red stars)
+      # extauth and jwt options specified at the per-route level 
+      options:
+        # api-key ext auth
+        extauth:
+          configRef:
+            name: apikey-auth
+            namespace: gloo-system
+        # jwt validation and claims to headers
+        jwt:
+          providers:
+            solo:
+              tokenSource:
+                headers:
+                - header: x-token
+                queryParams:
+                - token
+              claimsToHeaders:
+              - claim: user
+                header: subscriber
+              issuer: solo.io
+              jwks:
+                local:
+                  key: |
+                    -----BEGIN PUBLIC KEY-----
+                    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6IA5LB7RG7eqoPyoP3GM
+                    gWIdYKwIvYsekCHKf2Co3nCb7ii2kDsNNHJygTsHFO2v5Fqe0/z40A2Qtkf3GjKl
+                    CnFJCoxWX22PZNqEC4b1g12xqZyv7AE8pqhLkp/EFfB1abZJtboIC1y280JVk+iK
+                    iEYGYjC5/PxV3Ynk1QuqC+rcdu6XP6m76p/bzYygaBGVU6ekaDG5B3vheqOlAe/f
+                    hq82aS9V0vjKZbob0uNJFB0diTgUVhFech+CN9lYX7ucUwA5OqRV7zpXTFzxo08c
+                    K/WHCWcZX6TCsfcYHV90abTNl7v+n5JDJfxQJp4RKlVQ4CaEIKBwZtIj1dvbZ9wZ
+                    gQIDAQAB
+                    -----END PUBLIC KEY-----
+    
+    # path matching with weighted destinations
+    # if provided a valid api-key and jwt token, but are not logged in (with a cookie: header) then route to v1 upstream (no stars / red stars)
     - matchers:
       - prefix: /
       routeAction:
@@ -147,48 +108,35 @@ spec:
                 name: bookinfo-v2-productpage-9080
                 namespace: gloo-system
             weight: 0
+      # extauth and jwt options specified at the per-route level 
       options:
         # api-key ext auth
         extauth:
           configRef:
             name: apikey-auth
             namespace: gloo-system
-
-    #options:
-    #  # api-key ext auth
-    #  extauth:
-    #    configRef:
-    #      name: apikey-auth
-    #      namespace: gloo-system
-    #  # web application firewall
-    #  waf:
-    #    configMapRuleSets:
-    #       - configMapRef:
-    #           name: wafrulesets
-    #           namespace: gloo-system
-    #    customInterventionMessage: 'ModSecurity intervention! Custom message details here..'
-    #  # jwt validation and claims to headers
-    #  jwt:
-    #    providers:
-    #      solo:
-    #        tokenSource:
-    #          headers:
-    #          - header: x-token
-    #          queryParams:
-    #          - token
-    #        claimsToHeaders:
-    #        - claim: user
-    #          header: subscriber
-    #        issuer: solo.io
-    #        jwks:
-    #          local:
-    #            key: |
-    #              -----BEGIN PUBLIC KEY-----
-    #              MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6IA5LB7RG7eqoPyoP3GM
-    #              gWIdYKwIvYsekCHKf2Co3nCb7ii2kDsNNHJygTsHFO2v5Fqe0/z40A2Qtkf3GjKl
-    #              CnFJCoxWX22PZNqEC4b1g12xqZyv7AE8pqhLkp/EFfB1abZJtboIC1y280JVk+iK
-    #              iEYGYjC5/PxV3Ynk1QuqC+rcdu6XP6m76p/bzYygaBGVU6ekaDG5B3vheqOlAe/f
-    #              hq82aS9V0vjKZbob0uNJFB0diTgUVhFech+CN9lYX7ucUwA5OqRV7zpXTFzxo08c
-    #              K/WHCWcZX6TCsfcYHV90abTNl7v+n5JDJfxQJp4RKlVQ4CaEIKBwZtIj1dvbZ9wZ
-    #              gQIDAQAB
-    #              -----END PUBLIC KEY-----
+        # jwt validation and claims to headers
+        jwt:
+          providers:
+            solo:
+              tokenSource:
+                headers:
+                - header: x-token
+                queryParams:
+                - token
+              claimsToHeaders:
+              - claim: user
+                header: subscriber
+              issuer: solo.io
+              jwks:
+                local:
+                  key: |
+                    -----BEGIN PUBLIC KEY-----
+                    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6IA5LB7RG7eqoPyoP3GM
+                    gWIdYKwIvYsekCHKf2Co3nCb7ii2kDsNNHJygTsHFO2v5Fqe0/z40A2Qtkf3GjKl
+                    CnFJCoxWX22PZNqEC4b1g12xqZyv7AE8pqhLkp/EFfB1abZJtboIC1y280JVk+iK
+                    iEYGYjC5/PxV3Ynk1QuqC+rcdu6XP6m76p/bzYygaBGVU6ekaDG5B3vheqOlAe/f
+                    hq82aS9V0vjKZbob0uNJFB0diTgUVhFech+CN9lYX7ucUwA5OqRV7zpXTFzxo08c
+                    K/WHCWcZX6TCsfcYHV90abTNl7v+n5JDJfxQJp4RKlVQ4CaEIKBwZtIj1dvbZ9wZ
+                    gQIDAQAB
+                    -----END PUBLIC KEY-----
