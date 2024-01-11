@@ -62,3 +62,15 @@ spec:
           kind: VIRTUAL_DESTINATION
           port:
             number: 8080
+    - name: east-ns-1
+      matchers:
+      - uri:
+          prefix: /east/ns-1
+      forwardTo:
+        destinations:
+        - ref:
+            name: strangler-pattern-vd
+            namespace: tiered-app-ws-config
+          kind: VIRTUAL_DESTINATION
+          port:
+            number: 8080
