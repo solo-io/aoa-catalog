@@ -28,6 +28,11 @@ spec:
                   #service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
                   # using the in-tree controller
                   service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+                httpPort: 80
+                httpsPort: 443
+                type: LoadBalancer
+                # change the order of the ports in the Kubernetes service with the httpsFirst: true field so that the NLB health checks work
+                httpsFirst: true 
         gloo-fed:
           enabled: false
           create_license_secret: false
