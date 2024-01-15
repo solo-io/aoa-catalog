@@ -22,4 +22,4 @@ spec:
             name: gitlab
             namespace: gitlab
           port:
-            number: 80
+            number: 443
