@@ -24,7 +24,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: bombardier
-        image: alpine/bombardier:v1.2.5:v1.2.5
+        image: alpine/bombardier:v1.2.5
         imagePullPolicy: IfNotPresent
         command: ["/bin/sh"]
         resources:
