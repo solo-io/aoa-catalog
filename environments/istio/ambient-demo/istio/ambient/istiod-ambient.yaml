@@ -5,7 +5,7 @@ metadata:
   namespace: istio-system
 spec:
   hub: docker.io/istio
-  tag: 1.19.3
+  tag: 1.20.2
   profile: ambient
   meshConfig:
     accessLogFile: /dev/stdout

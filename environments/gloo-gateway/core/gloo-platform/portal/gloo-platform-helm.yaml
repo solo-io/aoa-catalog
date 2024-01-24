@@ -19,6 +19,8 @@ spec:
             addonNamespace: "gloo-mesh-addons"
             adminNamespace: "gloo-mesh"
             cluster: mgmt
+        glooInsightsEngine:
+            enabled: false
         global: {}
         glooAgent:
             enabled: true
@@ -66,7 +68,7 @@ spec:
                             annotations:
                                 proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
                             labels:
-                                istio.io/rev: 1-19
+                                istio.io/rev: 1-20
                                 sidecar.istio.io/inject: "true"
             enabled: true
             serviceType: ClusterIP
@@ -104,25 +106,13 @@ spec:
             deployment:
                 enabled: true
         clickhouse:
-            enabled: true
+            enabled: false
             persistence:
                 enabled: false
         telemetryGateway:
             enabled: true
-            #image:
-            #  pullPolicy: IfNotPresent
-            #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.4.7
         telemetryCollector:
             enabled: true
-            presets:
-                logsCollection:
-                    enabled: true
-                    storeCheckpoints: true
-            #image:
-            #  pullPolicy: IfNotPresent
-            #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.4.7
             config:
                 exporters:
                     otlp:
@@ -142,17 +132,7 @@ spec:
                     path: /var/run/cilium
                     type: DirectoryOrCreate
                   name: cilium-run
-        telemetryCollectorCustomization:
-            pipelines:
-                logs/istio_access_logs:
-                    enabled: true
         telemetryGatewayCustomization:
-            pipelines:
-                logs/clickhouse:
-                  enabled: true
-            extraExporters:
-                clickhouse:
-                  password: password
             disableCertGeneration: true
             extraPipelines:
                 metrics/gloo-mgmt:
@@ -223,7 +203,7 @@ spec:
                                     - __meta_kubernetes_pod_phase
 
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.4.7
+    targetRevision: 2.5.0
   syncPolicy:
     automated:
       prune: true
