@@ -4,12 +4,12 @@ metadata:
   labels:
     app: istio-ingressgateway
     istio: eastwestgateway
-    revision: 1-19
+    revision: 1-20
     topology.istio.io/network: mgmt
   annotations:
     # AWS NLB Annotation
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
-  name: istio-eastwestgateway-1-19
+  name: istio-eastwestgateway-1-20
   namespace: istio-gateways
 spec:
   ports:
@@ -36,6 +36,6 @@ spec:
   selector:
     app: istio-ingressgateway
     istio: eastwestgateway
-    revision: 1-19
+    revision: 1-20
     topology.istio.io/network: mgmt
   type: LoadBalancer
