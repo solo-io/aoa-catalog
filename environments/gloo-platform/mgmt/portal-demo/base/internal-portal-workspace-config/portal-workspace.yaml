@@ -13,3 +13,4 @@ spec:
     - name: httpbin-portal
     - name: backstage
     - name: podinfo-portal
+    - name: openlibrary
