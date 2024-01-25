@@ -4,9 +4,7 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- httpbin-config
-- petstore-config
-- tracks-config
-- podinfo-config
-- openlibrary-config
+- apischemadiscovery.yaml
+- externalservice.yaml
+- rt.yaml
 

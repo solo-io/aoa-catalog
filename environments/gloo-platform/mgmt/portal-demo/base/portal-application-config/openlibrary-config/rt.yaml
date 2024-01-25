@@ -1,0 +1,45 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: rt-openlibrary-int
+  namespace: openlibrary
+  labels:
+    portal: internal
+    api: openlibrary
+spec:
+  portalMetadata:
+    apiProductId: "openlibrary"
+    apiProductDisplayName: "openlibrary API Product"
+    apiVersion: "v1"
+    title: "openlibrary v1 REST API"
+    description: "OpenAPI specification for openlibrary v1 REST API"
+    termsOfService: "Information about your Terms of Service."
+    contact: "changeme@email.com"
+    license: "MIT License"
+    customMetadata:
+      lifecyclePhase: "Stable"
+      compatibility: "Forwards"
+  hosts:
+    - 'openlibrary.demo.glooplatform.com'
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+  http:
+    # Route for openlibrary
+    - name: openlibrary
+      # Prefix matching
+      matchers:
+      - uri:
+          prefix: /openlibrary
+      # Forwarding directive
+      forwardTo:
+        destinations:
+        # Reference to the external service resource exposing your external endpoints
+        - ref:
+            name: openlibrary
+            namespace: openlibrary
+          port:
+            number: 443
+          kind: EXTERNAL_SERVICE
+        pathRewrite: /
+        hostRewrite: openlibrary.org
