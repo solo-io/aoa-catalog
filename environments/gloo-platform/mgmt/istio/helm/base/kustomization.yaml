@@ -16,4 +16,3 @@ resources:
 - istio-ingressgateway-svc.yaml
 #- kiali.yaml
 - jaeger.yaml
-- clickhouse-envoyfilter.yaml

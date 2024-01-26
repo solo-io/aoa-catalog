@@ -9,4 +9,5 @@ resources:
 - tracks-config
 - podinfo-config
 - openlibrary-config
+- clickhouse-envoyfilter.yaml
 
