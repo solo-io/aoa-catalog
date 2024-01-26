@@ -27,6 +27,4 @@ spec:
       - PUT
       - DELETE
     allowOrigins:
-      - prefix: 'https://solo-dev-portal.int.glooplatform.com'
       - prefix: 'https://backstage.glooplatform.com'
-      - prefix: '*'
