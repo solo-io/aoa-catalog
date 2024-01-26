@@ -30,7 +30,7 @@ spec:
       # Prefix matching
       matchers:
       - uri:
-          prefix: /openlibrary
+          prefix: /
       # Forwarding directive
       forwardTo:
         destinations:
