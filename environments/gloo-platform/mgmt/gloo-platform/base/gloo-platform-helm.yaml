@@ -31,8 +31,9 @@ spec:
                     name: relay-root-ca
                     namespace: gloo-mesh
                 tokenSecret:
-                    name: relay-identity-token-secret
-                    namespace: "gloo-mesh"
+                    key: null
+                    name: null
+                    namespace: null
         glooMgmtServer:
             enabled: true
             relay:
