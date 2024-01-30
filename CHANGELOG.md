@@ -1,5 +1,10 @@
 # Changelog
 
+0.2.1 (1-30-24)
+---
+- update certs to match [docs](https://docs.solo.io/gloo-mesh-enterprise/latest/setup/prod/certs/relay/byo/openssl/#step-4-install-the-gloo-management-server-and-agent)
+
+
 0.2.0 (1-24-24)
 ---
 - update main to Gloo Platform 2.5.x
