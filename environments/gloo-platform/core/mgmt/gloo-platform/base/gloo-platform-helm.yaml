@@ -29,9 +29,6 @@ spec:
                 clientTlsSecret:
                     name: gloo-agent-tls-cert
                     namespace: gloo-mesh
-                rootTlsSecret:
-                    name: relay-root-ca
-                    namespace: gloo-mesh
                 # required to set to null in 2.4.x if providing server and client tls certificates
                 tokenSecret:
                   key: null
@@ -45,11 +42,6 @@ spec:
                 disableTokenGeneration: true
                 tlsSecret:
                     name: gloo-server-tls-cert
-                # required to set to null in 2.4.x if providing server and client tls certificates
-                tokenSecret:
-                  key: null
-                  name: null
-                  namespace: null
             serviceType: LoadBalancer
         glooUi:
             auth:
