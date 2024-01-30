@@ -41,22 +41,6 @@ spec:
                     name: gloo-server-tls-cert
             serviceType: LoadBalancer
         glooUi:
-            #image:
-            #    pullPolicy: IfNotPresent
-            #    registry: gcr.io/gloo-mesh
-            #    repository: gloo-mesh-apiserver
-            #    tag: 2.4.7
-            #sidecars:
-            #    console:
-            #        image:
-            #            registry: gcr.io/gloo-mesh
-            #            repository: gloo-mesh-ui
-            #            tag: 2.4.7
-            #    envoy:
-            #        image:
-            #            registry: gcr.io/gloo-mesh
-            #            repository: gloo-mesh-envoy
-            #            tag: 2.4.7
             deploymentOverrides:
                 spec:
                     template:
@@ -136,14 +120,6 @@ spec:
                 secretKeyRef:
                   key: password
                   name: clickhouse-auth
-            #podLabels:
-            #    istio.io/rev: 1-19
-            #podAnnotations:
-            #    proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
-            #image:
-            #  pullPolicy: IfNotPresent
-            #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.4.7
         telemetryGatewayCustomization:
             pipelines:
                 logs/clickhouse:
@@ -158,20 +134,6 @@ spec:
                 logsCollection:
                     enabled: true
                     storeCheckpoints: true
-            # uncomment to use telemetryCollector in Deployment mode
-            #replicaCount: 1
-            #mode: deployment
-            #service: 
-            #    type: ClusterIP
-            # uncomment to add sidecar
-            podLabels:
-                istio.io/rev: 1-19
-            podAnnotations:
-                proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
-            #image:
-            #  pullPolicy: IfNotPresent
-            #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.4.7
             config:
                 exporters:
                     otlp:
@@ -198,48 +160,10 @@ spec:
                     path: /var/run/cilium
                     type: DirectoryOrCreate
                   name: cilium-run
-        
         telemetryCollectorCustomization:
             pipelines:
                 logs/istio_access_logs:
                     enabled: true
-        #    extraProcessors:
-        #        batch/istiod:
-        #            send_batch_size: 10000
-        #            timeout: 10s
-        #        filter/istiod:
-        #            metrics:
-        #                include:
-        #                    match_type: regexp
-        #                    metric_names:
-        #                      - "pilot.*"
-        #                      - "process.*"
-        #                      - "go.*"
-        #                      - "container.*"
-        #                      - "envoy.*"
-        #                      - "galley.*"
-        #                      - "sidecar.*"
-        #                      - "istio_build.*"
-        #    extraReceivers:
-        #        zipkin/gloo-mesh:
-        #            endpoint: 0.0.0.0:9411
-        #        otlp/gloo-mesh:
-        #          protocols:
-        #            grpc:
-        #              endpoint: 0.0.0.0:4317
-        #            http:
-        #              endpoint: 0.0.0.0:4318
-            #extraProcessors:
-            #    batch/istiod:
-            #        send_batch_size: 10000
-            #        timeout: 10s
-            #    filter/istiod:
-            #        metrics:
-            #            include:
-            #                match_type: regexp
-            #                metric_names:
-            #                    - ".*proxy_latency.*"
-
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
     targetRevision: 2.4.7
   syncPolicy:
