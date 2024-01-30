@@ -145,6 +145,12 @@ spec:
                 requests:
                     cpu: 200m
                     memory: 1Gi
+            extraEnvs:
+                - name: CLICKHOUSE_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      key: password
+                      name: clickhouse-auth
             extraVolumes:
                 - name: root-ca
                   secret:
@@ -164,6 +170,9 @@ spec:
             pipelines:
                 logs/istio_access_logs:
                     enabled: true
+            extraExporters:
+                clickhouse:
+                  password: password
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
     targetRevision: 2.4.7
   syncPolicy:
