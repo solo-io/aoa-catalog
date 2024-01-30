@@ -10,5 +10,3 @@ resources:
 - gloo-telemetry-gateway-cert.yaml
 - issuer.yaml
 - relay-root-tls-secret-cert.yaml
-#- telemetry.yaml
-#- latencyfilter.yaml

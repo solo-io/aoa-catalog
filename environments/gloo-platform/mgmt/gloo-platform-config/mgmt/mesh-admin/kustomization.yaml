@@ -10,8 +10,5 @@ resources:
 - gloo-mesh-mgmt-virtualgateway-443.yaml
 - gloo-mesh-ops-team-workspace.yaml
 - gloo-mesh-ops-team-workspacesettings.yaml
-- latencyfilter.yaml
-#- relay-identity-token-secret.yaml
-#- roottrustpolicy-generated.yaml
 - roottrustpolicy-secretref.yaml
 
