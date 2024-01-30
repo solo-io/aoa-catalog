@@ -27,9 +27,6 @@ spec:
                 clientTlsSecret:
                     name: gloo-agent-tls-cert
                     namespace: gloo-mesh
-                rootTlsSecret:
-                    name: relay-root-ca
-                    namespace: gloo-mesh
                 tokenSecret:
                     key: null
                     name: null
