@@ -41,8 +41,14 @@ spec:
             proxyMetadata:
               ISTIO_META_DNS_CAPTURE: "true"
               ISTIO_META_DNS_AUTO_ALLOCATE: "true"
-              GLOO_MESH_CLUSTER_NAME: mgmt
         pilot:
+          autoscaleEnabled: false
+          replicaCount: 2
+          rollingMaxUnavailable: 50%
+          resources:
+            requests:
+              cpu: 128m
+              memory: 512Mi
           env:
             PILOT_ENABLE_K8S_SELECT_WORKLOAD_ENTRIES: "false"
             PILOT_SKIP_VALIDATE_TRUST_DOMAIN: "true"

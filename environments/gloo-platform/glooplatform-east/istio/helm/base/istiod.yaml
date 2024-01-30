@@ -41,7 +41,6 @@ spec:
             proxyMetadata:
               ISTIO_META_DNS_CAPTURE: "true"
               ISTIO_META_DNS_AUTO_ALLOCATE: "true"
-              GLOO_MESH_CLUSTER_NAME: glooplatform-east
         pilot:
           autoscaleEnabled: false
           replicaCount: 2
