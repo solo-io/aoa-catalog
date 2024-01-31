@@ -80,31 +80,12 @@ spec:
                     secretKey: "xyz987"
         rateLimiter:
             enabled: true
-        glooPortalServer:
-            enabled: true
-            apiKeyStorage:
-                secretKey: xyz987
-                type: redis
-                redis:
-                    address: redis.gloo-mesh-addons:6379
-                    enabled: true
-            resources:
-                requests:
-                    cpu: 50m
-                    memory: 128Mi
         legacyMetricsPipeline:
             enabled: false
         licensing:
             licenseSecretName: "gloo-license"
         prometheus:
             enabled: true
-        redis:
-            deployment:
-                enabled: true
-        clickhouse:
-            enabled: true
-            persistence:
-                enabled: false
         telemetryGateway:
             enabled: true
             resources:
