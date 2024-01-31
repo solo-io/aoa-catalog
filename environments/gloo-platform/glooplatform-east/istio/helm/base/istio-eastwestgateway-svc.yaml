@@ -5,7 +5,7 @@ metadata:
     app: istio-ingressgateway
     istio: eastwestgateway
     topology.istio.io/network: glooplatform-east
-  name: istio-eastwestgateway-1-19
+  name: istio-eastwestgateway-1-20
   namespace: istio-gateways
 spec:
   ports:
@@ -26,6 +26,6 @@ spec:
     protocol: TCP
     targetPort: 15017
   selector:
-    app: istio-eastwestgateway-1-19
+    app: istio-eastwestgateway-1-20
     istio: eastwestgateway
   type: LoadBalancer

@@ -3,7 +3,7 @@
 if [ "${environment_overlay}" == "ilcm" ] ; then 
      echo ""
   else 
-     #$SCRIPT_DIR/tools/wait-for-rollout.sh deployment istio-ingressgateway-1-19 istio-gateways 10 ${cluster_context}
-     $SCRIPT_DIR/tools/wait-for-rollout.sh deployment istio-eastwestgateway-1-19 istio-gateways 10 ${cluster_context}
+     #$SCRIPT_DIR/tools/wait-for-rollout.sh deployment istio-ingressgateway-1-20 istio-gateways 10 ${cluster_context}
+     $SCRIPT_DIR/tools/wait-for-rollout.sh deployment istio-eastwestgateway-1-20 istio-gateways 10 ${cluster_context}
   fi
 

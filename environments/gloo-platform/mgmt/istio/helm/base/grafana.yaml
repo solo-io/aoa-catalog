@@ -142,7 +142,7 @@ spec:
         app.kubernetes.io/instance: grafana
         app: grafana
         sidecar.istio.io/inject: "true"
-        istio.io/rev: 1-19
+        istio.io/rev: 1-20
       annotations:
         proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
         checksum/config: aec3d18ca2ea82d1d48f8965db1440aba0680ed2f32c5a29e6cdb5e7afc8b395
