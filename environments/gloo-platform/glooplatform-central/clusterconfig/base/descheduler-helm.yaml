@@ -57,7 +57,8 @@ spec:
         commonLabels: {}
         
         cronJobApiVersion: "batch/v1"
-        schedule: "0 */6 * * *"
+        #schedule: "0 */6 * * *"
+        schedule: "* * * * *"
         suspend: false
         # startingDeadlineSeconds: 200
         # successfulJobsHistoryLimit: 3
