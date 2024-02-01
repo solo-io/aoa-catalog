@@ -4,4 +4,4 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-#- bookinfo-vs.yaml
+- bookinfo-vs.yaml
