@@ -12,7 +12,7 @@ spec:
   - name: prometheus-ui
     match:
     - uri:
-        prefix: /alerts
+        prefix: /prometheus
     route:
     - destination:
         host: prometheus
