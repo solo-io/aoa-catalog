@@ -34,9 +34,10 @@ spec:
             deploymentOverrides:
                 spec:
                     template:
-                      metadata:
-                        annotations:
-                          prometheus.io/port: 9091
+                        spec:
+                            metadata:
+                              annotations:
+                                prometheus.io/port: 9091
         glooMgmtServer:
             enabled: true
             relay:
