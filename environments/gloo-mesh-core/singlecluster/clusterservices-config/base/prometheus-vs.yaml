@@ -7,12 +7,12 @@ spec:
   hosts:
   - "*"
   gateways:
-  - istio-gateways/http-gateway
+  - istio-gateways/https-gateway
   http:
   - name: prometheus-ui
     match:
     - uri:
-        prefix: /prometheus
+        prefix: /alerts
     route:
     - destination:
         host: prometheus
