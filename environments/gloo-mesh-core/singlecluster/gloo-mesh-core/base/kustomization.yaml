@@ -12,8 +12,3 @@ resources:
 - relay-root-ca.yaml
 - mgmt-grafana.yaml
 - grafana-dashboard-configmaps
-- argocd-vs.yaml
-- gmui-vs.yaml
-- prometheus-vs.yaml
-- http-gateway.yaml
-- https-gateway.yaml
