@@ -57,8 +57,7 @@ spec:
         commonLabels: {}
         
         cronJobApiVersion: "batch/v1"
-        #schedule: "0 */6 * * *"
-        schedule: "* * * * *"
+        schedule: "0 */6 * * *"
         suspend: false
         # startingDeadlineSeconds: 200
         # successfulJobsHistoryLimit: 3
@@ -154,22 +153,6 @@ spec:
                   excludeOwnerKinds:
                   - "Job"
                   minPodLifeTimeSeconds: 3600
-            PodLifeTime:
-              enabled: true
-              params:
-                podLifeTime:
-                  maxPodLifeTimeSeconds: 60
-                #labelSelector:
-                #  matchLabels:
-                #   istio: istiod
-                namespaces:
-                  include:
-                  - "istio-system"
-                states:
-                - "Pending"
-                - "PodInitializing"
-                - "ContainerCreating"
-                - "Running"
                   
         priorityClassName: system-cluster-critical
         
