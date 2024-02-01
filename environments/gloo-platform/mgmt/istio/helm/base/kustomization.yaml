@@ -10,7 +10,7 @@ resources:
 - gateway-clusterissuer.yaml
 - istio-base.yaml
 - istiod.yaml
-- prometheus.yaml
+#- prometheus.yaml
 #- grafana.yaml
 - istio-ingressgateway.yaml
 - istio-ingressgateway-svc.yaml
