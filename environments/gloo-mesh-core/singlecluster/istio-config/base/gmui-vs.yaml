@@ -7,7 +7,7 @@ metadata:
   namespace: gloo-mesh
 spec:
   gateways:
-    - gloo-mesh-gateways/https-gateway
+    - istio-gateways/https-gateway
   hosts:
     - "*"
   http:
