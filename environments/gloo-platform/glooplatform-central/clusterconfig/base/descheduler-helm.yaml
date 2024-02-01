@@ -161,7 +161,7 @@ spec:
                   maxPodLifeTimeSeconds: 60
                 labelSelector:
                   matchLabels:
-                    istio: pilot
+                   istio: istiod
                 namespaces:
                   include:
                   - "istio-system"
