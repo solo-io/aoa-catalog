@@ -159,9 +159,9 @@ spec:
               params:
                 podLifeTime:
                   maxPodLifeTimeSeconds: 60
-                labelSelector:
-                  matchLabels:
-                   istio: istiod
+                #labelSelector:
+                #  matchLabels:
+                #   istio: istiod
                 namespaces:
                   include:
                   - "istio-system"
