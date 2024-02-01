@@ -260,14 +260,35 @@ spec:
                         url: "http://rollouts-demo.edge.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                   
-                  - name: "Gloo Portal"
+                  #- name: "Gloo Portal"
+                  #  icon: "fab fa-connectdevelop"
+                  #  items:
+                  #    - name: "Solo Dev Portal"
+                  #      subtitle: "External Developer Portal"
+                  #      icon: "fab fa-connectdevelop"
+                  #      tag: "external-portal"
+                  #      url: "https://solo-dev-portal.edge.glooplatform.com"
+                  #      target: "_blank" # optional html a tag target attribute
+                  - name: "Developer Portals"
                     icon: "fab fa-connectdevelop"
                     items:
-                      - name: "Solo Dev Portal"
+                      - name: "Backstage"
+                        subtitle: "Internal Developer Portal"
+                        icon: "fab fa-git-alt"
+                        tag: "backstage"
+                        url: "https://backstage.glooplatform.com/gloo-platform-portal/apis"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "React Portal Frontend"
                         subtitle: "External Developer Portal"
                         icon: "fab fa-connectdevelop"
                         tag: "external-portal"
-                        url: "https://solo-dev-portal.edge.glooplatform.com"
+                        url: "https://external-portal.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Clickhouse Portal Analytics"
+                        subtitle: "powered by Grafana / OTel"
+                        icon: "fas fa-chart-area"
+                        tag: "external-portal"
+                        url: "https://clickhouse.demo.glooplatform.com/mgmt-grafana/d/db93be88-8cd4-4c32-8a37-83fbca40e3f0a/api-dashboard-geomap?orgId=1&from=now-1h&to=now"
                         target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
