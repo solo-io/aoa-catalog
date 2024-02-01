@@ -11,4 +11,4 @@ resources:
 - gloo-mesh-ui-vs.yaml
 #- jaeger-vs.yaml
 #- kiali-vs.yaml
-#- prometheus-vs.yaml
+- prometheus-vs.yaml
