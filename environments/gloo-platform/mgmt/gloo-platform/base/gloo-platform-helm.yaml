@@ -149,7 +149,7 @@ spec:
                   name: cilium-run
         telemetryCollectorCustomization:
             pipelines:
-                logs/istio_access_logs:
+                logs/portal:
                     enabled: true
             extraExporters:
                 clickhouse:
@@ -174,7 +174,7 @@ spec:
             persistence:
                 enabled: false
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.4.7
+    targetRevision: 2.5.0
   syncPolicy:
     automated:
       prune: true
