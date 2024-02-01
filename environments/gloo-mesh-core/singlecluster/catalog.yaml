@@ -28,13 +28,6 @@ waves:
         -  $env_path/istio/helm/init.sh
       post_deploy:
         -  $env_path/istio/helm/test.sh
-  - name: istio-config
-    location: $env_path/istio-config/base
-    scripts:
-      pre_deploy:
-        -  $env_path/istio-config/init.sh
-      post_deploy:
-        -  $env_path/istio-config/test.sh
   - name: clusterservices-config
     location: $env_path/clusterservices-config/base
     scripts:
