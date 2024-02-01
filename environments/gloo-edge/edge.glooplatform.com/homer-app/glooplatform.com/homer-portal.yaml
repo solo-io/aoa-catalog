@@ -210,7 +210,8 @@ spec:
                         url: "https://bookinfo.edge.glooplatform.com/sample-keys"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Bookinfo"
-                        subtitle: "api-key and jwt token headers required"
+                        #subtitle: "api-key and jwt token headers required"
+                        subtitle: "api-key header required"
                         icon: "fas fa-book-reader"
                         tag: "bookinfo"
                         url: "https://bookinfo.edge.glooplatform.com/productpage"
