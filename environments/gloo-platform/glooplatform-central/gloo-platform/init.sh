@@ -7,7 +7,7 @@ echo "deploy and register gloo-mesh agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.4.7):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.5.0):"
     read gloo_mesh_version
 fi
 
@@ -68,9 +68,15 @@ spec:
                 clientTlsSecret:
                     name: gloo-agent-tls-cert
                     namespace: gloo-mesh
+            deploymentOverrides:
+                spec:
+                    template:
+                        metadata:
+                            annotations:
+                                prometheus.io/port: '9091'
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.4.7
+    targetRevision: 2.5.0
   syncPolicy:
     automated:
       prune: true
@@ -118,7 +124,7 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.4.7
+              tag: 2.5.0
             config:
                 exporters:
                     otlp:
@@ -176,7 +182,7 @@ spec:
         #        - otlp
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.4.7
+    targetRevision: 2.5.0
   syncPolicy:
     automated:
       prune: true
