@@ -153,6 +153,22 @@ spec:
                   excludeOwnerKinds:
                   - "Job"
                   minPodLifeTimeSeconds: 3600
+            PodLifeTime:
+              enabled: true
+              params:
+                podLifeTime:
+                  maxPodLifeTimeSeconds: 60
+                labelSelector:
+                  matchLabels:
+                    istio: pilot
+                namespaces:
+                  include:
+                  - "istio-system"
+                states:
+                - "Pending"
+                - "PodInitializing"
+                - "ContainerCreating"
+                - "Running"
                   
         priorityClassName: system-cluster-critical
         
