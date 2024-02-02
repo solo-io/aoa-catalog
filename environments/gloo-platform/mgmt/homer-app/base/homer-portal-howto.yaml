@@ -113,7 +113,7 @@ spec:
             # @default -- See values.yaml
             data:
               config.yml: |
-                externalConfig: https://raw.githubusercontent.com/solo-io/aoa-catalog/glooplatform.com-2.4.x/environments/gloo-platform/mgmt/homer-app/base/configmap/howto.yaml
+                externalConfig: https://raw.githubusercontent.com/solo-io/aoa-catalog/glooplatform.com-2.4.x-active/environments/gloo-platform/mgmt/homer-app/base/configmap/howto.yaml
 
   syncPolicy:
     automated:
