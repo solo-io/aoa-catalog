@@ -4,11 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- gloo-agent-cert.yaml
-- gloo-mesh-cert.yaml
+- agent-cert.yaml
 - gloo-platform-crds.yaml
-- gloo-platform-helm.yaml
 - gloo-telemetry-gateway-cert.yaml
-- relay-root-ca.yaml
-- mgmt-grafana.yaml
-- grafana-dashboard-configmaps
+- issuer.yaml
+- relay-root-tls-secret-cert.yaml
