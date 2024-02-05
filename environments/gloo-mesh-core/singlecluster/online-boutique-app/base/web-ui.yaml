@@ -92,9 +92,9 @@ spec:
             - name: RECOMMENDATION_SERVICE_ADDR
               value: "recommendationservice.backend-apis.svc.cluster.local:8080"
             - name: SHIPPING_SERVICE_ADDR
-              value: "shipping.backend-apis-team.solo-io.mesh:80"
+              value: "shippingservice.backend-apis.svc.cluster.local:50051"
             - name: CHECKOUT_SERVICE_ADDR
-              value: "checkout.backend-apis-team.solo-io.mesh:80"
+              value: "checkoutservice.backend-apis.svc.cluster.local:5050"
             - name: PRODUCT_CATALOG_SERVICE_ADDR
               value: "productcatalogservice.backend-apis.svc.cluster.local:3550"
             - name: CURRENCY_SERVICE_ADDR
