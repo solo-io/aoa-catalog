@@ -1,0 +1,62 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: istio-control-plane
+  namespace: istio-system
+spec:
+  hub: docker.io/istio
+  tag: 1.19.6
+  profile: ambient
+  meshConfig:
+    accessLogFile: /dev/stdout
+    defaultConfig:
+  #    envoyAccessLogService:
+  #      address: gloo-mesh-agent.gloo-mesh:9977
+      proxyMetadata:
+        DNS_PROXY_ADDR: 0.0.0.0:15053
+        ISTIO_META_DNS_AUTO_ALLOCATE: "true"
+        ISTIO_META_DNS_CAPTURE: "true"
+        ISTIO_META_ENABLE_HBONE: "true"
+    defaultProviders:
+      metrics:
+      - prometheus
+    enablePrometheusMerge: true
+    extensionProviders:
+    - name: prometheus
+      prometheus: {}
+  values:
+    global:
+      multiCluster:
+        clusterName: mgmt
+    ztunnel:
+      env:
+        ZERO_COPY_DISABLED: true
+      meshConfig:
+        defaultConfig:
+          proxyMetadata:
+            ISTIO_META_DNS_CAPTURE: "true"
+            ISTIO_META_DNS_AUTO_ALLOCATE: "true"
+            DNS_PROXY_ADDR: "0.0.0.0:15053"
+  components:
+  #  base:
+  #    enabled: true
+    cni:
+      enabled: true
+      namespace: kube-system
+  #  egressGateways:
+  #  - enabled: false
+  #    name: istio-egressgateway
+    ingressGateways:
+    - enabled: true
+      name: istio-ingressgateway
+      namespace: istio-system
+  #  istiodRemote:
+  #    enabled: false
+    pilot:
+      enabled: true
+      k8s:
+        env:
+        - name: PILOT_ENABLE_K8S_SELECT_WORKLOAD_ENTRIES
+          value: "false"
+  #  ztunnel:
+  #    enabled: true

@@ -1,5 +1,11 @@
 # Changelog
 
+0.2.2 (2-5-24)
+---
+- separate gloo-platform-portal into own chart to separate lifecycle
+- move existing istio/ambient-demo to istio/ambient-demo/gke/operator-deploy-1.19. this environment serves as a working reference for the Istio Operator deploy with ambient profile using 1.19.6. Ambient profile has been deprecated in 1.20 in favor of Helm or istioctl
+- add istio/ambient-demo/gke/helm-deploy-1.20 to use [Helm based install](https://istio.io/latest/docs/ops/ambient/install/helm-installation/) since support for Istio Operator ambient profile was removed in 1.20
+
 0.2.1 (1-30-24)
 ---
 - update certs to match [docs](https://docs.solo.io/gloo-mesh-enterprise/latest/setup/prod/certs/relay/byo/openssl/#step-4-install-the-gloo-management-server-and-agent)
