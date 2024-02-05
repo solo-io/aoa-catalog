@@ -1,0 +1,715 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-47
+  labels:
+    seed: "1695849508033661000"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: aged-cloud
+  namespace: ns-47
+  labels:
+    app: aged-cloud
+    tier: "3"
+    seed: "1695849508033661000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aged-cloud
+  namespace: ns-47
+  labels:
+    app: aged-cloud
+    tier: "3"
+    seed: "1695849508033661000"
+spec:
+  selector:
+    app: aged-cloud
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aged-cloud-v1
+  namespace: ns-47
+  labels:
+    app: aged-cloud
+    version: v1
+    tier: "3"
+    seed: "1695849508033661000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: aged-cloud
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: aged-cloud
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: aged-cloud
+      containers:
+      - name: aged-cloud
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "aged-cloud-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From aged-cloud (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://snowy-moon.ns-47.svc.cluster.local.:8080,http://hidden-sky.ns-3.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aged-cloud-v2
+  namespace: ns-47
+  labels:
+    app: aged-cloud
+    version: v2
+    tier: "3"
+    seed: "1695849508033661000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: aged-cloud
+        version: v2
+  template:
+    metadata:
+      labels:
+        app: aged-cloud
+        version: v2
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: aged-cloud
+      containers:
+      - name: aged-cloud
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "aged-cloud-v2"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From aged-cloud (v2)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://snowy-moon.ns-47.svc.cluster.local.:8080,http://hidden-sky.ns-3.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aged-cloud-v3
+  namespace: ns-47
+  labels:
+    app: aged-cloud
+    version: v3
+    tier: "3"
+    seed: "1695849508033661000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: aged-cloud
+        version: v3
+  template:
+    metadata:
+      labels:
+        app: aged-cloud
+        version: v3
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: aged-cloud
+      containers:
+      - name: aged-cloud
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "aged-cloud-v3"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From aged-cloud (v3)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://snowy-moon.ns-47.svc.cluster.local.:8080,http://hidden-sky.ns-3.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: broken-violet
+  namespace: ns-47
+  labels:
+    app: broken-violet
+    tier: "2"
+    seed: "1695849508033661000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: broken-violet
+  namespace: ns-47
+  labels:
+    app: broken-violet
+    tier: "2"
+    seed: "1695849508033661000"
+spec:
+  selector:
+    app: broken-violet
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: broken-violet-v1
+  namespace: ns-47
+  labels:
+    app: broken-violet
+    version: v1
+    tier: "2"
+    seed: "1695849508033661000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: broken-violet
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: broken-violet
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: broken-violet
+      containers:
+      - name: broken-violet
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "broken-violet-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From broken-violet (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://aged-cloud.ns-47.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: damp-wind
+  namespace: ns-47
+  labels:
+    app: damp-wind
+    tier: "1"
+    seed: "1695849508033661000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: damp-wind
+  namespace: ns-47
+  labels:
+    app: damp-wind
+    tier: "1"
+    seed: "1695849508033661000"
+spec:
+  selector:
+    app: damp-wind
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: damp-wind-v1
+  namespace: ns-47
+  labels:
+    app: damp-wind
+    version: v1
+    tier: "1"
+    seed: "1695849508033661000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: damp-wind
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: damp-wind
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: damp-wind
+      containers:
+      - name: damp-wind
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "damp-wind-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From damp-wind (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://broken-violet.ns-47.svc.cluster.local.:8080,http://long-fog.ns-47.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: damp-wind-v2
+  namespace: ns-47
+  labels:
+    app: damp-wind
+    version: v2
+    tier: "1"
+    seed: "1695849508033661000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: damp-wind
+        version: v2
+  template:
+    metadata:
+      labels:
+        app: damp-wind
+        version: v2
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: damp-wind
+      containers:
+      - name: damp-wind
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "damp-wind-v2"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From damp-wind (v2)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://broken-violet.ns-47.svc.cluster.local.:8080,http://long-fog.ns-47.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: long-fog
+  namespace: ns-47
+  labels:
+    app: long-fog
+    tier: "2"
+    seed: "1695849508033661000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: long-fog
+  namespace: ns-47
+  labels:
+    app: long-fog
+    tier: "2"
+    seed: "1695849508033661000"
+spec:
+  selector:
+    app: long-fog
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: long-fog-v1
+  namespace: ns-47
+  labels:
+    app: long-fog
+    version: v1
+    tier: "2"
+    seed: "1695849508033661000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: long-fog
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: long-fog
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: long-fog
+      containers:
+      - name: long-fog
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "long-fog-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From long-fog (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: snowy-moon
+  namespace: ns-47
+  labels:
+    app: snowy-moon
+    tier: "4"
+    seed: "1695849508033661000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: snowy-moon
+  namespace: ns-47
+  labels:
+    app: snowy-moon
+    tier: "4"
+    seed: "1695849508033661000"
+spec:
+  selector:
+    app: snowy-moon
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snowy-moon-v1
+  namespace: ns-47
+  labels:
+    app: snowy-moon
+    version: v1
+    tier: "4"
+    seed: "1695849508033661000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: snowy-moon
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: snowy-moon
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: snowy-moon
+      containers:
+      - name: snowy-moon
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "snowy-moon-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From snowy-moon (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://still-violet.ns-4.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snowy-moon-v2
+  namespace: ns-47
+  labels:
+    app: snowy-moon
+    version: v2
+    tier: "4"
+    seed: "1695849508033661000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: snowy-moon
+        version: v2
+  template:
+    metadata:
+      labels:
+        app: snowy-moon
+        version: v2
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: snowy-moon
+      containers:
+      - name: snowy-moon
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "snowy-moon-v2"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From snowy-moon (v2)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://still-violet.ns-4.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
