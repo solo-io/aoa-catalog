@@ -205,6 +205,15 @@ spec:
                         tag: "grafana-mgmt"
                         url: "https://$LB_ADDRESS/grafana"
                         target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Web Applications"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "Online Boutique"
+                        icon: "fas fa-shopping-cart"
+                        tag: "onlineboutique"
+                        url: "https://$LB_ADDRESS"
+                        target: "_blank" # optional html a tag target attribute
           
   syncPolicy:
     automated:
