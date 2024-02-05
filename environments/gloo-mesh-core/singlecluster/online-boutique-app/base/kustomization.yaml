@@ -7,4 +7,4 @@ resources:
 - loadgenerator.yaml
 - web-ui-ns.yaml
 - web-ui.yaml
-
+- virtualservice.yaml
