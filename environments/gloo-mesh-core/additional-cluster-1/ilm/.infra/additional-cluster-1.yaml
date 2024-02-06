@@ -1,7 +1,7 @@
 apiVersion: k3d.io/v1alpha5
 kind: Simple
 metadata:
-  name: additional-cluster
+  name: additional-cluster-1
 image: rancher/k3s:v1.25.12-k3s1
 network: k3d-cluster-network
 ports:

@@ -1,5 +1,5 @@
 # Environment Description
-The `gloo-mesh-core/additional-cluster` environment bootstraps an additional workload cluster to the Gloo Mesh control plane configured in the `gloo-mesh-core/singlecluster` environment.
+The `gloo-mesh-core/additional-cluster-1` environment bootstraps an additional workload cluster to the Gloo Mesh control plane configured in the `gloo-mesh-core/singlecluster` environment.
 
 ### Prerequisites
 - 1 Kubernetes Cluster
