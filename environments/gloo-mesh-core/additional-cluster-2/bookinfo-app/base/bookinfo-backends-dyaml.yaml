@@ -152,7 +152,7 @@ spec:
         - name: LOG_DIR
           value: /tmp/logs
         - name: CLUSTER_NAME
-          value: gloo
+          value: additional-cluster-2
         image: docker.io/istio/examples-bookinfo-reviews-v1:1.18.0
         imagePullPolicy: IfNotPresent
         name: reviews
