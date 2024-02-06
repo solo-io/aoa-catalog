@@ -209,10 +209,10 @@ spec:
                   - name: "Web Applications"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "Online Boutique"
-                        icon: "fas fa-shopping-cart"
-                        tag: "onlineboutique"
-                        url: "https://$LB_ADDRESS"
+                      - name: "Bookinfo App"
+                        icon: "fas fa-book-reader"
+                        tag: "bookinfo"
+                        url: "https://$LB_ADDRESS/productpage"
                         target: "_blank" # optional html a tag target attribute
           
   syncPolicy:
