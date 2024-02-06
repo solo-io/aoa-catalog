@@ -146,20 +146,10 @@ spec:
       skipCrds: true
       values: |
         common:
-            addonNamespace: "gloo-mesh-addons"
             adminNamespace: "gloo-mesh"
             cluster: ${cluster_context}
         telemetryCollector:
             enabled: true
-            # uncomment to use deployment mode instead of daemonset
-            #replicaCount: 1
-            #mode: deployment
-            #service: 
-            #  type: ClusterIP
-            #podLabels:
-            #  istio.io/rev: 1-20
-            #podAnnotations:
-            #  proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
