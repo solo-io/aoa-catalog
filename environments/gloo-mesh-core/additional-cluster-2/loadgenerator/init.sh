@@ -1,4 +1,4 @@
 #!/bin/bash
 
 echo "wave description:"
-echo "deploy online boutique app"
+echo "deploy loadgenerator app"

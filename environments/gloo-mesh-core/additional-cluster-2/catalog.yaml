@@ -35,33 +35,33 @@ waves:
       -  $env_path/clusterservices-config/init.sh
       post_deploy:
       -  $env_path/clusterservices-config/test.sh
-  #- name: online-boutique-app
-  #  location: $env_path/online-boutique-app/base
-  #  scripts:
-  #    pre_deploy: 
-  #    -  $env_path/online-boutique-app/init.sh
-  #    post_deploy:
-  #    -  $env_path/online-boutique-app/test.sh
   - name: bookinfo-app
     location: $env_path/bookinfo-app/base
     scripts:
       pre_deploy: 
       -  $env_path/bookinfo-app/init.sh
       post_deploy:
-      -  $env_path/bookinfo-app/test.sh             
-  # Uncomment to use localhost for link dashboard (k3d)
-  - name: homer-app
-    location: $env_path/homer-app/localhost
+      -  $env_path/bookinfo-app/test.sh          
+  - name: loadgenerator
+    location: $env_path/loadgenerator/base
     scripts:
       pre_deploy: 
-      -  $env_path/homer-app/localhost/init.sh
+      -  $env_path/loadgenerator/init.sh
       post_deploy:
-      -  $env_path/homer-app/localhost/test.sh 
-  # Uncomment to use LB Discovery for link dashboard (Cloud)
+      -  $env_path/loadgenerator/test.sh   
+  # Uncomment to use localhost for link dashboard (k3d)
   #- name: homer-app
-  #  location: $env_path/homer-app/lb-discovery
+  #  location: $env_path/homer-app/localhost
   #  scripts:
   #    pre_deploy: 
-  #    -  $env_path/homer-app/lb-discovery/init.sh
+  #    -  $env_path/homer-app/localhost/init.sh
   #    post_deploy:
-  #    -  $env_path/homer-app/lb-discovery/test.sh 
+  #    -  $env_path/homer-app/localhost/test.sh 
+  # Uncomment to use LB Discovery for link dashboard (Cloud)
+  - name: homer-app
+    location: $env_path/homer-app/lb-discovery
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer-app/lb-discovery/init.sh
+      post_deploy:
+      -  $env_path/homer-app/lb-discovery/test.sh 
