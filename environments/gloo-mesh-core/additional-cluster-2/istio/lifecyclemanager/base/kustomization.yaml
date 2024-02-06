@@ -7,6 +7,6 @@ resources:
 - gateway-cert.yaml
 - gateway-clusterissuer.yaml
 - istio-ingressgateway-svc.yaml
-#- grafana.yaml
+- grafana.yaml
 - kiali.yaml
 - prometheus.yaml
