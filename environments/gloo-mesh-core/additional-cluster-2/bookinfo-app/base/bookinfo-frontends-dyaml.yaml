@@ -49,7 +49,7 @@ spec:
           value: details.bookinfo-backends.svc.cluster.local
         - name: REVIEWS_HOSTNAME
           value: reviews.bookinfo-backends.svc.cluster.local
-        image: us-central1-docker.pkg.dev/solo-test-236622/jmunozro/examples-bookinfo-productpage-v1:1.16.2
+        image: docker.io/istio/examples-bookinfo-productpage-v1:1.18.0
         imagePullPolicy: IfNotPresent
         name: productpage
         ports:

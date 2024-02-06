@@ -88,7 +88,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/solo-test-236622/jmunozro/examples-bookinfo-details-v1:1.16.2
+      - image: docker.io/istio/examples-bookinfo-details-v1:1.18.0
         imagePullPolicy: IfNotPresent
         name: details
         ports:
@@ -118,7 +118,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/solo-test-236622/jmunozro/examples-bookinfo-ratings-v1:1.16.2
+      - image: docker.io/istio/examples-bookinfo-ratings-v1:1.18.0
         imagePullPolicy: IfNotPresent
         name: ratings
         ports:
@@ -152,8 +152,8 @@ spec:
         - name: LOG_DIR
           value: /tmp/logs
         - name: CLUSTER_NAME
-          value: cluster1
-        image: docker.io/istio/examples-bookinfo-reviews-v1:1.17.0
+          value: gloo
+        image: docker.io/istio/examples-bookinfo-reviews-v1:1.18.0
         imagePullPolicy: IfNotPresent
         name: reviews
         ports:
@@ -197,8 +197,8 @@ spec:
         - name: LOG_DIR
           value: /tmp/logs
         - name: CLUSTER_NAME
-          value: cluster1
-        image: docker.io/istio/examples-bookinfo-reviews-v2:1.17.0
+          value: additional-cluster-2
+        image: docker.io/istio/examples-bookinfo-reviews-v2:1.18.0
         imagePullPolicy: IfNotPresent
         name: reviews
         ports:
