@@ -22,20 +22,18 @@ spec:
         global:
           meshID: mesh1
           multiCluster:
-            clusterName: additional_cluster
+            clusterName: additional-cluster
           network: network1
           hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
           tag: 1.20.2-solo
         meshConfig:
-          trustDomain: cluster.local
+          trustDomain: additional-cluster
           accessLogFile: /dev/stdout
           accessLogEncoding: JSON
           enableAutoMtls: true
           defaultConfig:
             # Wait for the istio-proxy to start before starting application pods
             holdApplicationUntilProxyStarts: true
-            envoyAccessLogService:
-              address: gloo-mesh-agent.gloo-mesh:9977
             proxyMetadata:
               ISTIO_META_DNS_CAPTURE: "true"
               ISTIO_META_DNS_AUTO_ALLOCATE: "true"
