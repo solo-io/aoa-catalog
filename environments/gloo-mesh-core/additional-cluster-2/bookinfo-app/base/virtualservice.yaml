@@ -12,7 +12,7 @@ spec:
   - name: productpage
     match:
     - uri:
-        prefix: "/productpage"
+        prefix: "/"
     route:
     - destination:
         host: productpage
