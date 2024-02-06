@@ -95,6 +95,10 @@ spec:
     helm:
       skipCrds: true
       values: |
+        common:
+            adminNamespace: "gloo-mesh"
+            cluster: ${cluster_context}
+        global: {}
         glooAgent:
             enabled: true
             relay:
@@ -108,8 +112,6 @@ spec:
                   name: null
                   namespace: null
         glooAnalyzer:
-            enabled: true
-        telemetryCollector:
             enabled: true
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
