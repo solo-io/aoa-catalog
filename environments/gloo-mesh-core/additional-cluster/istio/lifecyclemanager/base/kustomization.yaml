@@ -4,14 +4,9 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- certmanager-istio-ca-cert.yaml
-- certmanager-selfsigned-issuer.yaml
 - gateway-cert.yaml
 - gateway-clusterissuer.yaml
-- gatewaylifecyclemanager.yaml
-- istiolifecyclemanager.yaml
 - istio-ingressgateway-svc.yaml
 #- grafana.yaml
 - kiali.yaml
 - prometheus.yaml
-
