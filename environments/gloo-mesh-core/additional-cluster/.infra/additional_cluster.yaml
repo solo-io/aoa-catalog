@@ -1,17 +1,17 @@
 apiVersion: k3d.io/v1alpha5
 kind: Simple
 metadata:
-  name: mgmt
+  name: additional_cluster
 image: rancher/k3s:v1.25.12-k3s1
 network: k3d-cluster-network
 ports:
   - port: 8090:8090 # same as `--port '8090:8090@loadbalancer'`
     nodeFilters:
       - loadbalancer
-  - port: 80:80 # same as `--port '80:80@loadbalancer'`
+  - port: 80:8081 # same as `--port '80:80@loadbalancer'`
     nodeFilters:
       - loadbalancer
-  - port: 443:443 # same as `--port '443:443@loadbalancer'`
+  - port: 443:8443 # same as `--port '443:443@loadbalancer'`
     nodeFilters:
       - loadbalancer      
 options:
