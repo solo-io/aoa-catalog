@@ -150,10 +150,6 @@ spec:
             cluster: ${cluster_context}
         telemetryCollector:
             enabled: true
-            image:
-              pullPolicy: IfNotPresent
-              repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.5.0
             config:
                 exporters:
                     otlp:
