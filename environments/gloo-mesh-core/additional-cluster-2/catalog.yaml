@@ -35,13 +35,20 @@ waves:
       -  $env_path/clusterservices-config/init.sh
       post_deploy:
       -  $env_path/clusterservices-config/test.sh
-  - name: online-boutique-app
-    location: $env_path/online-boutique-app/base
+  #- name: online-boutique-app
+  #  location: $env_path/online-boutique-app/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/online-boutique-app/init.sh
+  #    post_deploy:
+  #    -  $env_path/online-boutique-app/test.sh
+  - name: bookinfo-app
+    location: $env_path/bookinfo-app/base
     scripts:
       pre_deploy: 
-      -  $env_path/online-boutique-app/init.sh
+      -  $env_path/bookinfo-app/init.sh
       post_deploy:
-      -  $env_path/online-boutique-app/test.sh            
+      -  $env_path/bookinfo-app/test.sh             
   # Uncomment to use localhost for link dashboard (k3d)
   - name: homer-app
     location: $env_path/homer-app/localhost
