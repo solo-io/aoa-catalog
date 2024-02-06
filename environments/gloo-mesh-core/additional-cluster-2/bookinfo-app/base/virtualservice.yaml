@@ -15,6 +15,6 @@ spec:
         prefix: "/"
     route:
     - destination:
-        host: frontend
+        host: productpage
         port:
           number: 9080
