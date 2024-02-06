@@ -37,6 +37,45 @@ spec:
   clusterDomain: cluster.local
 EOF
 
+# create agent issuer and agent cert
+kubectl apply --context ${cluster_context} -f- <<EOF
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: relay-root-ca
+  namespace: gloo-mesh
+spec:
+  ca:
+    secretName: relay-root-ca
+---
+kind: Certificate
+apiVersion: cert-manager.io/v1
+metadata:
+  name: gloo-agent
+  namespace: gloo-mesh
+spec:
+  commonName: gloo-agent
+  dnsNames:
+    # Must match the cluster name used in the helm chart install
+    - "${cluster_context}"
+  # 1 year life
+  duration: 8760h0m0s
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: relay-root-ca
+  renewBefore: 8736h0m0s
+  secretName: gloo-agent-tls-cert
+  usages:
+    - digital signature
+    - key encipherment
+    - client auth
+    - server auth
+  privateKey:
+    algorithm: "RSA"
+    size: 4096
+EOF
+
 # register clusters to gloo mesh with helm
 kubectl apply --context ${cluster_context} -f- <<EOF
 apiVersion: argoproj.io/v1alpha1
