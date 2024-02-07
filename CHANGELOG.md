@@ -1,5 +1,9 @@
 # Changelog
 
+0.2.4 (2-7-24)
+---
+- fix homer dashboard in `gloo-mesh-core/additional-cluster-1` and `gloo-mesh-core/additional-cluster-2`
+
 0.2.3 (2-7-24)
 ---
 - Add an online-boutique application to gloo-mesh-core/singlecluster environment
