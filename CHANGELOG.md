@@ -1,5 +1,12 @@
 # Changelog
 
+0.2.3 (2-7-24)
+---
+- Add an online-boutique application to gloo-mesh-core/singlecluster environment
+- Add gloo-mesh-core/additional-cluster-1 environment which also configures the online-boutique app
+- Add gloo-mesh-core/additional-cluster-2 environment which configures the bookinfo app
+- Update prereqs in readme to support k8s 1.23-1.28
+
 0.2.2 (2-5-24)
 ---
 - separate gloo-platform-portal into own chart to separate lifecycle
