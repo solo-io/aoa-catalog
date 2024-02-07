@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: kiali
+  namespace: istio-gateways
+spec:
+  hosts:
+  - "kiali.gmc.glooplatform.com"
+  gateways:
+  - istio-gateways/https-gateway
+  http:
+  - name: kiali-ui
+    match:
+    - uri:
+        prefix: /kiali
+    route:
+    - destination:
+        host: kiali
+        port:
+          number: 20001

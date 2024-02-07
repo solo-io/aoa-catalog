@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: homer-portal
+  labels:
+    istio.io/rev: 1-20
+---
