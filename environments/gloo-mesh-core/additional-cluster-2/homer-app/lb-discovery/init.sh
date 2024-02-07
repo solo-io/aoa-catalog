@@ -193,12 +193,6 @@ spec:
                         keywords: "argocd"
                         url: "https://$LB_ADDRESS/argo"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Gloo Mesh UI"
-                        #subtitle: "Another application"
-                        icon: "fas fa-arrows-alt"
-                        tag: "gmui"
-                        url: "http://$LB_ADDRESS"
-                        target: "_blank" # optional html a tag target attribute
                       - name: "Grafana - mgmt"
                         #subtitle: "Another application"
                         icon: "fas fa-chart-area"
