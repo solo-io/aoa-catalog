@@ -10,5 +10,3 @@ resources:
 - gloo-platform-helm.yaml
 - gloo-telemetry-gateway-cert.yaml
 - relay-root-ca.yaml
-- mgmt-grafana.yaml
-- grafana-dashboard-configmaps
