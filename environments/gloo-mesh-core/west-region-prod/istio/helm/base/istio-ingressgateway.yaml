@@ -47,8 +47,7 @@ spec:
         # Pod environment variables
         env: {}
 
-        annotations:
-          proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        annotations: {}
         
         # Labels to apply to all resources
         labels:
