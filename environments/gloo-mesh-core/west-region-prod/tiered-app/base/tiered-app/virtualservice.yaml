@@ -49,13 +49,12 @@ spec:
         host: blue-hill.ns-4.svc.cluster.local
         port:
           number: 8080
-  - name: "ns-5"
-    match:
-    - uri:
-        exact: "/ns-5"
-    route:
-    - destination:
-        host: winter-field.ns-5.svc.cluster.local
-        port:
-          number: 8080
----
+  #- name: "ns-5"
+  #  match:
+  #  - uri:
+  #      exact: "/ns-5"
+  #  route:
+  #  - destination:
+  #      host: winter-field.ns-5.svc.cluster.local
+  #      port:
+  #        number: 8080
