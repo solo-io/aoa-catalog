@@ -1,18 +1,15 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: https-gateway
+  name: http-gateway
   namespace: istio-gateways
 spec:
   selector:
     istio: ingressgateway
   servers:
   - port:
-      number: 443
-      name: https
-      protocol: HTTPS
+      number: 80
+      name: http
+      protocol: HTTP
     hosts:
     - "*"
-    tls:
-      mode: SIMPLE
-      credentialName: cf-advanced-tls-secret
