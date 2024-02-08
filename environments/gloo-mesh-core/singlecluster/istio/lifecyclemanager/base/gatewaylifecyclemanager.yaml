@@ -51,3 +51,38 @@ spec:
                   limits:
                     cpu: 2000m
                     memory: 1024Mi
+                # horizontal pod autoscaler
+                hpaSpec:
+                  minReplicas: 2	
+                  maxReplicas: 4
+                  targetCPUUtilizationPercentage: 80
+                # affinity
+                affinity:
+                  nodeAffinity:
+                    requiredDuringSchedulingIgnoredDuringExecution:
+                      nodeSelectorTerms:
+                      - matchExpressions:
+                        - key: cloud.google.com/node
+                          operator: In
+                          values:
+                          - gateway
+                  podAntiAffinity:
+                    preferredDuringSchedulingIgnoredDuringExecution:
+                    - weight: 100
+                      podAffinityTerm:
+                        labelSelector:
+                          matchExpressions:
+                          - key: app
+                            operator: In
+                            values:
+                            - gateway
+                        topologyKey: "kubernetes.io/hostname"
+                  podAffinity:
+                    requiredDuringSchedulingIgnoredDuringExecution:
+                    - labelSelector:
+                        matchExpressions:
+                        - key: app
+                          operator: In
+                          values:
+                          - gateway
+                      topologyKey: "kubernetes.io/hostname"
