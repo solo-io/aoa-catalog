@@ -139,6 +139,10 @@ spec:
           value: "1"
         - name: DISABLE_DEBUGGER
           value: "1"
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -182,6 +186,10 @@ spec:
         livenessProbe:
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:3550"]
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -224,6 +232,10 @@ spec:
           periodSeconds: 5
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:8080"]
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -268,6 +280,10 @@ spec:
         livenessProbe:
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:7000"]
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -308,6 +324,10 @@ spec:
           periodSeconds: 10
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -353,6 +373,10 @@ spec:
             periodSeconds: 15
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:9555"]
+          resources:
+          requests:
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 ###########################################################
 ## Services
@@ -452,8 +476,8 @@ spec:
             command: ["/bin/grpc_health_probe", "-addr=:50051"]
         resources:
           requests:
-            cpu: 100m
-            memory: 64Mi
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -499,8 +523,8 @@ spec:
             command: ["/bin/grpc_health_probe", "-addr=:50051"]
         resources:
           requests:
-            cpu: 100m
-            memory: 64Mi
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -562,8 +586,8 @@ spec:
           #   value: "jaeger-collector:14268"
           resources:
             requests:
-              cpu: 100m
-              memory: 64Mi
+              cpu: "50m"
+              memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ConfigMap
