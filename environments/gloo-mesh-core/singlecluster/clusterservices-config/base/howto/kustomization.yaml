@@ -7,3 +7,4 @@ resources:
 - howto-main-vs.yaml
 - howto-developer-delegate-vs.yaml
 - howto-platform-delegate-vs.yaml
+- howto-security-delegate-vs.yaml

@@ -23,3 +23,10 @@ spec:
     delegate:
       name: howto-platform-delegate-vs
       namespace: gloo-mesh
+  - name: security
+    match:
+    - uri:
+        exact: /security
+    delegate:
+      name: howto-security-delegate-vs
+      namespace: gloo-mesh
