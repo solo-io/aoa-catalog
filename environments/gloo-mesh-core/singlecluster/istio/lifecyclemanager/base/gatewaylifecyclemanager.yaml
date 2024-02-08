@@ -39,7 +39,7 @@ spec:
                   gloo: "gateway"
                 # tolerations
                 tolerations:
-                  - key: cloud.google.com/gloo
+                  - key: cloud.google.com/node
                     operator: Equal
                     value: "gateway"
                     effect: NoSchedule

@@ -1,428 +1,6 @@
 ###########################################################
 ## Services
 ###########################################################
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: recommendationservice
-  namespace: backend-apis
-  labels:
-    app: recommendationservice
-spec:
-  type: ClusterIP
-  selector:
-    app: recommendationservice
-  ports:
-  - name: grpc
-    port: 8080
-    targetPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: productcatalogservice
-  namespace: backend-apis
-  labels:
-    app: productcatalogservice
-spec:
-  selector:
-    app: productcatalogservice
-  ports:
-  - name: grpc
-    port: 3550
-    targetPort: 3550
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: emailservice
-  namespace: backend-apis
-  labels:
-    app: emailservice
-spec:
-  selector:
-    app: emailservice
-  ports:
-  - name: grpc
-    port: 5000
-    targetPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: currencyservice
-  namespace: backend-apis
-  labels:
-    app: currencyservice
-spec:
-  selector:
-    app: currencyservice
-  ports:
-  - name: grpc
-    port: 7000
-    targetPort: 7000
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: cartservice
-  namespace: backend-apis
-  labels:
-    app: cartservice
-spec:
-  selector:
-    app: cartservice
-  ports:
-  - name: grpc
-    port: 7070
-    targetPort: 7070
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: adservice
-  namespace: backend-apis
-  labels:
-    app: adservice
-spec:
-  selector:
-    app: adservice
-  ports:
-  - name: grpc
-    port: 9555
-    targetPort: 9555
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: recommendation
-  namespace: backend-apis
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: recommendationservice
-  namespace: backend-apis
-spec:
-  selector:
-    matchLabels:
-      app: recommendationservice
-  template:
-    metadata:
-      labels:
-        app: recommendationservice
-    spec:
-      nodeSelector:
-        node: "spot"
-      tolerations:
-      - key: cloud.google.com/node
-        operator: Equal
-        value: "spot"
-        effect: NoSchedule
-      serviceAccountName: recommendation
-      terminationGracePeriodSeconds: 5
-      containers:
-      - name: server
-        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/recommendationservice:1.8
-        ports:
-        - containerPort: 8080
-        readinessProbe:
-          periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health_probe", "-addr=:8080"]
-        livenessProbe:
-          periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health_probe", "-addr=:8080"]
-        env:
-        - name: PORT
-          value: "8080"
-        - name: PRODUCT_CATALOG_SERVICE_ADDR
-          value: "productcatalogservice.backend-apis.svc.cluster.local:3550"
-        - name: DISABLE_TRACING
-          value: "1"
-        - name: DISABLE_PROFILER
-          value: "1"
-        - name: DISABLE_DEBUGGER
-          value: "1"
-        resources:
-          requests:
-            cpu: "50m"
-            memory: "150Mi"  # Adjusted to match the resource requests
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: product-catalog
-  namespace: backend-apis
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: productcatalogservice
-  namespace: backend-apis
-spec:
-  selector:
-    matchLabels:
-      app: productcatalogservice
-  template:
-    metadata:
-      labels:
-        app: productcatalogservice
-    spec:
-      nodeSelector:
-        node: "spot"
-      tolerations:
-      - key: cloud.google.com/node
-        operator: Equal
-        value: "spot"
-        effect: NoSchedule
-      serviceAccountName: product-catalog
-      terminationGracePeriodSeconds: 5
-      containers:
-      - name: server
-        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/productcatalogservice:1.8
-        ports:
-        - containerPort: 3550
-        env:
-        - name: PORT
-          value: "3550"
-        - name: DISABLE_STATS
-          value: "1"
-        - name: DISABLE_TRACING
-          value: "1"
-        - name: DISABLE_PROFILER
-          value: "1"
-        readinessProbe:
-          exec:
-            command: ["/bin/grpc_health_probe", "-addr=:3550"]
-        livenessProbe:
-          exec:
-            command: ["/bin/grpc_health_probe", "-addr=:3550"]
-        resources:
-          requests:
-            cpu: "50m"
-            memory: "150Mi"  # Adjusted to match the resource requests
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: email
-  namespace: backend-apis
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: emailservice
-  namespace: backend-apis
-spec:
-  selector:
-    matchLabels:
-      app: emailservice
-  template:
-    metadata:
-      labels:
-        app: emailservice
-    spec:
-      nodeSelector:
-        node: "spot"
-      tolerations:
-      - key: cloud.google.com/node
-        operator: Equal
-        value: "spot"
-        effect: NoSchedule
-      serviceAccountName: email
-      containers:
-      - name: server
-        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/emailservice:1.8
-        ports:
-        - containerPort: 8080
-        env:
-        - name: PORT
-          value: "8080"
-        - name: DISABLE_TRACING
-          value: "1"
-        - name: DISABLE_PROFILER
-          value: "1"
-        readinessProbe:
-          periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health_probe", "-addr=:8080"]
-        livenessProbe:
-          periodSeconds: 5
-          exec:
-            command: ["/bin/grpc_health_probe", "-addr=:8080"]
-        resources:
-          requests:
-            cpu: "50m"
-            memory: "150Mi"  # Adjusted to match the resource requests
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: currency
-  namespace: backend-apis
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: currencyservice
-  namespace: backend-apis
-spec:
-  selector:
-    matchLabels:
-      app: currencyservice
-  template:
-    metadata:
-      labels:
-        app: currencyservice
-    spec:
-      nodeSelector:
-        node: "spot"
-      tolerations:
-      - key: cloud.google.com/node
-        operator: Equal
-        value: "spot"
-        effect: NoSchedule
-      serviceAccountName: currency
-      terminationGracePeriodSeconds: 5
-      containers:
-      - name: server
-        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/currencyservice:1.8
-        ports:
-        - name: grpc
-          containerPort: 7000
-        env:
-        - name: PORT
-          value: "7000"
-        - name: DISABLE_TRACING
-          value: "1"
-        - name: DISABLE_PROFILER
-          value: "1"
-        - name: DISABLE_DEBUGGER
-          value: "1"
-        readinessProbe:
-          exec:
-            command: ["/bin/grpc_health_probe", "-addr=:7000"]
-        livenessProbe:
-          exec:
-            command: ["/bin/grpc_health_probe", "-addr=:7000"]
-        resources:
-          requests:
-            cpu: "50m"
-            memory: "150Mi"  # Adjusted to match the resource requests
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: cart
-  namespace: backend-apis
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: cartservice
-  namespace: backend-apis
-spec:
-  selector:
-    matchLabels:
-      app: cartservice
-  template:
-    metadata:
-      labels:
-        app: cartservice
-    spec:
-      nodeSelector:
-        node: "spot"
-      tolerations:
-      - key: cloud.google.com/node
-        operator: Equal
-        value: "spot"
-        effect: NoSchedule
-      serviceAccountName: cart
-      terminationGracePeriodSeconds: 5
-      containers:
-      - name: server
-        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/cartservice:1.8
-        ports:
-        - containerPort: 7070
-        env:
-        - name: REDIS_ADDR
-          value: ""
-        readinessProbe:
-          initialDelaySeconds: 15
-          exec:
-            command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
-        livenessProbe:
-          initialDelaySeconds: 15
-          periodSeconds: 10
-          exec:
-            command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
-        resources:
-          requests:
-            cpu: "50m"
-            memory: "150Mi"  # Adjusted to match the resource requests
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: ad
-  namespace: backend-apis
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: adservice
-  namespace: backend-apis
-spec:
-  selector:
-    matchLabels:
-      app: adservice
-  template:
-    metadata:
-      labels:
-        app: adservice
-    spec:
-      nodeSelector:
-        node: "spot"
-      tolerations:
-      - key: cloud.google.com/node
-        operator: Equal
-        value: "spot"
-        effect: NoSchedule
-      serviceAccountName: ad
-      terminationGracePeriodSeconds: 5
-      containers:
-        - name: server
-          image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/adservice:1.8
-          ports:
-            - containerPort: 9555
-          env:
-            - name: PORT
-              value: "9555"
-            - name: DISABLE_STATS
-              value: "1"
-            - name: DISABLE_TRACING
-              value: "1"
-          readinessProbe:
-            initialDelaySeconds: 20
-            periodSeconds: 15
-            exec:
-              command: ["/bin/grpc_health_probe", "-addr=:9555"]
-          livenessProbe:
-            initialDelaySeconds: 20
-            periodSeconds: 15
-            exec:
-              command: ["/bin/grpc_health_probe", "-addr=:9555"]
-          resources:
-            requests:
-              cpu: "50m"
-              memory: "150Mi"  # Adjusted to match the resource requests
----
-###########################################################
-## Services
-###########################################################
 apiVersion: v1
 kind: Service
 metadata:
@@ -469,6 +47,97 @@ spec:
     port: 5050
     targetPort: 5050
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: emailservice
+  namespace: backend-apis
+  labels:
+    app: emailservice
+spec:
+  selector:
+    app: emailservice
+  ports:
+  - name: grpc
+    port: 5000
+    targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommendationservice
+  namespace: backend-apis
+  labels:
+    app: recommendationservice
+spec:
+  type: ClusterIP
+  selector:
+    app: recommendationservice
+  ports:
+  - name: grpc
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: productcatalogservice
+  namespace: backend-apis
+  labels:
+    app: productcatalogservice
+spec:
+  selector:
+    app: productcatalogservice
+  ports:
+  - name: grpc
+    port: 3550
+    targetPort: 3550
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: currencyservice
+  namespace: backend-apis
+  labels:
+    app: currencyservice
+spec:
+  selector:
+    app: currencyservice
+  ports:
+  - name: grpc
+    port: 7000
+    targetPort: 7000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cartservice
+  namespace: backend-apis
+  labels:
+    app: cartservice
+spec:
+  selector:
+    app: cartservice
+  ports:
+  - name: grpc
+    port: 7070
+    targetPort: 7070
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adservice
+  namespace: backend-apis
+  labels:
+    app: adservice
+spec:
+  selector:
+    app: adservice
+  ports:
+  - name: grpc
+    port: 9555
+    targetPort: 9555
+---
 ###########################################################
 ## Deployments
 ###########################################################
@@ -484,6 +153,7 @@ metadata:
   name: shippingservice
   namespace: backend-apis
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: shippingservice
@@ -491,15 +161,17 @@ spec:
     metadata:
       labels:
         app: shippingservice
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:
-      nodeSelector:
-        node: "spot"
-      tolerations:
-      - key: cloud.google.com/node
-        operator: Equal
-        value: "spot"
-        effect: NoSchedule
       serviceAccountName: shipping
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
       containers:
       - name: server
         image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/shippingservice:1.8
@@ -525,8 +197,8 @@ spec:
             command: ["/bin/grpc_health_probe", "-addr=:50051"]
         resources:
           requests:
-            cpu: "50m"
-            memory: "150Mi"  # Adjusted to match the resource requests
+            cpu: 50m
+            memory: 64Mi
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -540,6 +212,7 @@ metadata:
   name: paymentservice
   namespace: backend-apis
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: paymentservice
@@ -547,13 +220,15 @@ spec:
     metadata:
       labels:
         app: paymentservice
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:
       nodeSelector:
-        node: "spot"
+        gke-spot: "true"
       tolerations:
-      - key: cloud.google.com/node
+      - key: cloud.google.com/gke-spot
         operator: Equal
-        value: "spot"
+        value: "true"
         effect: NoSchedule
       serviceAccountName: payment
       terminationGracePeriodSeconds: 5
@@ -579,8 +254,8 @@ spec:
             command: ["/bin/grpc_health_probe", "-addr=:50051"]
         resources:
           requests:
-            cpu: "50m"
-            memory: "150Mi"  # Adjusted to match the resource requests
+            cpu: 50m
+            memory: 64Mi
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -594,6 +269,7 @@ metadata:
   name: checkoutservice
   namespace: backend-apis
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: checkoutservice
@@ -601,42 +277,57 @@ spec:
     metadata:
       labels:
         app: checkoutservice
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:
       nodeSelector:
-        node: "spot"
+        gke-spot: "true"
       tolerations:
-      - key: cloud.google.com/node
+      - key: cloud.google.com/gke-spot
         operator: Equal
-        value: "spot"
+        value: "true"
         effect: NoSchedule
       serviceAccountName: checkout
       containers:
         - name: server
+          #image: gcr.io/google-samples/microservices-demo/checkoutservice:v0.8.0
           image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/checkoutservice:1.8
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5050
           readinessProbe:
-            exec:
-              command: ["/bin/grpc_health_probe", "-addr=:5050"]
+            grpc:
+              port: 5050
           livenessProbe:
-            exec:
-              command: ["/bin/grpc_health_probe", "-addr=:5050"]
+            grpc:
+              port: 5050
+          #readinessProbe:
+          #  exec:
+          #    command: ["/bin/grpc_health_probe", "-addr=:5050"]
+          #livenessProbe:
+          #  exec:
+          #    command: ["/bin/grpc_health_probe", "-addr=:5050"]
           env:
             - name: PORT
               value: "5050"
             - name: PRODUCT_CATALOG_SERVICE_ADDR
               value: "productcatalogservice.backend-apis.svc.cluster.local:3550"
+              #value: "product-catalog.backend-apis-team.solo-io.mesh:80"
             - name: SHIPPING_SERVICE_ADDR
               value: "shippingservice.backend-apis.svc.cluster.local:50051"
+              #value: "shipping.backend-apis-team.solo-io.mesh:80"
             - name: PAYMENT_SERVICE_ADDR
               value: "paymentservice.backend-apis.svc.cluster.local:50051"
+              #value: "paymentservice.backend-apis-team.solo-io.mesh:80"
             - name: EMAIL_SERVICE_ADDR
               value: "emailservice.backend-apis.svc.cluster.local:5000"
+              #value: "emailservice.backend-apis-team.solo-io.mesh:80"
             - name: CURRENCY_SERVICE_ADDR
               value: "currencyservice.backend-apis.svc.cluster.local:7000"
+              #value: "currency.backend-apis-team.solo-io.mesh:80"
             - name: CART_SERVICE_ADDR
               value: "cartservice.backend-apis.svc.cluster.local:7070"
+              #value: "cart.backend-apis-team.solo-io.mesh:80"
             - name: DISABLE_STATS
               value: "1"
             - name: DISABLE_TRACING
@@ -644,13 +335,67 @@ spec:
             - name: DISABLE_PROFILER
               value: "1"
             - name: KUBERNETES_CLUSTER_NAME
-              value: gcp
+              value: glooplatform-central
           # - name: JAEGER_SERVICE_ADDR
           #   value: "jaeger-collector:14268"
           resources:
             requests:
-              cpu: "50m"
-              memory: "150Mi"  # Adjusted to match the resource requests
+              cpu: 50m
+              memory: 64Mi
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: email
+  namespace: backend-apis
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emailservice
+  namespace: backend-apis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emailservice
+  template:
+    metadata:
+      labels:
+        app: emailservice
+    spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
+      serviceAccountName: email
+      containers:
+      - name: server
+        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/emailservice:1.8
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: DISABLE_TRACING
+          value: "1"
+        - name: DISABLE_PROFILER
+          value: "1"
+        readinessProbe:
+          periodSeconds: 5
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:8080"]
+        livenessProbe:
+          periodSeconds: 5
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:8080"]
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -919,3 +664,293 @@ data:
         // short advertisement text to display.
         string text = 2;
     }
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: recommendation
+  namespace: backend-apis
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendationservice
+  namespace: backend-apis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommendationservice
+  template:
+    metadata:
+      labels:
+        app: recommendationservice
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
+      serviceAccountName: recommendation
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: server
+        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/recommendationservice:1.8
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          periodSeconds: 5
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:8080"]
+        livenessProbe:
+          periodSeconds: 5
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:8080"]
+        env:
+        - name: PORT
+          value: "8080"
+        - name: PRODUCT_CATALOG_SERVICE_ADDR
+          value: "productcatalogservice.backend-apis.svc.cluster.local:3550"
+          #value: "product-catalog.backend-apis-team.solo-io.mesh:80"
+        - name: DISABLE_TRACING
+          value: "1"
+        - name: DISABLE_PROFILER
+          value: "1"
+        - name: DISABLE_DEBUGGER
+          value: "1"
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: product-catalog
+  namespace: backend-apis
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productcatalogservice
+  namespace: backend-apis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: productcatalogservice
+  template:
+    metadata:
+      labels:
+        app: productcatalogservice
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
+      serviceAccountName: product-catalog
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: server
+        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/productcatalogservice:1.8
+        ports:
+        - containerPort: 3550
+        env:
+        - name: PORT
+          value: "3550"
+        - name: DISABLE_STATS
+          value: "1"
+        - name: DISABLE_TRACING
+          value: "1"
+        - name: DISABLE_PROFILER
+          value: "1"
+        readinessProbe:
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:3550"]
+        livenessProbe:
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:3550"]
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: currency
+  namespace: backend-apis
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currencyservice
+  namespace: backend-apis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: currencyservice
+  template:
+    metadata:
+      labels:
+        app: currencyservice
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
+      serviceAccountName: currency
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: server
+        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/currencyservice:1.8
+        ports:
+        - name: grpc
+          containerPort: 7000
+        env:
+        - name: PORT
+          value: "7000"
+        - name: DISABLE_TRACING
+          value: "1"
+        - name: DISABLE_PROFILER
+          value: "1"
+        - name: DISABLE_DEBUGGER
+          value: "1"
+        readinessProbe:
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:7000"]
+        livenessProbe:
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:7000"]
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cart
+  namespace: backend-apis
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cartservice
+  namespace: backend-apis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cartservice
+  template:
+    metadata:
+      labels:
+        app: cartservice
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
+      serviceAccountName: cart
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: server
+        image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/cartservice:1.8
+        ports:
+        - containerPort: 7070
+        env:
+        - name: REDIS_ADDR
+          value: ""
+        readinessProbe:
+          initialDelaySeconds: 15
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
+        livenessProbe:
+          initialDelaySeconds: 15
+          periodSeconds: 10
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ad
+  namespace: backend-apis
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adservice
+  namespace: backend-apis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adservice
+  template:
+    metadata:
+      labels:
+        app: adservice
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
+      serviceAccountName: ad
+      terminationGracePeriodSeconds: 5
+      containers:
+        - name: server
+          image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/adservice:1.8
+          ports:
+            - containerPort: 9555
+          env:
+            - name: PORT
+              value: "9555"
+            - name: DISABLE_STATS
+              value: "1"
+            - name: DISABLE_TRACING
+              value: "1"
+          readinessProbe:
+            initialDelaySeconds: 20
+            periodSeconds: 15
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:9555"]
+          livenessProbe:
+            initialDelaySeconds: 20
+            periodSeconds: 15
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:9555"]
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
