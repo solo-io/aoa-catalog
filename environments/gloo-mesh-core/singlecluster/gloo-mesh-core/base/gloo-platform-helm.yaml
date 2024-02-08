@@ -34,7 +34,7 @@ spec:
             serviceType: ClusterIP
         glooAgent:
             enabled: true
-            runAsSidecar: true
+            runAsSidecar: false
             relay:
                 serverAddress: gloo-mesh-mgmt-server.gloo-mesh:9900
                 clientTlsSecret:
