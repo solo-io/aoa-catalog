@@ -1,0 +1,137 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: howto-developer-delegate-vs
+  namespace: gloo-mesh
+spec:
+  http:
+  - name: developer
+    match:
+    - uri:
+        exact: /developer
+    headers:
+      response:
+        set:
+          content-type: "text/html"
+    directResponse:
+      status: 200
+      body:
+        string: |
+          <!DOCTYPE html>
+          <html lang="en">          
+
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Gloo Mesh Core Developer Persona Walkthrough</title>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+              <style>
+                  body {
+                      font-family: 'Arial', sans-serif;
+                      margin: 0;
+                      padding: 0;
+                      overflow-x: hidden;
+                  }          
+
+                  .parallax-container {
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                      height: 30vh;
+                      background: linear-gradient(45deg, #3498db, #9b59b6);
+                      color: #fff;
+                      text-align: center;
+                      position: relative;
+                  }          
+
+                  .parallax-content {
+                      position: relative;
+                      z-index: 2;
+                      padding: 20px;
+                  }          
+
+                  .parallax-bg {
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      z-index: 1;
+                      opacity: 0.5;
+                  }          
+
+                  h1 {
+                      font-size: 36px;
+                      margin-bottom: 20px;
+                  }          
+
+                  h2 {
+                      font-size: 24px;
+                      margin-bottom: 10px;
+                  }          
+
+                  p {
+                      line-height: 1.6;
+                  }          
+
+                  .note {
+                      background-color: rgba(255, 255, 255, 0.9);
+                      border-radius: 8px;
+                      padding: 20px;
+                      margin: 20px 0;
+                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                      transition: transform 0.3s ease-in-out;
+                  }          
+
+                  .note:hover {
+                      transform: scale(1.03);
+                  }          
+
+                  .highlight {
+                      color: #3498db;
+                      font-weight: bold;
+                  }          
+
+                  .icon {
+                      font-size: 32px;
+                      margin-right: 10px;
+                      color: #3498db;
+                  }
+              </style>
+          </head>          
+
+          <body>
+              <div class="parallax-container">
+                  <div class="parallax-bg"></div>
+                  <div class="parallax-content">
+                      <h1>Gloo Mesh Core Developer Persona Walkthrough</h1>
+                  </div>
+              </div>          
+
+              <div class="parallax-content">
+                  <!-- Visualizing Service Performance -->
+                  <div class="note">
+                      <h2><i class="icon fab fas fa-code"></i><span class="highlight">Visualizing Service Performance:</span></h2>
+                      <p><span class="highlight">Description:</span> Leverage the Gloo Mesh Core UI to drill-down into service details</p>
+                      <ol>
+                          <li>Navigate to the Gloo Mesh Core UI > Observability > Graph tab</li>
+                          <li>Using the drop-down filters, select the Cluster and Namespace of your target service such as web-ui and backend-apis for online-boutique app</li>
+                          <li>Using the Service Graph, select a service or edge to drill-down into further details</li>
+                          <li>Navigate to the Inventory > Services tab</li>
+                          <li>Notice the Services discovered by Istio and the Total Incoming Requests and Errors</li>
+                          <li>Select a Service to drill down into further details</li>
+                          <li>Discuss how the OTEL pipeline is integrated to provide all of this OOTB</li>
+                      </ol>
+                  </div>                      
+
+              <script>
+                  window.addEventListener('scroll', function () {
+                      var scrolled = window.scrollY;
+                      var parallaxBg = document.querySelector('.parallax-bg');
+                      parallaxBg.style.transform = 'translateY(' + scrolled * 0.5 + 'px)';
+                  });
+              </script>
+          </body>          
+
+          </html>

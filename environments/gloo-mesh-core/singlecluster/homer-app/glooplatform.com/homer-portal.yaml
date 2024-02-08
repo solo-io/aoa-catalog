@@ -179,6 +179,21 @@ spec:
                 # First level array represent a group.
                 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
                 services:
+
+                  - name: "Gloo Core Demo Walkthroughs"
+                    logo: "solo/glooy.png"
+                    items:
+                      - name: "Developer Persona Walkthrough"
+                        logo: "solo/glooy.png"
+                        tag: "howto"
+                        url: "https://howto.gmc.glooplatform.com/developer"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Platform Admin Persona Walkthrough"
+                        logo: "solo/glooy.png"
+                        tag: "howto"
+                        url: "https://howto.gmc.glooplatform.com/platform"
+                        target: "_blank" # optional html a tag target attribute
+
                   - name: "Admin Applications"
                     icon: "fas fa-user-cog"
                     items:

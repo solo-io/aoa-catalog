@@ -1,0 +1,25 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: howto-main-vs
+  namespace: gloo-mesh
+spec:
+  hosts:
+  - "howto.gmc.glooplatform.com"
+  gateways:
+  - istio-gateways/https-gateway
+  http:
+  - name: developer
+    match:
+    - uri:
+        exact: /developer
+    delegate:
+      name: howto-developer-delegate-vs
+      namespace: gloo-mesh
+  - name: platform
+    match:
+    - uri:
+        exact: /platform
+    delegate:
+      name: howto-platform-delegate-vs
+      namespace: gloo-mesh
