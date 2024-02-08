@@ -33,3 +33,21 @@ spec:
               enabled: true
               label:
                 istio: ingressgateway
+              k8s:
+                # node selector
+                nodeSelector:
+                  gloo: "gateway"
+                # tolerations
+                tolerations:
+                  - key: cloud.google.com/gloo
+                    operator: Equal
+                    value: "gateway"
+                    effect: NoSchedule
+                # resources
+                resources:
+                  requests:
+                    cpu: 100m
+                    memory: 128Mi
+                  limits:
+                    cpu: 2000m
+                    memory: 1024Mi
