@@ -184,12 +184,12 @@ spec:
                     logo: "solo/glooy.png"
                     items:
                       - name: "Developer Persona Walkthrough"
-                        logo: "solo/glooy.png"
+                        icon: "fas fa-users"
                         tag: "howto"
                         url: "https://howto.gmc.glooplatform.com/developer"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Platform Admin Persona Walkthrough"
-                        logo: "solo/glooy.png"
+                        icon: "fas fa-users-cog"
                         tag: "howto"
                         url: "https://howto.gmc.glooplatform.com/platform"
                         target: "_blank" # optional html a tag target attribute
