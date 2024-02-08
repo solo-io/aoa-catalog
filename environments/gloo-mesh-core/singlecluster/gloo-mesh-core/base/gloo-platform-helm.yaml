@@ -31,7 +31,7 @@ spec:
                 disableTokenGeneration: true
                 tlsSecret:
                     name: relay-server-tls-secret
-            serviceType: ClusterIP
+            serviceType: LoadBalancer
             deploymentOverrides:
                 spec:
                     template:
