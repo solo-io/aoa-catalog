@@ -56,11 +56,11 @@ spec:
 
         # node selector
         nodeSelector:
-          gloo: "gateway"
+          node: "gateway"
 
         # tolerations
         tolerations:
-          - key: cloud.google.com/gloo
+          - key: cloud.google.com/node
             operator: Equal
             value: "gateway"
             effect: NoSchedule
