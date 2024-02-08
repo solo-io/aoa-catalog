@@ -12,7 +12,7 @@ spec:
       name: https
       protocol: HTTPS
     hosts:
-    - "*.gmc.glooplatform.com"
+    - "istio-gateways/*.gmc.glooplatform.com"
     tls:
       mode: SIMPLE
       credentialName: cf-advanced-tls-secret

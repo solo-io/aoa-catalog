@@ -12,4 +12,4 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "*.gmc.glooplatform.com"
+    - "istio-gateways/*.gmc.glooplatform.com"
