@@ -230,6 +230,12 @@ spec:
                         tag: "onlineboutique"
                         url: "https://shop.gmc.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Tiered Mesh Application"
+                        subtitle: "change path number: /ns-1 to /ns-4"
+                        icon: "fab fa-connectdevelop"
+                        tag: "tiered-app"
+                        url: "https://tiered-app.demo.glooplatform.com/ns-1/ui/"
+                        target: "_blank" # optional html a tag target attribute   
                     
   syncPolicy:
     automated:
