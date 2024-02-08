@@ -51,6 +51,21 @@ spec:
                   limits:
                     cpu: 2000m
                     memory: 1024Mi
+                # hpa
+                hpaSpec:
+                  minReplicas: 2
+                  maxReplicas: 4
+                  scaleTargetRef:
+                    apiVersion: apps/v1
+                    kind: Deployment
+                    name: istio-ingressgateway-1-20
+                  metrics:
+                  - resource:
+                      name: cpu
+                      target:
+                        averageUtilization: 60
+                        type: Utilization
+                    type: Resource
                 # affinity
                 #affinity:
                 #  nodeAffinity:
