@@ -135,7 +135,43 @@ spec:
                           <li>You can also view the Istio version in the middle-left panel under "Environment Check". When using a Solo distribution, the version will be tagged with -fips. </li>
                           <li>The FIPS details in this panel will reflect all clusters registered to the Gloo Mesh Core control plane </li>
                       </ol>
-                  </div>                       
+                  </div>    
+
+              <div class="parallax-content">
+                  <!-- Review Certificates Expiry -->
+                  <div class="note">
+                      <h2><i class="icon far fa-lightbulb"></i><span class="highlight">Review Certificates Expiry:</span></h2>
+                      <p><span class="highlight">Description:</span> Leverage the Gloo Mesh Core UI for details into Istio certificates </p>
+                      <ol>
+                          <li>Navigate to the main dashboard of the Gloo Mesh Core UI</li>
+                          <li>Notice the Certificates Expiry panel which detects Root and Intermediate certificates and their statuses  </li>
+                          <li>Select the details drill-down to view further information such as Issued To, Issued By, Validity, and Fingerprints information of the certificates</li>
+                      </ol>
+                  </div>       
+
+              <div class="parallax-content">
+                  <!-- Review Security Insights -->
+                  <div class="note">
+                      <h2><i class="icon far fa-lightbulb"></i><span class="highlight">Review Security Insights:</span></h2>
+                      <p><span class="highlight">Description:</span> Leverage the Gloo Mesh Core UI for details into Security Insights </p>
+                      <ol>
+                          <li>Navigate to the Security > Security Insights tab</li>
+                          <li>Review Security insights present in all registered clusters </li>
+                          <li>Show the Insight Summary, Target YAML, and View Resolution Steps</li>
+                      </ol>
+                  </div>      
+
+              <div class="parallax-content">
+                  <!-- Review Istio Resources -->
+                  <div class="note">
+                      <h2><i class="icon far fa-lightbulb"></i><span class="highlight">Review Istio Policies:</span></h2>
+                      <p><span class="highlight">Description:</span> Leverage the Gloo Mesh Core UI for details into Istio resources </p>
+                      <ol>
+                          <li>Navigate to the Resources > Istio tab </li>
+                          <li>Review the categories of discovered components using the drop-down filters</li>
+                          <li>Select a resource and drill down into more detail such as viewing the YAML</li>
+                      </ol>
+                  </div>                  
 
               <script>
                   window.addEventListener('scroll', function () {

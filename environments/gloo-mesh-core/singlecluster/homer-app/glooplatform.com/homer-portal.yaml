@@ -193,6 +193,11 @@ spec:
                         tag: "howto"
                         url: "https://howto.gmc.glooplatform.com/platform"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Security Team Persona"
+                        icon: "fas fa-user-shield"
+                        tag: "howto"
+                        url: "https://howto.gmc.glooplatform.com/security"
+                        target: "_blank" # optional html a tag target attribute
 
                   - name: "Admin Applications"
                     icon: "fas fa-user-cog"
