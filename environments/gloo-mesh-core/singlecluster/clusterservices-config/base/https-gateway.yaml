@@ -17,6 +17,7 @@ spec:
     - "argocd/*"
     - "grafana/*"
     - "web-ui/*"
+    - "homer-app/*"
     tls:
       mode: SIMPLE
       credentialName: cf-advanced-tls-secret
