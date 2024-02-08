@@ -73,7 +73,14 @@ spec:
             deployment:
                 enabled: true
         telemetryGateway:
-            enabled: false
+            enabled: true
+            resources:
+                requests:
+                    cpu: 300m
+                    memory: 1Gi
+                limits:
+                    cpu: 1
+                    memory: 2Gi
         telemetryGatewayCustomization:
             disableCertGeneration: true
             pipelines:
