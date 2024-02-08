@@ -4,11 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- argocd-vs.yaml
 - grafana-vs.yaml
-- http-gateway.yaml
 - https-gateway.yaml
-- gloo-mesh-ui-vs.yaml
 - grafana-dashboard-configmaps
 #- jaeger-vs.yaml
 #- kiali-vs.yaml
