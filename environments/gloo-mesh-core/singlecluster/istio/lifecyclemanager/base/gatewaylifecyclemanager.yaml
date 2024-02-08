@@ -36,7 +36,7 @@ spec:
               k8s:
                 # node selector
                 nodeSelector:
-                  gloo: "gateway"
+                  node: "gateway"
                 # tolerations
                 tolerations:
                   - key: cloud.google.com/node
