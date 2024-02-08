@@ -3,8 +3,8 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: ingress-gw
-  namespace: istio-system
+  name: tiered-app
+  namespace: istio-gateways
   labels:
     seed: "1696442875193501000"
 spec:
