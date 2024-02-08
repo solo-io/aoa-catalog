@@ -12,7 +12,10 @@ spec:
       name: https
       protocol: HTTPS
     hosts:
-    - "*.gmc.glooplatform.com"
+    - "istio-gateways/*"
+    - "gloo-mesh/*"
+    - "argocd/*"
+    - "grafana/*"
     tls:
       mode: SIMPLE
       credentialName: cf-advanced-tls-secret
