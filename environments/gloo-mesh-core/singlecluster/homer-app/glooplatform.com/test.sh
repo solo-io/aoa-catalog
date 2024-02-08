@@ -1,9 +1,12 @@
 #!/bin/bash
 
-$SCRIPT_DIR/tools/wait-for-rollout.sh deployment homer-portal homer-portal 10 ${cluster_context}
+ISTIO_REVISION="1-20"
 
 echo 
 echo "Installation complete:"
 echo "A homepage has been exposed to simplify navigation"
 echo "access the dashboard at https://demo.gmc.glooplatform.com/solo"
+echo
+echo "If using LoadBalancer External-IP:"
+echo "access the dashboard at https://$(kubectl -n istio-gateways get service istio-ingressgateway-${ISTIO_REVISION} -o jsonpath='{.status.loadBalancer.ingress[0].ip}')"
 echo
