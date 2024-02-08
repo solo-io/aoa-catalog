@@ -111,6 +111,12 @@ spec:
                   key: null
                   name: null
                   namespace: null
+            deploymentOverrides:
+                spec:
+                    template:
+                        metadata:
+                            annotations:
+                                prometheus.io/port: '9091'
         glooAnalyzer:
             enabled: true
                   
