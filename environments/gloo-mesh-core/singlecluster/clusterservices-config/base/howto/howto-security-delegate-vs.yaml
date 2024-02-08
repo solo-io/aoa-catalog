@@ -23,7 +23,7 @@ spec:
           <head>
               <meta charset="UTF-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Gloo Mesh Core Platform Persona Walkthrough</title>
+              <title>Gloo Mesh Core Security Persona Walkthrough</title>
               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
               <style>
                   body {
@@ -105,23 +105,37 @@ spec:
               <div class="parallax-container">
                   <div class="parallax-bg"></div>
                   <div class="parallax-content">
-                      <h1>Gloo Mesh Core Platform Persona Walkthrough</h1>
+                      <h1>Gloo Mesh Core Security Persona Walkthrough</h1>
                   </div>
               </div>          
 
               <div class="parallax-content">
-                  <!-- More to come.. -->
+                  <!-- Validate Zero Trust Using the Service Graph -->
                   <div class="note">
-                      <h2><i class="icon far fa-lightbulb"></i><span class="highlight">More to come..:</span></h2>
-                      <p><span class="highlight">Description:</span> Description here. </p>
+                      <h2><i class="icon far fa-lightbulb"></i><span class="highlight">Validate Zero Trust Using the Service Graph:</span></h2>
+                      <p><span class="highlight">Description:</span> Leverage the Gloo Mesh Core UI for details into zero-trust posture </p>
                       <ol>
-                          <li>insert detail here</li>
-                          <li>insert detail here</li>
-                          <li>insert detail here</li>
-                          <li>insert detail here</li>
-                          <li>insert detail here</li>
+                          <li>Navigate to the Observability > Graph</li>
+                          <li>Using the drop-down filters, select the Cluster and Namespace of your target service such as web-ui and backend-apis for online-boutique app</li>
+                          <li>Note the lock icon which signifies the service-to-service communication is configured with mTLS</li>
+                          <li>Select an edge containing a lock icon, notice additional detail panels on mTLS</li>
+                          <li>Hover over the info button next to mTLS: mutual_tls</li>
+                          <li>Note the spiffe IDs for the mTLS connection</li>
                       </ol>
-                  </div>                      
+                  </div> 
+
+              <div class="parallax-content">
+                  <!-- Validate FIPS Compliance Across your Fleet of Clusters -->
+                  <div class="note">
+                      <h2><i class="icon far fa-lightbulb"></i><span class="highlight">Validate FIPS Compliance Across your Fleet of Clusters:</span></h2>
+                      <p><span class="highlight">Description:</span> Leverage the Gloo Mesh Core UI for details into FIPS compliance </p>
+                      <ol>
+                          <li>Navigate to the main dashboard of the Gloo Mesh Core UI</li>
+                          <li>Notice the Istio FIPS panel which detects Control Planes and Data Plane Workloads with FIPS enabled </li>
+                          <li>You can also view the Istio version in the middle-left panel under "Environment Check". When using a Solo distribution, the version will be tagged with -fips. </li>
+                          <li>The FIPS details in this panel will reflect all clusters registered to the Gloo Mesh Core control plane </li>
+                      </ol>
+                  </div>                       
 
               <script>
                   window.addEventListener('scroll', function () {
