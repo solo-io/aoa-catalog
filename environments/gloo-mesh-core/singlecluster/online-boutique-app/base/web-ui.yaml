@@ -82,6 +82,10 @@ spec:
               httpHeaders:
                 - name: "Cookie"
                   value: "shop_session-id=x-liveness-probe"
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "150Mi"  # Adjusted to match the resource requests
           env:
             - name: PORT
               value: "8080"
