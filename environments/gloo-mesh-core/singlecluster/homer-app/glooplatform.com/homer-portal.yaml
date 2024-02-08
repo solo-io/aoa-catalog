@@ -52,7 +52,7 @@ spec:
 
         # -- Node selection constraint
         nodeSelector:
-          nodet: "spot"
+          node: "spot"
 
         # -- Specify taint tolerations  
         tolerations:
