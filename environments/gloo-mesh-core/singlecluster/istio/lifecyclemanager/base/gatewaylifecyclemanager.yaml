@@ -51,8 +51,15 @@ spec:
                   limits:
                     cpu: 2000m
                     memory: 1024Mi
-                # replicas
-                replicaCount: 2
+                # hpa
+                hpaSpec:
+                    minReplicas: 2
+                    maxReplicas: 4
+                    metrics:
+                      - resource:
+                          name: cpu
+                          targetAverageUtilization: 80
+                        type: Resource
                 # affinity
                 #affinity:
                 #  nodeAffinity:
