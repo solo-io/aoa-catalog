@@ -202,13 +202,13 @@ spec:
                   - name: "Admin Applications"
                     icon: "fas fa-user-cog"
                     items:
-                      - name: "ArgoCD"
-                        #subtitle: "GitOps Tooling"
-                        icon: "fab fa-git-alt"
-                        tag: "argo"
-                        keywords: "argocd"
-                        url: "https://argocd.gmc.glooplatform.com/argo"
-                        target: "_blank" # optional html a tag target attribute
+                      #- name: "ArgoCD"
+                      #  #subtitle: "GitOps Tooling"
+                      #  icon: "fab fa-git-alt"
+                      #  tag: "argo"
+                      #  keywords: "argocd"
+                      #  url: "https://argocd.gmc.glooplatform.com/argo"
+                      #  target: "_blank" # optional html a tag target attribute
                       - name: "Gloo Mesh Core UI"
                         #subtitle: "Another application"
                         icon: "fas fa-arrows-alt"
