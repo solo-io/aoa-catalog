@@ -69,7 +69,7 @@ spec:
             deployment:
                 enabled: true
         telemetryGateway:
-            enabled: true
+            enabled: false
         telemetryGatewayCustomization:
             disableCertGeneration: true
             pipelines:
@@ -77,10 +77,10 @@ spec:
                     enabled: true
         telemetryCollector:
             enabled: true
-            config:
-                exporters:
-                    otlp:
-                        endpoint: "gloo-telemetry-gateway.gloo-mesh.svc.cluster.local:4317"
+            #config:
+            #    exporters:
+            #        otlp:
+            #            endpoint: "gloo-telemetry-gateway.gloo-mesh.svc.cluster.local:4317"
             extraVolumes:
                 - name: root-ca
                   secret:
