@@ -63,7 +63,7 @@ spec:
                       nodeSelectorTerms:
                       - matchExpressions:
                         - key: cloud.google.com/node
-                          operator: In
+                          operator: Equal
                           values:
                           - gateway
                   podAntiAffinity:
@@ -72,8 +72,8 @@ spec:
                       podAffinityTerm:
                         labelSelector:
                           matchExpressions:
-                          - key: app
-                            operator: In
+                          - key: cloud.google.com/node
+                            operator: Equal
                             values:
                             - gateway
                         topologyKey: "kubernetes.io/hostname"
@@ -81,8 +81,8 @@ spec:
                     requiredDuringSchedulingIgnoredDuringExecution:
                     - labelSelector:
                         matchExpressions:
-                        - key: app
-                          operator: In
+                        - key: cloud.google.com/node
+                          operator: Equal
                           values:
                           - gateway
                       topologyKey: "kubernetes.io/hostname"
