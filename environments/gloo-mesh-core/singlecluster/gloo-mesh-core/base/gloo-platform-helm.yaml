@@ -30,23 +30,15 @@ spec:
                 disableCaCertGeneration: true
                 disableTokenGeneration: true
                 tlsSecret:
-                    name: gloo-server-tls-cert
-                # required to set to null in 2.4.x if providing server and client tls certificates
-                tokenSecret:
-                  key: null
-                  name: null
-                  namespace: null
-            serviceType: LoadBalancer
+                    name: relay-server-tls-secret
+            serviceType: ClusterIP
         glooAgent:
             enabled: true
             runAsSidecar: true
             relay:
-                serverAddress: gloo-mesh-mgmt-server:9900
+                serverAddress: gloo-mesh-mgmt-server.gloo-mesh:9900
                 clientTlsSecret:
-                    name: gloo-agent-tls-cert
-                    namespace: gloo-mesh
-                rootTlsSecret:
-                    name: relay-root-ca
+                    name: relay-client-tls-secret
                     namespace: gloo-mesh
                 # required to set to null in 2.4.x if providing server and client tls certificates
                 tokenSecret:
@@ -77,10 +69,6 @@ spec:
                     enabled: true
         telemetryCollector:
             enabled: true
-            #config:
-            #    exporters:
-            #        otlp:
-            #            endpoint: "gloo-telemetry-gateway.gloo-mesh.svc.cluster.local:4317"
             extraVolumes:
                 - name: root-ca
                   secret:
