@@ -11,7 +11,7 @@ spec:
   hosts:
     - "west.gmc.glooplatform.com"
   gateways:
-  - istio-system/https-gateway
+  - istio-gateways/https-gateway
   http:
   - name: "ns-1"
     match:
