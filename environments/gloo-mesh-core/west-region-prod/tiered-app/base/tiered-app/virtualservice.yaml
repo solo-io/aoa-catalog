@@ -1,0 +1,61 @@
+
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: ingress-gw
+  namespace: istio-system
+  labels:
+    seed: "1696442875193501000"
+spec:
+  hosts:
+    - "west.gmc.glooplatform.com"
+  gateways:
+  - istio-system/https-gateway
+  http:
+  - name: "ns-1"
+    match:
+    - uri:
+        exact: "/ns-1"
+    route:
+    - destination:
+        host: restless-sky.ns-1.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-2"
+    match:
+    - uri:
+        exact: "/ns-2"
+    route:
+    - destination:
+        host: throbbing-field.ns-2.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-3"
+    match:
+    - uri:
+        exact: "/ns-3"
+    route:
+    - destination:
+        host: hidden-sky.ns-3.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-4"
+    match:
+    - uri:
+        exact: "/ns-4"
+    route:
+    - destination:
+        host: blue-hill.ns-4.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-5"
+    match:
+    - uri:
+        exact: "/ns-5"
+    route:
+    - destination:
+        host: winter-field.ns-5.svc.cluster.local
+        port:
+          number: 8080
+---

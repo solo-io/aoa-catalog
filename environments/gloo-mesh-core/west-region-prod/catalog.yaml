@@ -34,4 +34,11 @@ waves:
       pre_deploy: 
       -  $env_path/clusterservices-config/init.sh
       post_deploy:
-      -  $env_path/clusterservices-config/test.sh          
+      -  $env_path/clusterservices-config/test.sh     
+  - name: tiered-app
+    location: $env_path/tiered-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/tiered-app/init.sh
+      post_deploy:
+      -  $env_path/tiered-app/test.sh        
