@@ -4,10 +4,10 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- grafana-vs.yaml
+#- grafana-vs.yaml
 - http-gateway.yaml
 - https-gateway.yaml
-- grafana-dashboard-configmaps
+#- grafana-dashboard-configmaps
 #- jaeger-vs.yaml
 #- kiali-vs.yaml
 #- prometheus-vs.yaml
