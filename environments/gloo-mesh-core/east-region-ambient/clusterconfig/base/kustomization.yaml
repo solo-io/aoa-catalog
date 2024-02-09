@@ -9,5 +9,3 @@ resources:
 - gateway-ca.yaml
 - gloo-mesh-ns.yaml
 - gloo-mesh-relay-root-ca.yaml
-- istio-system-ns.yaml
-
