@@ -18,13 +18,21 @@ spec:
     targetRevision: 1.20.2
     helm:
       values: |
-          #global:
-          #  meshID: ambient
-          #  multiCluster:
-          #    clusterName: east-ambient
+          global:
+            meshID: ambient
+            multiCluster:
+              clusterName: east-ambient
+            network: network1
 
           ## Discovery Settings
           pilot:
+            autoscaleEnabled: false
+            replicaCount: 2
+            rollingMaxUnavailable: 50%
+            resources:
+              requests:
+                cpu: 128m
+                memory: 512Mi
             env:
               # Setup more secure default that is off in 'default' only for backwards compatibility
               VERIFY_CERTIFICATE_AT_CLIENT: "true"
@@ -36,6 +44,8 @@ spec:
           
           # ProxyConfig settings
           meshConfig:
+            accessLogFile: /dev/stdout
+            accessLogEncoding: JSON
             defaultConfig:
               proxyMetadata:
                 ISTIO_META_ENABLE_HBONE: "true"
@@ -50,6 +60,7 @@ spec:
           istio_cni:
             enabled: true
             chained: true
+          
   syncPolicy:
     automated:
       prune: true
