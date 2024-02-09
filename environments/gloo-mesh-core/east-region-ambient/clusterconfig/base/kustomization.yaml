@@ -8,3 +8,4 @@ resources:
 - gateway-ca.yaml
 - gloo-mesh-ns.yaml
 - gloo-mesh-relay-root-ca.yaml
+- grafana-ns.yaml
