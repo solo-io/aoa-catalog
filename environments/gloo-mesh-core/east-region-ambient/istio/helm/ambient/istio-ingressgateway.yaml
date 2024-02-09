@@ -23,8 +23,6 @@ spec:
         # revision declares which revision this gateway is a part of
         revision: ""
         
-        replicaCount: 1
-        
         service:
           # Type of service. Set to "None" to disable the service entirely
           type: LoadBalancer
@@ -71,7 +69,7 @@ spec:
             cpu: 100m
             memory: 128Mi
           limits:
-            cpu: 2000m
+            cpu: 500m
             memory: 1024Mi
 
         # hpa configuration
