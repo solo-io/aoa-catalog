@@ -7,3 +7,4 @@ resources:
 - 5-namespace-app
 - client
 - loadgenerators
+- virtualservice.yaml
