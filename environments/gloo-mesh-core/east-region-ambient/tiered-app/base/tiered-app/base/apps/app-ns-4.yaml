@@ -59,14 +59,21 @@ spec:
         version: v1
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: blue-hill
       containers:
       - name: blue-hill
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -92,10 +99,12 @@ spec:
           value: "20ms"
         - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
           value: "30s"
+        - name: "UI_PATH"
+          value: "/ns-4/ui/"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -122,14 +131,21 @@ spec:
         version: v2
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: blue-hill
       containers:
       - name: blue-hill
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -155,10 +171,12 @@ spec:
           value: "20ms"
         - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
           value: "30s"
+        - name: "UI_PATH"
+          value: "/ns-4/ui/"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -185,14 +203,21 @@ spec:
         version: v3
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: blue-hill
       containers:
       - name: blue-hill
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -218,10 +243,12 @@ spec:
           value: "20ms"
         - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
           value: "30s"
+        - name: "UI_PATH"
+          value: "/ns-4/ui/"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -276,14 +303,21 @@ spec:
         version: v1
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: hidden-paper
       containers:
       - name: hidden-paper
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -311,8 +345,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -339,14 +373,21 @@ spec:
         version: v2
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: hidden-paper
       containers:
       - name: hidden-paper
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -374,8 +415,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -430,14 +471,21 @@ spec:
         version: v1
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: lingering-forest
       containers:
       - name: lingering-forest
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -465,8 +513,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -521,14 +569,21 @@ spec:
         version: v1
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: wandering-night
       containers:
       - name: wandering-night
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -556,8 +611,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -612,14 +667,21 @@ spec:
         version: v1
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: winter-surf
       containers:
       - name: winter-surf
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -647,8 +709,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -675,14 +737,21 @@ spec:
         version: v2
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: winter-surf
       containers:
       - name: winter-surf
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -710,6 +779,6 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---

@@ -59,14 +59,21 @@ spec:
         version: v1
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: purple-water
       containers:
       - name: purple-water
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -80,8 +87,8 @@ spec:
           value: "http"
         - name: "MESSAGE"
           value: "Hello From purple-water (v1)!"
-        - name: "UPSTREAM_URIS"
-          value: "http://floral-dawn.ns-3.svc.cluster.local:8080"
+        #- name: "UPSTREAM_URIS"
+        #  value: "http://floral-dawn.ns-3.svc.cluster.local:8080"
         - name: "UPSTREAM_WORKERS"
           value: "10"
         - name: "TIMING_50_PERCENTILE"
@@ -94,8 +101,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -122,14 +129,21 @@ spec:
         version: v2
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: purple-water
       containers:
       - name: purple-water
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -143,8 +157,8 @@ spec:
           value: "http"
         - name: "MESSAGE"
           value: "Hello From purple-water (v2)!"
-        - name: "UPSTREAM_URIS"
-          value: "http://floral-dawn.ns-3.svc.cluster.local:8080"
+        #- name: "UPSTREAM_URIS"
+        #  value: "http://floral-dawn.ns-3.svc.cluster.local:8080"
         - name: "UPSTREAM_WORKERS"
           value: "10"
         - name: "TIMING_50_PERCENTILE"
@@ -157,8 +171,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -213,14 +227,21 @@ spec:
         version: v1
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: still-violet
       containers:
       - name: still-violet
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -234,8 +255,8 @@ spec:
           value: "http"
         - name: "MESSAGE"
           value: "Hello From still-violet (v1)!"
-        - name: "UPSTREAM_URIS"
-          value: "http://little-flower.ns-3.svc.cluster.local:8080"
+        #- name: "UPSTREAM_URIS"
+        #  value: "http://little-flower.ns-3.svc.cluster.local:8080"
         - name: "UPSTREAM_WORKERS"
           value: "10"
         - name: "TIMING_50_PERCENTILE"
@@ -248,8 +269,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -304,14 +325,21 @@ spec:
         version: v1
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+        sidecar.istio.io/proxyCPULimit: "1"
+        sidecar.istio.io/proxyMemory: "64Mi"
+        sidecar.istio.io/proxyCPU: "30m"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: winter-field
       containers:
       - name: winter-field
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.0
         ports:
         - containerPort: 8080
         securityContext:
@@ -325,8 +353,8 @@ spec:
           value: "http"
         - name: "MESSAGE"
           value: "Hello From winter-field (v1)!"
-        - name: "UPSTREAM_URIS"
-          value: "http://still-violet.ns-5.svc.cluster.local:8080,http://purple-water.ns-5.svc.cluster.local:8080"
+        #- name: "UPSTREAM_URIS"
+        #  value: "http://still-violet.ns-5.svc.cluster.local:8080,http://purple-water.ns-5.svc.cluster.local:8080"
         - name: "UPSTREAM_WORKERS"
           value: "10"
         - name: "TIMING_50_PERCENTILE"
@@ -337,8 +365,10 @@ spec:
           value: "20ms"
         - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
           value: "30s"
+        - name: "UI_PATH"
+          value: "/ns-5/ui/"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---

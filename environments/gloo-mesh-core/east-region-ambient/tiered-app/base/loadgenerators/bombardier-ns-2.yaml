@@ -15,13 +15,13 @@ spec:
       labels:
         app: bombardier
     spec:
-      #nodeSelector:
-      #  node: "spot"
-      #tolerations:
-      #- key: cloud.google.com/node
-      #  operator: Equal
-      #  value: "spot"
-      #  effect: NoSchedule
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       containers:
       - name: bombardier
         image: alpine/bombardier:v1.2.5

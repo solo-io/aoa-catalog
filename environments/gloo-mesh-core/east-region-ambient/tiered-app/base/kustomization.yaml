@@ -4,7 +4,6 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- 5-namespace-app
-- client
+- tiered-app
 - loadgenerators
-- virtualservice.yaml
+#- client
