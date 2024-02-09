@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: https-gateway
-  namespace: istio-gateways
+  namespace: istio-system
 spec:
   selector:
     istio: ingressgateway
@@ -16,6 +16,7 @@ spec:
     - "gloo-mesh/*"
     - "argocd/*"
     - "grafana/*"
+    - "istio-system/*"
     tls:
       mode: SIMPLE
       credentialName: cf-advanced-tls-secret

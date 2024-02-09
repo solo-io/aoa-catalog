@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: http-gateway
-  namespace: istio-gateways
+  namespace: istio-system
 spec:
   selector:
     istio: ingressgateway
@@ -16,3 +16,4 @@ spec:
     - "gloo-mesh/*"
     - "argocd/*"
     - "grafana/*"
+    - "istio-system/*"
