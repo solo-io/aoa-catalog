@@ -7,7 +7,7 @@ spec:
   hosts:
   - "ambient.gmc.glooplatform.com"
   gateways:
-  - istio-gateways/https-gateway
+  - istio-system/https-gateway
   http:
   - name: grafana-ui
     match:

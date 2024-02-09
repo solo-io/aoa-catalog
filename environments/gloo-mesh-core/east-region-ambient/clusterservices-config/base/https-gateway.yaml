@@ -12,7 +12,7 @@ spec:
       name: https
       protocol: HTTPS
     hosts:
-    - "istio-gateways/*"
+    - "istio-system/*"
     - "gloo-mesh/*"
     - "argocd/*"
     - "grafana/*"
