@@ -46,13 +46,60 @@ spec:
         
         # Pod environment variables
         env: {}
-
-        annotations:
-          proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        
+        # Pod annotations
+        annotations: {}
         
         # Labels to apply to all resources
         labels:
           istio: ingressgateway
+
+        # node selector
+        nodeSelector:
+          node: "gateway"
+
+        # tolerations
+        tolerations:
+          - key: cloud.google.com/node
+            operator: Equal
+            value: "gateway"
+            effect: NoSchedule
+
+        # resources
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 2000m
+            memory: 1024Mi
+
+        # hpa configuration
+        autoscaling:
+          enabled: true
+          minReplicas: 2
+          maxReplicas: 5
+          targetCPUUtilizationPercentage: 80
+
+        # topology spread constraints
+        topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              istio: ingressgateway
+        
+        # affinity
+        affinity:
+          podAntiAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm: 
+                labelSelector:
+                  matchLabels:
+                    istio: ingressgateway
+                topologyKey: "kubernetes.io/host"
+              weight: 100
   syncPolicy:
     automated:
       prune: true
