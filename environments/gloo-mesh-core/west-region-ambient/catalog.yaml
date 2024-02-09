@@ -1,5 +1,12 @@
 
 waves:
+  - name: clusterconfig
+    location: $env_path/clusterconfig/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/clusterconfig/init.sh
+      post_deploy:
+      -  $env_path/clusterconfig/test.sh 
   - name: certmanager
     location: $env_path/certmanager/base
     scripts:
