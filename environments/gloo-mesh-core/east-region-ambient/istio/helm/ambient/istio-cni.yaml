@@ -39,7 +39,7 @@ spec:
           - kube-system
           
           ## GKE SPECIFIC
-          cniBinDir: /home/kubernetes/bin
+          #cniBinDir: /home/kubernetes/bin
   syncPolicy:
     automated:
       prune: true
