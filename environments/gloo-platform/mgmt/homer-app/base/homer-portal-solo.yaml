@@ -413,6 +413,15 @@ spec:
                         url: "https://clickhouse.demo.glooplatform.com/mgmt-grafana/d/db93be88-8cd4-4c32-8a37-83fbca40e3f0a/api-dashboard-geomap?orgId=1&from=now-1h&to=now"
                         target: "_blank" # optional html a tag target attribute
                   
+                  - name: "Gloo Mesh Core Demo"
+                    logo: "solo/glooy.png"
+                    items:
+                      - name: "Gloo Mesh Core Demo Dashboard"
+                        logo: "solo/glooy.png"
+                        tag: "gmc"
+                        url: "https://demo.gmc.glooplatform.com/solo/"
+                        target: "_blank" # optional html a tag target attribute
+                  
                   #- name: "Portal API Endpoints"
                   #  icon: "fas fa-cloud"
                   #  items:
