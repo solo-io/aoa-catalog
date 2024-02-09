@@ -18,10 +18,10 @@ spec:
     targetRevision: 1.20.2
     helm:
       values: |
-          global:
-            meshID: ambient
-            multiCluster:
-              clusterName: east-ambient
+          #global:
+          #  meshID: ambient
+          #  multiCluster:
+          #    clusterName: east-ambient
 
           ## Discovery Settings
           pilot:
