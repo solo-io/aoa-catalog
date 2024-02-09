@@ -11,7 +11,7 @@ spec:
   hosts:
     - "ambient.gmc.glooplatform.com"
   gateways:
-  - istio-system/http-gateway
+  - istio-system/https-gateway
   http:
   - name: "ns-1"
     match:
