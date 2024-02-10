@@ -4,8 +4,9 @@ kind: Kustomization
 resources:
 - backend-apis-ns.yaml
 - backend-apis.yaml
-- loadgenerator.yaml
+#- loadgenerator.yaml
 - web-ui-ns.yaml
 - web-ui.yaml
 - virtualservice.yaml
-#- waypoints
+- waypoints
+- bombardier.yaml
