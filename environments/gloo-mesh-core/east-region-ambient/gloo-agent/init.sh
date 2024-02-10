@@ -125,8 +125,8 @@ spec:
                               operator: Equal
                               value: "spot"
                               effect: NoSchedule
-                              glooAnalyzer:
-                                  enabled: true
+        glooAnalyzer:
+            enabled: true
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
     targetRevision: 2.5.0
