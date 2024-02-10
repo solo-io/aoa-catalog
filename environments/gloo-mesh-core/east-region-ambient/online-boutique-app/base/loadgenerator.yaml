@@ -36,8 +36,7 @@ spec:
         image: gcr.io/google-samples/microservices-demo/loadgenerator:v0.3.5
         env:
         - name: FRONTEND_ADDR
-          #value: "frontend.web-ui.svc.cluster.local:80"
-          value: "istio-ingressgateway.istio-system.svc.cluster.local:443"
+          value: "frontend.web-ui.svc.cluster.local"
         - name: USERS
           value: "2"
         resources:
