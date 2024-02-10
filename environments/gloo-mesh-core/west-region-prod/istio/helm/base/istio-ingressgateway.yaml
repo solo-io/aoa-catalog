@@ -23,7 +23,7 @@ spec:
         # revision declares which revision this gateway is a part of
         revision: "1-20"
         
-        replicaCount: 1
+        #replicaCount: 1
         
         service:
           # Type of service. Set to "None" to disable the service entirely
