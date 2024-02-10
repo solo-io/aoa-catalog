@@ -36,7 +36,7 @@ spec:
         image: gcr.io/google-samples/microservices-demo/loadgenerator:v0.3.5
         env:
         - name: FRONTEND_ADDR
-          value: "https://ambient.gmc.glooplatform.com"
+          value: "ambient.gmc.glooplatform.com:443"
         - name: USERS
           value: "2"
         resources:
