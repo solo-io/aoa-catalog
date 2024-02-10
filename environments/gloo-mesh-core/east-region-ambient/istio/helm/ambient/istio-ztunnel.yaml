@@ -22,11 +22,11 @@ spec:
       #    value: 256m
       #  - name: resources.requests.memory
       #    value: 1024Mi
-      values: |
-        resources:
-          requests:
-            cpu: 256m
-            memory: 1024Mi
+      #values: |
+      #  resources:
+      #    requests:
+      #      cpu: 256m
+      #      memory: 1024Mi
   syncPolicy:
     automated:
       prune: true
