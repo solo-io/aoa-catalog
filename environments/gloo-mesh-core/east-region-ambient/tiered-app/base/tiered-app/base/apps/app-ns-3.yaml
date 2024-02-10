@@ -57,11 +57,11 @@ spec:
       labels:
         app: floral-dawn
         version: v1
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+      #annotations:
+      #  sidecar.istio.io/proxyMemoryLimit: "1Gi"
+      #  sidecar.istio.io/proxyCPULimit: "1"
+      #  sidecar.istio.io/proxyMemory: "64Mi"
+      #  sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         node: "spot"
@@ -155,11 +155,11 @@ spec:
       labels:
         app: hidden-sky
         version: v1
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+      #annotations:
+      #  sidecar.istio.io/proxyMemoryLimit: "1Gi"
+      #  sidecar.istio.io/proxyCPULimit: "1"
+      #  sidecar.istio.io/proxyMemory: "64Mi"
+      #  sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         node: "spot"
@@ -255,11 +255,11 @@ spec:
       labels:
         app: little-flower
         version: v1
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+      #annotations:
+      #  sidecar.istio.io/proxyMemoryLimit: "1Gi"
+      #  sidecar.istio.io/proxyCPULimit: "1"
+      #  sidecar.istio.io/proxyMemory: "64Mi"
+      #  sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         node: "spot"
@@ -353,11 +353,11 @@ spec:
       labels:
         app: nameless-breeze
         version: v1
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+      #annotations:
+      #  sidecar.istio.io/proxyMemoryLimit: "1Gi"
+      #  sidecar.istio.io/proxyCPULimit: "1"
+      #  sidecar.istio.io/proxyMemory: "64Mi"
+      #  sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         node: "spot"
@@ -451,11 +451,11 @@ spec:
       labels:
         app: quiet-sun
         version: v1
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+      #annotations:
+      #  sidecar.istio.io/proxyMemoryLimit: "1Gi"
+      #  sidecar.istio.io/proxyCPULimit: "1"
+      #  sidecar.istio.io/proxyMemory: "64Mi"
+      #  sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         node: "spot"
@@ -521,11 +521,11 @@ spec:
       labels:
         app: quiet-sun
         version: v2
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+      #annotations:
+      #  sidecar.istio.io/proxyMemoryLimit: "1Gi"
+      #  sidecar.istio.io/proxyCPULimit: "1"
+      #  sidecar.istio.io/proxyMemory: "64Mi"
+      #  sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         node: "spot"
@@ -619,11 +619,11 @@ spec:
       labels:
         app: sparkling-paper
         version: v1
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+      #annotations:
+      #  sidecar.istio.io/proxyMemoryLimit: "1Gi"
+      #  sidecar.istio.io/proxyCPULimit: "1"
+      #  sidecar.istio.io/proxyMemory: "64Mi"
+      #  sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         node: "spot"

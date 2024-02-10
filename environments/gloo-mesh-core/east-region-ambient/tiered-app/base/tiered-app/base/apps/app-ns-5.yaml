@@ -57,11 +57,11 @@ spec:
       labels:
         app: purple-water
         version: v1
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+      #annotations:
+      #  sidecar.istio.io/proxyMemoryLimit: "1Gi"
+      #  sidecar.istio.io/proxyCPULimit: "1"
+      #  sidecar.istio.io/proxyMemory: "64Mi"
+      #  sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         node: "spot"
@@ -127,11 +127,11 @@ spec:
       labels:
         app: purple-water
         version: v2
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+      #annotations:
+      #  sidecar.istio.io/proxyMemoryLimit: "1Gi"
+      #  sidecar.istio.io/proxyCPULimit: "1"
+      #  sidecar.istio.io/proxyMemory: "64Mi"
+      #  sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         node: "spot"
@@ -225,11 +225,11 @@ spec:
       labels:
         app: still-violet
         version: v1
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+      #annotations:
+      #  sidecar.istio.io/proxyMemoryLimit: "1Gi"
+      #  sidecar.istio.io/proxyCPULimit: "1"
+      #  sidecar.istio.io/proxyMemory: "64Mi"
+      #  sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         node: "spot"
@@ -323,11 +323,11 @@ spec:
       labels:
         app: winter-field
         version: v1
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+      #annotations:
+      #  sidecar.istio.io/proxyMemoryLimit: "1Gi"
+      #  sidecar.istio.io/proxyCPULimit: "1"
+      #  sidecar.istio.io/proxyMemory: "64Mi"
+      #  sidecar.istio.io/proxyCPU: "30m"
     spec:
       nodeSelector:
         node: "spot"
