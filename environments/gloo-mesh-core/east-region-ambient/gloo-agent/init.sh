@@ -117,8 +117,16 @@ spec:
                         metadata:
                             annotations:
                                 prometheus.io/port: '9091'
-        glooAnalyzer:
-            enabled: true
+                        spec:
+                            nodeSelector:
+                              node: "spot"
+                            tolerations:
+                            - key: cloud.google.com/node
+                              operator: Equal
+                              value: "spot"
+                              effect: NoSchedule
+                              glooAnalyzer:
+                                  enabled: true
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
     targetRevision: 2.5.0
