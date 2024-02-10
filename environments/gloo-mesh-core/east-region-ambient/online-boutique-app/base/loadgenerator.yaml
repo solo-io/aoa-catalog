@@ -21,6 +21,13 @@ spec:
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "true"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: loadgenerator
       terminationGracePeriodSeconds: 5
       restartPolicy: Always
