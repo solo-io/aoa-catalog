@@ -8,4 +8,4 @@ resources:
 - web-ui-ns.yaml
 - web-ui.yaml
 - virtualservice.yaml
-- waypoints
+#- waypoints
