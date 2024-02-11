@@ -101,8 +101,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "50Mi"
-            cpu: "50m"
+            memory: "30Mi"
+            cpu: "10m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -171,8 +171,8 @@ spec:
           value: "30s"
         resources:
           requests:
-            memory: "50Mi"
-            cpu: "50m"
+            memory: "30Mi"
+            cpu: "10m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -271,6 +271,6 @@ spec:
           value: "/ns-1/ui/"
         resources:
           requests:
-            memory: "50Mi"
-            cpu: "50m"
+            memory: "30Mi"
+            cpu: "10m"
 ---
