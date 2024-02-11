@@ -5,7 +5,7 @@ metadata:
   namespace: grafana
 spec:
   hosts:
-  - "west.gmc.glooplatform.com"
+  - "dashboards.west.gmc.glooplatform.com"
   gateways:
   - istio-gateways/https-gateway
   http:
