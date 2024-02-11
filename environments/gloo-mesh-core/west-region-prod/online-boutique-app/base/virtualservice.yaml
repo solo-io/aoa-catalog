@@ -5,7 +5,7 @@ metadata:
   namespace: web-ui
 spec:
   hosts:
-  - "west.gmc.glooplatform.com"
+  - "shop.gmc.glooplatform.com"
   gateways:
   - istio-gateways/https-gateway
   http:
