@@ -131,4 +131,4 @@ spec:
                 fieldRef:
                   fieldPath: metadata.namespace
             - name: KUBERNETES_CLUSTER_NAME
-              value: gloo-mesh-core-main
+              value: gloo-mesh-core-west
