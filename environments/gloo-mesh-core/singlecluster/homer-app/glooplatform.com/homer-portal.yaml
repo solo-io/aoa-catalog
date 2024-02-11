@@ -227,13 +227,13 @@ spec:
                       - name: "Online Boutique"
                         icon: "fas fa-shopping-cart"
                         tag: "onlineboutique"
-                        url: "https://west.admin.gmc.glooplatform.com"
+                        url: "https://shop.west.admin.gmc.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Tiered Mesh Application"
                         subtitle: "change path number: /ns-1 to /ns-4"
                         icon: "fab fa-connectdevelop"
                         tag: "tiered-app"
-                        url: "https://tiered-app.demo.glooplatform.com/ns-1/ui/"
+                        url: "https://tiered-app.west.gmc.glooplatform.com/ns-1/"
                         target: "_blank" # optional html a tag target attribute 
 
                   - name: "West Cluster - Ambient Enabled"
