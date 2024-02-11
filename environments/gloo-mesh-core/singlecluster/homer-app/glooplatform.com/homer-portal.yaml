@@ -199,7 +199,7 @@ spec:
                         url: "https://howto.gmc.glooplatform.com/security"
                         target: "_blank" # optional html a tag target attribute
 
-                  - name: "Admin Applications"
+                  - name: "Main Cluster"
                     icon: "fas fa-user-cog"
                     items:
                       #- name: "ArgoCD"
@@ -216,20 +216,29 @@ spec:
                         url: "https://ui.gmc.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Grafana"
-                        #subtitle: "Another application"
                         icon: "fas fa-chart-area"
                         tag: "grafana-mgmt"
                         url: "https://dashboards.gmc.glooplatform.com/grafana"
                         target: "_blank" # optional html a tag target attribute
-                  
-                  - name: "Web Applications"
-                    icon: "fas fa-cloud"
-                    items:
                       - name: "Online Boutique"
                         icon: "fas fa-shopping-cart"
                         tag: "onlineboutique"
                         url: "https://shop.gmc.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "West Cluster - Sidecar Enabled"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "Tiered Mesh Application"
+                        subtitle: "change path number: /ns-1 to /ns-4"
+                        icon: "fab fa-connectdevelop"
+                        tag: "tiered-app"
+                        url: "https://tiered-app.demo.glooplatform.com/ns-1/ui/"
+                        target: "_blank" # optional html a tag target attribute 
+
+                  - name: "West Cluster - Ambient Enabled"
+                    icon: "fas fa-cloud"
+                    items:
                       - name: "Tiered Mesh Application"
                         subtitle: "change path number: /ns-1 to /ns-4"
                         icon: "fab fa-connectdevelop"
