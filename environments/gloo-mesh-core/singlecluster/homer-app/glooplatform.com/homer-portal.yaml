@@ -235,6 +235,11 @@ spec:
                         tag: "tiered-app"
                         url: "https://tiered-app.west.gmc.glooplatform.com/ns-1/"
                         target: "_blank" # optional html a tag target attribute 
+                      - name: "Grafana"
+                        icon: "fas fa-chart-area"
+                        tag: "grafana"
+                        url: "https://dashboards.west.gmc.glooplatform.com/grafana"
+                        target: "_blank" # optional html a tag target attribute
 
                   - name: "West Cluster - Ambient Enabled"
                     icon: "fas fa-cloud"

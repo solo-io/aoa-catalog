@@ -13,4 +13,4 @@ resources:
 - prometheus.yaml
 - grafana.yaml
 - istio-ingressgateway.yaml
-- kiali.yaml
+#- kiali.yaml
