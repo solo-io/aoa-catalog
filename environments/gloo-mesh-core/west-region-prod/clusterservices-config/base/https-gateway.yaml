@@ -16,6 +16,7 @@ spec:
     - "gloo-mesh/*"
     - "argocd/*"
     - "grafana/*"
+    - "web-ui/*"
     tls:
       mode: SIMPLE
       credentialName: cf-advanced-tls-secret
