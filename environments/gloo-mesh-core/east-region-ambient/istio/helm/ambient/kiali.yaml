@@ -470,6 +470,13 @@ spec:
         prometheus.io/port: ""
         kiali.io/dashboards: go,kiali
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: kiali
       containers:
       - image: "quay.io/kiali/kiali:v1.79"
