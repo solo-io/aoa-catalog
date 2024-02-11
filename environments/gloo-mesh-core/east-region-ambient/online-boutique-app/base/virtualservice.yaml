@@ -5,7 +5,7 @@ metadata:
   namespace: web-ui
 spec:
   hosts:
-  - "ambient.gmc.glooplatform.com"
+  - "shop.ambient.gmc.glooplatform.com"
   gateways:
   - istio-system/https-gateway
   http:

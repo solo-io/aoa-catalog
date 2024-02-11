@@ -5,7 +5,7 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-  - "ambient.gmc.glooplatform.com"
+  - "dashboards.ambient.gmc.glooplatform.com"
   gateways:
   - istio-system/https-gateway
   http:

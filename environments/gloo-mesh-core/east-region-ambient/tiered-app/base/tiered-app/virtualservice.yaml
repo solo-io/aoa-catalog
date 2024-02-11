@@ -9,7 +9,7 @@ metadata:
     seed: "1696442875193501000"
 spec:
   hosts:
-    - "ambient.gmc.glooplatform.com"
+    - "tiered-app.ambient.gmc.glooplatform.com"
   gateways:
   - istio-system/https-gateway
   http:
