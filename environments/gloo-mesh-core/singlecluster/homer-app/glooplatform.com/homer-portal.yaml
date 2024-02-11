@@ -186,17 +186,17 @@ spec:
                       - name: "Developer Persona"
                         icon: "fas fa-users"
                         tag: "howto"
-                        url: "https://howto.admin.gmc.glooplatform.com/developer"
+                        url: "https://howto.gmc.glooplatform.com/developer"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Platform Admin Persona"
                         icon: "fas fa-users-cog"
                         tag: "howto"
-                        url: "https://howto.admin.gmc.glooplatform.com/platform"
+                        url: "https://howto.gmc.glooplatform.com/platform"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Security Team Persona"
                         icon: "fas fa-user-shield"
                         tag: "howto"
-                        url: "https://howto.admin.gmc.glooplatform.com/security"
+                        url: "https://howto.gmc.glooplatform.com/security"
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "Admin Cluster"

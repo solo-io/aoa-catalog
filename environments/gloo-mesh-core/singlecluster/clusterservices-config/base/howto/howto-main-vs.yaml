@@ -5,7 +5,7 @@ metadata:
   namespace: gloo-mesh
 spec:
   hosts:
-  - "howto.admin.gmc.glooplatform.com"
+  - "howto.gmc.glooplatform.com"
   gateways:
   - istio-gateways/https-gateway
   http:
