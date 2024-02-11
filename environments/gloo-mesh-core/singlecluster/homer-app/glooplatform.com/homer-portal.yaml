@@ -209,16 +209,16 @@ spec:
                       #  keywords: "argocd"
                       #  url: "https://argocd.admin.gmc.glooplatform.com/argo"
                       #  target: "_blank" # optional html a tag target attribute
+                      #- name: "Grafana"
+                      #  icon: "fas fa-chart-area"
+                      #  tag: "grafana-mgmt"
+                      #  url: "https://dashboards.admin.gmc.glooplatform.com/grafana"
+                      #  target: "_blank" # optional html a tag target attribute
                       - name: "Gloo Mesh Core UI"
                         #subtitle: "Another application"
                         icon: "fas fa-arrows-alt"
                         tag: "gmui"
                         url: "https://ui.admin.gmc.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Grafana"
-                        icon: "fas fa-chart-area"
-                        tag: "grafana-mgmt"
-                        url: "https://dashboards.admin.gmc.glooplatform.com/grafana"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "West Cluster - Sidecar Enabled"
