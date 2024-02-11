@@ -9,5 +9,5 @@ resources:
 - https-gateway.yaml
 #- grafana-dashboard-configmaps
 #- jaeger-vs.yaml
-#- kiali-vs.yaml
+- kiali-vs.yaml
 #- prometheus-vs.yaml
