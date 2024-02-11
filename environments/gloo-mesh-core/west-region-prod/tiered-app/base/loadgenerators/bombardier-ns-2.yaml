@@ -31,4 +31,4 @@ spec:
             requests:
               cpu: 20m
               memory: 25Mi
-        args: ["-c", "for run in $(seq 1 100000); do bombardier -c 5 -d 60s -r 1 -p i,p,r https://west.gmc.glooplatform.com/ns-2; done"]
+        args: ["-c", "for run in $(seq 1 100000); do bombardier -c 5 -d 60s -r 1 -p i,p,r https://tiered-app.west.gmc.glooplatform.com/ns-2; done"]
