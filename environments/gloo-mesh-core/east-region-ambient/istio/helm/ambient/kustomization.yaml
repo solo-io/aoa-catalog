@@ -8,7 +8,7 @@ resources:
 - gateway-clusterissuer.yaml
 #- jaeger.yaml
 - prometheus.yaml
-#- grafana.yaml
+- grafana.yaml
 - istio-system-ns.yaml
 - kiali.yaml
 - istio-base.yaml
