@@ -12,6 +12,6 @@ resources:
 - istiolifecyclemanager.yaml
 - istio-ingressgateway-svc.yaml
 - grafana.yaml
-- kiali.yaml
+#- kiali.yaml
 - prometheus.yaml
 
