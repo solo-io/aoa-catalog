@@ -199,7 +199,7 @@ spec:
                         url: "https://howto.admin.gmc.glooplatform.com/security"
                         target: "_blank" # optional html a tag target attribute
 
-                  - name: "Main Cluster"
+                  - name: "Admin Cluster"
                     icon: "fas fa-user-cog"
                     items:
                       #- name: "ArgoCD"
