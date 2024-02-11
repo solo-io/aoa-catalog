@@ -243,8 +243,13 @@ spec:
                         subtitle: "change path number: /ns-1 to /ns-4"
                         icon: "fab fa-connectdevelop"
                         tag: "tiered-app"
-                        url: "https://tiered-app.demo.glooplatform.com/ns-1/ui/"
-                        target: "_blank" # optional html a tag target attribute   
+                        url: "https://ambient.gmc.glooplatform.com/ns-1/ui/"
+                        target: "_blank" # optional html a tag target attribute  
+                      - name: "Kiali"
+                        icon: "fas fa-project-diagram"
+                        tag: "tiered-app"
+                        url: "https://ambient.gmc.glooplatform.com/kiali"
+                        target: "_blank" # optional html a tag target attribute 
                     
   syncPolicy:
     automated:
