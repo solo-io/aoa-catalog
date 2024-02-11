@@ -250,11 +250,6 @@ spec:
                         tag: "tiered-app"
                         url: "https://tiered-app.ambient.gmc.glooplatform.com/ns-1/ui/"
                         target: "_blank" # optional html a tag target attribute  
-                      - name: "Grafana"
-                        icon: "fas fa-chart-area"
-                        tag: "grafana"
-                        url: "https://dashboards.ambient.gmc.glooplatform.com/grafana"
-                        target: "_blank" # optional html a tag target attribute
                       - name: "Kiali"
                         icon: "fas fa-project-diagram"
                         tag: "tiered-app"
