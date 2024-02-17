@@ -1,5 +1,9 @@
 # Changelog
 
+0.2.5 (2-16-24)
+---
+- bump cert-manager version to v1.14.2
+
 0.2.4 (2-7-24)
 ---
 - fix homer dashboard in `gloo-mesh-core/additional-cluster-1` and `gloo-mesh-core/additional-cluster-2`
