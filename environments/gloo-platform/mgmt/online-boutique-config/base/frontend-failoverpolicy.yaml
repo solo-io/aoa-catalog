@@ -10,12 +10,12 @@ spec:
       namespace: web-team
   config:
     # enable default locality based load balancing
-    localityMappings:
-      - from:
-          region: us-east1
-        to:
-          - region: us-central1
-      - from:
-          region: us-central1
-        to:
-          - region: us-east1
+    localityMappings: []
+      #- from:
+      #    region: us-east1
+      #  to:
+      #    - region: us-central1
+      #- from:
+      #    region: us-central1
+      #  to:
+      #    - region: us-east1
