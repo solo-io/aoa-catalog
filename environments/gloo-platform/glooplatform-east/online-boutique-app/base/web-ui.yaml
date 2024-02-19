@@ -72,7 +72,8 @@ spec:
       serviceAccountName: frontend
       containers:
         - name: server
-          image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/frontend:1.8
+          #image: us-central1-docker.pkg.dev/field-engineering-us/online-boutique/frontend:1.8
+          image: gcr.io/google-samples/microservices-demo/frontend:v0.9.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
