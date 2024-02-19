@@ -7,7 +7,7 @@ resources:
 - backend-apis-team-workspace.yaml
 - backend-apis-team-workspacesettings.yaml
 - frontend-failoverpolicy.yaml
-- backend-failoverpolicy.yaml
+#- backend-failoverpolicy.yaml
 - web-team-ns.yaml
 - outlierdetectionpolicy.yaml
 - vd.yaml
