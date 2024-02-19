@@ -25,7 +25,7 @@ spec:
           - ref:
               name: frontend
               namespace: web-team
-            kind: VIRTUAL_DESTINATION
+            #kind: VIRTUAL_DESTINATION
             port:
               number: 80
 #---
