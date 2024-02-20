@@ -56,8 +56,6 @@ spec:
           env:
             PILOT_ENABLE_K8S_SELECT_WORKLOAD_ENTRIES: "false"
             PILOT_SKIP_VALIDATE_TRUST_DOMAIN: "true"
-            ENABLE_DEBUG_ON_HTTP: "false"
-
   syncPolicy:
     automated:
       prune: true
