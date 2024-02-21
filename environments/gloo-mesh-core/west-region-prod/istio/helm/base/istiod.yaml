@@ -47,7 +47,7 @@ spec:
           rootNamespace: istio-system
         pilot:
           autoscaleEnabled: false
-          replicaCount: 2
+          replicaCount: 1
           rollingMaxUnavailable: 50%
           resources:
             requests:
