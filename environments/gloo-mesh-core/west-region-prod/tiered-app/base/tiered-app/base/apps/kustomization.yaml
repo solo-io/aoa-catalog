@@ -4,8 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-#- app-ns-1.yaml
-#- app-ns-2.yaml
+- app-ns-1.yaml
+- app-ns-2.yaml
 - app-ns-3.yaml
-#- app-ns-4.yaml
+- app-ns-4.yaml
 #- app-ns-5.yaml

@@ -45,7 +45,7 @@ metadata:
     tier: "4"
     seed: "1696442875193501000"
 spec:
-  replicas: 0
+  replicas: 1
   strategy:
     type: Recreate
   selector:
@@ -186,8 +186,7 @@ spec:
         - name: "MESSAGE"
           value: "Hello From hidden-sky (v1)!"
         - name: "UPSTREAM_URIS"
-          value: ""
-          #value: "http://quiet-sun.ns-3.svc.cluster.local:8080,http://sparkling-paper.ns-3.svc.cluster.local:8080"
+          value: "http://quiet-sun.ns-3.svc.cluster.local:8080,http://sparkling-paper.ns-3.svc.cluster.local:8080"
         - name: "UPSTREAM_WORKERS"
           value: "10"
         - name: "TIMING_50_PERCENTILE"
@@ -244,7 +243,7 @@ metadata:
     tier: "3"
     seed: "1696442875193501000"
 spec:
-  replicas: 0
+  replicas: 1
   strategy:
     type: Recreate
   selector:
@@ -342,7 +341,7 @@ metadata:
     tier: "4"
     seed: "1696442875193501000"
 spec:
-  replicas: 0
+  replicas: 1
   strategy:
     type: Recreate
   selector:
@@ -440,7 +439,7 @@ metadata:
     tier: "2"
     seed: "1696442875193501000"
 spec:
-  replicas: 0
+  replicas: 1
   strategy:
     type: Recreate
   selector:
@@ -510,7 +509,7 @@ metadata:
     tier: "2"
     seed: "1696442875193501000"
 spec:
-  replicas: 0
+  replicas: 1
   strategy:
     type: Recreate
   selector:
@@ -608,7 +607,7 @@ metadata:
     tier: "2"
     seed: "1696442875193501000"
 spec:
-  replicas: 0
+  replicas: 1
   strategy:
     type: Recreate
   selector:
