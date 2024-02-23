@@ -20,7 +20,7 @@ spec:
       labels:
         route: rollouts-demo-ui
       forwardTo:
-        pathRewrite: /rollouts
+        pathRewrite: /
         destinations:
         - ref:
             name: argo-rollouts-dashboard
