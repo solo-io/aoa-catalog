@@ -16,11 +16,12 @@ spec:
     - name: rollouts-demo-ui
       matchers:
       - uri:
-          prefix: /ui
+          #prefix: /ui
+          prefix: /rollouts
       labels:
         route: rollouts-demo-ui
       forwardTo:
-        pathRewrite: /
+        #pathRewrite: /rollouts/rollout/rollouts-demo/rollouts-demo
         destinations:
         - ref:
             name: argo-rollouts-dashboard
