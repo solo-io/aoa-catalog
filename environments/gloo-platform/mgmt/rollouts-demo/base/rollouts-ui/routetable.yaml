@@ -39,3 +39,16 @@ spec:
             cluster: mgmt
           port:
             number: 3100
+    - name: rewrite
+      matchers:
+      - uri:
+          exact: /ui
+      forwardTo:
+        pathRewrite: /rollouts/rollouts-demo
+        destinations:
+        - ref:
+            name: argo-rollouts-dashboard
+            namespace: rollouts-demo
+            cluster: mgmt
+          port:
+            number: 3100
