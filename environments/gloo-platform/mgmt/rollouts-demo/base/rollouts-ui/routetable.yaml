@@ -50,9 +50,3 @@ spec:
       forwardTo:
         destinations:
         pathRewrite: /rollouts/rollout/rollouts-demo/rollouts-demo
-        - ref:
-            name: argo-rollouts-dashboard
-            namespace: rollouts-demo
-            cluster: mgmt
-          port:
-            number: 3100
