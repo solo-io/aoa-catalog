@@ -19,8 +19,6 @@ spec:
           prefix: /rollouts/rollouts-demo
       - uri:
           prefix: /rollouts/rollout
-      - uri:
-          prefix: /rollouts/rollout/rollouts-demo/rollouts-demo
       labels:
         route: rollouts-demo-ui
       forwardTo:
