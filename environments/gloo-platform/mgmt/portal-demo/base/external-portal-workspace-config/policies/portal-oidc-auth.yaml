@@ -19,7 +19,7 @@ spec:
             accessTokenValidation:
               jwt:
                 remoteJwks:
-                  url: "https://dev-22653158.okta.com/oauth2/v1/keys"
+                  url: "http://dev-22653158.okta.com/oauth2/v1/keys"
                   refreshInterval: 5m
                 #localJwks:
                 #  # found here: https://dev-${USER}.okta.com/oauth2/v1/keys
