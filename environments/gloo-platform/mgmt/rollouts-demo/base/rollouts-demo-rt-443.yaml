@@ -44,7 +44,7 @@ spec:
     - name: rollouts-demo
       matchers:
       - uri:
-          prefix: /
+          prefix: /color
       labels:
         route: rollouts-demo
       forwardTo:
