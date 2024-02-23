@@ -17,6 +17,8 @@ spec:
       matchers:
       - uri:
           prefix: /rollouts
+      - uri:
+          prefix: /api
       labels:
         route: rollouts-demo-ui
       forwardTo:
