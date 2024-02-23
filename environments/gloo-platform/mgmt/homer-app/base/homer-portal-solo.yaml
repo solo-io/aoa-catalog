@@ -327,7 +327,7 @@ spec:
                         icon: "fab fa-git-alt"
                         tag: "argo-rollouts"
                         keywords: "argo-rollouts"
-                        url: "https://rollouts-ui.demo.glooplatform.com/rollouts/rollout/rollouts-demo/rollouts-demo"
+                        url: "https://rollouts-ui.demo.glooplatform.com/"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Argo Rollouts Demo"
