@@ -16,20 +16,9 @@ spec:
     - name: rollouts-demo-ui
       matchers:
       - uri:
-          prefix: /rollouts/rollouts-demo/rollouts-demo
+          prefix: /rollouts/rollout/rollouts-demo
       labels:
         route: rollouts-demo-ui
-      destinations:
-      - ref:
-          name: argo-rollouts-dashboard
-          namespace: rollouts-demo
-          cluster: mgmt
-        port:
-          number: 3100
-    - name: rollouts-ui-api
-      matchers:
-      - uri:
-          prefix: /api
       forwardTo:
         destinations:
         - ref:
@@ -38,12 +27,11 @@ spec:
             cluster: mgmt
           port:
             number: 3100
-    - name: path-rewrite
+    - name: rollouts-ui-api
       matchers:
       - uri:
-          prefix: /ui
+          prefix: /api
       forwardTo:
-        pathRewrite: /rollouts/rollouts-demo/rollouts-demo
         destinations:
         - ref:
             name: argo-rollouts-dashboard
