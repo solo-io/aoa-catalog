@@ -17,10 +17,20 @@ spec:
       matchers:
       - uri:
           prefix: /rollouts
-      - uri:
-          prefix: /api
       labels:
         route: rollouts-demo-ui
+      forwardTo:
+        destinations:
+        - ref:
+            name: argo-rollouts-dashboard
+            namespace: rollouts-demo
+            cluster: mgmt
+          port:
+            number: 3100
+    - name: rollouts-ui-api
+      matchers:
+      - uri:
+          prefix: /api
       forwardTo:
         destinations:
         - ref:
