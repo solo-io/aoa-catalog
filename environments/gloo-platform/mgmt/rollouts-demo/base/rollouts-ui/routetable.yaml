@@ -46,7 +46,7 @@ spec:
     - name: rewrite
       matchers:
       - uri:
-          prefix: /api
+          prefix: /ui
       forwardTo:
         destinations:
         pathRewrite: /rollouts/rollout/rollouts-demo/rollouts-demo
