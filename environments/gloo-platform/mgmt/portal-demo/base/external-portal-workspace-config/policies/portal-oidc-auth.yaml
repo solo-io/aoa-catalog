@@ -19,9 +19,9 @@ spec:
             accessTokenValidation:
               jwt:
                 remoteJwks:
-                  url: "http://dev-22653158.okta.com/oauth2/v1/keys"
+                  url: "https://dev-22653158.okta.com/oauth2/default/v1/keys"
                   refreshInterval: 5m
                 #localJwks:
-                #  # found here: https://dev-${USER}.okta.com/oauth2/v1/keys
+                #  # found here: https://dev-<USER>.okta.com/oauth2/default/v1/keys
                 #  inlineString: >-
                 #    {"keys":[{"kty":"RSA","alg":"RS256","kid":"x3gLekzx2cFUDe6E6aKgfPUUX2UZuHfONZ01Wwq1Pks","use":"sig","e":"AQAB","n":"nfRqhZDpvyFDK5q1O_bwKAPzLKNcyhZ9Mmz_fHfbGXW2GRLMQ5npoZgq01Xcy3iSckKtReMHDRZBfuRwdUBC1jFEfvkt0hmIdmBOTIGtespU93LXUw5IDiWFd3Mu1pcxNFQiJoCVkA1dNAHDhxJi74LXiWz2KBfnktymXQlQH0IkMYL8tytbYI5EjCuYEJT6rv8sp9DIW0DhxFdrDEoTjBJG61JTv06ObeIbTb3CjZ_vbVZ1Y1j3xfVcdc9aK6E_FrGI6233vietcLCiXQ1dNQ_2eldxi7uFkQsIw2hEpfnN36f_zlLkNU4oW1ehcSrMuHzxItMBxG3sPbfWroHAbQ"},{"kty":"RSA","alg":"RS256","kid":"EEwA8Q-4-SX5At0vC4wiK5rtCg9PVxRc061E8toXffQ","use":"sig","e":"AQAB","n":"0cKKhnNlprbpK6EjvTdb0oB9pTAwd0LPJgoAIso7Ltrqp32tjWXGMx9-pjfKluJKL5DFSGm4Zex3QquGPScFUv9QZLOGW2KNRGWa4d6byDp3y4H4A29l1DqxtH6cv4sw_I9U0AZWn1DMBpQsFNFnC09heCX4QHsKoFpbYYtCfS5XkUIYbZ-EWh8fkNNwSp38xAHtdq_Ev1EBT8KRSsRc67xuCxC6vQhKXM-Jq_2jxqL5lxOckeADkGlocMKBMkmN1JUi4TgOVLtQAOxF4TCEMA5F_-y8dy97cv1OBz1ar9evG9ldQF0ZgQhQ6PhBIrJDRAkJ0qT2i_9cSw4r1PWQdQ"}]}
