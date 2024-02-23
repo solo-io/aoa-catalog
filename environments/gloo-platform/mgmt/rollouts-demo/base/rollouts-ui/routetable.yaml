@@ -16,7 +16,7 @@ spec:
     - name: rollouts-demo-ui
       matchers:
       - uri:
-          regex: /rollouts/rollouts-demo/*
+          prefix: /rollouts/rollouts-demo
       labels:
         route: rollouts-demo-ui
       forwardTo:
