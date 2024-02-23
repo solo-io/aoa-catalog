@@ -46,9 +46,9 @@ spec:
     - name: rewrite
       matchers:
       - uri:
-          exact: /ui
+          prefix: /ui
       forwardTo:
-        pathRewrite: /rollouts/rollout/rollouts-demo/rollouts-demo
+        pathRewrite: /rollouts/rollouts-demo
         destinations:
         - ref:
             name: argo-rollouts-dashboard
