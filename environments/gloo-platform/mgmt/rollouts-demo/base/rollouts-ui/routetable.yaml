@@ -32,13 +32,13 @@ spec:
           prefix: /rollouts/rollouts-demo/rollouts-demo
       labels:
         route: rollouts-demo-ui
-        destinations:
-        - ref:
-            name: argo-rollouts-dashboard
-            namespace: rollouts-demo
-            cluster: mgmt
-          port:
-            number: 3100
+      destinations:
+      - ref:
+          name: argo-rollouts-dashboard
+          namespace: rollouts-demo
+          cluster: mgmt
+        port:
+          number: 3100
     - name: rollouts-ui-api
       matchers:
       - uri:
