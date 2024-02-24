@@ -300,18 +300,25 @@ spec:
                   - name: "Gateway Capabilities - ExtAuth / JWT / OPA / Rate Limiting / WAF / Progressive Delivery"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "httpbin"
-                        subtitle: "public endpoint"
+                      - name: "TLS Termination"
+                        subtitle: "httpbin public endpoint"
                         icon: "far fa-window-maximize"
                         tag: "httpbin"
                         url: "https://httpbin.demo.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
 
-                      - name: "httpbin - protected /get"
-                        subtitle: "okta protected endpoint"
+                      - name: "OIDC Auth with Okta"
+                        subtitle: "httpbin /get endpoint"
                         icon: "far fa-window-maximize"
                         tag: "httpbin"
                         url: "https://httpbin.demo.glooplatform.com/get"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "API Key Auth"
+                        subtitle: "api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy"
+                        icon: "far fa-window-maximize"
+                        tag: "httpbin"
+                        url: "https://httpbin.demo.glooplatform.com/ip"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "httpbin-loadgenerator"
