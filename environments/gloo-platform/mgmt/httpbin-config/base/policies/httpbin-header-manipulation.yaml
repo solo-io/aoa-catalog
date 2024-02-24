@@ -1,3 +1,4 @@
+apiVersion: trafficcontrol.policy.gloo.solo.io/v2
 kind: TransformationPolicy
 metadata:
   name: header-manipulation
