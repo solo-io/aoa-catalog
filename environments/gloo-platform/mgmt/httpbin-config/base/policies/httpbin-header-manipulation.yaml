@@ -9,9 +9,6 @@ spec:
       labels:
         transform-header: foo
   config:
-    phase:
-      postAuthz:
-        priority: 1
     request:
       injaTemplate:
         extractors:
