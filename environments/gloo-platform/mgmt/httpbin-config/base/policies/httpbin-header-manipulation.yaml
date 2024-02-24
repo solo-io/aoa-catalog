@@ -9,7 +9,9 @@ spec:
       labels:
         add-header: newly-created-header-for-upstream
   config:
-    appendResponseHeaders:
-      custom-response-header: madagascar
     appendRequestHeaders:
-      custom-request-header: zanzibar
+      custom-request-header-1: zanzibar
+      custom-request-header-2: madagascar
+      custom-request-header-3: morocco
+      custom-request-header-4: nigeria
+      custom-request-header-5: senegal
