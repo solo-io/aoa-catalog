@@ -44,8 +44,8 @@ spec:
         deployment:
           replicaCount: 1
           image:
-            repository: ably77/kubeinvaders
-            tag: v0.0.1
+            repository: luckysideburn/kubeinvaders
+            tag: v1.9.6
             pullPolicy: Always
             resources:
               requests:
