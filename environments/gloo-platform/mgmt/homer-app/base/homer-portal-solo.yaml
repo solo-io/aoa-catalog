@@ -357,22 +357,22 @@ spec:
                     icon: "fas fa-cloud"
                     items:
 
-                      - name: "Online Boutique - East"
-                        subtitle: "glooplatform-east"
+                      - name: "Locality Awareness"
+                        subtitle: "onlineboutique-east"
                         icon: "fas fa-shopping-cart"
                         tag: "onlineboutique"
                         url: "https://shop.east.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
 
-                      - name: "Online Boutique - Central"
-                        subtitle: "glooplatform-central"
+                      - name: "Multicluster Failover"
+                        subtitle: "onlineboutique-central > onlineboutique-east"
                         icon: "fas fa-shopping-cart"
                         tag: "onlineboutique"
                         url: "https://shop.central.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       
                       - name: "Kubeinvaders!"
-                        subtitle: "Chaos testing demo"
+                        subtitle: "Trigger Outlier Detection"
                         icon: "fas fa-fighter-jet"
                         tag: "kubeinvaders"
                         keywords: "kubeinvaders"
@@ -387,42 +387,43 @@ spec:
                         target: "_blank" # optional html a tag target attribute  
                       
                       - name: "Tiered Mesh Application - Extended"
-                        subtitle: "Strangler Pattern Example"
+                        subtitle: "Virtual Destination / Strangler Pattern"
                         icon: "fab fa-connectdevelop"
                         tag: "tiered-app"
                         url: "https://tiered-app.demo.glooplatform.com/east/ns-1/ui/"
                         target: "_blank" # optional html a tag target attribute  
 
                       - name: "Tiered Mesh Application - Gloo UI"
+                        subtitle: "Virtual Destination / Strangler Pattern"
                         icon: "fas fa-arrows-alt"
                         tag: "gloo-ui"
                         url: "https://ui.glooplatform.com/graph/?workspace=tiered-app"
                         target: "_blank" # optional html a tag target attribute   
 
-                      - name: "Bookinfo - East"
-                        subtitle: "glooplatform-east"
+                      - name: "Multicluster Routing"
+                        subtitle: "bookinfo"
                         icon: "fas fa-book-reader"
-                        tag: "bookinfo - glooplatform-east"
+                        tag: "bookinfo"
                         url: "https://bookinfo.east.glooplatform.com/productpage"
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "Developer Portals"
                     icon: "fab fa-connectdevelop"
                     items:
-                      - name: "Backstage"
-                        subtitle: "Internal Developer Portal"
+                      - name: "Internal Developer Portal"
+                        subtitle: "Backstage"
                         icon: "fab fa-git-alt"
                         tag: "backstage"
                         url: "https://backstage.glooplatform.com/gloo-platform-portal/apis"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "React Portal Frontend"
-                        subtitle: "External Developer Portal"
+                      - name: "External Developer Portal"
+                        subtitle: "BYO React Frontend"
                         icon: "fab fa-connectdevelop"
                         tag: "external-portal"
                         url: "https://external-portal.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Clickhouse Portal Analytics"
-                        subtitle: "powered by Grafana / OTel"
+                      - name: "Portal Analytics & Monetization"
+                        subtitle: "Grafana / OTel / Clickhouse"
                         icon: "fas fa-chart-area"
                         tag: "external-portal"
                         url: "https://clickhouse.demo.glooplatform.com/mgmt-grafana/d/db93be88-8cd4-4c32-8a37-83fbca40e3f0a/api-dashboard-geomap?orgId=1&from=now-1h&to=now"
