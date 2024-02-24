@@ -1,7 +1,7 @@
 apiVersion: trafficcontrol.policy.gloo.solo.io/v2
 kind: TransformationPolicy
 metadata:
-  name: mtls-transformation
+  name: add-pseudo-path-header
   namespace: httpbin
 spec:
   applyToRoutes:
@@ -16,11 +16,11 @@ spec:
       injaTemplate:
         # what to extract
         extractors:
-          path:
+          pseudo-path:
             header: :path
             regex: ([^?]+)?.*
             subgroup: 1
         # what to add/replace
         headers:
-          foo:
-            text: "{{ path }}"
+          target-application-path:
+            text: "{{ pseudo-path }}"
