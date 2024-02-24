@@ -17,8 +17,6 @@ spec:
         extractors:
           foo:
             header: 'foo'
-            regex: '*'
-            subgroup: 1
         headers:
           bar:
             text: "{{ foo }}"
