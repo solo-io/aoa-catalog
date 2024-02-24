@@ -1,26 +1,15 @@
 apiVersion: trafficcontrol.policy.gloo.solo.io/v2
-kind: TransformationPolicy
+kind: HeaderManipulationPolicy
 metadata:
-  name: add-pseudo-path-header
+  name: header-manipulation
   namespace: httpbin
 spec:
   applyToRoutes:
   - route:
       labels:
-        transform-header: "pseudo-path"
+        add-header: newly-created-header-for-upstream
   config:
-    phase:
-      preAuthz:
-        priority: 1
-    request:
-      injaTemplate:
-        # what to extract
-        extractors:
-          pseudo-path:
-            header: :path
-            regex: ([^?]+)?.*
-            subgroup: 1
-        # what to add/replace
-        headers:
-          target-application-path:
-            text: "{{ pseudo-path }}"
+    appendResponseHeaders:
+      custom-response-header: madagascar
+    appendRequestHeaders:
+      custom-request-header: zanzibar

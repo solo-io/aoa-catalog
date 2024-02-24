@@ -47,7 +47,8 @@ spec:
             number: 8000
     - name: httpbin-headers
       labels:
-        transform-header: "pseudo-path"
+        extract-header: "pseudo-path"
+        add-header: newly-created-header-for-upstream
       matchers:
       - uri:
           exact: /headers
