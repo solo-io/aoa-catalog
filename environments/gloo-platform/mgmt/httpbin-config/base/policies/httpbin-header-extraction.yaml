@@ -22,5 +22,5 @@ spec:
             subgroup: 1
         # what to add/replace
         headers:
-          custom-extracted-header:
+          custom-extracted-pseudo-path-header:
             text: "{{ pseudo-path }}"
