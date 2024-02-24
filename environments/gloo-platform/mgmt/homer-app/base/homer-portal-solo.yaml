@@ -322,6 +322,13 @@ spec:
                         url: "https://httpbin.demo.glooplatform.com/ip"
                         target: "_blank" # optional html a tag target attribute
 
+                      - name: "Header Manipulation"
+                        subtitle: "httpbin /headers endpoint"
+                        icon: "far fa-window-maximize"
+                        tag: "httpbin"
+                        url: "https://httpbin.demo.glooplatform.com/headers"
+                        target: "_blank" # optional html a tag target attribute
+
                       - name: "httpbin-loadgenerator"
                         #subtitle: "httpbin"
                         icon: "fab fa-creative-commons-sampling"
