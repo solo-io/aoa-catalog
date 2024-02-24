@@ -11,7 +11,7 @@ spec:
   config:
     phase:
       postAuthz:
-        priority: 2
+        priority: 1
     request:
       injaTemplate:
         extractors:
