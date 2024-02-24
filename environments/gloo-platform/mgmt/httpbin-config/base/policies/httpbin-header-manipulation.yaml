@@ -7,7 +7,7 @@ spec:
   applyToRoutes:
   - route:
       labels:
-        transform-header: "x-forwarded-client-cert"
+        transform-header: "pseudo-path"
   config:
     phase:
       preAuthz:
@@ -16,11 +16,11 @@ spec:
       injaTemplate:
         # what to extract
         extractors:
-          cert:
-            header: "x-forwarded-client-cert"
-            regex: '.*'
-            subgroup: 0
+          path:
+            header: :path
+            regex: ([^?]+)?.*
+            subgroup: 1
         # what to add/replace
         headers:
-          mtls-cert:
-            text: "{{ cert }}"
+          foo:
+            text: "{{ path }}"

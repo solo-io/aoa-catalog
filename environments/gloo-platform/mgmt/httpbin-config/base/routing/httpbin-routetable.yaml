@@ -47,7 +47,7 @@ spec:
             number: 8000
     - name: httpbin-headers
       labels:
-        transform-header: "x-forwarded-client-cert"
+        transform-header: "pseudo-path"
       matchers:
       - uri:
           exact: /headers
