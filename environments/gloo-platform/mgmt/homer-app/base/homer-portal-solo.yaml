@@ -315,7 +315,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "API Key Auth"
-                        subtitle: "api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy"
+                        subtitle: "httpbin /ip endpoint"
                         icon: "far fa-window-maximize"
                         tag: "httpbin"
                         url: "https://httpbin.demo.glooplatform.com/ip"
