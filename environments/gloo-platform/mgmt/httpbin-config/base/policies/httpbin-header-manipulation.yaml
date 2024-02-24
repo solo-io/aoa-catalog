@@ -7,7 +7,7 @@ spec:
   applyToRoutes:
   - route:
       labels:
-        transform-header: foo
+        transform-header: 'x-forwarded-client-cert'
   config:
     phase:
       preAuthz:
@@ -15,8 +15,8 @@ spec:
     request:
       injaTemplate:
         extractors:
-          foo:
-            header: 'foo'
+          mtls:
+            header: 'x-forwarded-client-cert'
         headers:
-          bar:
-            text: "{{ foo }}"
+          spiffe-id::
+            text: "{{ mtls }}"
