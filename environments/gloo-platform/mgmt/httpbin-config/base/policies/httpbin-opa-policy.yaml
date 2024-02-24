@@ -16,7 +16,8 @@ data:
         startswith(input.http_request.path, "/anything"),
         startswith(input.http_request.path, "/ip"),
         startswith(input.http_request.path, "/status"),
-        startswith(input.http_request.path, "/user-agent")
+        startswith(input.http_request.path, "/user-agent"),
+        startswith(input.http_request.path, "/headers")
     })
         any({input.http_request.method == "GET",
              input.http_request.method == "POST",
