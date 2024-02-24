@@ -49,6 +49,19 @@ spec:
             namespace: httpbin
           port:
             number: 8000
+    - name: httpbin-api-key
+      labels:
+        security: api-key
+      matchers:
+      - uri:
+          exact: /ip
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
     - name: httpbin-public
       labels:
         waf: "true"

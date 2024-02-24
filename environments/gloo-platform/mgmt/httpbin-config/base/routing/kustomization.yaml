@@ -5,4 +5,4 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - httpbin-rt-443.yaml
-#- httpbin-keycloak-oauth-rt-443.yaml
+- httpbin-routetable.yaml
