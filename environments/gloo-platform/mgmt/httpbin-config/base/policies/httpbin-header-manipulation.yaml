@@ -1,7 +1,7 @@
 apiVersion: trafficcontrol.policy.gloo.solo.io/v2
 kind: TransformationPolicy
 metadata:
-  name: modify-header
+  name: modify-foo-header
   namespace: httpbin
 spec:
   applyToRoutes:
@@ -9,12 +9,16 @@ spec:
       labels:
         transform-header: foo
   config:
+    phase:
+      preAuthz:
+        priority: 1
     request:
       injaTemplate:
         extractors:
           foo:
             header: 'foo'
             regex: '*'
+            subgroup: 1
         headers:
           bar:
             text: "{{ foo }}"
