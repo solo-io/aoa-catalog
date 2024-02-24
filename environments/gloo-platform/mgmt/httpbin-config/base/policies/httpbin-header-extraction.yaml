@@ -1,7 +1,7 @@
 apiVersion: trafficcontrol.policy.gloo.solo.io/v2
 kind: TransformationPolicy
 metadata:
-  name: add-pseudo-path-header
+  name: extract-pseudo-path-header
   namespace: httpbin
 spec:
   applyToRoutes:
