@@ -50,7 +50,7 @@ spec:
         transform-header: foo
       matchers:
       - uri:
-          exact: /ip
+          exact: /headers
       forwardTo:
         destinations:
         - ref:
