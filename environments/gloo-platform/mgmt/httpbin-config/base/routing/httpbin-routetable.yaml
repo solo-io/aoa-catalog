@@ -33,8 +33,6 @@ spec:
       - uri:
           prefix: /status
       - uri:
-          exact: /headers
-      - uri:
           exact: /user-agent
       - uri:
           prefix: /image
