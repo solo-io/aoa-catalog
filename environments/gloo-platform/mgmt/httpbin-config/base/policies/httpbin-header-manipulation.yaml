@@ -1,22 +1,26 @@
 apiVersion: trafficcontrol.policy.gloo.solo.io/v2
 kind: TransformationPolicy
 metadata:
-  name: modify-foo-header
+  name: mtls-transformation
   namespace: httpbin
 spec:
   applyToRoutes:
   - route:
       labels:
-        transform-header: 'x-forwarded-client-cert'
+        transform-header: "x-forwarded-client-cert"
   config:
     phase:
       preAuthz:
         priority: 1
     request:
       injaTemplate:
+        # what to extract
         extractors:
-          mtls:
-            header: 'x-forwarded-client-cert'
+          cert:
+            header: "x-forwarded-client-cert"
+            regex: '.*'
+            subgroup: 0
+        # what to add/replace
         headers:
-          spiffe-id::
-            text: "{{ mtls }}"
+          mtls-cert:
+            text: "{{ cert }}"
