@@ -1,0 +1,25 @@
+apiVersion: security.policy.gloo.solo.io/v2
+kind: ExtAuthPolicy
+metadata:
+  name: httpbin-apikey
+  namespace: httpbin
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        security: api-key
+  config:
+    server:
+      name: mgmt-ext-auth-server
+      namespace: gloo-mesh
+      cluster: mgmt
+    glooAuth:
+      configs:
+      - apiKeyAuth:
+          headerName: api-key
+          headersFromMetadataEntry:
+            x-user-email: 
+              name: user-email
+          k8sSecretApikeyStorage:
+            labelSelector:
+              extauth: apikey

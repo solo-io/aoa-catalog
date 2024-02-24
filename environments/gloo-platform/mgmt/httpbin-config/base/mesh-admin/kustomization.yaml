@@ -8,3 +8,4 @@ resources:
 - httpbin-okta-jwks-externalservice.yaml
 - httpbin-workspace.yaml
 - httpbin-workspacesettings.yaml
+- api-key-secret.yaml

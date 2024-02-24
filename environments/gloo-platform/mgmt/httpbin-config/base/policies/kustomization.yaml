@@ -15,3 +15,4 @@ resources:
 - httpbin-ratelimitserversettings.yaml
 - httpbin-wafpolicy.yaml
 #- httpbin-keycloak-extauth-policy.yaml
+- httpbin-api-key-auth.yaml
