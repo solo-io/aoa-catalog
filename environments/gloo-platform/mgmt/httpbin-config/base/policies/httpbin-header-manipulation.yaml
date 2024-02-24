@@ -1,0 +1,15 @@
+kind: TransformationPolicy
+metadata:
+  name: header-manipulation
+  namespace: httpbin
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        transform-header: foo
+  config:
+    request:
+      injaTemplate:
+        headers:
+          foo:
+            text: bar

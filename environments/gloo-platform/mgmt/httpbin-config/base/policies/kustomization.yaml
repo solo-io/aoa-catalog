@@ -16,3 +16,4 @@ resources:
 - httpbin-wafpolicy.yaml
 #- httpbin-keycloak-extauth-policy.yaml
 - httpbin-api-key-auth.yaml
+- httpbin-header-manipulation.yaml
