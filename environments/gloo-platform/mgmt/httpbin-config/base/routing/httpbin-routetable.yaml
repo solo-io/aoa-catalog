@@ -19,7 +19,6 @@ spec:
         oauth: httpbin.demo.glooplatform.com
         waf: "true"
         ratelimited: "true"
-        transform-header: "foo"
       matchers:
       - uri:
           exact: /get
