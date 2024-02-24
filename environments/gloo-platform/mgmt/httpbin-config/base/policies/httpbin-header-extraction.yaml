@@ -22,5 +22,5 @@ spec:
             subgroup: 1
         # what to add/replace
         headers:
-          target-application-path:
+          custom-extracted-header:
             text: "{{ pseudo-path }}"
