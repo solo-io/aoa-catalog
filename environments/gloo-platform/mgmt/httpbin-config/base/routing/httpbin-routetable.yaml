@@ -35,8 +35,6 @@ spec:
       - uri:
           exact: /headers
       - uri:
-          exact: /ip
-      - uri:
           exact: /user-agent
       - uri:
           prefix: /image
