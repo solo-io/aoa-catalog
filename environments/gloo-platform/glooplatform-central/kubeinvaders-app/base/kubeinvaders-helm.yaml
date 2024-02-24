@@ -45,7 +45,7 @@ spec:
           replicaCount: 1
           image:
             repository: ably77/kubeinvaders
-            tag: 0.0.2
+            tag: 0.0.3
             pullPolicy: Always
             resources:
               requests:
