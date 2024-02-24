@@ -176,6 +176,7 @@ spec:
                     
                     Username: jdoe@solo.io // Password: gloo-dev<br />
                     Username: jdoe@gmail.com // Password: gloo-public<br /><br />
+                    api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br /><br />
                     
                     You can also sign up through Okta using self-service registration!
                 
