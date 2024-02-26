@@ -16,3 +16,4 @@ resources:
 - istio-ingressgateway-svc.yaml
 #- kiali.yaml
 - jaeger.yaml
+- istiod-cron.yaml
