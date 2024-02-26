@@ -10,9 +10,9 @@ spec:
         route: httpbin-headers
   config:
     phase:
-      postAuthz:
-        priority: 10
-    response:
+      preAuthz:
+        priority: -1
+    request:
       injaTemplate:
         advancedTemplates: false
         parseBodyBehavior: DontParse
