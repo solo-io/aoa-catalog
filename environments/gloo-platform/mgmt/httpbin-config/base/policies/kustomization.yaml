@@ -18,3 +18,4 @@ resources:
 - httpbin-api-key-auth.yaml
 - httpbin-header-extraction.yaml
 - httpbin-header-manipulation.yaml
+- httpbin-header-random-replacement.yaml

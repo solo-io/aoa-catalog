@@ -1,0 +1,27 @@
+apiVersion: trafficcontrol.policy.gloo.solo.io/v2
+kind: TransformationPolicy
+metadata:
+  annotations:
+    cluster.solo.io/cluster: ""
+  name: transformation-one
+  namespace: bookinfo
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        route: ratings
+  config:
+    phase:
+      postAuthz:
+        priority: 10
+    response:
+      injaTemplate:
+        advancedTemplates: false
+        parseBodyBehavior: DontParse
+        headers:
+          baz:
+            text: '{{ replace_with_random(header("baz"), "pattern-to-replace") }}'          
+          foo:
+            text: '{{ replace_with_random(header("x-foo"), "another-pattern-to-replace") }}'   
+        body:
+          text: ' {{ replace_with_random(body(), "pattern-to-replace") }}'

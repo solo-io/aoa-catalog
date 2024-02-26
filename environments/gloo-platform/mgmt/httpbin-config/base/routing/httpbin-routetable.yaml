@@ -47,6 +47,7 @@ spec:
             number: 8000
     - name: httpbin-headers
       labels:
+        route: httpbin-headers
         extract-header: "pseudo-path"
         add-header: newly-created-header-for-upstream
       matchers:
