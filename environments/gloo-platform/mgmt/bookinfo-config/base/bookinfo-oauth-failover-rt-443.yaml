@@ -44,13 +44,14 @@ spec:
         prefix: /reviews
     forwardTo:
       destinations:
-        - ref:
-            name: reviews
-            namespace: bookinfo
-          port:
-            number: 9080
-          subset:
-            version: v1
+      - kind: VIRTUAL_DESTINATION
+        port:
+          number: 9080
+        ref:
+          name: productpage-443
+          namespace: bookinfo-team-config
+        subset:
+          version: v1
   virtualGateways:
   - cluster: mgmt
     name: north-south-gw

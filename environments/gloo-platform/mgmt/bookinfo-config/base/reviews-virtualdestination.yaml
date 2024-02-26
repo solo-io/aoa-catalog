@@ -1,0 +1,15 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: reviews-vd
+  namespace: bookinfo-team-config
+spec:
+  hosts:
+  - productpage-vd.gloo-mesh
+  ports:
+  - number: 9080
+    protocol: HTTP
+  services:
+  - labels:
+      app: reviews
+    namespace: bookinfo-backends
