@@ -59,7 +59,7 @@ spec:
     - headers:
       - name: user
         value: "preview"
-    - uri:
+      uri:
         prefix: /reviews/2
     forwardTo:
       destinations:
