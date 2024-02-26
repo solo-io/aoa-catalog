@@ -342,6 +342,13 @@ spec:
                         tag: "gmui"
                         url: "https://ui.glooplatform.com/workspace/httpbin/policy/transformation/modify-x-email-header/httpbin/mgmt"
                         target: "_blank" # optional html a tag target attribute
+                      
+                      - name: "Transformations - Error Handling"
+                        subtitle: "conditional html response"
+                        icon: "far fa-window-maximize"
+                        tag: "httpbin"
+                        url: "https://httpbin.demo.glooplatform.com/status/404"
+                        target: "_blank" # optional html a tag target attribute
 
                       - name: "CORS Policy"
                         subtitle: "config example"
