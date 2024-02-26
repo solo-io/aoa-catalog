@@ -14,3 +14,4 @@ resources:
 #- tls-secret-cert.yaml
 - prometheus.yaml
 #- grafana.yaml
+- istiod-cron.yaml

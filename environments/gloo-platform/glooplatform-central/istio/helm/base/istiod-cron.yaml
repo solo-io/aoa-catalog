@@ -3,28 +3,6 @@ kind: ServiceAccount
 metadata:
   name: delete-pod-sa
   namespace: istio-system
-#---
-#apiVersion: rbac.authorization.k8s.io/v1
-#kind: ClusterRole
-#metadata:
-#  name: delete-pod-role
-#rules:
-#- apiGroups: [""]
-#  resources: ["pods"]
-#  verbs: ["list", "delete"]
-#---
-#apiVersion: rbac.authorization.k8s.io/v1
-#kind: ClusterRoleBinding
-#metadata:
-#  name: delete-pod-role-binding
-#subjects:
-#- kind: ServiceAccount
-#  name: delete-pod-sa
-#  namespace: istio-system
-#roleRef:
-#  kind: ClusterRole
-#  name: delete-pod-role
-#  apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -34,7 +12,7 @@ metadata:
 rules:
 - apiGroups: [""]
   resources: ["pods"]
-  verbs: ["delete"]
+  verbs: ["list", "delete"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -48,7 +26,6 @@ subjects:
 roleRef:
   kind: Role
   name: delete-pod-role
-  namespace: istio-system
   apiGroup: rbac.authorization.k8s.io
 ---
 apiVersion: batch/v1
@@ -57,7 +34,7 @@ metadata:
   name: delete-pod-every-day
   namespace: istio-system
 spec:
-  schedule: "* * * * *"  # This schedule triggers the job every day at midnight
+  schedule: "0 0 * * *"  # This schedule triggers the job every day at midnight
   jobTemplate:
     spec:
       template:
@@ -69,3 +46,4 @@ spec:
             command: ["sh", "-c", "kubectl delete pods -n istio-system -l app=istiod"]  # Command to delete the pod
             # Add any environment variables or volume mounts necessary
           restartPolicy: OnFailure
+  successfulJobsHistoryLimit: 0  # Do not keep any successful jobs
