@@ -15,6 +15,6 @@ spec:
     response:
       injaTemplate:
         body:
-          text: '{% if header(":status") == "404" %}<html><body style="background-color:powderblue;"><h1>Error Code: 404</h1><p>Check to see if missing the header - "user: preferred"</p></body></html>{%
+          text: '{% if header(":status") == "404" %}<html><body style="background-color:powderblue;"><h1>Error Code: 404</h1><p>Additionally, a html response is visible for better readability</p></body></html>{%
             else %}{{ body() }}{% endif %}'
         parseBodyBehavior: DontParse
