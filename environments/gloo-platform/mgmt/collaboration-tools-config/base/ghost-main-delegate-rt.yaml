@@ -9,6 +9,7 @@ spec:
       labels:
         waf: "true"
         ratelimit: ghost
+        ratelimited: "true"
       matchers:
       - uri:
           prefix: /
