@@ -50,8 +50,8 @@ spec:
         ref:
           name: reviews-vd
           namespace: bookinfo-team-config
-        #subset:
-        #  version: v1
+        subset:
+          version: v1
   virtualGateways:
   - cluster: mgmt
     name: north-south-gw
