@@ -465,7 +465,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute   
 
                       - name: "Dark Launch - bookinfo reviews-v2"
-                        subtitle: "host - user: preferred"
+                        subtitle: "requires header - user: preview"
                         icon: "fas fa-book-reader"
                         tag: "bookinfo"
                         url: "https://bookinfo.east.glooplatform.com/reviews/2"
