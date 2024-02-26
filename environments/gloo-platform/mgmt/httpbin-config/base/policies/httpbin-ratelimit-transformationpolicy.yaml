@@ -2,7 +2,7 @@ apiVersion: trafficcontrol.policy.gloo.solo.io/v2
 kind: TransformationPolicy
 metadata:
   name: ratelimit-transformation
-  namespace: httpbin
+  namespace: ops-team-config
 spec:
   applyToRoutes:
   - route:
