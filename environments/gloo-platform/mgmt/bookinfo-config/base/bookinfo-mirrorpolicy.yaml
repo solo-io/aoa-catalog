@@ -15,5 +15,6 @@ spec:
       ref:
         name: reviews
         namespace: bookinfo-backends
+        cluster: glooplatform-east
       subset:
         version: v2
