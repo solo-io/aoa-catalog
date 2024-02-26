@@ -18,4 +18,5 @@ resources:
 - httpbin-header-extraction.yaml
 - httpbin-header-manipulation.yaml
 - httpbin-header-random-replacement.yaml
+- httpbin-timeout-policy.yaml
 - 404-transformation.yaml

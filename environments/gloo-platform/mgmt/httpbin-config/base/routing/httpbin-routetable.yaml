@@ -82,6 +82,19 @@ spec:
             namespace: httpbin
           port:
             number: 8000
+    - name: httpbin-delay
+      labels:
+        route: httpbin-delay
+      matchers:
+      - uri:
+          prefix: /delay
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
     - name: httpbin-public
       labels:
         waf: "true"

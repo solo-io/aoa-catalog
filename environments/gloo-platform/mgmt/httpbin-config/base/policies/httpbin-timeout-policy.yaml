@@ -1,0 +1,12 @@
+apiVersion: resilience.policy.gloo.solo.io/v2
+kind: RetryTimeoutPolicy
+metadata:
+  name: httpbin-timeout-policy
+  namespace: httpbin
+spec:
+  applyToRoutes:
+    - route:
+        labels:
+          route: httpbin-delay # matches on route table route's labels
+  config:
+    requestTimeout: 2s
