@@ -10,11 +10,10 @@ spec:
         route: reviews-v1
   config:
     destination:
-      kind: VIRTUAL_DESTINATION
       port:
         number: 9080
       ref:
-        name: reviews-vd
-        namespace: bookinfo-team-config
+        name: reviews
+        namespace: bookinfo-backends
       subset:
         version: v2
