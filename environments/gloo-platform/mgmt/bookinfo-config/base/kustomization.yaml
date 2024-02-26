@@ -11,5 +11,6 @@ resources:
 - bookinfo-routetable.yaml
 - bookinfo-outlierdetectionpolicy.yaml
 - productpage-virtualdestination.yaml
+- bookinfo-mirrorpolicy.yaml
 - graphql
 
