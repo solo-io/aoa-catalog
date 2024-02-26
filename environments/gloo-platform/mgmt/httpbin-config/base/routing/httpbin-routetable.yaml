@@ -97,6 +97,7 @@ spec:
             number: 8000
     - name: httpbin-public
       labels:
+        route: httpbin-public
         waf: "true"
         ratelimited: "true"
       matchers:
