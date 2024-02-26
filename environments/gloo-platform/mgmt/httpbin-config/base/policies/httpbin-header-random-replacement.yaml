@@ -1,15 +1,13 @@
 apiVersion: trafficcontrol.policy.gloo.solo.io/v2
 kind: TransformationPolicy
 metadata:
-  annotations:
-    cluster.solo.io/cluster: ""
-  name: transformation-one
-  namespace: bookinfo
+  name: custom-request-header-replacement
+  namespace: httpbin
 spec:
   applyToRoutes:
   - route:
       labels:
-        route: ratings
+        route: httpbin-headers
   config:
     phase:
       postAuthz:
@@ -19,9 +17,5 @@ spec:
         advancedTemplates: false
         parseBodyBehavior: DontParse
         headers:
-          baz:
-            text: '{{ replace_with_random(header("baz"), "pattern-to-replace") }}'          
-          foo:
-            text: '{{ replace_with_random(header("x-foo"), "another-pattern-to-replace") }}'   
-        body:
-          text: ' {{ replace_with_random(body(), "pattern-to-replace") }}'
+          custom-request-header-1:
+            text: '{{ replace_with_random(header("custom-request-header-1"), "pattern-to-replace") }}'
