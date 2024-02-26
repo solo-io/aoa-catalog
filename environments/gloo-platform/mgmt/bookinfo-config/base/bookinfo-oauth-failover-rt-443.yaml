@@ -32,6 +32,8 @@ spec:
     - uri:
         exact: /logout
     - uri:
+        prefix: /api/v1/products
+    - uri:
         prefix: /callback
   # Routes all /reviews requests to the reviews-v1 or reviews-v2 apps
   - name: reviews-v1
@@ -39,7 +41,7 @@ spec:
       route: reviews
     matchers:
     - uri:
-        prefix: /api/v1/products/1/reviews
+        prefix: /reviews
     forwardTo:
       destinations:
       - kind: VIRTUAL_DESTINATION
