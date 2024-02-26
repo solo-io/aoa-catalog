@@ -5,9 +5,19 @@ metadata:
   namespace: istio-system
 ---
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: delete-pod-role
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: delete-pod-role-binding
+  namespace: istio-system
 subjects:
 - kind: ServiceAccount
   name: delete-pod-sa
@@ -28,6 +38,7 @@ spec:
     spec:
       template:
         spec:
+          serviceAccountName: delete-pod-sa
           containers:
           - name: delete-pod
             image: quay.io/solo-io/kubectl:1.16.4  # Image with kubectl or any other tool capable of deleting pods
