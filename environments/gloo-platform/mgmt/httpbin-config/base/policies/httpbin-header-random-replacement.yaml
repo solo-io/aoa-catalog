@@ -10,12 +10,12 @@ spec:
         route: httpbin-headers
   config:
     phase:
-      preAuthz:
+      postAuthz:
         priority: -1
     request:
       injaTemplate:
         advancedTemplates: false
         parseBodyBehavior: DontParse
         headers:
-          Cf-Ipcountry:
-            text: '{{ replace_with_random(header("Cf-Ipcountry"), "pattern-to-replace") }}'
+          custom-request-header-1:
+            text: '{{ replace_with_random(header("custom-request-header-1"), "pattern-to-replace") }}'
