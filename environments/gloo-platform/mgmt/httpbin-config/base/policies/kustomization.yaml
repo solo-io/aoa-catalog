@@ -18,3 +18,4 @@ resources:
 - httpbin-header-extraction.yaml
 - httpbin-header-manipulation.yaml
 - httpbin-header-random-replacement.yaml
+- 404-transformation.yaml

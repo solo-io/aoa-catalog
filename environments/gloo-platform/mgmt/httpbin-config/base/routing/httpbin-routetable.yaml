@@ -3,8 +3,6 @@ kind: RouteTable
 metadata:
   name: httpbin-rt-443
   namespace: httpbin
-  labels:
-    expose: "true"
 spec:
   hosts:
     - 'httpbin.demo.glooplatform.com'
@@ -30,8 +28,6 @@ spec:
           prefix: /post
       - uri:
           prefix: /put
-      - uri:
-          prefix: /status
       - uri:
           exact: /user-agent
       - uri:
@@ -66,6 +62,19 @@ spec:
       matchers:
       - uri:
           exact: /ip
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
+    - name: httpbin-status
+      labels:
+        route: httpbin-status
+      matchers:
+      - uri:
+          prefix: /status
       forwardTo:
         destinations:
         - ref:

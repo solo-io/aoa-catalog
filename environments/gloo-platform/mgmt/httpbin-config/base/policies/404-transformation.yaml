@@ -1,13 +1,13 @@
 apiVersion: trafficcontrol.policy.gloo.solo.io/v2
 kind: TransformationPolicy
 metadata:
-  name: 404-missing-header-transformation
-  namespace: bookinfo-team-config
+  name: 404-transformation
+  namespace: httpbin
 spec:
   applyToRoutes:
   - route:
       labels:
-        route: reviews-v2
+        route: httpbin-status
   config:
     phase:
       preAuthz:
