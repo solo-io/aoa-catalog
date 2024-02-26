@@ -12,5 +12,6 @@ resources:
 - bookinfo-outlierdetectionpolicy.yaml
 - productpage-virtualdestination.yaml
 - bookinfo-mirrorpolicy.yaml
+- 404-transformation.yaml
 - graphql
 
