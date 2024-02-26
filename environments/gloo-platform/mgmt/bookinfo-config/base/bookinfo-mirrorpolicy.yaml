@@ -2,16 +2,19 @@ apiVersion: trafficcontrol.policy.gloo.solo.io/v2
 kind: MirrorPolicy
 metadata:
   name: mirror-policy
-  namespace: bookinfo
+  namespace: bookinfo-team-config
 spec:
   applyToRoutes:
   - route:
       labels:
-        route: productpage
+        route: reviews-v1
   config:
     destination:
+      kind: VIRTUAL_DESTINATION
       port:
         number: 9080
       ref:
-        name: ratings
-        namespace: bookinfo
+        name: reviews-vd
+        namespace: bookinfo-team-config
+      subset:
+        version: v2
