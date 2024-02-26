@@ -48,7 +48,7 @@ spec:
         port:
           number: 9080
         ref:
-          name: productpage-443
+          name: reviews-vd
           namespace: bookinfo-team-config
         subset:
           version: v1
