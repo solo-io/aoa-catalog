@@ -312,8 +312,8 @@ spec:
                       - name: "OIDC Auth with Okta"
                         subtitle: "httpbin /get endpoint"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-gateway"
-                        keywords: "gloo-gateway"
+                        tag: "gloo-gateway #gloo-mesh"
+                        keywords: "gloo-gateway,gloo-mesh"
                         url: "https://httpbin.demo.glooplatform.com/get"
                         target: "_blank" # optional html a tag target attribute
 
