@@ -38,7 +38,7 @@ spec:
   # Routes all /reviews requests to the reviews-v1 or reviews-v2 apps
   - name: reviews-v1
     labels: 
-      route: reviews
+      route: reviews-v1
     matchers:
     - uri:
         prefix: /reviews/1
@@ -54,7 +54,7 @@ spec:
           version: v1
   - name: reviews-v2
     labels: 
-      route: reviews
+      route: reviews-v2
     matchers:
     - uri:
         prefix: /reviews/2
