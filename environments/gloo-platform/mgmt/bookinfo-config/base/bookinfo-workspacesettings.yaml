@@ -15,6 +15,7 @@ spec:
       enabled: true
       serviceSelector:
       - namespace: bookinfo-frontends
+      - namespace: bookinfo-backends
     serviceIsolation:               # enable service isolation and Istio Sidecar resource
       enabled: true
       trimProxyConfig: true

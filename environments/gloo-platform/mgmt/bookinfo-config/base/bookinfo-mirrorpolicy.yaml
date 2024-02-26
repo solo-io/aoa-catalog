@@ -18,3 +18,4 @@ spec:
         cluster: glooplatform-east
       subset:
         version: v2
+    percentage: 100
