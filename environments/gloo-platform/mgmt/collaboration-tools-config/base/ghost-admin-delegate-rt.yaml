@@ -9,7 +9,7 @@ spec:
       labels:
         oauth: "true"
         waf: "true"
-        ratelimited: "true"
+        ratelimit: ghost
       matchers:
       - uri:
           prefix: /ghost
