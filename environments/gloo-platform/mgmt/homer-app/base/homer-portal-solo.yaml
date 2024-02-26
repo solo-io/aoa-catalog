@@ -371,6 +371,14 @@ spec:
                         keywords: "httpbin-loadgen"
                         url: "https://plow.demo.glooplatform.com/httpbin"
                         target: "_blank" # optional html a tag target attribute
+                      
+                      - name: "Bookinfo GraphQL API Explorer"
+                        subtitle: "UI GraphQL Explorer"
+                        icon: "fas fa-exchange-alt"
+                        tag: "bookinfo"
+                        keywords: "graphql"
+                        url: "https://ui.glooplatform.com/apis/graphql-bookinfo/bookinfo-team-config/mgmt/graphql-bookinfo-graphql-bookinfo.bookinfo-team-config.mgmt#schema%3E0"
+                        target: "_blank" # optional html a tag target attribute
 
                       - name: "Argo Rollouts Demo Dashboard"
                         subtitle: "Use this dashboard to change image tag (i.e. blue > green)"
@@ -435,15 +443,15 @@ spec:
                         url: "https://ui.glooplatform.com/graph/?workspace=tiered-app"
                         target: "_blank" # optional html a tag target attribute   
 
-                      - name: "Multicluster Routing"
-                        subtitle: "bookinfo"
+                      - name: "Dark Launch - bookinfo reviews-v2"
+                        subtitle: "host - user: preferred"
                         icon: "fas fa-book-reader"
                         tag: "bookinfo"
-                        url: "https://bookinfo.east.glooplatform.com/productpage"
+                        url: "https://bookinfo.east.glooplatform.com/reviews/2"
                         target: "_blank" # optional html a tag target attribute
                       
                       - name: "Traffic Mirroring Demo"
-                        subtitle: "100% of /reviews/1 to reviews-v2"
+                        subtitle: "100% of reviews-v1 to reviews-v2"
                         icon: "fas fa-book-reader"
                         tag: "bookinfo"
                         url: "https://bookinfo.east.glooplatform.com/reviews/1"
