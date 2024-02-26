@@ -453,7 +453,7 @@ spec:
                         subtitle: "logs of reviews-v2 in ArgoCD"
                         icon: "fas fa-book-reader"
                         tag: "argocd"
-                        url: "https://argocd.east.glooplatform.com/argo/applications/argocd/wave-bookinfo-app-aoa?view=tree&resource=&node=%2FPod%2Fbookinfo-backends%2Freviews-v2-74575bcccd-85mkc%2F0&tab=logs"
+                        url: "https://argocd.east.glooplatform.com/argo/api/v1/applications/wave-bookinfo-app-aoa/logs?appNamespace=argocd&container=istio-proxy&namespace=bookinfo-backends&follow=true&podName=reviews-v2-74575bcccd-85mkc&tailLines=1000&filter=-shadow&sinceSeconds=0"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Traffic Mirroring Policy"
