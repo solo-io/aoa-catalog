@@ -17,5 +17,5 @@ spec:
         advancedTemplates: false
         parseBodyBehavior: DontParse
         headers:
-          custom-request-header-1:
-            text: '{{ replace_with_random(header("custom-request-header-1"), "pattern-to-replace") }}'
+          Cf-Ipcountry:
+            text: '{{ replace_with_random(header("Cf-Ipcountry"), "pattern-to-replace") }}'
