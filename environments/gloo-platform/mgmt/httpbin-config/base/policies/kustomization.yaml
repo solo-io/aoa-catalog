@@ -8,7 +8,6 @@ resources:
 - httpbin-jwt-transformationpolicy.yaml
 - httpbin-claimstoheaders.yaml
 - httpbin-opa-policy.yaml
-- httpbin-ratelimit-transformationpolicy.yaml
 - httpbin-ratelimitclientconfig.yaml
 - httpbin-ratelimitpolicy.yaml
 - httpbin-ratelimitserverconfig.yaml

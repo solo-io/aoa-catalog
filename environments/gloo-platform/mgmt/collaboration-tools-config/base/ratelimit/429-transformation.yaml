@@ -1,13 +1,13 @@
 apiVersion: trafficcontrol.policy.gloo.solo.io/v2
 kind: TransformationPolicy
 metadata:
-  name: ratelimit-transformation
+  name: 429-ratelimit-transformation
   namespace: collaboration-tools
 spec:
   applyToRoutes:
   - route:
       labels:
-        ratelimited: "true"
+        ratelimit: ghost
   config:
     phase:
       preAuthz:
