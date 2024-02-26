@@ -298,7 +298,7 @@ spec:
                         url: "https://grafana.admin.glooplatform.com/east"
                         target: "_blank" # optional html a tag target attribute
 
-                  - name: "Gateway Capabilities - ExtAuth / JWT / OPA / Rate Limiting / WAF / Progressive Delivery"
+                  - name: "Gloo Gateway Capabilities - Traffic Routing/Shifting / Transformations / Security"
                     icon: "fas fa-cloud"
                     items:
                       - name: "TLS Termination"
@@ -322,11 +322,39 @@ spec:
                         url: "https://httpbin.demo.glooplatform.com/ip"
                         target: "_blank" # optional html a tag target attribute
 
-                      - name: "Header Manipulation"
+                      - name: "Header Manipulation - Extract/Append"
                         subtitle: "httpbin /headers endpoint"
                         icon: "far fa-window-maximize"
                         tag: "httpbin"
                         url: "https://httpbin.demo.glooplatform.com/headers"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "Header Manipulation - Extract/Append"
+                        subtitle: "config example"
+                        icon: "far fa-window-maximize"
+                        tag: "gmui"
+                        url: "https://ui.glooplatform.com/workspace/httpbin/policy/header-manipulation/header-manipulation/httpbin/mgmt"
+                        target: "_blank" # optional html a tag target attribute
+                      
+                      - name: "Header Manipulation - Extract/Transform"
+                        subtitle: "config example"
+                        icon: "far fa-window-maximize"
+                        tag: "gmui"
+                        url: "https://ui.glooplatform.com/workspace/httpbin/policy/transformation/modify-x-email-header/httpbin/mgmt"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "CORS Policy"
+                        subtitle: "config example"
+                        icon: "far fa-window-maximize"
+                        tag: "gmui"
+                        url: "https://ui.glooplatform.com/workspace/external-portal/policy/cors/external-portal-cors/external-portal-config/mgmt"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "Web Application Firewall (WAF)"
+                        subtitle: "config example"
+                        icon: "far fa-window-maximize"
+                        tag: "gmui"
+                        url: "https://ui.glooplatform.com/workspace/httpbin/policy/waf/httpbin-wafpolicy/httpbin/mgmt"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "httpbin-loadgenerator"
@@ -353,7 +381,7 @@ spec:
                         url: "https://rollouts.demo.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute  
 
-                  - name: "Mesh Capabilities - Multicluster / Failover / OutlierDetection / Chaos and Resiliency Testing"
+                  - name: "Gloo Mesh Capabilities - Multicluster / Failover / OutlierDetection / Chaos and Resiliency Testing"
                     icon: "fas fa-cloud"
                     items:
 
@@ -371,8 +399,8 @@ spec:
                         url: "https://shop.central.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       
-                      - name: "Kubeinvaders!"
-                        subtitle: "Trigger Outlier Detection"
+                      - name: "Trigger Outlier Detection"
+                        subtitle: "Kubeinvaders!"
                         icon: "fas fa-fighter-jet"
                         tag: "kubeinvaders"
                         keywords: "kubeinvaders"
@@ -393,8 +421,8 @@ spec:
                         url: "https://tiered-app.demo.glooplatform.com/east/ns-1/ui/"
                         target: "_blank" # optional html a tag target attribute  
 
-                      - name: "Tiered Mesh Application - Gloo UI"
-                        subtitle: "Virtual Destination / Strangler Pattern"
+                      - name: "Multicluster Application Architecture - Gloo UI"
+                        subtitle: "Core + Strangler Pattern"
                         icon: "fas fa-arrows-alt"
                         tag: "gloo-ui"
                         url: "https://ui.glooplatform.com/graph/?workspace=tiered-app"
