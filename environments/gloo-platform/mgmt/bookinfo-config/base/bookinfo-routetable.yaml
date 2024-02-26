@@ -56,6 +56,9 @@ spec:
     labels: 
       route: reviews-v2
     matchers:
+    - headers:
+      - name: user
+        value: "preview"
     - uri:
         prefix: /reviews/2
     forwardTo:
