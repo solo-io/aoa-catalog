@@ -1,0 +1,25 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: RateLimitServerConfig
+metadata:
+  name: collaboration-tools-rlsc
+  namespace: collaboration-tools
+spec:
+  destinationServers:
+  - port:
+      name: grpc
+    ref:
+      cluster: mgmt
+      name: rate-limiter
+      namespace: gloo-mesh-addons
+  raw:
+    descriptors:
+      - key: generic_key
+        rateLimit:
+          requestsPerUnit: 10
+          unit: MINUTE
+        value: counter
+      #- key: generic_key
+      #  rateLimit:
+      #    requestsPerUnit: 15
+      #    unit: SECOND
+      #  value: counter

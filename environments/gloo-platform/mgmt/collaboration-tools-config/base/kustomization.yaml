@@ -9,4 +9,5 @@ resources:
 - ghost-admin-delegate-rt.yaml
 - ghost-main-delegate-rt.yaml
 - ghost-root-rt.yaml
+- ratelimit
 
