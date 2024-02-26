@@ -357,6 +357,13 @@ spec:
                         url: "https://ui.glooplatform.com/workspace/httpbin/policy/waf/httpbin-wafpolicy/httpbin/mgmt"
                         target: "_blank" # optional html a tag target attribute
 
+                      - name: "Rate Limiting"
+                        subtitle: "429 error code at > 1RPS"
+                        icon: "far fa-window-maximize"
+                        tag: "ghost"
+                        url: "https://ghost.demo.glooplatform.com/"
+                        target: "_blank" # optional html a tag target attribute
+
                       - name: "httpbin-loadgenerator"
                         #subtitle: "httpbin"
                         icon: "fab fa-creative-commons-sampling"
