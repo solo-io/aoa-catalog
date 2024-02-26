@@ -1,7 +1,7 @@
 apiVersion: trafficcontrol.policy.gloo.solo.io/v2
 kind: TransformationPolicy
 metadata:
-  name: user-agent-header-replacement
+  name: id-token-public-replacement
   namespace: httpbin
 spec:
   applyToRoutes:
@@ -9,6 +9,9 @@ spec:
       labels:
         route: httpbin-public
   config:
+    phase:
+      postAuthz:
+        priority: 10
     response:
       injaTemplate:
         advancedTemplates: false
