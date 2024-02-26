@@ -441,6 +441,27 @@ spec:
                         tag: "bookinfo"
                         url: "https://bookinfo.east.glooplatform.com/productpage"
                         target: "_blank" # optional html a tag target attribute
+                      
+                      - name: "Traffic Mirroring Demo"
+                        subtitle: "100% of /reviews/1 to reviews-v2"
+                        icon: "fas fa-book-reader"
+                        tag: "bookinfo"
+                        url: "https://bookinfo.east.glooplatform.com/reviews/1"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "Traffic Mirroring Logs"
+                        subtitle: "logs of reviews-v2 in ArgoCD"
+                        icon: "fas fa-book-reader"
+                        tag: "argocd"
+                        url: "https://argocd.east.glooplatform.com/argo/applications/argocd/wave-bookinfo-app-aoa?view=tree&resource=&node=%2FPod%2Fbookinfo-backends%2Freviews-v2-74575bcccd-85mkc%2F0&tab=logs"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "Traffic Mirroring Policy"
+                        subtitle: "config example"
+                        icon: "fas fa-book-reader"
+                        tag: "gmui"
+                        url: "https://ui.glooplatform.com/workspace/bookinfo/policy/mirror/mirror-policy/bookinfo-team-config/mgmt"
+                        target: "_blank" # optional html a tag target attribute
 
                   - name: "Developer Portals"
                     icon: "fab fa-connectdevelop"
