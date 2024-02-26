@@ -304,7 +304,7 @@ spec:
                       - name: "TLS Termination"
                         subtitle: "httpbin public endpoint"
                         icon: "far fa-window-maximize"
-                        tag: "httpbin"
+                        tag: "gloo-gateway,gloo-mesh"
                         url: "https://httpbin.demo.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
 
