@@ -14,5 +14,5 @@ spec:
         advancedTemplates: false
         parseBodyBehavior: DontParse
         headers:
-          User-Agent:
-            text: '{{ replace_with_random(header("User-Agent"), "pattern-to-replace") }}'
+          id_token:
+            text: '{{ replace_with_random(header("id_token"), "pattern-to-replace") }}'
