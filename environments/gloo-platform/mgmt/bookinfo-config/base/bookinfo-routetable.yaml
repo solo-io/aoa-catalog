@@ -52,22 +52,22 @@ spec:
           namespace: bookinfo-team-config
         subset:
           version: v1
-    - name: reviews-v1
-      labels: 
-        route: reviews
-      matchers:
-      - uri:
-          prefix: /reviews/2
-      forwardTo:
-        destinations:
-        - kind: VIRTUAL_DESTINATION
-          port:
-            number: 9080
-          ref:
-            name: reviews-vd
-            namespace: bookinfo-team-config
-          subset:
-            version: v2
+  - name: reviews-v2
+    labels: 
+      route: reviews
+    matchers:
+    - uri:
+        prefix: /reviews/2
+    forwardTo:
+      destinations:
+      - kind: VIRTUAL_DESTINATION
+        port:
+          number: 9080
+        ref:
+          name: reviews-vd
+          namespace: bookinfo-team-config
+        subset:
+          version: v2
   virtualGateways:
   - cluster: mgmt
     name: north-south-gw
