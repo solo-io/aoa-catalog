@@ -5,3 +5,4 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - httpbin-routetable.yaml
+- httpbin-externalservice.yaml
