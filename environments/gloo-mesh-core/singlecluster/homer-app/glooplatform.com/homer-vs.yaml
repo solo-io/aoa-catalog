@@ -18,3 +18,12 @@ spec:
         host: homer-portal
         port:
           number: 8080
+  - name: broken-route
+    match:
+    - uri:
+        prefix: "/broken"
+    route:
+    - destination:
+        host: i-dont-exist
+        port:
+          number: 8080
