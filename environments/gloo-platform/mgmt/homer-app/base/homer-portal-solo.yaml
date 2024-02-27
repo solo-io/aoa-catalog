@@ -172,13 +172,13 @@ spec:
                     This is a simple navigation homepage for aoa-catalog demo apps running on the Gloo Platform!<br />
                     Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
                     
-                    Below are a few common usernames to explore the applications and portals:<br /><br />
-                    
+                    Below are a few common usernames to explore the applications and portals:<br />
+                    Note: You can also sign up for your own user through Okta using self-service registration!<br /><br />
                     Username: jdoe@solo.io // Password: gloo-dev<br />
                     Username: jdoe@gmail.com // Password: gloo-public<br /><br />
-                    api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br /><br />
-                    
-                    You can also sign up through Okta using self-service registration!
+                    Common Headers Used:<br />
+                    api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br />
+                    user: preview<br /><br />
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
@@ -457,7 +457,7 @@ spec:
                         url: "https://shop.central.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       
-                      - name: "Trigger Outlier Detection"
+                      - name: "Chaos - Trigger Failover"
                         subtitle: "Kubeinvaders!"
                         icon: "fas fa-fighter-jet"
                         tag: "gloo-mesh"
@@ -500,7 +500,7 @@ spec:
                       - name: "Traffic Mirroring Logs"
                         subtitle: "logs (past 60s) of reviews-v2 in ArgoCD"
                         icon: "fas fa-book-reader"
-                        tag: "gloo-gateway #gloo-meshh"
+                        tag: "gloo-gateway #gloo-mesh"
                         keywords: "gloo-gateway,gloo-mesh,ui"
                         url: "https://argocd.east.glooplatform.com/argo/api/v1/applications/wave-bookinfo-app-aoa/logs?appNamespace=argocd&container=istio-proxy&namespace=bookinfo-backends&follow=true&group=apps&kind=Deployment&resourceName=reviews-v2&tailLines=100&sinceSeconds=60"
                         target: "_blank" # optional html a tag target attribute
