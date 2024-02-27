@@ -381,7 +381,15 @@ spec:
                         url: "https://ui.glooplatform.com/workspace/external-portal/policy/cors/external-portal-cors/external-portal-config/mgmt"
                         target: "_blank" # optional html a tag target attribute
 
-                      - name: "Web Application Firewall (WAF)"
+                      - name: "Web Application Firewall (WAF) Demo"
+                        subtitle: "block header - user-agent: scammer"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-gateway"
+                        keywords: "gloo-gateway"
+                        url: "https://httpbin.demo.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "WAF Policy"
                         subtitle: "config example"
                         icon: "far fa-window-maximize"
                         tag: "gloo-gateway"
