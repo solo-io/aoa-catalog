@@ -11,6 +11,7 @@ resources:
 - gloo-mesh-ui-vs.yaml
 #- grafana-dashboard-configmaps
 - howto
+- error
 #- jaeger-vs.yaml
 #- kiali-vs.yaml
 #- prometheus-vs.yaml
