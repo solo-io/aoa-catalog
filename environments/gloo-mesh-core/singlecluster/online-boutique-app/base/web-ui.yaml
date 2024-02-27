@@ -58,6 +58,7 @@ spec:
         app: frontend
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "true"
+        proxy.istio.io/foo: 'bogus-parameter'
     spec:
       nodeSelector:
         node: "spot"
