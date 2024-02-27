@@ -247,7 +247,7 @@ spec:
                         url: "https://demo.glooplatform.com/howto"
                         target: "_blank" # optional html a tag target attribute
                   
-                  - name: "Admin Applications"
+                  - name: "Platform Admin Tools"
                     icon: "fas fa-cloud"
                     items:
                       - name: "Gloo Mesh UI"
@@ -307,7 +307,7 @@ spec:
                         url: "https://grafana.admin.glooplatform.com/east"
                         target: "_blank" # optional html a tag target attribute
 
-                  - name: "Traffic Routing and Shifting"
+                  - name: "Traffic Routing and Shifting Capabilities"
                     icon: "fas fa-cloud"
                     items:
                       
@@ -383,7 +383,7 @@ spec:
                         url: "https://ui.glooplatform.com/workspace/bookinfo/policy/mirror/mirror-policy/bookinfo-team-config/mgmt"
                         target: "_blank" # optional html a tag target attribute
 
-                  - name: "Traffic Shaping"
+                  - name: "Traffic Shaping Capabilities"
                     icon: "fas fa-cloud"
                     items:
 
@@ -421,7 +421,7 @@ spec:
 
                       
 
-                  - name: "Security"
+                  - name: "Security Capabilities"
                     icon: "fas fa-cloud"
                     items:
                       - name: "TLS Termination"
