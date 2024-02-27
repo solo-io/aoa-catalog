@@ -93,6 +93,19 @@ spec:
             namespace: httpbin
           port:
             number: 8000
+    - name: httpbin-anything-unprotected
+      labels:
+        route: httpbin-anything-unprotected
+      matchers:
+      - uri:
+          exact: /anything/unprotected
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
     - name: httpbin-anything-migration
       labels:
         route: httpbin-anything-migration
