@@ -383,6 +383,22 @@ spec:
                         url: "https://ui.glooplatform.com/workspace/bookinfo/policy/mirror/mirror-policy/bookinfo-team-config/mgmt"
                         target: "_blank" # optional html a tag target attribute
 
+                      - name: "Route to External Services"
+                        subtitle: "public httpbin.org/anything URL"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,config"
+                        url: "https://httpbin.demo.glooplatform.com/anything"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "External Service Migration"
+                        subtitle: "50/50 public / in-cluster"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,config"
+                        url: "https://httpbin.demo.glooplatform.com/anything/migration"
+                        target: "_blank" # optional html a tag target attribute
+
                   - name: "Traffic Shaping Capabilities"
                     icon: "fas fa-cloud"
                     items:

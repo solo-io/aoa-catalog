@@ -93,6 +93,27 @@ spec:
             namespace: httpbin
           port:
             number: 8000
+    - name: httpbin-anything-migration
+      labels:
+        route: httpbin-anything-migration
+      matchers:
+      - uri:
+          exact: /anything/migration
+      forwardTo:
+        destinations:
+        - kind: EXTERNAL_SERVICE
+          port:
+            number: 443
+          ref:
+            name: httpbin
+            namespace: httpbin
+          weight: 50
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
+          weight: 50
     - name: httpbin-anything
       labels:
         route: httpbin-anything
@@ -119,8 +140,6 @@ spec:
           prefix: /flasgger_static
       - uri:
           exact: /spec.json
-      - uri:
-          prefix: /anything
       forwardTo:
         destinations:
         - ref:
