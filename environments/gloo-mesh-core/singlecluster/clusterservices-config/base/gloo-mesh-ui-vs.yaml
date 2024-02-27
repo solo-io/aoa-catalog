@@ -18,3 +18,12 @@ spec:
         host: gloo-mesh-ui
         port:
           number: 8090
+  - name: wrong-port
+    match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: gloo-mesh-ui
+        port:
+          number: num
