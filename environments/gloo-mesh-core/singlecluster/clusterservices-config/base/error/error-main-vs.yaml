@@ -7,7 +7,7 @@ spec:
   hosts:
   - "error.gmc.glooplatform.com"
   gateways:
-  - istio-gateways/https-gateway
+  - istio-gateways/https-gatewayz
   http:
   - name: error1
     match:
