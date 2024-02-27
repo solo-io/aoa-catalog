@@ -26,4 +26,4 @@ spec:
     - destination:
         host: gloo-mesh-ui
         port:
-          name: $value
+          number: 4000
