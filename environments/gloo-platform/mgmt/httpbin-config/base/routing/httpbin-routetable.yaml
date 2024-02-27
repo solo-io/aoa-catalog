@@ -93,12 +93,12 @@ spec:
             namespace: httpbin
           port:
             number: 8000
-    - name: httpbin-image
+    - name: httpbin-anything
       labels:
-        route: httpbin-image
+        route: httpbin-anything
       matchers:
       - uri:
-          prefix: /image
+          prefix: /anything
       forwardTo:
         destinations:
         - kind: EXTERNAL_SERVICE
