@@ -248,7 +248,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Platform Admin Tools"
-                    icon: "fas fa-cloud"
+                    icon: "fas fa-tools"
                     items:
                       - name: "Gloo Mesh UI"
                         icon: "fas fa-arrows-alt"
@@ -308,7 +308,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "Traffic Routing and Shifting Capabilities"
-                    icon: "fas fa-cloud"
+                    icon: "fas fa-traffic-light"
                     items:
                       
                       - name: "Argo Rollouts Demo Dashboard"
@@ -337,7 +337,7 @@ spec:
 
                       - name: "Timeout Policy - 2s"
                         subtitle: "config example"
-                        icon: "far fa-window-maximize"
+                        icon: "far fa-file-code"
                         tag: "gloo-gateway #gloo-mesh #config"
                         keywords: "gloo-gateway,gloo-mesh,config"
                         url: "https://ui.glooplatform.com/workspace/httpbin/policy/retry/httpbin-timeout-policy/httpbin/mgmt/"
@@ -345,7 +345,7 @@ spec:
 
                       - name: "Timeout Policy"
                         subtitle: "trigger /delay/2 endpoint"
-                        icon: "far fa-window-maximize"
+                        icon: "far fa-hourglass"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://httpbin.demo.glooplatform.com/delay/1"
@@ -361,7 +361,7 @@ spec:
 
                       - name: "Traffic Mirroring"
                         subtitle: "100% of reviews-v1 to reviews-v2"
-                        icon: "fas fa-book-reader"
+                        icon: "fas fa-forward"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://bookinfo.east.glooplatform.com/reviews/1"
@@ -369,7 +369,7 @@ spec:
 
                       - name: "Traffic Mirroring Logs"
                         subtitle: "logs (past 60s) of reviews-v2 in ArgoCD"
-                        icon: "fas fa-book-reader"
+                        icon: "fas fa-forward"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,gloo-mesh,ui,demo"
                         url: "https://argocd.east.glooplatform.com/argo/api/v1/applications/wave-bookinfo-app-aoa/logs?appNamespace=argocd&container=istio-proxy&namespace=bookinfo-backends&follow=true&group=apps&kind=Deployment&resourceName=reviews-v2&tailLines=100&sinceSeconds=60"
@@ -377,7 +377,7 @@ spec:
 
                       - name: "Traffic Mirroring Policy"
                         subtitle: "config example"
-                        icon: "fas fa-book-reader"
+                        icon: "far fa-file-code"
                         tag: "gloo-gateway #gloo-mesh #config"
                         keywords: "gloo-gateway,gloo-mesh,config"
                         url: "https://ui.glooplatform.com/workspace/bookinfo/policy/mirror/mirror-policy/bookinfo-team-config/mgmt"
@@ -385,18 +385,26 @@ spec:
 
                       - name: "Route to External Services"
                         subtitle: "public httpbin.org/anything URL"
-                        icon: "far fa-window-maximize"
+                        icon: "fas fa-external-link-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
-                        keywords: "gloo-gateway,gloo-mesh,config"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://httpbin.demo.glooplatform.com/anything"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "External Service Migration"
                         subtitle: "50/50 public / in-cluster"
-                        icon: "far fa-window-maximize"
+                        icon: "fas fa-external-link-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
-                        keywords: "gloo-gateway,gloo-mesh,config"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://httpbin.demo.glooplatform.com/anything/migration"
+                        target: "_blank" # optional html a tag target attribute
+
+                      - name: "External Service Migration Config"
+                        subtitle: "config example"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #gloo-mesh #config"
+                        keywords: "gloo-gateway,gloo-mesh,config"
+                        url: "https://ui.glooplatform.com/workspace/httpbin/route/table/httpbin-rt-443/httpbin/mgmt"
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "Traffic Shaping Capabilities"
@@ -413,7 +421,7 @@ spec:
 
                       - name: "Header Manipulation - Extract/Append"
                         subtitle: "config example"
-                        icon: "far fa-window-maximize"
+                        icon: "far fa-file-code"
                         tag: "gloo-gateway #gloo-mesh #config"
                         keywords: "gloo-gateway,gloo-mesh,config"
                         url: "https://ui.glooplatform.com/workspace/httpbin/policy/header-manipulation/header-manipulation/httpbin/mgmt"
@@ -421,7 +429,7 @@ spec:
                       
                       - name: "Header Manipulation - Extract/Transform"
                         subtitle: "config example"
-                        icon: "far fa-window-maximize"
+                        icon: "far fa-file-code"
                         tag: "gloo-gateway #gloo-mesh #config"
                         keywords: "gloo-gateway,gloo-mesh,config"
                         url: "https://ui.glooplatform.com/workspace/httpbin/policy/transformation/modify-x-email-header/httpbin/mgmt"
@@ -438,11 +446,11 @@ spec:
                       
 
                   - name: "Security Capabilities"
-                    icon: "fas fa-cloud"
+                    icon: "fas fa-user-shield"
                     items:
                       - name: "TLS Termination"
                         subtitle: "httpbin public endpoint"
-                        icon: "far fa-window-maximize"
+                        icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,demo"
                         url: "https://httpbin.demo.glooplatform.com"
@@ -450,7 +458,7 @@ spec:
 
                       - name: "OIDC Auth with Okta"
                         subtitle: "httpbin /get endpoint"
-                        icon: "far fa-window-maximize"
+                        icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://httpbin.demo.glooplatform.com/get"
@@ -458,7 +466,7 @@ spec:
 
                       - name: "API Key Auth"
                         subtitle: "httpbin /ip endpoint"
-                        icon: "far fa-window-maximize"
+                        icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,demo"
                         url: "https://httpbin.demo.glooplatform.com/ip"
@@ -466,7 +474,7 @@ spec:
 
                       - name: "CORS Policy"
                         subtitle: "config example"
-                        icon: "far fa-window-maximize"
+                        icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,config"
                         url: "https://ui.glooplatform.com/workspace/external-portal/policy/cors/external-portal-cors/external-portal-config/mgmt"
@@ -474,7 +482,7 @@ spec:
 
                       - name: "Web Application Firewall (WAF)"
                         subtitle: "block header - user-agent: scammer"
-                        icon: "far fa-window-maximize"
+                        icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,demo"
                         url: "https://httpbin.demo.glooplatform.com"
@@ -482,7 +490,7 @@ spec:
 
                       - name: "WAF Policy"
                         subtitle: "config example"
-                        icon: "far fa-window-maximize"
+                        icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,config"
                         url: "https://ui.glooplatform.com/workspace/httpbin/policy/waf/httpbin-wafpolicy/httpbin/mgmt"
@@ -490,7 +498,7 @@ spec:
 
                       - name: "Rate Limiting"
                         subtitle: "429 error code at > 1RPS"
-                        icon: "far fa-window-maximize"
+                        icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://ghost.demo.glooplatform.com/"
