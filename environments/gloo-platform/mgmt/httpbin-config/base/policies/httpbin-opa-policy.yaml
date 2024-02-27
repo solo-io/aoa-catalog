@@ -18,7 +18,8 @@ data:
         startswith(input.http_request.path, "/status"),
         startswith(input.http_request.path, "/user-agent"),
         startswith(input.http_request.path, "/headers"),
-        startswith(input.http_request.path, "/delay")
+        startswith(input.http_request.path, "/delay"),
+        startswith(input.http_request.path, "/image")
     })
         any({input.http_request.method == "GET",
              input.http_request.method == "POST",

@@ -31,8 +31,6 @@ spec:
       - uri:
           exact: /user-agent
       - uri:
-          prefix: /image
-      - uri:
           prefix: /callback
       forwardTo:
         destinations:
@@ -95,6 +93,20 @@ spec:
             namespace: httpbin
           port:
             number: 8000
+    - name: httpbin-image
+      labels:
+        route: httpbin-image
+      matchers:
+      - uri:
+          prefix: /image
+      forwardTo:
+        destinations:
+        - kind: EXTERNAL_SERVICE
+          port:
+            number: 443
+          ref:
+            name: httpbin
+            namespace: httpbin
     - name: httpbin-public
       labels:
         route: httpbin-public
