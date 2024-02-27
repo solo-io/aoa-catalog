@@ -26,4 +26,4 @@ spec:
     - destination:
         host: gloo-mesh-ui
         port:
-          number: num
+          number: 10000000
