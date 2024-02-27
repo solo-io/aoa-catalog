@@ -176,9 +176,12 @@ spec:
                     Note: You can also sign up for your own user through Okta using self-service registration!<br /><br />
                     Username: jdoe@solo.io // Password: gloo-dev<br />
                     Username: jdoe@gmail.com // Password: gloo-public<br /><br />
-                    Common Headers Used:<br />
+                    Common headers used in demos (typically also in the subtitle of the link card where possible):<br />
                     api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br />
-                    user: preview<br /><br />
+                    user: preview<br />
+                    user-agent: user1-5<br />
+                    user-agent: user6<br />
+                    user-agent: scammer<br /><br />
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
