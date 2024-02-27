@@ -64,7 +64,7 @@ spec:
         # -- Set annotations on the pod
         podAnnotations:
           proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
-          proxy.istio.io/config: "bogus-parameter"
+          sidecar.istio.io/proxyCPU: "bogus-parameter"
         
         # -- Configures serviceAccount settings for the chart.
         serviceAccount:
