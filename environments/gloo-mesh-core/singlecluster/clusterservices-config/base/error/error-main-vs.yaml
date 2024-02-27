@@ -8,6 +8,7 @@ spec:
   - "error.gmc.glooplatform.com"
   gateways:
   - istio-gateways/https-gateway
+  - istio-gateways/bogus-gateway
   http:
   - name: error1
     match:
