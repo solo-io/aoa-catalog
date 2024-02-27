@@ -304,119 +304,119 @@ spec:
                       - name: "TLS Termination"
                         subtitle: "httpbin public endpoint"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-gateway"
-                        keywords: "gloo-gateway"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
                         url: "https://httpbin.demo.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "OIDC Auth with Okta"
                         subtitle: "httpbin /get endpoint"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-gateway #gloo-mesh"
-                        keywords: "gloo-gateway,gloo-mesh"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://httpbin.demo.glooplatform.com/get"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "API Key Auth"
                         subtitle: "httpbin /ip endpoint"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-gateway #gloo-mesh"
-                        keywords: "gloo-gateway"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,demo"
                         url: "https://httpbin.demo.glooplatform.com/ip"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Header Manipulation - Extract/Append"
                         subtitle: "httpbin /headers endpoint"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-gateway #gloo-mesh"
-                        keywords: "gloo-gateway,gloo-mesh"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://httpbin.demo.glooplatform.com/headers"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Header Manipulation - Extract/Append"
                         subtitle: "config example"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-gateway #gloo-mesh"
-                        keywords: "gloo-gateway,gloo-mesh"
+                        tag: "gloo-gateway #gloo-mesh #config"
+                        keywords: "gloo-gateway,gloo-mesh,config"
                         url: "https://ui.glooplatform.com/workspace/httpbin/policy/header-manipulation/header-manipulation/httpbin/mgmt"
                         target: "_blank" # optional html a tag target attribute
                       
                       - name: "Header Manipulation - Extract/Transform"
                         subtitle: "config example"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-gateway #gloo-mesh"
-                        keywords: "gloo-gateway,gloo-mesh"
+                        tag: "gloo-gateway #gloo-mesh #config"
+                        keywords: "gloo-gateway,gloo-mesh,config"
                         url: "https://ui.glooplatform.com/workspace/httpbin/policy/transformation/modify-x-email-header/httpbin/mgmt"
                         target: "_blank" # optional html a tag target attribute
                       
                       - name: "Transformations - Error Handling"
                         subtitle: "conditional html response"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-gateway #gloo-mesh"
-                        keywords: "gloo-gateway,gloo-mesh"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://httpbin.demo.glooplatform.com/status/404"
                         target: "_blank" # optional html a tag target attribute
                       
                       - name: "Timeout Policy - 2s"
                         subtitle: "config example"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-gateway #gloo-mesh"
-                        keywords: "gloo-gateway,gloo-mesh"
+                        tag: "gloo-gateway #gloo-mesh #config"
+                        keywords: "gloo-gateway,gloo-mesh,config"
                         url: "https://ui.glooplatform.com/workspace/httpbin/policy/retry/httpbin-timeout-policy/httpbin/mgmt/"
                         target: "_blank" # optional html a tag target attribute
 
-                      - name: "Timeout Policy Demo"
+                      - name: "Timeout Policy"
                         subtitle: "trigger /delay/2 endpoint"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-gateway #gloo-mesh"
-                        keywords: "gloo-gateway,gloo-mesh"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://httpbin.demo.glooplatform.com/delay/1"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "CORS Policy"
                         subtitle: "config example"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-gateway"
-                        keywords: "gloo-gateway"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,config"
                         url: "https://ui.glooplatform.com/workspace/external-portal/policy/cors/external-portal-cors/external-portal-config/mgmt"
                         target: "_blank" # optional html a tag target attribute
 
-                      - name: "Web Application Firewall (WAF) Demo"
+                      - name: "Web Application Firewall (WAF)"
                         subtitle: "block header - user-agent: scammer"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-gateway"
-                        keywords: "gloo-gateway"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
                         url: "https://httpbin.demo.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "WAF Policy"
                         subtitle: "config example"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-gateway"
-                        keywords: "gloo-gateway"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,config"
                         url: "https://ui.glooplatform.com/workspace/httpbin/policy/waf/httpbin-wafpolicy/httpbin/mgmt"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Rate Limiting"
                         subtitle: "429 error code at > 1RPS"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-gateway #gloo-mesh"
-                        keywords: "gloo-gateway,gloo-mesh"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://ghost.demo.glooplatform.com/"
                         target: "_blank" # optional html a tag target attribute
                       
                       - name: "Dark Launch - bookinfo reviews-v2"
                         subtitle: "requires header - user: preview"
                         icon: "fas fa-book-reader"
-                        tag: "gloo-gateway #gloo-mesh"
-                        keywords: "gloo-gateway,gloo-mesh"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://bookinfo.east.glooplatform.com/reviews/2"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "httpbin-loadgenerator"
                         #subtitle: "httpbin"
                         icon: "fab fa-creative-commons-sampling"
-                        tag: "loadgenerator"
+                        tag: "additional"
                         keywords: "loadgenerator"
                         url: "https://plow.demo.glooplatform.com/httpbin"
                         target: "_blank" # optional html a tag target attribute
@@ -424,24 +424,24 @@ spec:
                       - name: "Bookinfo GraphQL API Explorer"
                         subtitle: "UI GraphQL Explorer"
                         icon: "fas fa-exchange-alt"
-                        tag: "gloo-gateway"
-                        keywords: "gloo-gateway,gloo-mesh,graphql"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,gloo-mesh,graphql,demo"
                         url: "https://ui.glooplatform.com/apis/graphql-bookinfo/bookinfo-team-config/mgmt/graphql-bookinfo-graphql-bookinfo.bookinfo-team-config.mgmt#schema%3E0"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Argo Rollouts Demo Dashboard"
                         subtitle: "Use this dashboard to change image tag (i.e. blue > green)"
                         icon: "fab fa-git-alt"
-                        tag: "gloo-gateway"
-                        keywords: "gloo-gateway"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,argo-rollouts,canary,demo"
                         url: "https://rollouts-ui.demo.glooplatform.com/"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Argo Rollouts Demo"
                         subtitle: "Visualize Progressive Delivery in action"
                         icon: "fab fa-git-alt"
-                        tag: "gloo-gateway"
-                        keywords: "gloo-gateway"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,argo-rollouts,canary,demo"
                         url: "https://rollouts.demo.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute  
 
@@ -452,72 +452,72 @@ spec:
                       - name: "Locality Awareness"
                         subtitle: "onlineboutique-east"
                         icon: "fas fa-shopping-cart"
-                        tag: "gloo-mesh"
-                        keywords: "gloo-mesh"
+                        tag: "gloo-mesh #demo"
+                        keywords: "gloo-mesh,demo"
                         url: "https://shop.east.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Multicluster Failover"
                         subtitle: "onlineboutique-central > onlineboutique-east"
                         icon: "fas fa-shopping-cart"
-                        tag: "gloo-mesh"
-                        keywords: "gloo-mesh"
+                        tag: "gloo-mesh #demo"
+                        keywords: "gloo-mesh,demo"
                         url: "https://shop.central.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       
                       - name: "Chaos - Trigger Failover"
                         subtitle: "Kubeinvaders!"
                         icon: "fas fa-fighter-jet"
-                        tag: "gloo-mesh"
-                        keywords: "gloo-mesh,chaos"
+                        tag: "additional #demo"
+                        keywords: "gloo-mesh,chaos,demo"
                         url: "https://chaos.demo.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Tiered Mesh Application - Core"
                         subtitle: "change path number: /ns-#"
                         icon: "fab fa-connectdevelop"
-                        tag: "gloo-mesh"
-                        keywords: "gloo-mesh"
+                        tag: "gloo-mesh #demo"
+                        keywords: "gloo-mesh,demo"
                         url: "https://tiered-app.demo.glooplatform.com/ns-1/ui/"
                         target: "_blank" # optional html a tag target attribute  
                       
                       - name: "Tiered Mesh Application - Extended"
                         subtitle: "Virtual Destination / Strangler Pattern"
                         icon: "fab fa-connectdevelop"
-                        tag: "gloo-mesh"
-                        keywords: "gloo-mesh,virtualdestination,multicluster"
+                        tag: "gloo-mesh #demo"
+                        keywords: "gloo-mesh,virtualdestination,multicluster,demo"
                         url: "https://tiered-app.demo.glooplatform.com/east/ns-1/ui/"
                         target: "_blank" # optional html a tag target attribute  
 
                       - name: "Multicluster Application Architecture - Gloo UI"
                         subtitle: "Core + Strangler Pattern"
                         icon: "fas fa-arrows-alt"
-                        tag: "gloo-mesh"
-                        keywords: "gloo-mesh,ui"
+                        tag: "gloo-mesh #ui #demo"
+                        keywords: "gloo-mesh,ui,demo"
                         url: "https://ui.glooplatform.com/graph/?workspace=tiered-app"
                         target: "_blank" # optional html a tag target attribute   
                       
-                      - name: "Traffic Mirroring Demo"
+                      - name: "Traffic Mirroring"
                         subtitle: "100% of reviews-v1 to reviews-v2"
                         icon: "fas fa-book-reader"
-                        tag: "gloo-gateway #gloo-mesh"
-                        keywords: "gloo-gateway,gloo-mesh"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://bookinfo.east.glooplatform.com/reviews/1"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Traffic Mirroring Logs"
                         subtitle: "logs (past 60s) of reviews-v2 in ArgoCD"
                         icon: "fas fa-book-reader"
-                        tag: "gloo-gateway #gloo-mesh"
-                        keywords: "gloo-gateway,gloo-mesh,ui"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,ui,demo"
                         url: "https://argocd.east.glooplatform.com/argo/api/v1/applications/wave-bookinfo-app-aoa/logs?appNamespace=argocd&container=istio-proxy&namespace=bookinfo-backends&follow=true&group=apps&kind=Deployment&resourceName=reviews-v2&tailLines=100&sinceSeconds=60"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Traffic Mirroring Policy"
                         subtitle: "config example"
                         icon: "fas fa-book-reader"
-                        tag: "gloo-gateway #gloo-mesh"
-                        keywords: "gloo-gateway,gloo-mesh"
+                        tag: "gloo-gateway #gloo-mesh #config"
+                        keywords: "gloo-gateway,gloo-mesh,config"
                         url: "https://ui.glooplatform.com/workspace/bookinfo/policy/mirror/mirror-policy/bookinfo-team-config/mgmt"
                         target: "_blank" # optional html a tag target attribute
 
@@ -527,22 +527,22 @@ spec:
                       - name: "Internal Developer Portal"
                         subtitle: "Backstage"
                         icon: "fab fa-git-alt"
-                        tag: "gloo-gateway"
-                        keywords: "gloo-gateway,gloo-portal,backstage"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,gloo-portal,backstage,demo"
                         url: "https://backstage.glooplatform.com/gloo-platform-portal/apis"
                         target: "_blank" # optional html a tag target attribute
                       - name: "External Developer Portal"
                         subtitle: "BYO React Frontend"
                         icon: "fab fa-connectdevelop"
-                        tag: "gloo-gateway"
-                        keywords: "gloo-gateway,gloo-portal"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,gloo-portal,demo"
                         url: "https://external-portal.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Portal Analytics & Monetization"
                         subtitle: "Grafana / OTel / Clickhouse"
                         icon: "fas fa-chart-area"
-                        tag: "gloo-gateway"
-                        keywords: "gloo-gateway,gloo-portal,clickhouse,grafana,otel"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,gloo-portal,clickhouse,grafana,otel,demo"
                         url: "https://clickhouse.demo.glooplatform.com/mgmt-grafana/d/db93be88-8cd4-4c32-8a37-83fbca40e3f0a/api-dashboard-geomap?orgId=1&from=now-1h&to=now"
                         target: "_blank" # optional html a tag target attribute
                   
@@ -551,8 +551,8 @@ spec:
                     items:
                       - name: "Gloo Mesh Core Demo Dashboard"
                         logo: "solo/glooy.png"
-                        tag: "gloo-mesh-core"
-                        keywords: "gloo-mesh-core"
+                        tag: "gloo-mesh-core #demo"
+                        keywords: "gloo-mesh-core,demo"
                         url: "https://demo.gmc.glooplatform.com/solo/"
                         target: "_blank" # optional html a tag target attribute
                   
