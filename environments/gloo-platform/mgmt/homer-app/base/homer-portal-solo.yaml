@@ -182,8 +182,9 @@ spec:
                     Used in JWT auth example:<br />
                     TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "$TOKEN"<br />
                     x-auth: Bearer ${TOKEN}<br /><br />
+                    Used in dark launch example:<br />
+                    user: preview<br /><br />
                     Used in WAF example:<br />
-                    user: preview<br />
                     user-agent: user1-5<br />
                     user-agent: user6<br />
                     user-agent: scammer<br /><br />
@@ -349,7 +350,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Timeout Policy"
-                        subtitle: "trigger /delay/2 endpoint"
+                        subtitle: "switch to /delay/2 to trigger timeout"
                         icon: "far fa-hourglass"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,gloo-mesh,demo"
