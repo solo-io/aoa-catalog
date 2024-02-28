@@ -10,9 +10,9 @@ metadata:
   namespace: istio-system
   name: delete-pod-role
 rules:
-- apiGroups: [""]
-  resources: ["pods"]
-  verbs: ["list", "delete"]
+- apiGroups: ["apps"]
+  resources: ["deployments", "replicasets", "pods"]
+  verbs: ["get", "patch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -34,7 +34,8 @@ metadata:
   name: delete-pod-every-day
   namespace: istio-system
 spec:
-  schedule: "0 0 * * *"  # This schedule triggers the job every day at midnight
+  #schedule: "0 0 * * *"  # This schedule triggers the job every day at midnight
+  schedule: "* * * * *"  # This schedule triggers the job every day at midnight
   jobTemplate:
     spec:
       template:
@@ -43,7 +44,7 @@ spec:
           containers:
           - name: delete-pod
             image: quay.io/solo-io/kubectl:1.16.4  # Image with kubectl or any other tool capable of deleting pods
-            command: ["sh", "-c", "kubectl delete pods -n istio-system -l app=istiod"]  # Command to delete the pod
+            command: ["sh", "-c", "kubectl rollout restart -n istio-system deploy/istiod-1-20"]  # Command to delete the pod
             # Add any environment variables or volume mounts necessary
           restartPolicy: OnFailure
   successfulJobsHistoryLimit: 0  # Do not keep any successful jobs
