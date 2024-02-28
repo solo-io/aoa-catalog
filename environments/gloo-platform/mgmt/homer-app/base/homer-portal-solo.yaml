@@ -483,7 +483,7 @@ spec:
                         icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #external-service #demo"
                         keywords: "gloo-gateway,demo"
-                        url: "https://httpbin.demo.glooplatform.com/anything/jwt"
+                        url: "https://httpbin.demo.glooplatform.com/anything/jwt/external-service"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "JWT Policy"

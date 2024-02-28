@@ -99,7 +99,7 @@ spec:
         security: basic-jwt
       matchers:
       - uri:
-          prefix: /anything/jwt
+          prefix: /anything/jwt/external-service
       forwardTo:
         destinations:
         - kind: EXTERNAL_SERVICE
