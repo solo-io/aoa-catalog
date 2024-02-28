@@ -35,6 +35,13 @@ waves:
       -  $env_path/clusterservices-config/init.sh
       post_deploy:
       -  $env_path/clusterservices-config/test.sh
+  - name: helloworld
+    location: $env_path/helloworld-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/helloworld-app/init.sh
+      post_deploy:
+      -  $env_path/helloworld-app/test.sh    
   #- name: online-boutique-app
   #  location: $env_path/online-boutique-app/base
   #  scripts:
