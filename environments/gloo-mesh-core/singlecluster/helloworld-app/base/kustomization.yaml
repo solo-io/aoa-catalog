@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
 - helloworld-ns.yaml
 - helloworld.yaml
+- unenforced-authorizationpolicy.yaml
