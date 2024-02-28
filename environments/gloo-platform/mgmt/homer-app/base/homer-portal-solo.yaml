@@ -180,7 +180,7 @@ spec:
                     Used in API-Key auth example:<br />
                     api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br /><br />
                     Used in JWT auth example:<br />
-                    TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "$TOKEN"
+                    TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "$TOKEN"<br />
                     x-auth: Bearer ${TOKEN}<br /><br />
                     Used in WAF example:<br />
                     user: preview<br />
