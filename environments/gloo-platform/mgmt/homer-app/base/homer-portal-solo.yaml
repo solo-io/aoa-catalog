@@ -176,9 +176,13 @@ spec:
                     Note: You can also sign up for your own user through Okta using self-service registration!<br /><br />
                     Username: jdoe@solo.io // Password: gloo-dev<br />
                     Username: jdoe@gmail.com // Password: gloo-public<br /><br />
-                    Common headers used in demos (typically also in the subtitle of the link card where possible):<br />
-                    api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br />
-                    x-auth: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2Rldi5leGFtcGxlLmNvbSIsImV4cCI6NDgwNDMyNDczNiwiaWF0IjoxNjQ4NjUxMTM2LCJvcmciOiJpbnRlcm5hbCIsImVtYWlsIjoiZGV2MUBzb2xvLmlvIiwiZ3JvdXAiOiJlbmdpbmVlcmluZyIsInNjb3BlIjoiaXM6ZGV2ZWxvcGVyIn0.g8o0uQOAPqU74CP-V6sSbZiGWv0zcOL8CkObLLvQCuvplABbvcURr9VlVyB6eZLFCdI3INlgMvDom3PaXQg4iQE9UrfLDDhIgmby5PF0UEI2phg8Z5J_CXUMbjuvARgJFNTGeXFAyr3T3efP4V0DX3asiMiJsa_fB4qgsB_tDPRnRW0zHIYgeoPse5osgcIemSfXUPlfkJBbBLHXFxX2aTo603qUxxd9cJGAPYs31QZkJxMNO8dLTYV70LRCFX1BDrSxC2jsLVwERufZCoq3591cI2to4Qm4nB3gf0bIO4pOFW571QwTTW8DO2ByaFwpHGqD5wrnio_saEST4jr33g<br />
+                    Common headers used in demos (typically also in the subtitle of the link card where possible):<br /><br />
+                    Used in API-Key auth example:<br />
+                    api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br /><br />
+                    Used in JWT auth example:<br />
+                    TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "$TOKEN"
+                    x-auth: Bearer ${TOKEN}<br /><br />
+                    Used in WAF example:<br />
                     user: preview<br />
                     user-agent: user1-5<br />
                     user-agent: user6<br />
@@ -481,12 +485,12 @@ spec:
                         url: "https://httpbin.demo.glooplatform.com/anything/jwt"
                         target: "_blank" # optional html a tag target attribute
 
-                      - name: "JWTPolicy"
+                      - name: "JWT Policy"
                         subtitle: "config example"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #gloo-mesh #config"
                         keywords: "gloo-gateway,gloo-mesh,config,security"
-                        url: "https://httpbin.demo.glooplatform.com/anything"
+                        url: "https://ui.glooplatform.com/workspace/httpbin/policy/jwt/basic-jwt-policy/httpbin/mgmt"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "CORS Policy"
