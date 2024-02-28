@@ -7,7 +7,7 @@ spec:
   applyToRoutes:
   - route:
       labels:
-        route: httpbin-anything
+        security: basic-jwt
   config:
     phase:
       preAuthz: {}
@@ -16,10 +16,10 @@ spec:
         claimsToHeaders:
         - append: true
           claim: org
-          header: x-org
+          header: x-additional-custom-header-from-jwt-claim-org
         - append: true
           claim: email
-          header: x-email
+          header: x-additional-custom-header-from-jwt-claim-email
         issuer: https://dev.example.com
         local:
           inline: |-

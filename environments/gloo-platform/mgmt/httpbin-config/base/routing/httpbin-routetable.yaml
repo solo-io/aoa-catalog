@@ -130,6 +130,7 @@ spec:
     - name: httpbin-anything
       labels:
         route: httpbin-anything
+        security: basic-jwt
       matchers:
       - uri:
           prefix: /anything
