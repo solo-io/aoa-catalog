@@ -38,7 +38,8 @@ spec:
         image: docker.io/istio/examples-helloworld-v1
         resources:
           requests:
-            cpu: "100m"
+            cpu: "5m"
+            memory: "50Mi"
         imagePullPolicy: IfNotPresent #Always
         ports:
         - containerPort: 5000
