@@ -1,0 +1,40 @@
+apiVersion: security.policy.gloo.solo.io/v2
+kind: JWTPolicy
+metadata:
+  name: basic-jwt-policy
+  namespace: httpbin
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        route: httpbin-anything
+  config:
+    phase:
+      preAuthz: {}
+    providers:
+      dev-example:
+        claimsToHeaders:
+        - append: true
+          claim: org
+          header: x-org
+        - append: true
+          claim: email
+          header: x-email
+        issuer: https://dev.example.com
+        local:
+          inline: |-
+            -----BEGIN PUBLIC KEY-----
+            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArER4FGhBW0h05DnVSHre
+            Vr7tH/+XpTGsmSVYXciDKm3BigygvE1oGXIdIrvIzwE8XTrSgfquvf+VhXvMOa4x
+            anvuEqrLlqV9kanlEtjkkwV6PbDksrUeukxDiaxGBTBm6XIlpQdfRI3lMSln6phM
+            mxtWOdMyA9QcXYEr5hXi9KJUyjGaAZGyOxYOyq+VNnxHIvqHR7pQiokTc4jkMD+X
+            rxgAka3Lb1ekE/WowwzPvO8dyq0cUiCBrC4TiH/Yd2/LVEwnWoM1RI8FsuRnRgcX
+            y2lto8nYVfQyCD6bWfnReiOo4DVQpP9GeVd3OxKDks+tt8AMT/IecrqPg08x+BCF
+            uwIDAQAB
+            -----END PUBLIC KEY-----
+        tokenSource:                    
+          headers:  
+          - name: X-Auth
+            prefix: 'Bearer '
+          queryParams:       
+          - auth_token
