@@ -476,9 +476,9 @@ spec:
                       - name: "JWT Validation & Claims to Headers"
                         subtitle: "requires x-auth header"
                         icon: "fas fa-shield-alt"
-                        tag: "gloo-gateway #gloo-mesh #demo"
+                        tag: "gloo-gateway #gloo-mesh #external-service #demo"
                         keywords: "gloo-gateway,demo"
-                        url: "https://httpbin.demo.glooplatform.com/anything"
+                        url: "https://httpbin.demo.glooplatform.com/anything/jwt"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "JWTPolicy"
