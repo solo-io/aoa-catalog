@@ -10,7 +10,7 @@ metadata:
   namespace: istio-system
   name: delete-pod-role
 rules:
-- apiGroups: ["apps"]
+- apiGroups: [""]
   resources: ["deployments", "replicasets", "pods"]
   verbs: ["get", "patch"]
 ---
