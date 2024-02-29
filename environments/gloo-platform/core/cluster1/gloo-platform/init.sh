@@ -75,7 +75,7 @@ spec:
                   namespace: null
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.5.0
+    targetRevision: 2.5.1
   syncPolicy:
     automated:
       prune: true
@@ -123,7 +123,7 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.5.0
+              tag: 2.5.1
             config:
                 exporters:
                     otlp:
@@ -145,7 +145,7 @@ spec:
                   name: cilium-run
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.5.0
+    targetRevision: 2.5.1
   syncPolicy:
     automated:
       prune: true
