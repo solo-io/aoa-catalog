@@ -51,3 +51,10 @@ waves:
       -  $env_path/../shared-components/homer-config/init.sh
       post_deploy:
       -  $env_path/../shared-components/homer-config/test.sh 
+  - name: elastic
+    location: $env_path/elastic/base
+    scripts:
+      pre_deploy:
+      - $env_path/elastic/init.sh
+      post_deploy:
+      - $env_path/elastic/test.sh

@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: elastic
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: elastic-system
+  project: default
+  source:
+    chart: elastic-operator
+    repoURL: https://helm.elastic.co
+    targetRevision: 2.11
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
