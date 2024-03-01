@@ -13,7 +13,7 @@ spec:
   source:
     chart: elastic/eck-operator
     repoURL: https://helm.elastic.co
-    targetRevision: "2.11"
+    targetRevision: "2.11.1"
   syncPolicy:
     automated:
       prune: true
