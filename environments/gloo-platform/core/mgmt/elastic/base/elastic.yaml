@@ -11,8 +11,8 @@ spec:
     namespace: elastic-system
   project: default
   source:
-    chart: elastic/eck-operator
-    repoURL: https://helm.elastic.co
+    chart: eck-operator
+    repoURL: https://helm.elastic.co/elastic
     targetRevision: "2.11.1"
   syncPolicy:
     automated:
