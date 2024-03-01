@@ -122,7 +122,7 @@ spec:
                   name: cilium-run
         telemetryCollectorCustomization:
           extraExporters:
-            elastic:
+            otlp/elastic:
               endpoint: "apm-server-quickstart-apm-http.elastic-system:8200"
               headers:
                 Authorization: "Bearer 0Sy86hcGH2Szs277O7xAJF88"
@@ -134,7 +134,7 @@ spec:
               - memory_limiter
               - batch
               exporters:
-              - elastic
+              - otlp/elastic
               
         
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
