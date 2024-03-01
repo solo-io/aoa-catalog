@@ -7,3 +7,5 @@ resources:
 - elastic-ns.yaml
 - elastic.yaml
 - elasticsearch.yaml
+- kibana.yaml
+- elastic-apm.yaml
