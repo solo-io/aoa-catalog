@@ -104,7 +104,7 @@ spec:
         telemetryGatewayCustomization:
             pipelines:
                 logs/clickhouse:
-                  enabled: false
+                  enabled: true
             extraExporters:
                 clickhouse:
                   password: password
@@ -113,8 +113,8 @@ spec:
             enabled: true
             presets:
                 logsCollection:
-                    enabled: false
-                    storeCheckpoints: false
+                    enabled: true
+                    storeCheckpoints: true
             config:
                 exporters:
                     otlp:
