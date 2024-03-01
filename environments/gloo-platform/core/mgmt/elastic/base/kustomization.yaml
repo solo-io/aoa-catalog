@@ -6,3 +6,4 @@ kind: Kustomization
 resources:
 - elastic-ns.yaml
 - elastic.yaml
+- elasticsearch.yaml
