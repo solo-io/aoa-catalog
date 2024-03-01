@@ -120,6 +120,20 @@ spec:
                       path: /var/run/cilium
                       type: DirectoryOrCreate
                   name: cilium-run
+        telemetryCollectorCustomization:
+          extraExporters:
+            elastic:
+              endpoint: "apm-server.elastic-system:8200"
+          extraPipelines:
+            metrics/export-to-elastic:
+              receivers:
+              - otlp
+              processors:
+              - memory_limiter
+              - batch
+              exporters:
+              - elastic
+              
         
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
     targetRevision: 2.5.1
