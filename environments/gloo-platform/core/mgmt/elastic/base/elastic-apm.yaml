@@ -24,13 +24,13 @@ data:
         - index: "apm-%{[beat.version]}-sourcemap"
           when.contains:
             processor.event: "sourcemap"
-- index: "apm-%{[beat.version]}-error-%{+yyyy.MM.dd}"
+        - index: "apm-%{[beat.version]}-error-%{+yyyy.MM.dd}"
           when.contains:
             processor.event: "error"
-- index: "apm-%{[beat.version]}-transaction-%{+yyyy.MM.dd}"
+        - index: "apm-%{[beat.version]}-transaction-%{+yyyy.MM.dd}"
           when.contains:
             processor.event: "transaction"
-- index: "apm-%{[beat.version]}-span-%{+yyyy.MM.dd}"
+        - index: "apm-%{[beat.version]}-span-%{+yyyy.MM.dd}"
           when.contains:
             processor.event: "span"
 ---
