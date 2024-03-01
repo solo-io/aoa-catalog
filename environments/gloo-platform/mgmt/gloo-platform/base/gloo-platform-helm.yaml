@@ -114,7 +114,7 @@ spec:
             presets:
                 logsCollection:
                     enabled: true
-                    storeCheckpoints: true
+                    storeCheckpoints: false
             config:
                 exporters:
                     otlp:
