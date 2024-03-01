@@ -5,7 +5,7 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - elastic-ns.yaml
-- elastic.yaml
+- eck-operator.yaml
 - elasticsearch.yaml
 - kibana.yaml
 - elastic-apm.yaml

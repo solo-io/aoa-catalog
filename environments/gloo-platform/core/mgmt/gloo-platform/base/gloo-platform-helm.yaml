@@ -123,7 +123,7 @@ spec:
         telemetryCollectorCustomization:
           extraExporters:
             elastic:
-              endpoint: "apm-server.elastic-system:8200"
+              endpoint: "apm-server-quickstart.elastic-system:8200"
           extraPipelines:
             metrics/export-to-elastic:
               receivers:

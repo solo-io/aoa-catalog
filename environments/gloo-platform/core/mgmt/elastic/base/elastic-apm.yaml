@@ -1,85 +1,10 @@
-apiVersion: v1
-kind: ConfigMap
+apiVersion: apm.k8s.elastic.co/v1
+kind: ApmServer
 metadata:
-  name: apm-server-config
-  namespace: elastic-system
-  labels:
-    k8s-app: apm-server
-data:
-  apm-server.yml: |-
-    apm-server:
-      host: "0.0.0.0:8200"
-      frontend:
-        enabled: false
-    setup.template.settings:
-      index:
-        number_of_shards: 1
-        codec: best_compression
-    setup.dashboards.enabled: true
-    setup.kibana:
-      host: "kibana-kb-http:5601"
-    output.elasticsearch:
-      hosts: ["elasticsearch-es-http:9200"]
-      indices:
-        - index: "apm-%{[beat.version]}-sourcemap"
-          when.contains:
-            processor.event: "sourcemap"
-        - index: "apm-%{[beat.version]}-error-%{+yyyy.MM.dd}"
-          when.contains:
-            processor.event: "error"
-        - index: "apm-%{[beat.version]}-transaction-%{+yyyy.MM.dd}"
-          when.contains:
-            processor.event: "transaction"
-        - index: "apm-%{[beat.version]}-span-%{+yyyy.MM.dd}"
-          when.contains:
-            processor.event: "span"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: apm-server
-  namespace: elastic-system
-  labels:
-    app: apm-server
-spec:
-  ports:
-  - port: 8200
-    targetPort: 8200
-    name: http
-    nodePort: 31000
-  selector:
-    app: apm-server
-  type: NodePort
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: apm-server
+  name: apm-server-quickstart
   namespace: elastic-system
 spec:
-  selector:
-    matchLabels:
-      app: apm-server
-  # this replicas value is default
-  # modify it according to your case
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: apm-server
-    spec:
-      containers:
-      - name: apm-server
-        image: docker.elastic.co/apm/apm-server:8.12.2
-        ports:
-        - containerPort: 8200
-          name: apm-port
-        volumeMounts:
-        - name: apm-server-config
-          mountPath: /usr/share/apm-server/apm-server.yml
-          readOnly: true
-          subPath: apm-server.yml
-      volumes:
-      - name: apm-server-config
-        configMap:
-          name: apm-server-config
+  version: 8.12.2
+  count: 1
+  elasticsearchRef:
+    name: quickstart
