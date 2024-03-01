@@ -123,7 +123,9 @@ spec:
         telemetryCollectorCustomization:
           extraExporters:
             elastic:
-              endpoint: "apm-server-quickstart.elastic-system:8200"
+              endpoint: "apm-server-quickstart-apm-http.elastic-system:8200"
+              headers:
+                Authorization: "Bearer Q0oVAV1H1N58bHwNMR32i699%"
           extraPipelines:
             metrics/export-to-elastic:
               receivers:
