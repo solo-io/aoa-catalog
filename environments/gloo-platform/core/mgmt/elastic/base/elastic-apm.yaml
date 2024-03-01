@@ -57,6 +57,9 @@ metadata:
   name: apm-server
   namespace: elastic-system
 spec:
+  selector:
+    matchLabels:
+      app: apm-server
   # this replicas value is default
   # modify it according to your case
   replicas: 1
