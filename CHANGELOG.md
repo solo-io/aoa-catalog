@@ -13,7 +13,7 @@
 
 0.1.15 (12-29-23)
 ---
-- bump from Gloo Platform 2.4.4 > 2.4.7
+- bump from Gloo Platform 2.4.4 > 2.4.10
     - required fix from #13158 to resolve issues with gloo mesh portal demo environments
     - required additional kustomization patches for gloo-gateway/int-ext-portal. specifying destination namespace in the forwardTo is needed for portal discovery
 

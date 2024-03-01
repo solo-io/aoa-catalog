@@ -29,15 +29,15 @@ The `gloo-gateway/backstage-bookinfo-httpbin` environment deploys the core compo
 
 ## Overlay description
 - base:
-    - gloo mesh 2.4.7
+    - gloo mesh 2.4.10
     - istio 1.19.3-solo (Helm)
     - revision: 1-19
 - ilcm:
-    - gloo mesh 2.4.7
+    - gloo mesh 2.4.10
     - istio 1.19.3-solo (ILCM)
     - revision: 1-19
 - ocp:
-    - gloo mesh 2.4.7
+    - gloo mesh 2.4.10
     - istio 1.19.3-solo (ILCM)
     - revision: 1-19
 

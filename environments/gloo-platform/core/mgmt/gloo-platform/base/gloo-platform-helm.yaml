@@ -88,7 +88,7 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.4.7
+              tag: 2.4.10
         telemetryGatewayCustomization:
             disableCertGeneration: true
         telemetryCollector:
@@ -105,7 +105,7 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.4.7
+              tag: 2.4.10
             config:
                 exporters:
                     otlp:
@@ -127,7 +127,7 @@ spec:
                   name: cilium-run
         
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.4.7
+    targetRevision: 2.4.10
   syncPolicy:
     automated:
       prune: true
