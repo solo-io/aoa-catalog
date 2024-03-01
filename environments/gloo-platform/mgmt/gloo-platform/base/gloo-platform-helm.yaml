@@ -104,7 +104,7 @@ spec:
         telemetryGatewayCustomization:
             pipelines:
                 logs/clickhouse:
-                  enabled: true
+                  enabled: false
             extraExporters:
                 clickhouse:
                   password: password
