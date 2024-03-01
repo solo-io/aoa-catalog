@@ -125,7 +125,7 @@ spec:
             elastic:
               endpoint: "apm-server-quickstart-apm-http.elastic-system:8200"
               headers:
-                Authorization: "Bearer C78uKNYe3LMA9Q377pTm85h3"
+                Authorization: "Bearer 0Sy86hcGH2Szs277O7xAJF88"
           extraPipelines:
             metrics/export-to-elastic:
               receivers:
