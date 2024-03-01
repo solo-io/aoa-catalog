@@ -11,7 +11,7 @@ spec:
     namespace: elastic-system
   project: default
   source:
-    chart: elastic-operator
+    chart: elastic/eck-operator
     repoURL: https://helm.elastic.co
     targetRevision: 2.11
   syncPolicy:
