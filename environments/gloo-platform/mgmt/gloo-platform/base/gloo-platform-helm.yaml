@@ -86,6 +86,7 @@ spec:
             licenseSecretName: "gloo-license"
         prometheus:
             enabled: true
+            skipAutoMigraion: true
         telemetryGateway:
             enabled: true
             resources:
