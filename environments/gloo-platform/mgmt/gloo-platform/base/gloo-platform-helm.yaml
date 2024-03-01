@@ -113,7 +113,7 @@ spec:
             enabled: true
             presets:
                 logsCollection:
-                    enabled: true
+                    enabled: false
                     storeCheckpoints: false
             config:
                 exporters:
