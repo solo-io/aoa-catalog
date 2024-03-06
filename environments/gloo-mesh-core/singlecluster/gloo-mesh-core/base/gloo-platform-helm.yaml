@@ -17,11 +17,16 @@ spec:
       values: |
         common:
             cluster: mgmt
+            insecure: true
         global: {}
         licensing:
             licenseSecretName: "gloo-license"
+        featureGates:
+            hubbleUI: true
+            insightsConfiguration: true
         glooMgmtServer:
             enabled: true
+            insecure: true
             registerCluster: true
             policyApis:
               enabled: false
@@ -39,6 +44,7 @@ spec:
             serviceType: LoadBalancer
         glooAgent:
             enabled: true
+            insecure: true
             runAsSidecar: true
             relay:
                 serverAddress: gloo-mesh-mgmt-server:9900
@@ -98,7 +104,7 @@ spec:
                   name: cilium-run
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.6.0-beta1-2024-03-04-main-2641965aa0
+    targetRevision: 2.6.0-beta1-2024-03-05-main-9fa5dabd3e
   syncPolicy:
     automated:
       prune: true

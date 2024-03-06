@@ -8,10 +8,10 @@ The `gloo-mesh-core/singlecluster` environment deploys the core components of a 
 
 ## Environment descriptions
 - base:
-    - gloo mesh 2.6.0-beta1-2024-03-04-main-2641965aa0
+    - gloo mesh 2.6.0-beta1-2024-03-05-main-9fa5dabd3e
     - istio 1.20.3-solo (Helm)
     - revision: 1-20
 - lifecyclemanager:
-    - gloo mesh 2.6.0-beta1-2024-03-04-main-2641965aa0
+    - gloo mesh 2.6.0-beta1-2024-03-05-main-9fa5dabd3e
     - istio 1.20.3-solo (ILM)
     - revision: 1-20
