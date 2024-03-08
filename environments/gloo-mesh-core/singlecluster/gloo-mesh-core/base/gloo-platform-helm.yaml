@@ -71,6 +71,7 @@ spec:
             serviceType: ClusterIP
             auth:
                 enabled: true
+                backend: oidc
                 appUrl: https://gloo-mesh-core-test.solo.io/
                 clientId: 1066515080967-f5doba9cc024k6en3ku5abllfgp3vgln.apps.googleusercontent.com
                 clientSecret: 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
