@@ -39,7 +39,7 @@ spec:
             persistence:
                 enabled: false
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.5.2
+    targetRevision: 2.5.3
   syncPolicy:
     automated:
       prune: true

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ec2248f2-3a85-4174-8639-59733d3e4130" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-central/gloo-platform/base/gloo-platform-addons.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-central/gloo-platform/base/gloo-platform-addons.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-central/gloo-platform/base/gloo-platform-crds.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-central/gloo-platform/base/gloo-platform-crds.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-central/gloo-platform/init.sh" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-central/gloo-platform/init.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-central/vars.env" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-central/vars.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east-burst/gloo-platform/base/gloo-platform-addons.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east-burst/gloo-platform/base/gloo-platform-addons.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east-burst/gloo-platform/base/gloo-platform-crds.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east-burst/gloo-platform/base/gloo-platform-crds.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east-burst/gloo-platform/init.sh" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east-burst/gloo-platform/init.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east-burst/vars.env" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east-burst/vars.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east/gloo-platform/base/gloo-platform-addons.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east/gloo-platform/base/gloo-platform-addons.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east/gloo-platform/base/gloo-platform-crds.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east/gloo-platform/base/gloo-platform-crds.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east/gloo-platform/init.sh" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east/gloo-platform/init.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east/vars.env" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/glooplatform-east/vars.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/mgmt/gloo-platform/base/gloo-platform-crds.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/mgmt/gloo-platform/base/gloo-platform-crds.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/mgmt/gloo-platform/base/gloo-platform-helm.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/mgmt/gloo-platform/base/gloo-platform-helm.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/mgmt/gloo-platform/base/gloo-platform-portal.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/mgmt/gloo-platform/base/gloo-platform-portal.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/environments/gloo-platform/mgmt/vars.env" beforeDir="false" afterPath="$PROJECT_DIR$/environments/gloo-platform/mgmt/vars.env" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" url="file:///usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiProvider">{
+  &quot;contexts&quot;: [
+    {
+      &quot;name&quot;: &quot;kind-mgmt-cluster&quot;
+    }
+  ],
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="KubernetesSettings">
+    <option name="contextName" value="kind-mgmt-cluster" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2SWEJu9as2X1Sa4xIQIYZslLtDh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.automatic.dependencies.download": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "ashleywang1/glooplatform.com-2.5.2-update",
+    "go.import.settings.migrated": "true",
+    "go.sdk.automatically.set": "true",
+    "last_opened_file_path": "/Users/ashwang",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/environments/gloo-mesh-core/singlecluster/cilium" />
+      <recent name="$PROJECT_DIR$/environments/gloo-mesh-core/singlecluster" />
+      <recent name="$PROJECT_DIR$/environments/gloo-mesh-core/singlecluster/gloo-mesh-core/base" />
+      <recent name="$PROJECT_DIR$/environments/gloo-mesh-core/core/cluster1/clusterconfig/base/active" />
+      <recent name="$PROJECT_DIR$/environments/gloo-mesh-core/core" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/environments/gloo-mesh-core/core/cluster1/clusterconfig/base/active" />
+      <recent name="$PROJECT_DIR$/environments/gloo-network/cilium/base" />
+      <recent name="$PROJECT_DIR$/environments/gloo-network/core/gloo-platform" />
+      <recent name="$PROJECT_DIR$/environments/gloo-core/core/mgmt" />
+      <recent name="$PROJECT_DIR$/environments/gloo-core/core/gloo-platform-config/base/active" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-gosdk-2946fb9b3188-155fe4b6e3a0-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-233.14475.38" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>
