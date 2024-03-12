@@ -22,8 +22,8 @@ spec:
             enabled: true
         rateLimiter:
             enabled: true
-    repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.5.0
+    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts
+    targetRevision: 2.6.0-beta1-2024-03-11-main-2e03622c87
   syncPolicy:
     automated:
       prune: true
