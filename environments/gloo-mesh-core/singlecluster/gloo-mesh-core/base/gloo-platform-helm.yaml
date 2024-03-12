@@ -29,7 +29,7 @@ spec:
             insecure: true
             registerCluster: true
             policyApis:
-              enabled: false
+              enabled: true
             relay:
                 disableCa: true
                 disableCaCertGeneration: true
