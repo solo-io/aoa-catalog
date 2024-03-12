@@ -74,7 +74,7 @@ spec:
                   name: null
                   namespace: null
                   
-    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts
+    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts/helm-charts
     targetRevision: 2.6.0-beta1-2024-03-11-main-2e03622c87
   syncPolicy:
     automated:
@@ -144,7 +144,7 @@ spec:
                       type: DirectoryOrCreate
                   name: cilium-run
                   
-    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts
+    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts/helm-charts
     targetRevision: 2.6.0-beta1-2024-03-11-main-2e03622c87
   syncPolicy:
     automated:
