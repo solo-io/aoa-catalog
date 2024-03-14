@@ -15,12 +15,12 @@ waves:
       post_deploy:
       -  $env_path/../core/istio/test.sh
   - name: apps
-    location: $env_path/apps/5-namespace-app/ambient
+    location: $env_path/../uniform-apps/apps/5-namespace-app/ambient
     scripts:
       pre_deploy: 
-      -  $env_path/apps/init.sh
+      -  $env_path/../uniform-apps/apps/init.sh
       post_deploy:
-      -  $env_path/apps/test.sh  
+      -  $env_path/../uniform-apps/apps/test.sh  
   - name: clusterservices-config
     location: $env_path/../core/clusterservices-config/base
     scripts:
@@ -29,12 +29,12 @@ waves:
       post_deploy:
       -  $env_path/../core/clusterservices-config/test.sh 
   - name: loadgenerators
-    location: $env_path/loadgenerators/5-loadgenerators
+    location: $env_path/../uniform-apps/loadgenerators/5-loadgenerators
     scripts:
       pre_deploy: 
-      -  $env_path/loadgenerators/init.sh
+      -  $env_path/../uniform-apps/loadgenerators/init.sh
       post_deploy:
-      -  $env_path/loadgenerators/test.sh 
+      -  $env_path/../uniform-apps/loadgenerators/test.sh 
   - name: homer
     location: $env_path/../core/homer/base
     scripts:

@@ -1,0 +1,15 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- 5-namespace-app
+#- 15-namespace-app
+#- 50-namespace-app
+#- 60-namespace-app
+#- 70-namespace-app
+#- 80-namespace-app
+#- 90-namespace-app
+#- 100-namespace-app
+- client

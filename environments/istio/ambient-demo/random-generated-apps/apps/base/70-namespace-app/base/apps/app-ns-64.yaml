@@ -1,0 +1,281 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-64
+  labels:
+    seed: "1695849508033661000"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: blue-star
+  namespace: ns-64
+  labels:
+    app: blue-star
+    tier: "2"
+    seed: "1695849508033661000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blue-star
+  namespace: ns-64
+  labels:
+    app: blue-star
+    tier: "2"
+    seed: "1695849508033661000"
+spec:
+  selector:
+    app: blue-star
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue-star-v1
+  namespace: ns-64
+  labels:
+    app: blue-star
+    version: v1
+    tier: "2"
+    seed: "1695849508033661000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: blue-star
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: blue-star
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: blue-star
+      containers:
+      - name: blue-star
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "blue-star-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From blue-star (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: old-meadow
+  namespace: ns-64
+  labels:
+    app: old-meadow
+    tier: "1"
+    seed: "1695849508033661000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: old-meadow
+  namespace: ns-64
+  labels:
+    app: old-meadow
+    tier: "1"
+    seed: "1695849508033661000"
+spec:
+  selector:
+    app: old-meadow
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: old-meadow-v1
+  namespace: ns-64
+  labels:
+    app: old-meadow
+    version: v1
+    tier: "1"
+    seed: "1695849508033661000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: old-meadow
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: old-meadow
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: old-meadow
+      containers:
+      - name: old-meadow
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "old-meadow-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From old-meadow (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://spring-pine.ns-64.svc.cluster.local.:8080,http://blue-star.ns-64.svc.cluster.local.:8080,http://dry-lake.ns-13.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: spring-pine
+  namespace: ns-64
+  labels:
+    app: spring-pine
+    tier: "2"
+    seed: "1695849508033661000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-pine
+  namespace: ns-64
+  labels:
+    app: spring-pine
+    tier: "2"
+    seed: "1695849508033661000"
+spec:
+  selector:
+    app: spring-pine
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-pine-v1
+  namespace: ns-64
+  labels:
+    app: spring-pine
+    version: v1
+    tier: "2"
+    seed: "1695849508033661000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: spring-pine
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: spring-pine
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: spring-pine
+      containers:
+      - name: spring-pine
+        image: ghcr.io/nmnellis/fake-service:v2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "spring-pine-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From spring-pine (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "5ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "10ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "20ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+---
