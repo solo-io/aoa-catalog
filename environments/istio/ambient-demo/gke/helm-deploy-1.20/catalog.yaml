@@ -15,7 +15,7 @@ waves:
       post_deploy:
       -  $env_path/istio/test.sh
   - name: apps
-    location: $env_path/apps/base
+    location: $env_path/apps/5-namespace-app/ambient
     scripts:
       pre_deploy: 
       -  $env_path/apps/init.sh
@@ -29,7 +29,7 @@ waves:
       post_deploy:
       -  $env_path/clusterservices-config/test.sh 
   - name: loadgenerators
-    location: $env_path/loadgenerators/base
+    location: $env_path/loadgenerators/5-loadgenerators
     scripts:
       pre_deploy: 
       -  $env_path/loadgenerators/init.sh
