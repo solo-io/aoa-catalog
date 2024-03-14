@@ -4,7 +4,7 @@ kind: Kustomization
 
 resources:
 - ../base
-- waypoints
+#- waypoints
 
 # when using ambient uncomment below
 transformers:
