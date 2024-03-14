@@ -36,9 +36,9 @@ waves:
       post_deploy:
       -  $env_path/loadgenerators/test.sh 
   - name: homer
-    location: $env_path/../core/homer/base
+    location: $env_path/homer/base
     scripts:
       pre_deploy: 
-      -  $env_path/../core/homer/init.sh
+      -  $env_path/homer/init.sh
       post_deploy:
-      -  $env_path/../core/homer/test.sh 
+      -  $env_path/homer/test.sh 
