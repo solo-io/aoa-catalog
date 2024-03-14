@@ -219,15 +219,11 @@ spec:
                   - name: "Web Applications"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "httpbin"
+                      - name: "Ambient Demo App"
+                        subtitle: "change path number: /ns-#"
                         icon: "far fa-window-maximize"
-                        tag: "httpbin"
-                        url: "https://localhost"
-                        target: "_blank" # optional html a tag target attribute     
-                      - name: "kubeinvaders"
-                        icon: "fas fa-bullseye"
-                        tag: "httpbin"
-                        url: "http://localhost"
+                        tag: "ambient"
+                        url: "http://$LB_ADDRESS/ns-1"
                         target: "_blank" # optional html a tag target attribute 
             
   syncPolicy:
