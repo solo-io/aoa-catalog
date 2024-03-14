@@ -23,11 +23,11 @@ spec:
         # guaranteed qos
         resources:
           requests:
-            cpu: 500m
-            memory: 200Mi
+            cpu: 50m
+            memory: 50Mi
           limits:
-            cpu: 500m
-            memory: 200Mi
+            cpu: 50m
+            memory: 50Mi
         env:
         - name: APP_URL
           value: "http://tier-1-app-a.ns-15:8080"

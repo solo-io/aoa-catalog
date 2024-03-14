@@ -85,11 +85,10 @@ spec:
         - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
           value: "30s"
         # guaranteed qos  
-        # guaranteed qos  
         resources:
           requests:
-            cpu: "700m"
-            memory: "500Mi"
+            cpu: "50m"
+            memory: "50Mi"
           limits:
-            cpu: "700m"
-            memory: "500Mi"
+            cpu: "50m"
+            memory: "50Mi"

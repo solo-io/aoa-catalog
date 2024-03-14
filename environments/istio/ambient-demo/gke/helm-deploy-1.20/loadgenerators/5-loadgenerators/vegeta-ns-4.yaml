@@ -23,16 +23,16 @@ spec:
         # guaranteed qos
         resources:
           requests:
-            cpu: 500m
-            memory: 200Mi
+            cpu: 50m
+            memory: 50Mi
           limits:
-            cpu: 500m
-            memory: 200Mi
+            cpu: 50m
+            memory: 50Mi
         env:
         - name: APP_URL
           value: "http://tier-1-app-a.ns-4:8080"
         - name: REQUESTS_PER_SECOND
-          value: "250"
+          value: "10"
         - name: DURATION
           value: "10s"
         args: 

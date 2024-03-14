@@ -87,11 +87,11 @@ spec:
         # guaranteed qos  
         resources:
           requests:
-            cpu: "1000m"
-            memory: "200Mi"
+            cpu: "50m"
+            memory: "50Mi"
           limits:
-            cpu: "1000m"
-            memory: "200Mi"
+            cpu: "50m"
+            memory: "50Mi"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -176,11 +176,11 @@ spec:
         # guaranteed qos  
         resources:
           requests:
-            cpu: "1000m"
-            memory: "200Mi"
+            cpu: "50m"
+            memory: "50Mi"
           limits:
-            cpu: "1000m"
-            memory: "200Mi"
+            cpu: "50m"
+            memory: "50Mi"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -265,11 +265,11 @@ spec:
         # guaranteed qos  
         resources:
           requests:
-            cpu: "1000m"
-            memory: "200Mi"
+            cpu: "50m"
+            memory: "50Mi"
           limits:
-            cpu: "1000m"
-            memory: "200Mi"
+            cpu: "50m"
+            memory: "50Mi"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -354,11 +354,11 @@ spec:
         # guaranteed qos  
         resources:
           requests:
-            cpu: "1000m"
-            memory: "200Mi"
+            cpu: "50m"
+            memory: "50Mi"
           limits:
-            cpu: "1000m"
-            memory: "200Mi"
+            cpu: "50m"
+            memory: "50Mi"
 
 
 

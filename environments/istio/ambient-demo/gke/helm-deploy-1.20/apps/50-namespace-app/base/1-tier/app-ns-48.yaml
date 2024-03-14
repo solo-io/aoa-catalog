@@ -87,8 +87,8 @@ spec:
         # guaranteed qos  
         resources:
           requests:
-            cpu: "700m"
-            memory: "500Mi"
+            cpu: "50m"
+            memory: "50Mi"
           limits:
-            cpu: "700m"
-            memory: "500Mi"
+            cpu: "50m"
+            memory: "50Mi"
