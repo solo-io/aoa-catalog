@@ -11,7 +11,7 @@ spec:
   source:
     chart: gloo-platform-crds
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.6.0-beta1-2024-03-07-ashleywang1-dashboard-oidc-timeout-helm-775605ae12
+    targetRevision: 2.6.0-beta2-2024-03-13-main-d633a257fc
     helm:
       values: |
         installEnterpriseCrds: true
