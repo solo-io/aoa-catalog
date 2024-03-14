@@ -4,6 +4,7 @@ kind: Kustomization
 
 resources:
 - ../base
+- virtualservice.yaml
 #- waypoints
 
 # when using ambient uncomment below
