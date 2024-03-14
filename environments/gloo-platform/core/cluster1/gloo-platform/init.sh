@@ -122,7 +122,7 @@ spec:
             #  proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
             image:
               pullPolicy: IfNotPresent
-              repository: us-docker.pkg.dev/developers-369321/gloo-platform-dev
+              repository: us-docker.pkg.dev/developers-369321/gloo-platform-dev/gloo-otelcollector
               tag: 2.6.0-beta1-2024-03-11-main-2e03622c87
             config:
                 exporters:
