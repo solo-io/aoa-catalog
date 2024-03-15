@@ -20,14 +20,10 @@ spec:
         image: ably77/vegeta:0.1
         imagePullPolicy: IfNotPresent
         command: ["/bin/sh"]
-        # guaranteed qos
         resources:
           requests:
-            cpu: 30m
-            memory: 30Mi
-          limits:
-            cpu: 30m
-            memory: 30Mi
+            cpu: 50m
+            memory: 50Mi
         env:
         - name: APP_URL
           value: "http://istio-ingressgateway.istio-system.svc.cluster.local/ns-5"
@@ -37,4 +33,4 @@ spec:
           value: "10s"
         args: 
           - "-c"
-          - 'sleep 5; for run in $(seq 1 100000); do echo "GET ${APP_URL}" | vegeta attack -dns-ttl=0 -keepalive -http2=false -max-connections=1 -rate ${REQUESTS_PER_SECOND}/1s -duration=${DURATION} | tee results.bin | vegeta report -type=text; done'
+          - 'sleep 5; for run in $(seq 1 100000); do echo "GET ${APP_URL}" | vegeta attack -dns-ttl=0 -keepalive -http2=false -max-connections=1 -rate ${REQUESTS_PER_SECOND}/1s -duration=${DURATION} -http2 | tee results.bin | vegeta report -type=text; done'
