@@ -66,8 +66,14 @@ spec:
             serviceType: ClusterIP
         extAuthService:
             enabled: true
+            extAuth:
+                image:
+                    registry: gcr.io/gloo-mesh
         rateLimiter:
             enabled: true
+            rateLimiter:
+                image:
+                    registry: gcr.io/gloo-mesh
         legacyMetricsPipeline:
             enabled: false
         licensing:

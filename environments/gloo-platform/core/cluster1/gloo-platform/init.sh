@@ -123,7 +123,11 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: us-docker.pkg.dev/developers-369321/gloo-platform-dev/gloo-otel-collector
+<<<<<<< HEAD
               tag: 2.5.3-2024-03-13-v2.5.x-d7aa0f568e
+=======
+              tag: 2.6.0-beta1-2024-03-11-main-2e03622c87
+>>>>>>> gp-release-demo-v2.6.x
             config:
                 exporters:
                     otlp:

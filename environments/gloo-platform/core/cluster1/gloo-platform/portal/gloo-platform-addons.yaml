@@ -31,8 +31,13 @@ spec:
                         db: 0
                     # Replace with a random string to use to generate hash values for other keys
                     secretKey: "xyz987"
+                image:
+                    registry: gcr.io/gloo-mesh
         rateLimiter:
             enabled: true
+            rateLimiter:
+                image:
+                    registry: gcr.io/gloo-mesh
         glooPortalServer:
             enabled: true
             apiKeyStorage:
