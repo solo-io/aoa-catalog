@@ -1,5 +1,18 @@
 # Changelog
 
+0.2.6 (3-14-24)
+---
+- update /istio/ambient-demo environment to 1.21.0 
+    - Support for any CNI now available upstream
+    - This makes it possible to test ambient an ambient environment locally on k3d or colima+k3s using the `-i` or `-i --colima` flag
+- update istio/ambient-demo with a few new variations
+    - `/core` -
+    - `/random-generated-apps` - non-uniform applications with cross namespace communication. Default is across 5 namespaces
+    - `/uniform-apps` - isolated applications per-namespace with the pattern A > B1/B2 > C1. Default is across 5 namespaces
+    - `/gke` - this environment configures the `/uniform-apps` but with GKE specific requirements for ambient mesh (additional values in `istio-cni` and `ztunnels` deployed in kube-system)
+- replace bombardier loadgenerator with vegeta, which allows loadgen client to do dns caching
+- remove the operator deployment method in istio/ambient-demo as it is no longer supported
+
 0.2.5 (2-16-24)
 ---
 - bump cert-manager version to v1.14.2

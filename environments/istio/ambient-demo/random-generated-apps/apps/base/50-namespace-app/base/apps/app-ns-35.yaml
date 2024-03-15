@@ -1,0 +1,846 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-35
+  labels:
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: aged-feather
+  namespace: ns-35
+  labels:
+    app: aged-feather
+    tier: "4"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aged-feather
+  namespace: ns-35
+  labels:
+    app: aged-feather
+    tier: "4"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: aged-feather
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aged-feather-v1
+  namespace: ns-35
+  labels:
+    app: aged-feather
+    version: v1
+    tier: "4"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: aged-feather
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: aged-feather
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: aged-feather
+      containers:
+      - name: aged-feather
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "aged-feather-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From aged-feather (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://restless-frost.ns-29.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: empty-wind
+  namespace: ns-35
+  labels:
+    app: empty-wind
+    tier: "1"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: empty-wind
+  namespace: ns-35
+  labels:
+    app: empty-wind
+    tier: "1"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: empty-wind
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: empty-wind-v1
+  namespace: ns-35
+  labels:
+    app: empty-wind
+    version: v1
+    tier: "1"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: empty-wind
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: empty-wind
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: empty-wind
+      containers:
+      - name: empty-wind
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "empty-wind-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From empty-wind (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://sparkling-dawn.ns-35.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: morning-river
+  namespace: ns-35
+  labels:
+    app: morning-river
+    tier: "3"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: morning-river
+  namespace: ns-35
+  labels:
+    app: morning-river
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: morning-river
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: morning-river-v1
+  namespace: ns-35
+  labels:
+    app: morning-river
+    version: v1
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: morning-river
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: morning-river
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: morning-river
+      containers:
+      - name: morning-river
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "morning-river-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From morning-river (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: morning-river-v2
+  namespace: ns-35
+  labels:
+    app: morning-river
+    version: v2
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: morning-river
+        version: v2
+  template:
+    metadata:
+      labels:
+        app: morning-river
+        version: v2
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: morning-river
+      containers:
+      - name: morning-river
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "morning-river-v2"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From morning-river (v2)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: morning-river-v3
+  namespace: ns-35
+  labels:
+    app: morning-river
+    version: v3
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: morning-river
+        version: v3
+  template:
+    metadata:
+      labels:
+        app: morning-river
+        version: v3
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: morning-river
+      containers:
+      - name: morning-river
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "morning-river-v3"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From morning-river (v3)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: patient-wildflower
+  namespace: ns-35
+  labels:
+    app: patient-wildflower
+    tier: "3"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: patient-wildflower
+  namespace: ns-35
+  labels:
+    app: patient-wildflower
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: patient-wildflower
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patient-wildflower-v1
+  namespace: ns-35
+  labels:
+    app: patient-wildflower
+    version: v1
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: patient-wildflower
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: patient-wildflower
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: patient-wildflower
+      containers:
+      - name: patient-wildflower
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "patient-wildflower-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From patient-wildflower (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sparkling-dawn
+  namespace: ns-35
+  labels:
+    app: sparkling-dawn
+    tier: "2"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sparkling-dawn
+  namespace: ns-35
+  labels:
+    app: sparkling-dawn
+    tier: "2"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: sparkling-dawn
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sparkling-dawn-v1
+  namespace: ns-35
+  labels:
+    app: sparkling-dawn
+    version: v1
+    tier: "2"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: sparkling-dawn
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: sparkling-dawn
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: sparkling-dawn
+      containers:
+      - name: sparkling-dawn
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "sparkling-dawn-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From sparkling-dawn (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://morning-river.ns-35.svc.cluster.local.:8080,http://patient-wildflower.ns-35.svc.cluster.local.:8080,http://weathered-haze.ns-35.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: weathered-haze
+  namespace: ns-35
+  labels:
+    app: weathered-haze
+    tier: "3"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: weathered-haze
+  namespace: ns-35
+  labels:
+    app: weathered-haze
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: weathered-haze
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weathered-haze-v1
+  namespace: ns-35
+  labels:
+    app: weathered-haze
+    version: v1
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: weathered-haze
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: weathered-haze
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: weathered-haze
+      containers:
+      - name: weathered-haze
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "weathered-haze-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From weathered-haze (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://aged-feather.ns-35.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weathered-haze-v2
+  namespace: ns-35
+  labels:
+    app: weathered-haze
+    version: v2
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: weathered-haze
+        version: v2
+  template:
+    metadata:
+      labels:
+        app: weathered-haze
+        version: v2
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: weathered-haze
+      containers:
+      - name: weathered-haze
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "weathered-haze-v2"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From weathered-haze (v2)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://aged-feather.ns-35.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weathered-haze-v3
+  namespace: ns-35
+  labels:
+    app: weathered-haze
+    version: v3
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: weathered-haze
+        version: v3
+  template:
+    metadata:
+      labels:
+        app: weathered-haze
+        version: v3
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: weathered-haze
+      containers:
+      - name: weathered-haze
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "weathered-haze-v3"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From weathered-haze (v3)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://aged-feather.ns-35.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---

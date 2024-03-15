@@ -1,0 +1,44 @@
+
+waves:
+  - name: certmanager
+    location: $env_path/../core/certmanager/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/../core/certmanager/init.sh
+      post_deploy:
+      -  $env_path/../core/certmanager/test.sh  
+  - name: istio
+    location: $env_path/../core/istio/ambient
+    scripts:
+      pre_deploy: 
+      -  $env_path/../core/istio/init.sh
+      post_deploy:
+      -  $env_path/../core/istio/test.sh
+  - name: apps
+    location: $env_path/apps/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/apps/init.sh
+      post_deploy:
+      -  $env_path/apps/test.sh   
+  - name: clusterservices-config
+    location: $env_path/../core/clusterservices-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/../core/clusterservices-config/init.sh
+      post_deploy:
+      -  $env_path/../core/clusterservices-config/test.sh 
+  - name: loadgenerators
+    location: $env_path/loadgenerators/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/loadgenerators/init.sh
+      post_deploy:
+      -  $env_path/loadgenerators/test.sh 
+  - name: homer
+    location: $env_path/homer/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer/init.sh
+      post_deploy:
+      -  $env_path/homer/test.sh 

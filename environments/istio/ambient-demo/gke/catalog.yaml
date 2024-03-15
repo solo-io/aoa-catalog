@@ -1,0 +1,44 @@
+
+waves:
+  - name: certmanager
+    location: $env_path/../core/certmanager/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/../core/certmanager/init.sh
+      post_deploy:
+      -  $env_path/../core/certmanager/test.sh  
+  - name: istio
+    location: $env_path/../core/istio/gke
+    scripts:
+      pre_deploy: 
+      -  $env_path/../core/istio/gke/init.sh
+      post_deploy:
+      -  $env_path/../core/istio/gke/test.sh
+  - name: apps
+    location: $env_path/../uniform-apps/apps/5-namespace-app/ambient
+    scripts:
+      pre_deploy: 
+      -  $env_path/../uniform-apps/apps/init.sh
+      post_deploy:
+      -  $env_path/../uniform-apps/apps/test.sh  
+  - name: clusterservices-config
+    location: $env_path/../core/clusterservices-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/../core/clusterservices-config/init.sh
+      post_deploy:
+      -  $env_path/../core/clusterservices-config/test.sh 
+  - name: loadgenerators
+    location: $env_path/../uniform-apps/loadgenerators/5-loadgenerators
+    scripts:
+      pre_deploy: 
+      -  $env_path/../uniform-apps/loadgenerators/init.sh
+      post_deploy:
+      -  $env_path/../uniform-apps/loadgenerators/test.sh 
+  - name: homer
+    location: $env_path/homer/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer/init.sh
+      post_deploy:
+      -  $env_path/homer/test.sh

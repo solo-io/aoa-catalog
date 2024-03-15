@@ -1,0 +1,941 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-2
+  labels:
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: floral-dawn
+  namespace: ns-2
+  labels:
+    app: floral-dawn
+    tier: "3"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: floral-dawn
+  namespace: ns-2
+  labels:
+    app: floral-dawn
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: floral-dawn
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: floral-dawn-v1
+  namespace: ns-2
+  labels:
+    app: floral-dawn
+    version: v1
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: floral-dawn
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: floral-dawn
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: floral-dawn
+      containers:
+      - name: floral-dawn
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "floral-dawn-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From floral-dawn (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://throbbing-field.ns-2.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: little-flower
+  namespace: ns-2
+  labels:
+    app: little-flower
+    tier: "1"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: little-flower
+  namespace: ns-2
+  labels:
+    app: little-flower
+    tier: "1"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: little-flower
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: little-flower-v1
+  namespace: ns-2
+  labels:
+    app: little-flower
+    version: v1
+    tier: "1"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: little-flower
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: little-flower
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: little-flower
+      containers:
+      - name: little-flower
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "little-flower-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From little-flower (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://nameless-breeze.ns-2.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: little-flower-v2
+  namespace: ns-2
+  labels:
+    app: little-flower
+    version: v2
+    tier: "1"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: little-flower
+        version: v2
+  template:
+    metadata:
+      labels:
+        app: little-flower
+        version: v2
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: little-flower
+      containers:
+      - name: little-flower
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "little-flower-v2"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From little-flower (v2)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://nameless-breeze.ns-2.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: little-flower-v3
+  namespace: ns-2
+  labels:
+    app: little-flower
+    version: v3
+    tier: "1"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: little-flower
+        version: v3
+  template:
+    metadata:
+      labels:
+        app: little-flower
+        version: v3
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: little-flower
+      containers:
+      - name: little-flower
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "little-flower-v3"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From little-flower (v3)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://nameless-breeze.ns-2.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nameless-breeze
+  namespace: ns-2
+  labels:
+    app: nameless-breeze
+    tier: "2"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nameless-breeze
+  namespace: ns-2
+  labels:
+    app: nameless-breeze
+    tier: "2"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: nameless-breeze
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nameless-breeze-v1
+  namespace: ns-2
+  labels:
+    app: nameless-breeze
+    version: v1
+    tier: "2"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: nameless-breeze
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: nameless-breeze
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: nameless-breeze
+      containers:
+      - name: nameless-breeze
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "nameless-breeze-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From nameless-breeze (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://floral-dawn.ns-2.svc.cluster.local.:8080,http://broken-resonance.ns-38.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: still-voice
+  namespace: ns-2
+  labels:
+    app: still-voice
+    tier: "5"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: still-voice
+  namespace: ns-2
+  labels:
+    app: still-voice
+    tier: "5"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: still-voice
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: still-voice-v1
+  namespace: ns-2
+  labels:
+    app: still-voice
+    version: v1
+    tier: "5"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: still-voice
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: still-voice
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: still-voice
+      containers:
+      - name: still-voice
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "still-voice-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From still-voice (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: summer-forest
+  namespace: ns-2
+  labels:
+    app: summer-forest
+    tier: "5"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: summer-forest
+  namespace: ns-2
+  labels:
+    app: summer-forest
+    tier: "5"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: summer-forest
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: summer-forest-v1
+  namespace: ns-2
+  labels:
+    app: summer-forest
+    version: v1
+    tier: "5"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: summer-forest
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: summer-forest
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: summer-forest
+      containers:
+      - name: summer-forest
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "summer-forest-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From summer-forest (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: throbbing-field
+  namespace: ns-2
+  labels:
+    app: throbbing-field
+    tier: "4"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: throbbing-field
+  namespace: ns-2
+  labels:
+    app: throbbing-field
+    tier: "4"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: throbbing-field
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: throbbing-field-v1
+  namespace: ns-2
+  labels:
+    app: throbbing-field
+    version: v1
+    tier: "4"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: throbbing-field
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: throbbing-field
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: throbbing-field
+      containers:
+      - name: throbbing-field
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "throbbing-field-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From throbbing-field (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: throbbing-field-v2
+  namespace: ns-2
+  labels:
+    app: throbbing-field
+    version: v2
+    tier: "4"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: throbbing-field
+        version: v2
+  template:
+    metadata:
+      labels:
+        app: throbbing-field
+        version: v2
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: throbbing-field
+      containers:
+      - name: throbbing-field
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "throbbing-field-v2"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From throbbing-field (v2)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: throbbing-field-v3
+  namespace: ns-2
+  labels:
+    app: throbbing-field
+    version: v3
+    tier: "4"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: throbbing-field
+        version: v3
+  template:
+    metadata:
+      labels:
+        app: throbbing-field
+        version: v3
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: throbbing-field
+      containers:
+      - name: throbbing-field
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "throbbing-field-v3"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From throbbing-field (v3)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: winter-wind
+  namespace: ns-2
+  labels:
+    app: winter-wind
+    tier: "5"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: winter-wind
+  namespace: ns-2
+  labels:
+    app: winter-wind
+    tier: "5"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: winter-wind
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: winter-wind-v1
+  namespace: ns-2
+  labels:
+    app: winter-wind
+    version: v1
+    tier: "5"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: winter-wind
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: winter-wind
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: winter-wind
+      containers:
+      - name: winter-wind
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "winter-wind-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From winter-wind (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---

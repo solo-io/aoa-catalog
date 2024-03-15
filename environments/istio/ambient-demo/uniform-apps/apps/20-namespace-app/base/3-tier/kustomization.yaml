@@ -1,0 +1,26 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- app-ns-1.yaml
+- app-ns-2.yaml
+- app-ns-3.yaml
+- app-ns-4.yaml
+- app-ns-5.yaml
+- app-ns-6.yaml
+- app-ns-7.yaml
+- app-ns-8.yaml
+- app-ns-9.yaml
+- app-ns-10.yaml
+- app-ns-11.yaml
+- app-ns-12.yaml
+- app-ns-13.yaml
+- app-ns-14.yaml
+- app-ns-15.yaml
+- app-ns-16.yaml
+- app-ns-17.yaml
+- app-ns-18.yaml
+- app-ns-19.yaml
+- app-ns-20.yaml

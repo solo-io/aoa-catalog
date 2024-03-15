@@ -1,0 +1,930 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-8
+  labels:
+    seed: "1695844037132284000"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: autumn-lake
+  namespace: ns-8
+  labels:
+    app: autumn-lake
+    tier: "4"
+    seed: "1695844037132284000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: autumn-lake
+  namespace: ns-8
+  labels:
+    app: autumn-lake
+    tier: "4"
+    seed: "1695844037132284000"
+spec:
+  selector:
+    app: autumn-lake
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: autumn-lake-v1
+  namespace: ns-8
+  labels:
+    app: autumn-lake
+    version: v1
+    tier: "4"
+    seed: "1695844037132284000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: autumn-lake
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: autumn-lake
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: autumn-lake
+      containers:
+      - name: autumn-lake
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "autumn-lake-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From autumn-lake (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://spring-shape.ns-14.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: blue-rain
+  namespace: ns-8
+  labels:
+    app: blue-rain
+    tier: "3"
+    seed: "1695844037132284000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blue-rain
+  namespace: ns-8
+  labels:
+    app: blue-rain
+    tier: "3"
+    seed: "1695844037132284000"
+spec:
+  selector:
+    app: blue-rain
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue-rain-v1
+  namespace: ns-8
+  labels:
+    app: blue-rain
+    version: v1
+    tier: "3"
+    seed: "1695844037132284000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: blue-rain
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: blue-rain
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: blue-rain
+      containers:
+      - name: blue-rain
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "blue-rain-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From blue-rain (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://holy-wildflower.ns-15.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: blue-sea
+  namespace: ns-8
+  labels:
+    app: blue-sea
+    tier: "2"
+    seed: "1695844037132284000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blue-sea
+  namespace: ns-8
+  labels:
+    app: blue-sea
+    tier: "2"
+    seed: "1695844037132284000"
+spec:
+  selector:
+    app: blue-sea
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue-sea-v1
+  namespace: ns-8
+  labels:
+    app: blue-sea
+    version: v1
+    tier: "2"
+    seed: "1695844037132284000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: blue-sea
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: blue-sea
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: blue-sea
+      containers:
+      - name: blue-sea
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "blue-sea-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From blue-sea (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://throbbing-shadow.ns-8.svc.cluster.local.:8080,http://misty-sound.ns-14.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: lively-rain
+  namespace: ns-8
+  labels:
+    app: lively-rain
+    tier: "4"
+    seed: "1695844037132284000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lively-rain
+  namespace: ns-8
+  labels:
+    app: lively-rain
+    tier: "4"
+    seed: "1695844037132284000"
+spec:
+  selector:
+    app: lively-rain
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lively-rain-v1
+  namespace: ns-8
+  labels:
+    app: lively-rain
+    version: v1
+    tier: "4"
+    seed: "1695844037132284000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: lively-rain
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: lively-rain
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: lively-rain
+      containers:
+      - name: lively-rain
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "lively-rain-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From lively-rain (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://rough-forest.ns-3.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: muddy-cherry
+  namespace: ns-8
+  labels:
+    app: muddy-cherry
+    tier: "3"
+    seed: "1695844037132284000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: muddy-cherry
+  namespace: ns-8
+  labels:
+    app: muddy-cherry
+    tier: "3"
+    seed: "1695844037132284000"
+spec:
+  selector:
+    app: muddy-cherry
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: muddy-cherry-v1
+  namespace: ns-8
+  labels:
+    app: muddy-cherry
+    version: v1
+    tier: "3"
+    seed: "1695844037132284000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: muddy-cherry
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: muddy-cherry
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: muddy-cherry
+      containers:
+      - name: muddy-cherry
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "muddy-cherry-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From muddy-cherry (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://lively-rain.ns-8.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: muddy-firefly
+  namespace: ns-8
+  labels:
+    app: muddy-firefly
+    tier: "2"
+    seed: "1695844037132284000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: muddy-firefly
+  namespace: ns-8
+  labels:
+    app: muddy-firefly
+    tier: "2"
+    seed: "1695844037132284000"
+spec:
+  selector:
+    app: muddy-firefly
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: muddy-firefly-v1
+  namespace: ns-8
+  labels:
+    app: muddy-firefly
+    version: v1
+    tier: "2"
+    seed: "1695844037132284000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: muddy-firefly
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: muddy-firefly
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: muddy-firefly
+      containers:
+      - name: muddy-firefly
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "muddy-firefly-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From muddy-firefly (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://blue-rain.ns-8.svc.cluster.local.:8080,http://muddy-cherry.ns-8.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: red-frog
+  namespace: ns-8
+  labels:
+    app: red-frog
+    tier: "4"
+    seed: "1695844037132284000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: red-frog
+  namespace: ns-8
+  labels:
+    app: red-frog
+    tier: "4"
+    seed: "1695844037132284000"
+spec:
+  selector:
+    app: red-frog
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: red-frog-v1
+  namespace: ns-8
+  labels:
+    app: red-frog
+    version: v1
+    tier: "4"
+    seed: "1695844037132284000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: red-frog
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: red-frog
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: red-frog
+      containers:
+      - name: red-frog
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "red-frog-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From red-frog (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://blue-hill.ns-2.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: shy-sunset
+  namespace: ns-8
+  labels:
+    app: shy-sunset
+    tier: "1"
+    seed: "1695844037132284000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shy-sunset
+  namespace: ns-8
+  labels:
+    app: shy-sunset
+    tier: "1"
+    seed: "1695844037132284000"
+spec:
+  selector:
+    app: shy-sunset
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shy-sunset-v1
+  namespace: ns-8
+  labels:
+    app: shy-sunset
+    version: v1
+    tier: "1"
+    seed: "1695844037132284000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: shy-sunset
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: shy-sunset
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: shy-sunset
+      containers:
+      - name: shy-sunset
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "shy-sunset-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From shy-sunset (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://muddy-firefly.ns-8.svc.cluster.local.:8080,http://blue-sea.ns-8.svc.cluster.local.:8080,http://twilight-leaf.ns-6.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: throbbing-shadow
+  namespace: ns-8
+  labels:
+    app: throbbing-shadow
+    tier: "3"
+    seed: "1695844037132284000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: throbbing-shadow
+  namespace: ns-8
+  labels:
+    app: throbbing-shadow
+    tier: "3"
+    seed: "1695844037132284000"
+spec:
+  selector:
+    app: throbbing-shadow
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: throbbing-shadow-v1
+  namespace: ns-8
+  labels:
+    app: throbbing-shadow
+    version: v1
+    tier: "3"
+    seed: "1695844037132284000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: throbbing-shadow
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: throbbing-shadow
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: throbbing-shadow
+      containers:
+      - name: throbbing-shadow
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "throbbing-shadow-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From throbbing-shadow (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://autumn-lake.ns-8.svc.cluster.local.:8080,http://red-frog.ns-8.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: throbbing-shadow-v2
+  namespace: ns-8
+  labels:
+    app: throbbing-shadow
+    version: v2
+    tier: "3"
+    seed: "1695844037132284000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: throbbing-shadow
+        version: v2
+  template:
+    metadata:
+      labels:
+        app: throbbing-shadow
+        version: v2
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: throbbing-shadow
+      containers:
+      - name: throbbing-shadow
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "throbbing-shadow-v2"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From throbbing-shadow (v2)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://autumn-lake.ns-8.svc.cluster.local.:8080,http://red-frog.ns-8.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---

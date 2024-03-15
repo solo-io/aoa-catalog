@@ -1,0 +1,1187 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-11
+  labels:
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cold-star
+  namespace: ns-11
+  labels:
+    app: cold-star
+    tier: "2"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cold-star
+  namespace: ns-11
+  labels:
+    app: cold-star
+    tier: "2"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: cold-star
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cold-star-v1
+  namespace: ns-11
+  labels:
+    app: cold-star
+    version: v1
+    tier: "2"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: cold-star
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: cold-star
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: cold-star
+      containers:
+      - name: cold-star
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "cold-star-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From cold-star (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://quiet-surf.ns-11.svc.cluster.local.:8080,http://dark-sound.ns-11.svc.cluster.local.:8080,http://red-voice.ns-5.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: damp-dew
+  namespace: ns-11
+  labels:
+    app: damp-dew
+    tier: "2"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: damp-dew
+  namespace: ns-11
+  labels:
+    app: damp-dew
+    tier: "2"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: damp-dew
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: damp-dew-v1
+  namespace: ns-11
+  labels:
+    app: damp-dew
+    version: v1
+    tier: "2"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: damp-dew
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: damp-dew
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: damp-dew
+      containers:
+      - name: damp-dew
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "damp-dew-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From damp-dew (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: dark-sound
+  namespace: ns-11
+  labels:
+    app: dark-sound
+    tier: "3"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dark-sound
+  namespace: ns-11
+  labels:
+    app: dark-sound
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: dark-sound
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dark-sound-v1
+  namespace: ns-11
+  labels:
+    app: dark-sound
+    version: v1
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: dark-sound
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: dark-sound
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: dark-sound
+      containers:
+      - name: dark-sound
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "dark-sound-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From dark-sound (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://snowy-water.ns-11.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: fragrant-river
+  namespace: ns-11
+  labels:
+    app: fragrant-river
+    tier: "5"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fragrant-river
+  namespace: ns-11
+  labels:
+    app: fragrant-river
+    tier: "5"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: fragrant-river
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fragrant-river-v1
+  namespace: ns-11
+  labels:
+    app: fragrant-river
+    version: v1
+    tier: "5"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: fragrant-river
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: fragrant-river
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: fragrant-river
+      containers:
+      - name: fragrant-river
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "fragrant-river-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From fragrant-river (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nameless-thunder
+  namespace: ns-11
+  labels:
+    app: nameless-thunder
+    tier: "5"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nameless-thunder
+  namespace: ns-11
+  labels:
+    app: nameless-thunder
+    tier: "5"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: nameless-thunder
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nameless-thunder-v1
+  namespace: ns-11
+  labels:
+    app: nameless-thunder
+    version: v1
+    tier: "5"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: nameless-thunder
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: nameless-thunder
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: nameless-thunder
+      containers:
+      - name: nameless-thunder
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "nameless-thunder-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From nameless-thunder (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: proud-sound
+  namespace: ns-11
+  labels:
+    app: proud-sound
+    tier: "5"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: proud-sound
+  namespace: ns-11
+  labels:
+    app: proud-sound
+    tier: "5"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: proud-sound
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proud-sound-v1
+  namespace: ns-11
+  labels:
+    app: proud-sound
+    version: v1
+    tier: "5"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: proud-sound
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: proud-sound
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: proud-sound
+      containers:
+      - name: proud-sound
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "proud-sound-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From proud-sound (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proud-sound-v2
+  namespace: ns-11
+  labels:
+    app: proud-sound
+    version: v2
+    tier: "5"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: proud-sound
+        version: v2
+  template:
+    metadata:
+      labels:
+        app: proud-sound
+        version: v2
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: proud-sound
+      containers:
+      - name: proud-sound
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "proud-sound-v2"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From proud-sound (v2)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proud-sound-v3
+  namespace: ns-11
+  labels:
+    app: proud-sound
+    version: v3
+    tier: "5"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: proud-sound
+        version: v3
+  template:
+    metadata:
+      labels:
+        app: proud-sound
+        version: v3
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: proud-sound
+      containers:
+      - name: proud-sound
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "proud-sound-v3"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From proud-sound (v3)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: quiet-surf
+  namespace: ns-11
+  labels:
+    app: quiet-surf
+    tier: "3"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: quiet-surf
+  namespace: ns-11
+  labels:
+    app: quiet-surf
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: quiet-surf
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quiet-surf-v1
+  namespace: ns-11
+  labels:
+    app: quiet-surf
+    version: v1
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: quiet-surf
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: quiet-surf
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: quiet-surf
+      containers:
+      - name: quiet-surf
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "quiet-surf-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From quiet-surf (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: snowy-water
+  namespace: ns-11
+  labels:
+    app: snowy-water
+    tier: "4"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: snowy-water
+  namespace: ns-11
+  labels:
+    app: snowy-water
+    tier: "4"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: snowy-water
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snowy-water-v1
+  namespace: ns-11
+  labels:
+    app: snowy-water
+    version: v1
+    tier: "4"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: snowy-water
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: snowy-water
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: snowy-water
+      containers:
+      - name: snowy-water
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "snowy-water-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From snowy-water (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://delicate-breeze.ns-27.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: spring-surf
+  namespace: ns-11
+  labels:
+    app: spring-surf
+    tier: "3"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-surf
+  namespace: ns-11
+  labels:
+    app: spring-surf
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: spring-surf
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-surf-v1
+  namespace: ns-11
+  labels:
+    app: spring-surf
+    version: v1
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: spring-surf
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: spring-surf
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: spring-surf
+      containers:
+      - name: spring-surf
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "spring-surf-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From spring-surf (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: ""
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: twilight-leaf
+  namespace: ns-11
+  labels:
+    app: twilight-leaf
+    tier: "1"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: twilight-leaf
+  namespace: ns-11
+  labels:
+    app: twilight-leaf
+    tier: "1"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: twilight-leaf
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twilight-leaf-v1
+  namespace: ns-11
+  labels:
+    app: twilight-leaf
+    version: v1
+    tier: "1"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: twilight-leaf
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: twilight-leaf
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: twilight-leaf
+      containers:
+      - name: twilight-leaf
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "twilight-leaf-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From twilight-leaf (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://damp-dew.ns-11.svc.cluster.local.:8080,http://withered-fog.ns-11.svc.cluster.local.:8080,http://cold-star.ns-11.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: withered-fog
+  namespace: ns-11
+  labels:
+    app: withered-fog
+    tier: "2"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: withered-fog
+  namespace: ns-11
+  labels:
+    app: withered-fog
+    tier: "2"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: withered-fog
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: withered-fog-v1
+  namespace: ns-11
+  labels:
+    app: withered-fog
+    version: v1
+    tier: "2"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: withered-fog
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: withered-fog
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: withered-fog
+      containers:
+      - name: withered-fog
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "withered-fog-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From withered-fog (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://spring-surf.ns-11.svc.cluster.local.:8080,http://hidden-wood.ns-26.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---

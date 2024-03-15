@@ -1,0 +1,293 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-50
+  labels:
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: late-river
+  namespace: ns-50
+  labels:
+    app: late-river
+    tier: "2"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: late-river
+  namespace: ns-50
+  labels:
+    app: late-river
+    tier: "2"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: late-river
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: late-river-v1
+  namespace: ns-50
+  labels:
+    app: late-river
+    version: v1
+    tier: "2"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: late-river
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: late-river
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: late-river
+      containers:
+      - name: late-river
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "late-river-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From late-river (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://weathered-pond.ns-50.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: still-glitter
+  namespace: ns-50
+  labels:
+    app: still-glitter
+    tier: "1"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: still-glitter
+  namespace: ns-50
+  labels:
+    app: still-glitter
+    tier: "1"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: still-glitter
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: still-glitter-v1
+  namespace: ns-50
+  labels:
+    app: still-glitter
+    version: v1
+    tier: "1"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: still-glitter
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: still-glitter
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: still-glitter
+      containers:
+      - name: still-glitter
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "still-glitter-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From still-glitter (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://late-river.ns-50.svc.cluster.local.:8080,http://still-pine.ns-44.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: weathered-pond
+  namespace: ns-50
+  labels:
+    app: weathered-pond
+    tier: "3"
+    seed: "1695848925151071000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: weathered-pond
+  namespace: ns-50
+  labels:
+    app: weathered-pond
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  selector:
+    app: weathered-pond
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weathered-pond-v1
+  namespace: ns-50
+  labels:
+    app: weathered-pond
+    version: v1
+    tier: "3"
+    seed: "1695848925151071000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: weathered-pond
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: weathered-pond
+        version: v1
+      annotations:
+        sidecar.istio.io/proxyMemoryLimit: "1Gi"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
+    spec:
+      serviceAccountName: weathered-pond
+      containers:
+      - name: weathered-pond
+        image: nicholasjackson/fake-service:v0.26.2
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "weathered-pond-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From weathered-pond (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://winter-field.ns-23.svc.cluster.local.:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "10"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "50m"
+---

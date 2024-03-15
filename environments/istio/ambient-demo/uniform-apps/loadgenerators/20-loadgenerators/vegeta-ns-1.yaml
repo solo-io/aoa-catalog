@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: vegeta
+  name: vegeta-ns-1
+  namespace: ns-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vegeta
+  template:
+    metadata:
+      labels:
+        app: vegeta
+    spec:
+      containers:
+      - name: vegeta
+        image: ably77/vegeta:0.1
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/sh"]
+        # guaranteed qos
+        resources:
+          requests:
+            cpu: 50m
+            memory: 50Mi
+          limits:
+            cpu: 50m
+            memory: 50Mi
+        env:
+        - name: APP_URL
+          value: "http://tier-1-app-a.ns-1:8080"
+        - name: REQUESTS_PER_SECOND
+          value: "300"
+        - name: DURATION
+          value: "10s"
+        args: 
+          - "-c"
+          - 'sleep 5; for run in $(seq 1 100000); do echo "GET ${APP_URL}" | vegeta attack -dns-ttl=0 -keepalive -http2=false -max-connections=25 -rate ${REQUESTS_PER_SECOND}/1s -duration=${DURATION} | tee results.bin | vegeta report -type=text; done'

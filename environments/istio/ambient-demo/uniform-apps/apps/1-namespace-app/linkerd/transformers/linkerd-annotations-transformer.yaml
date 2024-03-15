@@ -1,0 +1,10 @@
+apiVersion: builtin
+kind: AnnotationsTransformer
+metadata:
+  name: annotation-transformer
+annotations:
+  linkerd.io/inject: enabled
+fieldSpecs:
+- kind: Namespace
+  path: metadata/annotations
+  create: true
