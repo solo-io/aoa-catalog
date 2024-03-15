@@ -32,7 +32,7 @@ spec:
         - name: APP_URL
           value: "http://istio-ingressgateway.istio-system.svc.cluster.local/ns-5"
         - name: REQUESTS_PER_SECOND
-          value: "5"
+          value: "1"
         - name: DURATION
           value: "10s"
         args: 

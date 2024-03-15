@@ -20,19 +20,15 @@ spec:
         image: ably77/vegeta:0.1
         imagePullPolicy: IfNotPresent
         command: ["/bin/sh"]
-        # guaranteed qos
         resources:
           requests:
-            cpu: 50m
-            memory: 50Mi
-          limits:
             cpu: 50m
             memory: 50Mi
         env:
         - name: APP_URL
           value: "http://istio-ingressgateway.istio-system.svc.cluster.local/ns-1"
         - name: REQUESTS_PER_SECOND
-          value: "5"
+          value: "1"
         - name: DURATION
           value: "10s"
         args: 
