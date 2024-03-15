@@ -66,7 +66,7 @@ spec:
       serviceAccountName: blue-waterfall
       containers:
       - name: blue-waterfall
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -133,7 +133,7 @@ spec:
       serviceAccountName: blue-waterfall
       containers:
       - name: blue-waterfall
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -200,7 +200,7 @@ spec:
       serviceAccountName: blue-waterfall
       containers:
       - name: blue-waterfall
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -295,7 +295,7 @@ spec:
       serviceAccountName: bold-darkness
       containers:
       - name: bold-darkness
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -390,7 +390,7 @@ spec:
       serviceAccountName: snowy-moon
       containers:
       - name: snowy-moon
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -485,7 +485,7 @@ spec:
       serviceAccountName: summer-fire
       containers:
       - name: summer-fire
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -580,7 +580,7 @@ spec:
       serviceAccountName: wandering-sound
       containers:
       - name: wandering-sound
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

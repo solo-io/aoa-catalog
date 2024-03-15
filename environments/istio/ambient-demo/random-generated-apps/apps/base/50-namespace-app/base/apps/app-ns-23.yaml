@@ -66,7 +66,7 @@ spec:
       serviceAccountName: ancient-frog
       containers:
       - name: ancient-frog
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -161,7 +161,7 @@ spec:
       serviceAccountName: billowing-tree
       containers:
       - name: billowing-tree
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -228,7 +228,7 @@ spec:
       serviceAccountName: billowing-tree
       containers:
       - name: billowing-tree
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -323,7 +323,7 @@ spec:
       serviceAccountName: crimson-darkness
       containers:
       - name: crimson-darkness
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -418,7 +418,7 @@ spec:
       serviceAccountName: dawn-field
       containers:
       - name: dawn-field
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -513,7 +513,7 @@ spec:
       serviceAccountName: divine-sea
       containers:
       - name: divine-sea
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -608,7 +608,7 @@ spec:
       serviceAccountName: polished-pine
       containers:
       - name: polished-pine
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -675,7 +675,7 @@ spec:
       serviceAccountName: polished-pine
       containers:
       - name: polished-pine
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -742,7 +742,7 @@ spec:
       serviceAccountName: polished-pine
       containers:
       - name: polished-pine
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -837,7 +837,7 @@ spec:
       serviceAccountName: snowy-cherry
       containers:
       - name: snowy-cherry
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -904,7 +904,7 @@ spec:
       serviceAccountName: snowy-cherry
       containers:
       - name: snowy-cherry
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -971,7 +971,7 @@ spec:
       serviceAccountName: snowy-cherry
       containers:
       - name: snowy-cherry
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1066,7 +1066,7 @@ spec:
       serviceAccountName: white-moon
       containers:
       - name: white-moon
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1161,7 +1161,7 @@ spec:
       serviceAccountName: white-surf
       containers:
       - name: white-surf
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1228,7 +1228,7 @@ spec:
       serviceAccountName: white-surf
       containers:
       - name: white-surf
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1295,7 +1295,7 @@ spec:
       serviceAccountName: white-surf
       containers:
       - name: white-surf
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1390,7 +1390,7 @@ spec:
       serviceAccountName: winter-field
       containers:
       - name: winter-field
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

@@ -66,7 +66,7 @@ spec:
       serviceAccountName: aged-water
       containers:
       - name: aged-water
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -161,7 +161,7 @@ spec:
       serviceAccountName: autumn-dust
       containers:
       - name: autumn-dust
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -228,7 +228,7 @@ spec:
       serviceAccountName: autumn-dust
       containers:
       - name: autumn-dust
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -323,7 +323,7 @@ spec:
       serviceAccountName: billowing-wood
       containers:
       - name: billowing-wood
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -390,7 +390,7 @@ spec:
       serviceAccountName: billowing-wood
       containers:
       - name: billowing-wood
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -457,7 +457,7 @@ spec:
       serviceAccountName: billowing-wood
       containers:
       - name: billowing-wood
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -552,7 +552,7 @@ spec:
       serviceAccountName: black-bird
       containers:
       - name: black-bird
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -647,7 +647,7 @@ spec:
       serviceAccountName: bold-sun
       containers:
       - name: bold-sun
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -742,7 +742,7 @@ spec:
       serviceAccountName: delicate-breeze
       containers:
       - name: delicate-breeze
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -809,7 +809,7 @@ spec:
       serviceAccountName: delicate-breeze
       containers:
       - name: delicate-breeze
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -876,7 +876,7 @@ spec:
       serviceAccountName: delicate-breeze
       containers:
       - name: delicate-breeze
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -971,7 +971,7 @@ spec:
       serviceAccountName: dry-snow
       containers:
       - name: dry-snow
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1038,7 +1038,7 @@ spec:
       serviceAccountName: dry-snow
       containers:
       - name: dry-snow
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1133,7 +1133,7 @@ spec:
       serviceAccountName: empty-bird
       containers:
       - name: empty-bird
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1228,7 +1228,7 @@ spec:
       serviceAccountName: hidden-wood
       containers:
       - name: hidden-wood
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1323,7 +1323,7 @@ spec:
       serviceAccountName: late-thunder
       containers:
       - name: late-thunder
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1418,7 +1418,7 @@ spec:
       serviceAccountName: misty-sound
       containers:
       - name: misty-sound
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1513,7 +1513,7 @@ spec:
       serviceAccountName: nameless-water
       containers:
       - name: nameless-water
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1608,7 +1608,7 @@ spec:
       serviceAccountName: purple-resonance
       containers:
       - name: purple-resonance
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1703,7 +1703,7 @@ spec:
       serviceAccountName: quiet-star
       containers:
       - name: quiet-star
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1770,7 +1770,7 @@ spec:
       serviceAccountName: quiet-star
       containers:
       - name: quiet-star
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1837,7 +1837,7 @@ spec:
       serviceAccountName: quiet-star
       containers:
       - name: quiet-star
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1932,7 +1932,7 @@ spec:
       serviceAccountName: red-leaf
       containers:
       - name: red-leaf
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -2027,7 +2027,7 @@ spec:
       serviceAccountName: shy-sun
       containers:
       - name: shy-sun
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -2094,7 +2094,7 @@ spec:
       serviceAccountName: shy-sun
       containers:
       - name: shy-sun
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -2189,7 +2189,7 @@ spec:
       serviceAccountName: solitary-dew
       containers:
       - name: solitary-dew
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -2284,7 +2284,7 @@ spec:
       serviceAccountName: spring-shape
       containers:
       - name: spring-shape
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -2379,7 +2379,7 @@ spec:
       serviceAccountName: still-paper
       containers:
       - name: still-paper
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -2474,7 +2474,7 @@ spec:
       serviceAccountName: weathered-glitter
       containers:
       - name: weathered-glitter
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -2569,7 +2569,7 @@ spec:
       serviceAccountName: white-violet
       containers:
       - name: white-violet
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

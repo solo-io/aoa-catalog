@@ -66,7 +66,7 @@ spec:
       serviceAccountName: autumn-fog
       containers:
       - name: autumn-fog
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -133,7 +133,7 @@ spec:
       serviceAccountName: autumn-fog
       containers:
       - name: autumn-fog
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -200,7 +200,7 @@ spec:
       serviceAccountName: autumn-fog
       containers:
       - name: autumn-fog
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -295,7 +295,7 @@ spec:
       serviceAccountName: blue-smoke
       containers:
       - name: blue-smoke
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -390,7 +390,7 @@ spec:
       serviceAccountName: dry-shape
       containers:
       - name: dry-shape
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -457,7 +457,7 @@ spec:
       serviceAccountName: dry-shape
       containers:
       - name: dry-shape
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -524,7 +524,7 @@ spec:
       serviceAccountName: dry-shape
       containers:
       - name: dry-shape
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -619,7 +619,7 @@ spec:
       serviceAccountName: little-lake
       containers:
       - name: little-lake
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -714,7 +714,7 @@ spec:
       serviceAccountName: nameless-tree
       containers:
       - name: nameless-tree
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -809,7 +809,7 @@ spec:
       serviceAccountName: sparkling-firefly
       containers:
       - name: sparkling-firefly
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -904,7 +904,7 @@ spec:
       serviceAccountName: throbbing-frost
       containers:
       - name: throbbing-frost
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -999,7 +999,7 @@ spec:
       serviceAccountName: wispy-rain
       containers:
       - name: wispy-rain
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

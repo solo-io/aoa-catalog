@@ -66,7 +66,7 @@ spec:
       serviceAccountName: aged-glitter
       containers:
       - name: aged-glitter
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -161,7 +161,7 @@ spec:
       serviceAccountName: crimson-rain
       containers:
       - name: crimson-rain
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -228,7 +228,7 @@ spec:
       serviceAccountName: crimson-rain
       containers:
       - name: crimson-rain
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -323,7 +323,7 @@ spec:
       serviceAccountName: dawn-bird
       containers:
       - name: dawn-bird
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -390,7 +390,7 @@ spec:
       serviceAccountName: dawn-bird
       containers:
       - name: dawn-bird
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -485,7 +485,7 @@ spec:
       serviceAccountName: empty-grass
       containers:
       - name: empty-grass
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -552,7 +552,7 @@ spec:
       serviceAccountName: empty-grass
       containers:
       - name: empty-grass
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -647,7 +647,7 @@ spec:
       serviceAccountName: holy-pine
       containers:
       - name: holy-pine
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -742,7 +742,7 @@ spec:
       serviceAccountName: icy-dust
       containers:
       - name: icy-dust
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -809,7 +809,7 @@ spec:
       serviceAccountName: icy-dust
       containers:
       - name: icy-dust
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -904,7 +904,7 @@ spec:
       serviceAccountName: icy-silence
       containers:
       - name: icy-silence
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -971,7 +971,7 @@ spec:
       serviceAccountName: icy-silence
       containers:
       - name: icy-silence
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1066,7 +1066,7 @@ spec:
       serviceAccountName: restless-frost
       containers:
       - name: restless-frost
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1161,7 +1161,7 @@ spec:
       serviceAccountName: spring-sound
       containers:
       - name: spring-sound
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1256,7 +1256,7 @@ spec:
       serviceAccountName: wild-frog
       containers:
       - name: wild-frog
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

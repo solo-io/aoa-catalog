@@ -66,7 +66,7 @@ spec:
       serviceAccountName: broken-haze
       containers:
       - name: broken-haze
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -133,7 +133,7 @@ spec:
       serviceAccountName: broken-haze
       containers:
       - name: broken-haze
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -228,7 +228,7 @@ spec:
       serviceAccountName: cold-wildflower
       containers:
       - name: cold-wildflower
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -295,7 +295,7 @@ spec:
       serviceAccountName: cold-wildflower
       containers:
       - name: cold-wildflower
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -362,7 +362,7 @@ spec:
       serviceAccountName: cold-wildflower
       containers:
       - name: cold-wildflower
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -457,7 +457,7 @@ spec:
       serviceAccountName: holy-firefly
       containers:
       - name: holy-firefly
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -524,7 +524,7 @@ spec:
       serviceAccountName: holy-firefly
       containers:
       - name: holy-firefly
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -591,7 +591,7 @@ spec:
       serviceAccountName: holy-firefly
       containers:
       - name: holy-firefly
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -686,7 +686,7 @@ spec:
       serviceAccountName: icy-voice
       containers:
       - name: icy-voice
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -753,7 +753,7 @@ spec:
       serviceAccountName: icy-voice
       containers:
       - name: icy-voice
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -848,7 +848,7 @@ spec:
       serviceAccountName: misty-snow
       containers:
       - name: misty-snow
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -943,7 +943,7 @@ spec:
       serviceAccountName: muddy-glade
       containers:
       - name: muddy-glade
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1010,7 +1010,7 @@ spec:
       serviceAccountName: muddy-glade
       containers:
       - name: muddy-glade
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1105,7 +1105,7 @@ spec:
       serviceAccountName: spring-firefly
       containers:
       - name: spring-firefly
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

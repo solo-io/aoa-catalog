@@ -66,7 +66,7 @@ spec:
       serviceAccountName: cold-surf
       containers:
       - name: cold-surf
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -161,7 +161,7 @@ spec:
       serviceAccountName: late-thunder
       containers:
       - name: late-thunder
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -256,7 +256,7 @@ spec:
       serviceAccountName: purple-resonance
       containers:
       - name: purple-resonance
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -351,7 +351,7 @@ spec:
       serviceAccountName: shy-mountain
       containers:
       - name: shy-mountain
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -446,7 +446,7 @@ spec:
       serviceAccountName: spring-shape
       containers:
       - name: spring-shape
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -541,7 +541,7 @@ spec:
       serviceAccountName: still-paper
       containers:
       - name: still-paper
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -608,7 +608,7 @@ spec:
       serviceAccountName: still-paper
       containers:
       - name: still-paper
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -703,7 +703,7 @@ spec:
       serviceAccountName: weathered-glitter
       containers:
       - name: weathered-glitter
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

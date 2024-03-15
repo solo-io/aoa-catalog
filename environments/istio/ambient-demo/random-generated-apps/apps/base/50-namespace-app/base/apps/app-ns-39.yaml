@@ -66,7 +66,7 @@ spec:
       serviceAccountName: broken-grass
       containers:
       - name: broken-grass
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -161,7 +161,7 @@ spec:
       serviceAccountName: dawn-glade
       containers:
       - name: dawn-glade
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -256,7 +256,7 @@ spec:
       serviceAccountName: dawn-sun
       containers:
       - name: dawn-sun
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -351,7 +351,7 @@ spec:
       serviceAccountName: divine-shape
       containers:
       - name: divine-shape
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -446,7 +446,7 @@ spec:
       serviceAccountName: dry-waterfall
       containers:
       - name: dry-waterfall
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -541,7 +541,7 @@ spec:
       serviceAccountName: misty-cherry
       containers:
       - name: misty-cherry
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -636,7 +636,7 @@ spec:
       serviceAccountName: proud-morning
       containers:
       - name: proud-morning
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -731,7 +731,7 @@ spec:
       serviceAccountName: sparkling-breeze
       containers:
       - name: sparkling-breeze
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

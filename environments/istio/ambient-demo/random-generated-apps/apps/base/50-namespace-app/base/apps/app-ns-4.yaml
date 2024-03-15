@@ -66,7 +66,7 @@ spec:
       serviceAccountName: delicate-wildflower
       containers:
       - name: delicate-wildflower
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -161,7 +161,7 @@ spec:
       serviceAccountName: fragrant-silence
       containers:
       - name: fragrant-silence
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -256,7 +256,7 @@ spec:
       serviceAccountName: late-morning
       containers:
       - name: late-morning
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -351,7 +351,7 @@ spec:
       serviceAccountName: lively-sound
       containers:
       - name: lively-sound
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -446,7 +446,7 @@ spec:
       serviceAccountName: winter-field
       containers:
       - name: winter-field
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -541,7 +541,7 @@ spec:
       serviceAccountName: wispy-sky
       containers:
       - name: wispy-sky
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -636,7 +636,7 @@ spec:
       serviceAccountName: withered-wildflower
       containers:
       - name: withered-wildflower
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

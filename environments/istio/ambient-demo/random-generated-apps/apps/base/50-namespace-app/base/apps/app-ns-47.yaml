@@ -66,7 +66,7 @@ spec:
       serviceAccountName: ancient-morning
       containers:
       - name: ancient-morning
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -161,7 +161,7 @@ spec:
       serviceAccountName: dawn-pond
       containers:
       - name: dawn-pond
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -256,7 +256,7 @@ spec:
       serviceAccountName: little-river
       containers:
       - name: little-river
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -351,7 +351,7 @@ spec:
       serviceAccountName: long-breeze
       containers:
       - name: long-breeze
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -446,7 +446,7 @@ spec:
       serviceAccountName: silent-moon
       containers:
       - name: silent-moon
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -541,7 +541,7 @@ spec:
       serviceAccountName: still-river
       containers:
       - name: still-river
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -636,7 +636,7 @@ spec:
       serviceAccountName: wandering-flower
       containers:
       - name: wandering-flower
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -703,7 +703,7 @@ spec:
       serviceAccountName: wandering-flower
       containers:
       - name: wandering-flower
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -798,7 +798,7 @@ spec:
       serviceAccountName: wandering-voice
       containers:
       - name: wandering-voice
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -893,7 +893,7 @@ spec:
       serviceAccountName: wild-wood
       containers:
       - name: wild-wood
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -960,7 +960,7 @@ spec:
       serviceAccountName: wild-wood
       containers:
       - name: wild-wood
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1027,7 +1027,7 @@ spec:
       serviceAccountName: wild-wood
       containers:
       - name: wild-wood
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1122,7 +1122,7 @@ spec:
       serviceAccountName: young-meadow
       containers:
       - name: young-meadow
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

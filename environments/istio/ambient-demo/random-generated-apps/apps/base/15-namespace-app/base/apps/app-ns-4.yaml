@@ -66,7 +66,7 @@ spec:
       serviceAccountName: black-rain
       containers:
       - name: black-rain
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -133,7 +133,7 @@ spec:
       serviceAccountName: black-rain
       containers:
       - name: black-rain
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -200,7 +200,7 @@ spec:
       serviceAccountName: black-rain
       containers:
       - name: black-rain
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -295,7 +295,7 @@ spec:
       serviceAccountName: bold-sun
       containers:
       - name: bold-sun
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -390,7 +390,7 @@ spec:
       serviceAccountName: dawn-glade
       containers:
       - name: dawn-glade
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -457,7 +457,7 @@ spec:
       serviceAccountName: dawn-glade
       containers:
       - name: dawn-glade
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -552,7 +552,7 @@ spec:
       serviceAccountName: silent-dream
       containers:
       - name: silent-dream
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -619,7 +619,7 @@ spec:
       serviceAccountName: silent-dream
       containers:
       - name: silent-dream
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -714,7 +714,7 @@ spec:
       serviceAccountName: still-haze
       containers:
       - name: still-haze
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -809,7 +809,7 @@ spec:
       serviceAccountName: wispy-snow
       containers:
       - name: wispy-snow
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -876,7 +876,7 @@ spec:
       serviceAccountName: wispy-snow
       containers:
       - name: wispy-snow
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -943,7 +943,7 @@ spec:
       serviceAccountName: wispy-snow
       containers:
       - name: wispy-snow
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

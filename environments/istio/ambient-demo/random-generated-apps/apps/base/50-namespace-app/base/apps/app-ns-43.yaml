@@ -66,7 +66,7 @@ spec:
       serviceAccountName: cold-mountain
       containers:
       - name: cold-mountain
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -133,7 +133,7 @@ spec:
       serviceAccountName: cold-mountain
       containers:
       - name: cold-mountain
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -228,7 +228,7 @@ spec:
       serviceAccountName: dawn-fire
       containers:
       - name: dawn-fire
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -323,7 +323,7 @@ spec:
       serviceAccountName: small-forest
       containers:
       - name: small-forest
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -418,7 +418,7 @@ spec:
       serviceAccountName: summer-butterfly
       containers:
       - name: summer-butterfly
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -513,7 +513,7 @@ spec:
       serviceAccountName: summer-field
       containers:
       - name: summer-field
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -608,7 +608,7 @@ spec:
       serviceAccountName: summer-water
       containers:
       - name: summer-water
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -703,7 +703,7 @@ spec:
       serviceAccountName: wild-field
       containers:
       - name: wild-field
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -770,7 +770,7 @@ spec:
       serviceAccountName: wild-field
       containers:
       - name: wild-field
-        image: ghcr.io/nmnellis/fake-service:v2
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
