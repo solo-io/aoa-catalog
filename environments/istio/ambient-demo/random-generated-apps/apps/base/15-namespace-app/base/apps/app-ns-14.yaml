@@ -98,8 +98,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -193,8 +193,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -260,8 +260,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -355,8 +355,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -422,8 +422,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -489,8 +489,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -584,8 +584,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -679,8 +679,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -774,8 +774,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -841,8 +841,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -908,8 +908,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -1003,8 +1003,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -1070,8 +1070,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -1165,8 +1165,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -1260,8 +1260,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -1355,8 +1355,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -1450,8 +1450,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -1545,8 +1545,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -1640,8 +1640,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -1735,8 +1735,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -1802,8 +1802,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -1869,8 +1869,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -1964,8 +1964,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -2059,8 +2059,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -2126,8 +2126,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -2221,8 +2221,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -2316,8 +2316,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -2411,8 +2411,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -2506,8 +2506,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -2601,6 +2601,6 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "100Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "50m"
 ---
