@@ -37,4 +37,4 @@ spec:
           value: "10s"
         args: 
           - "-c"
-          - 'sleep 5; for run in $(seq 1 100000); do echo "GET ${APP_URL}" | vegeta attack -dns-ttl=0 -keepalive -http2=false -max-connections=25 -rate ${REQUESTS_PER_SECOND}/1s -duration=${DURATION} | tee results.bin | vegeta report -type=text; done'
+          - 'sleep 5; for run in $(seq 1 100000); do echo "GET ${APP_URL}" | vegeta attack -dns-ttl=0 -keepalive -http2=false -max-connections=1 -rate ${REQUESTS_PER_SECOND}/1s -duration=${DURATION} | tee results.bin | vegeta report -type=text; done'
