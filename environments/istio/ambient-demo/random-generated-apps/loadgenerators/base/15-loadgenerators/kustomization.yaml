@@ -4,18 +4,18 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- bombardier-ns-1.yaml
-- bombardier-ns-2.yaml
-- bombardier-ns-3.yaml
-- bombardier-ns-4.yaml
-- bombardier-ns-5.yaml
-- bombardier-ns-6.yaml
-- bombardier-ns-7.yaml
-- bombardier-ns-8.yaml
-- bombardier-ns-9.yaml
-- bombardier-ns-10.yaml
-- bombardier-ns-11.yaml
-- bombardier-ns-12.yaml
-- bombardier-ns-13.yaml
-- bombardier-ns-14.yaml
-- bombardier-ns-15.yaml
+- vegeta-ns-1.yaml
+- vegeta-ns-2.yaml
+- vegeta-ns-3.yaml
+- vegeta-ns-4.yaml
+- vegeta-ns-5.yaml
+- vegeta-ns-6.yaml
+- vegeta-ns-7.yaml
+- vegeta-ns-8.yaml
+- vegeta-ns-9.yaml
+- vegeta-ns-10.yaml
+- vegeta-ns-11.yaml
+- vegeta-ns-12.yaml
+- vegeta-ns-13.yaml
+- vegeta-ns-14.yaml
+- vegeta-ns-15.yaml
