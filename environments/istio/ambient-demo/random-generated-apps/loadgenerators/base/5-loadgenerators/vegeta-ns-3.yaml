@@ -3,8 +3,8 @@ kind: Deployment
 metadata:
   labels:
     app: vegeta
-  name: vegeta-ns-1
-  namespace: ns-1
+  name: vegeta-ns-3
+  namespace: ns-3
 spec:
   replicas: 1
   selector:
@@ -30,7 +30,7 @@ spec:
             memory: 30Mi
         env:
         - name: APP_URL
-          value: "http://istio-ingressgateway.istio-system.svc.cluster.local/ns-1"
+          value: "http://istio-ingressgateway.istio-system.svc.cluster.local/ns-3"
         - name: REQUESTS_PER_SECOND
           value: "5"
         - name: DURATION
