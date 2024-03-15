@@ -8,3 +8,4 @@ resources:
 
 patchesStrategicMerge:
 - istio-cni.yaml
+- istio-ztunnel.yaml
