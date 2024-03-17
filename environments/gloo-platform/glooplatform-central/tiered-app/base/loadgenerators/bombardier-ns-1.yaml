@@ -31,4 +31,4 @@ spec:
             requests:
               cpu: 20m
               memory: 25Mi
-        args: ["-c", "for run in $(seq 1 100000); do bombardier -c 5 -d 10s -r 1 -p i,p,r https://tiered-app.demo.glooplatform.com/ns-1 --headers="Host: tiered-app.demo.glooplatform.com"; done"]
+        args: ["-c", "for run in $(seq 1 100000); do bombardier -H 'Host: tiered-app.demo.glooplatform.com' -c 5 -d 10s -r 1 -p i,p,r https://tiered-app.demo.glooplatform.com/ns-1; done"]
