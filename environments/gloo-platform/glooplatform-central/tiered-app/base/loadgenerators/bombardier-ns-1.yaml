@@ -35,7 +35,7 @@ spec:
         - name: APP_URL
           value: "tiered-app.demo.glooplatform.com"
         - name: HOST_HEADER
-          value: Host: tiered-app.demo.glooplatform.com
+          value: 'Host: tiered-app.demo.glooplatform.com'
         - name: APP_NAMESPACE
           value: "ns-1"
         - name: REQUESTS_PER_SECOND
