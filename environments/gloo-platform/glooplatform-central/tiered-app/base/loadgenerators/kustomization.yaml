@@ -5,9 +5,9 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - bombardier-ns-1.yaml
-#- bombardier-ns-2.yaml
-#- bombardier-ns-3.yaml
-#- bombardier-ns-4.yaml
+- bombardier-ns-2.yaml
+- bombardier-ns-3.yaml
+- bombardier-ns-4.yaml
 - vegeta-ns-1.yaml
 - vegeta-ns-2.yaml
 - vegeta-ns-3.yaml
