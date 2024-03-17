@@ -46,7 +46,7 @@ spec:
           value: "Host: tiered-app.demo.glooplatform.com"
         args: 
           - "-c"
-          - 'sleep 5; for run in $(seq 1 100000); do echo "GET ${APP_URL}" | vegeta attack -header '${HOST_HEADER}' -dns-ttl=0 -keepalive -http2=true -rate ${REQUESTS_PER_SECOND}/1s -duration=${DURATION} | tee results.bin | vegeta report -type=text; done'
+          - 'sleep 5; for run in $(seq 1 100000); do echo "GET ${APP_URL}" | vegeta attack -header "${HOST_HEADER}" -dns-ttl=0 -keepalive -http2=true -rate ${REQUESTS_PER_SECOND}/1s -duration=${DURATION} | tee results.bin | vegeta report -type=text; done'
       nodeSelector:
         gke-spot: "true"
       tolerations:
