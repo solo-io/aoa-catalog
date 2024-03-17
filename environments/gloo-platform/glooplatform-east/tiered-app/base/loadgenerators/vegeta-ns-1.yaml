@@ -37,7 +37,7 @@ spec:
             memory: 50Mi
         env:
         - name: APP_URL
-          value: "strangler-pattern:8080"
+          value: "http://strangler-pattern:8080"
         - name: REQUESTS_PER_SECOND
           value: "20"
         - name: DURATION
