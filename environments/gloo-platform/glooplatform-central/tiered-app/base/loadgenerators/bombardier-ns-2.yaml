@@ -3,8 +3,8 @@ kind: Deployment
 metadata:
   labels:
     app: bombardier
-  name: bombardier-ns-1
-  namespace: ns-1
+  name: bombardier-ns-2
+  namespace: ns-2
 spec:
   replicas: 1
   selector:
@@ -35,7 +35,7 @@ spec:
         - name: APP_URL
           value: "tiered-app.demo.glooplatform.com"
         - name: APP_NAMESPACE
-          value: "ns-1"
+          value: "ns-2"
         - name: REQUESTS_PER_SECOND
           value: "10"
         - name: MAX_CONNECTIONS
