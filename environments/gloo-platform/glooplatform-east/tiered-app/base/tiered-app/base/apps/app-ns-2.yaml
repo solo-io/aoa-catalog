@@ -107,6 +107,6 @@ spec:
           value: "/ns-2/ui/"
         resources:
           requests:
-            memory: "50Mi"
-            cpu: "50m"
+            memory: "100Mi"
+            cpu: "200m"
 ---
