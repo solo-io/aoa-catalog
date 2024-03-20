@@ -60,8 +60,8 @@ spec:
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
         sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
     spec:
       nodeSelector:
         gke-spot: "true"
@@ -90,7 +90,7 @@ spec:
         - name: "UPSTREAM_URIS"
           value: "http://lingering-forest.ns-4.svc.cluster.local:8080"
         - name: "UPSTREAM_WORKERS"
-          value: "10"
+          value: "1"
         - name: "TIMING_50_PERCENTILE"
           value: "0ms"
         - name: "TIMING_90_PERCENTILE"
@@ -105,8 +105,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "50Mi"
-            cpu: "50m"
+            memory: "150Mi"
+            cpu: "100m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -162,8 +162,8 @@ spec:
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
         sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
     spec:
       nodeSelector:
         gke-spot: "true"
@@ -192,7 +192,7 @@ spec:
         - name: "UPSTREAM_URIS"
           value: "http://polished-feather.ns-2.svc.cluster.local:8080,http://winter-wind.ns-2.svc.cluster.local:8080"
         - name: "UPSTREAM_WORKERS"
-          value: "10"
+          value: "1"
         - name: "TIMING_50_PERCENTILE"
           value: "0ms"
         - name: "TIMING_90_PERCENTILE"
@@ -207,8 +207,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "50Mi"
-            cpu: "50m"
+            memory: "150Mi"
+            cpu: "100m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -264,8 +264,8 @@ spec:
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
         sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
     spec:
       nodeSelector:
         gke-spot: "true"
@@ -294,7 +294,7 @@ spec:
         - name: "UPSTREAM_URIS"
           value: ""
         - name: "UPSTREAM_WORKERS"
-          value: "10"
+          value: "1"
         - name: "TIMING_50_PERCENTILE"
           value: "0ms"
         - name: "TIMING_90_PERCENTILE"
@@ -309,8 +309,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "50Mi"
-            cpu: "50m"
+            memory: "150Mi"
+            cpu: "100m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -366,8 +366,8 @@ spec:
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
         sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
     spec:
       nodeSelector:
         gke-spot: "true"
@@ -396,7 +396,7 @@ spec:
         - name: "UPSTREAM_URIS"
           value: "http://summer-forest.ns-2.svc.cluster.local:8080,http://still-voice.ns-2.svc.cluster.local:8080,http://lingering-forest.ns-4.svc.cluster.local:8080"
         - name: "UPSTREAM_WORKERS"
-          value: "10"
+          value: "1"
         - name: "TIMING_50_PERCENTILE"
           value: "0ms"
         - name: "TIMING_90_PERCENTILE"
@@ -413,8 +413,8 @@ spec:
           value: "/ns-2/ui/"
         resources:
           requests:
-            memory: "50Mi"
-            cpu: "50m"
+            memory: "150Mi"
+            cpu: "100m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -470,8 +470,8 @@ spec:
       annotations:
         sidecar.istio.io/proxyMemoryLimit: "1Gi"
         sidecar.istio.io/proxyCPULimit: "1"
-        sidecar.istio.io/proxyMemory: "64Mi"
-        sidecar.istio.io/proxyCPU: "30m"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        sidecar.istio.io/proxyCPU: "100m"
     spec:
       nodeSelector:
         gke-spot: "true"
@@ -500,7 +500,7 @@ spec:
         - name: "UPSTREAM_URIS"
           value: ""
         - name: "UPSTREAM_WORKERS"
-          value: "10"
+          value: "1"
         - name: "TIMING_50_PERCENTILE"
           value: "0ms"
         - name: "TIMING_90_PERCENTILE"
@@ -515,6 +515,6 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "50Mi"
-            cpu: "50m"
+            memory: "150Mi"
+            cpu: "100m"
 ---
