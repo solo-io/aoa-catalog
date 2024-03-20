@@ -127,6 +127,14 @@ spec:
                     cpu: 200m
                     memory: 1Gi
             extraEnvs:
+                - name: KUBE_NODE_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: spec.nodeName
+                - name: KUBE_POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.name
                 - name: CLICKHOUSE_PASSWORD
                   valueFrom:
                     secretKeyRef:
