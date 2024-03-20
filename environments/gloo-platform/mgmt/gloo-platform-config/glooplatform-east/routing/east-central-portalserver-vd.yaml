@@ -1,0 +1,15 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: gloo-mesh-portal-server-east-central
+  namespace: gloo-mesh-addons
+spec:
+  hosts:
+  - gloo-mesh-portal-server.vd
+  ports:
+  - number: 8080
+    protocol: HTTP
+  services:
+  - labels:
+      app: gloo-mesh-portal-server
+    cluster: glooplatform-east

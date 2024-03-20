@@ -1,0 +1,26 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: mgmt-grafana-routetable
+  namespace: gloo-mesh
+spec:
+  hosts:
+  - 'clickhouse.demo.canary.glooplatform.com'
+  http:
+  - name: grafana-ui
+    matchers:
+    - uri:
+        prefix: /mgmt-grafana
+    forwardTo:
+      destinations:
+      - ref:
+          name: grafana
+          namespace: grafana
+        port:
+          number: 3000
+  virtualGateways:
+  - cluster: mgmt
+    name: mgmt-north-south-gw-443
+    namespace: istio-gateways
+  workloadSelectors: []
+  

@@ -33,3 +33,66 @@ spec:
               enabled: true
               label:
                 istio: ingressgateway
+              k8s:
+                # node selector
+                nodeSelector:
+                  node: "gateway"
+                # tolerations
+                tolerations:
+                  - key: cloud.google.com/node
+                    operator: Equal
+                    value: "gateway"
+                    effect: NoSchedule
+                # resources
+                resources:
+                  requests:
+                    cpu: 100m
+                    memory: 128Mi
+                  limits:
+                    cpu: 2000m
+                    memory: 1024Mi
+                # hpa
+                #hpaSpec:
+                #  minReplicas: 2
+                #  maxReplicas: 4
+                #  scaleTargetRef:
+                #    apiVersion: apps/v1
+                #    kind: Deployment
+                #    name: istio-ingressgateway-1-20
+                #  metrics:
+                #  - resource:
+                #      name: cpu
+                #      target:
+                #        averageUtilization: 60
+                #        type: Utilization
+                #    type: Resource
+                # affinity
+                #affinity:
+                #  nodeAffinity:
+                #    requiredDuringSchedulingIgnoredDuringExecution:
+                #      nodeSelectorTerms:
+                #      - matchExpressions:
+                #        - key: cloud.google.com/node
+                #          operator: Equal
+                #          values:
+                #          - gateway
+                #  podAntiAffinity:
+                #    preferredDuringSchedulingIgnoredDuringExecution:
+                #    - weight: 100
+                #      podAffinityTerm:
+                #        labelSelector:
+                #          matchExpressions:
+                #          - key: cloud.google.com/node
+                #            operator: Equal
+                #            values:
+                #            - gateway
+                #        topologyKey: "kubernetes.io/hostname"
+                #  podAffinity:
+                #    requiredDuringSchedulingIgnoredDuringExecution:
+                #    - labelSelector:
+                #        matchExpressions:
+                #        - key: cloud.google.com/node
+                #          operator: Equal
+                #          values:
+                #          - gateway
+                #      topologyKey: "kubernetes.io/hostname"

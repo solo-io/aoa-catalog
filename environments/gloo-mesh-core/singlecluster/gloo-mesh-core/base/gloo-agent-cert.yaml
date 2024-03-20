@@ -4,7 +4,7 @@ metadata:
   name: gloo-mesh-agent
   namespace: gloo-mesh
 spec:
-  commonName: gloo-mesh-agent
+  commonName: gloo-mesh-mgmt-server-ca
   dnsNames:
     # Must match the cluster name used in the helm chart install
     - "mgmt"
@@ -15,7 +15,7 @@ spec:
     kind: Issuer
     name: relay-root-ca
   renewBefore: 8736h0m0s
-  secretName: gloo-agent-tls-cert
+  secretName: relay-client-tls-secret
   usages:
     - digital signature
     - key encipherment

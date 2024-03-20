@@ -1,0 +1,290 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: homer-howto
+  namespace: homer-portal
+  labels:
+    homer: howto
+spec:
+  http:
+    - name: howto-ui
+      matchers:
+      - uri:
+          exact: /howto/ui
+      directResponse:
+        body: |
+          Gloo Mesh UI Walkthrough:
+          - Review registered clusters
+          - Review discovered Istio resources
+          - Review Workspace concepts
+            - Grouping of clusters/namespaces
+            - Discovered services
+            - Import/export relationships between workspaces
+            - Workspace options (federation, service isolation, trimProxyConfig)
+          - Review Virtual Gateway concepts
+          - Review APIs tab (discovered Portal APIs and GraphQL APIs)
+          - Review Portals tab 
+          - Review Gloo Platform Policies
+            - Access
+            - Access Log
+            - Active Health Check
+            - Client TLS
+            - Connection
+            - CORS
+            - CSRF
+            - Data Loss Prevention
+            - Ext Auth
+            - Failover
+            - Fault Injection
+            - GraphQL Allowed Query
+            - GraphQL Persisted Query Cache
+            - Header Manipulation
+            - HTTP Buffer
+            - JWT
+            - Listener Connection
+            - Load Balancer
+            - Mirror
+            - Outlier Detection
+            - Proxy Protocol
+            - Rate Limit
+            - Retry Timeout
+            - Transformation
+            - Trim Proxy Config
+            - WAF
+            - WASM Deployment
+          - Review Debug tab 
+        status: 200
+    - name: howto-admin
+      matchers:
+      - uri:
+          exact: /howto/admin
+      directResponse:
+        body: |
+          Admin Applications Walkthrough:
+
+          Uptime Dashboard:
+          Description: A self-hosted monitoring tool for applications running on.canary.glooplatform.com
+          - Login through Google Auth to access the Uptime Dashboard 
+          - View/Update the list of applications to monitor
+
+          Prometheus:
+          Description: Access to the Prometheus UI for querying metrics
+          - Login through Google Auth to access the Prometheus UI
+          - Provide a query to view metrics coming from the OTEL pipeline such as `istio_requests_total`
+
+          Argo CD:
+          Description: Access to the Argo CD UI for managing GitOps deployments
+          - Login through Google Auth to access the Argo CD UI
+          - Useful to view/edit apps that are synced with the aoa-catalog github repo
+          - Useful for viewing deployment configuration / logs / errors when troubleshooting
+          - Ability to turn on/off automatic sync of apps
+
+          Grafana:
+          Description: Access to the Grafana UI for viewing dashboards
+          - Login through Google Auth to access the Argo CD UI
+          - View dashboards for Gloo Platform Operations, Kubernetes Cluster, Istio, and Gloo Portal 
+        status: 200
+    - name: howto-portal
+      matchers:
+      - uri:
+          exact: /howto/portal
+      directResponse:
+        body: |
+          Portal Demo Walkthrough:
+
+          Backstage:
+          Description: Use the Gloo Platform Portal Backstage frontend plug-in to create a developer portal frontend for your developers so that they can view and access your REST API catalog.
+          This demo uses Backstages as an example of an internal developer portal use-case. The APIs exposed through Gloo Gateway with the label `portal: internal` are automatically populated in
+          the Backstage catalog. The APIs can be secured using external auth and rate limiting policies to implement a usage plan (i.e. 15 req/min) mapped to a grouping of users (i.e. bronze, silver, gold)
+
+          1. Navigate to the Backstage UI > Gloo Portal > APIs tab to see publicly available APIs
+          2. Review the Redoc and Swagger views for the APIs and note that the APIs are secured with Gloo Platform ExtAuthPolicy
+          3. Navigate to the Backstage UI > Gloo Portal > Overview tab to log in
+             - Use the username/password: `jdoe@solo.io`/`gloo-dev`
+          4. Note that the logged in user now has access to the Usage Plans tab
+          5. Generate an API Key
+          6. Navigate to the API associated with the API Key > Swagger UI > Authorize > Enter the API Key
+          7. Now you can use the try-it-now feature to test the API
+          8. Note that the API Key is rate limited after 15 requests/minute
+
+          React External Portal Demo:
+
+          Description: This is an example Solo.io Gloo Platform Dev Portal frontend app, built with Vite, and configured to use React and Typescript. 
+          It can be used to view information about your APIs and usage plans, add or delete API keys, and view your OpenAPI schemas using an embedded 
+          Redoc UI or Swagger UI view. It also can be personalized with images and colors to match your branding and preferences. The use case for this
+          demo is similar to above, but serves as an external customer facing portal where the focus is more on accessing and consuming otherwise protected
+          APIs. The APIs exposed through Gloo Gateway with the label `portal: external` are automatically populated in this External Portal.
+
+          1. Navigate to the React Portal Frontend UI > APIs tab as an unauthenticated user to see that the APIs are not visible
+          2. Login through Okta with the username/password: `jdoe@solo.io`/`gloo-dev`
+          3. Note that the logged in user now has APIs available to view
+          4. Select the User icon > API Keys tab and generate an API Key for a product
+          5. Navigate to the API associated with the API Key > Swagger UI > Authorize > Enter the API Key
+          7. Now you can use the try-it-now feature to test the API
+          8. Note that the API Key is rate limited based on usage plan used (i.e. bronze, silver, gold)
+
+
+          Clickhouse Portal Analytics:
+          Description: More information in the Docs: https://docs.solo.io/gloo-gateway/latest/portal/admin/monitor/
+          As an API product owner, you can collect analytics about your API usage. This way, you can identify ways to better monetize your API products 
+          based on actual usage. When the end user queries one of your APIs, your Gloo Gateway handles the request. You can enable the gateway to generate access logs. 
+          This way, the Open Telemetry (OTel) metrics pipeline that you set up can store the access logs in a Clickhouse storage database. As the Portal admin, you 
+          can then view usage information for your API products in the Gloo UI through a Grafana dashboard.
+
+          1. Navigate to the Clickhouse Portal Analytics tab to see recent API Product usage globally. If you have been using the previous demos, you should see some usage.
+          2. Note that these metrics are coming from the OTEL pipeline and can be configured declaratively using Helm values.
+          3. This dashboard is tracking Geo-IP information, which can be seen on the map. (Scroll to US)
+          4. Access logs are also captured and displayed in the recent requests panel
+        status: 200
+    - name: howto-rollouts-demo
+      matchers:
+      - uri:
+          exact: /howto/rollouts
+      directResponse:
+        body: |
+          Argo Rollouts Demo Walkthrough:
+
+          Gloo Mesh Argo Rollouts Plugin:
+          At Solo.io, we've integrated Argo Rollouts' traffic management capabilities with Gloo Mesh's advanced routing 
+          mechanisms through a supported plugin. organizations can ensure a smooth and controlled transition from one version 
+          of an application to the next, minimizing downtime and reducing the risk of disruptions. This allows teams to adopt 
+          advanced deployment strategies like canary releases and blue-green deployments, allowing for safe experimentation 
+          with new features and configurations. The result? Faster innovation cycles, higher customer satisfaction, 
+          and ultimately, a stronger market position for the organization.
+
+          Additional Links:
+          https://github.com/ably77/gloo-platform-argo-rollouts-blog
+
+          Progressive Delivery Demo:
+          1. In two separate windows (side-by-side) open up the Argo Rollouts Demo Dashboard and the Argo Rollouts Demo App
+          2. In the Argo Rollouts Demo Dashboard select the rollouts-demo tile
+          3. in the Containers tile on the top right, change the image tag to another color such as blue > green, any color should work. 
+             (i.e. argoproj/rollouts-demo:green) and click save. This will automatically trigger a new progressive rollout of the application
+          4. In the Argo Rollouts Demo App, you will start to see the new version of the application being deployed, mapped to the weights specified
+             in the rollout manifest as the blue squares start to shift to green squares.
+          5. In the Argo Rollouts Demo Dashboard you can also see the progress steps in the left hand sidebar
+          6. Once the rollout is complete, you can see the new version of the application deployed in the Argo Rollouts Demo App
+
+
+          Rollback Demo:
+          1. To demonstrate a rollback, change the image to a color tag prefixed with `bad-` such as `argoproj/rollouts-demo:bad-yellow`
+          2. This will trigger a new progressive rollout of the application. You will see that the new yellow squares in the demo app will
+             have a red border around them, indicating an app that is causing errors. (non-200)
+          3. Argo Rollouts will automatically detect this and rollback to the previous stable version of the application. If you take a look
+             at the AnalysisTemplate you will see that the rollout failed the analysis step which requires < 5% of the traffic to be non-200.
+          4. Note that these metrics are coming from the Istio metrics that are queried using Prometheus
+          5. To reset the demo, switch the image back to a stable state, preferrably `argoproj/rollouts-demo:blue` for the next demo
+          
+          Argo CD UI:
+          Argo CD is not required in order to use Argo Rollouts, but can be integrated together to provide a UI for managing GitOps deployments.
+          The following steps demonstrate how the two projects are well integrated and how they can be used together.
+          
+          1. Open the Argo CD UI in a third window and search for wave-rollouts-demo-aoa. The Argo CD UI is another place to watch the
+          rollout in action.
+          2. When triggering a new rollout, watch the Argo CD UI to see rollout steps as they progress. You should see a new pod being deployed as
+             part of the Rollout, and a new AnalysisTemplate that gets created
+          3. Select the `rollouts-demo-rt-443` RouteTable tile to see that the Argo Rollouts plugin is controlling the weights of the routes according
+             to the steps defined in the rollout manifest
+          4. Selecting the `rollouts-demo` Rollout tile you can see the live manifest to see the declarative configuration of the rollout
+          5. Additionally, if you select the more tab, you will see the integrated read-only version of the Argo Rollouts Demo Dashboard used earlier
+          6. Discuss that in theory, if the sync on this Argo Application was turned on, that the rollout could be triggered by a git commit to the repo
+             and synced automatically. 
+        status: 200
+    - name: howto-tiered-app-demo
+      labels:
+        content-type: text/html
+      matchers:
+      - uri:
+          exact: /howto/tiered-app
+      directResponse:
+        body: |
+          Multicluster Tiered App Demo Walkthrough:
+
+          Description: 
+          This demo shows a tiered application deployed across glooplatform-central and glooplatform-east, where the central region cluster holds the
+          "core" application which is self-contained in this region. The east region cluster extends the core application across multiple clusters and regions over mTLS.
+          This architecture provides flexibility for application deployments or migration patterns. For example, the developers in the glooplatform-east cluster can 
+          leverage the complete set of core application features, as well as extend the application with additional features that are only relevant to the east region.
+          For migrations, this architecture can be used for a phased migration of the core application from cluster to cluster by using a strangler pattern approach where
+          components of the core application can be migrated to the east region cluster in a phased approach.
+
+          1. Select the Tiered Mesh Application tile to see the `/ns-1/ui` endpoint. Note that you can also use the `/ns-1` endpoint directly to see the direct API output
+          2. Note that you can also explore the other namespaces as well by changing between `/ns-1` and `/ns-4` endpoints
+          3. Select the Tiered Mesh Application - Gloo UI tile to open up the Gloo Mesh UI service graph
+          4. Note that the service graph shows the core application in the central region cluster, and the extended application in the east region cluster
+          5. Navigate to the strangler-pattern service UI in your browser at `/east/ns-1-ui` to see the extended application in the east region cluster
+          6. Note that the strangler-pattern service calls services in glooplatform-central as well as additional services in the local cluster as part of the
+             call chain. This can be visualized in the graph by the arrow direction from `strangler-pattern` to `throbbing-field`
+          7. Discuss advantages of this architecture for migrations and flexibility for developers
+        status: 200
+
+    - name: howto-httpbin
+      matchers:
+      - uri:
+          exact: /howto/httpbin
+      directResponse:
+        body: |
+          Httpbin Demo Walkthrough:
+
+          Application Description:
+          Description: Httpbin is a simple HTTP Request & Response Service. It is useful for testing and debugging HTTP clients and can be used to mock API endpoints.
+          We make use of the httpbin app to demonstrate features such as routing, security policies, and transformations
+
+          Httpbin Public Endpoint
+          Description: This endpoint is the publicly facing endpoint for the httpbin application. It is exposed through Gloo Gateway and can be accessed by anyone.
+
+          Ext Auth with Okta
+          Description: This demo shows how to use Gloo Gateway to secure an application with Okta. The application is secured with an ExtAuthPolicy that is configured to an Okta Developer Account
+          You can use the provided credentials to log in and access the protected application endpoints such as /get
+
+          1. Navigate to the Httpbin - protected /get tile see that the endpoint is protected by ext auth and re-routes you to Okta
+          2. Log in with the user jdoe@solo.io and password gloo-dev to access the protected endpoint
+          3. Note the headers that contain the id_token and access_token that are used to authenticate the user
+          4. Navigate to the Gloo Mesh UI > Policies to review the `httpbin-extauth` ExtAuthPolicy yaml configuration
+
+          Rate Limiting
+          Description: This demo shows how to use Gloo Gateway to rate limit an application. The rate limit configured for the httpbin app is set to 1000 requests per minute
+          so it should be difficult to hit the limit. We can use the Gloo Mesh UI to verify that a rate limit policy is in place instead
+
+          1. Navigate to the Gloo Mesh UI > Policies to review the `httpbin` RateLimitPolicy yaml configuration
+          2. Confirm that the RateLimitPolicy has been attached to the httpbin-rt-443 route
+
+          JWT Validation, ClaimsToHeaders, and Transformations
+          Description: This demo shows how to use Gloo Gateway to validate a JWT token and extract claims from the token to be used as headers in the request.
+
+          1. Navigate to the httpbin /get endpoint to see the response headers
+          2. If you decode the JWT token, you will see that there are claims for `email` and `groups`
+          3. Navigate to the Gloo Mesh UI > Policies to review the `httpbin-claimstoheaders` JWTPolicy yaml configuration
+          4. Note that we are taking the x-id-token in the header, validating it, and extracting select claims to headers named X-Email and X-Groups
+          5. Navigate to the Gloo Mesh UI > Policies to review the `modify-x-email-header` TransformationPolicy yaml configuration
+          6. Notice that here we are extracting the X-Email header into a variable named `organization` and creating an additional header named X-Organization with the 
+             value of the organization variable. This is useful for upstream applications that require a specific header to be present in the request
+
+          OPA AuthZ
+          Description: In addition to OIDC, we can also configure the ExtAuthPolicy to use OPA for authorization. This demo shows how to use Gloo Gateway to secure an application with OPA.
+
+          1. Navigate to the Gloo Mesh UI > Policies to review the `httpbin-extauth` ExtAuthPolicy yaml configuration. Note that the policy is configured to use opaAuth with rules defined
+             in a configmap named `httpbin-opa` in the `httpbin` namespace
+          2. Navigate to the Argo CD UI (mgmt) > wave-httpbin-config-aoa > httpbin-opa configmap to review the OPA rules
+          3. Note that the rules are configured to allow access to the /get and /anything endpoints
+          4. Instead, try to access the /status/200 endpoint and note that you are denied access with a 403
+
+          WAF policy
+          Description: Applications can be secured with a WAFPolicy to protect against common web application attacks. This demo configures rules from the OWASP Core Rule Set (CRS) to protect the httpbin app.
+
+          1. Navigate to the Gloo Mesh UI > Policies to review the `httpbin-waf` WAFPolicy yaml configuration
+          2. Back at the /get endpoint of the httpbin app, try to inject a request header User-Agent "scammer". This can be done with browser extensions or with curl.
+          3. Note that the request is blocked with a messaget that indicates that a WAF rule was triggered
+        status: 200
+
+    - name: howto-main
+      matchers:
+      - uri:
+          prefix: /howto
+      forwardTo:
+        destinations:
+          - ref:
+              name: homer-portal-howto
+              namespace: homer-portal
+            port:
+              number: 8080

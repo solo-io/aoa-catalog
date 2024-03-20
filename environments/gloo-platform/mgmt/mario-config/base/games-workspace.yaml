@@ -1,0 +1,13 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: Workspace
+metadata:
+  name: games
+  namespace: gloo-mesh
+spec:
+  workloadClusters:
+  - name: 'mgmt'
+    namespaces:
+    - name: games-ws-config
+  - name: '*'
+    namespaces:
+    - name: supermario

@@ -1,0 +1,15 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: ext-auth-service-east-central
+  namespace: gloo-mesh-addons
+spec:
+  hosts:
+  - ext-auth-service.vd
+  ports:
+  - number: 8083
+    protocol: GRPC
+  services:
+  - labels:
+      app: ext-auth-service
+    cluster: glooplatform-east

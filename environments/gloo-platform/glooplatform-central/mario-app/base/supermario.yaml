@@ -1,0 +1,105 @@
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: supermario
+#---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    account: supermario
+  name: supermario
+  namespace: supermario
+---
+# Source: supermario/templates/common.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: supermario
+  namespace: supermario
+  labels:
+    app.kubernetes.io/instance: supermario
+    app.kubernetes.io/name: supermario
+    expose: "true"
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: http
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: supermario
+    app.kubernetes.io/instance: supermario
+---
+# Source: supermario/templates/common.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: supermario
+  namespace: supermario
+  labels:
+    app.kubernetes.io/instance: supermario
+    app.kubernetes.io/name: supermario
+    app.kubernetes.io/version: 220629-jammy
+spec:
+  revisionHistoryLimit: 10
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: supermario
+      app.kubernetes.io/instance: supermario
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: supermario
+        app.kubernetes.io/instance: supermario
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    spec:
+      nodeSelector:
+        gke-spot: "true"
+      tolerations:
+      - key: cloud.google.com/gke-spot
+        operator: Equal
+        value: "true"
+        effect: NoSchedule
+      serviceAccountName: supermario
+      automountServiceAccountToken: true
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: true
+      containers:
+        - name: supermario
+          image: "pengbai/docker-supermario:latest"
+          resources:
+            requests:
+              cpu: 20m
+              memory: 100Mi
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 0
+            failureThreshold: 3
+            timeoutSeconds: 1
+            periodSeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 0
+            failureThreshold: 3
+            timeoutSeconds: 1
+            periodSeconds: 10
+          startupProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 0
+            failureThreshold: 30
+            timeoutSeconds: 1
+            periodSeconds: 5

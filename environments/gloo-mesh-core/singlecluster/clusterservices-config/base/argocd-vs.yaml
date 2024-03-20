@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   hosts:
-  - "*"
+  - "argocd.admin.gmc.glooplatform.com"
   gateways:
   - istio-gateways/https-gateway
   http:

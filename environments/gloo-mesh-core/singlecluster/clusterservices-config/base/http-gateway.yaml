@@ -5,11 +5,14 @@ metadata:
   namespace: istio-gateways
 spec:
   selector:
-    istio: ingressgateway
+    bogus: incorrect-selector
   servers:
   - port:
       number: 80
       name: http
       protocol: HTTP
     hosts:
-    - "*"
+    - "istio-gateways/*"
+    - "gloo-mesh/*"
+    - "argocd/*"
+    - "grafana/*"

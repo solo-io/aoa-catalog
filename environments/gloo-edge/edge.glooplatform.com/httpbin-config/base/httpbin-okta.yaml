@@ -1,0 +1,35 @@
+apiVersion: enterprise.gloo.solo.io/v1
+kind: AuthConfig
+metadata:
+  name: httpbin-okta
+  namespace: gloo-system
+spec:
+  configs:
+  - oauth2:
+      oidcAuthorizationCode:
+        appUrl: https://httpbin.edge.glooplatform.com/productpage
+        callbackPath: /callback
+        clientId: 0oa6qvzybcVCK6PcS5d7
+        clientSecretRef:
+          name: okta-client-secret
+          namespace: gloo-system
+        issuerUrl: https://dev-22653158.okta.com/oauth2/default
+        scopes:
+        - email
+        - offline_access
+        headers:
+          idTokenHeader: x-id-token
+          accessTokenHeader: x-access-token
+        session:
+          failOnFetchFailure: true
+          cookie:
+            # sets the refresh_token in cookie header
+            allowRefreshing: true
+          # client side set-cookie options
+          cookieOptions:
+            maxAge: 0
+          redis:
+            cookieName: session
+            options:
+              host: redis.gloo-system.svc.cluster.local:6379
+            allowRefreshing: true

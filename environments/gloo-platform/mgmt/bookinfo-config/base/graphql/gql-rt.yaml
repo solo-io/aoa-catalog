@@ -1,0 +1,23 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: graphql-bookinfo
+  namespace: bookinfo-team-config
+spec:
+  hosts:
+  - 'bookinfo-gql.east.canary.glooplatform.com'
+  http:
+  - name: graphql-bookinfo
+    labels:
+      route: graphql-bookinfo
+    graphql:
+      schema:
+        name: bookinfo-rest-graphqlschema
+        namespace: bookinfo-team-config
+        clusterName: mgmt
+    matchers:
+    - uri:
+        prefix: /graphql
+  virtualGateways:
+  - name: north-south-gw
+    namespace: istio-gateways

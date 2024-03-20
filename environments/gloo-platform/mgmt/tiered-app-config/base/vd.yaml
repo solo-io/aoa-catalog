@@ -1,0 +1,118 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: restless-sky-vd
+  namespace: tiered-app-ws-config
+spec:
+  hosts:
+  - restless-sky-vd.solo-io.mesh
+  services:
+  - labels:
+      app: restless-sky
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: throbbing-field-vd
+  namespace: tiered-app-ws-config
+spec:
+  hosts:
+  - throbbing-field-vd.solo-io.mesh
+  services:
+  - labels:
+      app: throbbing-field
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: hidden-sky-vd
+  namespace: tiered-app-ws-config
+spec:
+  hosts:
+  - hidden-sky-vd.solo-io.mesh
+  services:
+  - labels:
+      app: hidden-sky
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: blue-hill-vd
+  namespace: tiered-app-ws-config
+spec:
+  hosts:
+  - blue-hill-vd.solo-io.mesh
+  services:
+  - labels:
+      app: blue-hill
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: strangler-pattern-vd
+  namespace: tiered-app-ws-config
+spec:
+  hosts:
+  - strangler-pattern-vd.solo-io.mesh
+  services:
+  - labels:
+      app: strangler-pattern
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: random-treeline-vd
+  namespace: tiered-app-ws-config
+spec:
+  hosts:
+  - random-treeline-vd.solo-io.mesh
+  services:
+  - labels:
+      app: random-treeline
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: dahlia-seed-vd
+  namespace: tiered-app-ws-config
+spec:
+  hosts:
+  - dahlia-seed-vd.solo-io.mesh
+  services:
+  - labels:
+      app: dahlia-seed
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      name: http

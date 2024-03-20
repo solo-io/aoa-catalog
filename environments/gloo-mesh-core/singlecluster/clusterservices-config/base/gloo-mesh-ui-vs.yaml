@@ -5,9 +5,9 @@ metadata:
   namespace: gloo-mesh
 spec:
   hosts:
-  - "*"
+  - "ui.admin.gmc.glooplatform.com"
   gateways:
-  - istio-gateways/http-gateway
+  - istio-gateways/https-gateway
   http:
   - name: gloo-mesh-ui
     match:

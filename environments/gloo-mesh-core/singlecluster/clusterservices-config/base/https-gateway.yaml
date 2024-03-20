@@ -12,7 +12,12 @@ spec:
       name: https
       protocol: HTTPS
     hosts:
-    - "*"
+    - "istio-gateways/*"
+    - "gloo-mesh/*"
+    - "argocd/*"
+    - "grafana/*"
+    - "web-ui/*"
+    - "homer-portal/*"
     tls:
       mode: SIMPLE
-      credentialName: tls-secret
+      credentialName: cf-advanced-tls-secret

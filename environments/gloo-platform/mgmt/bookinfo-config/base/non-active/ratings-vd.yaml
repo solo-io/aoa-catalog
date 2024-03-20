@@ -1,0 +1,17 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  labels:
+    failover: "true"
+  name: ratings-vd
+  namespace: bookinfo-team-config
+spec:
+  hosts:
+  - ratings-vd.randomvalue
+  ports:
+  - number: 9080
+    protocol: HTTP
+  services:
+  - labels:
+      app: ratings
+    namespace: bookinfo-backends

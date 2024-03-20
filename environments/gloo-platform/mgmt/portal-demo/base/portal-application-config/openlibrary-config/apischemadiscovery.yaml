@@ -1,0 +1,18 @@
+apiVersion: apimanagement.gloo.solo.io/v2
+kind: ApiSchemaDiscovery
+metadata:
+  name: openlibrary
+  namespace: openlibrary
+spec:
+  openapi:
+    fetchEndpoint:
+      url: "https://openlibrary.org/static/openapi.json"
+  servedBy:
+  - destinationSelector:
+      kind: EXTERNAL_SERVICE
+      port:
+        number: 443
+      selector:
+        cluster: mgmt
+        name: openlibrary
+        namespace: openlibrary
