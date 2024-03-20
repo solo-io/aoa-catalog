@@ -8,7 +8,7 @@
 0.2.0 (1-24-24)
 ---
 - update main to Gloo Platform 2.5.x
-- update to Istio 1.20.3-solo and 1-20 revision tag
+- update to Istio 1.20.2-solo and 1-20 revision tag
 - add `gloo-mesh-core/singlecluster` environment
 
 0.1.17 (1-11-24)
