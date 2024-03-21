@@ -4,7 +4,7 @@ metadata:
   labels:
     app: istio-ingressgateway
     istio: eastwestgateway
-    revision: 1-20
+    revision: 1-21
     topology.istio.io/network: cluster1
   annotations:
     # AWS NLB Annotation
@@ -36,6 +36,6 @@ spec:
   selector:
     app: istio-ingressgateway
     istio: eastwestgateway
-    revision: 1-20
+    revision: 1-21
     topology.istio.io/network: cluster1
   type: LoadBalancer

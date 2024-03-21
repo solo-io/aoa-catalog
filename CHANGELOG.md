@@ -1,5 +1,13 @@
 # Changelog
 
+0.2.7 (3-21-24)
+---
+- upgrade Gloo Platform to 2.5.4
+- upgrade Istio to 1.21.0-solo using 1-21 revision tag
+- update access token validation to use remoteJwks in gloo-gateway/int-ext-portal
+- update missing parameter in gloo portal extAuth server helm config
+- archive gloo-platform/multicluster-portal-k3d environment
+
 0.2.6 (3-14-24)
 ---
 - update /istio/ambient-demo environment to 1.21.0 

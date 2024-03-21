@@ -18,6 +18,10 @@ spec:
         - oauth2:
             accessTokenValidation:
               jwt:
-                localJwks:
-                  inlineString: >-
-                    {"keys":[{"kty":"RSA","alg":"RS256","kid":"FTenzhhhj_7Su1X4sGpdZz3wUGdlXsQueN-H-2nymYA","use":"sig","e":"AQAB","n":"uw0Icd_O36YZv7ejHHB9it1xm93PTZw8DCuk-8FAGX00DFl_AcRWMuzQsf6LANNVMeyKB8JynzbsIBF2j6XMNQADDpFaE-bQeRvJIytGU1JZ6dNNHqV5sqRCwck1qJVaxQ-nTW6sTO-ecMJo_21NI2dicl5XIPH2PxofO_u8ymXCKqsSEA97NPJImI998pOQ9hkYvJ2UlWoFaYJbxPj2Gvk1YiPdU_dxixZM0kdo41gWLrjjzwVGml_ThpYAA-Oas7GQbPWi8eOvgJDZVX7oSNG3ROkSYGDLGo7vqBmyFSaBGc6O-yCq7A-OV4ZfJ9HRsjnzDPVL4CdMHps-pkjbLQ"},{"kty":"RSA","alg":"RS256","kid":"976QN__CtMWZDJCnSCepGbHhyV4Bd2SZdIiNliGmIus","use":"sig","e":"AQAB","n":"wB9kGb2cuBlNsC-OcoKETHP7cpoCkgs2Ja2T-xmLxzrPOtrWwsyXBVbDEX_-JHNwvJsDaNY7qLg5kMjsuy6WXtfTUYtGSAZNRH8QsO9OOCWocYVX9bx9LH7N1qGJ3M_KqqD2uvsJlu8kqc0iJE1DW2H7YFh-IcWMZjJ7_5p-Acf_8uthedwxoIVBygwkGqq1r2U0j7MKflEofMIPlkosV8wtxJDpIpuOS0N1AUgg9Srw5K1bCNktmYhRSu13qBPDzTqPtxGQsK81-b3gH97l1haO_h8QQRIoq9JGHSbVC_GpLeWVAHuPkKwswlZKY9mpomcsj_Tld1XRFePz5KrlfQ"}]}
+                remoteJwks:
+                  url: "https://dev-22653158.okta.com/oauth2/default/v1/keys"
+                  refreshInterval: 5m
+                #localJwks:
+                #  # found here: https://dev-<USER>.okta.com/oauth2/default/v1/keys
+                #  inlineString: >-
+                #    {"keys":[{"kty":"RSA","alg":"RS256","kid":"x3gLekzx2cFUDe6E6aKgfPUUX2UZuHfONZ01Wwq1Pks","use":"sig","e":"AQAB","n":"nfRqhZDpvyFDK5q1O_bwKAPzLKNcyhZ9Mmz_fHfbGXW2GRLMQ5npoZgq01Xcy3iSckKtReMHDRZBfuRwdUBC1jFEfvkt0hmIdmBOTIGtespU93LXUw5IDiWFd3Mu1pcxNFQiJoCVkA1dNAHDhxJi74LXiWz2KBfnktymXQlQH0IkMYL8tytbYI5EjCuYEJT6rv8sp9DIW0DhxFdrDEoTjBJG61JTv06ObeIbTb3CjZ_vbVZ1Y1j3xfVcdc9aK6E_FrGI6233vietcLCiXQ1dNQ_2eldxi7uFkQsIw2hEpfnN36f_zlLkNU4oW1ehcSrMuHzxItMBxG3sPbfWroHAbQ"},{"kty":"RSA","alg":"RS256","kid":"EEwA8Q-4-SX5At0vC4wiK5rtCg9PVxRc061E8toXffQ","use":"sig","e":"AQAB","n":"0cKKhnNlprbpK6EjvTdb0oB9pTAwd0LPJgoAIso7Ltrqp32tjWXGMx9-pjfKluJKL5DFSGm4Zex3QquGPScFUv9QZLOGW2KNRGWa4d6byDp3y4H4A29l1DqxtH6cv4sw_I9U0AZWn1DMBpQsFNFnC09heCX4QHsKoFpbYYtCfS5XkUIYbZ-EWh8fkNNwSp38xAHtdq_Ev1EBT8KRSsRc67xuCxC6vQhKXM-Jq_2jxqL5lxOckeADkGlocMKBMkmN1JUi4TgOVLtQAOxF4TCEMA5F_-y8dy97cv1OBz1ar9evG9ldQF0ZgQhQ6PhBIrJDRAkJ0qT2i_9cSw4r1PWQdQ"}]}
