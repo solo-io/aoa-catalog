@@ -60,7 +60,7 @@ spec:
                             annotations:
                                 proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
                             labels:
-                                istio.io/rev: 1-20
+                                istio.io/rev: 1-21
                                 sidecar.istio.io/inject: "true"
             enabled: true
             serviceType: ClusterIP
@@ -68,6 +68,7 @@ spec:
             enabled: true
             extAuth:
                 apiKeyStorage:
+                    enabled: true
                     # Use the local gloo-mesh-addons Redis for backing storage
                     name: redis
                     config:
@@ -90,13 +91,13 @@ spec:
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.5.0
+            #  tag: 2.5.4
         telemetryCollector:
             enabled: true
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.5.0
+            #  tag: 2.5.4
             config:
                 exporters:
                     otlp:
@@ -187,7 +188,7 @@ spec:
                                     - __meta_kubernetes_pod_phase
 
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.5.0
+    targetRevision: 2.5.4
   syncPolicy:
     automated:
       prune: true
