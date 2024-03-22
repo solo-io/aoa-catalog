@@ -29,7 +29,7 @@ spec:
                 image:
                     registry: gcr.io/gloo-mesh
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.4.12-rc1-2024-03-13-v2.4.x-602b3faf4d
+    targetRevision: 2.4.12-2024-03-22-v2.4.x-d60c3f9385
   syncPolicy:
     automated:
       prune: true
