@@ -374,11 +374,12 @@ spec:
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Traffic Mirroring Logs"
-                        subtitle: "logs (past 60s) of reviews-v2 in ArgoCD"
+                        subtitle: "search for containing: -shadow"
                         icon: "fas fa-forward"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,gloo-mesh,ui,demo"
-                        url: "https://argocd.east.glooplatform.com/argo/api/v1/applications/wave-bookinfo-app-aoa/logs?appNamespace=argocd&container=istio-proxy&namespace=bookinfo-backends&follow=true&group=apps&kind=Deployment&resourceName=reviews-v2&tailLines=100&sinceSeconds=60"
+                        url: "https://argocd.east.glooplatform.com/argo/applications/argocd/wave-bookinfo-app-aoa/bookinfo-backends/istio-proxy/logs?podName=&group=apps&kind=Deployment&name=reviews-v2"
+                        #url: "https://argocd.east.glooplatform.com/argo/api/v1/applications/wave-bookinfo-app-aoa/logs?appNamespace=argocd&container=istio-proxy&namespace=bookinfo-backends&follow=true&group=apps&kind=Deployment&resourceName=reviews-v2&tailLines=100&sinceSeconds=60"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Traffic Mirroring Policy"
