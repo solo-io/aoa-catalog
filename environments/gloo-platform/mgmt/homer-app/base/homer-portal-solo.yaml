@@ -611,13 +611,13 @@ spec:
                         keywords: "gloo-gateway,gloo-portal,demo"
                         url: "https://external-portal.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-                      #- name: "Portal Analytics & Monetization"
-                      #  subtitle: "Grafana / OTel / Clickhouse"
-                      #  icon: "fas fa-chart-area"
-                      #  tag: "gloo-gateway #demo"
-                      #  keywords: "gloo-gateway,gloo-portal,clickhouse,grafana,otel,demo"
-                      #  url: "https://clickhouse.demo.glooplatform.com/mgmt-grafana/d/db93be88-8cd4-4c32-8a37-83fbca40e3f0a/api-dashboard-geomap?orgId=1&from=now-1h&to=now"
-                      #  target: "_blank" # optional html a tag target attribute
+                      - name: "Portal Analytics & Monetization"
+                        subtitle: "Grafana / OTel / Clickhouse"
+                        icon: "fas fa-chart-area"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,gloo-portal,clickhouse,grafana,otel,demo"
+                        url: "https://clickhouse.demo.glooplatform.com/mgmt-grafana/d/db93be88-8cd4-4c32-8a37-83fbca40e3f0a/api-dashboard-geomap?orgId=1&from=now-1h&to=now"
+                        target: "_blank" # optional html a tag target attribute
                   
                   - name: "Gloo Mesh Core Demo"
                     logo: "solo/glooy.png"
