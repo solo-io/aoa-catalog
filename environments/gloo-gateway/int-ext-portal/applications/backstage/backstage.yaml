@@ -43,7 +43,7 @@ spec:
             - name: 'APP_CONFIG_POSTGRES_PASSWORD'
               value: 'backstage'
             - name: 'PORTAL_SERVER_URL'
-              value: 'https://solo-dev-portal.glootest.com/portal-server/v1'
+              value: 'https://solo-dev-portal.k8mesh.com/portal-server/v1'
             - name: 'TOKEN_ENDPOINT'
               value: 'https://dev-22653158.okta.com/oauth2/default/v1/token'
             - name: 'AUTH_ENDPOINT'
@@ -55,7 +55,7 @@ spec:
          
         ingress:
           enabled: false
-          host: backstage.glootest.com
+          host: backstage.k8mesh.com
 
         postgresql:
           enabled: true

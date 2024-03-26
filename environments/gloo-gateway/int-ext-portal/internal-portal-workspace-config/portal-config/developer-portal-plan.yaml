@@ -9,7 +9,7 @@ spec:
     privateAPILabels:
       portal-visibility: private
   domains:
-    - solo-dev-portal.glootest.com
+    - solo-dev-portal.k8mesh.com
   portalBackendSelectors:
     - selector:
         labels:

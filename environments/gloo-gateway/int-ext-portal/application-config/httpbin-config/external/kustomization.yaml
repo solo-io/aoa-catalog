@@ -19,7 +19,7 @@ patchesJSON6902:
   patch: |-
     - op: replace
       path: /spec/hosts/0
-      value: httpbin.glootest.com
+      value: httpbin.k8mesh.com
 
 # portal metadata patch      
 - target:
