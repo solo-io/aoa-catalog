@@ -42,7 +42,7 @@ spec:
           args: ["--host", "0.0.0.0"]
           env:
             - name: VITE_PORTAL_SERVER_URL
-              value: https://external-portal.k8mesh.com/portal-server/v1
+              value: https://solo-dev-portal.k8mesh.com/portal-server/v1
             - name: VITE_CLIENT_ID
               value: 0oaafbtuwfy9lG7gr5d7
             - name: VITE_TOKEN_ENDPOINT
