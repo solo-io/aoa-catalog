@@ -23,7 +23,7 @@ spec:
             clientSecretRef:
               name: okta-client-secret
               namespace: gloo-mesh
-            issuerUrl: https://dev-22653158.okta.com/oauth2/default
+            issuerUrl: https://dev-29199769.okta.com/oauth2/default
             session:
               failOnFetchFailure: false
               redis:

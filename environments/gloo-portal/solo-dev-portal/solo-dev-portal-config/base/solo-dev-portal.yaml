@@ -55,5 +55,5 @@ spec:
       namespace: gloo-system
       key: client-secret # this is the k8s secret we have created above
     groupClaimKey: groups # we will use the 'group' claim in the 'id_token' to associate the user with a group
-    issuer: https://dev-22653158.okta.com/oauth2/default
+    issuer: https://dev-29199769.okta.com/oauth2/default
   portalUrlPrefix: https://portal.glootest.com/

@@ -14,13 +14,13 @@ spec:
         priority: 1
     providers:
       okta:
-        issuer: https://dev-22653158.okta.com/oauth2/default
+        issuer: https://dev-29199769.okta.com/oauth2/default
         tokenSource:
           headers:
           - name: jwt
         remote:
-          # url grabbed from https://dev-22653158.okta.com/oauth2/default/.well-known/oauth-authorization-server
-          url: "https://dev-22653158.okta.com/oauth2/default/v1/keys/"
+          # url grabbed from https://dev-29199769.okta.com/oauth2/default/.well-known/oauth-authorization-server
+          url: "https://dev-29199769.okta.com/oauth2/default/v1/keys/"
           destinationRef:
             ref:
               name: okta-jwks

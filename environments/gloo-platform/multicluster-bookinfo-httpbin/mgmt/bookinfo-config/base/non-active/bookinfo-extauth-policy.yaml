@@ -23,7 +23,7 @@ spec:
             clientSecretRef:
               name: bookinfo-oidc-client-secret
               namespace: bookinfo-frontends
-            issuerUrl: https://dev-22653158.okta.com/oauth2/default
+            issuerUrl: https://dev-29199769.okta.com/oauth2/default
             session:
               failOnFetchFailure: false
               redis:

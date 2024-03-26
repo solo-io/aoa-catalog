@@ -23,7 +23,7 @@ spec:
             clientSecretRef:
               name: httpbin-oidc-client-secret
               namespace: httpbin
-            issuerUrl: https://dev-22653158.okta.com/oauth2/default
+            issuerUrl: https://dev-29199769.okta.com/oauth2/default
             session:
               failOnFetchFailure: true
               redis:

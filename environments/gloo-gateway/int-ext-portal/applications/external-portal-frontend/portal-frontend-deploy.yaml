@@ -44,13 +44,13 @@ spec:
             - name: VITE_PORTAL_SERVER_URL
               value: https://solo-dev-portal.k8mesh.com/portal-server/v1
             - name: VITE_CLIENT_ID
-              value: 0oaafbtuwfy9lG7gr5d7
+              value: 0oag1z0yjxkJE7p7K5d7
             - name: VITE_TOKEN_ENDPOINT
-              value: https://dev-22653158.okta.com/oauth2/default/v1/token
+              value: https://dev-29199769.okta.com/oauth2/default/v1/token
             - name: VITE_AUTH_ENDPOINT
-              value: https://dev-22653158.okta.com/oauth2/default/v1/authorize
+              value: https://dev-29199769.okta.com/oauth2/default/v1/authorize
             - name: VITE_LOGOUT_ENDPOINT
-              value: https://dev-22653158.okta.com/oauth2/default/v1/logout
+              value: https://dev-29199769.okta.com/oauth2/default/v1/logout
           imagePullPolicy: Always
           name: portal-frontend
           ports:

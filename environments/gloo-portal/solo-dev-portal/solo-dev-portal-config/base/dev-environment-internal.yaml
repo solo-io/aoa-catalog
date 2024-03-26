@@ -77,10 +77,10 @@ spec:
           requestsPerUnit: 10
         authPolicy:
           oauth:
-            authorizationUrl: https://dev-22653158.okta.com/oauth2/default/v1/authorize
-            tokenUrl: https://dev-22653158.okta.com/oauth2/default/v1/token
+            authorizationUrl: https://dev-29199769.okta.com/oauth2/default/v1/authorize
+            tokenUrl: https://dev-29199769.okta.com/oauth2/default/v1/token
             jwtValidation:
-              issuer: https://dev-22653158.okta.com/oauth2/default
+              issuer: https://dev-29199769.okta.com/oauth2/default
               remoteJwks:
                 refreshInterval: 60s
-                url: https://dev-22653158.okta.com/oauth2/default/v1/keys
+                url: https://dev-29199769.okta.com/oauth2/default/v1/keys

@@ -52,7 +52,7 @@ spec:
                     clientId: 0oa5zoq0xoGKtOSpg5d7
                     clientSecret: _MS9PJ52NpUJo8Hj2nE4zj90hX4BFkW61SdaXJfE
                     clientSecretName: dashboard
-                    issuerUrl: https://dev-22653158.okta.com/oauth2/default
+                    issuerUrl: https://dev-29199769.okta.com/oauth2/default
             deploymentOverrides:
                 spec:
                     template:
