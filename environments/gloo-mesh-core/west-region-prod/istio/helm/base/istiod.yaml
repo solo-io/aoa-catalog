@@ -30,7 +30,7 @@ spec:
                 memory: 128Mi
           network: network1
           hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
-          tag: 1.20.4-solo
+          tag: 1.20.4-fips
         meshConfig:
           trustDomain: west-region-prod
           accessLogFile: /dev/stdout
