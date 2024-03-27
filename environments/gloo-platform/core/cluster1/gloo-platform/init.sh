@@ -117,7 +117,7 @@ spec:
             #service: 
             #  type: ClusterIP
             #podLabels:
-            #  istio.io/rev: 1-21
+            #  istio.io/rev: 1-20
             #podAnnotations:
             #  proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
             image:
