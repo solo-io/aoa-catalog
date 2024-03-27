@@ -15,7 +15,7 @@ spec:
         labels:
           app: gloo-mesh-portal-server
   usagePlans:
-     - name: internal
+     - name: bronze
        displayName: "Internal Developer"
        description: "A basic usage plan"
   apis:

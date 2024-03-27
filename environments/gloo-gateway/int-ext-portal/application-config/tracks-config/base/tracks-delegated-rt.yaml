@@ -41,7 +41,7 @@ spec:
   http:
   - name: tracks-api
     labels:
-      usagePlans: dev-portal
+      usagePlans: bronze
     matchers:
     - uri:
         prefix: /

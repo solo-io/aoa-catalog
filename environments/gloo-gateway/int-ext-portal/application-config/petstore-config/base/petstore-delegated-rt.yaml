@@ -41,7 +41,7 @@ spec:
   http:
   - name: pets-api
     labels:
-      usagePlans: gold
+      usagePlans: bronze
     matchers:
     - uri:
         prefix: /pet
@@ -53,7 +53,7 @@ spec:
           number: 5000
   - name: users-api
     labels:
-      usagePlans: dev-portal
+      usagePlans: bronze
     matchers:
     - uri:
         prefix: /user
@@ -65,7 +65,7 @@ spec:
           number: 5000
   - name: store-api
     labels:
-      usagePlans: dev-portal
+      usagePlans: bronze
     matchers:
     - uri:
         prefix: /store
