@@ -9,7 +9,7 @@ spec:
     privateAPILabels:
       portal-visibility: private
   domains:
-    - external-portal.k8mesh.com
+    - solo-dev-portal.k8mesh.com
   portalBackendSelectors:
     - selector:
         labels:

@@ -202,7 +202,7 @@ spec:
                       - name: "React Frontend - External Portal"
                         icon: "fab fa-connectdevelop"
                         tag: "portal"
-                        url: "https://external-portal.k8mesh.com"
+                        url: "https://solo-dev-portal.k8mesh.com"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "APIs - test endpoints"
