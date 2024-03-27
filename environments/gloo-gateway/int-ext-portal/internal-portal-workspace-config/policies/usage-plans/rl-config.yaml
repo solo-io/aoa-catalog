@@ -16,7 +16,7 @@ spec:
       - simpleDescriptors:
           - key: userId
           - key: usagePlan
-            value: internal
+            value: external
         rateLimit:
           requestsPerUnit: 15
           unit: MINUTE

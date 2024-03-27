@@ -16,4 +16,4 @@ spec:
           app: gloo-mesh-portal-server
   apis:
     - labels:
-        portal: internal
+        portal: external

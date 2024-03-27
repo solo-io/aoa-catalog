@@ -7,7 +7,7 @@ spec:
   applyToRoutes:
   - route:
       labels:
-        portal: internal
+        portal: external
   config:
     ratelimitServerConfig:
       name: usage-plans

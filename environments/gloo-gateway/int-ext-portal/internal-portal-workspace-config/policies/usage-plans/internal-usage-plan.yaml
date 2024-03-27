@@ -7,7 +7,7 @@ spec:
   applyToRoutes:
   - route:
       labels:
-        portal: internal
+        portal: external
   config:
     server:
       name: mgmt-ext-auth-server

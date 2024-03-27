@@ -10,7 +10,7 @@ spec:
         app: gloo-mesh-portal-server
   - route:
       labels:
-        portal: internal
+        portal: external
   config:
     allowCredentials: true
     allowHeaders:

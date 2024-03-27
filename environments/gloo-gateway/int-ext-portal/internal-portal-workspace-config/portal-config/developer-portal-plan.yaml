@@ -20,4 +20,4 @@ spec:
        description: "A basic usage plan"
   apis:
     - labels:
-        portal: internal
+        portal: external
