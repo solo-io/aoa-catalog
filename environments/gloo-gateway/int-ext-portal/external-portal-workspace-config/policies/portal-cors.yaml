@@ -24,4 +24,6 @@ spec:
       - PUT
       - DELETE
     allowOrigins:
-      - prefix: 'https://external-portal.glootest.com'
+      - prefix: 'https://solo-dev-portal.k8mesh.com'
+      - prefix: 'https://backstage.k8mesh.com'
+      - prefix: 'https://external-portal.k8mesh.com'
