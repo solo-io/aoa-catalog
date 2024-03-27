@@ -8,7 +8,7 @@ metadata:
 spec:
   # This external endpoint identifies the host where Okta publishes the jwks_uri endpoint for my dev account
   # See https://dev-22653158-admin.okta.com/oauth2/default/.well-known/oauth-authorization-server
-  address: dev-22653158.okta.com
+  address: dev-29199769.okta.com
   ports:
   - name: https
     number: 443

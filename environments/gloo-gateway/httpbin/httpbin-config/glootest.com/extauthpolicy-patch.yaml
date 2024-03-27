@@ -19,11 +19,11 @@ spec:
           oidcAuthorizationCode:
             appUrl: https://httpbin.glootest.com
             callbackPath: /callback
-            clientId: 0oa6qvzybcVCK6PcS5d7
+            clientId: 0oag1z0yjxkJE7p7K5d7
             clientSecretRef:
               name: okta-client-secret
               namespace: gloo-mesh
-            issuerUrl: https://dev-22653158.okta.com/oauth2/default
+            issuerUrl: https://dev-29199769.okta.com/oauth2/default
             session:
               failOnFetchFailure: true
               redis:
