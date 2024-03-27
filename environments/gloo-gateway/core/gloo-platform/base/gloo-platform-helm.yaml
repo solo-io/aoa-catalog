@@ -66,6 +66,7 @@ spec:
             serviceType: ClusterIP
         extAuthService:
             enabled: true
+            logLevel: DEBUG
             extAuth:
                 apiKeyStorage:
                     enabled: true

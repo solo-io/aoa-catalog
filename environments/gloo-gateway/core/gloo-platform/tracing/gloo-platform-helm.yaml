@@ -66,6 +66,7 @@ spec:
             serviceType: ClusterIP
         extAuthService:
             enabled: true
+            logLevel: DEBUG
         rateLimiter:
             enabled: true
         legacyMetricsPipeline:
