@@ -66,8 +66,8 @@ spec:
             serviceType: ClusterIP
         extAuthService:
             enabled: true
-            logLevel: DEBUG
             extAuth:
+                logLevel: DEBUG
                 apiKeyStorage:
                     enabled: true
                     # Use the local gloo-mesh-addons Redis for backing storage
