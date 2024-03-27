@@ -1,5 +1,9 @@
 # Changelog
 
+0.2.8 (3-27-24)
+---
+- revert back to `1.20.4-solo` Istio images and `1-20` revision tag due to [#49685](https://github.com/istio/istio/issues/49685)
+
 0.2.7 (3-21-24)
 ---
 - upgrade Gloo Platform to 2.5.4
