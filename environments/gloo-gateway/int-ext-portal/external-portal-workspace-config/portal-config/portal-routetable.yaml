@@ -5,7 +5,7 @@ metadata:
   namespace: external-portal-config
 spec:
   hosts:
-    - "solo-dev-portal.k8mesh.com"
+    - "solo-dev-portal-2.k8mesh.com"
   virtualGateways:
     - name: mgmt-north-south-gw-443
       namespace: istio-gateways

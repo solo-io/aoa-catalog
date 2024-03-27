@@ -20,7 +20,7 @@ patchesJSON6902:
   patch: |-
     - op: replace
       path: /spec/hosts/0
-      value: petstore.k8mesh.com
+      value: petstore-2.k8mesh.com
 
 # portal metadata patch      
 - target:
