@@ -14,14 +14,14 @@ spec:
     - selector:
         labels:
           app: gloo-mesh-portal-server
-  #usagePlans:
-  #   - name: bronze
-  #     displayName: "Bronze Plan"
-  #     description: "A basic usage plan"
-  #   - name: silver
-  #     description: "A better usage plan"
-  #   - name: gold
-  #     description: "The best usage plan!"
+  usagePlans:
+    - name: bronze
+      displayName: "Bronze Plan"
+      description: "A basic usage plan"
+    - name: silver
+      description: "A better usage plan"
+    - name: gold
+      description: "The best usage plan!"
   apis:
     - labels:
         portal: external
