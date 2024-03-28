@@ -18,33 +18,7 @@ spec:
     targetRevision: 1.21.0
     helm:
       values: |
-        ## Discovery Settings
-          pilot:
-            env:
-              # Setup more secure default that is off in 'default' only for backwards compatibility
-              VERIFY_CERTIFICATE_AT_CLIENT: "true"
-              ENABLE_AUTO_SNI: "true"
-          
-              PILOT_ENABLE_HBONE: "true"
-              CA_TRUSTED_NODE_ACCOUNTS: "istio-system/ztunnel,kube-system/ztunnel"
-              PILOT_ENABLE_AMBIENT_CONTROLLERS: "true"
-          
-          # ProxyConfig settings
-          meshConfig:
-            defaultConfig:
-              proxyMetadata:
-                ISTIO_META_ENABLE_HBONE: "true"
-          
-          # Telemetry handled with Telemetry API only
-          telemetry:
-            enabled: false
-            v2:
-              enabled: false
-          
-          # keep in sync with settings used when installing the Istio CNI chart
-          istio_cni:
-            enabled: true
-            chained: true
+        profile: ambient
   syncPolicy:
     automated:
       prune: true
