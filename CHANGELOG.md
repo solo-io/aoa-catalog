@@ -1,5 +1,9 @@
 # Changelog
 
+0.2.9 (3-27-24)
+---
+- Update istio/ambient-demo environment to use upstream Ambient profiles, simplifying configuration
+
 0.2.8 (3-27-24)
 ---
 - revert back to `1.20.4-solo` Istio images and `1-20` revision tag due to [#49685](https://github.com/istio/istio/issues/49685)
