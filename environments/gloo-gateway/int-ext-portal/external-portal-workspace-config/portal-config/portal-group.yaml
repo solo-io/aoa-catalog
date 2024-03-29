@@ -31,7 +31,7 @@ spec:
   membership:
     - claims:
         - key: iss
-          value: https://dev-22653158.okta.com/oauth2/default
+          value: https://dev-29199769.okta.com/oauth2/default
   accessLevel:
     apis:
     - labels:
