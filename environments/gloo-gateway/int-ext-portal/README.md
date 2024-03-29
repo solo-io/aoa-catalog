@@ -15,20 +15,20 @@ The `gloo-gateway/portal` environment deploys the core components of a single cl
 
 ## Application description
 
-The RouteTables for applications exposed in this demo are defining non-wildcard hosts which follow the pattern `<app>.glootest.com`. You can map these hostnames to your gateway IP address in your DNS service of choice (i.e. Route53, Cloudflare), or you can follow the methods below to modify your `/etc/hosts` locally depending on your cluster LoadBalancer configuration.
+The RouteTables for applications exposed in this demo are defining non-wildcard hosts which follow the pattern `<app>.k8mesh.com`. You can map these hostnames to your gateway IP address in your DNS service of choice (i.e. Route53, Cloudflare), or you can follow the methods below to modify your `/etc/hosts` locally depending on your cluster LoadBalancer configuration.
 
 Applications Exposed using this demo:
 - Homer Link Dashboard at `https://localhost` or `https://<LB Address>`
-- Grafana at `https://grafana.glootest.com`
-- ArgoCD at `https://argocd.glootest.com/argo`
+- Grafana at `https://grafana.k8mesh.com`
+- ArgoCD at `https://argocd.k8mesh.com/argo`
     - argocd credentials:
     - user: admin
     - password: solo.io
-- Gloo Mesh UI at `https://gmui.glootest.com`
-- Frontend Portal at `https://solo-dev-portal.glootest.com`
-- Httpbin API at `https://httpbin.glootest.com`
-- Petstore API at `https://petstore.glootest.com`
-- Tracks API at `https://tracks.glootest.com`
+- Gloo Mesh UI at `https://gmui.k8mesh.com`
+- Frontend Portal at `https://solo-dev-portal.k8mesh.com`
+- Httpbin API at `https://httpbin.k8mesh.com`
+- Petstore API at `https://petstore.k8mesh.com`
+- Tracks API at `https://tracks.k8mesh.com`
 
 
 To access applications, follow the methods below:
@@ -46,7 +46,7 @@ echo ${GATEWAY_IP}
 Modify /etc/hosts on your local machine (this will require sudo privileges), or configure DNS to point to your Ingress Gateway IP
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-${GATEWAY_IP} argocd.glootest.com gmui.glootest.com httpbin.glootest.com petstore.glootest.com tracks.glootest.com solo-dev-portal.glootest.com
+${GATEWAY_IP} argocd.k8mesh.com gmui.k8mesh.com httpbin.k8mesh.com petstore.k8mesh.com tracks.k8mesh.com solo-dev-portal.k8mesh.com
 EOF
 ```
 
@@ -54,7 +54,7 @@ EOF
 modify /etc/hosts on your local machine (this will require sudo privileges)
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd.glootest.com gmui.glootest.com httpbin.glootest.com petstore.glootest.com tracks.glootest.com solo-dev-portal.glootest.com
+127.0.0.1 argocd.k8mesh.com gmui.k8mesh.com httpbin.k8mesh.com petstore.k8mesh.com tracks.k8mesh.com solo-dev-portal.k8mesh.com
 EOF
 ```
 
@@ -87,6 +87,6 @@ access the ingress gateway at https://localhost:8443
 Note: For routes that are configured with a specific host, pass in the Host header using curl `-H "Host: <host>` or add the following entry into your /etc/hosts when using this method
 ```
 cat <<EOF | sudo tee -a /etc/hosts
-127.0.0.1 argocd.glootest.com gmui.glootest.com httpbin.glootest.com petstore.glootest.com tracks.glootest.com solo-dev-portal.glootest.com
+127.0.0.1 argocd.k8mesh.com gmui.k8mesh.com httpbin.k8mesh.com petstore.k8mesh.com tracks.k8mesh.com solo-dev-portal.k8mesh.com
 EOF
 ```

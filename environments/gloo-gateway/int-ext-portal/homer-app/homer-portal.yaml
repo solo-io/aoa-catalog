@@ -146,7 +146,7 @@ spec:
                   style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
                   title: "Welcome!"
                   icon: "fa fa-grin"
-                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Platform!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />127.0.0.1 argocd.glootest.com gmui.glootest.com grafana.glootest.com solo-dev-portal.glootest.com petstore.glootest.com tracks.glootest.com httpbin.glootest.com<br /><br />Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-gateway/freestyle#application-description'>here</a>"
+                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Platform!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />127.0.0.1 argocd.k8mesh.com gmui.k8mesh.com grafana.k8mesh.com solo-dev-portal.k8mesh.com petstore.k8mesh.com tracks.k8mesh.com httpbin.k8mesh.com<br /><br />Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-gateway/freestyle#application-description'>here</a>"
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
@@ -197,12 +197,12 @@ spec:
                       - name: "Backstage - Internal Portal"
                         icon: "fab fa-connectdevelop"
                         tag: "backstage"
-                        url: "https://backstage.glootest.com/gloo-platform-portal/apis"
+                        url: "https://backstage.k8mesh.com/gloo-platform-portal/apis"
                         target: "_blank" # optional html a tag target attribute
                       - name: "React Frontend - External Portal"
                         icon: "fab fa-connectdevelop"
                         tag: "portal"
-                        url: "https://external-portal.glootest.com"
+                        url: "https://external-portal.k8mesh.com"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "APIs - test endpoints"
@@ -212,43 +212,43 @@ spec:
                         subtitle: "Approve insecure SSL Warning for local deploy"
                         icon: "fab fa-connectdevelop"
                         tag: "solo-dev-portal"
-                        url: "https://solo-dev-portal.glootest.com/portal-server/v1/apis"
+                        url: "https://solo-dev-portal.k8mesh.com/portal-server/v1/apis"
                         target: "_blank" # optional html a tag target attribute
                       - name: "httpbin REST API - internal"
                         subtitle: "requires valid api-key"
                         icon: "fab fa-connectdevelop"
                         tag: "httpbin-rest-api"
-                        url: "https://httpbin.int.glootest.com/v1/get"
+                        url: "https://httpbin.int.k8mesh.com/v1/get"
                         target: "_blank" # optional html a tag target attribute
                       - name: "petstore REST API - internal"
                         subtitle: "requires valid api-key"
                         icon: "fab fa-connectdevelop"
                         tag: "petstore-rest-api"
-                        url: "https://petstore.int.glootest.com/pet"
+                        url: "https://petstore.int.k8mesh.com/pet"
                         target: "_blank" # optional html a tag target attribute
                       - name: "tracks REST API - internal"
                         subtitle: "requires valid api-key"
                         icon: "fab fa-connectdevelop"
                         tag: "petstore-rest-api"
-                        url: "https://tracks.int.glootest.com/tracks"
+                        url: "https://tracks.int.k8mesh.com/tracks"
                         target: "_blank" # optional html a tag target attribute
                       - name: "httpbin REST API - external"
                         subtitle: "requires valid api-key"
                         icon: "fab fa-connectdevelop"
                         tag: "httpbin-rest-api"
-                        url: "https://httpbin.glootest.com/v1/get"
+                        url: "https://httpbin.k8mesh.com/v1/get"
                         target: "_blank" # optional html a tag target attribute
                       - name: "petstore REST API - external"
                         subtitle: "requires valid api-key"
                         icon: "fab fa-connectdevelop"
                         tag: "petstore-rest-api"
-                        url: "https://petstore.glootest.com/pet"
+                        url: "https://petstore.k8mesh.com/pet"
                         target: "_blank" # optional html a tag target attribute
                       - name: "tracks REST API - external"
                         subtitle: "requires valid api-key"
                         icon: "fab fa-connectdevelop"
                         tag: "petstore-rest-api"
-                        url: "https://tracks.glootest.com/tracks"
+                        url: "https://tracks.k8mesh.com/tracks"
                         target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:

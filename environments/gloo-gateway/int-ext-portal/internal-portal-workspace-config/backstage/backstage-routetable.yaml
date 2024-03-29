@@ -5,7 +5,7 @@ metadata:
   namespace: backstage
 spec:
   hosts:
-  - 'backstage.glootest.com'
+  - 'backstage.k8mesh.com'
   http:
   - name: backstage
     labels:
