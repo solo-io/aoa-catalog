@@ -47,7 +47,7 @@ spec:
                     address: redis.gloo-mesh-addons:6379
                     enabled: true
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.4.12-2024-03-22-v2.4.x-d60c3f9385
+    targetRevision: 2.5.4-2024-03-31-v2.5.x-4f6a729164
   syncPolicy:
     automated:
       prune: true
