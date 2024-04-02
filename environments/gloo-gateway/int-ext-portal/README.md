@@ -9,7 +9,7 @@ The `gloo-gateway/portal` environment deploys the core components of a single cl
     - Kubernetes version 1.23-1.28
 
 ## Environment Description
-- gloo mesh 2.5.4
+- gloo mesh 2.5.5
 - istio 1.20.4-solo (Helm)
 - revision: 1-20
 

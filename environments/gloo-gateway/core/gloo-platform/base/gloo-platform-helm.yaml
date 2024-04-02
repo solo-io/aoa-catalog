@@ -91,13 +91,13 @@ spec:
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.5.4
+            #  tag: 2.5.5
         telemetryCollector:
             enabled: true
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.5.4
+            #  tag: 2.5.5
             config:
                 exporters:
                     otlp:
@@ -188,7 +188,7 @@ spec:
                                     - __meta_kubernetes_pod_phase
 
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.5.4
+    targetRevision: 2.5.5
   syncPolicy:
     automated:
       prune: true

@@ -1,5 +1,9 @@
 # Changelog
 
+0.2.10 (4-2-24)
+---
+- update to Gloo Platform 2.5.5
+
 0.2.9 (3-27-24)
 ---
 - Update istio/ambient-demo environment to use upstream Ambient profiles, simplifying configuration
