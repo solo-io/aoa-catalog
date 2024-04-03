@@ -1,6 +1,6 @@
 # Changelog
 
-0.2.10 (4-2-24)
+0.2.10 (4-3-24)
 ---
 - update to Gloo Platform 2.5.5
 
