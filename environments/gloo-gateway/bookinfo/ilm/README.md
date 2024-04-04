@@ -36,10 +36,6 @@ The `gloo-gateway/backstage-bookinfo-httpbin` environment deploys the core compo
     - gloo mesh 2.5.5
     - istio 1.20.4-solo (ILCM)
     - revision: 1-20
-- ocp:
-    - gloo mesh 2.5.5
-    - istio 1.20.4-solo (ILCM)
-    - revision: 1-20
 
 ## Application description
 

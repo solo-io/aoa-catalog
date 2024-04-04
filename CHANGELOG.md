@@ -1,5 +1,10 @@
 # Changelog
 
+0.2.11 (4-4-24)
+---
+- remove pointers to OCP as these are unused/untested
+- add AWS NLB annotations example to `gloo-edge` and `gloo-portal` environments
+
 0.2.10 (4-3-24)
 ---
 - update to Gloo Platform 2.5.5
