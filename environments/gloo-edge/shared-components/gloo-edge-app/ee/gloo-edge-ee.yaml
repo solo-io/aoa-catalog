@@ -18,16 +18,12 @@ spec:
         create_license_secret: false
         gloo:
           license_secret_name: license
-          gatewayProxies:
-            gatewayProxy:
-              service:
-                extraAnnotations:
-                  # uncomment if using the default AWS Cloud in-tree controller 
-                  service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
-                  # uncomment if using the AWS LB controller
-                  #service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
-                  #service.beta.kubernetes.io/aws-load-balancer-type: "external"
-                  #service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+          # uncomment if using AWS LB annotations
+          #gatewayProxies:
+          #  gatewayProxy:
+          #    service:
+          #      extraAnnotations:
+          #        service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
         gloo-fed:
           enabled: false
           create_license_secret: false
