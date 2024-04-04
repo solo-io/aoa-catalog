@@ -1,5 +1,9 @@
 # Changelog
 
+0.2.12 (4-4-24)
+---
+- update argocd to 2.9.10
+
 0.2.11 (4-4-24)
 ---
 - remove pointers to OCP as these are unused/untested
