@@ -19,11 +19,14 @@ spec:
         gloo:
           license_secret_name: license
           # uncomment if using AWS LB annotations
-          #gatewayProxies:
-          #  gatewayProxy:
-          #    service:
-          #      extraAnnotations:
-          #        service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+          gatewayProxies:
+            gatewayProxy:
+              service:
+                httpsFirst: true
+                httpPort: 80
+                httpsPort: 443
+                extraAnnotations:
+                  service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
         gloo-fed:
           enabled: false
           create_license_secret: false

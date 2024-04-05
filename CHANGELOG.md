@@ -1,5 +1,9 @@
 # Changelog
 
+0.2.13 (4-5-24)
+---
+- config fixes for NLB settings in gloo-edge environments
+
 0.2.12 (4-4-24)
 ---
 - update argocd to 2.9.10
