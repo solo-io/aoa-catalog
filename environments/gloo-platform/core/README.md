@@ -1,4 +1,4 @@
-### Pre-reqs
+### Pre-Reqs
 - Ensure GME [licenses](https://github.com/solo-io/gloo-mesh-enterprise?tab=readme-ov-file#generate-license-keys) are set in env.
 - Ensure AWS vars are set in the env to interact with demo clusters.
 
@@ -17,6 +17,7 @@ export TARGET_REVISION=$TAGGED_VERSION
 grep -rl REPO_URL ./environments | xargs sed -i '' "s|REPO_URL|$REPO_URL|g"
 grep -rl TARGET_REVISION ./environments | xargs sed -i '' "s/TARGET_REVISION/$TARGET_REVISION/g"
 
+git checkout environments/gloo-platform/core/README.md
 ```
 > NOTE: where TARGET_REVISION is the GME dev build version without the 'v', e.g. 2.4.14-2024-04-11-v2.4.x-86a42ac5f4
 
