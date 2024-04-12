@@ -88,7 +88,7 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: us-docker.pkg.dev/developers-369321/gloo-platform-dev/gloo-otel-collector
-              tag: 2.5.4-2024-03-31-v2.5.x-4f6a729164
+              tag: TARGET_REVISION
         telemetryGatewayCustomization:
             disableCertGeneration: true
         telemetryCollector:
@@ -105,7 +105,7 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: us-docker.pkg.dev/developers-369321/gloo-platform-dev/gloo-otel-collector
-              tag: 2.5.4-2024-03-31-v2.5.x-4f6a729164
+              tag: TARGET_REVISION
             config:
                 exporters:
                     otlp:
@@ -126,8 +126,8 @@ spec:
                       type: DirectoryOrCreate
                   name: cilium-run
         
-    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.5.4-2024-03-31-v2.5.x-4f6a729164
+    repoURL: REPO_URL
+    targetRevision: TARGET_REVISION
   syncPolicy:
     automated:
       prune: true
