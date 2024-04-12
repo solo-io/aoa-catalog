@@ -8,4 +8,4 @@ The `gloo-edge/argo-rollouts/echo` environment deploys Gloo Edge along with the 
 
 ## Overlay description
 - base:
-    - Gloo Edge Enterprise 1.15.7
+    - Gloo Edge Enterprise 1.16.6

@@ -10,7 +10,7 @@ The `gloo-edge/flagger-podinfo` environment deploys Gloo Edge along with flagger
 
 ## Overlay description
 - base:
-    - Gloo Edge Enterprise 1.15.7
+    - Gloo Edge Enterprise 1.16.6
 
 ## Application description
 

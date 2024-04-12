@@ -50,7 +50,7 @@ spec:
               root_url: https://*/grafana/
               serve_from_sub_path: true
     repoURL: http://storage.googleapis.com/gloo-ee-helm
-    targetRevision: 1.15.7
+    targetRevision: 1.16.6
   syncPolicy:
     automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
