@@ -8,7 +8,7 @@ metadata:
 spec:
   installations:
       # The revision for this installation, such as 1-20
-    - revision: 1-20
+    - revision: default
       # List all workload clusters to install Istio into
       clusters:
       - name: mgmt
