@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     chart: gloo-platform-crds
-    repoURL: storage.googleapis.com/gloo-platform
+    repoURL: https://storage.googleapis.com/gloo-platform
     targetRevision: 2.3.22
   syncPolicy:
     automated:

@@ -74,7 +74,7 @@ spec:
                   name: null
                   namespace: null
                   
-    repoURL: storage.googleapis.com/gloo-platform
+    repoURL: https://storage.googleapis.com/gloo-platform
     targetRevision: 2.3.22
   syncPolicy:
     automated:
@@ -144,7 +144,7 @@ spec:
                       type: DirectoryOrCreate
                   name: cilium-run
                   
-    repoURL: storage.googleapis.com/gloo-platform
+    repoURL: https://storage.googleapis.com/gloo-platform
     targetRevision: 2.3.22
   syncPolicy:
     automated:

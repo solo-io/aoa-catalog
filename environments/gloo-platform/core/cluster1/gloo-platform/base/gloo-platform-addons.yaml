@@ -28,7 +28,7 @@ spec:
             rateLimiter:
                 image:
                     registry: gcr.io/gloo-mesh
-    repoURL: storage.googleapis.com/gloo-platform
+    repoURL: https://storage.googleapis.com/gloo-platform
     targetRevision: 2.3.22
   syncPolicy:
     automated:
