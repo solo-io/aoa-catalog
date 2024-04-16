@@ -23,7 +23,7 @@ git checkout environments/gloo-platform/core/README.md
 
 - Commit changes and push new branch
 
-- Now grab Kubeconfig for the test bed clusters from step 1 GHA workflow & run below cmds to setup (mgmt, cluster1, cluster2)
+- Now grab Kubeconfig for the test bed clusters from step 1 GHA workflow & run below cmds serially to setup (mgmt, cluster1, cluster2)
 ```
 export KUBECONFIG=~/Downloads/kubeconfig.XYZ
 
@@ -46,3 +46,4 @@ kubectl config use-context cluster2
 ```
 kubectl --context mgmt-cluster port-forward --namespace gloo-mesh svc/gloo-mesh-ui 8090:8090
 ```
+> IMP: make sure you tear down the demo env using this [job](https://github.com/solo-io/gloo-eng-test-beds/actions/workflows/cleanup-eng-env.yaml) after done testing UI.
