@@ -87,8 +87,8 @@ spec:
             enabled: true
             image:
               pullPolicy: IfNotPresent
-              repository: DOCKER_REPO/gloo-otel-collector
-              tag: TARGET_REVISION
+              repository: gcr.io/gloo-mesh/gloo-otel-collector
+              tag: 2.3.22
         telemetryGatewayCustomization:
             disableCertGeneration: true
         telemetryCollector:
@@ -104,8 +104,8 @@ spec:
             #    proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
             image:
               pullPolicy: IfNotPresent
-              repository: DOCKER_REPO/gloo-otel-collector
-              tag: TARGET_REVISION
+              repository: gcr.io/gloo-mesh/gloo-otel-collector
+              tag: 2.3.22
             config:
                 exporters:
                     otlp:
@@ -126,8 +126,8 @@ spec:
                       type: DirectoryOrCreate
                   name: cilium-run
         
-    repoURL: HELM_REPO
-    targetRevision: TARGET_REVISION
+    repoURL: storage.googleapis.com/gloo-platform
+    targetRevision: 2.3.22
   syncPolicy:
     automated:
       prune: true
