@@ -10,8 +10,8 @@ spec:
   project: default
   source:
     chart: gloo-platform-crds
-    repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.3.22
+    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
+    targetRevision: 2.3.22-2024-04-11-v2.3.x-3dbd09c9a9
   syncPolicy:
     automated:
       prune: true
