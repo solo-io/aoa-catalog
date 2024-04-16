@@ -126,7 +126,7 @@ spec:
                       type: DirectoryOrCreate
                   name: cilium-run
         
-    repoURL: REPO_URL
+    repoURL: HELM_REPO
     targetRevision: TARGET_REVISION
   syncPolicy:
     automated:

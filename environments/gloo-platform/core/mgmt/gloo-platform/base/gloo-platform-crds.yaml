@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     chart: gloo-platform-crds
-    repoURL: REPO_URL
+    repoURL: HELM_REPO
     targetRevision: TARGET_REVISION
   syncPolicy:
     automated:

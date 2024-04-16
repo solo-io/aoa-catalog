@@ -74,7 +74,7 @@ spec:
                   name: null
                   namespace: null
                   
-    repoURL: REPO_URL
+    repoURL: HELM_REPO
     targetRevision: TARGET_REVISION
   syncPolicy:
     automated:
@@ -144,7 +144,7 @@ spec:
                       type: DirectoryOrCreate
                   name: cilium-run
                   
-    repoURL: REPO_URL
+    repoURL: HELM_REPO
     targetRevision: TARGET_REVISION
   syncPolicy:
     automated:

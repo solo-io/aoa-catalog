@@ -9,13 +9,13 @@
 - Now checkout a new branch off of **gp-release-demo** for the release, e.g. gp-release-demo-v2.5.x
 - Run below cmds to update docker repo and tag version
 ```
-export TAGGED_VERSION=2.4.14-2024-04-11-v2.4.x-86a42ac5f4
+export TARGET_REVISION=2.4.14-2024-04-11-v2.4.x-86a42ac5f4
+export DOCKER_REPO=us-docker.pkg.dev/developers-369321/gloo-platform-dev
+export HELM_REPO=https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
 
-export REPO_URL=https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-export TARGET_REVISION=$TAGGED_VERSION
-
-grep -rl REPO_URL ./environments | xargs sed -i '' "s|REPO_URL|$REPO_URL|g"
-grep -rl TARGET_REVISION ./environments | xargs sed -i '' "s/TARGET_REVISION/$TARGET_REVISION/g"
+grep -rl DOCKER_REPO ./environments/gloo-platform | xargs sed -i '' "s|DOCKER_REPO|$DOCKER_REPO|g"
+grep -rl HELM_REPO ./environments/gloo-platform | xargs sed -i '' "s|HELM_REPO|$HELM_REPO|g"
+grep -rl TARGET_REVISION ./environments/gloo-platform | xargs sed -i '' "s/TARGET_REVISION/$TARGET_REVISION/g"
 
 git checkout environments/gloo-platform/core/README.md
 ```
