@@ -7,9 +7,10 @@ metadata:
     argocd.argoproj.io/sync-wave: "-8"
 spec:
   installations:
-      # The revision for this installation, such as 1-20
+    # The revision for this installation, such as 1-20
+    - revision: 1-20
       # List all workload clusters to install Istio into
-    - clusters:
+      clusters:
       - name: mgmt
         # If set to true, the spec for this revision is applied in the cluster
         defaultRevision: true
