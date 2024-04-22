@@ -1,5 +1,9 @@
 # Changelog
 
+0.2.14 (4-22-24)
+---
+- update gloo-edge environments to 1.16.6
+
 0.2.13 (4-5-24)
 ---
 - config fixes for NLB settings in gloo-edge environments
