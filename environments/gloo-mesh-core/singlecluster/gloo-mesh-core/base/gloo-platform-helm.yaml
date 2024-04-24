@@ -69,6 +69,15 @@ spec:
         glooUi:
             enabled: true
             serviceType: ClusterIP
+            auth:
+              enabled: true
+              backend: oidc
+              requestTimeout: 10
+              oidc:
+                appUrl: gloo-mesh-core-test.solo.io
+                clientId: 967359009029-7g5h6r2fbhioq6cqu5s2nr01tt4o5vdb.apps.googleusercontent.com
+                clientSecretName: dashboard
+                issuerUrl: https://accounts.google.com
         prometheus:
             enabled: true
         redis:
@@ -104,7 +113,7 @@ spec:
                   name: cilium-run
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.6.0-gw
+    targetRevision: 2.6.0-beta2-2024-03-16-main-57d309367e
   syncPolicy:
     automated:
       prune: true
