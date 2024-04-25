@@ -68,13 +68,13 @@ spec:
             enabled: true
         glooUi:
             enabled: true
-            serviceType: ClusterIP
+            serviceType: LoadBalancer
             auth:
               enabled: true
               backend: oidc
               requestTimeout: 10
               oidc:
-                appUrl: gloo-mesh-core-test.solo.io
+                appUrl: gloo-mesh-core-demo.solo.io
                 clientId: 967359009029-7g5h6r2fbhioq6cqu5s2nr01tt4o5vdb.apps.googleusercontent.com
                 clientSecretName: dashboard
                 issuerUrl: https://accounts.google.com
