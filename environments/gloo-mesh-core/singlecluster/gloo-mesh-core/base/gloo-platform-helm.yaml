@@ -74,10 +74,10 @@ spec:
               backend: oidc
               requestTimeout: 10
               oidc:
-                appUrl: gloo-mesh-core-demo.solo.io
-                clientId: 967359009029-7g5h6r2fbhioq6cqu5s2nr01tt4o5vdb.apps.googleusercontent.com
+                appUrl: https://gloo-mesh-core-demo.solo.io/
+                clientId: 0oaglzosdao0hLVnQ5d7
                 clientSecretName: dashboard
-                issuerUrl: https://accounts.google.com
+                issuerUrl: https://dev-75529634.okta.com
         prometheus:
             enabled: true
         redis:
