@@ -69,16 +69,6 @@ spec:
         glooUi:
             enabled: true
             serviceType: LoadBalancer
-            auth:
-              enabled: true
-              backend: oidc
-              requestTimeout: 10
-              oidc:
-                appUrl: https://gloo-mesh-core-demo.solo.io/
-                clientId: 0oaglzosdao0hLVnQ5d7
-                clientSecretName: dashboard
-                issuerUrl: https://dev-75529634.okta.com
-                logoutPath: /logout
         prometheus:
             enabled: true
         redis:
