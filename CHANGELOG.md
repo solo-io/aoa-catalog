@@ -1,5 +1,9 @@
 # Changelog
 
+0.2.15 (5-1-24)
+---
+- update istio/ambient-demo to 1.22.0-beta.0
+
 0.2.14 (4-22-24)
 ---
 - update gloo-edge environments to 1.16.6
