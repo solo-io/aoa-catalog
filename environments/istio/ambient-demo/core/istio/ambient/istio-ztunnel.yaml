@@ -15,7 +15,7 @@ spec:
   source:
     chart: ztunnel
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.22.0-beta.0
+    targetRevision: 1.21.0
   syncPolicy:
     automated:
       prune: true
