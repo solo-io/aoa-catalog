@@ -14,4 +14,49 @@ spec:
   services:
   - labels:
       app: productpage
-    namespace: bookinfo-frontends
+    namespace: bookinfo-frontends 
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  labels:
+    failover: "true"
+  name: reviews-westeast
+  namespace: bookinfo-team-config
+spec:
+  hosts:
+  - reviews.global
+  ports:
+  - number: 9080
+    protocol: HTTP
+  services:
+  - labels:
+      app: reviews
+    namespace: bookinfo-backends
+---    
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: reviews-routes
+  namespace: bookinfo-team-config 
+spec:
+  hosts:
+  # Applies to the internal hostname that destination-app listens on
+    - 'reviews.bookinfo-backends.svc.cluster.local'
+  # Applies to requests sent by this initiator app
+  workloadSelectors:
+  - selector:
+      labels:
+        app: productpage
+  http:
+    # Route for the destination-app service
+    - name: reviews-app
+      # Forwarding directive
+      forwardTo:
+        destinations:
+          # Reference to the virtual destination for the destination-app svcs
+          - ref:
+              name: reviews-westeast
+            kind: VIRTUAL_DESTINATION
+            port:
+              number: 9080    
