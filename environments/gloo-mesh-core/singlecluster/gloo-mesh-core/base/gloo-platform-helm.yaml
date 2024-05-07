@@ -103,7 +103,7 @@ spec:
                     type: DirectoryOrCreate
                   name: cilium-run
 
-    repoURL: https://storage.googleapis.com/gloo-platform/helm-chart
+    repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
     targetRevision: 2.5.6
   syncPolicy:
     automated:
