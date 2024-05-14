@@ -4,4 +4,7 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- waypoint-viewer.yaml
+- tier-1-app-a-viewer.yaml
+- tier-2-app-a-viewer.yaml
+- tier-2-app-b-viewer.yaml
+- tier-3-app-a-viewer.yaml
