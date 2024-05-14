@@ -1,5 +1,9 @@
 # Changelog
 
+0.3.0 (5-14-24)
+---
+- update istio/ambient-demo to 1.22.0
+
 0.2.15 (5-1-24)
 ---
 - update istio/ambient-demo to 1.22.0-beta.0
