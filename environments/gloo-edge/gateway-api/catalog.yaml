@@ -1,0 +1,37 @@
+
+waves:
+  - name: gloo-edge-app
+    location: $env_path/../shared-components/gloo-edge-app/ee/gateway-api
+    scripts:
+      pre_deploy: 
+      -  $env_path/../shared-components/gloo-edge-app/ee/gateway-api/init.sh
+      post_deploy:
+      -  $env_path/../shared-components/gloo-edge-app/test.sh  
+  - name: gateway-api-config
+    location: $env_path/gateway-api-config/glootest.com
+    scripts:
+      pre_deploy: 
+      -  $env_path/gateway-api-config/init.sh
+      post_deploy:
+      -  $env_path/gateway-api-config/test.sh
+  - name: httpbin-app
+    location: $env_path/httpbin-app/glootest.com
+    scripts:
+      pre_deploy: 
+      -  $env_path/httpbin-app/init.sh
+      post_deploy:
+      -  $env_path/httpbin-app/test.sh    
+  - name: ai-gateway
+    location: $env_path/ai-gateway/glootest.com
+    scripts:
+      pre_deploy: 
+      -  $env_path/ai-gateway/init.sh
+      post_deploy:
+      -  $env_path/ai-gateway/test.sh    
+  - name: homer-app
+    location: $env_path/homer-app/glootest.com
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer-app/init.sh
+      post_deploy:
+      -  $env_path/homer-app/test.sh 

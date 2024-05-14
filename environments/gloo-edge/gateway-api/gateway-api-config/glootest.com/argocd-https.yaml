@@ -1,0 +1,18 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: argocd-https
+  namespace: argocd
+  labels:
+    example: argocd-route
+    gateway: https
+spec:
+  hostnames:
+  - "argocd.glootest.com"
+  parentRefs:
+    - name: https
+      namespace: gloo-system
+  rules:
+    - backendRefs:
+        - name: argocd-server
+          port: 443
