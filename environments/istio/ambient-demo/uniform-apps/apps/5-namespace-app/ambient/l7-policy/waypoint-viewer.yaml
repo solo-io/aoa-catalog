@@ -15,7 +15,7 @@ spec:
         namespaces: ["ns-1"]
     to:
     - operation:
-        methods: ["GET"]
+        methods: ["DELETE"]
 ---
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
