@@ -7,7 +7,7 @@ spec:
  selector:
    matchLabels:
      app: tier-1-app-a
- action: ALLOW
+ action: DENY
  rules:
  - from:
    - source:
