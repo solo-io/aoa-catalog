@@ -12,7 +12,7 @@ spec:
   rules:
   - from:
     - source:
-        namespaces: ["ns-1", "istio-system"]
+        namespaces: ["ns-1"]
     to:
     - operation:
         methods: ["GET"]
