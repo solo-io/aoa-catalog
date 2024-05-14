@@ -15,4 +15,4 @@ spec:
         namespaces: ["ns-1", "istio-system"]
     to:
     - operation:
-        methods: ["GET"]
+        methods: ["DELETE"]
