@@ -1,0 +1,18 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: ns-1-viewer
+  namespace: ns-1
+spec:
+  targetRefs:
+  - kind: Gateway
+    group: gateway.networking.k8s.io
+    name: ns-1-waypoint
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["ns-1", "istio-system"]
+    to:
+    - operation:
+        methods: ["GET"]

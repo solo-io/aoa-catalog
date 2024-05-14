@@ -1,15 +1,16 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
- name: restless-sky-viewer
- namespace: ns-1
+ name: tier-2-app-a-viewer
+ namespace: istio-system
 spec:
  selector:
    matchLabels:
-     app: restless-sky
+     app: tier-2-app-a
  action: ALLOW
  rules:
  - from:
    - source:
        principals:
-       - cluster.local/ns/ns-1/sa/winter-wind
+       - cluster.local/ns/client/sa/sleep
+       - cluster.local/ns/ns-1/sa/tier-1-app-a
