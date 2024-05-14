@@ -15,3 +15,4 @@ spec:
        - cluster.local/ns/client/sa/sleep
        - cluster.local/ns/ns-1/sa/tier-2-app-a
        - cluster.local/ns/ns-1/sa/tier-2-app-b
+       - cluster.local/ns/ns-1/sa/ns-1-waypoint
