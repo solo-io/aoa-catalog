@@ -4,4 +4,4 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- ns-1-waypoint-viewer.yaml
+- waypoint-viewer.yaml

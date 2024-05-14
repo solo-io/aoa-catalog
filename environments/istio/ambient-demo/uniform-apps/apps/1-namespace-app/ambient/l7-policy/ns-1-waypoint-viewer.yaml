@@ -7,7 +7,7 @@ spec:
   targetRefs:
   - kind: Gateway
     group: gateway.networking.k8s.io
-    name: ns-1-waypoint
+    name: waypoint
   action: ALLOW
   rules:
   - from:
