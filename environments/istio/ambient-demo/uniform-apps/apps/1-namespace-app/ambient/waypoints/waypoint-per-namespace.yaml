@@ -4,12 +4,14 @@ kind: Gateway
 metadata:
   name: ns-1-waypoint
   namespace: ns-1
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 
 
 
