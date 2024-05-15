@@ -1,6 +1,3 @@
-Sure, here is the complete YAML manifest for namespaces from `ns-1` to `ns-50` following the specified pattern:
-
-```yaml
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
@@ -345,9 +342,7 @@ metadata:
   namespace: ns-25
   labels:
     istio.io/waypoint-for: service
-spec
-
-:
+spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
@@ -703,4 +698,3 @@ spec:
   - name: mesh
     port: 15008
     protocol: HBONE
-```
