@@ -1,5 +1,3 @@
-
----
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
@@ -11,6 +9,141 @@ spec:
   gateways:
   - istio-system/http-gateway
   http:
+  - name: "ns-20"
+    match:
+    - uri:
+        exact: "/ns-20"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-20.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-19"
+    match:
+    - uri:
+        exact: "/ns-19"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-19.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-18"
+    match:
+    - uri:
+        exact: "/ns-18"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-18.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-17"
+    match:
+    - uri:
+        exact: "/ns-17"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-17.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-16"
+    match:
+    - uri:
+        exact: "/ns-16"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-16.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-15"
+    match:
+    - uri:
+        exact: "/ns-15"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-15.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-14"
+    match:
+    - uri:
+        exact: "/ns-14"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-14.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-13"
+    match:
+    - uri:
+        exact: "/ns-13"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-13.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-12"
+    match:
+    - uri:
+        exact: "/ns-12"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-12.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-11"
+    match:
+    - uri:
+        exact: "/ns-11"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-11.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-10"
+    match:
+    - uri:
+        exact: "/ns-10"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-10.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-9"
+    match:
+    - uri:
+        exact: "/ns-9"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-9.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-8"
+    match:
+    - uri:
+        exact: "/ns-8"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-8.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-7"
+    match:
+    - uri:
+        exact: "/ns-7"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-7.svc.cluster.local
+        port:
+          number: 8080
+  - name: "ns-6"
+    match:
+    - uri:
+        exact: "/ns-6"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-6.svc.cluster.local
+        port:
+          number: 8080
   - name: "ns-5"
     match:
     - uri:
@@ -56,4 +189,3 @@ spec:
         host: tier-1-app-a.ns-1.svc.cluster.local
         port:
           number: 8080
----
