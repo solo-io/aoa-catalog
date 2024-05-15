@@ -1,3 +1,9 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: vegeta
+  namespace: ns-12
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,6 +21,7 @@ spec:
       labels:
         app: vegeta
     spec:
+      serviceAccountName: vegeta
       containers:
       - name: vegeta
         image: ably77/vegeta:0.1
@@ -30,7 +37,7 @@ spec:
             memory: 50Mi
         env:
         - name: APP_URL
-          value: "http://tier-1-app-a.ns-12:8080"
+          value: "http://tier-1-app-a.ns-12.svc.cluster.local:8080"
         - name: REQUESTS_PER_SECOND
           value: "1"
         - name: DURATION
