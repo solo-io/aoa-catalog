@@ -5,3 +5,4 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - homer-portal-ns.yaml
+- homer-vs.yaml
