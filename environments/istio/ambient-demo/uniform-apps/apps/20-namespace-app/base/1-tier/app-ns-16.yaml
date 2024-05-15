@@ -49,11 +49,7 @@ spec:
     metadata:
       labels:
         app: tier-1-app-a
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+
     spec:
       serviceAccountName: tier-1-app-a
       containers:
@@ -83,16 +79,12 @@ spec:
         - name: "TIMING_99_PERCENTILE"
           value: "0ms"
         - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
-          value: "1s"
-        - name: "HTTP_SERVER_KEEP_ALIVES"
-          value: "true"
-        - name: "HTTP_CLIENT_KEEP_ALIVES"
-          value: "true"
+          value: "30s"
         # guaranteed qos  
         resources:
           requests:
-            cpu: "50m"
-            memory: "50Mi"
+            cpu: "1500m"
+            memory: "100Mi"
           limits:
-            cpu: "50m"
-            memory: "50Mi"
+            cpu: "1500m"
+            memory: "100Mi"
