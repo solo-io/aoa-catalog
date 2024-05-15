@@ -35,7 +35,8 @@ spec:
       selfHeal: true
     #automated: {}
   ignoreDifferences:
-  - group: '*'
-    kind: '*'
-    managedFieldsManagers:
-    - argocd-application-controller
+    - group: admissionregistration.k8s.io
+      kind: ValidatingWebhookConfiguration
+      name: istiod-default-validator
+      jsonPointers:
+        - /webhooks/0/failurePolicy
