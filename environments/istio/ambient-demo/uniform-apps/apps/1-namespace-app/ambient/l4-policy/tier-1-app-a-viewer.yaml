@@ -12,6 +12,7 @@ spec:
  - from:
    - source:
        principals:
+       - cluster.local/ns/istio-system/sa/istio-ingressgateway
        - cluster.local/ns/client/sa/sleep
-       - "cluster.local/ns/ns-1/sa/vegeta"
-       - "cluster.local/ns/ns-1/sa/waypoint"
+       - cluster.local/ns/ns-1/sa/vegeta
+       - cluster.local/ns/ns-1/sa/waypoint
