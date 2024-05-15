@@ -13,6 +13,6 @@ spec:
    - source:
        principals:
        - cluster.local/ns/client/sa/sleep
-       - cluster.local/ns/ns-1/sa/tier-2-app-a
-       - cluster.local/ns/ns-1/sa/tier-2-app-b
-       - cluster.local/ns/ns-1/sa/waypoint
+       - cluster.local/ns/*/sa/tier-2-app-a
+       - cluster.local/ns/*/sa/tier-2-app-b
+       - cluster.local/ns/*/sa/waypoint
