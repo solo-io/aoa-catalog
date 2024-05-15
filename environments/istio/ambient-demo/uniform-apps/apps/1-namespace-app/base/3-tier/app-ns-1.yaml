@@ -49,11 +49,7 @@ spec:
     metadata:
       labels:
         app: tier-1-app-a
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+
     spec:
       serviceAccountName: tier-1-app-a
       containers:
@@ -83,19 +79,19 @@ spec:
         - name: "TIMING_99_PERCENTILE"
           value: "0ms"
         - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
-          value: "1s"
+          value: "30s"
         - name: "HTTP_SERVER_KEEP_ALIVES"
           value: "true"
         - name: "HTTP_CLIENT_KEEP_ALIVES"
           value: "true"
         # guaranteed qos  
-        #resources:
-        #  requests:
-        #    cpu: "50m"
-        #    memory: "50Mi"
-        #  limits:
-        #    cpu: "50m"
-        #    memory: "50Mi"
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "50Mi"
+          limits:
+            cpu: "50m"
+            memory: "50Mi"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -142,11 +138,7 @@ spec:
     metadata:
       labels:
         app: tier-2-app-a
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+
     spec:
       serviceAccountName: tier-2-app-a
       containers:
@@ -166,7 +158,7 @@ spec:
         - name: "MESSAGE"
           value: "Hello From tier-2-app-a !"
         - name: "UPSTREAM_URIS"
-          value: "http://tier-3-app-a.ns-1.svc.cluster.local:8080"
+          value: "http://tier-3-app-a.ns-1.svc.cluster.local.:8080"
         - name: "UPSTREAM_WORKERS"
           value: "1"
         - name: "TIMING_50_PERCENTILE"
@@ -176,19 +168,19 @@ spec:
         - name: "TIMING_99_PERCENTILE"
           value: "0ms"
         - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
-          value: "1s"
+          value: "30s"
         - name: "HTTP_SERVER_KEEP_ALIVES"
           value: "true"
         - name: "HTTP_CLIENT_KEEP_ALIVES"
           value: "true"
         # guaranteed qos  
-        #resources:
-        #  requests:
-        #    cpu: "50m"
-        #    memory: "50Mi"
-        #  limits:
-        #    cpu: "50m"
-        #    memory: "50Mi"
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "50Mi"
+          limits:
+            cpu: "50m"
+            memory: "50Mi"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -235,11 +227,7 @@ spec:
     metadata:
       labels:
         app: tier-2-app-b
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+
     spec:
       serviceAccountName: tier-2-app-b
       containers:
@@ -259,7 +247,7 @@ spec:
         - name: "MESSAGE"
           value: "Hello From tier-2-app-b !"
         - name: "UPSTREAM_URIS"
-          value: "http://tier-3-app-a.ns-1.svc.cluster.local:8080"
+          value: "http://tier-3-app-a.ns-1.svc.cluster.local.:8080"
         - name: "UPSTREAM_WORKERS"
           value: "1"
         - name: "TIMING_50_PERCENTILE"
@@ -269,19 +257,19 @@ spec:
         - name: "TIMING_99_PERCENTILE"
           value: "0ms"
         - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
-          value: "1s"
+          value: "30s"
         - name: "HTTP_SERVER_KEEP_ALIVES"
           value: "true"
         - name: "HTTP_CLIENT_KEEP_ALIVES"
           value: "true"
         # guaranteed qos  
-        #resources:
-        #  requests:
-        #    cpu: "50m"
-        #    memory: "50Mi"
-        #  limits:
-        #    cpu: "50m"
-        #    memory: "50Mi"
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "50Mi"
+          limits:
+            cpu: "50m"
+            memory: "50Mi"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -328,11 +316,7 @@ spec:
     metadata:
       labels:
         app: tier-3-app-a
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+
     spec:
       serviceAccountName: tier-3-app-a
       containers:
@@ -362,19 +346,19 @@ spec:
         - name: "TIMING_99_PERCENTILE"
           value: "0ms"
         - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
-          value: "1s"
+          value: "30s"
         - name: "HTTP_SERVER_KEEP_ALIVES"
           value: "true"
         - name: "HTTP_CLIENT_KEEP_ALIVES"
           value: "true"
         # guaranteed qos  
-        #resources:
-        #  requests:
-        #    cpu: "50m"
-        #    memory: "50Mi"
-        #  limits:
-        #    cpu: "50m"
-        #    memory: "50Mi"
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "50Mi"
+          limits:
+            cpu: "50m"
+            memory: "50Mi"
 
 
 
