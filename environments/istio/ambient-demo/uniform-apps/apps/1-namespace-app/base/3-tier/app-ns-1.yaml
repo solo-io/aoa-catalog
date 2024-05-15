@@ -89,13 +89,13 @@ spec:
         - name: "HTTP_CLIENT_KEEP_ALIVES"
           value: "true"
         # guaranteed qos  
-        resources:
-          requests:
-            cpu: "50m"
-            memory: "50Mi"
-          limits:
-            cpu: "50m"
-            memory: "50Mi"
+        #resources:
+        #  requests:
+        #    cpu: "50m"
+        #    memory: "50Mi"
+        #  limits:
+        #    cpu: "50m"
+        #    memory: "50Mi"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -182,13 +182,13 @@ spec:
         - name: "HTTP_CLIENT_KEEP_ALIVES"
           value: "true"
         # guaranteed qos  
-        resources:
-          requests:
-            cpu: "50m"
-            memory: "50Mi"
-          limits:
-            cpu: "50m"
-            memory: "50Mi"
+        #resources:
+        #  requests:
+        #    cpu: "50m"
+        #    memory: "50Mi"
+        #  limits:
+        #    cpu: "50m"
+        #    memory: "50Mi"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -275,13 +275,13 @@ spec:
         - name: "HTTP_CLIENT_KEEP_ALIVES"
           value: "true"
         # guaranteed qos  
-        resources:
-          requests:
-            cpu: "50m"
-            memory: "50Mi"
-          limits:
-            cpu: "50m"
-            memory: "50Mi"
+        #resources:
+        #  requests:
+        #    cpu: "50m"
+        #    memory: "50Mi"
+        #  limits:
+        #    cpu: "50m"
+        #    memory: "50Mi"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -368,13 +368,13 @@ spec:
         - name: "HTTP_CLIENT_KEEP_ALIVES"
           value: "true"
         # guaranteed qos  
-        resources:
-          requests:
-            cpu: "50m"
-            memory: "50Mi"
-          limits:
-            cpu: "50m"
-            memory: "50Mi"
+        #resources:
+        #  requests:
+        #    cpu: "50m"
+        #    memory: "50Mi"
+        #  limits:
+        #    cpu: "50m"
+        #    memory: "50Mi"
 
 
 
