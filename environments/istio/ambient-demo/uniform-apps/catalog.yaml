@@ -15,7 +15,7 @@ waves:
       post_deploy:
       -  $env_path/../core/istio/test.sh
   - name: apps
-    location: $env_path/apps/1-namespace-app/ambient
+    location: $env_path/apps/5-namespace-app/ambient
     scripts:
       pre_deploy: 
       -  $env_path/apps/init.sh
