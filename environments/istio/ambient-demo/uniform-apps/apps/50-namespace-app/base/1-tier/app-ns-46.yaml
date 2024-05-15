@@ -83,7 +83,11 @@ spec:
         - name: "TIMING_99_PERCENTILE"
           value: "0ms"
         - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
-          value: "30s"
+          value: "1s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
         # guaranteed qos  
         resources:
           requests:
