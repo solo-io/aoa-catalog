@@ -4,237 +4,277 @@ kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-1
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-2
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-3
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-4
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-5
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-6
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-7
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-8
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-9
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-10
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-11
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-12
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-13
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-14
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-15
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-16
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-17
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-18
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-19
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: waypoint
   namespace: ns-20
+  labels:
+    istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
   listeners:
   - name: mesh
     port: 15008
-    protocol: ALL
+    protocol: HBONE
