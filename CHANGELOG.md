@@ -1,5 +1,11 @@
 # Changelog
 
+0.3.1 (5-15-24)
+---
+- add gloo-edge/gateway-api environment
+- update istio/basic-demo to use upstream 1.22.0
+- enable l4-policy and l7-policy for istio/ambient-demo/uniform-apps environment
+
 0.3.0 (5-14-24)
 ---
 - update istio/ambient-demo to 1.22.0

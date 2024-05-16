@@ -10,8 +10,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -32,8 +32,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -54,8 +54,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -76,8 +76,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -98,8 +98,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -120,8 +120,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -142,8 +142,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -164,8 +164,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -186,8 +186,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -208,8 +208,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -230,8 +230,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -252,8 +252,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -274,8 +274,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -296,8 +296,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -318,8 +318,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -340,8 +340,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -362,8 +362,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -384,8 +384,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -406,8 +406,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -428,8 +428,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -450,8 +450,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -472,8 +472,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -494,8 +494,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -516,8 +516,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -538,8 +538,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -560,8 +560,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -582,8 +582,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -604,8 +604,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -626,8 +626,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -648,8 +648,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -670,8 +670,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -692,8 +692,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -714,8 +714,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -736,8 +736,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -758,8 +758,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -780,8 +780,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -802,8 +802,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -824,8 +824,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -846,8 +846,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -868,8 +868,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -890,8 +890,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -912,8 +912,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -934,8 +934,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -956,8 +956,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -978,8 +978,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -1000,8 +1000,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -1022,8 +1022,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -1044,8 +1044,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -1066,8 +1066,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
@@ -1088,8 +1088,8 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: waypoint-istio-waypoint
-  minReplicas: 2
+    name: waypoint
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource

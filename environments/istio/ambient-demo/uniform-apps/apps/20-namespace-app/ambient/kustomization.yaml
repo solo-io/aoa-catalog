@@ -5,6 +5,9 @@ kind: Kustomization
 resources:
 - ../base
 - waypoints
+- l4-policy
+- l7-policy
+- virtualservice.yaml
 
 # when using ambient uncomment below
 transformers:

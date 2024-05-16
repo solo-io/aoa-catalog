@@ -24,3 +24,8 @@ spec:
       prune: true
       selfHeal: true
     #automated: {}
+  ignoreDifferences:     
+  - group: admissionregistration.k8s.io                                                              
+    kind: ValidatingWebhookConfiguration
+    jsonPointers:                                                                                    
+    - /webhooks/0/failurePolicy

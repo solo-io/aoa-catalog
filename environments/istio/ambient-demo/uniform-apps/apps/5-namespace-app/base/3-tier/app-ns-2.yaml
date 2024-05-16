@@ -49,11 +49,7 @@ spec:
     metadata:
       labels:
         app: tier-1-app-a
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+
     spec:
       serviceAccountName: tier-1-app-a
       containers:
@@ -75,7 +71,7 @@ spec:
         - name: "UPSTREAM_URIS"
           value: "http://tier-2-app-a.ns-2:8080,http://tier-2-app-b.ns-2:8080"
         - name: "UPSTREAM_WORKERS"
-          value: "10"
+          value: "1"
         - name: "TIMING_50_PERCENTILE"
           value: "0ms"
         - name: "TIMING_90_PERCENTILE"
@@ -142,11 +138,7 @@ spec:
     metadata:
       labels:
         app: tier-2-app-a
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+
     spec:
       serviceAccountName: tier-2-app-a
       containers:
@@ -168,7 +160,7 @@ spec:
         - name: "UPSTREAM_URIS"
           value: "http://tier-3-app-a.ns-2:8080"
         - name: "UPSTREAM_WORKERS"
-          value: "10"
+          value: "1"
         - name: "TIMING_50_PERCENTILE"
           value: "0ms"
         - name: "TIMING_90_PERCENTILE"
@@ -235,11 +227,7 @@ spec:
     metadata:
       labels:
         app: tier-2-app-b
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+
     spec:
       serviceAccountName: tier-2-app-b
       containers:
@@ -261,7 +249,7 @@ spec:
         - name: "UPSTREAM_URIS"
           value: "http://tier-3-app-a.ns-2:8080"
         - name: "UPSTREAM_WORKERS"
-          value: "10"
+          value: "1"
         - name: "TIMING_50_PERCENTILE"
           value: "0ms"
         - name: "TIMING_90_PERCENTILE"
@@ -328,11 +316,7 @@ spec:
     metadata:
       labels:
         app: tier-3-app-a
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+
     spec:
       serviceAccountName: tier-3-app-a
       containers:
@@ -354,7 +338,7 @@ spec:
         - name: "UPSTREAM_URIS"
           value: ""
         - name: "UPSTREAM_WORKERS"
-          value: "10"
+          value: "1"
         - name: "TIMING_50_PERCENTILE"
           value: "0ms"
         - name: "TIMING_90_PERCENTILE"

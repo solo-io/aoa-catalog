@@ -49,11 +49,7 @@ spec:
     metadata:
       labels:
         app: tier-1-app-a
-      annotations:
-        sidecar.istio.io/proxyMemoryLimit: "1Gi"
-        sidecar.istio.io/proxyCPULimit: "2"
-        sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.istio.io/proxyCPU: "100m"
+
     spec:
       serviceAccountName: tier-1-app-a
       containers:
@@ -75,7 +71,7 @@ spec:
         - name: "UPSTREAM_URIS"
           value: ""
         - name: "UPSTREAM_WORKERS"
-          value: "10"
+          value: "1"
         - name: "TIMING_50_PERCENTILE"
           value: "0ms"
         - name: "TIMING_90_PERCENTILE"
@@ -87,8 +83,8 @@ spec:
         # guaranteed qos  
         resources:
           requests:
-            cpu: "50m"
-            memory: "50Mi"
+            cpu: "1500m"
+            memory: "100Mi"
           limits:
-            cpu: "50m"
-            memory: "50Mi"
+            cpu: "1500m"
+            memory: "100Mi"

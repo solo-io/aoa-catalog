@@ -1,0 +1,10 @@
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: gemini
+  namespace: ai-gateway
+spec:
+    static:
+      hosts:
+      - addr: generativelanguage.googleapis.com
+        port: 443

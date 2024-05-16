@@ -29,9 +29,9 @@ waves:
       post_deploy:
       -  $env_path/httpbin/test.sh    
   - name: homer
-    location: $env_path/homer/base
+    location: $env_path/homer/lb-discovery
     scripts:
       pre_deploy: 
-      -  $env_path/homer/init.sh
+      -  $env_path/homer/lb-discovery/init.sh
       post_deploy:
-      -  $env_path/homer/test.sh 
+      -  $env_path/homer/lb-discovery/test.sh 
