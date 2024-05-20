@@ -35,6 +35,10 @@ spec:
           # Enable span tracing only if using.
           enableTracing: true
           defaultConfig:
+            tracing:
+              sampling: 100
+              zipkin:
+                address: gloo-telemetry-collector.gloo-mesh.svc.cluster.local:9411
             # Wait for the istio-proxy to start before starting application pods
             holdApplicationUntilProxyStarts: true
             proxyMetadata:
