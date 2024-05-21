@@ -83,14 +83,18 @@ spec:
         plugins:
           solo-io/glooplatform:
             routeTableSelector:
+              # Selects tables based on labels
               labels:
-                app: helloworld
+                routetable: helloworld
               namespace: helloworld
-              # name: helloworld-rt-443
+              # Selects tables based on name
+              # name: helloworld-delegate
               # namespace: helloworld
             routeSelector:
+              # Selects routes based on labels
               labels:
                 route: helloworld
+              # Selects routes based on name
               # name: helloworld
       steps:
       - setWeight: 10

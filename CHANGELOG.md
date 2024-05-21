@@ -1,5 +1,9 @@
 # Changelog
 
+0.3.3 (5-21-24)
+---
+- update helloworld-rollout example in gloo-gateway/progressive-delivery-argo-rollouts to use parent/child delegate route tables
+
 0.3.2 (5-21-24)
 ---
 - update ArgoCD to 2.10.10

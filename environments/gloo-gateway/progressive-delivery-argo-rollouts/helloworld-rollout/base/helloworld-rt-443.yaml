@@ -1,10 +1,8 @@
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
-  name: helloworld-rt-443
+  name: helloworld-root
   namespace: helloworld
-  labels:
-    app: helloworld
 spec:
   hosts:
     - '*'
@@ -12,6 +10,27 @@ spec:
     - name: mgmt-north-south-gw-443
       namespace: istio-gateways
       cluster: mgmt
+  workloadSelectors: []
+  http:
+  - name: helloworld-delegate
+    delegate:
+      routeTables:
+        # Selects tables based on name
+        - name: helloworld-delegate
+          namespace: helloworld
+        # Selects tables based on labels
+        #- labels:
+        #    routetable: helloworld
+      sortMethod: ROUTE_SPECIFICITY
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: helloworld-delegate
+  namespace: helloworld
+  labels:
+    routetable: helloworld
+spec:
   http:
     - name: helloworld
       matchers:
