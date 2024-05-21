@@ -1,5 +1,9 @@
 # Changelog
 
+0.3.2 (5-21-24)
+---
+- update ArgoCD to 2.10.10
+
 0.3.1 (5-15-24)
 ---
 - add gloo-edge/gateway-api environment
