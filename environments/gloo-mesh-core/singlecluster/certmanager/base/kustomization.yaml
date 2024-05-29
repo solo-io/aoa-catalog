@@ -5,4 +5,5 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - cert-manager.yaml
+- cert-manager-ns.yaml
 
