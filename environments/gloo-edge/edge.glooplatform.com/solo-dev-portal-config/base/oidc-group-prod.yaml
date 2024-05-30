@@ -1,0 +1,33 @@
+apiVersion: portal.gloo.solo.io/v1beta1
+kind: Group
+metadata:
+  name: oidc-prod
+  namespace: gloo-portal
+spec:
+  displayName: trusted prod users
+  accessLevel:
+    apis:
+    - products:
+        names:
+        - petstore-api-dev  # identify APIProducts accessible to this group
+        - petstore-api-prod
+        - httpbin-api-dev-external
+        - httpbin-api-dev-internal
+        namespaces:
+        - petstore
+        - httpbin
+      environments:
+        names:
+        - dev-internal
+        - dev-external  # identify Environments in which this APIProduct is accessible to this portal
+        - prod
+        namespaces:
+        - petstore
+      usagePlans:
+      - basic
+      - trusted
+    portals:
+    - name: ecommerce-portal
+      namespace: petstore
+  oidcGroup:
+    groupName: throwaway-admin # this represents the group name in the IdP

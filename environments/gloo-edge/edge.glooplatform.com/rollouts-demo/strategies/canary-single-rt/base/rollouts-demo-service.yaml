@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rollouts-demo-active
+  namespace: rollouts-demo
+  labels:
+    app: rollouts-demo
+    service: rollouts-demo
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: rollouts-demo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rollouts-demo-preview
+  namespace: rollouts-demo
+  labels:
+    app: rollouts-demo
+    service: rollouts-demo
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: rollouts-demo
+---

@@ -1,0 +1,9 @@
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  name: rollouts-demo
+  namespace: gloo-system
+spec:
+  virtualHost:
+    domains:
+    - 'rollouts-demo.edge.glooplatform.com'

@@ -1,0 +1,21 @@
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  name: rollouts-ui-vs
+  namespace: gloo-system
+spec:
+  sslConfig:
+    secretRef:
+      name: cf-advanced-tls-secret
+      namespace: gloo-system
+  virtualHost:
+    domains:
+    - 'rollouts-ui.edge.glooplatform.com'
+    routes:
+    - matchers:
+      - prefix: /
+      routeAction:
+        single:
+          upstream:
+            name: rollouts-demo-argo-rollouts-dashboard-3100
+            namespace: gloo-system
