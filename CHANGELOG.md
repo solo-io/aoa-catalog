@@ -49,7 +49,7 @@
 
 0.2.8 (3-27-24)
 ---
-- revert back to `1.22.0-solo-solo` Istio images and `1-22` revision tag due to [#49685](https://github.com/istio/istio/issues/49685)
+- revert back to `1.22.0-solo` Istio images and `1-22` revision tag due to [#49685](https://github.com/istio/istio/issues/49685)
 
 0.2.7 (3-21-24)
 ---
