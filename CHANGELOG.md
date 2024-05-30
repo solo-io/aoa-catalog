@@ -1,5 +1,9 @@
 # Changelog
 
+0.3.4 (5-30-24)
+---
+- update gloo-edge/gatweay-api to 1.17.0-beta3
+
 0.3.3 (5-21-24)
 ---
 - update helloworld-rollout example in gloo-gateway/progressive-delivery-argo-rollouts to use parent/child delegate route tables
