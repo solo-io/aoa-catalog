@@ -14,7 +14,7 @@ spec:
   project: default
   source:
     chart: istiod
-    repoURL: https://istio-release.storage.googleapis.com/charts
+    repoURL: us-docker.pkg.dev/gloo-mesh/istio-a9ee4fe9f69a
     targetRevision: 1.22.0
     helm:
       values: |

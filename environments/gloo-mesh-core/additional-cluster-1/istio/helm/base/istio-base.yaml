@@ -14,8 +14,8 @@ spec:
   project: default
   source:
     chart: base
-    repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.20.4
+    repoURL: us-docker.pkg.dev/gloo-mesh/istio-a9ee4fe9f69a
+    targetRevision: 1.22.0-solo
   syncPolicy:
     automated:
       prune: true

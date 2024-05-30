@@ -11,12 +11,12 @@ The `gloo-gateway/backstage-bookinfo-httpbin` environment deploys the core compo
 ## Environment descriptions
 - base:
     - gloo mesh 2.6.0-beta3-2024-05-29-main-98a6d8de18
-    - istio 1.20.4-solo (Helm)
-    - revision: 1-20
+    - istio 1.22.0-solo-solo (Helm)
+    - revision: 1-22
 - ilm:
     - gloo mesh 2.6.0-beta3-2024-05-29-main-98a6d8de18
-    - istio 1.20.4-solo (ILM)
-    - revision: 1-20
+    - istio 1.22.0-solo-solo (ILM)
+    - revision: 1-22
 
 ## Application description
 
@@ -41,7 +41,7 @@ To access applications, follow the methods below:
 
 Discover your gateway IP address
 ```
-ISTIO_REVISION=1-20
+ISTIO_REVISION=1-22
 GATEWAY_IP=$(kubectl -n istio-gateways get service istio-ingressgateway-${ISTIO_REVISION} -o jsonpath='{.status.loadBalancer.ingress[0].*}')
 
 echo ${GATEWAY_IP}
@@ -82,7 +82,7 @@ access gloo mesh ui at https://localhost:8090"
 
 To access Istio Ingress Gateway using port-forward command:
 ```
-ISTIO_REVISION=1-20
+ISTIO_REVISION=1-22
 kubectl port-forward -n istio-gateways svc/istio-ingressgateway-${ISTIO_REVISION} 8443:443 --context <cluster_name>
 ```
 access the ingress gateway at https://localhost:8443

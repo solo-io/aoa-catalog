@@ -49,7 +49,7 @@
 
 0.2.8 (3-27-24)
 ---
-- revert back to `1.20.4-solo` Istio images and `1-20` revision tag due to [#49685](https://github.com/istio/istio/issues/49685)
+- revert back to `1.22.0-solo-solo` Istio images and `1-22` revision tag due to [#49685](https://github.com/istio/istio/issues/49685)
 
 0.2.7 (3-21-24)
 ---
@@ -101,7 +101,7 @@
 0.2.0 (1-24-24)
 ---
 - update main to Gloo Platform 2.5.x
-- update to Istio 1.20.2-solo and 1-20 revision tag
+- update to Istio 1.20.2-solo and 1-22 revision tag
 - add `gloo-mesh-core/singlecluster` environment
 
 0.1.17 (1-11-24)
@@ -196,11 +196,11 @@ An example `catalog.yaml` below shows an example where the default localhost `ho
       -  $env_path/homer-app/lb-discovery/test.sh 
 ```
 
-0.1.4 (11-20-23)
+0.1.4 (11-22-23)
 ---
 - update homer test.sh LB discovery to work for AWS and GCP LBs (hostname or IP)
 
-0.1.3 (11-20-23)
+0.1.3 (11-22-23)
 ---
 aoa-tools:
 - refactor aoa-tools scripts
