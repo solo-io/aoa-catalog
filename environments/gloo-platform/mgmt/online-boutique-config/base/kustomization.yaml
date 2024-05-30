@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- accesspolicy.yaml
+- backend-apis-team-ns.yaml
+- backend-apis-team-workspace.yaml
+- backend-apis-team-workspacesettings.yaml
+- frontend-failoverpolicy.yaml
+#- backend-failoverpolicy.yaml
+- web-team-ns.yaml
+- outlierdetectionpolicy.yaml
+- vd.yaml
+- web-team-workspace.yaml
+- web-team-workspacesettings.yaml
+- web-ui-rt-443.yaml
+

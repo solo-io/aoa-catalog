@@ -1,0 +1,62 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: openai-client-routetable
+  namespace: ai-gateway-ws-config
+spec:
+  hosts:
+    - 'openai-client.central.glooplatform.com'
+  virtualGateways:
+    - name: north-south-gw
+      namespace: istio-gateways
+      cluster: mgmt
+  workloadSelectors: []
+  http:
+    - name: eli5-client
+      labels:
+        oauth: openai-client.central.glooplatform.com
+      matchers:
+      - uri:
+          prefix: /eli5
+      - uri:
+          prefix: /callback
+      forwardTo:
+        destinations:
+        - ref:
+            name: openai-eli5-client
+            namespace: ai-client
+            cluster: glooplatform-central
+          port:
+            number: 5000
+    - name: translator-client
+      labels:
+        oauth: openai-client.central.glooplatform.com
+      matchers:
+      - uri:
+          prefix: /translate
+      - uri:
+          prefix: /callback
+      forwardTo:
+        destinations:
+        - ref:
+            name: openai-language-translator-client
+            namespace: ai-client
+            cluster: glooplatform-central
+          port:
+            number: 5000
+    - name: openai-system-user-input-client
+      labels:
+        oauth: openai-client.central.glooplatform.com
+      matchers:
+      - uri:
+          prefix: /system-user
+      - uri:
+          prefix: /callback
+      forwardTo:
+        destinations:
+        - ref:
+            name: openai-system-user-input-client
+            namespace: ai-client
+            cluster: glooplatform-central
+          port:
+            number: 5000

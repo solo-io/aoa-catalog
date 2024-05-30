@@ -1,0 +1,29 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: openai-language-transformer-rt
+  namespace: ai-gateway-ws-config
+  labels:
+    llm-type: openai
+    prompt-template: "translator"
+spec:
+  http:
+    - name: language-translator
+      matchers:
+      - uri:
+          prefix: /openai
+        headers:
+        - name: x-template
+          value: translator
+        - name: x-language
+        - name: x-prompt
+      forwardTo:
+        pathRewrite: /v1/chat/completions
+        hostRewrite: api.openai.com
+        destinations:
+        - kind: EXTERNAL_SERVICE
+          port:
+            number: 443
+          ref:
+            name: openai-chatgpt
+            namespace: ai-gateway-ws-config

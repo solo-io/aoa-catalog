@@ -1,0 +1,13 @@
+apiVersion: builtin
+kind: AnnotationsTransformer
+metadata:
+  name: proxy-resources-annotations-transformer
+annotations:
+  sidecar.istio.io/proxyMemoryLimit: "1Gi"
+  sidecar.istio.io/proxyCPULimit: "1"
+  sidecar.istio.io/proxyMemory: "128Mi"
+  sidecar.istio.io/proxyCPU: "100m"
+fieldSpecs:
+- kind: Deployment
+  path: spec/template/metadata/annotations
+  create: true

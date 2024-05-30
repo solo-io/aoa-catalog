@@ -1,0 +1,27 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: openai-system-user-input-rt
+  namespace: ai-gateway-ws-config
+  labels:
+    llm-type: openai
+    prompt-template: "system-user-input"
+spec:
+  http:
+    - name: system-user-input
+      matchers:
+      - uri:
+          prefix: /openai
+        headers:
+        - name: x-system-prompt
+        - name: x-user-prompt
+      forwardTo:
+        pathRewrite: /v1/chat/completions
+        hostRewrite: api.openai.com
+        destinations:
+        - kind: EXTERNAL_SERVICE
+          port:
+            number: 443
+          ref:
+            name: openai-chatgpt
+            namespace: ai-gateway-ws-config

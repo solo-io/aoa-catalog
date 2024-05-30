@@ -1,0 +1,69 @@
+apiVersion: trafficcontrol.policy.gloo.solo.io/v2
+kind: TransformationPolicy
+metadata:
+  name: gemini-eli5-template-transformation
+  namespace: ai-gateway-ws-config
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        prompt-template: "gemini-eli5"
+  config:
+    request:
+      injaTemplate:
+        # if x-api-key header is present, append variable as a query param, else route to original path
+        headers:
+          :path:
+            text: '{% if header("x-api-key") != "" %}/gemini?key={{ api_key }}{% else %}{{ original_path }}{% endif %}'
+        # input prompt template
+        body:
+          text: |
+            {
+              "contents": [
+                {
+                  "role": "user",
+                  "parts": [
+                    {
+                      "text": "Explain the following topic like you are 5 years old in 50 words or less"
+                    }
+                  ]
+                },
+                {
+                  "role": "model",
+                  "parts": [
+                    {
+                      "text": "Sure what topic would you like me to explain?"
+                    }
+                  ]
+                },
+                {
+                  "role": "user",
+                  "parts": [
+                    {
+                      "text": "{{ prompt }}"
+                    }
+                  ]
+                }
+              ],
+              "generation_config": {
+                "temperature": {% if header("x-temp") != "" %}{{ temperature }}{% else %}0.7{% endif %},
+                "maxOutputTokens": 250
+              }
+            }
+        extractors:
+          # extracts x-prompt header var
+          prompt:
+            header: 'x-prompt'
+            regex: '.*'
+          # extracts x-api-key header var
+          api_key:
+            header: 'x-api-key'
+            regex: '.*'
+          # extracts pseudo-path header var
+          original_path:
+            header: ':path'
+            regex: '.*'
+          # extracts x-temp header var
+          temperature:
+            header: 'x-temp'
+            regex: '.*'

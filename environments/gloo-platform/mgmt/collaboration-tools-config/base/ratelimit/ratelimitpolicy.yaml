@@ -1,0 +1,23 @@
+apiVersion: trafficcontrol.policy.gloo.solo.io/v2
+kind: RateLimitPolicy
+metadata:
+  name: collaboration-tools-rlp
+  namespace: collaboration-tools
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        ratelimit: ghost
+  config:
+    ratelimitClientConfig:
+      cluster: mgmt
+      name: collaboration-tools-rlcc
+      namespace: collaboration-tools
+    ratelimitServerConfig:
+      cluster: mgmt
+      name: collaboration-tools-rlsc
+      namespace: collaboration-tools
+    serverSettings:
+      cluster: mgmt
+      name: collaboration-tools-rlss
+      namespace: collaboration-tools

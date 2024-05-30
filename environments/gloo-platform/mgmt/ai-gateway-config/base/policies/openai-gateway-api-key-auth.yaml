@@ -1,0 +1,25 @@
+apiVersion: security.policy.gloo.solo.io/v2
+kind: ExtAuthPolicy
+metadata:
+  name: openai-gateway-api-key-auth
+  namespace: ai-gateway-ws-config
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        security: openai
+  config:
+    server:
+      name: mgmt-ext-auth-server
+      namespace: gloo-mesh
+      cluster: mgmt
+    glooAuth:
+      configs:
+      - apiKeyAuth:
+          headerName: api-key
+          headersFromMetadataEntry:
+            x-api-key: 
+              name: openai-api-key
+          k8sSecretApikeyStorage:
+            labelSelector:
+              api-key: ai-gateway

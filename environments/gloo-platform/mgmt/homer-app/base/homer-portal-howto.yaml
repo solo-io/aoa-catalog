@@ -1,0 +1,121 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: homer-portal-howto
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: homer-portal
+  project: default
+  source:
+    chart: homer
+    repoURL: https://djjudas21.github.io/charts/
+    targetRevision: 8.1.9
+    helm:
+      values: |
+        #
+        # IMPORTANT NOTE
+        #
+        # This chart inherits from our common library chart. You can check the default values/options here:
+        # https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+        #
+
+        controller:
+          replicas: 1
+        
+        image:
+          # -- image repository
+          repository: ably77/homer
+          # -- image tag
+          tag: 0.1.0
+          # -- image pull policy
+          pullPolicy: Always
+        
+        # -- environment variables.
+        # @default -- See below
+        env:
+          # -- Set the container timezone
+          TZ: UTC
+          # -- Specify the user ID the application will run as
+          UID: "1001"
+          # -- Specify the group ID the application will run as
+          GID: "1001"
+          # -- Specify the basepath the application will run at
+          SUBFOLDER: /howto
+        
+        # -- Set the resource requests / limits for the main container.
+        resources:
+          requests:
+            cpu: 30m
+            memory: 128Mi
+        
+        # -- Set labels on the pod
+        #podLabels:
+        #  istio.io/rev: 1-22
+        
+        # -- Node selection constraint
+        nodeSelector:
+          gke-spot: "true"
+
+        # -- Specify taint tolerations  
+        tolerations:
+        - key: cloud.google.com/gke-spot
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+        
+        # -- Set annotations on the pod
+        podAnnotations:
+          proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        
+        # -- Configures serviceAccount settings for the chart.
+        serviceAccount:
+          # -- Specifies whether a service account should be created
+          create: true
+        
+        # -- Configures service settings for the chart.
+        # @default -- See values.yaml
+        service:
+          main:
+            enabled: true
+            primary: true
+            type: ClusterIP
+            ports:
+              http:
+                enabled: true
+                port: 8080
+                protocol: HTTP
+                targetPort: 8080
+            labels:
+              expose: "true"
+        
+        ingress:
+          # -- Enable and configure ingress settings for the chart under this key.
+          # @default -- See values.yaml
+          main:
+            enabled: false
+        
+        # -- Configure persistence settings for the chart under this key.
+        # @default -- See values.yaml
+        persistence:
+          config:
+            enabled: false
+            mountPath: /www/assets
+        
+        configmap:
+          config:
+            # -- Store homer configuration as a ConfigMap
+            enabled: true
+            # -- Homer configuration. See [image documentation](https://github.com/bastienwirtz/homer/blob/main/docs/configuration.md) for more information.
+            # @default -- See values.yaml
+            data:
+              config.yml: |
+                externalConfig: https://raw.githubusercontent.com/solo-io/aoa-catalog/glooplatform.com-2.4.x-active/environments/gloo-platform/mgmt/homer-app/base/configmap/howto.yaml
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

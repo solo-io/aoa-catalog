@@ -1,0 +1,42 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: login-routetable
+  namespace: homer-portal
+spec:
+  hosts:
+  - 'login.glooplatform.com'
+  http:
+  - name: okta-login
+    labels:
+      auth: login.glooplatform.com/okta
+    matchers:
+      - uri:
+          prefix: /okta
+    forwardTo:
+      destinations:
+      - port:
+          number: 8080
+        ref:
+          cluster: mgmt
+          name: homer-portal-solo
+          namespace: homer-portal
+  - name: gcp-login
+    labels:
+      auth: login.glooplatform.com/gcp
+    matchers:
+      - uri:
+          prefix: /gcp
+    forwardTo:
+      destinations:
+      - port:
+          number: 8080
+        ref:
+          cluster: mgmt
+          name: homer-portal-solo
+          namespace: homer-portal
+  virtualGateways:
+  - cluster: mgmt
+    name: mgmt-north-south-gw-443
+    namespace: istio-gateways
+  workloadSelectors: []

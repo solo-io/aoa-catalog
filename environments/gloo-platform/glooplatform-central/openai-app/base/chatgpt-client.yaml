@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: chatgpt-client
+  namespace: openai
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chatgpt-client
+  namespace: openai
+  labels:
+    app: chatgpt-client
+    service: chatgpt-client
+spec:
+  ports:
+  - port: 3000
+    name: http
+  selector:
+    app: chatgpt-client
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatgpt-client
+  namespace: openai
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatgpt-client
+  template:
+    metadata:
+      labels:
+        app: chatgpt-client
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    spec:
+      serviceAccountName: chatgpt-client
+      containers:
+      - name: chatgpt-client-ui
+        image: ghcr.io/mckaywrigley/chatbot-ui:main
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: chatgpt-client-apikey
+              key: api_key
+---

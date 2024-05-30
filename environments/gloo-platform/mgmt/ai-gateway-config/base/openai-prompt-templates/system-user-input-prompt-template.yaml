@@ -1,0 +1,55 @@
+apiVersion: trafficcontrol.policy.gloo.solo.io/v2
+kind: TransformationPolicy
+metadata:
+  name: openai-system-user-input-prompt-template
+  namespace: ai-gateway-ws-config
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        prompt-template: system-user-input
+  config:
+    request:
+      injaTemplate:
+        headers:
+          Authorization:
+            text: 'Bearer {{ api_key}}'
+        # input prompt template
+        body:
+          text: |
+            {
+              "model": "{% if header("x-model") != "" %}{{ llm_model }}{% else %}gpt-3.5-turbo{% endif %}",
+              "messages": [
+                {
+                  "role": "system",
+                  "content": "{{ system_prompt }}"
+                },
+                {
+                  "role": "user",
+                  "content": "{{ user_prompt }}"
+                }
+              ],
+              "temperature": {% if header("x-temp") != "" %}{{ temperature }}{% else %}0.7{% endif %},
+              "max_tokens": 100
+            }
+        extractors:
+          # extracts an x-api-key header var
+          api_key:
+            header: 'x-api-key'
+            regex: '.*'
+          # extracts x-model header var
+          llm_model:
+            header: 'x-model'
+            regex: '.*'
+          # extracts x-system-prompt var
+          system_prompt:
+            header: 'x-system-prompt'
+            regex: '.*'
+          # extracts x-system-prompt var
+          user_prompt:
+            header: 'x-user-prompt'
+            regex: '.*'
+          # extracts x-temp header var
+          temperature:
+            header: 'x-temp'
+            regex: '.*'

@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: openai-eli5-client
+  namespace: ai-client
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: openai-eli5-client
+  namespace: ai-client
+  labels:
+    app: openai-eli5-client
+spec:
+  ports:
+  - port: 5000
+    name: http
+  selector:
+    name: openai-eli5-client
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openai-eli5-client-deployment
+  namespace: ai-client
+  labels:
+    app: openai-eli5-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: openai-eli5-client
+  template:
+    metadata:
+      labels:
+        name: openai-eli5-client
+    spec:
+      serviceAccountName: openai-eli5-client
+      containers:
+      - name: openai-eli5-client
+        image: ably77/curl-ui:0.7.3
+        ports:
+        - containerPort: 5000
+        env:
+          - name: CURL_UI_TITLE
+            value: "OpenAI ELI5 Client"
+          - name: REQUEST_URL
+            value: "https://ai-gateway.demo.glooplatform.com/openai"
+          - name: BASE_PATH
+            value: "/eli5"
+          - name: ENABLE_JSON_CONTENT_TYPE
+            value: "true"
+          - name: DEFAULT_HTTP_METHOD
+            value: "POST"
+          - name: HEADER_1_KEY
+            value: "x-api-key"
+          - name: HEADER_1_VALUE
+            value: "Input your OpenAI API key here"
+          - name: HEADER_2_KEY
+            value: "x-template"
+          - name: HEADER_2_VALUE
+            value: "eli5"
+          - name: HEADER_3_KEY
+            value: "x-prompt"
+          - name: HEADER_3_VALUE
+            value: "What would you like me to explain like I am 5 years old?"

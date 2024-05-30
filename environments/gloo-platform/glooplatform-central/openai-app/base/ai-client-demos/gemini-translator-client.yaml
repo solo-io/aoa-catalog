@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: gemini-translator-client
+  namespace: ai-client
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gemini-translator-client
+  namespace: ai-client
+  labels:
+    app: gemini-translator-client
+spec:
+  ports:
+  - port: 5000
+    name: http
+  selector:
+    name: gemini-translator-client
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gemini-translator-client-deployment
+  namespace: ai-client
+  labels:
+    app: gemini-translator-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: gemini-translator-client
+  template:
+    metadata:
+      labels:
+        name: gemini-translator-client
+    spec:
+      serviceAccountName: gemini-translator-client
+      containers:
+      - name: gemini-translator-client
+        image: ably77/curl-ui:0.7.3
+        ports:
+        - containerPort: 5000
+        env:
+          - name: CURL_UI_TITLE
+            value: "Gemini Language Translator Client"
+          - name: REQUEST_URL
+            value: "https://ai-gateway.demo.glooplatform.com/gemini"
+          - name: BASE_PATH
+            value: "/translate"
+          - name: ENABLE_JSON_CONTENT_TYPE
+            value: "true"
+          - name: DEFAULT_HTTP_METHOD
+            value: "POST"
+          - name: HEADER_1_KEY
+            value: "api-key"
+          - name: HEADER_1_VALUE
+            value: "solo.io"
+          - name: HEADER_2_KEY
+            value: "x-template"
+          - name: HEADER_2_VALUE
+            value: "translator"
+          - name: HEADER_3_KEY
+            value: "x-language"
+          - name: HEADER_3_VALUE
+            value: "What language would you like me to translate to?"
+          - name: HEADER_4_KEY
+            value: "x-prompt"
+          - name: HEADER_4_VALUE
+            value: "What what would you like me to translate?"

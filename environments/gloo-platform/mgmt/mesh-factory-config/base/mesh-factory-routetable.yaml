@@ -1,0 +1,25 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: backstage-mesh-factory-routetable
+  namespace: mesh-factory
+spec:
+  hosts:
+    - 'mesh-factory.glooplatform.com'
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
+  workloadSelectors: []
+  http:
+    - name: backstage-meshfactory
+      matchers:
+      - uri:
+          prefix: /
+      forwardTo:
+        destinations:
+        - ref:
+            name: mesh-factory-backstage
+            namespace: mesh-factory
+          port:
+            number: 7007

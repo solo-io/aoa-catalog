@@ -1,0 +1,138 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: ai-gateway-root
+  namespace: ai-gateway-ws-config
+spec:
+  hosts:
+    - 'ai-gateway.demo.glooplatform.com'
+    - 'api.openai.com'
+    - 'generativelanguage.googleapis.com'
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
+  workloadSelectors: []
+  http:
+  - name: openai-eli5
+    labels:
+      prompt-template: "eli5"
+      security: openai
+    delegate:
+      routeTables:
+        # Selects tables based on name
+        #- name: openai-eli5-rt
+        #  namespace: ai-gateway-ws-config
+        # Selects tables based on labels
+        - labels:
+            llm-type: openai
+            prompt-template: "eli5"
+      sortMethod: ROUTE_SPECIFICITY
+  - name: openai-translator
+    labels:
+      prompt-template: "translator"
+      security: openai
+    delegate:
+      routeTables:
+        # Selects tables based on name
+        #- name: openai-language-transformer-rt
+        #  namespace: ai-gateway-ws-config
+        # Selects tables based on labels
+        - labels:
+            llm-type: openai
+            prompt-template: "translator"
+      sortMethod: ROUTE_SPECIFICITY
+  - name: openai-system-user-input
+    labels:
+      prompt-template: "system-user-input"
+      security: openai
+    delegate:
+      routeTables:
+        # Selects tables based on name
+        #- name: openai-system-user-input-rt
+        #  namespace: ai-gateway-ws-config
+        # Selects tables based on labels
+        - labels:
+            llm-type: openai
+            prompt-template: "system-user-input"
+      sortMethod: ROUTE_SPECIFICITY
+  - name: openai-catchall
+    delegate:
+      routeTables:
+        # Selects tables based on name
+        #- name: openai-catchall-rt
+        #  namespace: ai-gateway-ws-config
+        # Selects tables based on labels
+        - labels:
+            llm-type: openai
+            prompt-template: "none"
+      sortMethod: ROUTE_SPECIFICITY
+  - name: gemini-eli5
+    labels:
+      prompt-template: gemini-eli5
+      security: gemini
+    delegate:
+      routeTables:
+        # Selects tables based on name
+        #- name: gemini-eli5-rt
+        #  namespace: ai-gateway-ws-config
+        # Selects tables based on labels
+        - labels:
+            llm-type: gemini
+            prompt-template: "gemini-eli5"
+      sortMethod: ROUTE_SPECIFICITY
+  - name: gemini-translator
+    labels:
+      prompt-template: gemini-translator
+      security: gemini
+    delegate:
+      routeTables:
+        # Selects tables based on name
+        #- name: gemini-language-transformer-rt
+        #  namespace: ai-gateway-ws-config
+        # Selects tables based on labels
+        - labels:
+            llm-type: gemini
+            prompt-template: "gemini-translator"
+      # Delegates based on order of weights
+      sortMethod: ROUTE_SPECIFICITY
+  - name: gemini-catchall
+    labels:
+      security: gemini
+    delegate:
+      routeTables:
+        # Selects tables based on name
+        #- name: gemini-catchall-rt
+        #  namespace: ai-gateway-ws-config
+        # Selects tables based on labels
+        - labels:
+            llm-type: gemini
+            prompt-template: "none"
+      sortMethod: ROUTE_SPECIFICITY
+  - name: anthropic-eli5
+    labels:
+      prompt-template: claude-eli5
+      security: anthropic
+    delegate:
+      routeTables:
+        # Selects tables based on name
+        #- name: anthropic-eli5-rt
+        #  namespace: ai-gateway-ws-config
+        # Selects tables based on labels
+        - labels:
+            llm-type: anthropic
+            prompt-template: "claude-eli5"
+      sortMethod: ROUTE_SPECIFICITY
+  - name: anthropic-catchall
+    labels:
+      security: anthropic
+    delegate:
+      routeTables:
+        # Selects tables based on name
+        #- name: anthropic-catchall-rt
+        #  namespace: ai-gateway-ws-config
+        # Selects tables based on labels
+        - labels:
+            llm-type: anthropic
+            prompt-template: "none"
+      sortMethod: ROUTE_SPECIFICITY

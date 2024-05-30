@@ -1,0 +1,28 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: curl-ui-routetable
+  namespace: ai-gateway-ws-config
+spec:
+  hosts:
+    - 'curl.central.glooplatform.com'
+  virtualGateways:
+    - name: north-south-gw
+      namespace: istio-gateways
+      cluster: mgmt
+  workloadSelectors: []
+  http:
+    - name: curl-ui
+      labels:
+        oauth: curl.central.glooplatform.com
+      matchers:
+      - uri:
+          prefix: /
+      forwardTo:
+        destinations:
+        - ref:
+            name: curl-ui
+            namespace: ai-client
+            cluster: glooplatform-central
+          port:
+            number: 5000

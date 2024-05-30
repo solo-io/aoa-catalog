@@ -1,0 +1,48 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  labels:
+    expose: "true"
+  name: glooplatform-central-argo-rt-443
+  namespace: argocd
+spec:
+  hosts:
+  - 'argocd.central.glooplatform.com'
+  http:
+  - name: argocd
+    labels:
+      waf: "true"
+      auth: argocd.central.glooplatform.com
+    matchers:
+    - uri:
+        prefix: /argo
+    - uri:
+        prefix: /callback
+    forwardTo:
+      destinations:
+      - port:
+          number: 443
+        ref:
+          cluster: glooplatform-central
+          name: argocd-server
+          namespace: argocd
+  - name: argo-health-central
+    labels:
+      waf: "true"
+    matchers:
+      - uri:
+          prefix: /healthcheck-central-argo
+    forwardTo:
+      pathRewrite: /healthz
+      destinations:
+      - port:
+          number: 443
+        ref:
+          cluster: glooplatform-central
+          name: argocd-server
+          namespace: argocd
+  virtualGateways:
+  - cluster: mgmt
+    name: north-south-gw
+    namespace: istio-gateways
+  workloadSelectors: []

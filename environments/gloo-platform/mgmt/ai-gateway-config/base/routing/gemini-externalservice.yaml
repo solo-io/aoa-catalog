@@ -1,0 +1,13 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: ExternalService
+metadata:
+  name: gemini-externalservice
+  namespace: ai-gateway-ws-config
+spec:
+  hosts:
+  - generativelanguage.googleapis.com
+  ports:
+  - name: https
+    number: 443
+    protocol: HTTPS
+    clientsideTls: {}
