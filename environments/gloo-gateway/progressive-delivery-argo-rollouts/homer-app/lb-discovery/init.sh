@@ -19,7 +19,7 @@ metadata:
   name: homer-portal
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+  - resources-finalizer.argocd.argoproj.io/solo-io
 spec:
   destination:
     server: https://kubernetes.default.svc

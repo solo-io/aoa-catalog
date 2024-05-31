@@ -84,7 +84,7 @@ metadata:
   name: gloo-platform-helm
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+  - resources-finalizer.argocd.argoproj.io/solo-io
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -134,7 +134,7 @@ metadata:
   name: gloo-platform-otel-collector
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+  - resources-finalizer.argocd.argoproj.io/solo-io
 spec:
   destination:
     server: https://kubernetes.default.svc

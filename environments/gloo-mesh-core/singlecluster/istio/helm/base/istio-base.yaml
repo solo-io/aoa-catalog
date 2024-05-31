@@ -4,7 +4,7 @@ metadata:
   name: istio-base
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+  - resources-finalizer.argocd.argoproj.io/solo-io
   annotations:
     argocd.argoproj.io/sync-wave: "-3"
 spec:
