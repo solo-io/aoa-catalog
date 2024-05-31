@@ -3,6 +3,7 @@
 0.3.4 (5-30-24)
 ---
 - update gloo-edge/gatweay-api to 1.17.0-beta3
+- pin colima to v1.29.5+k3s1
 
 0.3.3 (5-21-24)
 ---
