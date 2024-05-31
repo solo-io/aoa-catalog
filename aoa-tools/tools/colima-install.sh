@@ -9,7 +9,7 @@ fi
 
 # new
 colima start --cpu 6 --memory 16 \
-  --vm-type=qemu \
+  --vm-type=vz \
   --kubernetes \
   --network-address \
   --k3s-arg "--disable=traefik"

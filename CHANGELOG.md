@@ -3,7 +3,6 @@
 0.3.4 (5-30-24)
 ---
 - update gloo-edge/gatweay-api to 1.17.0-beta3
-- set tools/colima-install.sh to use qemu instead of vz
 
 0.3.3 (5-21-24)
 ---
