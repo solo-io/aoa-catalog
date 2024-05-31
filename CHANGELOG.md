@@ -1,5 +1,15 @@
 # Changelog
 
+0.3.4 (5-30-24)
+---
+- update gloo-edge/gatweay-api to 1.17.0-beta3
+- pin colima to v1.29.5+k3s1
+- set domain-qualified `/solo-io` finalizer name `resources-finalizer.argocd.argoproj.io/solo-io` to ArgoCD Applications
+    - Fixes this warning: 
+    ```
+    Warning: metadata.finalizers: "resources-finalizer.argocd.argoproj.io": prefer a domain-qualified finalizer name to avoid accidental conflicts with other finalizer writers
+    ```
+
 0.3.3 (5-21-24)
 ---
 - update helloworld-rollout example in gloo-gateway/progressive-delivery-argo-rollouts to use parent/child delegate route tables

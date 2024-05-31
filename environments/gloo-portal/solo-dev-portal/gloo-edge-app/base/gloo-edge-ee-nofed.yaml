@@ -4,7 +4,7 @@ metadata:
   name: gloo-edge-enterprise-helm
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+  - resources-finalizer.argocd.argoproj.io/solo-io
 spec:
   destination:
     namespace: gloo-system
