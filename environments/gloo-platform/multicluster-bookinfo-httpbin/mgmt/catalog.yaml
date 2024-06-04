@@ -51,13 +51,6 @@ waves:
       -  $env_path/httpbin-config/init.sh
       post_deploy:
       -  $env_path/httpbin-config/test.sh 
-  - name: homer-app
-    location: $env_path/homer-app/localhost
-    scripts:
-      pre_deploy: 
-      -  $env_path/homer-app/init.sh
-      post_deploy:
-      -  $env_path/homer-app/test.sh 
   - name: homer-config
     location: $env_path/../../core/shared-components/homer-config/base
     scripts:
