@@ -172,13 +172,6 @@ spec:
                   - name: "Admin Applications"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "ArgoCD - mgmt"
-                        subtitle: "username: admin / password: solo.io"
-                        icon: "fab fa-git-alt"
-                        tag: "argo"
-                        keywords: "argocd"
-                        url: "https://localhost/argo"
-                        target: "_blank" # optional html a tag target attribute
                       - name: "ArgoCD - cluster1"
                         subtitle: "username: admin / password: solo.io"
                         icon: "fab fa-git-alt"
@@ -192,18 +185,6 @@ spec:
                         tag: "argo"
                         keywords: "argocd"
                         url: "https://localhost:8444/argo"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Gloo Mesh UI"
-                        #subtitle: "Another application"
-                        icon: "fas fa-arrows-alt"
-                        tag: "gmui"
-                        url: "https://localhost/gmui"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Grafana - mgmt"
-                        #subtitle: "Another application"
-                        icon: "fas fa-chart-area"
-                        tag: "grafana-mgmt"
-                        url: "https://localhost/grafana"
                         target: "_blank" # optional html a tag target attribute
                 
                   
