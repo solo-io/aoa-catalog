@@ -10,6 +10,7 @@ spec:
     - name: gloo-mesh
     - name: istio-system
     - name: ops-team-config
+    - name: homer-portal
   - name: '*'
     namespaces:
     - name: argocd
@@ -18,4 +19,3 @@ spec:
     - name: gloo-mesh-addons
     - name: cert-manager
     - name: grafana
-    - name: homer-portal
