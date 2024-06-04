@@ -10,11 +10,11 @@ The `gloo-gateway/solowallet` environment deploys the core components of a singl
 
 ## Environment descriptions
 - base:
-    - gloo mesh 2.6.0-beta3-2024-06-02-main-c6922b81e6
+    - gloo mesh 2.6.0-beta3-2024-05-30-main-1d26e8b265
     - istio 1.22.0-solo (Helm)
     - revision: 1-22
 - ilm:
-    - gloo mesh 2.6.0-beta3-2024-06-02-main-c6922b81e6
+    - gloo mesh 2.6.0-beta3-2024-05-30-main-1d26e8b265
     - istio 1.22.0-solo (ILM)
     - revision: 1-22
 
