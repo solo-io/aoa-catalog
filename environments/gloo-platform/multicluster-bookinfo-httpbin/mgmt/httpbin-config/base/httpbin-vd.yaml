@@ -3,6 +3,8 @@ kind: VirtualDestination
 metadata:
   name: httpbin-vd
   namespace: httpbin
+  labels:
+    failover: "true"
 spec:
   hosts:
   - httpbin.randomvalue
