@@ -5,4 +5,4 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - httpbin-in-mesh.yaml
-- httpbin-not-in-mesh.yaml
+#- httpbin-not-in-mesh.yaml
