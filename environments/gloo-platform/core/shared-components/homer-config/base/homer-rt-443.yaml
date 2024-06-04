@@ -14,12 +14,12 @@ spec:
       - port:
           number: 8080
         ref:
-          cluster: mgmt
+          cluster: cluster1
           name: homer-portal
           namespace: homer-portal
     name: homer
   virtualGateways:
   - cluster: mgmt
-    name: mgmt-north-south-gw-443
+    name: cluster1-north-south-gw-443
     namespace: istio-gateways
   workloadSelectors: []
