@@ -18,11 +18,11 @@ When applied with `cluster1` and `cluster2` environments, here is a high level d
 
 ## Environment description
 - base:
-    - gloo mesh 2.6.0-beta3-2024-05-30-main-1d26e8b265
+    - gloo mesh 2.6.0-beta3-multi-redis
     - istio 1.22.0-solo (Helm)
     - revision: 1-22
 - ilcm:
-    - gloo mesh 2.6.0-beta3-2024-05-30-main-1d26e8b265
+    - gloo mesh 2.6.0-beta3-multi-redis
     - istio 1.22.0-solo (ILCM)
     - revision: 1-22
 

@@ -10,16 +10,16 @@ The `gloo-gateway/onlineboutique` environment deploys the core components of a s
 
 ## Environment descriptions
 - base:
-    - gloo mesh 2.6.0-beta3-2024-05-30-main-1d26e8b265
+    - gloo mesh 2.6.0-beta3-multi-redis
     - istio 1.22.0-solo (Helm)
     - revision: 1-22
 - tracing:
-    - gloo mesh 2.6.0-beta3-2024-05-30-main-1d26e8b265
+    - gloo mesh 2.6.0-beta3-multi-redis
     - istio 1.22.0-solo (Helm)
     - revision: 1-22
     - tracing config enabled
 - ilm:
-    - gloo mesh 2.6.0-beta3-2024-05-30-main-1d26e8b265
+    - gloo mesh 2.6.0-beta3-multi-redis
     - istio 1.22.0-solo (ILM)
     - revision: 1-22
 
