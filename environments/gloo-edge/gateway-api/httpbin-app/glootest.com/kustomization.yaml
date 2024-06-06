@@ -9,3 +9,4 @@ resources:
 - httpbin-https.yaml
 - httpbin-route-policies.yaml
 - httpbin-ratelimit-config.yaml
+- okta-authconfig.yaml
