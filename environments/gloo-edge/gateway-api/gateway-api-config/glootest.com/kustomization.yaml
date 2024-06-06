@@ -7,3 +7,4 @@ resources:
 - gateway-https.yaml
 - argocd-https.yaml
 - upstream-tls.yaml
+- okta-client-secret.yaml

@@ -5,6 +5,10 @@ metadata:
   namespace: httpbin
 spec:
   options:
+    extauth:
+      configRef:
+        name: httpbin-okta
+        namespace: gloo-system
     headerManipulation:
       # add headers to all responses
       requestHeadersToAdd:
