@@ -1,5 +1,16 @@
 # Changelog
 
+0.3.5 (6-5-24)
+---
+- update all environments to use gloo-platform 2.5.7
+- update all environments to use istio 1.22.0-solo
+- update environments to use revision 1-22
+- set ignoreDifferences for failurePolicy vwc
+- add multicluster failover for reviews in gloo-platform/multicluster-bookinfo-httpbin environment
+- simplify httpbin routetable in gloo-platform/multicluster-bookinfo-httpbin environment
+- remove not-in-mesh deployment in gloo-platform/multicluster-bookinfo-httpbin environment
+- update installation completion output for gloo-edge/gateway-api environment
+
 0.3.4 (5-30-24)
 ---
 - update gloo-edge/gatweay-api to 1.17.0-beta3
