@@ -13,7 +13,7 @@ spec:
         port:
           number: 9080
         ref:
-          name: productpage-443
+          name: productpage-vd
           namespace: bookinfo-team-config
         subset:
           version: v1

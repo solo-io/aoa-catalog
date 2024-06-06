@@ -3,15 +3,15 @@ kind: VirtualDestination
 metadata:
   labels:
     failover: "true"
-  name: productpage-443
+  name: reviews-vd
   namespace: bookinfo-team-config
 spec:
   hosts:
-  - productpage-443.global
+  - reviews-vd.global
   ports:
   - number: 9080
     protocol: HTTP
   services:
   - labels:
-      app: productpage
-    namespace: bookinfo-frontends
+      app: reviews
+    namespace: bookinfo-backends
