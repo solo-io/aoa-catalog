@@ -9,3 +9,6 @@ resources:
 - httpbin-workspacesettings.yaml
 - httpbin-rt-443.yaml
 - httpbin-vd.yaml
+- httpbin-failoverpolicy.yaml
+- httpbin-outlierdetectionpolicy.yaml
+- httpbin-vd.yaml
