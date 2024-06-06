@@ -5,6 +5,7 @@
 - update all environments to use gloo-platform 2.5.7
 - update all environments to use istio 1.22.0-solo
 - update environments to use revision 1-22
+- set ignoreDifferences for failurePolicy vwc
 
 0.3.4 (5-30-24)
 ---
