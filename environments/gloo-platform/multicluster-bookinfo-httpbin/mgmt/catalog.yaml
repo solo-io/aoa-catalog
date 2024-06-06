@@ -44,6 +44,13 @@ waves:
       -  $env_path/bookinfo-config/init.sh
       post_deploy:
       -  $env_path/bookinfo-config/test.sh 
+  - name: httpbin-app
+    location: $env_path/httpbin-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/httpbin-app/init.sh
+      post_deploy:
+      -  $env_path/httpbin-app/test.sh 
   - name: httpbin-config
     location: $env_path/httpbin-config/wildcard
     scripts:
