@@ -9,6 +9,7 @@
 - add multicluster failover for reviews in gloo-platform/multicluster-bookinfo-httpbin environment
 - simplify httpbin routetable in gloo-platform/multicluster-bookinfo-httpbin environment
 - remove not-in-mesh deployment in gloo-platform/multicluster-bookinfo-httpbin environment
+- update installation completion output for gloo-edge/gateway-api environment
 
 0.3.4 (5-30-24)
 ---
