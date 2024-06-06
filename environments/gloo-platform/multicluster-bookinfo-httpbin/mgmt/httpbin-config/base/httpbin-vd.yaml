@@ -3,6 +3,8 @@ kind: VirtualDestination
 metadata:
   name: httpbin-vd
   namespace: httpbin
+  labels:
+    failover: "true"
 spec:
   hosts:
   - httpbin.randomvalue
@@ -10,11 +12,6 @@ spec:
   - namespace: httpbin
     labels:
       app: in-mesh
-    cluster: cluster1
-  - namespace: httpbin
-    labels:
-      app: in-mesh
-    cluster: cluster2
   ports:
     - number: 8000
       protocol: HTTP

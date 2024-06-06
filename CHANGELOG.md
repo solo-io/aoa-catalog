@@ -1,5 +1,18 @@
 # Changelog
 
+0.3.7 (6-6-24)
+---
+- update root trust to be shared across all clusters
+- add e/w gateway to mgmt cluster by default in all gloo-platform environments
+- remove gloo-mesh-ui from the mesh in gloo-platform environments
+- add httpbin app to mgmt cluster in gloo-platform/multicluster-bookinfo-httpbin environment
+    - this allows us to demo priority failover by region when using labels such as `topology.kubernetes.io/region` set on the nodes
+    - when using `-i` flag to install locally, the k3d config is labeled with the following mgmt (us-west), cluster1 (us-central), cluster2 (us-east)
+- update httpbin VirtualDestination to select all workload clusters and apply `failover: "true"` label
+- add FailoverPolicy and OutlierDetectionPolicy to httpbin app in gloo-platform/multicluster-bookinfo-httpbin environment. The localityMappings are configured to show the following:
+    - from us-central, prioritize failover to us-east first then us-west
+    - from us-east, prioritize failover to us-central first then us-west
+
 0.3.6 (6-6-24)
 ---
 - enable okta extauth for httpbin app in gloo-edge/gateway-api environment

@@ -9,6 +9,7 @@ resources:
 - certmanager-selfsigned-issuer.yaml
 - grafana-dashboard-configmaps
 - grafana-helm.yaml
+- istio-eastwestgateway.yaml
 
 patchesStrategicMerge:
 - istiod.yaml
