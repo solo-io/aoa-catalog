@@ -1,5 +1,10 @@
 # Changelog
 
+0.3.6 (6-6-24)
+---
+- enable okta extauth for httpbin app in gloo-edge/gateway-api environment
+- update homer portal welcome tile instructions in gloo-edge/gateway-api environment
+
 0.3.5 (6-5-24)
 ---
 - update all environments to use gloo-platform 2.5.7
