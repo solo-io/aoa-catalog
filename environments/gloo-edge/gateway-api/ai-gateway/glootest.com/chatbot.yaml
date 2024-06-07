@@ -54,3 +54,5 @@ spec:
             value: "https://ai-gateway.demo.glooplatform.com/openai"
           - name: ANTHROPIC_ENDPOINT
             value: "https://ai-gateway.demo.glooplatform.com/claude"
+          - name: MANAGED_CLAUDE_API_KEY
+            value: "solo.io"
