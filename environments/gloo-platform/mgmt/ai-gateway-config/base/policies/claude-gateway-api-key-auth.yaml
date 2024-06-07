@@ -7,7 +7,7 @@ spec:
   applyToRoutes:
   - route:
       labels:
-        security: claude
+        security: anthropic
   config:
     server:
       name: mgmt-ext-auth-server

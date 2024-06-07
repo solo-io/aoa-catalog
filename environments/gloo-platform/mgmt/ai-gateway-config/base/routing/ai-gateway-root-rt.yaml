@@ -57,8 +57,6 @@ spec:
             prompt-template: "system-user-input"
       sortMethod: ROUTE_SPECIFICITY
   - name: openai-catchall
-    labels:
-      security: openai
     delegate:
       routeTables:
         # Selects tables based on name
