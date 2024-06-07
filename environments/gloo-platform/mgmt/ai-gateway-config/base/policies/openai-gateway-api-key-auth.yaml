@@ -18,7 +18,7 @@ spec:
       - apiKeyAuth:
           headerName: api-key
           headersFromMetadataEntry:
-            x-api-key: 
+            Authorization: 
               name: openai-api-key-bearer
           k8sSecretApikeyStorage:
             labelSelector:
