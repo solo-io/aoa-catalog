@@ -17,7 +17,7 @@ spec:
       configs:
       - oauth2:
           oidcAuthorizationCode:
-            appUrl: https://chatbot.central.glooplatform.com/portal
+            appUrl: https://chatbot.central.glooplatform.com/setup
             callbackPath: /callback
             clientId: 967359009029-j7uts17vmc85kt3aaie8cnpodefql93t.apps.googleusercontent.com
             clientSecretRef:
