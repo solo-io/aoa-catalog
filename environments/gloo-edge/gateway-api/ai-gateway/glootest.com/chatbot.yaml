@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ai-chatbot
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: gptportal
+  namespace: ai-chatbot
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gptportal
+  namespace: ai-chatbot
+  labels:
+    app: gptportal
+spec:
+  ports:
+  - port: 3000
+    name: http
+  selector:
+    name: gptportal
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gptportal-deployment
+  namespace: ai-chatbot
+  labels:
+    app: gptportal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: gptportal
+  template:
+    metadata:
+      labels:
+        name: gptportal
+    spec:
+      serviceAccountName: gptportal
+      containers:
+      - name: gptportal
+        image: ably77/gptportal:0.0.3
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Always
+        env:
+          - name: "PORT"
+            value: "3000"
+          - name: OPENAI_ENDPOINT
+            value: "https://ai-gateway.demo.glooplatform.com/openai"
+          - name: ANTHROPIC_ENDPOINT
+            value: "https://ai-gateway.demo.glooplatform.com/claude"
