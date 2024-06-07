@@ -13,3 +13,4 @@ spec:
     - name: openai
     - name: gemini
     - name: ai-client
+    - name: ai-chatbot

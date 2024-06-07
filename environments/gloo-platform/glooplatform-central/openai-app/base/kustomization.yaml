@@ -6,7 +6,7 @@ kind: Kustomization
 resources:
 - openai-ns.yaml
 - ai-client-ns.yaml
-#- chatgpt-client.yaml
+- chatbot.yaml
 - curl-ui.yaml
 - ai-client-demos
 
