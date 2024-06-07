@@ -7,5 +7,6 @@ resources:
 - gemini-client-extauthpolicy.yaml
 - gemini-gateway-api-key-auth.yaml
 - claude-gateway-api-key-auth.yaml
+- chatbot-extauthpolicy.yaml
 #- openai-gateway-api-key-auth.yaml
 #- api-key-secret.yaml
