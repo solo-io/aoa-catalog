@@ -1,5 +1,9 @@
 # Changelog
 
+0.3.8 ()
+---
+add chatbot to gloo-edge/gateway-api environment
+
 0.3.7 (6-6-24)
 ---
 - update root trust to be shared across all clusters
