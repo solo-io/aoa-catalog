@@ -21,6 +21,7 @@ resources:
 - anthropic-externalservice.yaml
 - anthropic-eli5-rt.yaml
 - anthropic-client-rt.yaml
+- chatbot-rt.yaml
 
 
 

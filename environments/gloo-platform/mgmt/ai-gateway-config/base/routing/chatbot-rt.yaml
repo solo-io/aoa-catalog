@@ -1,0 +1,30 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: chatbot-routetable
+  namespace: ai-gateway-ws-config
+spec:
+  hosts:
+    - 'chatbot.central.glooplatform.com'
+  virtualGateways:
+    - name: north-south-gw
+      namespace: istio-gateways
+      cluster: mgmt
+  workloadSelectors: []
+  http:
+    - name: chatbot-client
+      labels:
+        oauth: chatbot.central.glooplatform.com
+      matchers:
+      - uri:
+          prefix: /portal
+      - uri:
+          prefix: /callback
+      forwardTo:
+        destinations:
+        - ref:
+            name: gptportal
+            namespace: ai-chatbot
+            cluster: glooplatform-central
+          port:
+            number: 3000
