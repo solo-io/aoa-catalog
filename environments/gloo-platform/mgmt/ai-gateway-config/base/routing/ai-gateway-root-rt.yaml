@@ -17,6 +17,7 @@ spec:
   - name: openai-eli5
     labels:
       prompt-template: "eli5"
+      security: openai
     delegate:
       routeTables:
         # Selects tables based on name
@@ -30,6 +31,7 @@ spec:
   - name: openai-translator
     labels:
       prompt-template: "translator"
+      security: openai
     delegate:
       routeTables:
         # Selects tables based on name
@@ -43,6 +45,7 @@ spec:
   - name: openai-system-user-input
     labels:
       prompt-template: "system-user-input"
+      security: openai
     delegate:
       routeTables:
         # Selects tables based on name
@@ -54,8 +57,6 @@ spec:
             prompt-template: "system-user-input"
       sortMethod: ROUTE_SPECIFICITY
   - name: openai-catchall
-    labels:
-      security: openai
     delegate:
       routeTables:
         # Selects tables based on name
