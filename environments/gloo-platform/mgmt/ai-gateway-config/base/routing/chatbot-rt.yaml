@@ -17,7 +17,7 @@ spec:
         oauth: chatbot.central.glooplatform.com
       matchers:
       - uri:
-          prefix: /portal
+          prefix: /
       - uri:
           prefix: /callback
       forwardTo:
