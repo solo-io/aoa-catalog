@@ -65,13 +65,13 @@ spec:
           - name: OPENAI_API_KEY
             valueFrom:
               secretKeyRef:
-                name: ai-gateway-api-key
-                namespace: ai-gateway-ws-config
+                name: ai-chatbot-keys
+                namespace: ai-chatbot
                 key: openai-api-key
           # specify api-key env var using secretKeyRef
           - name: CLAUDE_API_KEY
             valueFrom:
               secretKeyRef:
-                name: ai-gateway-api-key
-                namespace: ai-gateway-ws-config
+                name: ai-chatbot-keys
+                namespace: ai-chatbot
                 key: claude-api-key
