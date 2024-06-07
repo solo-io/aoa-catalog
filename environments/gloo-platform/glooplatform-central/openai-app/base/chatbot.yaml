@@ -66,12 +66,10 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: ai-chatbot-keys
-                namespace: ai-chatbot
                 key: openai-api-key
           # specify api-key env var using secretKeyRef
           - name: CLAUDE_API_KEY
             valueFrom:
               secretKeyRef:
                 name: ai-chatbot-keys
-                namespace: ai-chatbot
                 key: claude-api-key
