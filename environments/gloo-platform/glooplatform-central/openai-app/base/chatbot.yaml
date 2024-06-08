@@ -47,7 +47,7 @@ spec:
       serviceAccountName: gptportal
       containers:
       - name: gptportal
-        image: ably77/gptportal:0.1.1
+        image: ably77/gptportal:0.1.2
         ports:
         - containerPort: 3000
         imagePullPolicy: Always
