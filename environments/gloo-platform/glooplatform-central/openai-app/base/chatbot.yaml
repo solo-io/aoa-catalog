@@ -73,3 +73,15 @@ spec:
               secretKeyRef:
                 name: ai-chatbot-keys
                 key: claude-api-key
+          # specify api-key env var using secretKeyRef
+          - name: GOOGLE_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ai-chatbot-keys
+                key: google-api-key
+          # specify api-key env var using secretKeyRef
+          - name: MISTRAL_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ai-chatbot-keys
+                key: mistral-api-key
