@@ -5,4 +5,5 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - chatbot.yaml
-- chatbot-instructions-cm.yaml
+- default-system-prompt-cm.yaml
+- language-translator-system-prompt-cm.yaml
