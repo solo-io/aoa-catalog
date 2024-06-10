@@ -5,7 +5,7 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - ai-chatbot-ns.yaml
-- gptportal-serviceaccount.yaml
+- gptportal-sa.yaml
 - general-chatbot.yaml
 - default-system-prompt-cm.yaml
 - language-translator-system-prompt-cm.yaml
