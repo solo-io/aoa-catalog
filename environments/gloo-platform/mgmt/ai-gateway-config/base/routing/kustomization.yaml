@@ -22,6 +22,7 @@ resources:
 - anthropic-eli5-rt.yaml
 - anthropic-client-rt.yaml
 - general-chatbot-rt.yaml
+- language-chatbot-rt.yaml
 
 
 
