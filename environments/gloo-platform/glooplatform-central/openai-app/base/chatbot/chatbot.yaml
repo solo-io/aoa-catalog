@@ -92,7 +92,7 @@ spec:
       volumes:
       - name: instructions-volume
         configMap:
-          name: instructions-configmap
+          name: default-system-prompt-configmap
           items:
           - key: instructions.md
             path: instructions.md
