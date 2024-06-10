@@ -1,46 +1,33 @@
 apiVersion: v1
-kind: Namespace
-metadata:
-  name: ai-chatbot
-  #labels:
-  #  istio.io/rev: 1-22
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: gptportal
-  namespace: ai-chatbot
----
-apiVersion: v1
 kind: Service
 metadata:
-  name: gptportal
+  name: general-chat
   namespace: ai-chatbot
   labels:
-    app: gptportal
+    app: general-chat
 spec:
   ports:
   - port: 3000
     name: http
   selector:
-    name: gptportal
+    name: general-chat
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gptportal-deployment
+  name: general-chat-deployment
   namespace: ai-chatbot
   labels:
-    app: gptportal
+    app: general-chat
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: gptportal
+      name: general-chat
   template:
     metadata:
       labels:
-        name: gptportal
+        name: general-chat
       annotations:
         proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:
@@ -92,7 +79,8 @@ spec:
       volumes:
       - name: instructions-volume
         configMap:
-          name: default-system-prompt-configmap
+          #name: default-system-prompt-configmap
+          name: language-translator-system-prompt-configmap
           items:
           - key: instructions.md
             path: instructions.md

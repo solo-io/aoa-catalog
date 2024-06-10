@@ -23,7 +23,7 @@ spec:
       forwardTo:
         destinations:
         - ref:
-            name: gptportal
+            name: general-chat
             namespace: ai-chatbot
             cluster: glooplatform-central
           port:
