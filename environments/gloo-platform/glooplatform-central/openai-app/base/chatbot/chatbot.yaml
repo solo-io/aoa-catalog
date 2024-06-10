@@ -85,3 +85,14 @@ spec:
               secretKeyRef:
                 name: ai-chatbot-keys
                 key: mistral-api-key
+        volumeMounts:
+        - name: instructions-volume
+          mountPath: /app/public/instructions.md
+          subPath: instructions.md
+      volumes:
+      - name: instructions-volume
+        configMap:
+          name: instructions-configmap
+          items:
+          - key: instructions.md
+            path: instructions.md
