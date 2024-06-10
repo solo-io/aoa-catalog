@@ -1,7 +1,7 @@
 apiVersion: security.policy.gloo.solo.io/v2
 kind: ExtAuthPolicy
 metadata:
-  name: chatbot-extauthpolicy
+  name: general-chatbot-extauthpolicy
   namespace: ai-gateway-ws-config
 spec:
   applyToRoutes:
