@@ -9,3 +9,4 @@ resources:
 - general-chatbot.yaml
 - default-system-prompt-cm.yaml
 - language-translator-system-prompt-cm.yaml
+- language-chatbot.yaml
