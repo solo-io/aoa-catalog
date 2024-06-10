@@ -79,8 +79,7 @@ spec:
       volumes:
       - name: instructions-volume
         configMap:
-          #name: default-system-prompt-configmap
-          name: language-translator-system-prompt-configmap
+          name: default-system-prompt-configmap
           items:
           - key: instructions.md
             path: instructions.md
