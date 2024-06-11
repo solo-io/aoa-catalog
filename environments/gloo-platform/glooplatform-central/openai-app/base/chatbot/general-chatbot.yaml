@@ -76,8 +76,17 @@ spec:
         - name: instructions-volume
           mountPath: /app/public/instructions.md
           subPath: instructions.md
+        - name: gemini-message-volume
+          mountPath: /app/public/geminiMessage.txt
+          subPath: geminiMessage.txt
       volumes:
       - name: instructions-volume
+        configMap:
+          name: default-system-prompt-configmap
+          items:
+          - key: instructions.md
+            path: instructions.md
+      - name: gemini-message-volume
         configMap:
           name: default-system-prompt-configmap
           items:
