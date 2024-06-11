@@ -91,4 +91,4 @@ spec:
           name: default-system-prompt-configmap
           items:
           - key: instructions.md
-            path: instructions.md
+            path: geminiMessage.txt
