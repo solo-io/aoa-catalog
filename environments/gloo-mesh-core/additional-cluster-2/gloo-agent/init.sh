@@ -7,7 +7,7 @@ echo "deploy and register gloo-mesh agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.6.0-beta3-2024-06-11-main-67b396e939):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.5.7):"
     read gloo_mesh_version
 fi
 
@@ -114,8 +114,8 @@ spec:
         glooAnalyzer:
             enabled: true
                   
-    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.6.0-beta3-2024-06-11-main-67b396e939
+    repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
+    targetRevision: 2.5.7
   syncPolicy:
     automated:
       prune: true
@@ -170,8 +170,8 @@ spec:
                       type: DirectoryOrCreate
                   name: cilium-run
                   
-    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.6.0-beta3-2024-06-11-main-67b396e939
+    repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
+    targetRevision: 2.5.7
   syncPolicy:
     automated:
       prune: true
