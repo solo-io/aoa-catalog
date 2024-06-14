@@ -66,6 +66,16 @@ spec:
         glooUi:
             enabled: true
             serviceType: ClusterIP
+            auth:
+              enabled: true
+              backend: oidc
+              requestTimeout: 10
+              oidc:
+                appUrl: http://gloo-mesh-core-demo.solo.io/
+                clientId: 0oaglzosdao0hLVnQ5d7
+                clientSecretName: dashboard
+                clientSecret: F_Bso1AxOVUASru5DBLDqeRtFJN7LGLsh7gv9eV3Zf8wKI8KhSOwJpDvn_tiByxV
+                issuerUrl: https://dev-75529634.okta.com
         prometheus:
             enabled: true
         redis:
