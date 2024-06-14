@@ -21,7 +21,7 @@ spec:
         licensing:
             licenseSecretName: "gloo-license"
         featureGates:
-            hubbleUI: true
+            hubbleUI: false
             insightsConfiguration: true
         glooMgmtServer:
             enabled: true
