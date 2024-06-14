@@ -71,7 +71,7 @@ spec:
               backend: oidc
               requestTimeout: 10
               oidc:
-                appUrl: http://gloo-mesh-core-demo.solo.io/
+                appUrl: https://gloo-mesh-core-demo.solo.io/
                 clientId: 1066515080967-f5doba9cc024k6en3ku5abllfgp3vgln.apps.googleusercontent.com
                 clientSecretName: dashboard
                 clientSecret: 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
