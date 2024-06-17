@@ -34,8 +34,8 @@ spec:
             enabled: false
             persistence:
                 enabled: false
-    repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.6.0-beta3
+    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
+    targetRevision: 2.6.0-beta3-2024-06-17-torey-ui-login-link-fix-feab60e45d
   syncPolicy:
     automated:
       prune: true

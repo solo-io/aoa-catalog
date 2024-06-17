@@ -91,13 +91,13 @@ spec:
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.6.0-beta3
+            #  tag: 2.6.0-beta3-2024-06-17-torey-ui-login-link-fix-feab60e45d
         telemetryCollector:
             enabled: true
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.6.0-beta3
+            #  tag: 2.6.0-beta3-2024-06-17-torey-ui-login-link-fix-feab60e45d
             config:
                 exporters:
                     otlp:
@@ -187,8 +187,8 @@ spec:
                                   source_labels:
                                     - __meta_kubernetes_pod_phase
 
-    repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.6.0-beta3
+    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
+    targetRevision: 2.6.0-beta3-2024-06-17-torey-ui-login-link-fix-feab60e45d
   syncPolicy:
     automated:
       prune: true
