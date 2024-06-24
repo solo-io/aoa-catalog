@@ -1,10 +1,10 @@
 
 waves:
   - name: gloo-edge-app
-    location: $env_path/gloo-edge-app/ee/gateway-api
+    location: $env_path/gloo-edge-app
     scripts:
       pre_deploy: 
-      -  $env_path/gloo-edge-app/ee/gateway-api/init.sh
+      -  $env_path/gloo-edge-app/init.sh
       post_deploy:
       -  $env_path/gloo-edge-app/test.sh  
   - name: gateway-api-config
