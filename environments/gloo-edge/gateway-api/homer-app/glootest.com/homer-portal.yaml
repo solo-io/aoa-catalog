@@ -196,6 +196,20 @@ spec:
                         tag: "httpbin"
                         url: "https://httpbin.glootest.com"
                         target: "_blank" # optional html a tag target attribute
+
+                  - name: "AI Gateway Workloads"
+                    icon: "fas fa-brain"
+                    items:
+                      - name: "General Chatbot"
+                        icon: "far fa-question-circle"
+                        tag: "ai-gateway"
+                        url: "https://general-chatbot.glootest.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Language Translator Chatbot"
+                        icon: "fas fa-language"
+                        tag: "ai-gateway"
+                        url: "https://language-chatbot.glootest.com"
+                        target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
     automated:
