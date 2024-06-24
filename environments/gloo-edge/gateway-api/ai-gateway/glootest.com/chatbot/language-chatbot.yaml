@@ -1,0 +1,95 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: language-chat
+  namespace: ai-chatbot
+  labels:
+    app: language-chat
+spec:
+  ports:
+  - port: 3000
+    name: http
+  selector:
+    name: language-chat
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: language-chat-deployment
+  namespace: ai-chatbot
+  labels:
+    app: language-chat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: language-chat
+  template:
+    metadata:
+      labels:
+        name: language-chat
+      annotations:
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+    spec:
+      serviceAccountName: gptportal
+      containers:
+      - name: gptportal
+        image: ably77/gptportal:0.1.2
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Always
+        env:
+          - name: "PORT"
+            value: "3000"
+          - name: OPENAI_ENDPOINT
+            value: "https://ai-gateway.demo.glooplatform.com/openai"
+          - name: ANTHROPIC_ENDPOINT
+            value: "https://ai-gateway.demo.glooplatform.com/claude"
+          # used with gloo api-key extauth policy to demonstrate api-key masking
+          - name: MANAGED_CLAUDE_API_KEY
+            value: "solo.io"
+          # specify api-key env var using secretKeyRef
+          - name: OPENAI_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ai-chatbot-keys
+                key: openai-api-key
+          # specify api-key env var using secretKeyRef
+          - name: CLAUDE_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ai-chatbot-keys
+                key: claude-api-key
+          # specify api-key env var using secretKeyRef
+          - name: GOOGLE_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ai-chatbot-keys
+                key: google-api-key
+          # specify api-key env var using secretKeyRef
+          - name: MISTRAL_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ai-chatbot-keys
+                key: mistral-api-key
+      # replaces the default system prompt with a custom one
+        volumeMounts:
+        - name: instructions-volume
+          mountPath: /app/public/instructions.md
+          subPath: instructions.md
+        - name: gemini-message-volume
+          mountPath: /app/public/geminiMessage.txt
+          subPath: geminiMessage.txt
+      volumes:
+      - name: instructions-volume
+        configMap:
+          name: language-translator-system-prompt-configmap
+          items:
+          - key: instructions.md
+            path: instructions.md
+      - name: gemini-message-volume
+        configMap:
+          name: language-translator-system-prompt-configmap
+          items:
+          - key: instructions.md
+            path: geminiMessage.txt

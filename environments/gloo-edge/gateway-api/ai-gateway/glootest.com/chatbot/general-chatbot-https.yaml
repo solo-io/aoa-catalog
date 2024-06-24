@@ -1,0 +1,22 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: general-chatbot-route
+  namespace: ai-chatbot
+  labels:
+    example: chatbot-route
+    gateway: https
+spec:
+  hostnames:
+  - "general-chatbot.glootest.com"
+  parentRefs:
+    - name: https
+      namespace: gloo-system
+  rules:
+    - backendRefs:
+        - name: general-chat
+          port: 3000
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
