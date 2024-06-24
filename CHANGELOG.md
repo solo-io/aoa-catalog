@@ -1,8 +1,10 @@
 # Changelog
 
-0.3.8 ()
+0.3.8 (6-24-24)
 ---
-add chatbot to gloo-edge/gateway-api environment
+add general-chatbot and language-chatbot to gloo-edge/gateway-api environment
+    - configurable environment variables for backend LLM endpoints and api-keys 
+    - configure the system prompt using a configmap
 
 0.3.7 (6-6-24)
 ---
