@@ -42,9 +42,9 @@ spec:
           - name: "PORT"
             value: "3000"
           - name: OPENAI_ENDPOINT
-            value: "https://ai-gateway.demo.glooplatform.com/openai"
+            value: "https://ai-gateway.glootest.com/openai"
           - name: ANTHROPIC_ENDPOINT
-            value: "https://ai-gateway.demo.glooplatform.com/claude"
+            value: "https://ai-gateway.glootest.com/claude"
           # used with gloo api-key extauth policy to demonstrate api-key masking
           - name: MANAGED_CLAUDE_API_KEY
             value: "solo.io"
