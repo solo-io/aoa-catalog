@@ -1,7 +1,7 @@
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: HTTPRoute
 metadata:
-  name: chatbot-https
+  name: general-chatbot-route
   namespace: ai-chatbot
   labels:
     example: chatbot-route
