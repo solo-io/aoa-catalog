@@ -8,5 +8,3 @@ resources:
 - ai-gateway-https.yaml
 - openai
 - gemini
-- chatbot.yaml
-- chatbot-https.yaml
