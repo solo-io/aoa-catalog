@@ -14,7 +14,7 @@ spec:
       namespace: gloo-system
   rules:
     - backendRefs:
-        - name: gptportal
+        - name: general-chat
           port: 3000
       matches:
         - path:
