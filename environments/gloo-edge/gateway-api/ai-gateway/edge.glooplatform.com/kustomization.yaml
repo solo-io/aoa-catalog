@@ -1,0 +1,11 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- ai-gateway-ns.yaml
+- ai-gateway-https.yaml
+- openai
+- gemini
+- chatbot
