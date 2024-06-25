@@ -2,7 +2,7 @@ apiVersion: admin.gloo.solo.io/v2
 kind: WorkspaceSettings
 metadata:
   name: httpbin
-  namespace: httpbin
+  namespace: httpbin-team-config
 spec:
   exportTo:
   - workspaces:
