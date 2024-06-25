@@ -1,5 +1,9 @@
 # Changelog
 
+0.3.9 (6-25-24)
+---
+- update gloo-edge/gateway-api to 1.17.0-rc2
+
 0.3.8 (6-24-24)
 ---
 add general-chatbot and language-chatbot to gloo-edge/gateway-api environment
