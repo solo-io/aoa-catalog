@@ -31,7 +31,7 @@ spec:
         destinations:
           - ref:
               name: httpbin-vd
-              namespace: httpbin
+              namespace: httpbin-team-config
             kind: VIRTUAL_DESTINATION
             port:
               number: 8000
