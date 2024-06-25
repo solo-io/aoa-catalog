@@ -9,5 +9,6 @@ spec:
   workloadClusters:
   - name: '*'
     namespaces:
-    - name: httpbin
+    - name: httpbin-blue
     - name: httpbin-green
+    - name: httpbin-config

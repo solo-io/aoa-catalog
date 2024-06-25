@@ -2,7 +2,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: httpbin-rt-443
-  namespace: httpbin
+  namespace: httpbin-config
   labels:
     expose: "true"
 spec:
@@ -33,8 +33,8 @@ spec:
       forwardTo:
         destinations:
         - ref:
-            name: in-mesh
-            namespace: httpbin
+            name: httpbin-blue
+            namespace: httpbin-blue
           port:
             number: 8000
           weight: 50
