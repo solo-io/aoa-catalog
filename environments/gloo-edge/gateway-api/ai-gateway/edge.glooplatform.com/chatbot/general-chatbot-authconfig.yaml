@@ -1,13 +1,13 @@
 apiVersion: enterprise.gloo.solo.io/v1
 kind: AuthConfig
 metadata:
-  name: httpbin-okta
+  name: general-chatbot-okta
   namespace: gloo-system
 spec:
   configs:
   - oauth2:
       oidcAuthorizationCode:
-        appUrl: https://httpbin.edge.glooplatform.com
+        appUrl: https://general-chatbot.edge.glooplatform.com
         callbackPath: /callback
         clientId: 0oa6qvzybcVCK6PcS5d7
         clientSecretRef:
