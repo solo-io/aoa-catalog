@@ -2,7 +2,7 @@ apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
   name: httpbin-rt-443
-  namespace: httpbin
+  namespace: httpbin-team-config
   labels:
     expose: "true"
 spec:

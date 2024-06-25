@@ -3,8 +3,6 @@ kind: Workspace
 metadata:
   name: httpbin
   namespace: gloo-mesh
-  labels:
-    allow_ingress: "true"
 spec:
   workloadClusters:
   - name: 'mgmt'
@@ -12,4 +10,5 @@ spec:
     - name: httpbin-team-config
   - name: '*'
     namespaces:
-    - name: httpbin
+    - name: httpbin-blue
+    - name: httpbin-green

@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: httpbin-green
+  namespace: httpbin-green
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpbin-green
+  namespace: httpbin-green
+  labels:
+    app: httpbin-green
+    service: httpbin-green
+spec:
+  ports:
+  - name: http
+    port: 8000
+    targetPort: 80
+  selector:
+    app: httpbin-green
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpbin-green
+  namespace: httpbin-green
+  labels:
+    app: httpbin-green
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpbin-green
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: httpbin-green
+        version: v1
+        istio.io/rev: 1-22
+    spec:
+      serviceAccountName: httpbin-green
+      containers:
+      - image: docker.io/kennethreitz/httpbin
+        imagePullPolicy: IfNotPresent
+        name: httpbin-green
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpbin-green-canary
+  namespace: httpbin-green
+  labels:
+    app: httpbin-green
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpbin-green
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: httpbin-green
+        version: v2
+        istio.io/rev: 1-22
+    spec:
+      serviceAccountName: httpbin-green
+      containers:
+      - image: docker.io/kennethreitz/httpbin
+        imagePullPolicy: IfNotPresent
+        name: httpbin-green
+        ports:
+        - containerPort: 80
