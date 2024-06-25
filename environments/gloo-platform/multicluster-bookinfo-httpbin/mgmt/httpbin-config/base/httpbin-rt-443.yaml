@@ -30,8 +30,16 @@ spec:
       forwardTo:
         destinations:
           - ref:
-              name: httpbin-vd
+              name: httpbin-blue-vd
               namespace: httpbin-team-config
             kind: VIRTUAL_DESTINATION
             port:
               number: 8000
+            weight: 50
+          - ref:
+              name: httpbin-green-vd
+              namespace: httpbin-team-config
+            kind: VIRTUAL_DESTINATION
+            port:
+              number: 8000
+            weight: 50
