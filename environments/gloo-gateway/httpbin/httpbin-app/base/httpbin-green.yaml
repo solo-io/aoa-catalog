@@ -8,7 +8,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: httpbin-green
-  namespace: httpbin
+  namespace: httpbin-green
   labels:
     app: httpbin-green
     service: httpbin-green
@@ -24,7 +24,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: httpbin-green
-  namespace: httpbin
+  namespace: httpbin-green
   labels:
     app: httpbin-green
     version: v1
@@ -53,7 +53,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: httpbin-green-canary
-  namespace: httpbin
+  namespace: httpbin-green
   labels:
     app: httpbin-green
     version: v2
