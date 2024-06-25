@@ -58,13 +58,13 @@ spec:
             # Expose the Control Plane Admin API (port 10010 on Gloo)
             devMode: true
         observability:
-          enabled: false
+          enabled: true
         prometheus:
           # setting to false will disable prometheus, removing it from Gloo's chart dependencies
-          enabled: false
+          enabled: true
         grafana:
           # setting to false will disable grafana, removing it from Gloo's chart dependencies
-          defaultInstallationEnabled: false
+          defaultInstallationEnabled: true
           grafana.ini:
             auth.anonymous:
               enabled: true
@@ -79,7 +79,7 @@ spec:
             enable: true
         gateway-portal-web-server:
           # Enable the sub-chart for the Portal webserver
-          enabled: false
+          enabled: true
         global:
           extensions:
             # Rate-Limit Configuration
