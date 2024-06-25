@@ -37,3 +37,10 @@ spec:
             namespace: httpbin
           port:
             number: 8000
+          weight: 50
+        - ref:
+            name: httpbin-green
+            namespace: httpbin-green
+          port:
+            number: 8000
+          weight: 50

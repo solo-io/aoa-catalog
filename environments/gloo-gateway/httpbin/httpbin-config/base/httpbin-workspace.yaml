@@ -10,3 +10,4 @@ spec:
   - name: '*'
     namespaces:
     - name: httpbin
+    - name: httpbin-green
