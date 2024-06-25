@@ -1,13 +1,5 @@
 
 waves:
-  # testing
-  - name: gloo-edge-app
-    location: $env_path/gloo-edge-app
-    scripts:
-      pre_deploy: 
-      -  $env_path/gloo-edge-app/init.sh
-      post_deploy:
-      -  $env_path/gloo-edge-app/test.sh 
   # core 
   - name: clusterconfig
     location: $env_path/clusterconfig/base
