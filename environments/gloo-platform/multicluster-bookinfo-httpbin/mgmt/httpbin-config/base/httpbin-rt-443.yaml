@@ -29,17 +29,32 @@ spec:
           prefix: /anything
       forwardTo:
         destinations:
-          - ref:
-              name: httpbin-blue-vd
-              namespace: httpbin-team-config
-            kind: VIRTUAL_DESTINATION
-            port:
-              number: 8000
-            weight: 50
-          - ref:
-              name: httpbin-green-vd
-              namespace: httpbin-team-config
-            kind: VIRTUAL_DESTINATION
-            port:
-              number: 8000
-            weight: 50
+        #- ref:
+        #    name: httpbin-blue-vd
+        #    namespace: httpbin-team-config
+        #  kind: VIRTUAL_DESTINATION
+        #  port:
+        #    number: 8000
+        #  weight: 50
+        #- ref:
+        #    name: httpbin-green-vd
+        #    namespace: httpbin-team-config
+        #  kind: VIRTUAL_DESTINATION
+        #  port:
+        #    number: 8000
+        #  weight: 50
+        - ref:
+            name: httpbin-blue
+            namespace: httpbin-blue
+            cluster: cluster1
+          port:
+            number: 8000
+          weight: 50
+        - ref:
+            name: httpbin-green
+            namespace: httpbin-green
+            cluster: cluster1
+          port:
+            number: 8000
+          weight: 50
+          
