@@ -6,3 +6,5 @@ kind: Kustomization
 resources:
 - httpbin-in-mesh.yaml
 - httpbin-not-in-mesh.yaml
+- httpbin-green-ns.yaml
+- httpbin-green.yaml
