@@ -14,6 +14,13 @@ waves:
       post_deploy:
       -  $env_path/certmanager/test.sh
     location: $env_path/certmanager/base
+  - name: gloo-edge-app
+    location: $env_path/gloo-edge-app
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-edge-app/init.sh
+      post_deploy:
+      -  $env_path/gloo-edge-app/test.sh 
   - name: gloo-mesh-core
     location: $env_path/gloo-mesh-core/base
     scripts:
