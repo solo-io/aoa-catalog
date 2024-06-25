@@ -14,3 +14,8 @@ spec:
     serviceIsolation:
       enabled: false
       trimProxyConfig: false
+    federation:                     
+      enabled: true
+      serviceSelector:
+      - namespace: httpbin-blue
+      - namespace: httpbin-green
