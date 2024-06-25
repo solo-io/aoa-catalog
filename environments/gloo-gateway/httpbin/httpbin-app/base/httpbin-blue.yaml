@@ -2,13 +2,13 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: httpbin-blue
-  namespace: httpbin
+  namespace: httpbin-blue
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: httpbin-blue
-  namespace: httpbin
+  namespace: httpbin-blue
   labels:
     app: httpbin-blue
     service: httpbin-blue
@@ -24,7 +24,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: httpbin-blue
-  namespace: httpbin
+  namespace: httpbin-blue
   labels:
     app: httpbin-blue
     version: v1
@@ -53,7 +53,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: httpbin-blue-canary
-  namespace: httpbin
+  namespace: httpbin-blue
   labels:
     app: httpbin-blue
     version: v2
