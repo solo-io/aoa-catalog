@@ -41,7 +41,7 @@
 
 0.2.10 (4-3-24)
 ---
-- update to Gloo Platform 2.6.0-beta3-2024-06-17-torey-ui-login-link-fix-feab60e45d
+- update to Gloo Platform 2.7.0-beta0-2024-06-26-puertomontt-fix-svc-type-counts-6579221733
 
 0.2.9 (3-27-24)
 ---
