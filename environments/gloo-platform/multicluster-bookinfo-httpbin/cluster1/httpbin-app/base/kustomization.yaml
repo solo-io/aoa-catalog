@@ -10,3 +10,4 @@ resources:
 - httpbin-green.yaml
 - httpbin-blue-vd.yaml
 - httpbin-green-vd.yaml
+- httpbin-delegate-rt.yaml

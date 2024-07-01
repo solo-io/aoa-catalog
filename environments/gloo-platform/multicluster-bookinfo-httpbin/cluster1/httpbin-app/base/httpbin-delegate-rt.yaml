@@ -1,29 +1,10 @@
+#Route table can reside in just primary cluster, we dont need now in DR cluster
 apiVersion: networking.gloo.solo.io/v2
 kind: RouteTable
 metadata:
-  name: httpbin-rt-443
-  namespace: httpbin-team-config
-  labels:
-    expose: "true"
+  name: httpbin-delegate-rt
+  namespace: httpbin-blue
 spec:
-  hosts:
-    - '*'
-  virtualGateways:
-  - cluster: mgmt
-    name: cluster1-north-south-gw-443
-    namespace: istio-gateways
-  - cluster: mgmt
-    name: cluster2-north-south-gw-443
-    namespace: istio-gateways
-  workloadSelectors: []
-  http:
-    - delegate:
-        routeTables:
-          - namespace: httpbin-blue
-      labels:
-        ingress: all
-      name: httpbin-delegate
-
   http:
     - name: httpbin
       matchers:
