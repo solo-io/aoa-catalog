@@ -11,5 +11,5 @@ resources:
 #- httpbin-blue-vd.yaml
 #- httpbin-green-vd.yaml
 - httpbin-delegate-rt.yaml
-#- httpbin-failoverpolicy.yaml
-#- httpbin-outlierdetectionpolicy.yaml
+- httpbin-failoverpolicy.yaml
+- httpbin-outlierdetectionpolicy.yaml
