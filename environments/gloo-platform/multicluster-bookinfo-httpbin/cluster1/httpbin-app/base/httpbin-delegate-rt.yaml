@@ -20,14 +20,16 @@ spec:
         destinations:
         - ref:
             name: httpbin-blue-vd
-            namespace: httpbin-blue
+            #namespace: httpbin-blue
+            namespace: ops-team-config
           kind: VIRTUAL_DESTINATION
           port:
             number: 8000
           weight: 50
         - ref:
             name: httpbin-green-vd
-            namespace: httpbin-blue
+            #namespace: httpbin-blue
+            namespace: ops-team-config
           kind: VIRTUAL_DESTINATION
           port:
             number: 8000
