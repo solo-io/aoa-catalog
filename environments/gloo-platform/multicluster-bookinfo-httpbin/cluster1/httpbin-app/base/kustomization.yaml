@@ -8,8 +8,8 @@ resources:
 - httpbin-blue.yaml
 - httpbin-green-ns.yaml
 - httpbin-green.yaml
-#- httpbin-blue-vd.yaml
-#- httpbin-green-vd.yaml
+- httpbin-blue-vd.yaml
+- httpbin-green-vd.yaml
 - httpbin-delegate-rt.yaml
 - httpbin-failoverpolicy.yaml
 - httpbin-outlierdetectionpolicy.yaml
