@@ -8,3 +8,5 @@ resources:
 - httpbin-blue.yaml
 - httpbin-green-ns.yaml
 - httpbin-green.yaml
+- httpbin-blue-vd.yaml
+- httpbin-green-vd.yaml

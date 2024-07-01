@@ -1,0 +1,16 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: httpbin-green-vd
+  namespace: httpbin-blue
+  labels:
+    failover: "true"
+spec:
+  hosts:
+  - httpbin-green.randomvalue
+  services:
+  - labels:
+      app: httpbin-green
+  ports:
+    - number: 8000
+      protocol: HTTP

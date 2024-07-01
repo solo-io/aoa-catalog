@@ -8,7 +8,7 @@ resources:
 - httpbin-workspace.yaml
 - httpbin-workspacesettings.yaml
 - httpbin-rt-443.yaml
-- httpbin-blue-vd.yaml
-- httpbin-green-vd.yaml
+#- httpbin-blue-vd.yaml
+#- httpbin-green-vd.yaml
 - httpbin-failoverpolicy.yaml
 - httpbin-outlierdetectionpolicy.yaml
