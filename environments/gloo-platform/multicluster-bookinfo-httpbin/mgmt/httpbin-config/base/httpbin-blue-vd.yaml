@@ -2,8 +2,8 @@ apiVersion: networking.gloo.solo.io/v2
 kind: VirtualDestination
 metadata:
   name: httpbin-blue-vd
-  #namespace: httpbin-team-config
-  namespace: ops-team-config
+  namespace: httpbin-team-config
+  #namespace: ops-team-config
   labels:
     failover: "true"
 spec:
