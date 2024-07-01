@@ -7,22 +7,22 @@ spec:
   exportTo:
   - workspaces:
     - name: "*"
-    resources:
-    - kind: SERVICE
-      namespace: gloo-mesh-addons
-    - kind: SERVICE
-      namespace: istio-gateways
-    - kind: SERVICE
-      namespace: istio-eastwest
-    - kind: VIRTUAL_DESTINATION
-      namespace: gloo-mesh-addons
+    #resources:
+    #- kind: SERVICE
+    #  namespace: gloo-mesh-addons
+    #- kind: SERVICE
+    #  namespace: istio-gateways
+    #- kind: SERVICE
+    #  namespace: istio-eastwest
+    #- kind: VIRTUAL_DESTINATION
+    #  namespace: gloo-mesh-addons
   importFrom:
   - workspaces:
     - name: '*'
-  options:
-    federation:                     # federate only the gloo-mesh-addons
-      enabled: true
-      hostSuffix: global
-      serviceSelector:
-      - namespace: gloo-mesh-addons
-      - namespace: argocd
+  #options:
+  #  federation:                     # federate only the gloo-mesh-addons
+  #    enabled: true
+  #    hostSuffix: global
+  #    serviceSelector:
+  #    - namespace: gloo-mesh-addons
+  #    - namespace: argocd

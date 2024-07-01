@@ -10,12 +10,12 @@ spec:
   importFrom:
   - workspaces:
     - name: ops-team
-  options:
-    serviceIsolation:
-      enabled: false
-      trimProxyConfig: false
-    federation:                     
-      enabled: false
-      serviceSelector:
-      - namespace: httpbin-blue
-      - namespace: httpbin-green
+  #options:
+  #  serviceIsolation:
+  #    enabled: false
+  #    trimProxyConfig: false
+  #  federation:                     
+  #    enabled: false
+  #    serviceSelector:
+  #    - namespace: httpbin-blue
+  #    - namespace: httpbin-green
