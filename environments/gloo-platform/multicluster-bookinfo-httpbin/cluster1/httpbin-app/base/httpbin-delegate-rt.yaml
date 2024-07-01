@@ -22,6 +22,7 @@ spec:
             name: httpbin-blue-vd
             #namespace: httpbin-blue
             namespace: ops-team-config
+            cluster: mgmt
           kind: VIRTUAL_DESTINATION
           port:
             number: 8000
@@ -30,6 +31,7 @@ spec:
             name: httpbin-green-vd
             #namespace: httpbin-blue
             namespace: ops-team-config
+            cluster: mgmt
           kind: VIRTUAL_DESTINATION
           port:
             number: 8000
