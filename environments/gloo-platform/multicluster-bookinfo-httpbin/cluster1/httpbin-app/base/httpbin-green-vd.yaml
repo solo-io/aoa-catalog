@@ -5,6 +5,7 @@ metadata:
   namespace: httpbin-blue
   labels:
     failover: "true"
+    vd: httbin-green
 spec:
   hosts:
   - httpbin-green.randomvalue

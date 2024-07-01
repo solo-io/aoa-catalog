@@ -19,15 +19,19 @@ spec:
       forwardTo:
         destinations:
         - ref:
-            name: httpbin-blue-vd
-            namespace: httpbin-blue
+            #name: httpbin-blue-vd
+            #namespace: httpbin-blue
+            labels:
+              app: httpbin-blue
           kind: VIRTUAL_DESTINATION
           port:
             number: 8000
           weight: 50
         - ref:
-            name: httpbin-green-vd
-            namespace: httpbin-blue
+            labels:
+              app: httpbin-green
+            #name: httpbin-green-vd
+            #namespace: httpbin-blue
           kind: VIRTUAL_DESTINATION
           port:
             number: 8000
