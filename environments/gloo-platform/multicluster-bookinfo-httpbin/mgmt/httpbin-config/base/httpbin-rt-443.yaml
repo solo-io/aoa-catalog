@@ -32,6 +32,7 @@ spec:
         - ref:
             name: httpbin-blue-vd
             namespace: httpbin-blue
+            cluster: cluster1
           kind: VIRTUAL_DESTINATION
           port:
             number: 8000
@@ -39,6 +40,7 @@ spec:
         - ref:
             name: httpbin-green-vd
             namespace: httpbin-blue
+            cluster: cluster1
           kind: VIRTUAL_DESTINATION
           port:
             number: 8000
