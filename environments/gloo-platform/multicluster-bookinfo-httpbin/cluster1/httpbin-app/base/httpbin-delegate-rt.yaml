@@ -22,14 +22,14 @@ spec:
             #name: httpbin-blue-vd
             #namespace: httpbin-blue
             labels:
-              app: httpbin-blue
+              vd: httpbin-blue
           kind: VIRTUAL_DESTINATION
           port:
             number: 8000
           weight: 50
         - ref:
             labels:
-              app: httpbin-green
+              vd: httpbin-green
             #name: httpbin-green-vd
             #namespace: httpbin-blue
           kind: VIRTUAL_DESTINATION
