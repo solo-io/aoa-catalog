@@ -10,5 +10,5 @@ resources:
 - httpbin-rt-443.yaml
 #- httpbin-blue-vd.yaml
 #- httpbin-green-vd.yaml
-- httpbin-failoverpolicy.yaml
-- httpbin-outlierdetectionpolicy.yaml
+#- httpbin-failoverpolicy.yaml
+#- httpbin-outlierdetectionpolicy.yaml
