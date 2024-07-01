@@ -23,33 +23,3 @@ spec:
       labels:
         ingress: all
       name: httpbin-delegate
-
-  http:
-    - name: httpbin
-      matchers:
-      - uri:
-          exact: /get
-      - uri:
-          prefix: /callback
-      - uri:
-          prefix: /logout
-      - uri:
-          prefix: /anything
-      forwardTo:
-        destinations:
-        - ref:
-            name: httpbin-blue-vd
-            namespace: httpbin-blue
-            cluster: cluster1
-          kind: VIRTUAL_DESTINATION
-          port:
-            number: 8000
-          weight: 50
-        - ref:
-            name: httpbin-green-vd
-            namespace: httpbin-blue
-            cluster: cluster1
-          kind: VIRTUAL_DESTINATION
-          port:
-            number: 8000
-          weight: 50
