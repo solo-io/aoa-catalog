@@ -115,7 +115,7 @@ spec:
             name: apikey-auth
             namespace: gloo-system
         jwtStaged:
-          beforeExtAuth:
+          afterExtAuth:
             providers:
               solo:
                 tokenSource:
