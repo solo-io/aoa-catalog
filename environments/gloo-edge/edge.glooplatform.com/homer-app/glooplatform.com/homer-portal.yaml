@@ -226,13 +226,13 @@ spec:
                         url: "https://httpbin.edge.glooplatform.com/overview"
                         target: "_blank" # optional html a tag target attribute
                       - name: "httpbin"
-                        subtitle: "user: jdoe@solo.io / password: gloo-dev"
+                        subtitle: "user: jdoe@solo.io / password: gloo-admin"
                         icon: "far fa-window-maximize"
                         tag: "httpbin"
                         url: "https://httpbin.edge.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "httpbin /get"
-                        subtitle: "user: jdoe@solo.io / password: gloo-dev"
+                        subtitle: "user: jdoe@solo.io / password: gloo-admin"
                         icon: "far fa-window-maximize"
                         tag: "httpbin"
                         url: "https://httpbin.edge.glooplatform.com/get"
