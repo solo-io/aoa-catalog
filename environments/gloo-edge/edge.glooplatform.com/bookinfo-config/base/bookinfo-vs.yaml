@@ -20,6 +20,30 @@ spec:
                name: wafrulesets
                namespace: gloo-system
         customInterventionMessage: 'ModSecurity intervention! Custom message details here..'
+      jwt:
+        providers:
+          solo:
+            tokenSource:
+              headers:
+              - header: x-token
+              queryParams:
+              - token
+            claimsToHeaders:
+            - claim: org
+              header: x-company
+            issuer: solo.io
+            jwks:
+              local:
+                key: |
+                  -----BEGIN PUBLIC KEY-----
+                  MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtnkwSRAoyViwIuoDUiMv
+                  ylnMjXgCYAAGH43IwzuCAtSyJG5Ufp5PnJ4jJJlINMwN3Wv887AYCSndoC8P83L3
+                  1JPPqDgJY+MYuLmaP9vnjNN5GiDt15bG4Gby6XYFnKmjgvy2ugOP1QnTkedeVFAw
+                  Y7dmSeBU1E55Xq+PxrDTKdDKHB9oiO77bfn4lWjzDECtcX+YPRbTufLJPWCNAhpF
+                  41N6SdozbRenhOqgOWoHSPBsQtKir6+5NOKZjJt6amDSFYc08M7ESXZVymtCFUJ9
+                  X7DtYS5ppyaW+Cyt8v5vgjrs5Cu4by//77mHWuxd918O047GhKP17l14O/DySeOF
+                  7QIDAQAB
+                  -----END PUBLIC KEY-----
     routes:
     # direct response action
     - matchers:
