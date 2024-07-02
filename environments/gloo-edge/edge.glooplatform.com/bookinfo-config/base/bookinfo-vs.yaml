@@ -20,31 +20,30 @@ spec:
                name: wafrulesets
                namespace: gloo-system
         customInterventionMessage: 'ModSecurity intervention! Custom message details here..'
-      # jwt validation and claims to headers
-        jwt:
-          providers:
-            solo:
-              tokenSource:
-                headers:
-                - header: x-token
-                queryParams:
-                - token
-              claimsToHeaders:
-              - claim: user
-                header: subscriber
-              issuer: solo.io
-              jwks:
-                local:
-                  key: |
-                    -----BEGIN PUBLIC KEY-----
-                    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6IA5LB7RG7eqoPyoP3GM
-                    gWIdYKwIvYsekCHKf2Co3nCb7ii2kDsNNHJygTsHFO2v5Fqe0/z40A2Qtkf3GjKl
-                    CnFJCoxWX22PZNqEC4b1g12xqZyv7AE8pqhLkp/EFfB1abZJtboIC1y280JVk+iK
-                    iEYGYjC5/PxV3Ynk1QuqC+rcdu6XP6m76p/bzYygaBGVU6ekaDG5B3vheqOlAe/f
-                    hq82aS9V0vjKZbob0uNJFB0diTgUVhFech+CN9lYX7ucUwA5OqRV7zpXTFzxo08c
-                    K/WHCWcZX6TCsfcYHV90abTNl7v+n5JDJfxQJp4RKlVQ4CaEIKBwZtIj1dvbZ9wZ
-                    gQIDAQAB
-                    -----END PUBLIC KEY-----
+      jwt:
+        providers:
+          solo:
+            tokenSource:
+              headers:
+              - header: x-token
+              queryParams:
+              - token
+            claimsToHeaders:
+            - claim: org
+              header: x-company
+            issuer: solo.io
+            jwks:
+              local:
+                key: |
+                  -----BEGIN PUBLIC KEY-----
+                  MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtnkwSRAoyViwIuoDUiMv
+                  ylnMjXgCYAAGH43IwzuCAtSyJG5Ufp5PnJ4jJJlINMwN3Wv887AYCSndoC8P83L3
+                  1JPPqDgJY+MYuLmaP9vnjNN5GiDt15bG4Gby6XYFnKmjgvy2ugOP1QnTkedeVFAw
+                  Y7dmSeBU1E55Xq+PxrDTKdDKHB9oiO77bfn4lWjzDECtcX+YPRbTufLJPWCNAhpF
+                  41N6SdozbRenhOqgOWoHSPBsQtKir6+5NOKZjJt6amDSFYc08M7ESXZVymtCFUJ9
+                  X7DtYS5ppyaW+Cyt8v5vgjrs5Cu4by//77mHWuxd918O047GhKP17l14O/DySeOF
+                  7QIDAQAB
+                  -----END PUBLIC KEY-----
     routes:
     # direct response action
     - matchers:
@@ -140,3 +139,28 @@ spec:
           configRef:
             name: apikey-auth
             namespace: gloo-system
+        # jwt validation and claims to headers
+        #jwt:
+        #  providers:
+        #    solo:
+        #      tokenSource:
+        #        headers:
+        #        - header: x-token
+        #        queryParams:
+        #        - token
+        #      claimsToHeaders:
+        #      - claim: user
+        #        header: subscriber
+        #      issuer: solo.io
+        #      jwks:
+        #        local:
+        #          key: |
+        #            -----BEGIN PUBLIC KEY-----
+        #            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6IA5LB7RG7eqoPyoP3GM
+        #            gWIdYKwIvYsekCHKf2Co3nCb7ii2kDsNNHJygTsHFO2v5Fqe0/z40A2Qtkf3GjKl
+        #            CnFJCoxWX22PZNqEC4b1g12xqZyv7AE8pqhLkp/EFfB1abZJtboIC1y280JVk+iK
+        #            iEYGYjC5/PxV3Ynk1QuqC+rcdu6XP6m76p/bzYygaBGVU6ekaDG5B3vheqOlAe/f
+        #            hq82aS9V0vjKZbob0uNJFB0diTgUVhFech+CN9lYX7ucUwA5OqRV7zpXTFzxo08c
+        #            K/WHCWcZX6TCsfcYHV90abTNl7v+n5JDJfxQJp4RKlVQ4CaEIKBwZtIj1dvbZ9wZ
+        #            gQIDAQAB
+        #            -----END PUBLIC KEY-----
