@@ -41,7 +41,7 @@
 
 0.2.10 (4-3-24)
 ---
-- update to Gloo Platform 2.7.0-beta0-2024-06-26-puertomontt-fix-svc-type-counts-6579221733
+- update to Gloo Platform 2.6.0-rc2-2024-07-02-otel-bump
 
 0.2.9 (3-27-24)
 ---

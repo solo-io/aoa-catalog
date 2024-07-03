@@ -7,7 +7,7 @@ echo "deploy and register gloo-mesh agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.7.0-beta0-2024-06-26-puertomontt-fix-svc-type-counts-6579221733):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.6.0-rc2-2024-07-02-otel-bump):"
     read gloo_mesh_version
 fi
 
@@ -115,7 +115,7 @@ spec:
             enabled: true
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta0-2024-06-26-puertomontt-fix-svc-type-counts-6579221733
+    targetRevision: 2.6.0-rc2-2024-07-02-otel-bump
   syncPolicy:
     automated:
       prune: true
@@ -171,7 +171,7 @@ spec:
                   name: cilium-run
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta0-2024-06-26-puertomontt-fix-svc-type-counts-6579221733
+    targetRevision: 2.6.0-rc2-2024-07-02-otel-bump
   syncPolicy:
     automated:
       prune: true
