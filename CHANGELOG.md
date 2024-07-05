@@ -1,5 +1,9 @@
 # Changelog
 
+0.3.12 (7-5-24)
+---
+- restructure environments/gloo-edge for easier portability between branches
+
 0.3.11 (7-5-24)
 ---
 - restructure environments/gloo-edge for easier portability between branches
