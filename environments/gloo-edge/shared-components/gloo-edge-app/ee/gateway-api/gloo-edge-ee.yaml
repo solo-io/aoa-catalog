@@ -23,6 +23,7 @@ spec:
             enabled: true
           gatewayProxies:
             gatewayProxy:
+              disabled: true
               healthyPanicThreshold: 0
               gatewaySettings:
                 # Disable the default Edge Gateway CRs from being created
