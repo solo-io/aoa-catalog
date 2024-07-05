@@ -6,9 +6,9 @@ kind: Kustomization
 resources:
 - httpbin.yaml
 - httpbin-ns.yaml
-#- httpbin-https.yaml
+#- httpbin-all-in-one-route.yaml
+- httpbin-parent-route.yaml
+- httpbin-delegate-route.yaml
 - httpbin-route-policies.yaml
 - httpbin-ratelimit-config.yaml
 - okta-authconfig.yaml
-- httpbin-parent-route.yaml
-- httpbin-delegate-route.yaml
