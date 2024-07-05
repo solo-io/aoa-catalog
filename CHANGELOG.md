@@ -1,5 +1,9 @@
 # Changelog
 
+0.3.11 (7-5-24)
+---
+- restructure environments/gloo-edge for easier portability between branches
+
 0.3.10 (7-5-24)
 ---
 - update gloo-edge/gateway-api to 1.17.0-rc4

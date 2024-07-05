@@ -1,12 +1,12 @@
 
 waves:
-  - name: gloo-edge-app
-    location: $env_path/../shared-components/gloo-edge-app/ee/gateway-api
+  - name: gloo-enterprise-app
+    location: $env_path/gloo-enterprise-app
     scripts:
       pre_deploy: 
-      -  $env_path/../shared-components/gloo-edge-app/ee/gateway-api/init.sh
+      -  $env_path/gloo-enterprise-app/init.sh
       post_deploy:
-      -  $env_path/../shared-components/gloo-edge-app/test.sh  
+      -  $env_path/gloo-enterprise-app/test.sh
   - name: gateway-api-config
     location: $env_path/gateway-api-config/glootest.com
     scripts:
