@@ -3,6 +3,7 @@
 0.3.10 (7-5-24)
 ---
 - update gloo-edge/gateway-api to 1.17.0-rc4
+- disable default gateway-proxy in gloo-edge/gateway-api
 
 0.3.9 (6-25-24)
 ---
