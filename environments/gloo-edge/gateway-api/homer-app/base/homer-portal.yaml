@@ -197,6 +197,7 @@ spec:
                         url: "https://httpbin.edge.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Bookinfo"
+                        subtitle: "requires bookinfo-key header"
                         icon: "fas fa-book-reader"
                         tag: "bookinfo"
                         url: "https://bookinfo.edge.glooplatform.com/productpage"
