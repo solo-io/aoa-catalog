@@ -6,7 +6,6 @@ kind: Kustomization
 resources:
 - bookinfo-ns.yaml
 - bookinfo.yaml
-- bookinfo-gateway-https.yaml
 - bookinfo-parent-route.yaml
 - bookinfo-delegate-route.yaml
 #- bookinfo-route-policies.yaml
