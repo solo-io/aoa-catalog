@@ -4,9 +4,12 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- httpbin.yaml
+- httpbin-active.yaml
+- httpbin-preview.yaml
 - httpbin-ns.yaml
-- httpbin-https.yaml
+#- httpbin-all-in-one-route.yaml
+- httpbin-parent-route.yaml
+- httpbin-delegate-route.yaml
 - httpbin-route-policies.yaml
 - httpbin-ratelimit-config.yaml
 - okta-authconfig.yaml

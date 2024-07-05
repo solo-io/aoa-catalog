@@ -151,7 +151,7 @@ spec:
                     Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
                     
                     When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />
-                    127.0.0.1 argocd.glootest.com homer.glootest.com httpbin.glootest.com<br /><br />
+                    127.0.0.1 argocd.glootest.com homer.glootest.com httpbin.glootest.com bookinfo.glootest.com general-chatbot.glootest.com language-chatbot.glootest.com<br /><br />
                     Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />
                     
                     Below are a few common usernames to explore the applications and portals:<br />
@@ -195,6 +195,11 @@ spec:
                         icon: "far fa-window-maximize"
                         tag: "httpbin"
                         url: "https://httpbin.glootest.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Bookinfo"
+                        icon: "fas fa-book-reader"
+                        tag: "bookinfo"
+                        url: "https://bookinfo.glootest.com/productpage"
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "AI Gateway Workloads"
