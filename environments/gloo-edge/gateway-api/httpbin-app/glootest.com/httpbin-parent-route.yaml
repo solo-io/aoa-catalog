@@ -14,8 +14,10 @@ spec:
       namespace: gloo-system
   rules:
     - backendRefs:
-        - name: httpbin
-          port: 8000
+        - name: '*'
+          namespace: httpbin
+          group: gateway.networking.k8s.io
+          kind: HTTPRoute
       matches:
         - path:
             type: PathPrefix
