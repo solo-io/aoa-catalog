@@ -12,14 +12,3 @@ spec:
       backendRefs:
         - name: httpbin
           port: 8000
-      filters:
-        - type: RequestHeaderModifier
-          requestHeaderModifier:
-            add:
-              - name: simple
-                value: header
-            set:
-              - name: User-Agent
-                value: custom
-            remove:
-              - To-Remove

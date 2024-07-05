@@ -4,7 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- httpbin.yaml
+- httpbin-active.yaml
+- httpbin-preview.yaml
 - httpbin-ns.yaml
 #- httpbin-all-in-one-route.yaml
 - httpbin-parent-route.yaml
