@@ -8,5 +8,6 @@ resources:
 - httpbin-ns.yaml
 - httpbin-https.yaml
 - httpbin-route-policies.yaml
+- httpbin-add-header-policy.yaml
 - httpbin-ratelimit-config.yaml
 - okta-authconfig.yaml
