@@ -10,7 +10,7 @@ spec:
   hostnames:
   - "bookinfo.edge.glooplatform.com"
   parentRefs:
-    - name: https
+    - name: bookinfo-gateway-https
       namespace: gloo-system
   rules:
     - backendRefs:
