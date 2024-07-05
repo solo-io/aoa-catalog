@@ -20,7 +20,14 @@ waves:
       pre_deploy: 
       -  $env_path/httpbin-app/init.sh
       post_deploy:
-      -  $env_path/httpbin-app/test.sh    
+      -  $env_path/httpbin-app/test.sh
+  - name: bookinfo-app
+    location: $env_path/bookinfo-app/glootest.com
+    scripts:
+      pre_deploy: 
+      -  $env_path/bookinfo-app/init.sh
+      post_deploy:
+      -  $env_path/bookinfo-app/test.sh       
   - name: ai-gateway
     location: $env_path/ai-gateway/glootest.com
     scripts:

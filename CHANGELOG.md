@@ -4,6 +4,9 @@
 ---
 - update gloo-edge/gateway-api to 1.17.0-rc4
 - disable default gateway-proxy in gloo-edge/gateway-api
+- configure parent/delegate routes for httpbin app in gloo-edge/gateway-api
+- configure active/preview for httpbin app in gloo-edge/gateway-api to demonstrate weighted destination routing
+- add bookinfo app to gloo-edge/gateway-api environment
 
 0.3.9 (6-25-24)
 ---
