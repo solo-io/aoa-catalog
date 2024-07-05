@@ -8,4 +8,6 @@ resources:
 - argocd-https.yaml
 #- upstream-tls.yaml
 - okta-client-secret.yaml
+- api-key-auth.yaml
+- example-api-key.yaml
 #- https-gateway-virtualhostoptions.yaml
