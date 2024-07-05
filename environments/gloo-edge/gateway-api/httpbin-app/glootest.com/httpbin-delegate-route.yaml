@@ -12,7 +12,7 @@ spec:
       backendRefs:
         - name: httpbin
           port: 8000
-          weight: 50
+          weight: 100
         - name: httpbin-preview
           port: 8000
-          weight: 50
+          weight: 0
