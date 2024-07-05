@@ -26,8 +26,3 @@ spec:
             group: gateway.solo.io
             kind: RouteOption
             name: httpbin-route-policies
-        - type: ExtensionRef
-          extensionRef:
-            group: gateway.solo.io
-            kind: RouteOption
-            name: httpbin-add-header-policy
