@@ -1,12 +1,18 @@
 # Changelog
 
+0.3.13 (7-8-24)
+---
+- Apply api-key auth to bookinfo example in gloo-edge/gateway-api
+- Add JWT virtualhostoption to gateway in gloo-edge/gateway-api (commented out to demonstrate manually)
+- Update homer portal in gloo-edge/gateway-api
+
 0.3.12 (7-5-24)
 ---
-- restructure environments/gloo-edge for easier portability between branches
+- restructure gloo-edge/gateway-api for easier portability between branches
 
 0.3.11 (7-5-24)
 ---
-- restructure environments/gloo-edge for easier portability between branches
+- restructure gloo-edge/gateway-api for easier portability between branches
 
 0.3.10 (7-5-24)
 ---
