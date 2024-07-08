@@ -157,6 +157,9 @@ spec:
                     Below are a few common usernames to explore the applications and portals:<br />
                     Username: jdoe@solo.io // Password: gloo-dev<br />
                     Username: jdoe@gmail.com // Password: gloo-public<br /><br />
+
+                    Used in API-Key auth example:<br />
+                    bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br />
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
@@ -197,6 +200,7 @@ spec:
                         url: "https://httpbin.glootest.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Bookinfo"
+                        subtitle: "requires bookinfo-key header"
                         icon: "fas fa-book-reader"
                         tag: "bookinfo"
                         url: "https://bookinfo.glootest.com/productpage"

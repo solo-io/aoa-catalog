@@ -22,10 +22,10 @@ spec:
         - path:
             type: PathPrefix
             value: /api/bookinfo
-      #filters:
-      #  - type: ExtensionRef
-      #    extensionRef:
-      #      group: gateway.solo.io
-      #      kind: RouteOption
-      #      name: bookinfo-route-policies
+      filters:
+        - type: ExtensionRef
+          extensionRef:
+            group: gateway.solo.io
+            kind: RouteOption
+            name: bookinfo-route-policies
     
