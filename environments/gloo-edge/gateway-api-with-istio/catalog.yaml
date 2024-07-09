@@ -1,0 +1,51 @@
+
+waves:
+  - name: istio
+    location: $env_path/istio/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/istio/init.sh
+      post_deploy:
+      -  $env_path/istio/test.sh
+  - name: gloo-enterprise-app
+    location: $env_path/gloo-enterprise-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-enterprise-app/init.sh
+      post_deploy:
+      -  $env_path/gloo-enterprise-app/test.sh
+  - name: gateway-api-config
+    location: $env_path/../gateway-api/gateway-api-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/../gateway-api/gateway-api-config/init.sh
+      post_deploy:
+      -  $env_path/../gateway-api/gateway-api-config/test.sh
+  - name: httpbin-app
+    location: $env_path/httpbin-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/httpbin-app/init.sh
+      post_deploy:
+      -  $env_path/httpbin-app/test.sh
+  - name: bookinfo-app
+    location: $env_path/bookinfo-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/bookinfo-app/init.sh
+      post_deploy:
+      -  $env_path/bookinfo-app/test.sh       
+  - name: ai-gateway
+    location: $env_path/../gateway-api/ai-gateway/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/../gateway-api/ai-gateway/init.sh
+      post_deploy:
+      -  $env_path/../gateway-api/ai-gateway/test.sh    
+  - name: homer-app
+    location: $env_path/../gateway-api/homer-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/../gateway-api/homer-app/init.sh
+      post_deploy:
+      -  $env_path/../gateway-api/homer-app/test.sh 
