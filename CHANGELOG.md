@@ -1,5 +1,10 @@
 # Changelog
 
+0.3.14 (7-9-24)
+---
+- generate ai-chatbot api key secret from environment variables in env.vars in gloo-edge/gateway-api environment, otherwise prompt for openai, claude, gemini, and mistral api keys
+- add gloo-edge/gateway-api-with-istio environment which is a variation of gloo-edge/gateway-api that includes an istio `1-22` revision based installation and configures bookinfo and httpbin as services in the mesh
+
 0.3.13 (7-8-24)
 ---
 - Apply api-key auth to bookinfo example in gloo-edge/gateway-api
