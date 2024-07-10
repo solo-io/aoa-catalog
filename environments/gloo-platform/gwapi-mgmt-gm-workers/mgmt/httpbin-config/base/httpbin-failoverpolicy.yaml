@@ -1,0 +1,25 @@
+apiVersion: resilience.policy.gloo.solo.io/v2
+kind: FailoverPolicy
+metadata:
+  name: httpbin-failover
+  namespace: httpbin-team-config
+spec:
+  applyToDestinations:
+  - kind: VIRTUAL_DESTINATION
+    selector:
+      labels:
+        failover: "true"
+  config:
+    localityMappings:
+    # prioritize failover to us-east first then us-west
+    - from:
+        region: us-central
+      to:
+        - region: us-east
+        - region: us-west
+    # prioritize failover to us-central first then us-west
+    - from:
+        region: us-east
+      to:
+        - region: us-central
+        - region: us-west
