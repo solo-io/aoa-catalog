@@ -11,4 +11,3 @@ resources:
 - httpbin-vd.yaml
 - httpbin-failoverpolicy.yaml
 - httpbin-outlierdetectionpolicy.yaml
-- httpbin-vd.yaml
