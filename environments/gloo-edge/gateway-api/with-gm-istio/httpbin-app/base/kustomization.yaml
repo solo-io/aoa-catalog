@@ -15,3 +15,5 @@ resources:
 - httpbin-ratelimit-config.yaml
 - okta-authconfig.yaml
 - peerauth-strict.yaml
+- httpbin-workspace.yaml
+- httpbin-workspacesettings.yaml
