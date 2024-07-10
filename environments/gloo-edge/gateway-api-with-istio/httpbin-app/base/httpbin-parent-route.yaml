@@ -27,10 +27,10 @@ spec:
           extensionRef:
             group: gateway.solo.io
             kind: RouteOption
-            name: add-header-policy
+            name: httpbin-route-policies
         - type: ExtensionRef
           extensionRef:
             group: gateway.solo.io
             kind: RouteOption
-            name: httpbin-route-policies
+            name: add-header-policy
     
