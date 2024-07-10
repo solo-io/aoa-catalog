@@ -6,3 +6,5 @@ kind: Kustomization
 resources:
 - client-ns.yaml
 - not-in-mesh-client.yaml
+- client-parent-route.yaml
+- not-in-mesh-delegate-route.yaml
