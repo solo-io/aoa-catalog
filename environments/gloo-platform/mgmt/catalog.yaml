@@ -36,13 +36,6 @@ waves:
       -  $env_path/gloo-platform-config/init.sh
       post_deploy:
       -  $env_path/gloo-platform-config/test.sh
-  - name: gloo-enterprise-app
-    location: $env_path/gloo-enterprise-app/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/gloo-enterprise-app/init.sh
-      post_deploy:
-      -  $env_path/gloo-enterprise-app/test.sh 
   # additional
   - name: glooplatform-central-platform-config
     location: $env_path/gloo-platform-config/glooplatform-central
