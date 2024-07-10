@@ -15,12 +15,12 @@ waves:
       post_deploy:
       -  $env_path/gloo-enterprise-app/test.sh
   - name: gateway-api-config
-    location: $env_path/../gateway-api/gateway-api-config/base
+    location: $env_path/../standalone/gateway-api-config/base
     scripts:
       pre_deploy: 
-      -  $env_path/../gateway-api/gateway-api-config/init.sh
+      -  $env_path/../standalone/gateway-api-config/init.sh
       post_deploy:
-      -  $env_path/../gateway-api/gateway-api-config/test.sh
+      -  $env_path/../standalone/gateway-api-config/test.sh
   - name: httpbin-app
     location: $env_path/httpbin-app/base
     scripts:
@@ -43,12 +43,12 @@ waves:
       post_deploy:
       -  $env_path/client-app/test.sh        
   - name: ai-gateway
-    location: $env_path/../gateway-api/ai-gateway/base
+    location: $env_path/../standalone/ai-gateway/base
     scripts:
       pre_deploy: 
-      -  $env_path/../gateway-api/ai-gateway/init.sh
+      -  $env_path/../standalone/ai-gateway/init.sh
       post_deploy:
-      -  $env_path/../gateway-api/ai-gateway/test.sh    
+      -  $env_path/../standalone/ai-gateway/test.sh    
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:

@@ -11,5 +11,6 @@ resources:
 - httpbin-parent-route.yaml
 - httpbin-delegate-route.yaml
 - httpbin-route-policies.yaml
+#- httpbin-add-header-policy.yaml
 - httpbin-ratelimit-config.yaml
 - okta-authconfig.yaml

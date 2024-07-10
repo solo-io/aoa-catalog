@@ -3,6 +3,8 @@
 0.3.16 (7-10-24)
 ---
 - update gloo-edge/gateway-api and gloo-edge/gateway-api-with-istio to use 1.17.0-rc5
+- restructure gateway-api environments to gloo-edge/gateway-api/standalone and gloo-edge/gateway-api/with-istio
+- add config (commented out) for multiple route policies to gloo-edge/gateway-api environments (still waiting for fix)
 
 0.3.15 (7-9-24)
 ---
