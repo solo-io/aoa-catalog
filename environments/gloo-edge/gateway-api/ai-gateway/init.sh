@@ -8,6 +8,7 @@ echo "openai_api_key"
 echo "claude_api_key"
 echo "google_api_key"
 echo "mistral_api_key"
+echo
 
 # check to see if llm key variables were passed through, if not prompt for keys
 if [[ ${openai_api_key} == "" ]]

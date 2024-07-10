@@ -35,13 +35,13 @@ waves:
       -  $env_path/bookinfo-app/init.sh
       post_deploy:
       -  $env_path/bookinfo-app/test.sh
-  - name: not-in-mesh-client-app
-    location: $env_path/not-in-mesh-client-app/base
+  - name: client-app
+    location: $env_path/client-app/base
     scripts:
       pre_deploy: 
-      -  $env_path/not-in-mesh-client-app/init.sh
+      -  $env_path/client-app/init.sh
       post_deploy:
-      -  $env_path/not-in-mesh-client-app/test.sh        
+      -  $env_path/client-app/test.sh        
   - name: ai-gateway
     location: $env_path/../gateway-api/ai-gateway/base
     scripts:
