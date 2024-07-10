@@ -9,15 +9,15 @@ spec:
       configRef:
         name: httpbin-okta
         namespace: gloo-system
-    headerManipulation:
-      # add headers to all responses
-      requestHeadersToAdd:
-        - header:
-            key: "foo"
-            value: "bar"
-        - header:
-            key: "x-id"
-            value: "12345"
+    #headerManipulation:
+    #  # add headers to all responses
+    #  requestHeadersToAdd:
+    #    - header:
+    #        key: "foo"
+    #        value: "bar"
+    #    - header:
+    #        key: "x-id"
+    #        value: "12345"
     rateLimitConfigs:
       refs:
       - name: httpbin-ratelimit-config
