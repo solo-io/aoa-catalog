@@ -15,6 +15,13 @@ waves:
       -  $env_path/../shared-components/certmanager/init.sh
       post_deploy:
       -  $env_path/../shared-components/certmanager/test.sh
+  - name: gloo-enterprise-app
+    location: $env_path/gloo-enterprise-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-enterprise-app/init.sh
+      post_deploy:
+      -  $env_path/gloo-enterprise-app/test.sh
   - name: gloo-platform
     location: $env_path/gloo-platform/base
     scripts:
