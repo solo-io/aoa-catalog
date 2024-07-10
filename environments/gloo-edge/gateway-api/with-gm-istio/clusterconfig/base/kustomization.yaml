@@ -10,4 +10,5 @@ resources:
 - gloo-mesh-addons-ns.yaml
 - gloo-mesh-ns.yaml
 - gloo-mesh-relay-root-ca.yaml
+- ops-team-config-ns.yaml
 
