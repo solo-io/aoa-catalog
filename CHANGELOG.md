@@ -1,5 +1,11 @@
 # Changelog
 
+0.3.15 (7-9-24)
+---
+- enforce strict mtls using peer authentication policy for bookinfo and httpbin applications in gloo-edge/gateway-api-with-istio environment
+- add client curl application to demonstrate mtls successful when a client in the mesh calls a service in the mesh in gloo-edge/gateway-api-with-istio environment
+- add client curl application to demonstrate mtls enforcement when a client not in the mesh calls a service in the mesh in gloo-edge/gateway-api-with-istio environment
+
 0.3.14 (7-9-24)
 ---
 - generate ai-chatbot api key secret from environment variables in env.vars in gloo-edge/gateway-api environment, otherwise prompt for openai, claude, gemini, and mistral api keys

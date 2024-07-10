@@ -34,7 +34,14 @@ waves:
       pre_deploy: 
       -  $env_path/bookinfo-app/init.sh
       post_deploy:
-      -  $env_path/bookinfo-app/test.sh       
+      -  $env_path/bookinfo-app/test.sh
+  - name: client-app
+    location: $env_path/client-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/client-app/init.sh
+      post_deploy:
+      -  $env_path/client-app/test.sh        
   - name: ai-gateway
     location: $env_path/../gateway-api/ai-gateway/base
     scripts:
@@ -43,9 +50,9 @@ waves:
       post_deploy:
       -  $env_path/../gateway-api/ai-gateway/test.sh    
   - name: homer-app
-    location: $env_path/../gateway-api/homer-app/base
+    location: $env_path/homer-app/base
     scripts:
       pre_deploy: 
-      -  $env_path/../gateway-api/homer-app/init.sh
+      -  $env_path/homer-app/init.sh
       post_deploy:
-      -  $env_path/../gateway-api/homer-app/test.sh 
+      -  $env_path/homer-app/test.sh 
