@@ -1,0 +1,43 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: gloo-mesh-ui-https
+  namespace: gloo-mesh
+  labels:
+    example: gloo-mesh-ui-route
+    gateway: https
+spec:
+  hostnames:
+  - "gmui.glootest.com"
+  parentRefs:
+    - name: https
+      namespace: gloo-system
+  rules:
+    - backendRefs:
+        - name: gloo-mesh-ui
+          port: 8090
+      matches:
+        - path:
+            type: PathPrefix
+            value: /graph
+        - path:
+            type: PathPrefix
+            value: /gateways
+        - path:
+            type: PathPrefix
+            value: /policies
+        - path:
+            type: PathPrefix
+            value: /static
+        - path:
+            type: PathPrefix
+            value: /
+        - path:
+            type: Exact
+            value: /favicon.ico
+        - path:
+            type: Exact
+            value: /manifest.json
+        - path:
+            type: RegularExpression
+            value: /rpc.gloo.solo.io.*
