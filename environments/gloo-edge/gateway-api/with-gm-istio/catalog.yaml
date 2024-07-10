@@ -21,6 +21,13 @@ waves:
       -  $env_path/istio/init.sh
       post_deploy:
       -  $env_path/istio/test.sh
+  - name: gloo-platform
+    location: $env_path/gloo-platform/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-platform/init.sh
+      post_deploy:
+      -  $env_path/gloo-platform/test.sh 
   - name: gloo-enterprise-app
     location: $env_path/gloo-enterprise-app/base
     scripts:
