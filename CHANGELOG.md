@@ -1,5 +1,9 @@
 # Changelog
 
+0.3.16 (7-10-24)
+---
+- update gloo-edge/gateway-api and gloo-edge/gateway-api-with-istio to use 1.17.0-rc5
+
 0.3.15 (7-9-24)
 ---
 - enforce strict mtls using peer authentication policy for bookinfo and httpbin applications in gloo-edge/gateway-api-with-istio environment
