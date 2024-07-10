@@ -28,6 +28,13 @@ waves:
       -  $env_path/gloo-platform/init.sh
       post_deploy:
       -  $env_path/gloo-platform/test.sh 
+  - name: gloo-platform-config
+    location: $env_path/gloo-platform-config/wildcard
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-platform-config/init.sh
+      post_deploy:
+      -  $env_path/gloo-platform-config/test.sh
   - name: gloo-enterprise-app
     location: $env_path/gloo-enterprise-app/base
     scripts:
