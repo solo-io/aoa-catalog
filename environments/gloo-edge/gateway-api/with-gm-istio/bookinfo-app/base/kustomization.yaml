@@ -10,3 +10,5 @@ resources:
 - bookinfo-delegate-route.yaml
 - bookinfo-route-policies.yaml
 - peerauth-strict.yaml
+- bookinfo-workspace.yaml
+- bookinfo-workspacesettings.yaml
