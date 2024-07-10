@@ -28,7 +28,14 @@ waves:
       pre_deploy: 
       -  $env_path/gloo-platform/init.sh
       post_deploy:
-      -  $env_path/gloo-platform/test.sh      
+      -  $env_path/gloo-platform/test.sh
+  - name: gateway-api-config
+    location: $env_path/gateway-api-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gateway-api-config/init.sh
+      post_deploy:
+      -  $env_path/gateway-api-config/test.sh      
   - name: gloo-platform-config
     location: $env_path/gloo-platform-config/wildcard
     scripts:
