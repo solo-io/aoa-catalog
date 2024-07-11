@@ -53,15 +53,16 @@ spec:
                     clientSecret: _MS9PJ52NpUJo8Hj2nE4zj90hX4BFkW61SdaXJfE
                     clientSecretName: dashboard
                     issuerUrl: https://dev-22653158.okta.com/oauth2/default
-            deploymentOverrides:
-                spec:
-                    template:
-                        metadata:
-                            annotations:
-                                proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
-                            labels:
-                                istio.io/rev: 1-22
-                                sidecar.istio.io/inject: "true"
+            # uncomment to inject the Gloo UI with the Istio sidecar
+            #deploymentOverrides:
+            #    spec:
+            #        template:
+            #            metadata:
+            #                annotations:
+            #                    proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+            #                labels:
+            #                    istio.io/rev: 1-22
+            #                    sidecar.istio.io/inject: "true"
             enabled: true
             serviceType: ClusterIP
         extAuthService:
