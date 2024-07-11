@@ -197,7 +197,7 @@ spec:
                       - name: "client - not-in-mesh"
                         icon: "far fa-window-maximize"
                         tag: "client"
-                        url: "https://client.glootest.com/not-in-mesh"
+                        url: "https://client.glootest.com/not-in-mesh/"
                         target: "_blank" # optional html a tag target attribute   
                   
                   - name: "Web Applications in the Mesh"
@@ -206,7 +206,7 @@ spec:
                       - name: "client - in-mesh"
                         icon: "far fa-window-maximize"
                         tag: "client"
-                        url: "https://client.glootest.com/in-mesh"
+                        url: "https://client.glootest.com/in-mesh/"
                         target: "_blank" # optional html a tag target attribute  
                       - name: "httpbin"
                         icon: "far fa-window-maximize"
