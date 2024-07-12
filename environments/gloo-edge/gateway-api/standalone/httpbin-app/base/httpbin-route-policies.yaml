@@ -5,6 +5,8 @@ metadata:
   namespace: httpbin
 spec:
   options:
+    jwt:
+      disable: false
     extauth:
       configRef:
         name: httpbin-okta

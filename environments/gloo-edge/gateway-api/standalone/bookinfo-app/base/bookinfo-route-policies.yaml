@@ -10,5 +10,17 @@ spec:
     extauth:
       configRef:
         name: apikey-auth
-        namespace: gloo-system   
+        namespace: gloo-system
+    jwt:
+      disable: false   
+    rbac:
+      policies:
+        viewer:
+          nestedClaimDelimiter: .
+          principals:
+          - jwtPrincipal:
+              claims:
+                user: subscriber
+                org: othercompany.com
+                
     

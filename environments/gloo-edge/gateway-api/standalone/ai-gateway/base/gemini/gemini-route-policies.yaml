@@ -7,3 +7,5 @@ spec:
   options:
     hostRewrite: 'generativelanguage.googleapis.com'
     prefixRewrite: '/v1beta/models/gemini-pro:generateContent'
+    jwt:
+      disable: true
