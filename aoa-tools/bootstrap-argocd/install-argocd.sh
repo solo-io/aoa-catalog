@@ -1,32 +1,30 @@
 #!/bin/bash
 
-INSTALL_TYPE=$1 # default/insecure/insecure-rootpath
-CONTEXT=$2
+INSTALL_TYPE=${1:-"default"} # default/insecure/insecure-rootpath
+CONTEXT=${2}
 
-# argo install type
-if [[ ${INSTALL_TYPE} == "" ]]
-  then
-    INSTALL_TYPE="default"
-fi
-  
-echo "Beginning install on context ${CONTEXT}...."
+echo "Beginning installation on context ${CONTEXT}...."
 
-# create argocd namespace
-kubectl --context ${CONTEXT} create namespace argocd
+# Create argocd namespace
+kubectl --context "${CONTEXT}" create namespace argocd
 
-# deploy argocd
-until kubectl --context ${CONTEXT} apply -k ${INSTALL_TYPE}/; do sleep 2; done
+# Deploy argocd silently
+until kubectl --context "${CONTEXT}" apply -k "${INSTALL_TYPE}/" > /dev/null 2>&1; do
+  echo "Installing argocd. Please wait..."
+  sleep 2
+done
 
-# bcrypt(password)=$2a$10$79yaoOg9dL5MO8pn8hGqtO4xQDejSEVNWAGQR268JHLdrCw6UCYmy
-# password: solo.io
-kubectl --context ${CONTEXT} -n argocd patch secret argocd-secret \
+# Set the default password for the admin user
+# Bcrypt(password)=$2a$10$79yaoOg9dL5MO8pn8hGqtO4xQDejSEVNWAGQR268JHLdrCw6UCYmy
+# Password: solo.io
+kubectl --context "${CONTEXT}" -n argocd patch secret argocd-secret \
   -p '{"stringData": {
     "admin.password": "$2a$10$79yaoOg9dL5MO8pn8hGqtO4xQDejSEVNWAGQR268JHLdrCw6UCYmy",
     "admin.passwordMtime": "'$(date +%FT%T%Z)'"
-  }}'
+  }}' > /dev/null 2>&1
 
-# create argo app-of-apps project
-kubectl apply --context ${CONTEXT} -f- <<EOF
+# Create argo app-of-apps project
+kubectl apply --context "${CONTEXT}" -f- <<EOF
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
