@@ -42,6 +42,11 @@ spec:
                 uwIDAQAB
                 -----END PUBLIC KEY-----
         login-example:
+          tokenSource:
+            headers:
+            - header: x-token
+            queryParams:
+            - token
           claimsToHeaders:
           - claim: group
             header: x-group
@@ -52,19 +57,15 @@ spec:
           - claim: scope
             header: x-scope
           issuer: https://login.example.com
-          local:
-            inline: |-
-              -----BEGIN PUBLIC KEY-----
-              MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArER4FGhBW0h05DnVSHre
-              Vr7tH/+XpTGsmSVYXciDKm3BigygvE1oGXIdIrvIzwE8XTrSgfquvf+VhXvMOa4x
-              anvuEqrLlqV9kanlEtjkkwV6PbDksrUeukxDiaxGBTBm6XIlpQdfRI3lMSln6phM
-              mxtWOdMyA9QcXYEr5hXi9KJUyjGaAZGyOxYOyq+VNnxHIvqHR7pQiokTc4jkMD+X
-              rxgAka3Lb1ekE/WowwzPvO8dyq0cUiCBrC4TiH/Yd2/LVEwnWoM1RI8FsuRnRgcX
-              y2lto8nYVfQyCD6bWfnReiOo4DVQpP9GeVd3OxKDks+tt8AMT/IecrqPg08x+BCF
-              uwIDAQAB
-              -----END PUBLIC KEY-----
-          tokenSource:
-            headers:
-            - header: x-token
-            queryParams:
-            - token
+          jwks:
+            local:
+              key: |
+                -----BEGIN PUBLIC KEY-----
+                MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArER4FGhBW0h05DnVSHre
+                Vr7tH/+XpTGsmSVYXciDKm3BigygvE1oGXIdIrvIzwE8XTrSgfquvf+VhXvMOa4x
+                anvuEqrLlqV9kanlEtjkkwV6PbDksrUeukxDiaxGBTBm6XIlpQdfRI3lMSln6phM
+                mxtWOdMyA9QcXYEr5hXi9KJUyjGaAZGyOxYOyq+VNnxHIvqHR7pQiokTc4jkMD+X
+                rxgAka3Lb1ekE/WowwzPvO8dyq0cUiCBrC4TiH/Yd2/LVEwnWoM1RI8FsuRnRgcX
+                y2lto8nYVfQyCD6bWfnReiOo4DVQpP9GeVd3OxKDks+tt8AMT/IecrqPg08x+BCF
+                uwIDAQAB
+                -----END PUBLIC KEY-----
