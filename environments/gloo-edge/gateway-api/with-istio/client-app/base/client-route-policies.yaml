@@ -7,7 +7,7 @@ spec:
   # extauth options specified at the per-route level 
   options:
     jwt:
-      disable: false
+      disable: true
                 
                 
     

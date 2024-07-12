@@ -159,7 +159,7 @@ spec:
                     Username: jdoe@gmail.com // Password: gloo-public<br /><br />
 
                     Used in API-Key auth example:<br />
-                    bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br />
+                    bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br /><br />
 
                     Run this command in your terminal for the JWT token used in auth example:<br />
                     TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "x-token: $TOKEN"<br />
