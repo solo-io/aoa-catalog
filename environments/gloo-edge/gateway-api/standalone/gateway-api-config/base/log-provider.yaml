@@ -1,0 +1,29 @@
+apiVersion: gateway.solo.io/v1
+kind: ListenerOption
+metadata:
+  name: log-provider
+  namespace: gloo-system
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: https
+  options:
+    accessLoggingService:
+      accessLog:
+      - fileSink:
+          jsonFormat:
+            httpMethod: '%REQ(:METHOD)%'
+            path: '%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%'
+            user: '%DYNAMIC_METADATA(envoy.filters.http.jwt_authn:principal:sub)%'
+            team: '%DYNAMIC_METADATA(envoy.filters.http.jwt_authn:principal:team)%'
+            requestId: '%REQ(X-REQUEST-ID)%'
+            responseCode: '%RESPONSE_CODE%'
+            systemTime: '%START_TIME%'
+            targetDuration: '%RESPONSE_DURATION%'
+            upstreamName: '%UPSTREAM_CLUSTER%'
+            total_tokens: '%DYNAMIC_METADATA(ai.gloo.solo.io:total_tokens)%'
+            prompt_tokens: '%DYNAMIC_METADATA(ai.gloo.solo.io:prompt_tokens)%'
+            completion_tokens: '%DYNAMIC_METADATA(ai.gloo.solo.io:completion_tokens)%'
+            rate_limited_token: '%DYNAMIC_METADATA(envoy.ratelimit:hits_addend)%'
+          path: /dev/stdout
