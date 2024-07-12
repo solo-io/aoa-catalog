@@ -20,7 +20,7 @@ spec:
           principals:
           - jwtPrincipal:
               claims:
-                user: subscriber
-                org: othercompany.com
+                org: internal
+                
                 
     
