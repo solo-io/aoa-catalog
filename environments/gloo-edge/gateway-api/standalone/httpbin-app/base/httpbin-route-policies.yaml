@@ -6,7 +6,7 @@ metadata:
 spec:
   options:
     jwt:
-      disable: false
+      disable: true
     extauth:
       configRef:
         name: httpbin-okta
