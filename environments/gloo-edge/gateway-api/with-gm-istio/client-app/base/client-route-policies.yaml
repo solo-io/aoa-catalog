@@ -1,0 +1,13 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: client-route-policies
+  namespace: client
+spec:
+  # extauth options specified at the per-route level 
+  options:
+    jwt:
+      disable: false
+                
+                
+    

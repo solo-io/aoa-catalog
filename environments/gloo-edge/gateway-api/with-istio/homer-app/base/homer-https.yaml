@@ -20,3 +20,9 @@ spec:
       backendRefs:
       - name: homer-portal
         port: 8080
+      filters:
+      - type: ExtensionRef
+        extensionRef:
+          group: gateway.solo.io
+          kind: RouteOption
+          name: homer-route-policies

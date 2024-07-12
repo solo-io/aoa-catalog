@@ -10,3 +10,4 @@ resources:
 - client-parent-route.yaml
 - in-mesh-delegate-route.yaml
 - not-in-mesh-delegate-route.yaml
+- client-route-policies.yaml
