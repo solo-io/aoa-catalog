@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- https://raw.githubusercontent.com/argoproj/argo-cd/release-2.8/manifests/install.yaml
+- https://raw.githubusercontent.com/argoproj/argo-cd/release-2.10/manifests/install.yaml
 - base/rollouts-extension.yaml
 
 components:
@@ -12,8 +12,8 @@ namespace: argocd
   
 images:
 - name: quay.io/argoproj/argocd
-  newTag: v2.8.0
-  digest: sha256:a7bfe2a512a33c42d85786b52a8c1b0b2d721630505706b201b8963ec57ac6b3
+  newTag: v2.10.10
+  digest: sha256:7ebb4d18166bd9dace6df1c41fde6a37d0f726be1d70d93af0688d81815c3769
 
 #patchesJson6902:
 #- path: overlays/application-controller-status-processors.yaml
