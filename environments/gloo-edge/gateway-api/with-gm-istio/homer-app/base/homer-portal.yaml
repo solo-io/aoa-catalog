@@ -224,21 +224,21 @@ spec:
                         url: "https://bookinfo.glootest.com/productpage"
                         target: "_blank" # optional html a tag target attribute
 
-                  - name: "AI Gateway Workloads"
-                    icon: "fas fa-brain"
-                    items:
-                      - name: "General Chatbot"
-                        subtitle: "requires x-token header"
-                        icon: "far fa-question-circle"
-                        tag: "ai-gateway #not-in-mesh"
-                        url: "https://general-chatbot.glootest.com"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Language Translator Chatbot"
-                        subtitle: "requires x-token header"
-                        icon: "fas fa-language"
-                        tag: "ai-gateway #not-in-mesh"
-                        url: "https://language-chatbot.glootest.com"
-                        target: "_blank" # optional html a tag target attribute
+                  #- name: "AI Gateway Workloads"
+                  #  icon: "fas fa-brain"
+                  #  items:
+                  #    - name: "General Chatbot"
+                  #      subtitle: "requires x-token header"
+                  #      icon: "far fa-question-circle"
+                  #      tag: "ai-gateway #not-in-mesh"
+                  #      url: "https://general-chatbot.glootest.com"
+                  #      target: "_blank" # optional html a tag target attribute
+                  #    - name: "Language Translator Chatbot"
+                  #      subtitle: "requires x-token header"
+                  #      icon: "fas fa-language"
+                  #      tag: "ai-gateway #not-in-mesh"
+                  #      url: "https://language-chatbot.glootest.com"
+                  #      target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
     automated:

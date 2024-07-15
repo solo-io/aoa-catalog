@@ -1,5 +1,9 @@
 # Changelog
 
+0.3.18 (7-15-24)
+---
+- comment out ai gateway workloads in gloo-edge/gateway-api/with-gm-istio to simplify troubleshooting
+
 0.3.17 (7-15-24)
 ---
 - enable access logs for https gateway in gloo-edge/gateway-api environments
