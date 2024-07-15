@@ -1,5 +1,15 @@
 # Changelog
 
+0.3.17 (7-15-24)
+---
+- enable access logs for https gateway in gloo-edge/gateway-api environments
+- configure JWT validation as a VirtualHostOption (gateway-level) but disable for homer dashboard, argo, client and LLM proxy routes
+- update JWT certs used in demo to match the examples in gloo-mesh-use-cases/gloo-gateway repo from the docs (https://github.com/solo-io/gloo-mesh-use-cases/tree/main/gloo-gateway/jwt)
+- add httpbin AuthorizationPolicy example to gloo-edge/gateway-api/with-istio and gloo-edge/gateway-api/with-gm-istio 
+- testing GG + GM in a single cluster setup in gloo-edge/gateway-api/with-gm-istio environment (WIP)
+- testing GG + GM in a three cluster setup in gloo-platform/gwapi-mgmt-gm-workers environment (WIP)
+- fix links in homer dashboard in gloo-edge/gateway-api/with-istio and gloo-edge/gateway-api/with-gm-istio
+
 0.3.16 (7-10-24)
 ---
 - update gloo-edge/gateway-api and gloo-edge/gateway-api-with-istio to use 1.17.0-rc5
