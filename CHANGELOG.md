@@ -1,5 +1,9 @@
 # Changelog
 
+0.4.0 (7-16-24)
+---
+- Update gloo-edge/gateway-api environments to use official 1.17.0 release
+
 0.3.18 (7-15-24)
 ---
 - comment out ai gateway workloads in gloo-edge/gateway-api/with-gm-istio to simplify troubleshooting
