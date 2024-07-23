@@ -41,7 +41,7 @@
 
 0.2.10 (4-3-24)
 ---
-- update to Gloo Platform 2.7.0-beta0-2024-07-18-main-5e46ce3d45
+- update to Gloo Platform 2.7.0-beta0-2024-07-22-main-34b22a4a9c
 
 0.2.9 (3-27-24)
 ---
