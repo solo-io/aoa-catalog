@@ -41,7 +41,7 @@
 
 0.2.10 (4-3-24)
 ---
-- update to Gloo Platform 2.7.0-beta0-2024-07-22-main-34b22a4a9c
+- update to Gloo Platform 2.7.0-beta0-2024-07-24-ashleywang1-fix-ui-rbac-permissions-45cda9fcde
 
 0.2.9 (3-27-24)
 ---
