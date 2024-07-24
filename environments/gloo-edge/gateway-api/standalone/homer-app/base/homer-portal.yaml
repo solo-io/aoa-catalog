@@ -188,7 +188,6 @@ spec:
                     icon: "fas fa-user-cog"
                     items:
                       - name: "ArgoCD"
-                        subtitle: "admin // solo.io"
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
