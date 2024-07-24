@@ -65,6 +65,7 @@ spec:
             #                    sidecar.istio.io/inject: "true"
             enabled: true
             serviceType: ClusterIP
+            verbose: true
         extAuthService:
             enabled: true
             extAuth:
