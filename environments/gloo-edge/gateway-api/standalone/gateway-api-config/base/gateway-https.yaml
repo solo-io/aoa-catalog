@@ -20,15 +20,3 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
-    - name: https-8443
-      port: 443
-      protocol: HTTPS
-      hostname: "*.glootest.com:8443"
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name: upstream-tls
-            kind: Secret
-      allowedRoutes:
-        namespaces:
-          from: All
