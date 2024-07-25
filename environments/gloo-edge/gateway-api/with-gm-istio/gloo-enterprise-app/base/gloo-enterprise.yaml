@@ -81,10 +81,10 @@ spec:
               serve_from_sub_path: true
         # This demo does not deal with Gloo Federation, so we disable the components to simplify the installation
         gloo-fed:
-          enabled: true
+          enabled: false
           create_license_secret: false
           glooFedApiserver:
-            enable: true
+            enable: false
         gateway-portal-web-server:
           # Enable the sub-chart for the Portal webserver
           enabled: true
