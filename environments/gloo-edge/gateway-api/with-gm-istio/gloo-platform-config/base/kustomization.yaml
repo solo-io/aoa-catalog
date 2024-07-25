@@ -9,5 +9,8 @@ resources:
 - gloo-mesh-mgmt-kubernetescluster.yaml
 - gloo-mesh-ops-team-workspace.yaml
 - gloo-mesh-ops-team-workspacesettings.yaml
+- gloo-mesh-ui-httproute.yaml
+- gloo-mesh-ui-routeoptions.yaml
+- gloo-mesh-ui-upstream.yaml
 #- roottrustpolicy-generated.yaml
 #- roottrustpolicy-secretref.yaml
