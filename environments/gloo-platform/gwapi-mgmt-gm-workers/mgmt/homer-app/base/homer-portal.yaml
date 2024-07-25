@@ -146,8 +146,24 @@ spec:
                   style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
                   title: "Welcome!"
                   icon: "fa fa-grin"
-                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Platform!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />When using K3d locally with the -i flag, the loadbalancer integration will map the wildcard host '*' to localhost in your browser<br /><br />The following ports are used by the gateways on each cluster (HTTP/HTTPS):<br /><br />mgmt - 80/443<br />cluster1 - 8080/8443<br />cluster2 - 8081/8444<br /><br />More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-platform/multicluster-onlineboutique/mgmt/#application-description'>here</a>"
-                
+                  content: | 
+                    This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Platform!<br />
+                    Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
+                    
+                    When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />
+                    127.0.0.1 argocd.glootest.com homer.glootest.com httpbin.glootest.com bookinfo.glootest.com client.glootest.com<br /><br />
+                    Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />
+                    
+                    Below are a few common usernames to explore the applications and portals:<br />
+                    Username: jdoe@solo.io // Password: gloo-dev<br />
+                    Username: jdoe@gmail.com // Password: gloo-public<br /><br />
+
+                    Used in API-Key auth example:<br />
+                    bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br /><br />
+
+                    Run this command in your terminal for the JWT token used in auth example:<br />
+                    TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "x-token: $TOKEN"<br />
+
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
                 links:

@@ -65,10 +65,3 @@ waves:
       -  $env_path/homer-app/init.sh
       post_deploy:
       -  $env_path/homer-app/test.sh 
-  - name: homer-config
-    location: $env_path/../shared-components/homer-config/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/../shared-components/homer-config/init.sh
-      post_deploy:
-      -  $env_path/../shared-components/homer-config/test.sh 
