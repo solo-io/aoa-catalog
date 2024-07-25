@@ -66,13 +66,13 @@ spec:
             # Expose the Control Plane Admin API (port 10010 on Gloo)
             devMode: true
         observability:
-          enabled: true
+          enabled: false
         prometheus:
           # setting to false will disable prometheus, removing it from Gloo's chart dependencies
-          enabled: true
+          enabled: false
         grafana:
           # setting to false will disable grafana, removing it from Gloo's chart dependencies
-          defaultInstallationEnabled: true
+          defaultInstallationEnabled: false
           grafana.ini:
             auth.anonymous:
               enabled: true
