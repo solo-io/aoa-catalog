@@ -179,20 +179,6 @@ spec:
                         keywords: "argocd"
                         url: "https://argocd.glootest.com/argo"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "ArgoCD - cluster1"
-                        subtitle: "username: admin / password: solo.io"
-                        icon: "fab fa-git-alt"
-                        tag: "argo"
-                        keywords: "argocd"
-                        url: "https://localhost:8443/argo"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "ArgoCD - cluster2"
-                        subtitle: "username: admin / password: solo.io"
-                        icon: "fab fa-git-alt"
-                        tag: "argo"
-                        keywords: "argocd"
-                        url: "https://localhost:8444/argo"
-                        target: "_blank" # optional html a tag target attribute
                       - name: "Gloo Mesh UI"
                         #subtitle: "Another application"
                         icon: "fas fa-arrows-alt"
