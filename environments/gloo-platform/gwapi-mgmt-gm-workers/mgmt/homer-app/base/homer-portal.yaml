@@ -177,7 +177,7 @@ spec:
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
-                        url: "https://localhost/argo"
+                        url: "https://argocd.glootest.com/argo"
                         target: "_blank" # optional html a tag target attribute
                       - name: "ArgoCD - cluster1"
                         subtitle: "username: admin / password: solo.io"
@@ -197,13 +197,13 @@ spec:
                         #subtitle: "Another application"
                         icon: "fas fa-arrows-alt"
                         tag: "gmui"
-                        url: "https://localhost/gmui"
+                        url: "https://gmui.glootest.com/"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Grafana - mgmt"
                         #subtitle: "Another application"
                         icon: "fas fa-chart-area"
                         tag: "grafana-mgmt"
-                        url: "https://localhost/grafana"
+                        url: "https://grafana.glootest.com/grafana/"
                         target: "_blank" # optional html a tag target attribute
               
   syncPolicy:
