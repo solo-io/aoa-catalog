@@ -12,3 +12,4 @@ resources:
 #- https-gateway-virtualhostoptions.yaml
 - api-key-auth.yaml
 - example-api-key.yaml
+- gloo-mesh-ui-https.yaml
