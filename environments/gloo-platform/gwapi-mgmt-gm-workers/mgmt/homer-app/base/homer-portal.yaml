@@ -169,7 +169,7 @@ spec:
                 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
                 services:
 
-                  - name: "Admin Applications"
+                  - name: "MGMT Cluster Applications - Gloo Gateway"
                     icon: "fas fa-cloud"
                     items:
                       - name: "ArgoCD - mgmt"
@@ -204,6 +204,24 @@ spec:
                         icon: "fas fa-chart-area"
                         tag: "grafana-mgmt"
                         url: "https://grafana.glootest.com/grafana/"
+                        target: "_blank" # optional html a tag target attribute
+
+                  - name: "Workload Cluster Applications - Gloo Mesh"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "ArgoCD - cluster1"
+                        subtitle: "username: admin / password: solo.io"
+                        icon: "fab fa-git-alt"
+                        tag: "argo"
+                        keywords: "argocd"
+                        url: "https://localhost:8443/argo"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "ArgoCD - cluster2"
+                        subtitle: "username: admin / password: solo.io"
+                        icon: "fab fa-git-alt"
+                        tag: "argo"
+                        keywords: "argocd"
+                        url: "https://localhost:8444/argo"
                         target: "_blank" # optional html a tag target attribute
               
   syncPolicy:
