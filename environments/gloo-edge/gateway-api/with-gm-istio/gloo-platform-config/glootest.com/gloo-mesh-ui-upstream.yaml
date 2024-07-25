@@ -1,0 +1,11 @@
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: gloo-mesh-ui
+  namespace: gloo-mesh
+spec:
+  kube:
+    serviceName: gloo-mesh-ui
+    serviceNamespace: gloo-mesh
+    servicePort: 8090
+  protocolSelection: USE_DOWNSTREAM_PROTOCOL
