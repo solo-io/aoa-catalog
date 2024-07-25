@@ -16,3 +16,9 @@ spec:
     - backendRefs:
         - name: argocd-server
           port: 443
+      filters:
+      - type: ExtensionRef
+        extensionRef:
+          group: gateway.solo.io
+          kind: RouteOption
+          name: argocd-route-policies
