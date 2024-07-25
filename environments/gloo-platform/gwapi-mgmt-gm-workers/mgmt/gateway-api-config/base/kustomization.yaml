@@ -13,3 +13,5 @@ resources:
 #- https-gateway-virtualhostoptions.yaml
 - api-key-auth.yaml
 - example-api-key.yaml
+- grafana-https.yaml
+- grafana-route-policies.yaml
