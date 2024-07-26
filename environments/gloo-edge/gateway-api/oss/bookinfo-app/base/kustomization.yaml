@@ -8,4 +8,3 @@ resources:
 - bookinfo.yaml
 - bookinfo-parent-route.yaml
 - bookinfo-delegate-route.yaml
-- bookinfo-route-policies.yaml

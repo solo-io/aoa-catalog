@@ -7,5 +7,4 @@ resources:
 - homer-portal-ns.yaml
 - homer-portal.yaml
 - homer-https.yaml
-- homer-route-policies.yaml
 
