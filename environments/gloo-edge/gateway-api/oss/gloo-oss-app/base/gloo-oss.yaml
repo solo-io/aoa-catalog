@@ -40,7 +40,7 @@ spec:
         discovery:
           # We don't need the discovery deployment for our Gloo Gateway demo
           enabled: false
-    repoURL: http://storage.googleapis.com/gloo-ee-helm
+    repoURL: https://storage.googleapis.com/solo-public-helm
     targetRevision: 1.18.0-beta9
   syncPolicy:
     automated:
