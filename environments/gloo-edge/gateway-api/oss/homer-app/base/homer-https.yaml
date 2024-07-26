@@ -1,0 +1,22 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: homer-https
+  namespace: homer-portal
+  labels:
+    example: homer-route
+    gateway: https
+spec:
+  hostnames:
+  - "homer.glootest.com"
+  parentRefs:
+    - name: https
+      namespace: gloo-system
+  rules:
+    - matches:
+      - path:
+          type: PathPrefix
+          value: /solo
+      backendRefs:
+      - name: homer-portal
+        port: 8080
