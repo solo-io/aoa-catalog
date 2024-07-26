@@ -171,8 +171,8 @@ spec:
                   - name: "Admin Applications"
                     icon: "fas fa-user-cog"
                     items:
-                      - name: "ArgoCD - mgmt"
-                        #subtitle: "GitOps Tooling"
+                      - name: "ArgoCD"
+                        subtitle: "admin // solo.io"
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"

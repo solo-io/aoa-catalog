@@ -190,6 +190,7 @@ spec:
                     icon: "fas fa-cloud"
                     items:
                       - name: "ArgoCD"
+                        subtitle: "admin // solo.io"
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"

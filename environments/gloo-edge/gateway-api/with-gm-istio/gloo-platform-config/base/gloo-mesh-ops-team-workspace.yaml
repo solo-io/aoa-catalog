@@ -20,3 +20,4 @@ spec:
     - name: cert-manager
     - name: grafana
     - name: gloo-system
+    - name: client

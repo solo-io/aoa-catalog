@@ -6,9 +6,12 @@ kind: Kustomization
 resources:
 - gateway-https.yaml
 - argocd-https.yaml
+- argocd-route-policies.yaml
 - gloo-mesh-ui-https.yaml
 - upstream-tls.yaml
 - okta-client-secret.yaml
 #- https-gateway-virtualhostoptions.yaml
 - api-key-auth.yaml
 - example-api-key.yaml
+- grafana-https.yaml
+- grafana-route-policies.yaml

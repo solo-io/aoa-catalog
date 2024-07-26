@@ -11,3 +11,4 @@ resources:
 - gloo-mesh-ops-team-workspacesettings.yaml
 #- roottrustpolicy-generated.yaml
 #- roottrustpolicy-secretref.yaml
+- gloo-mesh-ui-https.yaml
