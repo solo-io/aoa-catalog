@@ -44,3 +44,10 @@ waves:
       -  $env_path/httpbin-app/init.sh
       post_deploy:
       -  $env_path/httpbin-app/test.sh 
+  - name: online-boutique-app
+    location: $env_path/online-boutique-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/online-boutique-app/init.sh
+      post_deploy:
+      -  $env_path/online-boutique-app/test.sh

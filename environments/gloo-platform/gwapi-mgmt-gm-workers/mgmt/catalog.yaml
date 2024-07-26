@@ -58,6 +58,13 @@ waves:
       -  $env_path/httpbin-config/init.sh
       post_deploy:
       -  $env_path/httpbin-config/test.sh 
+  - name: online-boutique-config
+    location: $env_path/online-boutique-config/wildcard
+    scripts:
+      pre_deploy: 
+      -  $env_path/online-boutique-config/init.sh
+      post_deploy:
+      -  $env_path/online-boutique-config/test.sh 
   - name: homer-app
     location: $env_path/homer-app/localhost
     scripts:
