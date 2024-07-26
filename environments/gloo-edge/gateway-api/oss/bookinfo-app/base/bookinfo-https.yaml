@@ -16,7 +16,7 @@ spec:
     - matches:
       - path:
           type: PathPrefix
-          value: /productpage
+          value: /
       backendRefs:
       - name: productpage
         port: 9080
