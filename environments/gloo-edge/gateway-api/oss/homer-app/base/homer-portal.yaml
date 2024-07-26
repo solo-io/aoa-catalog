@@ -198,33 +198,16 @@ spec:
                   - name: "Web Applications"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "httpbin"
-                        subtitle: "requires okta login"
-                        icon: "far fa-window-maximize"
-                        tag: "httpbin"
-                        url: "https://httpbin.glootest.com"
-                        target: "_blank" # optional html a tag target attribute
+                      #- name: "httpbin"
+                      #  icon: "far fa-window-maximize"
+                      #  tag: "httpbin"
+                      #  url: "https://httpbin.glootest.com"
+                      #  target: "_blank" # optional html a tag target attribute
                       - name: "Bookinfo"
                         subtitle: "requires x-token & bookinfo-key header"
                         icon: "fas fa-book-reader"
                         tag: "bookinfo"
                         url: "https://bookinfo.glootest.com/productpage"
-                        target: "_blank" # optional html a tag target attribute
-
-                  - name: "AI Gateway Workloads"
-                    icon: "fas fa-brain"
-                    items:
-                      - name: "General Chatbot"
-                        subtitle: "requires x-token header"
-                        icon: "far fa-question-circle"
-                        tag: "ai-gateway"
-                        url: "https://general-chatbot.glootest.com"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Language Translator Chatbot"
-                        subtitle: "requires x-token header"
-                        icon: "fas fa-language"
-                        tag: "ai-gateway"
-                        url: "https://language-chatbot.glootest.com"
                         target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
