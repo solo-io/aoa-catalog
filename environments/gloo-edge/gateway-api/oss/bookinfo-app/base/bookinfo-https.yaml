@@ -20,3 +20,9 @@ spec:
       backendRefs:
       - name: productpage
         port: 9080
+      filters:
+      - type: ExtensionRef
+        extensionRef:
+          group: gateway.solo.io
+          kind: RouteOption
+          name: bookinfo-route-policies
