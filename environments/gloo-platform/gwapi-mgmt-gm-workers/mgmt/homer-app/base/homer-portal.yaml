@@ -185,7 +185,7 @@ spec:
                 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
                 services:
 
-                  - name: "MGMT Cluster Applications - Gloo Gateway"
+                  - name: "MGMT Applications (Gloo Gateway)"
                     icon: "fas fa-cloud"
                     items:
                       - name: "ArgoCD - mgmt"
@@ -208,22 +208,50 @@ spec:
                         url: "https://grafana.glootest.com/grafana/"
                         target: "_blank" # optional html a tag target attribute
 
-                  - name: "Workload Cluster Applications - Gloo Mesh"
+                  - name: "Cluster 1 Applications (Gloo Mesh)"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "ArgoCD - cluster1"
+                      - name: "ArgoCD"
                         subtitle: "username: admin / password: solo.io"
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
                         url: "https://localhost:8443/argo"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "ArgoCD - cluster2"
+                      - name: "httpbin"
+                        icon: "far fa-window-maximize"
+                        tag: "httpbin"
+                        keywords: "httpbin"
+                        url: "https://localhost:8443/get"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "bookinfo"
+                        icon: "far fa-window-maximize"
+                        tag: "bookinfo"
+                        keywords: "bookinfo"
+                        url: "https://localhost:8443/productpage"
+                        target: "_blank" # optional html a tag target attribute
+
+                  - name: "Cluster 2 Applications (Gloo Mesh)"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "ArgoCD"
                         subtitle: "username: admin / password: solo.io"
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
                         url: "https://localhost:8444/argo"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "httpbin"
+                        icon: "far fa-window-maximize"
+                        tag: "httpbin"
+                        keywords: "httpbin"
+                        url: "https://localhost:8444/get"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "bookinfo"
+                        icon: "far fa-window-maximize"
+                        tag: "bookinfo"
+                        keywords: "bookinfo"
+                        url: "https://localhost:8444/productpage"
                         target: "_blank" # optional html a tag target attribute
               
   syncPolicy:
