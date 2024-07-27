@@ -188,11 +188,11 @@ spec:
                   - name: "Web Applications"
                     icon: "fas fa-cloud"
                     items:
-                      #- name: "httpbin"
-                      #  icon: "far fa-window-maximize"
-                      #  tag: "httpbin"
-                      #  url: "https://httpbin.glootest.com"
-                      #  target: "_blank" # optional html a tag target attribute
+                      - name: "httpbin"
+                        icon: "far fa-window-maximize"
+                        tag: "httpbin"
+                        url: "https://httpbin.glootest.com"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "Bookinfo"
                         icon: "fas fa-book-reader"
                         tag: "bookinfo"
