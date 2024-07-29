@@ -1,0 +1,14 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: transformation-policy
+  namespace: httpbin
+spec:
+  options:
+    transformations:
+      responseTransformation:
+        transformationTemplate:
+          body:
+            text: '{% if header(":status") == "200" %}This page has been transformed by Gloo Gateway!{%
+              else %}{{ body() }}{% endif %}'
+          parseBodyBehavior: DontParse

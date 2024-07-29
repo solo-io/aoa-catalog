@@ -1,4 +1,9 @@
 # Changelog
+
+0.4.2 (7-29-24)
+---
+- add gloo-edge/gateway-api/oss environment. uses gloo oss 1.18.0-beta9
+
 0.4.1 (7-25-24)
 ---
 - add argocd login details to homer dashboard

@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gloo-edge-oss-helm
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io/solo-io
+spec:
+  destination:
+    namespace: gloo-system
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: gloo
+    helm:
+      skipCrds: false
+      values: |
+        kubeGateway:
+          # Enable K8s Gateway integration
+          enabled: true
+        gatewayProxies:
+          gatewayProxy:
+            disabled: true
+            healthyPanicThreshold: 0
+            gatewaySettings:
+              # Disable the default Edge Gateway CRs from being created
+              enabled: false
+              disableGeneratedGateways: true
+            service:
+              type: ClusterIP
+        gateway:
+          logLevel: info
+          validation:
+            allowWarnings: true
+            alwaysAcceptResources: false
+        gloo:
+          deployment:
+            replicas: 1
+            livenessProbeEnabled: true
+        discovery:
+          # We don't need the discovery deployment for our Gloo Gateway demo
+          enabled: false
+    repoURL: https://storage.googleapis.com/solo-public-helm
+    targetRevision: 1.18.0-beta9
+  syncPolicy:
+    automated:
+      prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
+      selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).

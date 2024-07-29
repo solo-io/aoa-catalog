@@ -1,0 +1,13 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: add-another-header-policy
+  namespace: httpbin
+spec:
+  options:
+    headerManipulation:
+      # add headers to all responses
+      requestHeadersToAdd:
+        - header:
+            key: "baz"
+            value: "solo"
