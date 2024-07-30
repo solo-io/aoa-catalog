@@ -19,6 +19,9 @@ spec:
     helm:
       values: |
         revision: 1-22
+        global:
+          hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
+          tag: 1.22.1-patch0-solo
         meshConfig:
           accessLogFile: /dev/stdout
           enableAutoMtls: true
