@@ -1,5 +1,10 @@
 # Changelog
 
+0.4.3 (7-30-24)
+---
+- update istio to 1.22.1-patch0-solo
+- update gloo-edge/gateway-api istio environments to use 1.22.1-patch0-solo instead of upstream
+
 0.4.2 (7-29-24)
 ---
 - add gloo-edge/gateway-api/oss environment. uses gloo oss 1.18.0-beta9
