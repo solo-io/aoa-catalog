@@ -10,11 +10,11 @@ The `gloo-gateway/progressive-delivery-argo-rollouts` environment deploys the co
 
 ## Environment descriptions
 - base:
-    - gloo mesh 2.7.0-beta0-2024-07-24-ashleywang1-fix-ui-rbac-permissions-45cda9fcde
+    - gloo mesh 2.7.0-beta0-2024-07-31-ashleywang1-fix-ui-clusters-connected-c2e19cc109
     - istio 1.22.0-solo (Helm)
     - revision: 1-22
 - ilm:
-    - gloo mesh 2.7.0-beta0-2024-07-24-ashleywang1-fix-ui-rbac-permissions-45cda9fcde
+    - gloo mesh 2.7.0-beta0-2024-07-31-ashleywang1-fix-ui-clusters-connected-c2e19cc109
     - istio 1.22.0-solo (ILM)
     - revision: 1-22
 

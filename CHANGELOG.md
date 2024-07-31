@@ -41,7 +41,7 @@
 
 0.2.10 (4-3-24)
 ---
-- update to Gloo Platform 2.7.0-beta0-2024-07-24-ashleywang1-fix-ui-rbac-permissions-45cda9fcde
+- update to Gloo Platform 2.7.0-beta0-2024-07-31-ashleywang1-fix-ui-clusters-connected-c2e19cc109
 
 0.2.9 (3-27-24)
 ---
