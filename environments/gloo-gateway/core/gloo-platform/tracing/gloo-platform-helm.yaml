@@ -21,6 +21,9 @@ spec:
             cluster: mgmt
         glooInsightsEngine:
             enabled: true
+        glooAnalyzer:
+            enabled: true
+            runAsSidecar: true
         global: {}
         glooAgent:
             enabled: true
