@@ -10,7 +10,7 @@ The `istio/basic-demo` environment deploys cert-manager, Istio (with revisions),
 
 ## Environment description
 - base:
-    - istio 1.22.0 (Helm)
+    - istio 1.22.3 (Helm)
     - revision: 1-22
 
 ## Application description
