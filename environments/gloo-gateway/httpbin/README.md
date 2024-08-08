@@ -11,11 +11,11 @@ The `gloo-gateway/httpbin` environment deploys the core components of a single c
 ## Environment descriptions
 - base:
     - gloo mesh 2.5.9
-    - istio 1.22.1-patch0-solo (Helm)
+    - istio 1.22.3-patch1-solo (Helm)
     - revision: 1-22
 - ilm:
     - gloo mesh 2.5.9
-    - istio 1.22.1-patch0-solo (ILM)
+    - istio 1.22.3-patch1-solo (ILM)
     - revision: 1-22
 
 ## Application description

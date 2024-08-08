@@ -1,5 +1,10 @@
 # Changelog
 
+0.4.4 (8-8-24)
+---
+- update istio helm chart version to 1.22.3 across all environments
+- update istio images to 1.22.3-patch1-solo across all environments
+
 0.4.3 (7-30-24)
 ---
 - update istio to 1.22.1-patch0-solo
