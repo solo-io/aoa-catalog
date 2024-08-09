@@ -93,7 +93,7 @@ An example `catalog.yaml` below shows an example where the default localhost `ho
 The `vars.env` exists in each demo environment directory with a few variables used in the installation such as inputting license keys, defining cluster contexts, and configuring app sync behavior. The installer will use any passed in flags and attempt to discover all of the necessary variables in the pre-check. Please verify the output before continuing.
 ```
 license_key="$GLOO_PLATFORM_LICENSE_KEY"
-cluster_context="mgmt"
+cluster_context="mgmt-cluster"
 parent_app_sync="true"
 ```
 
