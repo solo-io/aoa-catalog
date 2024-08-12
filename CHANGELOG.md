@@ -1,9 +1,10 @@
 # Changelog
 
-0.5.0 (8-8-24)
+0.5.0 (8-12-24)
 ---
-- update gloo-platform-helm chart across all environments to use 2.6.0-rc2
+- update gloo-platform-helm chart across all environments to use 2.6.0-rc3
     - set `glooInsightsEngine.enabled: true` in helm values
+    - configure gloo analyzer in helm values
 
 0.4.4 (8-8-24)
 ---
