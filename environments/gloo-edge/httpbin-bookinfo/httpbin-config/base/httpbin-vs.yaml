@@ -12,10 +12,10 @@ spec:
     domains:
     - 'httpbin.glootest.com'
     options:
-      extauth:
-        configRef:
-          name: httpbin-okta
-          namespace: gloo-system
+      #extauth:
+      #  configRef:
+      #    name: httpbin-okta
+      #    namespace: gloo-system
       rateLimitConfigs:
         refs:
         - name: global-limit
