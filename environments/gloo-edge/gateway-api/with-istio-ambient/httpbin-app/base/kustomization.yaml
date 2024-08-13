@@ -16,5 +16,5 @@ resources:
 - okta-authconfig.yaml
 
 # when using ambient uncomment below
-transformers:
-- transformers/ambient-label-transformer.yaml
+#transformers:
+#- transformers/ambient-label-transformer.yaml
