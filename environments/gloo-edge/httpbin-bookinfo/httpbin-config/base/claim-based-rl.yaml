@@ -1,0 +1,31 @@
+apiVersion: ratelimit.solo.io/v1alpha1
+kind: RateLimitConfig
+metadata:
+  name: claim-based-rl
+  namespace: gloo-system
+spec:
+  raw:
+    setDescriptors:
+    - simpleDescriptors:
+      - key: group-key
+        value: engineering
+      rateLimit:
+        requestsPerUnit: 25
+        unit: MINUTE
+    - simpleDescriptors:
+      - key: group-key
+        value: paid-user
+      rateLimit:
+        requestsPerUnit: 100
+        unit: HOUR
+    - simpleDescriptors:
+      - key: group-key
+        value: free-user
+      rateLimit:
+        requestsPerUnit: 10
+        unit: HOUR
+    rateLimits:
+    - setActions:
+      - requestHeaders:
+          headerName: x-group
+          descriptorKey: group-key
