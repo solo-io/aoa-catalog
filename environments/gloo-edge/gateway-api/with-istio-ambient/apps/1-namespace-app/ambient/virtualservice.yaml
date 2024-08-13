@@ -1,0 +1,23 @@
+
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: ingress-gw
+  namespace: istio-system
+spec:
+  hosts:
+    - "*"
+  gateways:
+  - istio-system/http-gateway
+  http:
+  - name: "ns-1"
+    match:
+    - uri:
+        exact: "/ns-1"
+    route:
+    - destination:
+        host: tier-1-app-a.ns-1.svc.cluster.local
+        port:
+          number: 8080
+---
