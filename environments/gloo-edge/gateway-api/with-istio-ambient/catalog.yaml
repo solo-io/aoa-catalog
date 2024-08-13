@@ -35,7 +35,7 @@ waves:
       -  $env_path/bookinfo-app/init.sh
       post_deploy:
       -  $env_path/bookinfo-app/test.sh  
-  - name: apps
+  - name: tiered-app
     location: $env_path/apps/1-namespace-app/ambient
     scripts:
       pre_deploy: 
