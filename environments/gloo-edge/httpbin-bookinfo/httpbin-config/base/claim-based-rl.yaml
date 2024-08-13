@@ -6,24 +6,28 @@ metadata:
 spec:
   raw:
     setDescriptors:
+    # a validated claim with the key "x-group" and the value "engineering", rate limit to 25 requests per minute
     - simpleDescriptors:
       - key: group-key
         value: engineering
       rateLimit:
         requestsPerUnit: 25
         unit: MINUTE
+    # a validated claim with the key "x-group" and the value "paid-user", rate limit to 100 requests per hour
     - simpleDescriptors:
       - key: group-key
         value: paid-user
       rateLimit:
         requestsPerUnit: 100
         unit: HOUR
+    # a validated claim with the key "x-group" and the value "free-user", rate limit to 10 requests per hour
     - simpleDescriptors:
       - key: group-key
         value: free-user
       rateLimit:
         requestsPerUnit: 10
         unit: HOUR
+    # configure rate limit based on the value of the validated "x-group" header
     rateLimits:
     - setActions:
       - requestHeaders:
