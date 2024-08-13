@@ -16,3 +16,4 @@ spec:
        - cluster.local/ns/client/sa/sleep
        - cluster.local/ns/ns-1/sa/vegeta
        - cluster.local/ns/ns-1/sa/waypoint
+       - cluster.local/ns/gloo-system/sa/gloo-proxy-https
