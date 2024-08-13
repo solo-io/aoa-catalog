@@ -36,12 +36,12 @@ waves:
       post_deploy:
       -  $env_path/bookinfo-app/test.sh  
   - name: tiered-app
-    location: $env_path/apps/1-namespace-app/ambient
+    location: $env_path/tiered-app/1-namespace-app/ambient
     scripts:
       pre_deploy: 
-      -  $env_path/apps/init.sh
+      -  $env_path/tiered-app/init.sh
       post_deploy:
-      -  $env_path/apps/test.sh  
+      -  $env_path/tiered-app/test.sh  
   - name: loadgenerators
     location: $env_path/loadgenerators/1-loadgenerators
     scripts:
