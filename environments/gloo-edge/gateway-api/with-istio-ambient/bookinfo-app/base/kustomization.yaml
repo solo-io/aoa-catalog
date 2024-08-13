@@ -9,3 +9,7 @@ resources:
 - bookinfo-parent-route.yaml
 - bookinfo-delegate-route.yaml
 - bookinfo-route-policies.yaml
+
+# when using ambient uncomment below
+transformers:
+- transformers/ambient-label-transformer.yaml

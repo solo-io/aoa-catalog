@@ -14,3 +14,7 @@ resources:
 #- httpbin-add-header-policy.yaml
 - httpbin-ratelimit-config.yaml
 - okta-authconfig.yaml
+
+# when using ambient uncomment below
+transformers:
+- transformers/ambient-label-transformer.yaml

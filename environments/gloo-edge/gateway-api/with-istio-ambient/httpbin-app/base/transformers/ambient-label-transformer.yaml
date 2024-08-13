@@ -4,7 +4,6 @@ metadata:
   name: label-transformer
 labels:
   istio.io/dataplane-mode: ambient
-  istio.io/use-waypoint: waypoint
 fieldSpecs:
 - kind: Namespace
   path: metadata/labels
