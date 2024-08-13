@@ -6,7 +6,7 @@ resources:
 - ../base
 - waypoints
 - l4-policy
-#- l7-policy
+- l7-policy
 
 # when using ambient uncomment below
 transformers:
