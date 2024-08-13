@@ -16,6 +16,10 @@ spec:
     - backendRefs:
         - name: tier-1-app-a
           port: 8080
+      matches:
+        - path:
+            type: PathPrefix
+            value: /ns-1
       filters:
       - type: ExtensionRef
         extensionRef:
