@@ -9,3 +9,7 @@ resources:
 - vegeta-ns-3.yaml
 - vegeta-ns-4.yaml
 - vegeta-ns-5.yaml
+
+# when using ambient uncomment below
+transformers:
+- transformers/ambient-label-transformer.yaml
