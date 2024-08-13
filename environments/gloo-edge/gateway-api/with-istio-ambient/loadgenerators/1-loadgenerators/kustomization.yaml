@@ -5,7 +5,3 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - vegeta-ns-1.yaml
-
-# when using ambient uncomment below
-transformers:
-- transformers/ambient-label-transformer.yaml
