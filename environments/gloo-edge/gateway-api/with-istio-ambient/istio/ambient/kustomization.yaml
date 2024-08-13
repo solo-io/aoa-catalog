@@ -13,7 +13,7 @@ resources:
 - kiali.yaml
 - prometheus.yaml
 #- jaeger.yaml
-- grafana.yaml
+#- grafana.yaml
 #- istio-ingressgateway.yaml
 #- gateway-cert.yaml
 #- gateway-clusterissuer.yaml
