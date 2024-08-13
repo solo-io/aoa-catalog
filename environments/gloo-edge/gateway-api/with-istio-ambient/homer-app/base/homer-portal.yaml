@@ -219,7 +219,7 @@ spec:
                         subtitle: "change path number: /ns-#"
                         icon: "far fa-window-maximize"
                         tag: "ambient"
-                        url: "http://tiered-app.glootest.com/ns-1"
+                        url: "https://tiered-app.glootest.com/ns-1"
                         target: "_blank" # optional html a tag target attribute 
                     
   syncPolicy:
