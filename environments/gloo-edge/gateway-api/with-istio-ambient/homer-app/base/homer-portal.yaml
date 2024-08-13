@@ -194,6 +194,11 @@ spec:
                         keywords: "argocd"
                         url: "https://argocd.glootest.com/argo"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Kiali"
+                        icon: "fas fa-chart-area"
+                        tag: "kiali"
+                        url: "https://kiali.glootest.com/kiali"
+                        target: "_blank" # optional html a tag target attribute
                   
                   - name: "Web Applications"
                     icon: "fas fa-cloud"
@@ -210,6 +215,12 @@ spec:
                         tag: "bookinfo"
                         url: "https://bookinfo.glootest.com/productpage"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Ambient Demo App"
+                        subtitle: "change path number: /ns-#"
+                        icon: "far fa-window-maximize"
+                        tag: "ambient"
+                        url: "http://tiered-app.glootest.com/ns-1"
+                        target: "_blank" # optional html a tag target attribute 
                     
   syncPolicy:
     automated:

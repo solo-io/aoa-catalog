@@ -13,3 +13,5 @@ resources:
 - api-key-auth.yaml
 - example-api-key.yaml
 - log-provider.yaml
+- kiali-https.yaml
+- kiali-route-policies.yaml

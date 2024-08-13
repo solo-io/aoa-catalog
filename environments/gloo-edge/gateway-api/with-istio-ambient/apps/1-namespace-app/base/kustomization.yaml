@@ -6,3 +6,5 @@ kind: Kustomization
 resources:
 #- 1-tier
 - 3-tier
+- tiered-app-https.yaml
+- tiered-app-route-policies.yaml
