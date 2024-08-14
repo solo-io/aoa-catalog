@@ -9,4 +9,3 @@ resources:
 - httpbin-route.yaml
 - httpbin-transformation-policy.yaml
 - httpbin-add-header-policy.yaml
-- httpbin-add-another-header-policy.yaml
