@@ -2,7 +2,7 @@ apiVersion: k3d.io/v1alpha5
 kind: Simple
 metadata:
   name: mgmt
-image: rancher/k3s:v1.25.12-k3s1
+image: rancher/k3s:v1.29.7+k3s1
 network: k3d-cluster-network
 ports:
   - port: 8090:8090 # same as `--port '8090:8090@loadbalancer'`
