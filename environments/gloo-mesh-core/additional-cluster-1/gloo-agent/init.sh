@@ -113,7 +113,8 @@ spec:
                   namespace: null
         glooAnalyzer:
             enabled: true
-                  
+            runAsSidecar: true  
+                
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
     targetRevision: 2.6.0
   syncPolicy:
