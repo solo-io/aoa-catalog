@@ -46,6 +46,10 @@ spec:
         
         # Pod environment variables
         env: {}
-                
+        
+        # Labels to apply to all resources
+        labels:
+          istio.io/rev: 1-22
+          istio: ingressgateway
   syncPolicy:
     automated: {}

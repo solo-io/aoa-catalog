@@ -49,7 +49,11 @@ spec:
 
         annotations:
           proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
-                
+        
+        # Labels to apply to all resources
+        labels:
+          istio.io/rev: 1-22
+          istio: ingressgateway
   syncPolicy:
     automated:
       prune: true
