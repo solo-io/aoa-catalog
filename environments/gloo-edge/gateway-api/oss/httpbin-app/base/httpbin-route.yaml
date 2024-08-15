@@ -26,14 +26,9 @@ spec:
             group: gateway.solo.io
             kind: RouteOption
             name: add-header-policy
-        #- type: ExtensionRef
-        #  extensionRef:
-        #    group: gateway.solo.io
-        #    kind: RouteOption
-        #    name: add-another-header-policy
-        #- type: ExtensionRef
-        #  extensionRef:
-        #    group: gateway.solo.io
-        #    kind: RouteOption
-        #    name: transformation-policy
+        - type: ExtensionRef
+          extensionRef:
+            group: gateway.solo.io
+            kind: RouteOption
+            name: transformation-policy
     

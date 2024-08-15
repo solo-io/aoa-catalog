@@ -20,7 +20,10 @@ spec:
             adminNamespace: "gloo-mesh"
             cluster: mgmt
         glooInsightsEngine:
-            enabled: false
+            enabled: true
+        glooAnalyzer:
+            enabled: true
+            runAsSidecar: true
         global: {}
         glooAgent:
             enabled: true
@@ -82,7 +85,7 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.5.9
+              tag: 2.6.0
         telemetryGatewayCustomization:
             disableCertGeneration: true
         telemetryCollector:
@@ -99,7 +102,7 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.5.9
+              tag: 2.6.0
             config:
                 exporters:
                     otlp:
@@ -121,7 +124,7 @@ spec:
                   name: cilium-run
         
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.5.9
+    targetRevision: 2.6.0
   syncPolicy:
     automated:
       prune: true

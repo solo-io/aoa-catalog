@@ -1,0 +1,13 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ../base
+- waypoints
+- l4-policy
+- l7-policy
+
+# when using ambient uncomment below
+transformers:
+- transformers/ambient-label-transformer.yaml
