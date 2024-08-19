@@ -19,9 +19,9 @@ spec:
     helm:
       values: |
         # Name allows overriding the release name. Generally this should not be set
-        name: "istio-ingressgateway-1-22"
+        name: "istio-ingressgateway-1-23"
         # revision declares which revision this gateway is a part of
-        revision: "1-22"
+        revision: "1-23"
         
         replicaCount: 1
         
@@ -49,7 +49,7 @@ spec:
         
         # Labels to apply to all resources
         labels:
-          istio.io/rev: 1-22
+          istio.io/rev: 1-23
           istio: mgmt-ingressgateway
   syncPolicy:
     automated: {}

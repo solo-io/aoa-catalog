@@ -7,8 +7,8 @@ metadata:
     argocd.argoproj.io/sync-wave: "-8"
 spec:
   installations:
-      # The revision for this installation, such as 1-22
-    - revision: 1-22
+      # The revision for this installation, such as 1-23
+    - revision: 1-23
       # List all workload clusters to install Istio into
       clusters:
       - name: cluster1
