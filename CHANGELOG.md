@@ -1,5 +1,9 @@
 # Changelog
 
+0.5.1 (8-19-24)
+---
+- update istio helm chart version to `1.23.0-solo` and revision label `1-23` across all environments
+
 0.5.0 (8-15-24)
 ---
 - update gloo-platform-helm chart across all environments to use 2.6.0
