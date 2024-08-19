@@ -3,7 +3,7 @@ kind: Namespace
 metadata:
   name: grafana
   labels:
-    istio.io/rev: 1-22
+    istio.io/rev: 1-23
 ---
 apiVersion: v1
 kind: Secret

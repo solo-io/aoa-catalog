@@ -3,5 +3,5 @@ kind: Namespace
 metadata:
   name: homer-portal
   labels:
-    istio.io/rev: 1-22
+    istio.io/rev: 1-23
 ---

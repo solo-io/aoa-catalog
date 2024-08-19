@@ -15,13 +15,13 @@ spec:
   source:
     chart: gateway
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.22.3
+    targetRevision: 1.23.0
     helm:
       values: |
         # Name allows overriding the release name. Generally this should not be set
-        name: "istio-ingressgateway-1-22"
+        name: "istio-ingressgateway-1-23"
         # revision declares which revision this gateway is a part of
-        revision: "1-22"
+        revision: "1-23"
         
         replicaCount: 1
         
