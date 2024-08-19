@@ -22,7 +22,7 @@ spec:
         # You get the repo key from your Solo Account Representative.
         hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
         # The Solo.io Gloo Istio tag
-        tag: 1.22.3-patch1-solo
+        tag: 1.23.0-solo
         values:
           gateways:
             istio-ingressgateway:
