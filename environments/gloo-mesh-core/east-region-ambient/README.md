@@ -9,10 +9,10 @@ The `gloo-mesh-core/west-region-prod` environment bootstraps an additional workl
 
 ## Environment descriptions
 - base:
-    - gloo mesh 2.5.7
+    - gloo mesh 2.6.0
     - istio 1.22.0-solo (Helm)
     - revision: 1-20
 - lifecyclemanager:
-    - gloo mesh 2.5.7
+    - gloo mesh 2.6.0
     - istio 1.22.0-solo (ILM)
     - revision: 1-20
