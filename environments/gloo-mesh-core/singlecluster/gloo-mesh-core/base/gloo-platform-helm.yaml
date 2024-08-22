@@ -67,8 +67,7 @@ spec:
               - namespaces:
                   - gloo-mesh
                 resources:
-                  - pods
-                  - configmaps
+                  - secrets
         prometheus:
             enabled: true
         redis:
