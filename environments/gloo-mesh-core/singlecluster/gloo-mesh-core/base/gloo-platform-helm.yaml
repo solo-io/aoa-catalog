@@ -63,6 +63,11 @@ spec:
         glooUi:
             enabled: true
             serviceType: ClusterIP
+            namespacedRbac:
+              - resources:
+                  - secrets
+                namespaces:
+                  - gloo-mesh
         prometheus:
             enabled: true
         redis:

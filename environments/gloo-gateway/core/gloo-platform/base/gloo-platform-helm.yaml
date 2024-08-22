@@ -64,11 +64,6 @@ spec:
             #                    sidecar.istio.io/inject: "true"
             enabled: true
             serviceType: ClusterIP
-            namespacedRbac:
-              - resources:
-                  - secrets
-                namespaces:
-                  - gloo-mesh
         extAuthService:
             enabled: true
             extAuth:
