@@ -64,11 +64,12 @@ spec:
             enabled: true
             serviceType: ClusterIP
             namespacedRbac:
-              - namespaces: []
+              - namespaces:
+                  - gloo-mesh
                 resources:
                   - secrets
-                  - configmaps
                   - pods
+                  - configmaps
         prometheus:
             enabled: true
         redis:
