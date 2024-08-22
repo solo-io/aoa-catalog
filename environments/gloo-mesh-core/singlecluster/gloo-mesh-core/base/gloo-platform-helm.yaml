@@ -64,8 +64,7 @@ spec:
             enabled: true
             serviceType: ClusterIP
             namespacedRbac:
-              - namespaces:
-                  - gloo-mesh
+              - namespaces: []
                 resources:
                   - secrets
         prometheus:
