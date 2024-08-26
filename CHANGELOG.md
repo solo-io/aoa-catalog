@@ -1,5 +1,12 @@
 # Changelog
 
+0.5.2 (8-26-24)
+---
+- archive gloo-edge/flagger-podinfo
+- archive gloo-gateway/int-ext-portal
+- archive gloo-gateway/solowallet
+- archive gloo-platform/multicluster-podinfo-weighted-subset-failover
+
 0.5.1 (8-19-24)
 ---
 - update istio helm chart version to `1.23.0-solo` and revision label `1-23` across all environments
