@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: tracks-prod
-  labels:
-    istio.io/rev: 1-23
