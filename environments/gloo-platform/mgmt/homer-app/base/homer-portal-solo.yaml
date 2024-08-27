@@ -686,6 +686,13 @@ spec:
                         keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://idp.demo.glooplatform.com/"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "GitHub Actions Workflow Page"
+                        subtitle: "view triggered workflows"
+                        icon: "fab fa-git-alt"
+                        tag: "github #demo"
+                        keywords: "github,demo"
+                        url: "https://github.com/ably77/gh-action-idp/actions/"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "Sample Service Team A Route"
                         subtitle: "default try-it-now example"
                         icon: "far fa-window-maximize"
