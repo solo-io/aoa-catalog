@@ -675,7 +675,24 @@ spec:
                   #      keywords: "gloo-gateway,gloo-mesh,config"
                   #      url: "https://ui.glooplatform.com/workspace/ai-gateway/policy/transformation/anthropic-eli5-prompt-transformation/ai-gateway-ws-config/mgmt/"
                   #      target: "_blank" # optional html a tag target attribute
-                      
+
+                  - name: "Application Onboarding IDP Demo"
+                    logo: "solo/glooy.png"
+                    items:
+                      - name: "Swagger UI Frontend"
+                        icon: "fab fa-git-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
+                        url: "https://idp.demo.glooplatform.com/"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Sample Service Team A Route"
+                        subtitle: "default try-it-now example"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
+                        url: "https://gh-action-idp.demo.glooplatform.com/team-a/"
+                        target: "_blank" # optional html a tag target attribute
+
                       
                   - name: "Developer Portals"
                     icon: "fab fa-connectdevelop"
