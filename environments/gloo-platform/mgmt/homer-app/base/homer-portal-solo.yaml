@@ -356,14 +356,6 @@ spec:
                         keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://httpbin.demo.glooplatform.com/delay/1"
                         target: "_blank" # optional html a tag target attribute
-                      
-                      - name: "Bookinfo GraphQL API Explorer"
-                        subtitle: "UI GraphQL Explorer"
-                        icon: "fas fa-exchange-alt"
-                        tag: "gloo-gateway #graphql #demo"
-                        keywords: "gloo-gateway,gloo-mesh,graphql,demo"
-                        url: "https://ui.glooplatform.com/apis/graphql-bookinfo/bookinfo-team-config/mgmt/graphql-bookinfo-graphql-bookinfo-bookinfo-team-config-mgmt#schema%3E0"
-                        target: "_blank" # optional html a tag target attribute
 
                       - name: "Traffic Mirroring"
                         subtitle: "100% of reviews-v1 to reviews-v2"
