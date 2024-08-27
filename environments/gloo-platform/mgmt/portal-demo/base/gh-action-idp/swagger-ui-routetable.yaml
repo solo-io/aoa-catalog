@@ -1,0 +1,31 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: swagger-ui-rt-443
+  namespace: swagger-ui
+spec:
+  hosts:
+    - 'idp.demo.glooplatform.com'
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
+  workloadSelectors: []
+  http:
+    - name: swagger-ui-protected
+      #labels:
+      #  oauth: swagger-ui.demo.glooplatform.com
+      #  waf: "true"
+      #  ratelimited: "true"
+      matchers:
+      - uri:
+          prefix: /
+      - uri:
+          prefix: /callback
+      forwardTo:
+        destinations:
+        - ref:
+            name: swagger-ui
+            namespace: gh-action-idp
+          port:
+            number: 80

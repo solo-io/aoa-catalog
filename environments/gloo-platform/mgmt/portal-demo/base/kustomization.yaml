@@ -8,4 +8,5 @@ resources:
 - portal-application-config
 - external-portal-workspace-config
 - internal-portal-workspace-config
+- gh-action-idp
 

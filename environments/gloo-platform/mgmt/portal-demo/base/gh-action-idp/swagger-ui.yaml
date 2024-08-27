@@ -1,0 +1,326 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swagger-ui
+  namespace: gh-action-idp
+  labels:
+    app: swagger-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: swagger-ui
+  template:
+    metadata:
+      labels:
+        app: swagger-ui
+    spec:
+      containers:
+      - name: swagger-ui
+        image: swaggerapi/swagger-ui:v5.17.14
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SWAGGER_JSON
+          value: "/swagger/gh-action-idp-api.yaml"
+        - name: VALIDATOR_URL
+          value: "null"
+        volumeMounts:
+        - name: openapi-spec
+          mountPath: /swagger
+      volumes:
+      - name: openapi-spec
+        configMap:
+          name: openapi-spec
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: swagger-ui
+  namespace: gh-action-idp
+  labels:
+    app: swagger-ui
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: swagger-ui
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: openapi-spec
+  namespace: gh-action-idp
+data:
+  gh-action-idp-api.yaml: |
+    openapi: 3.0.3
+    info:
+      title: GitHub Actions IDP Demo API
+      description: A demo around using IDP concepts, Platform Engineering, and GitOps to enhance the developer experience
+      version: 1.0.0
+    servers:
+      - url: https://api.github.com/repos/ably77/gh-action-idp/actions/workflows
+        description: GitHub API server
+    components:
+      securitySchemes:
+        GitHubToken:
+          type: http
+          scheme: bearer
+          bearerFormat: token
+          description: "Personal Access Token for GitHub"
+    security:
+      - GitHubToken: []
+    tags:
+      - name: Platform Admin
+        description: Actions for managing workspaces.
+      - name: Dev
+        description: Actions for deploying and managing services and routes.
+    paths:
+      /apply-workspace.yaml/dispatches:
+        post:
+          tags:
+            - Platform Admin
+          summary: Apply a Workspace
+          description: Trigger the GitHub Action to apply a workspace with the specified namespaces.
+          security:
+            - GitHubToken: []
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    ref:
+                      type: string
+                      example: main
+                    inputs:
+                      type: object
+                      properties:
+                        workspace_name:
+                          type: string
+                          example: gh-action-idp
+                        namespaces:
+                          type: string
+                          example: team-a,team-b
+                      required:
+                        - workspace_name
+                        - namespaces
+          responses:
+            '204':
+              description: Successfully triggered the GitHub Action
+            '404':
+              description: Workflow or repository not found
+            '422':
+              description: Validation error (e.g., missing inputs)
+
+      /delete-workspace.yaml/dispatches:
+        post:
+          tags:
+            - Platform Admin
+          summary: Delete Workspace
+          description: Trigger the GitHub Action to delete the specified workspace.
+          security:
+            - GitHubToken: []
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    ref:
+                      type: string
+                      example: main
+                    inputs:
+                      type: object
+                      properties:
+                        workspace_name:
+                          type: string
+                          example: gh-action-idp
+                      required:
+                        - workspace_name
+          responses:
+            '204':
+              description: Successfully triggered the GitHub Action
+            '404':
+              description: Workflow or repository not found
+            '422':
+              description: Validation error (e.g., missing inputs)
+
+      /deploy-sample-service.yaml/dispatches:
+        post:
+          tags:
+            - Dev
+          summary: Deploy a Sample Service
+          description: Trigger the GitHub Action to deploy a sample service in the specified team namespace.
+          security:
+            - GitHubToken: []
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    ref:
+                      type: string
+                      example: main
+                      description: The git reference (branch or tag) to use
+                    inputs:
+                      type: object
+                      properties:
+                        workspace_name:
+                          type: string
+                          example: gh-action-idp
+                        team_name:
+                          type: string
+                          example: team-a
+                      required:
+                        - workspace_name
+                        - team_name
+          responses:
+            '204':
+              description: Successfully triggered the GitHub Action
+            '404':
+              description: Workflow or repository not found
+            '422':
+              description: Validation error (e.g., missing inputs)
+
+      /apply-delegate-route.yaml/dispatches:
+        post:
+          tags:
+            - Dev
+          summary: Apply a Delegate Route
+          description: Trigger the GitHub Action to apply a delegate route owned by the specified team to expose a service.
+          security:
+            - GitHubToken: []
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    ref:
+                      type: string
+                      example: main
+                    inputs:
+                      type: object
+                      properties:
+                        workspace_name:
+                          type: string
+                          example: gh-action-idp
+                        team_name:
+                          type: string
+                          example: team-a
+                        matchers:
+                          type: string
+                          example: /
+                        destination_kind:
+                          type: string
+                          example: SERVICE
+                        destination_name:
+                          type: string
+                          example: sample-service-team-a
+                        destination_port:
+                          type: string
+                          example: "8080"
+                        destination_namespace:
+                          type: string
+                          example: team-a
+                      required:
+                        - workspace_name
+                        - team_name
+                        - matchers
+                        - destination_kind
+                        - destination_name
+                        - destination_port
+                        - destination_namespace
+          responses:
+            '204':
+              description: Successfully triggered the GitHub Action
+            '404':
+              description: Workflow or repository not found
+            '422':
+              description: Validation error (e.g., missing inputs)
+
+      /delete-delegate-route.yaml/dispatches:
+        post:
+          tags:
+            - Dev
+          summary: Delete Delegate Routes
+          description: Trigger the GitHub Action to delete all delegate routes owned by the specified team.
+          security:
+            - GitHubToken: []
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    ref:
+                      type: string
+                      example: main
+                    inputs:
+                      type: object
+                      properties:
+                        workspace_name:
+                          type: string
+                          example: gh-action-idp
+                        team_name:
+                          type: string
+                          example: team-a
+                      required:
+                        - workspace_name
+                        - team_name
+          responses:
+            '204':
+              description: Successfully triggered the GitHub Action
+            '404':
+              description: Workflow or repository not found
+            '422':
+              description: Validation error (e.g., missing inputs)
+
+      /delete-sample-service.yaml/dispatches:
+        post:
+          tags:
+            - Dev
+          summary: Delete a Sample Service
+          description: Trigger the GitHub Action to delete a sample service in the specified team namespace.
+          security:
+            - GitHubToken: []
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    ref:
+                      type: string
+                      example: main
+                    inputs:
+                      type: object
+                      properties:
+                        workspace_name:
+                          type: string
+                          example: gh-action-idp
+                        team_name:
+                          type: string
+                          example: team-a
+                      required:
+                        - workspace_name
+                        - team_name
+          responses:
+            '204':
+              description: Successfully triggered the GitHub Action
+            '404':
+              description: Workflow or repository not found
+            '422':
+              description: Validation error (e.g., missing inputs)
