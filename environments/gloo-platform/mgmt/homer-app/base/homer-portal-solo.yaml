@@ -683,7 +683,7 @@ spec:
                         icon: "fas fa-project-diagram"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,gloo-mesh,demo"
-                        url: "https://raw.githubusercontent.com/ably77/gh-action-idp/main/.images/gh-action-idp-demo.png/"
+                        url: "https://raw.githubusercontent.com/ably77/gh-action-idp/main/.images/gh-action-idp-demo.png"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Swagger UI Frontend"
                         subtitle: "requires Github PAT to gh-action-idp repo"
