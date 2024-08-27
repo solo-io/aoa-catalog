@@ -680,6 +680,7 @@ spec:
                     logo: "solo/glooy.png"
                     items:
                       - name: "Swagger UI Frontend"
+                        subtitle: "requires Github PAT to gh-action-idp repo"
                         icon: "fab fa-git-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,gloo-mesh,demo"
