@@ -90,7 +90,7 @@ spec:
         proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/solo-test-236622/jmunozro/examples-bookinfo-details-v1:1.16.2
+      - image: docker.io/istio/examples-bookinfo-details-v1:1.20.2
         imagePullPolicy: IfNotPresent
         name: details
         ports:
@@ -123,7 +123,7 @@ spec:
         proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/solo-test-236622/jmunozro/examples-bookinfo-ratings-v1:1.16.2
+      - image: docker.io/istio/examples-bookinfo-ratings-v1:1.20.2
         imagePullPolicy: IfNotPresent
         name: ratings
         ports:
@@ -161,7 +161,7 @@ spec:
           value: /tmp/logs
         - name: CLUSTER_NAME
           value: glooplatform-central
-        image: docker.io/istio/examples-bookinfo-reviews-v1:1.17.0
+        image: docker.io/istio/examples-bookinfo-reviews-v1:1.20.2
         imagePullPolicy: IfNotPresent
         name: reviews
         ports:
@@ -209,7 +209,7 @@ spec:
           value: /tmp/logs
         - name: CLUSTER_NAME
           value: glooplatform-central
-        image: docker.io/istio/examples-bookinfo-reviews-v2:1.17.0
+        image: docker.io/istio/examples-bookinfo-reviews-v2:1.20.2
         imagePullPolicy: IfNotPresent
         name: reviews
         ports:
@@ -257,7 +257,7 @@ spec:
           value: /tmp/logs
         - name: CLUSTER_NAME
           value: glooplatform-central
-        image: docker.io/istio/examples-bookinfo-reviews-v3:1.17.0
+        image: docker.io/istio/examples-bookinfo-reviews-v3:1.20.2
         imagePullPolicy: IfNotPresent
         name: reviews
         ports:

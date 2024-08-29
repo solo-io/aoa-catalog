@@ -112,7 +112,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: docker.io/istio/examples-bookinfo-details-v1:1.16.2
+      - image: docker.io/istio/examples-bookinfo-details-v1:1.20.2
         imagePullPolicy: IfNotPresent
         name: details
         ports:
@@ -142,7 +142,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: docker.io/istio/examples-bookinfo-productpage-v1:1.16.2
+      - image: docker.io/istio/examples-bookinfo-productpage-v1:1.20.2
         imagePullPolicy: IfNotPresent
         name: productpage
         ports:
@@ -178,7 +178,7 @@ spec:
         version: v1
     spec:
       containers:
-      - image: docker.io/istio/examples-bookinfo-ratings-v1:1.16.2
+      - image: docker.io/istio/examples-bookinfo-ratings-v1:1.20.2
         imagePullPolicy: IfNotPresent
         name: ratings
         ports:
@@ -211,7 +211,7 @@ spec:
       - env:
         - name: LOG_DIR
           value: /tmp/logs
-        image: docker.io/istio/examples-bookinfo-reviews-v1:1.17.0
+        image: docker.io/istio/examples-bookinfo-reviews-v1:1.20.2
         imagePullPolicy: IfNotPresent
         name: reviews
         ports:
@@ -252,7 +252,7 @@ spec:
       - env:
         - name: LOG_DIR
           value: /tmp/logs
-        image: docker.io/istio/examples-bookinfo-reviews-v2:1.17.0
+        image: docker.io/istio/examples-bookinfo-reviews-v2:1.20.2
         imagePullPolicy: IfNotPresent
         name: reviews
         ports:
