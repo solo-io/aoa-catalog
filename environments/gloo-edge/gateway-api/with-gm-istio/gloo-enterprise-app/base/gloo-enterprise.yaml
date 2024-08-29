@@ -53,7 +53,7 @@ spec:
               replicas: 1
               customEnv:
                 # The portal plugin is disabled by default, so must explicitly enable it
-                - name: GG_EXPERIMENTAL_PORTAL_PLUGIN
+                - name: GG_PORTAL_PLUGIN
                   value: "true"
               livenessProbeEnabled: true
           discovery:
@@ -107,7 +107,7 @@ spec:
               deployment:
                 logLevel: debug
     repoURL: http://storage.googleapis.com/gloo-ee-helm
-    targetRevision: 1.17.0
+    targetRevision: 1.17.1
   syncPolicy:
     automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).

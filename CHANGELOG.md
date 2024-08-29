@@ -1,5 +1,12 @@
 # Changelog
 
+0.5.3 (8-29-24)
+---
+- update gloo-edge/gateway-api environments to 1.17.1
+- update customEnv var for portal. previously was `GG_EXPERIMENTAL_PORTAL_PLUGIN` and now is `GG_PORTAL_PLUGIN`
+- update bookinfo image to latest upstream in 1.23 for performance improvements
+- fix issue with bookinfo parent route matcher in gloo-edge/gateway-api environments
+
 0.5.2 (8-26-24)
 ---
 - archive gloo-edge/flagger-podinfo
