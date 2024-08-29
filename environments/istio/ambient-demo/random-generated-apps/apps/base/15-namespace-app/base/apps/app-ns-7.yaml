@@ -66,8 +66,7 @@ spec:
       serviceAccountName: ancient-lake
       containers:
       - name: ancient-lake
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -162,8 +161,7 @@ spec:
       serviceAccountName: ancient-meadow
       containers:
       - name: ancient-meadow
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -258,8 +256,7 @@ spec:
       serviceAccountName: dry-lake
       containers:
       - name: dry-lake
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -354,8 +351,7 @@ spec:
       serviceAccountName: empty-wood
       containers:
       - name: empty-wood
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -450,8 +446,7 @@ spec:
       serviceAccountName: frosty-sunset
       containers:
       - name: frosty-sunset
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -546,8 +541,7 @@ spec:
       serviceAccountName: icy-surf
       containers:
       - name: icy-surf
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -642,8 +636,7 @@ spec:
       serviceAccountName: long-moon
       containers:
       - name: long-moon
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -738,8 +731,7 @@ spec:
       serviceAccountName: small-resonance
       containers:
       - name: small-resonance
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -806,8 +798,7 @@ spec:
       serviceAccountName: small-resonance
       containers:
       - name: small-resonance
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -874,8 +865,7 @@ spec:
       serviceAccountName: small-resonance
       containers:
       - name: small-resonance
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -970,8 +960,7 @@ spec:
       serviceAccountName: snowy-dawn
       containers:
       - name: snowy-dawn
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1066,8 +1055,7 @@ spec:
       serviceAccountName: snowy-fog
       containers:
       - name: snowy-fog
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1162,8 +1150,7 @@ spec:
       serviceAccountName: white-bird
       containers:
       - name: white-bird
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1258,8 +1245,7 @@ spec:
       serviceAccountName: wispy-rain
       containers:
       - name: wispy-rain
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1326,8 +1312,7 @@ spec:
       serviceAccountName: wispy-rain
       containers:
       - name: wispy-rain
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

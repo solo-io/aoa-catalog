@@ -66,8 +66,7 @@ spec:
       serviceAccountName: late-river
       containers:
       - name: late-river
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -162,8 +161,7 @@ spec:
       serviceAccountName: still-glitter
       containers:
       - name: still-glitter
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -258,8 +256,7 @@ spec:
       serviceAccountName: weathered-pond
       containers:
       - name: weathered-pond
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

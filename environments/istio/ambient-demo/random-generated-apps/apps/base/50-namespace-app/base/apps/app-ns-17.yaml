@@ -66,8 +66,7 @@ spec:
       serviceAccountName: black-violet
       containers:
       - name: black-violet
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -162,8 +161,7 @@ spec:
       serviceAccountName: fragrant-lake
       containers:
       - name: fragrant-lake
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -258,8 +256,7 @@ spec:
       serviceAccountName: twilight-frost
       containers:
       - name: twilight-frost
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

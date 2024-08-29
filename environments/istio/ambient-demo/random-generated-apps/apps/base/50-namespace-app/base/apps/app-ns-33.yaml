@@ -66,8 +66,7 @@ spec:
       serviceAccountName: fragrant-dream
       containers:
       - name: fragrant-dream
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -162,8 +161,7 @@ spec:
       serviceAccountName: fragrant-tree
       containers:
       - name: fragrant-tree
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -258,8 +256,7 @@ spec:
       serviceAccountName: morning-forest
       containers:
       - name: morning-forest
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -354,8 +351,7 @@ spec:
       serviceAccountName: old-frost
       containers:
       - name: old-frost
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -450,8 +446,7 @@ spec:
       serviceAccountName: quiet-wind
       containers:
       - name: quiet-wind
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -518,8 +513,7 @@ spec:
       serviceAccountName: quiet-wind
       containers:
       - name: quiet-wind
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -586,8 +580,7 @@ spec:
       serviceAccountName: quiet-wind
       containers:
       - name: quiet-wind
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -682,8 +675,7 @@ spec:
       serviceAccountName: rough-morning
       containers:
       - name: rough-morning
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

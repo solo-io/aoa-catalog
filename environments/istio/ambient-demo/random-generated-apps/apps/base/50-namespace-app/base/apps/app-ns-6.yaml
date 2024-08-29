@@ -66,8 +66,7 @@ spec:
       serviceAccountName: icy-paper
       containers:
       - name: icy-paper
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -162,8 +161,7 @@ spec:
       serviceAccountName: little-pond
       containers:
       - name: little-pond
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -258,8 +256,7 @@ spec:
       serviceAccountName: restless-wave
       containers:
       - name: restless-wave
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -354,8 +351,7 @@ spec:
       serviceAccountName: wild-bird
       containers:
       - name: wild-bird
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -422,8 +418,7 @@ spec:
       serviceAccountName: wild-bird
       containers:
       - name: wild-bird
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -490,8 +485,7 @@ spec:
       serviceAccountName: wild-bird
       containers:
       - name: wild-bird
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -586,8 +580,7 @@ spec:
       serviceAccountName: wispy-snowflake
       containers:
       - name: wispy-snowflake
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -654,8 +647,7 @@ spec:
       serviceAccountName: wispy-snowflake
       containers:
       - name: wispy-snowflake
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

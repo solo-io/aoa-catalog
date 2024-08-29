@@ -66,8 +66,7 @@ spec:
       serviceAccountName: broken-haze
       containers:
       - name: broken-haze
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -134,8 +133,7 @@ spec:
       serviceAccountName: broken-haze
       containers:
       - name: broken-haze
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -230,8 +228,7 @@ spec:
       serviceAccountName: cold-wildflower
       containers:
       - name: cold-wildflower
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -298,8 +295,7 @@ spec:
       serviceAccountName: cold-wildflower
       containers:
       - name: cold-wildflower
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -366,8 +362,7 @@ spec:
       serviceAccountName: cold-wildflower
       containers:
       - name: cold-wildflower
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -462,8 +457,7 @@ spec:
       serviceAccountName: holy-firefly
       containers:
       - name: holy-firefly
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -530,8 +524,7 @@ spec:
       serviceAccountName: holy-firefly
       containers:
       - name: holy-firefly
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -598,8 +591,7 @@ spec:
       serviceAccountName: holy-firefly
       containers:
       - name: holy-firefly
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -694,8 +686,7 @@ spec:
       serviceAccountName: icy-voice
       containers:
       - name: icy-voice
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -762,8 +753,7 @@ spec:
       serviceAccountName: icy-voice
       containers:
       - name: icy-voice
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -858,8 +848,7 @@ spec:
       serviceAccountName: misty-snow
       containers:
       - name: misty-snow
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -954,8 +943,7 @@ spec:
       serviceAccountName: muddy-glade
       containers:
       - name: muddy-glade
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1022,8 +1010,7 @@ spec:
       serviceAccountName: muddy-glade
       containers:
       - name: muddy-glade
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1118,8 +1105,7 @@ spec:
       serviceAccountName: spring-firefly
       containers:
       - name: spring-firefly
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

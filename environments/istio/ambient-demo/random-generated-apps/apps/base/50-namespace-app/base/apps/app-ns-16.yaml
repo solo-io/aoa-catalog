@@ -66,8 +66,7 @@ spec:
       serviceAccountName: blue-rain
       containers:
       - name: blue-rain
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -162,8 +161,7 @@ spec:
       serviceAccountName: blue-sea
       containers:
       - name: blue-sea
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -230,8 +228,7 @@ spec:
       serviceAccountName: blue-sea
       containers:
       - name: blue-sea
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -298,8 +295,7 @@ spec:
       serviceAccountName: blue-sea
       containers:
       - name: blue-sea
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -394,8 +390,7 @@ spec:
       serviceAccountName: dry-dust
       containers:
       - name: dry-dust
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -490,8 +485,7 @@ spec:
       serviceAccountName: muddy-cherry
       containers:
       - name: muddy-cherry
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -586,8 +580,7 @@ spec:
       serviceAccountName: muddy-firefly
       containers:
       - name: muddy-firefly
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -682,8 +675,7 @@ spec:
       serviceAccountName: shy-sky
       containers:
       - name: shy-sky
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -750,8 +742,7 @@ spec:
       serviceAccountName: shy-sky
       containers:
       - name: shy-sky
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -818,8 +809,7 @@ spec:
       serviceAccountName: shy-sky
       containers:
       - name: shy-sky
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -914,8 +904,7 @@ spec:
       serviceAccountName: shy-sunset
       containers:
       - name: shy-sunset
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -982,8 +971,7 @@ spec:
       serviceAccountName: shy-sunset
       containers:
       - name: shy-sunset
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1050,8 +1038,7 @@ spec:
       serviceAccountName: shy-sunset
       containers:
       - name: shy-sunset
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1146,8 +1133,7 @@ spec:
       serviceAccountName: throbbing-shadow
       containers:
       - name: throbbing-shadow
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -1214,8 +1200,7 @@ spec:
       serviceAccountName: throbbing-shadow
       containers:
       - name: throbbing-shadow
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

@@ -66,8 +66,7 @@ spec:
       serviceAccountName: lingering-glade
       containers:
       - name: lingering-glade
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -162,8 +161,7 @@ spec:
       serviceAccountName: throbbing-forest
       containers:
       - name: throbbing-forest
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -230,8 +228,7 @@ spec:
       serviceAccountName: throbbing-forest
       containers:
       - name: throbbing-forest
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
@@ -298,8 +295,7 @@ spec:
       serviceAccountName: throbbing-forest
       containers:
       - name: throbbing-forest
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:

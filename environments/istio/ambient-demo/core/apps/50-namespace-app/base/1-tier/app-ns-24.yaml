@@ -58,8 +58,7 @@ spec:
       serviceAccountName: tier-1-app-a
       containers:
       - name: tier-1-app-a
-        #image: nicholasjackson/fake-service:v0.26.2
-        image: howardjohn/fake-service:25
+        image: nicholasjackson/fake-service:v0.26.2
         ports:
         - containerPort: 8080
         securityContext:
