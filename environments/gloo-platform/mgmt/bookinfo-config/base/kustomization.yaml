@@ -11,5 +11,7 @@ resources:
 - bookinfo-routetable.yaml
 - bookinfo-outlierdetectionpolicy.yaml
 - productpage-virtualdestination.yaml
+- ratings-virtualdestination.yaml
+- reviews-virtualdestination.yaml
 - bookinfo-mirrorpolicy.yaml
 

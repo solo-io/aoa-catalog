@@ -8,8 +8,5 @@ resources:
 - bookinfo-resolvers.yaml
 - gql-rt.yaml
 - gql-schema.yaml
-- ratings-virtualdestination.yaml
-- reviews-virtualdestination.yaml
-
 
 
