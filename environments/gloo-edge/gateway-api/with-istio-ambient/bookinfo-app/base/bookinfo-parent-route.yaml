@@ -21,7 +21,7 @@ spec:
       matches:
         - path:
             type: PathPrefix
-            value: /api/bookinfo
+            value: /
       filters:
         - type: ExtensionRef
           extensionRef:
