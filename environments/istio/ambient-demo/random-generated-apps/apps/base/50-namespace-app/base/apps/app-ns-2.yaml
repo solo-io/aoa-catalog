@@ -66,7 +66,8 @@ spec:
       serviceAccountName: floral-dawn
       containers:
       - name: floral-dawn
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -161,7 +162,8 @@ spec:
       serviceAccountName: little-flower
       containers:
       - name: little-flower
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -228,7 +230,8 @@ spec:
       serviceAccountName: little-flower
       containers:
       - name: little-flower
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -295,7 +298,8 @@ spec:
       serviceAccountName: little-flower
       containers:
       - name: little-flower
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -390,7 +394,8 @@ spec:
       serviceAccountName: nameless-breeze
       containers:
       - name: nameless-breeze
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -485,7 +490,8 @@ spec:
       serviceAccountName: still-voice
       containers:
       - name: still-voice
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -580,7 +586,8 @@ spec:
       serviceAccountName: summer-forest
       containers:
       - name: summer-forest
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -675,7 +682,8 @@ spec:
       serviceAccountName: throbbing-field
       containers:
       - name: throbbing-field
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -742,7 +750,8 @@ spec:
       serviceAccountName: throbbing-field
       containers:
       - name: throbbing-field
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -809,7 +818,8 @@ spec:
       serviceAccountName: throbbing-field
       containers:
       - name: throbbing-field
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -904,7 +914,8 @@ spec:
       serviceAccountName: winter-wind
       containers:
       - name: winter-wind
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:

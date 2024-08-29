@@ -66,7 +66,8 @@ spec:
       serviceAccountName: aged-wood
       containers:
       - name: aged-wood
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -133,7 +134,8 @@ spec:
       serviceAccountName: aged-wood
       containers:
       - name: aged-wood
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -200,7 +202,8 @@ spec:
       serviceAccountName: aged-wood
       containers:
       - name: aged-wood
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -295,7 +298,8 @@ spec:
       serviceAccountName: ancient-fog
       containers:
       - name: ancient-fog
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -390,7 +394,8 @@ spec:
       serviceAccountName: broken-resonance
       containers:
       - name: broken-resonance
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -485,7 +490,8 @@ spec:
       serviceAccountName: cold-fog
       containers:
       - name: cold-fog
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -580,7 +586,8 @@ spec:
       serviceAccountName: dawn-flower
       containers:
       - name: dawn-flower
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -675,7 +682,8 @@ spec:
       serviceAccountName: lively-wave
       containers:
       - name: lively-wave
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -770,7 +778,8 @@ spec:
       serviceAccountName: patient-dream
       containers:
       - name: patient-dream
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -865,7 +874,8 @@ spec:
       serviceAccountName: still-wave
       containers:
       - name: still-wave
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:

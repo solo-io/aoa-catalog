@@ -66,7 +66,8 @@ spec:
       serviceAccountName: broken-water
       containers:
       - name: broken-water
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -133,7 +134,8 @@ spec:
       serviceAccountName: broken-water
       containers:
       - name: broken-water
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -228,7 +230,8 @@ spec:
       serviceAccountName: nameless-lake
       containers:
       - name: nameless-lake
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -323,7 +326,8 @@ spec:
       serviceAccountName: shy-brook
       containers:
       - name: shy-brook
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -390,7 +394,8 @@ spec:
       serviceAccountName: shy-brook
       containers:
       - name: shy-brook
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -485,7 +490,8 @@ spec:
       serviceAccountName: wild-pond
       containers:
       - name: wild-pond
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -580,7 +586,8 @@ spec:
       serviceAccountName: winter-night
       containers:
       - name: winter-night
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -647,7 +654,8 @@ spec:
       serviceAccountName: winter-night
       containers:
       - name: winter-night
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -714,7 +722,8 @@ spec:
       serviceAccountName: winter-night
       containers:
       - name: winter-night
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:

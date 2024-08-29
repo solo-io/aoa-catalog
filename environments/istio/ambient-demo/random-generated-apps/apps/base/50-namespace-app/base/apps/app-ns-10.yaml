@@ -66,7 +66,8 @@ spec:
       serviceAccountName: dark-mountain
       containers:
       - name: dark-mountain
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -161,7 +162,8 @@ spec:
       serviceAccountName: frosty-breeze
       containers:
       - name: frosty-breeze
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -228,7 +230,8 @@ spec:
       serviceAccountName: frosty-breeze
       containers:
       - name: frosty-breeze
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -295,7 +298,8 @@ spec:
       serviceAccountName: frosty-breeze
       containers:
       - name: frosty-breeze
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -390,7 +394,8 @@ spec:
       serviceAccountName: frosty-glitter
       containers:
       - name: frosty-glitter
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -485,7 +490,8 @@ spec:
       serviceAccountName: lingering-river
       containers:
       - name: lingering-river
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -552,7 +558,8 @@ spec:
       serviceAccountName: lingering-river
       containers:
       - name: lingering-river
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -647,7 +654,8 @@ spec:
       serviceAccountName: red-surf
       containers:
       - name: red-surf
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -742,7 +750,8 @@ spec:
       serviceAccountName: solitary-rain
       containers:
       - name: solitary-rain
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -837,7 +846,8 @@ spec:
       serviceAccountName: winter-forest
       containers:
       - name: winter-forest
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:

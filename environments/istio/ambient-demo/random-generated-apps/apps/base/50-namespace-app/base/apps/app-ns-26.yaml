@@ -66,7 +66,8 @@ spec:
       serviceAccountName: aged-water
       containers:
       - name: aged-water
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -161,7 +162,8 @@ spec:
       serviceAccountName: billowing-wood
       containers:
       - name: billowing-wood
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -256,7 +258,8 @@ spec:
       serviceAccountName: black-bird
       containers:
       - name: black-bird
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -323,7 +326,8 @@ spec:
       serviceAccountName: black-bird
       containers:
       - name: black-bird
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -418,7 +422,8 @@ spec:
       serviceAccountName: bold-sun
       containers:
       - name: bold-sun
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -513,7 +518,8 @@ spec:
       serviceAccountName: hidden-wood
       containers:
       - name: hidden-wood
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -608,7 +614,8 @@ spec:
       serviceAccountName: quiet-star
       containers:
       - name: quiet-star
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -703,7 +710,8 @@ spec:
       serviceAccountName: red-leaf
       containers:
       - name: red-leaf
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -798,7 +806,8 @@ spec:
       serviceAccountName: solitary-dew
       containers:
       - name: solitary-dew
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:

@@ -66,7 +66,8 @@ spec:
       serviceAccountName: morning-smoke
       containers:
       - name: morning-smoke
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -133,7 +134,8 @@ spec:
       serviceAccountName: morning-smoke
       containers:
       - name: morning-smoke
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -228,7 +230,8 @@ spec:
       serviceAccountName: polished-wave
       containers:
       - name: polished-wave
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -323,7 +326,8 @@ spec:
       serviceAccountName: throbbing-brook
       containers:
       - name: throbbing-brook
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -418,7 +422,8 @@ spec:
       serviceAccountName: wispy-cherry
       containers:
       - name: wispy-cherry
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -513,7 +518,8 @@ spec:
       serviceAccountName: wispy-fire
       containers:
       - name: wispy-fire
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -580,7 +586,8 @@ spec:
       serviceAccountName: wispy-fire
       containers:
       - name: wispy-fire
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:

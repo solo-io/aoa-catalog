@@ -66,7 +66,8 @@ spec:
       serviceAccountName: broken-grass
       containers:
       - name: broken-grass
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -161,7 +162,8 @@ spec:
       serviceAccountName: dawn-glade
       containers:
       - name: dawn-glade
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -256,7 +258,8 @@ spec:
       serviceAccountName: dawn-sun
       containers:
       - name: dawn-sun
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -351,7 +354,8 @@ spec:
       serviceAccountName: divine-shape
       containers:
       - name: divine-shape
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -446,7 +450,8 @@ spec:
       serviceAccountName: dry-waterfall
       containers:
       - name: dry-waterfall
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -541,7 +546,8 @@ spec:
       serviceAccountName: misty-cherry
       containers:
       - name: misty-cherry
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -636,7 +642,8 @@ spec:
       serviceAccountName: proud-morning
       containers:
       - name: proud-morning
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -731,7 +738,8 @@ spec:
       serviceAccountName: sparkling-breeze
       containers:
       - name: sparkling-breeze
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:

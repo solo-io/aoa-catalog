@@ -66,7 +66,8 @@ spec:
       serviceAccountName: delicate-wildflower
       containers:
       - name: delicate-wildflower
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -161,7 +162,8 @@ spec:
       serviceAccountName: fragrant-silence
       containers:
       - name: fragrant-silence
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -256,7 +258,8 @@ spec:
       serviceAccountName: late-morning
       containers:
       - name: late-morning
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -351,7 +354,8 @@ spec:
       serviceAccountName: lively-sound
       containers:
       - name: lively-sound
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -446,7 +450,8 @@ spec:
       serviceAccountName: winter-field
       containers:
       - name: winter-field
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -541,7 +546,8 @@ spec:
       serviceAccountName: wispy-sky
       containers:
       - name: wispy-sky
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -636,7 +642,8 @@ spec:
       serviceAccountName: withered-wildflower
       containers:
       - name: withered-wildflower
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:

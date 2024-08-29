@@ -66,7 +66,8 @@ spec:
       serviceAccountName: billowing-hill
       containers:
       - name: billowing-hill
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -161,7 +162,8 @@ spec:
       serviceAccountName: bitter-pine
       containers:
       - name: bitter-pine
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -256,7 +258,8 @@ spec:
       serviceAccountName: bitter-shape
       containers:
       - name: bitter-shape
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -351,7 +354,8 @@ spec:
       serviceAccountName: broken-surf
       containers:
       - name: broken-surf
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -446,7 +450,8 @@ spec:
       serviceAccountName: dark-surf
       containers:
       - name: dark-surf
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -541,7 +546,8 @@ spec:
       serviceAccountName: falling-haze
       containers:
       - name: falling-haze
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -636,7 +642,8 @@ spec:
       serviceAccountName: misty-moon
       containers:
       - name: misty-moon
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -703,7 +710,8 @@ spec:
       serviceAccountName: misty-moon
       containers:
       - name: misty-moon
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -770,7 +778,8 @@ spec:
       serviceAccountName: misty-moon
       containers:
       - name: misty-moon
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -865,7 +874,8 @@ spec:
       serviceAccountName: restless-hill
       containers:
       - name: restless-hill
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -960,7 +970,8 @@ spec:
       serviceAccountName: solitary-cloud
       containers:
       - name: solitary-cloud
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -1027,7 +1038,8 @@ spec:
       serviceAccountName: solitary-cloud
       containers:
       - name: solitary-cloud
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -1122,7 +1134,8 @@ spec:
       serviceAccountName: solitary-sky
       containers:
       - name: solitary-sky
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -1189,7 +1202,8 @@ spec:
       serviceAccountName: solitary-sky
       containers:
       - name: solitary-sky
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -1284,7 +1298,8 @@ spec:
       serviceAccountName: weathered-breeze
       containers:
       - name: weathered-breeze
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -1379,7 +1394,8 @@ spec:
       serviceAccountName: wild-sea
       containers:
       - name: wild-sea
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -1446,7 +1462,8 @@ spec:
       serviceAccountName: wild-sea
       containers:
       - name: wild-sea
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:

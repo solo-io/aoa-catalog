@@ -66,7 +66,8 @@ spec:
       serviceAccountName: divine-cloud
       containers:
       - name: divine-cloud
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -133,7 +134,8 @@ spec:
       serviceAccountName: divine-cloud
       containers:
       - name: divine-cloud
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
@@ -228,7 +230,8 @@ spec:
       serviceAccountName: restless-sky
       containers:
       - name: restless-sky
-        image: nicholasjackson/fake-service:v0.26.2
+        #image: nicholasjackson/fake-service:v0.26.2
+        image: howardjohn/fake-service:25
         ports:
         - containerPort: 8080
         securityContext:
