@@ -6,4 +6,3 @@ metadata:
 spec:
   disabledInsights:
     - HLT0001
-    - CFG0014
