@@ -12,3 +12,4 @@ resources:
 #- roottrustpolicy-generated.yaml
 #- roottrustpolicy-secretref.yaml
 - gloo-mesh-ui-https.yaml
+- disabled-insights.yaml
