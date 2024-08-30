@@ -1,5 +1,9 @@
 # Changelog
 
+0.5.4 (8-30-24)
+---
+- set `featureGates.insightsConfiguration=true` helm values and configure an `InsightsConfig` to disable to supress `HLT0001` insight when using Gloo Gateway Istio integration feature in `gateway-api/with-gm-istio` and `gloo-platform/gwapi-mgmt-gm-workers` environments
+
 0.5.3 (8-29-24)
 ---
 - update gloo-edge/gateway-api environments to 1.17.1
