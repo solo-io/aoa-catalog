@@ -1,7 +1,7 @@
 apiVersion: admin.gloo.solo.io/v2alpha1
 kind: InsightsConfig
 metadata:
-  name: insights-config
+  name: disabled-insights
   namespace: gloo-mesh
 spec:
   disabledInsights:
