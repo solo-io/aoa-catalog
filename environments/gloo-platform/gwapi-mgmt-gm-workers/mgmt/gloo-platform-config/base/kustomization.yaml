@@ -14,3 +14,4 @@ resources:
 - workload-vg-443.yaml
 - argocd-cluster1-rt-443.yaml
 - argocd-cluster2-rt-443.yaml
+- disabled-insights.yaml
