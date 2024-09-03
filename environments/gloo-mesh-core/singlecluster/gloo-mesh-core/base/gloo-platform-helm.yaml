@@ -39,7 +39,7 @@ spec:
             serviceType: LoadBalancer
         glooAgent:
             enabled: true
-            runAsSidecar: true
+            runAsSidecar: false
             relay:
                 serverAddress: gloo-mesh-mgmt-server:9900
                 clientTlsSecret:
