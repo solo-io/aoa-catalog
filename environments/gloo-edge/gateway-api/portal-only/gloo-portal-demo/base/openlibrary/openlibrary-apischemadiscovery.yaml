@@ -1,0 +1,16 @@
+apiVersion: portal.gloo.solo.io/v1
+kind: ApiSchemaDiscovery
+metadata:
+  name: openlibrary
+  namespace: bookinfo
+spec:
+  # Fetch the OpenAPI schema from the Open Library API
+  openapi:
+    fetchEndpoint:
+      url: "https://openlibrary.org/static/openapi.json"
+  servedBy:
+  - targetRef:
+      kind: UPSTREAM
+      name: openlibrary
+      namespace: bookinfo
+    port: 443

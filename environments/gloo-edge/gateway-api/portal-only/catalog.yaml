@@ -14,27 +14,13 @@ waves:
       -  $env_path/gateway-api-config/init.sh
       post_deploy:
       -  $env_path/gateway-api-config/test.sh
-  - name: httpbin-app
-    location: $env_path/httpbin-app/base
+  - name: gloo-portal-demo
+    location: $env_path/gloo-portal-demo/base
     scripts:
       pre_deploy: 
-      -  $env_path/httpbin-app/init.sh
+      -  $env_path/gloo-portal-demo/init.sh
       post_deploy:
-      -  $env_path/httpbin-app/test.sh
-  - name: bookinfo-app
-    location: $env_path/bookinfo-app/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/bookinfo-app/init.sh
-      post_deploy:
-      -  $env_path/bookinfo-app/test.sh       
-  - name: ai-gateway
-    location: $env_path/ai-gateway/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/ai-gateway/init.sh
-      post_deploy:
-      -  $env_path/ai-gateway/test.sh   
+      -  $env_path/gloo-portal-demo/test.sh  
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:

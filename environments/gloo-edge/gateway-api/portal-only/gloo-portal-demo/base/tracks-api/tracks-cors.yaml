@@ -1,0 +1,21 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: tracks-cors
+  namespace: gloo-system
+spec:
+  options:
+    cors:
+      allowOrigin:
+        - https://solo-dev-portal.glootest.com
+      allowHeaders:
+        - "Content-Type"
+        - "Authorization"
+        - "Access-Control-Allow-Origin"
+      allowMethods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - OPTIONS
+      allowCredentials: true
