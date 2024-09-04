@@ -9,3 +9,5 @@ spec:
   apiProducts:
   - name: tracks-svc-api-product
     namespace: gloo-system
+  - name: gh-actions-idp-svc-api-product
+    namespace: gloo-system
