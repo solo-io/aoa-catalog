@@ -8,4 +8,5 @@ resources:
 - portal-cors.yaml
 - portal-developer.yaml
 - portal-frontend-route.yaml
+- portal-frontend-route-policies.yaml
 - portal-frontend.yaml

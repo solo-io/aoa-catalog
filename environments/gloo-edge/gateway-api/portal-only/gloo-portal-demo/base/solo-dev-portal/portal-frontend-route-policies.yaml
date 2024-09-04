@@ -1,0 +1,11 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: portal-frontend-route-policies
+  namespace: gloo-system
+spec:
+    jwt:
+      disable: true
+                
+                
+    
