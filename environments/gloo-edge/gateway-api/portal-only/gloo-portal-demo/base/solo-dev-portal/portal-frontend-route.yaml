@@ -16,7 +16,7 @@ spec:
           port: 4000
       filters:
         - type: ExtensionRef
-            extensionRef:
-              group: gateway.solo.io
-              kind: RouteOption
-              name: portal-frontend-route-policies
+          extensionRef:
+            group: gateway.solo.io
+            kind: RouteOption
+            name: portal-frontend-route-policies
