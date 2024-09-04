@@ -20,3 +20,8 @@ spec:
             group: gateway.solo.io
             kind: RouteOption
             name: portal-cors
+        - type: ExtensionRef
+          extensionRef:
+            group: gateway.solo.io
+            kind: RouteOption
+            name: portal-backend-route-policies
