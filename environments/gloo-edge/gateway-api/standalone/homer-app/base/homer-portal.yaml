@@ -226,6 +226,31 @@ spec:
                         tag: "ai-gateway"
                         url: "https://language-chatbot.glootest.com"
                         target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Gloo Portal"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "React Frontend - Solo Dev Portal"
+                        icon: "fab fa-connectdevelop"
+                        tag: "portal"
+                        url: "https://solo-dev-portal.glootest.com"
+                        target: "_blank" # optional html a tag target attribute
+
+                  - name: "APIs - test endpoints"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "Portal Server REST API"
+                        subtitle: "Approve insecure SSL Warning for local deploy"
+                        icon: "fab fa-connectdevelop"
+                        tag: "solo-dev-portal"
+                        url: "https://api.glootest.com/v1/api-products"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "tracks REST API - external"
+                        subtitle: "requires valid api-key"
+                        icon: "fab fa-connectdevelop"
+                        tag: "petstore-rest-api"
+                        url: "https://tracks.glootest.com/tracks"
+                        target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
     automated:
