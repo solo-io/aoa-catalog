@@ -1,5 +1,11 @@
 # Changelog
 
+0.5.5 (9-4-24)
+---
+- set `gloo-fed.enabled=false` and `gloo-fed.glooFedApiserver.enable=false` in gateway-api environments since they are unused
+- add `gloo-edge/gateway-api/portal-only` environment
+- update readme files of `gateway-api` environments to reflect the description of environment more accurately
+
 0.5.4 (8-30-24)
 ---
 - set `featureGates.insightsConfiguration=true` helm values and configure an `InsightsConfig` to disable to supress `HLT0001` insight when using Gloo Gateway Istio integration feature in `gateway-api/with-gm-istio` and `gloo-platform/gwapi-mgmt-gm-workers` environments
