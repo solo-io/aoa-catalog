@@ -1,0 +1,11 @@
+apiVersion: portal.gloo.solo.io/v1
+kind: Portal
+metadata:
+  name: portal-developer
+  namespace: gloo-system
+spec:
+  visibility:
+    public: true
+  apiProducts:
+  - name: tracks-svc-api-product
+    namespace: gloo-system
