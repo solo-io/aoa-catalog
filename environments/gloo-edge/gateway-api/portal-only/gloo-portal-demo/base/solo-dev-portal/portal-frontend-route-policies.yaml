@@ -4,8 +4,9 @@ metadata:
   name: portal-frontend-route-policies
   namespace: gloo-system
 spec:
-  jwt:
-    disable: true
+  options:
+    jwt:
+      disable: true
                 
                 
     
