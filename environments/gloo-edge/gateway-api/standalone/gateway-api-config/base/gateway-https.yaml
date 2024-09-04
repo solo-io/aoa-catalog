@@ -11,7 +11,6 @@ spec:
     - name: https
       port: 443
       protocol: HTTPS
-      hostname: "*"
       tls:
         mode: Terminate
         certificateRefs:
