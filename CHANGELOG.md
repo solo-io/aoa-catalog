@@ -1,5 +1,10 @@
 # Changelog
 
+0.5.6 (9-5-24)
+---
+- add `tracks-route-policies` to disable JWT validation at the route level in the `gateway-api/portal-only` environment
+- add `petstore-api` example to `gateway-api/portal-only` environment. this is not configured by default, but is numbered so that a user can walk through the steps of onboarding an API product manually by applying the manifests in ordered stages 1 > 2 > 3 > 4 while describing the workflow
+
 0.5.5 (9-4-24)
 ---
 - set `gloo-fed.enabled=false` and `gloo-fed.glooFedApiserver.enable=false` in gateway-api environments since they are unused
