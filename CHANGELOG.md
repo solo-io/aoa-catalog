@@ -3,6 +3,7 @@
 0.5.8 (9-9-24)
 ---
 - update environments using Gloo Platform chart to 2.6.3
+- update gloo-platform/gwapi-mgmt-gm-workers/mgmt to use Gloo Gateway 1.17.1
 
 0.5.7 (9-9-24)
 ---
