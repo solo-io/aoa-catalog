@@ -226,15 +226,6 @@ spec:
                         tag: "ai-gateway"
                         url: "https://language-chatbot.glootest.com"
                         target: "_blank" # optional html a tag target attribute
-                  
-                  - name: "Gloo Portal"
-                    icon: "fas fa-cloud"
-                    items:
-                      - name: "React Frontend - Solo Dev Portal"
-                        icon: "fab fa-connectdevelop"
-                        tag: "portal"
-                        url: "https://solo-dev-portal.glootest.com"
-                        target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
     automated:
