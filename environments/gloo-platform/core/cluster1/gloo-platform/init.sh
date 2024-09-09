@@ -7,7 +7,7 @@ echo "deploy and register gloo-mesh agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.6.2-2024-09-03-ashleywang1-v2.6.x-e9fdb7fe3f7e233154c848d256bccf1f40a2639d-295fac462f):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.7.0-beta0-2024-09-05-ashleywang1-default-release-namespace-for-namespaced-rbac-c54c67f35d):"
     read gloo_mesh_version
 fi
 
@@ -75,7 +75,7 @@ spec:
                   namespace: null
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.6.2-2024-09-03-ashleywang1-v2.6.x-e9fdb7fe3f7e233154c848d256bccf1f40a2639d-295fac462f
+    targetRevision: 2.7.0-beta0-2024-09-05-ashleywang1-default-release-namespace-for-namespaced-rbac-c54c67f35d
   syncPolicy:
     automated:
       prune: true
@@ -123,7 +123,7 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.6.2-2024-09-03-ashleywang1-v2.6.x-e9fdb7fe3f7e233154c848d256bccf1f40a2639d-295fac462f
+              tag: 2.7.0-beta0-2024-09-05-ashleywang1-default-release-namespace-for-namespaced-rbac-c54c67f35d
             config:
                 exporters:
                     otlp:
@@ -145,7 +145,7 @@ spec:
                   name: cilium-run
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.6.2-2024-09-03-ashleywang1-v2.6.x-e9fdb7fe3f7e233154c848d256bccf1f40a2639d-295fac462f
+    targetRevision: 2.7.0-beta0-2024-09-05-ashleywang1-default-release-namespace-for-namespaced-rbac-c54c67f35d
   syncPolicy:
     automated:
       prune: true
