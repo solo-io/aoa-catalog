@@ -7,7 +7,7 @@ spec:
   hosts:
   - "*"
   gateways:
-  - istio-gateways/https-gateway
+  - istio-gateways/http-gateway
   http:
   - name: gloo-mesh-ui
     match:
