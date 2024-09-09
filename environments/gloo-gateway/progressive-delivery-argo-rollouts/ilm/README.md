@@ -26,7 +26,7 @@ The `gloo-gateway/otel/progressive-delivery-argo-rollouts` environment deploys t
 
 ## Overlay description
 - base:
-    - gloo mesh 2.6.0
+    - gloo mesh 2.6.3
     - istio 1.23.0-solo (Helm)
     - revision: 1-23
 
