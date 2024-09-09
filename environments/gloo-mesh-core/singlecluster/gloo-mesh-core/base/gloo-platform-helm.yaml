@@ -73,6 +73,7 @@ spec:
                 issuerUrl: https://accounts.google.com
                 session:
                   backend: "cookie"
+                  cookie: {}
         prometheus:
             enabled: true
         redis:
