@@ -15,6 +15,6 @@ spec:
         prefix: /
     route:
     - destination:
-        host: prometheus
+        host: prometheus-server.gloo-mesh
         port:
           number: 9090
