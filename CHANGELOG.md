@@ -1,5 +1,10 @@
 # Changelog
 
+0.5.7 (9-9-24)
+---
+- remove reference to gloo portal in homer dashboard for gateway-api/standalone environment - moved to gateway-api/portal-only
+- fix duplicate `-solo` istio image tag reference in gloo-gateway/core environment
+
 0.5.6 (9-5-24)
 ---
 - add `tracks-route-policies` to disable JWT validation at the route level in the `gateway-api/portal-only` environment
