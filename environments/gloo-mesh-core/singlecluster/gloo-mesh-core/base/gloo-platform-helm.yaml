@@ -74,6 +74,11 @@ spec:
                 session:
                   backend: "cookie"
                   cookie: {}
+                  cookieOptions:
+                    notSecure: true
+                  redis:
+                    cookieName: oidc-session
+                    host: gloo-mesh-redis:6379
         prometheus:
             enabled: true
         redis:
