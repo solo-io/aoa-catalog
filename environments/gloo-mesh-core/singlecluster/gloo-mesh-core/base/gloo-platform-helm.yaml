@@ -72,10 +72,7 @@ spec:
                 clientSecretName: dashboard
                 issuerUrl: https://accounts.google.com
                 session:
-                  backend: "cookie"
-                  cookie: {}
-                  cookieOptions:
-                    notSecure: true
+                  backend: "redis"
                   redis:
                     cookieName: oidc-session
                     host: gloo-mesh-redis:6379
