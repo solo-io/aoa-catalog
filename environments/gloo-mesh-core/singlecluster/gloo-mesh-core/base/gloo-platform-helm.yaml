@@ -81,6 +81,9 @@ spec:
                 enabled: true
         telemetryGateway:
             enabled: true
+            presets:
+                logsCollection:
+                    enabled: false
         telemetryGatewayCustomization:
             disableCertGeneration: true
             pipelines:
@@ -94,6 +97,9 @@ spec:
                   enabled: false
         telemetryCollector:
             enabled: true
+            presets:
+                logsCollection:
+                    enabled: false
             config:
                 exporters:
                     otlp:
