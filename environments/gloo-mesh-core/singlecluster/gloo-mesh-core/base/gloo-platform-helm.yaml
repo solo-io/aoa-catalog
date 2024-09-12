@@ -114,6 +114,7 @@ spec:
                     type: DirectoryOrCreate
                   name: cilium-run
         telemetryCollectorCustomization:
+            extraReceivers: null
             pipelines:
                 logs/analyzer:
                   enabled: false
