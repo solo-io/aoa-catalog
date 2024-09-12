@@ -72,10 +72,8 @@ spec:
                 clientSecretName: dashboard
                 issuerUrl: https://accounts.google.com
                 session:
-                  backend: "redis"
-                  redis:
-                    cookieName: oidc-session
-                    host: gloo-mesh-redis:6379
+                  backend: "cookie"
+                  cookie: {}
         prometheus:
             enabled: true
         redis:
