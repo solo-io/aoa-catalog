@@ -64,7 +64,7 @@ spec:
             enabled: true
             serviceType: ClusterIP
             auth:
-              enabled: true
+              enabled: false
               backend: oidc
               oidc:
                 appUrl: https://gloo-mesh-core-demo.solo.io
@@ -85,7 +85,13 @@ spec:
             disableCertGeneration: true
             pipelines:
                 traces/jaeger:
-                    enabled: true
+                  enabled: false
+                logs/redis_stream_basic:
+                  enabled: false
+                logs/redis_stream_cilium_flows:
+                  enabled: false
+                logs/redis_stream_ui:
+                  enabled: false
         telemetryCollector:
             enabled: true
             config:
