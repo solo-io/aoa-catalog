@@ -14,7 +14,7 @@ spec:
   - apiVersion: "v1"
     openapiMetadata:
       title: "Catstronauts REST API v1"
-      description: "REST API for Catstronauts to retrieve data for tracks, authors and modules."
+      description: "REST API for Catstronauts to retrieve data for tracks, authors and modules. This APIProduct was onboarded using Gloo Portal discovery annotations."
       termsOfService: "You must authenticate to use this API! And other Terms of Service."
       contact: "support@example.com"
       license: "License info, such as MIT"
