@@ -71,9 +71,6 @@ spec:
                 clientId: 1066515080967-f5doba9cc024k6en3ku5abllfgp3vgln.apps.googleusercontent.com
                 clientSecretName: dashboard
                 issuerUrl: https://accounts.google.com
-                session:
-                  backend: "cookie"
-                  cookie: {}
         prometheus:
             enabled: true
         redis:
