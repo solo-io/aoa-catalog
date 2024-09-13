@@ -1,5 +1,13 @@
 # Changelog
 
+0.6.0 (9-13-24)
+---
+Reorganization of environments:
+- rename `gloo-gateway` environment to `gloo-mesh-gateway`
+- rename `gloo-edge` environment to `gloo-gateway`
+- segment `gloo-gateway` environments between v1 (gloo-edge) and v2 (gateway api)
+- move `gloo-portal/solo-dev-portal` to `gloo-gateway/gloo-edge` directory
+
 0.5.9 (9-12-24)
 ---
 - improvements to gateway-api/portal-only environment
