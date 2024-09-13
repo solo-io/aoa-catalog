@@ -6,6 +6,7 @@
     - petstore-api demonstrates automatic `APIDoc` creation using service annotations
     - openlibrary-api demonstrates automatic `APIDoc` creation using `ApiSchemaDiscovery`
     - gloo-portal-server-api demonstrates manual `APIDoc` creation using `inlineString`
+    - add portal backend server link to homer dashboard
 
 0.5.8 (9-9-24)
 ---
