@@ -14,7 +14,7 @@ spec:
   - apiVersion: "v1"
     openapiMetadata:
       title: "Pet Store REST API v1"
-      description: "Totally awesome API for all things pets! This APIProduct was onboarded using Gloo Portal discovery annotations."
+      description: "Totally awesome API for all things pets! This APIDoc was onboarded using Gloo Portal discovery annotations."
       termsOfService: "You must authenticate to use this API! And other Terms of Service."
       contact: "support@example.com"
       license: "License info, such as MIT"
