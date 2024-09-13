@@ -3,18 +3,18 @@ kind: ApiProduct
 metadata:
   labels:
     expose-portal: "true"
-  name: tracks-svc-api-product
+  name: petstore-svc-api-product
   namespace: gloo-system
 spec:
-  id: "tracks"
-  displayName: "Catstronauts Course Tracks"
+  id: "petstore"
+  displayName: "Pet Store"
   customMetadata:
-    imageURL: https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/fbf090f7f6e9dd14c1b14d7c274b8611c9b0443e/gloo-gateway/portal/astronauts-image.jpeg
+    imageURL: https://raw.githubusercontent.com/solo-io/gloo/8d9df95602c506067d49db9b1447b4003b19a070/docs/content/img/portal/petstore-food-bowl-collar.png
   versions:
   - apiVersion: "v1"
     openapiMetadata:
-      title: "Catstronauts REST API v1"
-      description: "REST API for Catstronauts to retrieve data for tracks, authors and modules. This APIDoc was onboarded using Gloo Portal discovery annotations."
+      title: "Pet Store REST API v1"
+      description: "Totally awesome API for all things pets! This APIDoc was onboarded using Gloo Portal discovery annotations."
       termsOfService: "You must authenticate to use this API! And other Terms of Service."
       contact: "support@example.com"
       license: "License info, such as MIT"
@@ -24,5 +24,5 @@ spec:
     targetRefs:
     - group: gateway.networking.k8s.io
       kind: HTTPRoute
-      name: tracks-route
+      name: petstore-route
       namespace: gloo-system

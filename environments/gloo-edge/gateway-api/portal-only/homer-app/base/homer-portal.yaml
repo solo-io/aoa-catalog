@@ -203,6 +203,13 @@ spec:
                         tag: "portal"
                         url: "https://solo-dev-portal.glootest.com"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Portal Backend Server"
+                        icon: "far fa-window-maximize"
+                        tag: "portal"
+                        url: "https://api.glootest.com/v1/api-products"
+                        target: "_blank" # optional html a tag target attribute
+                      
+                      
                     
   syncPolicy:
     automated:

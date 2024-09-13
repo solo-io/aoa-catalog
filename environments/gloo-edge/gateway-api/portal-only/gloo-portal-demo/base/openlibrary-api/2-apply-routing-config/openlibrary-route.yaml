@@ -2,7 +2,7 @@ apiVersion: gateway.networking.k8s.io/v1beta1
 kind: HTTPRoute
 metadata:
   name: openlibrary-route
-  namespace: bookinfo
+  namespace: openlibrary
   labels:
     example: openlibrary-route
     gateway: https
@@ -21,10 +21,11 @@ spec:
         - group: gloo.solo.io
           kind: Upstream
           name: openlibrary
+          namespace: openlibrary
           port: 443
-      #filters:
-      #- type: ExtensionRef
-      #  extensionRef:
-      #    group: gateway.solo.io
-      #    kind: RouteOption
-      #    name: openlibrary-route-policies
+      filters:
+      - type: ExtensionRef
+        extensionRef:
+          group: gateway.solo.io
+          kind: RouteOption
+          name: openlibrary-route-policies

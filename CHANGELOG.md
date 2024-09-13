@@ -1,5 +1,13 @@
 # Changelog
 
+0.5.9 (9-12-24)
+---
+- improvements to gateway-api/portal-only environment
+    - petstore-api demonstrates automatic `APIDoc` creation using service annotations
+    - openlibrary-api demonstrates automatic `APIDoc` creation using `ApiSchemaDiscovery`
+    - gloo-portal-server-api demonstrates manual `APIDoc` creation using `inlineString`
+    - add portal backend server link to homer dashboard
+
 0.5.8 (9-9-24)
 ---
 - update environments using Gloo Platform chart to 2.6.3

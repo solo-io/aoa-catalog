@@ -3,19 +3,19 @@ kind: ApiProduct
 metadata:
   labels:
     expose-portal: "true"
-  name: petstore-svc-api-product
+  name: gloo-portal-server-svc-api-product
   namespace: gloo-system
 spec:
-  id: "petstore"
-  displayName: "Pet Store"
+  id: "gloo-portal-server"
+  displayName: "gloo-portal-server"
   customMetadata:
-    imageURL: https://raw.githubusercontent.com/solo-io/gloo/8d9df95602c506067d49db9b1447b4003b19a070/docs/content/img/portal/petstore-food-bowl-collar.png
+    imageURL: https://www.solo.io/wp-content/uploads/2022/11/solo-logo-glooy-circle-white-blue-1024x1024.png
   versions:
   - apiVersion: "v1"
     openapiMetadata:
-      title: "Pet Store REST API v1"
-      description: "Totally awesome API for all things pets!"
-      termsOfService: "You must authenticate to use this API! And other Terms of Service."
+      title: "Gloo Portal server REST API"
+      description: "REST API for gloo-portal-server. This APIDoc was onboarded using inlineString"
+      termsOfService: "None"
       contact: "support@example.com"
       license: "License info, such as MIT"
     customMetadata:
@@ -24,5 +24,5 @@ spec:
     targetRefs:
     - group: gateway.networking.k8s.io
       kind: HTTPRoute
-      name: petstore-route
+      name: portal-backend-route
       namespace: gloo-system

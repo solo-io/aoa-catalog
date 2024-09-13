@@ -4,8 +4,6 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- solo-dev-portal
-- tracks-api
-#- petstore-api
-#- openlibrary-api
-#- gloo-portal-server-api
+- petstore-route-policies.yaml
+- petstore-route.yaml
+- refgrants.yaml
