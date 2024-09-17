@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: metadata-scope-apiproduct-apikey-opa-cm
+  namespace: gloo-system
+data:
+  policy.rego: |-
+    package test
+
+    import future.keywords.if
+
+    default allow = false
+    
+    # Get the accessed ApiProductId from the metadata
+    filter_metadata := input.check_request.attributes.metadata_context.filter_metadata
+    apimanagement_metadata := filter_metadata["io.solo.gloo.portal"]
+    api_product_id := apimanagement_metadata.api_product_id
+
+    # Get the api key from the request
+    api_key := input.http_request.headers["x-test-api-key"]
+
+    # format the metadata url with the api key as a path param
+    metadata_url := sprintf("%s?apiKey=%s&apiProductId=%s", ["http://gateway-portal-web-server.gloo-system.svc.cluster.local:8080/v1/metadata", api_key, api_product_id])
+
+    # Send a request to the metadata server to get the metadata
+    metadata_resp := http.send({
+        "method": "GET",
+        "url": metadata_url
+    })
+
+    # Allow if the credential has access to the api product
+    allow if {
+      metadata_resp.body.allowed = true
+    }
+
+    http_status := 200 if {
+      allow
+    }
+
+    http_status := 401 if {
+      input.http_request.headers["x-test-api-key"] == ""
+    }
+    
+    http_status := 403 if {
+      not allow
+    }
+    
+    # Set dynamic rate limits
+    dynamic_metadata["rateLimit"] := {
+      "requests_per_unit": to_number(metadata_resp.body.rateLimit.requestsPerUnit),
+      "unit": metadata_resp.body.rateLimit.unit
+    } if metadata_resp.body.rateLimit
+    
+    # Set dynamic custom metadata
+    dynamic_metadata["customMetadata"] := metadata_resp.body.customMetadata if metadata_resp.body.customMetadata
+    
+    result["dynamic_metadata"] := dynamic_metadata
+    result["allow"] := allow
+    result["http_status"] := http_status
