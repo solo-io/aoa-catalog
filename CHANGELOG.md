@@ -17,7 +17,7 @@
 0.4.1 (7-25-24)
 ---
 - add argocd login details to homer dashboard
-- update gloo-platform-helm chart across all environments to use 2.7.0-beta0-2024-08-09-main-6ef035b0a2
+- update gloo-platform-helm chart across all environments to use 2.6.0-2024-08-21-v2.6.x-a0e35cbfac
 - remove sidecar injection for Gloo Mesh UI in all environments
 - Fixed issues with Gloo Mesh UI when using GG + GM in a single cluster setup in gloo-edge/gateway-api/with-gm-istio environment
 - Fixed issues with Gloo Mesh UI when using GG + GM in a three cluster setup in gloo-platform/gwapi-mgmt-gm-workers environment
