@@ -10,8 +10,8 @@ spec:
           - key: generic_key
             value: counter
         rateLimit:
-          requestsPerUnit: 5
-          unit: MINUTE
+          requestsPerUnit: 100
+          unit: SECOND
     rateLimits:
       - setActions:
           - genericKey:
