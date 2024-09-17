@@ -7,10 +7,10 @@ spec:
   options:
     jwt:
       disable: true
-    #extauth:
-    #  configRef:
-    #    name: api-key-auth
-    #    namespace: gloo-system
+    extauth:
+      configRef:
+        name: portal-api-key-authconfig
+        namespace: gloo-system
     rateLimitConfigs:
       refs:
         - name: tracks-dynamic-rlc
