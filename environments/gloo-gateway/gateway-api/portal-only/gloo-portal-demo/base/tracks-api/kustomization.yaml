@@ -9,3 +9,4 @@ resources:
 - tracks-cors.yaml
 - tracks-refgrant.yaml
 - tracks-route.yaml
+- tracks-route-policies.yaml
