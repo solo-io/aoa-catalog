@@ -23,11 +23,11 @@ The `gloo-gateway/onlineboutique` environment deploys the core components of a s
 
 ## Overlay description
 - base:
-    - gloo mesh 2.7.0-beta0-2024-08-27-main-60e5d3fbb9
+    - gloo mesh 2.7.0-beta0-2024-08-09-main-6ef035b0a2
     - istio 1.22.3-patch1-solo (Helm)
     - revision: 1-22
 - ilcm:
-    - gloo mesh 2.7.0-beta0-2024-08-27-main-60e5d3fbb9
+    - gloo mesh 2.7.0-beta0-2024-08-09-main-6ef035b0a2
     - istio 1.22.3-patch1-solo (ILCM)
     - revision: 1-22
 
