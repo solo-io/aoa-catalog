@@ -34,8 +34,8 @@ metadata:
   annotations:
     gloo.solo.io/scrape-openapi-source: /swagger.json
     gloo.solo.io/scrape-openapi-retry-delay: "30s"
-    gloo.solo.io/scrape-openapi-pull-attempts: "3"
-    gloo.solo.io/scrape-openapi-use-backoff: "true"
+    gloo.solo.io/scrape-openapi-pull-attempts: "5"
+    gloo.solo.io/scrape-openapi-use-backoff: "false"
   name: tracks-rest-api
   namespace: tracks
   labels:
