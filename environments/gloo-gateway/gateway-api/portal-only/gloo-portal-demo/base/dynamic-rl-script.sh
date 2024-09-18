@@ -328,33 +328,9 @@ echo "-------------------------"
 # Pause for demonstration
 read -p "Step 9 complete. Press enter to proceed to Step 10..."
 
-# Step 10: Create an API key for the application
+# Step 10: Validate the API key with the metadata endpoint
 echo
-echo "Step 10: Creating API key..."
-echo "curl -X POST $BASE_URL/v1/apps/\$APPLICATION_ID/api-keys -H 'Content-Type: application/json' -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN' -d '{\"apiKeyName\": \"test-key\"}'"
-API_KEY_RESPONSE=$(curl -s -X POST "$BASE_URL/v1/apps/$APPLICATION_ID/api-keys" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $DEV_USER_AUTH_TOKEN" \
-  -d '{"apiKeyName": "test-key"}')
-echo
-
-# Extract API_KEY and API_KEY_ID
-export API_KEY=$(echo $API_KEY_RESPONSE | jq -r '.apiKey')
-export API_KEY_ID=$(echo $API_KEY_RESPONSE | jq -r '.id')
-
-echo "API Key created: $API_KEY"
-echo "API Key ID: $API_KEY_ID"
-echo
-
-# Space between steps
-echo "-------------------------"
-
-# Pause for demonstration
-read -p "Step 10 complete. Press enter to proceed to Step 11..."
-
-# Step 11: Validate the API key with the metadata endpoint
-echo
-echo "Step 11: Validating the API key..."
+echo "Step 10: Validating the API key..."
 
 # Predefined API product options
 PREDEFINED_API_PRODUCTS=("tracks" "petstore" "gloo-portal-server" "openlibrary" "Custom")
@@ -386,11 +362,11 @@ echo
 echo "-------------------------"
 
 # Pause for demonstration
-read -p "Step 11 complete. Press enter to proceed to Step 12..."
+read -p "Step 10 complete. Press enter to proceed to Step 11..."
 
-# Step 12: Set the API product's URI
+# Step 11: Set the API product's URI
 echo
-echo "Step 12: Choose an API product's URI or enter a custom one:"
+echo "Step 11: Choose an API product's URI or enter a custom one:"
 
 # Predefined URIs
 PREDEFINED_URIS=(
@@ -418,6 +394,12 @@ done
 
 echo "Selected API Product URI: $API_PRODUCT_URI"
 echo
+
+# Space between steps
+echo "-------------------------"
+
+# Pause for demonstration
+read -p "Step 11 complete. Press enter to proceed to Step 12..."
 
 # Step 12: Call the selected API product's endpoint without the API key
 echo
