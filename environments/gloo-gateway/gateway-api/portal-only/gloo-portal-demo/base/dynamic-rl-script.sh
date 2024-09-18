@@ -436,7 +436,7 @@ read -p "Step 12 complete. Press enter to proceed to Step 13..."
 # Step 13: Call the tracks endpoint with the API key
 echo
 echo "Step 13: Calling the API product's endpoint with the API key (expecting 200 responses until rate limit is hit)..."
-echo "curl $API_PRODUCT_URI -H 'x-test-api-key: \$API_KEY'"
+echo "curl $API_PRODUCT_URI -H 'api-key: \$API_KEY'"
 
 # Loop for (requests per unit + 1) times
 for ((i=1; i<=REQUESTS_PER_UNIT+1; i++)); do
@@ -444,7 +444,7 @@ for ((i=1; i<=REQUESTS_PER_UNIT+1; i++)); do
   
   # Perform the curl request and extract only the HTTP status code
   HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$API_PRODUCT_URI" \
-    -H "x-test-api-key: $API_KEY")
+    -H "api-key: $API_KEY")
   
   echo "HTTP Status Code: $HTTP_STATUS"
   echo "-------------------------"
@@ -493,9 +493,9 @@ read -p "Step 14 complete. Press enter to proceed to Step 15..."
 # Step 15: Call the tracks endpoint with the revoked API key (expecting 403)
 echo
 echo "Step 15: Calling the API product's endpoint with the revoked API key (expecting 403)..."
-echo "curl $API_PRODUCT_URI -H 'x-test-api-key: \$API_KEY'"
+echo "curl $API_PRODUCT_URI -H 'api-key: \$API_KEY'"
 curl "$API_PRODUCT_URI" \
-  -H "x-test-api-key: $API_KEY"
+  -H "api-key: $API_KEY"
 echo
 echo
 echo "Expecting a Rejected - 403 error."

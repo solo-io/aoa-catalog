@@ -141,7 +141,7 @@ Expecting a Rejected - 403 error.
 Step 12 complete. Press enter to proceed to Step 13...
 
 Step 13: Calling the API product's endpoint with the API key (expecting 200 responses until rate limit is hit)...
-curl https://tracks.glootest.com/tracks/c_0 -H 'x-test-api-key: $API_KEY'
+curl https://tracks.glootest.com/tracks/c_0 -H 'api-key: $API_KEY'
 Attempt 1:
 HTTP Status Code: 200
 -------------------------
@@ -175,7 +175,7 @@ API Key revoked successfully. HTTP Status: 204
 Step 14 complete. Press enter to proceed to Step 15...
 
 Step 15: Calling the API product's endpoint with the revoked API key (expecting 403)...
-curl https://tracks.glootest.com/tracks/c_0 -H 'x-test-api-key: $API_KEY'
+curl https://tracks.glootest.com/tracks/c_0 -H 'api-key: $API_KEY'
 Rejected
 
 Expecting a Rejected - 403 error.

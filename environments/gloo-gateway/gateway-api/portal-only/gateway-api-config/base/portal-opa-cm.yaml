@@ -17,7 +17,7 @@ data:
     api_product_id := apimanagement_metadata.api_product_id
 
     # Get the api key from the request
-    api_key := input.http_request.headers["x-test-api-key"]
+    api_key := input.http_request.headers["api-key"]
 
     # format the metadata url with the api key as a path param
     metadata_url := sprintf("%s?apiKey=%s&apiProductId=%s", ["http://gateway-portal-web-server.gloo-system.svc.cluster.local:8080/v1/metadata", api_key, api_product_id])
@@ -38,7 +38,7 @@ data:
     }
 
     http_status := 401 if {
-      input.http_request.headers["x-test-api-key"] == ""
+      input.http_request.headers["api-key"] == ""
     }
     
     http_status := 403 if {
