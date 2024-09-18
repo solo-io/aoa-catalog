@@ -29,7 +29,7 @@ spec:
           extensionRef:
             group: gateway.solo.io
             kind: RouteOption
-            name: portal-backend-route-policies
+            name: petstore-route-policies
       matches:
         - path:
             type: PathPrefix
@@ -51,7 +51,7 @@ spec:
           extensionRef:
             group: gateway.solo.io
             kind: RouteOption
-            name: portal-backend-route-policies
+            name: petstore-route-policies
       matches:
         - path:
             type: PathPrefix
@@ -73,7 +73,7 @@ spec:
           extensionRef:
             group: gateway.solo.io
             kind: RouteOption
-            name: portal-backend-route-policies
+            name: petstore-route-policies
       matches:
         - path:
             type: PathPrefix

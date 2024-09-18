@@ -22,6 +22,14 @@ spec:
         - DELETE
         - OPTIONS
       allowCredentials: true
+    extauth:
+      configRef:
+        name: portal-api-key-authconfig
+        namespace: gloo-system
+    rateLimitConfigs:
+      refs:
+        - name: openlibrary-dynamic-rlc
+          namespace: openlibrary
                 
                 
     

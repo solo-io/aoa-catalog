@@ -7,6 +7,14 @@ spec:
   options:
     jwt:
       disable: true
+    extauth:
+      configRef:
+        name: portal-api-key-authconfig
+        namespace: gloo-system
+    rateLimitConfigs:
+      refs:
+        - name: petstore-dynamic-rlc
+          namespace: gloo-system
                 
                 
     
