@@ -4,12 +4,12 @@ Tokens set.
 
 Enter the API base URL for the portal server backend (e.g., https://api.glootest.com): https://api.glootest.com
 -------------------------
-Step 1 complete. Press enter to proceed to Step 2... 
+Step 1 complete. Press enter to proceed to Step 2...
 
 Step 2: Creating a user...
 curl -X PUT https://api.glootest.com/v1/me -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN'
 
-User created with ID: 201126a4-7fd9-44ee-9729-b01609ee17c5
+User created with ID: a52cf6b6-c222-469b-9304-dd25f31dcf53
 
 -------------------------
 Step 2 complete. Press enter to proceed to Step 3...
@@ -24,7 +24,7 @@ Choose a team description or enter a custom one:
 2) The marketing team    4) Custom
 #? 1
 
-Team created with ID: b7022e35-53e9-499c-a0e4-9012dcff8766
+Team created with ID: de5d4e16-256f-47bc-8b51-624be49eaccc
 
 -------------------------
 Step 3 complete. Press enter to proceed to Step 4...
@@ -39,7 +39,7 @@ Choose an application description or enter a custom one:
 2) Demo application  4) Custom
 #? 1
 
-Application created with ID: 58511e77-bf1b-4ccf-9fe1-78f1ad001233
+Application created with ID: 75629c06-dc4c-4d07-b123-d1537f630c40
 
 -------------------------
 Step 4 complete. Press enter to proceed to Step 5...
@@ -48,19 +48,16 @@ Step 5: Listing available API products...
 curl -X GET https://api.glootest.com/v1/api-products -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN'
 
 Available API Products:
-1) Catstronauts Course Tracks (ID: cc233088-93b3-4087-bdc5-393e8624f637)
-2) Pet Store (ID: 161790c9-9645-45a8-9aa0-1e7ada92f285)
-3) gloo-portal-server (ID: 94bc5587-9a3b-425e-97fb-70fe0fc747bb)
-4) openlibrary (ID: 8818048b-a63a-4c33-bc85-0ac0d8de4339)
+1) Catstronauts Course Tracks (ID: b8165a8d-2c5a-48f7-bbe5-eb634bbfad1a)
 
-Please select an API product by number (1 to 4): 1
-Selected API Product ID: cc233088-93b3-4087-bdc5-393e8624f637
+Please select an API product by number (1 to 1): 1
+Selected API Product ID: b8165a8d-2c5a-48f7-bbe5-eb634bbfad1a
 
 -------------------------
 Step 5 complete. Press enter to proceed to Step 6...
 
 Step 6: Creating a subscription to the API product...
-curl -X POST https://api.glootest.com/v1/apps/$APPLICATION_ID/subscriptions -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"ApiProductId": "cc233088-93b3-4087-bdc5-393e8624f637"}'
+curl -X POST https://api.glootest.com/v1/apps/$APPLICATION_ID/subscriptions -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"ApiProductId": "b8165a8d-2c5a-48f7-bbe5-eb634bbfad1a"}'
 
 Full subscription response: 
 HTTP Status: 201
@@ -69,7 +66,7 @@ Subscription created successfully, but no response body. Skipping subscription I
 Discovering subscription ID by listing subscriptions...
 curl -X GET https://api.glootest.com/v1/apps/$APPLICATION_ID/subscriptions -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN'
 
-Subscription ID: b8412075-7ab9-497f-ba29-babe16470a5b
+Subscription ID: 69b532ef-a082-444b-a616-fbe7fd7c3f08
 
 -------------------------
 Step 6 complete. Press enter to proceed to Step 7...
@@ -83,8 +80,8 @@ Subscription approved.
 Step 7 complete. Press enter to proceed to Step 8...
 
 Step 8: Setting a dynamic rate limit for the subscription...
-Enter the number of requests per minute: 5
-Applying rate limit of 5 requests per MINUTE to subscription b8412075-7ab9-497f-ba29-babe16470a5b...
+Enter the number of requests per minute: 7
+Applying rate limit of 7 requests per MINUTE to subscription 69b532ef-a082-444b-a616-fbe7fd7c3f08...
 
 Rate limit applied. Note that the time unit is configurable, but for this demo, it's set to MINUTE.
 -------------------------
@@ -96,34 +93,25 @@ Choose an API key name or enter a custom one:
 4) Custom
 #? 1
 
-API Key created: a75edb28-09a7-4984-96e2-9bab1bb31d58
-API Key ID: 20d59ca3-3ebc-49ae-97dd-a329ca8b9542
+API Key created: 0a3c69a0-639c-4926-bb07-5063c8b4baa6
+API Key ID: 1714fc31-c1fb-4a4a-b21d-99d6e6b7a42c
 
 -------------------------
 Step 9 complete. Press enter to proceed to Step 10...
 
-Step 10: Creating API key...
-curl -X POST https://api.glootest.com/v1/apps/$APPLICATION_ID/api-keys -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"apiKeyName": "test-key"}'
-
-API Key created: ccbe6795-2b0b-42a7-ae7f-127b30406caf
-API Key ID: ef97b18e-3fec-4697-8006-4209fe76443f
-
--------------------------
-Step 10 complete. Press enter to proceed to Step 11...
-
-Step 11: Validating the API key...
+Step 10: Validating the API key...
 1) tracks              3) gloo-portal-server  5) Custom
 2) petstore            4) openlibrary
 #? 1
 Selected API Product ID: tracks
 
 curl -X GET https://api.glootest.com/v1/metadata?apiKey=$API_KEY&apiProductId=$API_PRODUCT_ID
-{"allowed":true,"customMetadata":{"key2":"value2"},"rateLimit":{"requestsPerUnit":"5","unit":"MINUTE"}}
+{"allowed":true,"customMetadata":{"key2":"value2"},"rateLimit":{"requestsPerUnit":"7","unit":"MINUTE"}}
 
 -------------------------
-Step 11 complete. Press enter to proceed to Step 12...
+Step 10 complete. Press enter to proceed to Step 11...
 
-Step 12: Choose an API product's URI or enter a custom one:
+Step 11: Choose an API product's URI or enter a custom one:
 1) https://tracks.glootest.com/tracks/c_0
 2) https://petstore.glootest.com/pets/pet
 3) https://api.glootest.com/v1/api-products
@@ -132,6 +120,8 @@ Step 12: Choose an API product's URI or enter a custom one:
 #? 1
 Selected API Product URI: https://tracks.glootest.com/tracks/c_0
 
+-------------------------
+Step 11 complete. Press enter to proceed to Step 12...
 
 Calling the API product's endpoint without the API key (expecting 403)...
 Rejected
@@ -158,9 +148,15 @@ Attempt 5:
 HTTP Status Code: 200
 -------------------------
 Attempt 6:
+HTTP Status Code: 200
+-------------------------
+Attempt 7:
+HTTP Status Code: 200
+-------------------------
+Attempt 8:
 HTTP Status Code: 429
 -------------------------
-Expecting dynamic rate limiting after attempt 6.
+Expecting dynamic rate limiting after attempt 8.
 
 -------------------------
 Step 13 complete. Press enter to proceed to Step 14...
