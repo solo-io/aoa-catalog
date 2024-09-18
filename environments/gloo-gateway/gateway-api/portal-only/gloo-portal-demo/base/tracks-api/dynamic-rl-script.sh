@@ -46,13 +46,44 @@ echo "-------------------------"
 read -p "Step 2 complete. Press enter to proceed to Step 3..."
 
 # Step 3: Create a team for the user
-echo
-echo "Step 3: Creating a team for the user..."
-echo "curl -X POST $BASE_URL/v1/teams -H 'Content-Type: application/json' -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN' -d '{\"Name\": \"Test Team\", \"Description\": \"description\"}'"
+# Predefined team names and descriptions
+PREDEFINED_TEAMS=("Engineering" "Marketing" "Sales" "Custom")
+
+# Prompt for team name
+echo "Choose a team name or enter a custom one:"
+select TEAM_OPTION in "${PREDEFINED_TEAMS[@]}"; do
+    case $TEAM_OPTION in
+        "Custom")
+            read -p "Enter your custom team name: " TEAM_NAME
+            break
+            ;;
+        *)
+            TEAM_NAME=$TEAM_OPTION
+            break
+            ;;
+    esac
+done
+
+# Prompt for team description
+PREDEFINED_DESCRIPTIONS=("The engineering team" "The marketing team" "The sales team" "Custom")
+echo "Choose a team description or enter a custom one:"
+select DESCRIPTION_OPTION in "${PREDEFINED_DESCRIPTIONS[@]}"; do
+    case $DESCRIPTION_OPTION in
+        "Custom")
+            read -p "Enter your custom team description: " TEAM_DESCRIPTION
+            break
+            ;;
+        *)
+            TEAM_DESCRIPTION=$DESCRIPTION_OPTION
+            break
+            ;;
+    esac
+done
+
 TEAM_RESPONSE=$(curl -s -X POST "$BASE_URL/v1/teams" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $DEV_USER_AUTH_TOKEN" \
-  -d '{"Name": "Test Team", "Description": "description"}')
+  -d "{\"Name\": \"$TEAM_NAME\", \"Description\": \"$TEAM_DESCRIPTION\"}")
 echo
 
 # Extract TEAM_ID from the response
@@ -67,13 +98,44 @@ echo "-------------------------"
 read -p "Step 3 complete. Press enter to proceed to Step 4..."
 
 # Step 4: Create an application for the team
-echo
-echo "Step 4: Creating an application for the team..."
-echo "curl -X POST $BASE_URL/v1/teams/\$TEAM_ID/apps -H 'Content-Type: application/json' -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN' -d '{\"Name\": \"Test Application\", \"Description\": \"description\"}'"
+# Predefined application names
+PREDEFINED_APPS=("TestApp1" "DemoApp" "ProdApp" "Custom")
+
+# Prompt for application name
+echo "Choose an application name or enter a custom one:"
+select APP_OPTION in "${PREDEFINED_APPS[@]}"; do
+    case $APP_OPTION in
+        "Custom")
+            read -p "Enter your custom application name: " APP_NAME
+            break
+            ;;
+        *)
+            APP_NAME=$APP_OPTION
+            break
+            ;;
+    esac
+done
+
+# Prompt for application description
+PREDEFINED_APP_DESCRIPTIONS=("App for testing" "Demo application" "Production app" "Custom")
+echo "Choose an application description or enter a custom one:"
+select APP_DESCRIPTION_OPTION in "${PREDEFINED_APP_DESCRIPTIONS[@]}"; do
+    case $APP_DESCRIPTION_OPTION in
+        "Custom")
+            read -p "Enter your custom application description: " APP_DESCRIPTION
+            break
+            ;;
+        *)
+            APP_DESCRIPTION=$APP_DESCRIPTION_OPTION
+            break
+            ;;
+    esac
+done
+
 APP_RESPONSE=$(curl -s -X POST "$BASE_URL/v1/teams/$TEAM_ID/apps" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $DEV_USER_AUTH_TOKEN" \
-  -d '{"Name": "Test Application", "Description": "description"}')
+  -d "{\"Name\": \"$APP_NAME\", \"Description\": \"$APP_DESCRIPTION\"}")
 echo
 
 # Extract APPLICATION_ID from the response
@@ -215,7 +277,7 @@ echo "Applying rate limit of $REQUESTS_PER_UNIT requests per $UNIT to subscripti
 curl -X PUT "$BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata" \
     -H "Content-Type: application/json" \
     -d "{\"rateLimit\": {\"requestsPerUnit\": \"$REQUESTS_PER_UNIT\", \"unit\": \"$UNIT\"}, \"customMetadata\": {\"key2\": \"value2\"}}" \
-    -H "Authorization: Bearer $DEV_USER_AUTH_TOKEN"
+    -H "Authorization: Bearer $ADMIN_USER_AUTH_TOKEN"
 echo
 echo "Rate limit applied. Note that the time unit is configurable, but for this demo, it's set to MINUTE."
 
@@ -225,20 +287,48 @@ echo "-------------------------"
 # Pause for demonstration
 read -p "Step 8 complete. Press enter to proceed to Step 9..."
 
-# Step 9: Approve the subscription metadata as an admin
-echo
-echo "Step 9: Approving the subscription metadata..."
-curl -X PUT "$BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata/approve" \
-  -H "User-Agent: curl/8.9.0" \
-  -H "Accept: */*" \
-  -H "Authorization: Bearer $ADMIN_USER_AUTH_TOKEN"
-echo
-echo "Subscription metadata approved."
+# Step 9: API Key Creation
+# Predefined API key names
+PREDEFINED_KEYS=("TestKey" "ProdKey" "DevKey" "Custom")
+
+# Prompt for API key name
+echo "Choose an API key name or enter a custom one:"
+select KEY_OPTION in "${PREDEFINED_KEYS[@]}"; do
+    case $KEY_OPTION in
+        "Custom")
+            read -p "Enter your custom API key name: " API_KEY_NAME
+            break
+            ;;
+        *)
+            API_KEY_NAME=$KEY_OPTION
+            break
+            ;;
+    esac
+done
+
+API_KEY_RESPONSE=$(curl -s -X POST "$BASE_URL/v1/apps/$APPLICATION_ID/api-keys" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $DEV_USER_AUTH_TOKEN" \
+  -d "{\"apiKeyName\": \"$API_KEY_NAME\"}")
 echo
 
-# Step 8: Create an API key for the application
+# Extract API_KEY and API_KEY_ID
+export API_KEY=$(echo $API_KEY_RESPONSE | jq -r '.apiKey')
+export API_KEY_ID=$(echo $API_KEY_RESPONSE | jq -r '.id')
+
+echo "API Key created: $API_KEY"
+echo "API Key ID: $API_KEY_ID"
 echo
-echo "Step 8: Creating API key..."
+
+# Space between steps
+echo "-------------------------"
+
+# Pause for demonstration
+read -p "Step 9 complete. Press enter to proceed to Step 10..."
+
+# Step 10: Create an API key for the application
+echo
+echo "Step 10: Creating API key..."
 echo "curl -X POST $BASE_URL/v1/apps/\$APPLICATION_ID/api-keys -H 'Content-Type: application/json' -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN' -d '{\"apiKeyName\": \"test-key\"}'"
 API_KEY_RESPONSE=$(curl -s -X POST "$BASE_URL/v1/apps/$APPLICATION_ID/api-keys" \
   -H "Content-Type: application/json" \
@@ -258,25 +348,39 @@ echo
 echo "-------------------------"
 
 # Pause for demonstration
-read -p "Step 9 complete. Press enter to proceed to Step 10..."
+read -p "Step 10 complete. Press enter to proceed to Step 11..."
 
-# Step 10: Validate the API key with the metadata endpoint
+# Step 11: Validate the API key with the metadata endpoint
 echo
-echo "Step 10: Validating the API key..."
+echo "Step 11: Validating the API key..."
+
+# Prompt the user to input the API Product ID, re-prompt if empty
+while true; do
+    read -p "Enter the API Product ID (e.g., tracks): " API_PRODUCT_ID_INPUT
+
+    # Validate if the input is empty
+    if [ -z "$API_PRODUCT_ID_INPUT" ]; then
+        echo "No API Product ID provided. Please try again."
+    else
+        export API_PRODUCT_ID=$API_PRODUCT_ID_INPUT
+        break
+    fi
+done
+
 echo
-echo "curl -X GET $BASE_URL/v1/metadata?apiKey=\$API_KEY&apiProductId=tracks"
-curl -s -X GET "$BASE_URL/v1/metadata?apiKey=$API_KEY&apiProductId=tracks"
+echo "curl -X GET $BASE_URL/v1/metadata?apiKey=\$API_KEY&apiProductId=\$API_PRODUCT_ID"
+curl -s -X GET "$BASE_URL/v1/metadata?apiKey=$API_KEY&apiProductId=$API_PRODUCT_ID"
 echo
 
 # Space between steps
 echo "-------------------------"
 
 # Pause for demonstration
-read -p "Step 10 complete. Press enter to proceed to Step 11..."
+read -p "Step 11 complete. Press enter to proceed to Step 12..."
 
-# Step 11: Call the tracks endpoint without the API key
+# Step 12: Call the tracks endpoint without the API key
 echo
-echo "Step 11: Calling the tracks endpoint without the API key (expecting 403)..."
+echo "Step 12: Calling the tracks endpoint without the API key (expecting 403)..."
 echo "curl https://tracks.glootest.com/tracks/c_0"
 curl "https://tracks.glootest.com/tracks/c_0"
 echo
@@ -288,11 +392,11 @@ echo
 echo "-------------------------"
 
 # Pause for demonstration
-read -p "Step 11 complete. Press enter to proceed to Step 12..."
+read -p "Step 12 complete. Press enter to proceed to Step 13..."
 
-# Step 12: Call the tracks endpoint with the API key
+# Step 13: Call the tracks endpoint with the API key
 echo
-echo "Step 12: Calling the tracks endpoint with the API key (expecting 200 responses until rate limit is hit)..."
+echo "Step 13: Calling the tracks endpoint with the API key (expecting 200 responses until rate limit is hit)..."
 echo "curl https://tracks.glootest.com/tracks/c_0 -H 'x-test-api-key: \$API_KEY'"
 
 # Loop for (requests per unit + 1) times
@@ -314,11 +418,11 @@ echo
 echo "-------------------------"
 
 # Pause for demonstration
-read -p "Step 12 complete. Press enter to proceed to Step 13..."
+read -p "Step 13 complete. Press enter to proceed to Step 14..."
 
-# Step 13: Revoke the API key
+# Step 14: Revoke the API key
 echo
-echo "Step 13: Revoking the API key..."
+echo "Step 14: Revoking the API key..."
 echo
 echo "curl -X DELETE $BASE_URL/v1/api-keys/\$API_KEY_ID -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN' -H 'User-Agent: curl/8.9.0' -H 'Accept: */*'"
 
@@ -345,11 +449,11 @@ echo
 echo "-------------------------"
 
 # Pause for demonstration
-read -p "Step 13 complete. Press enter to proceed to Step 14..."
+read -p "Step 14 complete. Press enter to proceed to Step 15..."
 
-# Step 14: Call the tracks endpoint with the revoked API key (expecting 403)
+# Step 15: Call the tracks endpoint with the revoked API key (expecting 403)
 echo
-echo "Step 14: Calling the tracks endpoint with the revoked API key (expecting 403)..."
+echo "Step 15: Calling the tracks endpoint with the revoked API key (expecting 403)..."
 echo "curl https://tracks.glootest.com/tracks/c_0 -H 'x-test-api-key: \$API_KEY'"
 curl "https://tracks.glootest.com/tracks/c_0" \
   -H "x-test-api-key: $API_KEY"
