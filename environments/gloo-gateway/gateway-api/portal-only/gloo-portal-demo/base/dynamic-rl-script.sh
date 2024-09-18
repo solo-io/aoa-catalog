@@ -165,18 +165,20 @@ for ((i=0; i<$PRODUCT_COUNT; i++))
 do
   PRODUCT_NAME=$(echo $API_PRODUCTS_RESPONSE | jq -r ".[$i].name")
   PRODUCT_ID=$(echo $API_PRODUCTS_RESPONSE | jq -r ".[$i].id")
-  echo "$i) $PRODUCT_NAME (ID: $PRODUCT_ID)"
+  echo "$((i + 1))) $PRODUCT_NAME (ID: $PRODUCT_ID)"
 done
 
 echo
 
 # Keep prompting for valid input until a correct selection is made
 while true; do
-    read -p "Please select an API product by number (0 to $((PRODUCT_COUNT - 1))): " PRODUCT_INDEX
+    read -p "Please select an API product by number (1 to $PRODUCT_COUNT): " PRODUCT_INDEX
     
-    # Validate that the input is not empty, is a number, and within the valid range
-    if [[ -z "$PRODUCT_INDEX" || ! "$PRODUCT_INDEX" =~ ^[0-9]+$ || "$PRODUCT_INDEX" -lt 0 || "$PRODUCT_INDEX" -ge "$PRODUCT_COUNT" ]]; then
-        echo "Invalid selection. Please enter a valid number between 0 and $((PRODUCT_COUNT - 1))."
+    # Convert the user's input to zero-based index
+    PRODUCT_INDEX=$((PRODUCT_INDEX - 1))
+
+    if [[ -z "$PRODUCT_INDEX" || "$PRODUCT_INDEX" -lt 0 || "$PRODUCT_INDEX" -ge "$PRODUCT_COUNT" ]]; then
+        echo "Invalid selection. Please enter a valid number between 1 and $PRODUCT_COUNT."
     else
         break
     fi
@@ -354,20 +356,28 @@ read -p "Step 10 complete. Press enter to proceed to Step 11..."
 echo
 echo "Step 11: Validating the API key..."
 
-# Prompt the user to input the API Product ID, re-prompt if empty
-while true; do
-    read -p "Enter the API Product ID (e.g., tracks): " API_PRODUCT_ID_INPUT
+# Predefined API product options
+PREDEFINED_API_PRODUCTS=("tracks" "petstore" "gloo-portal-server" "openlibrary" "Custom")
 
-    # Validate if the input is empty
-    if [ -z "$API_PRODUCT_ID_INPUT" ]; then
-        echo "No API Product ID provided. Please try again."
-    else
-        export API_PRODUCT_ID=$API_PRODUCT_ID_INPUT
-        break
-    fi
+# Display options to the user
+select API_PRODUCT_OPTION in "${PREDEFINED_API_PRODUCTS[@]}"; do
+    case $API_PRODUCT_OPTION in
+        "Custom")
+            read -p "Enter your custom API Product ID: " CUSTOM_API_PRODUCT_ID
+            API_PRODUCT_ID=$CUSTOM_API_PRODUCT_ID
+            break
+            ;;
+        *)
+            API_PRODUCT_ID=$API_PRODUCT_OPTION
+            break
+            ;;
+    esac
 done
 
+echo "Selected API Product ID: $API_PRODUCT_ID"
 echo
+
+# Make the API call using the selected or custom API Product ID
 echo "curl -X GET $BASE_URL/v1/metadata?apiKey=\$API_KEY&apiProductId=\$API_PRODUCT_ID"
 curl -s -X GET "$BASE_URL/v1/metadata?apiKey=$API_KEY&apiProductId=$API_PRODUCT_ID"
 echo
@@ -378,12 +388,41 @@ echo "-------------------------"
 # Pause for demonstration
 read -p "Step 11 complete. Press enter to proceed to Step 12..."
 
-# Step 12: Call the tracks endpoint without the API key
+# Step 12: Set the API product's URI
 echo
-echo "Step 12: Calling the tracks endpoint without the API key (expecting 403)..."
-echo "curl https://tracks.glootest.com/tracks/c_0"
-curl "https://tracks.glootest.com/tracks/c_0"
+echo "Step 12: Choose an API product's URI or enter a custom one:"
+
+# Predefined URIs
+PREDEFINED_URIS=(
+  "https://tracks.glootest.com/tracks/c_0"
+  "https://petstore.glootest.com/pets/pet"
+  "https://api.glootest.com/v1/api-products"
+  "https://openlibrary.glootest.com/api/books?bibkeys=ISBN%3A0201558025&format=json&jscmd=viewapi"
+  "Custom"
+)
+
+# Display options to the user
+select URI_OPTION in "${PREDEFINED_URIS[@]}"; do
+    case $URI_OPTION in
+        "Custom")
+            read -p "Enter your custom API URI: " CUSTOM_URI
+            API_PRODUCT_URI=$CUSTOM_URI
+            break
+            ;;
+        *)
+            API_PRODUCT_URI=$URI_OPTION
+            break
+            ;;
+    esac
+done
+
+echo "Selected API Product URI: $API_PRODUCT_URI"
 echo
+
+# Step 12: Call the selected API product's endpoint without the API key
+echo
+echo "Calling the API product's endpoint without the API key (expecting 403)..."
+curl "$API_PRODUCT_URI"
 echo
 echo "Expecting a Rejected - 403 error."
 echo
@@ -396,15 +435,15 @@ read -p "Step 12 complete. Press enter to proceed to Step 13..."
 
 # Step 13: Call the tracks endpoint with the API key
 echo
-echo "Step 13: Calling the tracks endpoint with the API key (expecting 200 responses until rate limit is hit)..."
-echo "curl https://tracks.glootest.com/tracks/c_0 -H 'x-test-api-key: \$API_KEY'"
+echo "Step 13: Calling the API product's endpoint with the API key (expecting 200 responses until rate limit is hit)..."
+echo "curl $API_PRODUCT_URI -H 'x-test-api-key: \$API_KEY'"
 
 # Loop for (requests per unit + 1) times
 for ((i=1; i<=REQUESTS_PER_UNIT+1; i++)); do
   echo "Attempt $i:"
   
   # Perform the curl request and extract only the HTTP status code
-  HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://tracks.glootest.com/tracks/c_0" \
+  HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$API_PRODUCT_URI" \
     -H "x-test-api-key: $API_KEY")
   
   echo "HTTP Status Code: $HTTP_STATUS"
@@ -453,9 +492,9 @@ read -p "Step 14 complete. Press enter to proceed to Step 15..."
 
 # Step 15: Call the tracks endpoint with the revoked API key (expecting 403)
 echo
-echo "Step 15: Calling the tracks endpoint with the revoked API key (expecting 403)..."
-echo "curl https://tracks.glootest.com/tracks/c_0 -H 'x-test-api-key: \$API_KEY'"
-curl "https://tracks.glootest.com/tracks/c_0" \
+echo "Step 15: Calling the API product's endpoint with the revoked API key (expecting 403)..."
+echo "curl $API_PRODUCT_URI -H 'x-test-api-key: \$API_KEY'"
+curl "$API_PRODUCT_URI" \
   -H "x-test-api-key: $API_KEY"
 echo
 echo

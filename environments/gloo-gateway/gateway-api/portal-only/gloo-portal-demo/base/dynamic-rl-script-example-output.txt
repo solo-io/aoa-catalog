@@ -4,7 +4,7 @@ Tokens set.
 
 Enter the API base URL for the portal server backend (e.g., https://api.glootest.com): https://api.glootest.com
 -------------------------
-Step 1 complete. Press enter to proceed to Step 2...
+Step 1 complete. Press enter to proceed to Step 2... 
 
 Step 2: Creating a user...
 curl -X PUT https://api.glootest.com/v1/me -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN'
@@ -24,7 +24,7 @@ Choose a team description or enter a custom one:
 2) The marketing team    4) Custom
 #? 1
 
-Team created with ID: 210e1555-d4f0-4fe5-b921-26e1587ae7f7
+Team created with ID: b7022e35-53e9-499c-a0e4-9012dcff8766
 
 -------------------------
 Step 3 complete. Press enter to proceed to Step 4...
@@ -39,7 +39,7 @@ Choose an application description or enter a custom one:
 2) Demo application  4) Custom
 #? 1
 
-Application created with ID: 7b2c69ee-d57e-4a2b-ba39-b038a20bbc3f
+Application created with ID: 58511e77-bf1b-4ccf-9fe1-78f1ad001233
 
 -------------------------
 Step 4 complete. Press enter to proceed to Step 5...
@@ -48,9 +48,12 @@ Step 5: Listing available API products...
 curl -X GET https://api.glootest.com/v1/api-products -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN'
 
 Available API Products:
-0) Catstronauts Course Tracks (ID: cc233088-93b3-4087-bdc5-393e8624f637)
+1) Catstronauts Course Tracks (ID: cc233088-93b3-4087-bdc5-393e8624f637)
+2) Pet Store (ID: 161790c9-9645-45a8-9aa0-1e7ada92f285)
+3) gloo-portal-server (ID: 94bc5587-9a3b-425e-97fb-70fe0fc747bb)
+4) openlibrary (ID: 8818048b-a63a-4c33-bc85-0ac0d8de4339)
 
-Please select an API product by number (0 to 0): 0
+Please select an API product by number (1 to 4): 1
 Selected API Product ID: cc233088-93b3-4087-bdc5-393e8624f637
 
 -------------------------
@@ -66,7 +69,7 @@ Subscription created successfully, but no response body. Skipping subscription I
 Discovering subscription ID by listing subscriptions...
 curl -X GET https://api.glootest.com/v1/apps/$APPLICATION_ID/subscriptions -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN'
 
-Subscription ID: 65920b5e-dfd7-4c3a-88e7-480564fb1aa4
+Subscription ID: b8412075-7ab9-497f-ba29-babe16470a5b
 
 -------------------------
 Step 6 complete. Press enter to proceed to Step 7...
@@ -80,8 +83,8 @@ Subscription approved.
 Step 7 complete. Press enter to proceed to Step 8...
 
 Step 8: Setting a dynamic rate limit for the subscription...
-Enter the number of requests per minute: 2
-Applying rate limit of 2 requests per MINUTE to subscription 65920b5e-dfd7-4c3a-88e7-480564fb1aa4...
+Enter the number of requests per minute: 5
+Applying rate limit of 5 requests per MINUTE to subscription b8412075-7ab9-497f-ba29-babe16470a5b...
 
 Rate limit applied. Note that the time unit is configurable, but for this demo, it's set to MINUTE.
 -------------------------
@@ -93,8 +96,8 @@ Choose an API key name or enter a custom one:
 4) Custom
 #? 1
 
-API Key created: adc2f190-a938-44d4-8aff-d6c9ce091150
-API Key ID: 9c131b6c-fb3a-4104-b51b-20d8e5719c6d
+API Key created: a75edb28-09a7-4984-96e2-9bab1bb31d58
+API Key ID: 20d59ca3-3ebc-49ae-97dd-a329ca8b9542
 
 -------------------------
 Step 9 complete. Press enter to proceed to Step 10...
@@ -102,33 +105,42 @@ Step 9 complete. Press enter to proceed to Step 10...
 Step 10: Creating API key...
 curl -X POST https://api.glootest.com/v1/apps/$APPLICATION_ID/api-keys -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"apiKeyName": "test-key"}'
 
-API Key created: b0f2d9a5-c139-484b-bb94-a3433c6a6f75
-API Key ID: f2e525e1-ca9d-4d93-843a-030774a99ef1
+API Key created: ccbe6795-2b0b-42a7-ae7f-127b30406caf
+API Key ID: ef97b18e-3fec-4697-8006-4209fe76443f
 
 -------------------------
 Step 10 complete. Press enter to proceed to Step 11...
 
 Step 11: Validating the API key...
-Enter the API Product ID (e.g., tracks): 
-No API Product ID provided. Please try again.
-Enter the API Product ID (e.g., tracks): tracks
+1) tracks              3) gloo-portal-server  5) Custom
+2) petstore            4) openlibrary
+#? 1
+Selected API Product ID: tracks
 
 curl -X GET https://api.glootest.com/v1/metadata?apiKey=$API_KEY&apiProductId=$API_PRODUCT_ID
-{"allowed":true,"customMetadata":{"key2":"value2"},"rateLimit":{"requestsPerUnit":"2","unit":"MINUTE"}}
+{"allowed":true,"customMetadata":{"key2":"value2"},"rateLimit":{"requestsPerUnit":"5","unit":"MINUTE"}}
 
 -------------------------
 Step 11 complete. Press enter to proceed to Step 12...
 
-Step 12: Calling the tracks endpoint without the API key (expecting 403)...
-curl https://tracks.glootest.com/tracks/c_0
-Rejected
+Step 12: Choose an API product's URI or enter a custom one:
+1) https://tracks.glootest.com/tracks/c_0
+2) https://petstore.glootest.com/pets/pet
+3) https://api.glootest.com/v1/api-products
+4) https://openlibrary.glootest.com/api/books?bibkeys=ISBN%3A0201558025&format=json&jscmd=viewapi
+5) Custom
+#? 1
+Selected API Product URI: https://tracks.glootest.com/tracks/c_0
 
+
+Calling the API product's endpoint without the API key (expecting 403)...
+Rejected
 Expecting a Rejected - 403 error.
 
 -------------------------
 Step 12 complete. Press enter to proceed to Step 13...
 
-Step 13: Calling the tracks endpoint with the API key (expecting 200 responses until rate limit is hit)...
+Step 13: Calling the API product's endpoint with the API key (expecting 200 responses until rate limit is hit)...
 curl https://tracks.glootest.com/tracks/c_0 -H 'x-test-api-key: $API_KEY'
 Attempt 1:
 HTTP Status Code: 200
@@ -137,9 +149,18 @@ Attempt 2:
 HTTP Status Code: 200
 -------------------------
 Attempt 3:
+HTTP Status Code: 200
+-------------------------
+Attempt 4:
+HTTP Status Code: 200
+-------------------------
+Attempt 5:
+HTTP Status Code: 200
+-------------------------
+Attempt 6:
 HTTP Status Code: 429
 -------------------------
-Expecting dynamic rate limiting after attempt 3.
+Expecting dynamic rate limiting after attempt 6.
 
 -------------------------
 Step 13 complete. Press enter to proceed to Step 14...
@@ -153,7 +174,7 @@ API Key revoked successfully. HTTP Status: 204
 -------------------------
 Step 14 complete. Press enter to proceed to Step 15...
 
-Step 15: Calling the tracks endpoint with the revoked API key (expecting 403)...
+Step 15: Calling the API product's endpoint with the revoked API key (expecting 403)...
 curl https://tracks.glootest.com/tracks/c_0 -H 'x-test-api-key: $API_KEY'
 Rejected
 
