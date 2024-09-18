@@ -95,7 +95,7 @@ spec:
               deployment:
                 logLevel: debug
     repoURL: https://storage.googleapis.com/gloo-ee-test-helm
-    targetRevision: 1.18.0-beta1-bjmhbh-gloo-portal-support-application-apiproduct-custom-metadata-4f6359b
+    targetRevision: 1.18.0-beta1-bjmhbh-gloo-portal-support-application-apiproduct-custom-metadata-f612a29
   syncPolicy:
     automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
