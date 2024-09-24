@@ -34,7 +34,7 @@ spec:
           extensionRef:
             group: gateway.solo.io
             kind: RouteOption
-            name: tracks-cors
+            name: portal-cors
         - type: ExtensionRef
           extensionRef:
             group: gateway.solo.io

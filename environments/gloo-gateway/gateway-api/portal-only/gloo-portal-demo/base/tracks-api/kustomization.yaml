@@ -6,7 +6,6 @@ kind: Kustomization
 resources:
 - tracks-api.yaml
 - tracks-apiproduct.yaml
-- tracks-cors.yaml
 - tracks-refgrant.yaml
 - tracks-route.yaml
 - tracks-route-policies.yaml

@@ -30,6 +30,11 @@ spec:
             group: gateway.solo.io
             kind: RouteOption
             name: petstore-route-policies
+        - type: ExtensionRef
+          extensionRef:
+            group: gateway.solo.io
+            kind: RouteOption
+            name: portal-cors
       matches:
         - path:
             type: PathPrefix
@@ -52,6 +57,11 @@ spec:
             group: gateway.solo.io
             kind: RouteOption
             name: petstore-route-policies
+        - type: ExtensionRef
+          extensionRef:
+            group: gateway.solo.io
+            kind: RouteOption
+            name: portal-cors
       matches:
         - path:
             type: PathPrefix
@@ -74,6 +84,11 @@ spec:
             group: gateway.solo.io
             kind: RouteOption
             name: petstore-route-policies
+        - type: ExtensionRef
+          extensionRef:
+            group: gateway.solo.io
+            kind: RouteOption
+            name: portal-cors
       matches:
         - path:
             type: PathPrefix

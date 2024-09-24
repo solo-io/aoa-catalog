@@ -12,6 +12,7 @@ spec:
         - "Content-Type"
         - "Authorization"
         - "Access-Control-Allow-Origin"
+        - "api-key"
       allowMethods:
         - GET
         - POST
