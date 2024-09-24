@@ -46,9 +46,27 @@ spec:
           env:
             - name: VITE_PORTAL_SERVER_URL
               value: https://api.glootest.com/v1 # The URL that the backend Portal is exposed on via an HTTPRoute.
-            - name: VITE_APPLIED_OIDC_AUTH_CODE_CONFIG
-              value: "true"
-            - name: VITE_OIDC_AUTH_CODE_CONFIG_CALLBACK_PATH
-              value: "/v1/login"
-            - name: VITE_OIDC_AUTH_CODE_CONFIG_LOGOUT_PATH
-              value: "/v1/logout"
+            - name: VITE_COMPANY_NAME
+              value: "Solo.io"
+            #- name: VITE_HOME_IMAGE_URL
+            #  value: ""
+            #- name: VITE_BANNER_IMAGE_URL
+            #  value: ""
+            #- name: VITE_LOGO_IMAGE_URL
+            #  value: ""
+            # experimental - oidc auth flow
+            #- name: VITE_APPLIED_OIDC_AUTH_CODE_CONFIG
+            #  value: "true"
+            #- name: VITE_OIDC_AUTH_CODE_CONFIG_CALLBACK_PATH
+            #  value: "/v1/login"
+            #- name: VITE_OIDC_AUTH_CODE_CONFIG_LOGOUT_PATH
+            #  value: "/v1/logout"
+            # experimental PKCE auth flow
+            - name: VITE_CLIENT_ID
+              value: 0oaafbtuwfy9lG7gr5d7
+            - name: VITE_TOKEN_ENDPOINT
+              value: https://dev-22653158.okta.com/oauth2/default/v1/token
+            - name: VITE_AUTH_ENDPOINT
+              value: https://dev-22653158.okta.com/oauth2/default/v1/authorize
+            - name: VITE_LOGOUT_ENDPOINT
+              value: https://dev-22653158.okta.com/oauth2/default/v1/logout
