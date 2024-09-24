@@ -1,12 +1,14 @@
 apiVersion: gateway.solo.io/v1
 kind: RouteOption
 metadata:
-  name: portal-frontend-route-policies
+  name: portal-frontend-auth-policy
   namespace: gloo-system
 spec:
   options:
-    jwt:
-      disable: true
+    extauth:
+      configRef:
+        name: portal-frontend-authconfig
+        namespace: gloo-system
                 
                 
     

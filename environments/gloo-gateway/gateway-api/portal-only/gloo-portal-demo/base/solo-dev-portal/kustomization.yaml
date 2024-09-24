@@ -12,3 +12,4 @@ resources:
 - portal-frontend-route-policies.yaml
 - portal-frontend.yaml
 - portal-frontend-authconfig.yaml
+- portal-frontend-auth-policy.yaml
