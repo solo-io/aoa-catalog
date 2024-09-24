@@ -80,6 +80,9 @@ select DESCRIPTION_OPTION in "${PREDEFINED_DESCRIPTIONS[@]}"; do
     esac
 done
 
+# Print the curl command
+echo "curl -X POST $BASE_URL/v1/teams -H 'Content-Type: application/json' -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN' -d '{\"Name\": \"$TEAM_NAME\", \"Description\": \"$TEAM_DESCRIPTION\"}'"
+
 TEAM_RESPONSE=$(curl -s -X POST "$BASE_URL/v1/teams" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $DEV_USER_AUTH_TOKEN" \
@@ -131,6 +134,9 @@ select APP_DESCRIPTION_OPTION in "${PREDEFINED_APP_DESCRIPTIONS[@]}"; do
             ;;
     esac
 done
+
+# Print the curl command
+echo "curl -X POST $BASE_URL/v1/teams/$TEAM_ID/apps -H 'Content-Type: application/json' -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN' -d '{\"Name\": \"$APP_NAME\", \"Description\": \"$APP_DESCRIPTION\"}'"
 
 APP_RESPONSE=$(curl -s -X POST "$BASE_URL/v1/teams/$TEAM_ID/apps" \
   -H "Content-Type: application/json" \
@@ -276,6 +282,11 @@ done
 UNIT="MINUTE"
 
 echo "Applying rate limit of $REQUESTS_PER_UNIT requests per $UNIT to subscription $SUBSCRIPTION_ID..."
+echo
+
+# Print the curl command
+echo "curl -X PUT $BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata -H 'Content-Type: application/json' -H 'Authorization: Bearer \$ADMIN_USER_AUTH_TOKEN' -d '{\"rateLimit\": {\"requestsPerUnit\": \"$REQUESTS_PER_UNIT\", \"unit\": \"$UNIT\"}, \"customMetadata\": {\"key2\": \"value2\"}}'"
+
 curl -X PUT "$BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata" \
     -H "Content-Type: application/json" \
     -d "{\"rateLimit\": {\"requestsPerUnit\": \"$REQUESTS_PER_UNIT\", \"unit\": \"$UNIT\"}, \"customMetadata\": {\"key2\": \"value2\"}}" \
@@ -307,6 +318,9 @@ select KEY_OPTION in "${PREDEFINED_KEYS[@]}"; do
             ;;
     esac
 done
+
+# Print the curl command
+echo "curl -X POST $BASE_URL/v1/apps/$APPLICATION_ID/api-keys -H 'Content-Type: application/json' -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN' -d '{\"apiKeyName\": \"$API_KEY_NAME\"}'"
 
 API_KEY_RESPONSE=$(curl -s -X POST "$BASE_URL/v1/apps/$APPLICATION_ID/api-keys" \
   -H "Content-Type: application/json" \
@@ -404,6 +418,10 @@ read -p "Step 11 complete. Press enter to proceed to Step 12..."
 # Step 12: Call the selected API product's endpoint without the API key
 echo
 echo "Calling the API product's endpoint without the API key (expecting 403)..."
+
+# Print the curl command for calling the API without the API key
+echo "curl $API_PRODUCT_URI"
+
 curl "$API_PRODUCT_URI"
 echo
 echo "Expecting a Rejected - 403 error."
