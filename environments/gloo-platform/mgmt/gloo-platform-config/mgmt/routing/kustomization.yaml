@@ -6,12 +6,9 @@ kind: Kustomization
 resources:
 - admin-routetable.yaml
 - gcp-gmui-routetable.yaml
-- okta-gmui-routetable.yaml
 - plow-routetable.yaml
 - prometheus-routetable.yaml
 - workload-grafana-routetable.yaml
-- clickhouse-grafana-routetable.yaml
-- clickhouse-admin-routetable.yaml
 
 
 

@@ -32,7 +32,7 @@ spec:
                   host: redis.gloo-mesh-addons:6379
                 allowRefreshing: true
               cookieOptions:
-                maxAge: "3600"
+                maxAge: 3600
             scopes:
             - email
             logoutPath: /logout
@@ -71,7 +71,7 @@ spec:
                   host: redis.gloo-mesh-addons:6379
                 allowRefreshing: true
               cookieOptions:
-                maxAge: "3600"
+                maxAge: 3600
             scopes:
             - email
             logoutPath: /logout

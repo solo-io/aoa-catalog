@@ -29,7 +29,7 @@ spec:
               cookie:   
                 allowRefreshing: true # sets the refresh_token in cookie header    
               cookieOptions: # client side set-cookie options
-                maxAge: "3600" # 60 mins
+                maxAge: 3600 # 60 mins
               #redis:
               #  cookieName: okta-session
               #  options:

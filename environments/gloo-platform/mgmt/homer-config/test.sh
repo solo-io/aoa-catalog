@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ISTIO_REVISION="1-22"
+ISTIO_REVISION="1-23"
 
 echo 
 echo "Installation complete:"

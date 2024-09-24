@@ -17,4 +17,3 @@ resources:
 - istio-system-ns.yaml
 - oidc-client-secret.yaml
 - ops-team-config-ns.yaml
-- descheduler-helm.yaml

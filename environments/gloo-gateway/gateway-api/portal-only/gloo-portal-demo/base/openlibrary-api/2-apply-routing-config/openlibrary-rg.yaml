@@ -1,0 +1,16 @@
+# Only required if HTTPRoute is in a different namespace
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: ReferenceGrant
+metadata:
+  name: openlibrary-rg
+  namespace: openlibrary
+spec:
+  from:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: gloo-system
+  to:
+    - group: "gloo.solo.io"
+      kind: Upstream
+    - group: ""
+      kind: Service

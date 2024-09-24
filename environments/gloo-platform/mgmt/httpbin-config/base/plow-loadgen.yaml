@@ -57,7 +57,7 @@ spec:
       creationTimestamp: null
       labels:
         app: plow-httpbin
-        istio.io/rev: 1-22
+        istio.io/rev: 1-23
         sidecar.istio.io/inject: 'true'
     spec:
       nodeSelector:

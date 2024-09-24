@@ -105,7 +105,7 @@ spec:
                   name: cilium-run
 
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.5.7
+    targetRevision: 2.6.3
   syncPolicy:
     automated:
       prune: true

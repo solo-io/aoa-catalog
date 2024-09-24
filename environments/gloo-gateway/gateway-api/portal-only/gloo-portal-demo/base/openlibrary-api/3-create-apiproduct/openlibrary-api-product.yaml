@@ -1,0 +1,28 @@
+apiVersion: portal.gloo.solo.io/v1
+kind: ApiProduct
+metadata:
+  labels:
+    expose-portal: "true"
+  name: openlibrary-external-svc-api-product
+  namespace: openlibrary
+spec:
+  id: "openlibrary"
+  displayName: "openlibrary"
+  customMetadata:
+    imageURL: https://openlibrary.org/static/images/openlibrary-logo-tighter.svg
+  versions:
+  - apiVersion: "v1"
+    openapiMetadata:
+      title: "Openlibrary REST API v1"
+      description: "REST API for openlibrary.org. This APIDoc was onboarded using Gloo Portal APISchemaDiscovery"
+      termsOfService: "None"
+      contact: "support@example.com"
+      license: "License info, such as MIT"
+    customMetadata:
+      compatibility: "None"
+      lifecyclePhase: "Generally Available"
+    targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: openlibrary-route
+      namespace: openlibrary

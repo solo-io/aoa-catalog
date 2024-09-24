@@ -43,7 +43,7 @@ spec:
           containers:
           - name: rollout-restart
             image: quay.io/solo-io/kubectl:1.16.4  # Image with kubectl or any other tool capable of deleting pods
-            command: ["sh", "-c", "kubectl rollout restart -n istio-system deploy/istiod-1-22"]  # Command to delete the pod
+            command: ["sh", "-c", "kubectl rollout restart -n istio-system deploy/istiod-1-23"]  # Command to delete the pod
             # Add any environment variables or volume mounts necessary
           restartPolicy: OnFailure
   successfulJobsHistoryLimit: 0  # Do not keep any successful jobs
