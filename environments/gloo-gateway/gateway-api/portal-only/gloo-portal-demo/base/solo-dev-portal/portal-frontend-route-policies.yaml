@@ -7,6 +7,10 @@ spec:
   options:
     jwt:
       disable: true
+    extauth:
+      configRef:
+        name: portal-frontend-authconfig
+        namespace: gloo-system
                 
                 
     
