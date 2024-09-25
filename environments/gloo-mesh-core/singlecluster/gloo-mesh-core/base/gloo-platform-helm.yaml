@@ -61,7 +61,7 @@ spec:
         jaeger:
             enabled: true
         glooUi:
-            enabled: false
+            enabled: true
             serviceType: ClusterIP
             auth:
               enabled: true
