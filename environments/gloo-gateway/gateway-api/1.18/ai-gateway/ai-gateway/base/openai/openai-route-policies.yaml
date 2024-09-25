@@ -13,7 +13,7 @@ spec:
         request:
           customResponseMessage: "Rejected due to inappropriate content"
           matches:
-          - "zzzz"
+          - "credit cards"
       #### not working ####
       #promptEnrichment:
       #  prepend:
