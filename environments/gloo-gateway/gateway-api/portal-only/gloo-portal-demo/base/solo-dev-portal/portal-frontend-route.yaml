@@ -10,28 +10,28 @@ spec:
   hostnames:
     - solo-dev-portal.glootest.com
   rules:
-    #- backendRefs:
-    #    - name: portal-frontend
-    #      namespace: gloo-system
-    #      port: 4000
-    #  matches:
-    #  - path:
-    #      type: PathPrefix
-    #      value: /v1/login
-    #  - path:
-    #      type: PathPrefix
-    #      value: /v1/logout
-    #  filters:
-    #    - type: ExtensionRef
-    #      extensionRef:
-    #        group: gateway.solo.io
-    #        kind: RouteOption
-    #        name: portal-frontend-route-policies
-    #    - type: ExtensionRef
-    #      extensionRef:
-    #        group: gateway.solo.io
-    #        kind: RouteOption
-    #        name: portal-frontend-auth-policy
+    - backendRefs:
+        - name: portal-frontend
+          namespace: gloo-system
+          port: 4000
+      matches:
+      - path:
+          type: PathPrefix
+          value: /v1/login
+      - path:
+          type: PathPrefix
+          value: /v1/logout
+      filters:
+        - type: ExtensionRef
+          extensionRef:
+            group: gateway.solo.io
+            kind: RouteOption
+            name: portal-frontend-route-policies
+        - type: ExtensionRef
+          extensionRef:
+            group: gateway.solo.io
+            kind: RouteOption
+            name: portal-frontend-auth-policy
     - backendRefs:
         - name: portal-frontend
           namespace: gloo-system
@@ -46,8 +46,3 @@ spec:
             group: gateway.solo.io
             kind: RouteOption
             name: portal-frontend-route-policies
-        - type: ExtensionRef
-          extensionRef:
-            group: gateway.solo.io
-            kind: RouteOption
-            name: portal-frontend-auth-policy
