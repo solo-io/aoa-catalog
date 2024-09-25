@@ -8,7 +8,7 @@ spec:
   - oauth2:
       oidcAuthorizationCode:
         appUrl: https://solo-dev-portal.glootest.com
-        callbackPath: /callback
+        callbackPath: /v1/login
         clientId: 0oa6qvzybcVCK6PcS5d7
         clientSecretRef:
           name: okta-client-secret
