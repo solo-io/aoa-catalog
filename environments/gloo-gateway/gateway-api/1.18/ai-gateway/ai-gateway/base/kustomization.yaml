@@ -4,6 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
+- ai-gateway.yaml
+- gloo-gateway-override.yaml
 - openai
 - anthropic
 - chatbot
