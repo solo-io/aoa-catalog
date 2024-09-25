@@ -5,6 +5,7 @@ echo "deploy ai-gateway"
 
 echo "this demo requires the following API keys configured in the vars.env, if not provided the script will prompt for them:"
 echo "openai_api_key"
+echo "anthropic_api_key"
 echo
 
 # check to see if llm key variables were passed through, if not prompt for keys

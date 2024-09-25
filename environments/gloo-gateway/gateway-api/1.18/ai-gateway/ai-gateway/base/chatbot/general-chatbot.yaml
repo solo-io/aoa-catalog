@@ -43,8 +43,8 @@ spec:
             value: "3000"
           - name: OPENAI_ENDPOINT
             value: "http://gloo-proxy-ai-gateway.gloo-system:8080/openai"
-          #- name: ANTHROPIC_ENDPOINT
-          #  value: "https://ai-gateway.demo.glooplatform.com/claude"
+          - name: ANTHROPIC_ENDPOINT
+            value: "http://gloo-proxy-ai-gateway.gloo-system:8080/anthropic"
           ## used with gloo api-key extauth policy to demonstrate api-key masking
           #- name: MANAGED_CLAUDE_API_KEY
           #  value: "solo.io"
