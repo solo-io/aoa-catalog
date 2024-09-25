@@ -13,7 +13,7 @@ spec:
         request:
           customResponseMessage: "Rejected due to inappropriate content"
           matches:
-          - "hi"
+          - "zzzz"
       #### not working ####
       #promptEnrichment:
       #  prepend:
