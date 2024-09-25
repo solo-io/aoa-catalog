@@ -7,9 +7,10 @@
 - Configured `tracks-dynamic-rlc` RateLimitConfig for the tracks-api. This contains "global" 100 req/second limit for the RLC by default, which can be overridden using the portal server REST API
 - Create `dynamic-rl-script.sh` and `dynamic-rl-script-example-output.md` in `gateway-api/portal-only/gloo-portal/demo/base/tracks-api` to walk through dynamic rate limiting functionality for the tracks API Product
 - Update portal frontend build to `gcr.io/solo-public/docs/portal-frontend:gg-teams-apps-demo-v1`
+- Split environments/gloo-gateway into 1.17 and 1.18
+- Add `gloo-gateway/gateway-api/1.18/ai-gateway` environment
+
 - (WIP) experimenting with oidc/pkce auth for portal frontend in gateway-api/portal-only environment
-- split environments/gloo-gateway into 1.17 and 1.18
-- (WIP) add `gloo-gateway/gateway-api/1.18/ai-gateway` environment
 
 0.6.0 (9-13-24)
 ---
