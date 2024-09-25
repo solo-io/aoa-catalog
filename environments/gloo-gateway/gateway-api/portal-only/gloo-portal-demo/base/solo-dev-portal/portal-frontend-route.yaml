@@ -31,7 +31,7 @@ spec:
           extensionRef:
             group: gateway.solo.io
             kind: RouteOption
-            name: portal-frontend-oidc-authconfig
+            name: portal-frontend-auth-policy
     - backendRefs:
         - name: portal-frontend
           namespace: gloo-system

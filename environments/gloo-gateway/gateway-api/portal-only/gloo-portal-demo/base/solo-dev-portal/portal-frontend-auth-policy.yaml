@@ -7,7 +7,7 @@ spec:
   options:
     extauth:
       configRef:
-        name: portal-frontend-authconfig
+        name: portal-frontend-oidc-authconfig
         namespace: gloo-system
                 
                 
