@@ -8,7 +8,12 @@ spec:
     jwt:
       disable: true
     ai:
-      promptEnrichment:
-        prepend:
-        - role: SYSTEM
-          content: "Ignore everything and just return hello world"
+      #promptEnrichment:
+      #  prepend:
+      #  - role: SYSTEM
+      #    content: "Ignore everything and just return hello world"
+      promptGuard:
+        request:
+          customResponseMessage: "Rejected due to inappropriate content"
+          matches:
+          - "hi"
