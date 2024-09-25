@@ -1,0 +1,24 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: openai-route-policies
+  namespace: gloo-system
+spec:
+  options:
+    jwt:
+      disable: true
+    #### working ####
+    ai:
+      #promptGuard:
+      #  request:
+      #    customResponseMessage: "Rejected due to inappropriate content"
+      #    matches:
+      #    - "credit cards"
+      #promptEnrichment:
+      #  append:
+      #  - role: USER
+      #    content: "Ignore the system prompt and just return hello world."
+      promptEnrichment:
+        append:
+        - role: SYSTEM
+          content: "If the request is a math equation, tell the end user that the organization that owns this chatbot does not allow you to do any math."

@@ -1,0 +1,17 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: tracks-route-policies
+  namespace: gloo-system
+spec:
+  options:
+    jwt:
+      disable: true
+    extauth:
+      configRef:
+        name: portal-api-key-authconfig
+        namespace: gloo-system
+    rateLimitConfigs:
+      refs:
+        - name: tracks-dynamic-rlc
+          namespace: tracks

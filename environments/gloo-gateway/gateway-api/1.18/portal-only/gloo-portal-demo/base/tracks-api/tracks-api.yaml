@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tracks
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: tracks-rest-api
+    demo: portal
+  name: tracks-rest-api
+  namespace: tracks
+spec:
+  selector:
+    matchLabels:
+      app: tracks-rest-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tracks-rest-api
+    spec:
+      containers:
+      - image: gcr.io/solo-public/docs/tracks-rest-api:latest
+        name: tracks-rest-api
+        ports:
+        - containerPort: 5000
+          name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    gloo.solo.io/scrape-openapi-source: /swagger.json
+    gloo.solo.io/scrape-openapi-retry-delay: "30s"
+    gloo.solo.io/scrape-openapi-pull-attempts: "5"
+    gloo.solo.io/scrape-openapi-use-backoff: "false"
+  name: tracks-rest-api
+  namespace: tracks
+  labels:
+    app: tracks-rest-api
+    demo: portal
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+  selector:
+    app: tracks-rest-api

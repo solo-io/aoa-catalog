@@ -1,0 +1,25 @@
+apiVersion: ratelimit.solo.io/v1alpha1
+kind: RateLimitConfig
+metadata:
+  name: petstore-dynamic-rlc
+  namespace: gloo-system
+spec:
+  raw:
+    setDescriptors:
+      - simpleDescriptors:
+          - key: generic_key
+            value: counter
+        rateLimit:
+          requestsPerUnit: 100
+          unit: SECOND
+    rateLimits:
+      - setActions:
+          - genericKey:
+              descriptorValue: counter
+        limit:
+          dynamicMetadata:
+            metadataKey:
+              key: "envoy.filters.http.ext_authz"
+              path:
+                - key: "config_0"
+                - key: "rateLimit"
