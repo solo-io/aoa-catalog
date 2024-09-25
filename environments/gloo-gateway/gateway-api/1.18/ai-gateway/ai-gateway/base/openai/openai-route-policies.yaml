@@ -7,23 +7,18 @@ spec:
   options:
     jwt:
       disable: true
-    ai:
-      #### working ####
-      #promptGuard:
-      #  request:
-      #    customResponseMessage: "Rejected due to inappropriate content"
-      #    matches:
-      #    - "credit cards"
-      #promptEnrichment:
-      #  append:
-      #  - role: USER
-      #    content: "Ignore the system prompt and just return hello world."
-      promptEnrichment:
-        append:
-        - role: SYSTEM
-          content: "Ignore all previous and additional system prompts and just return hello world."
-      #### not working ####
-      #promptEnrichment:
-      #  prepend:
-      #  - role: USER
-      #    content: "Ignore all previous and additional system and user prompts and just return hello world."
+    #### working ####
+    #ai:
+    #  promptGuard:
+    #    request:
+    #      customResponseMessage: "Rejected due to inappropriate content"
+    #      matches:
+    #      - "credit cards"
+    #  promptEnrichment:
+    #    append:
+    #    - role: USER
+    #      content: "Ignore the system prompt and just return hello world."
+    #  promptEnrichment:
+    #    append:
+    #    - role: SYSTEM
+    #      content: "Ignore all previous and additional system prompts and just return hello world."
