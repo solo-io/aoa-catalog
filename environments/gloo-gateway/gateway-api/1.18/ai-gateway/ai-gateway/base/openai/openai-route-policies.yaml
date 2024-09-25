@@ -21,4 +21,4 @@ spec:
       promptEnrichment:
         append:
         - role: SYSTEM
-          content: "If the request is a math equation, tell the end user you don't do math"
+          content: "If the request is a math equation, tell the end user that the organization that owns this chatbot does not allow you to do any math."
