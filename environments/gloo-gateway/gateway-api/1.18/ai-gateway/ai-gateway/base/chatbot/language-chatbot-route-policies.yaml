@@ -6,7 +6,7 @@ metadata:
 spec:
   options:
     jwt:
-      disable: false
+      disable: true
     rbac:
       policies:
         viewer:
