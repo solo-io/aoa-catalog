@@ -9,11 +9,11 @@ spec:
       disable: true
     #### working ####
     ai:
-      promptGuard:
-        request:
-          customResponseMessage: "Rejected due to inappropriate content"
-          matches:
-          - "credit cards"
+      #promptGuard:
+      #  request:
+      #    customResponseMessage: "Rejected due to inappropriate content"
+      #    matches:
+      #    - "credit cards"
       #promptEnrichment:
       #  append:
       #  - role: USER
