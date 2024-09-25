@@ -23,18 +23,3 @@ spec:
       namespace: gloo-system
       group: gloo.solo.io
       kind: Upstream
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /anthropic
-    filters:
-    - type: URLRewrite
-      urlRewrite:
-        path:
-          type: ReplaceFullPath
-          replaceFullPath: /v1/messages
-    backendRefs:
-    - name: anthropic
-      namespace: gloo-system
-      group: gloo.solo.io
-      kind: Upstream
