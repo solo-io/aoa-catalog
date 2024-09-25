@@ -7,7 +7,7 @@ spec:
   configs:
   - oauth2:
       oidcAuthorizationCode:
-        appUrl: https://api.glootest.com
+        appUrl: https://solo-dev-portal.glootest.com
         callbackPath: /v1/login
         clientId: 0oa6qvzybcVCK6PcS5d7
         clientSecretRef:
@@ -16,3 +16,7 @@ spec:
         issuerUrl: https://dev-22653158.okta.com/oauth2/default
         scopes:
         - email
+        headers:
+          idTokenHeader: id_token
+          #idTokenHeader: x-id-token
+          #accessTokenHeader: x-access-token
