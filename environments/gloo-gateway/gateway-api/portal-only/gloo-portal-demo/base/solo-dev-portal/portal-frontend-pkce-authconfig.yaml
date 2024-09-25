@@ -1,7 +1,7 @@
 apiVersion: enterprise.gloo.solo.io/v1
 kind: AuthConfig
 metadata:
-  name: portal-frontend-authconfig
+  name: portal-frontend-pkce-authconfig
   namespace: gloo-system
 spec:
   configs:

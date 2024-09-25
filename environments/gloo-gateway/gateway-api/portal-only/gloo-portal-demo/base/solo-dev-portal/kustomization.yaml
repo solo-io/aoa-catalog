@@ -11,5 +11,6 @@ resources:
 - portal-frontend-route.yaml
 - portal-frontend-route-policies.yaml
 - portal-frontend.yaml
-- portal-frontend-authconfig.yaml
+#- portal-frontend-pkce-authconfig.yaml
+- portal-frontend-oidc-authconfig.yaml
 - portal-frontend-auth-policy.yaml
