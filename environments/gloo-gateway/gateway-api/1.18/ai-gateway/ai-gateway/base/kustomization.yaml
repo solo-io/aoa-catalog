@@ -5,4 +5,4 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - openai
-#- chatbot
+- chatbot

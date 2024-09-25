@@ -42,36 +42,36 @@ spec:
           - name: "PORT"
             value: "3000"
           - name: OPENAI_ENDPOINT
-            value: "https://ai-gateway.demo.glooplatform.com/openai"
-          - name: ANTHROPIC_ENDPOINT
-            value: "https://ai-gateway.demo.glooplatform.com/claude"
-          # used with gloo api-key extauth policy to demonstrate api-key masking
-          - name: MANAGED_CLAUDE_API_KEY
-            value: "solo.io"
-          # specify api-key env var using secretKeyRef
-          - name: OPENAI_API_KEY
-            valueFrom:
-              secretKeyRef:
-                name: ai-chatbot-keys
-                key: openai-api-key
-          # specify api-key env var using secretKeyRef
-          - name: CLAUDE_API_KEY
-            valueFrom:
-              secretKeyRef:
-                name: ai-chatbot-keys
-                key: claude-api-key
-          # specify api-key env var using secretKeyRef
-          - name: GOOGLE_API_KEY
-            valueFrom:
-              secretKeyRef:
-                name: ai-chatbot-keys
-                key: google-api-key
-          # specify api-key env var using secretKeyRef
-          - name: MISTRAL_API_KEY
-            valueFrom:
-              secretKeyRef:
-                name: ai-chatbot-keys
-                key: mistral-api-key
+            value: "http://gloo-proxy-ai-gateway.gloo-system:8080/openai"
+          #- name: ANTHROPIC_ENDPOINT
+          #  value: "https://ai-gateway.demo.glooplatform.com/claude"
+          ## used with gloo api-key extauth policy to demonstrate api-key masking
+          #- name: MANAGED_CLAUDE_API_KEY
+          #  value: "solo.io"
+          ## specify api-key env var using secretKeyRef
+          #- name: OPENAI_API_KEY
+          #  valueFrom:
+          #    secretKeyRef:
+          #      name: ai-chatbot-keys
+          #      key: openai-api-key
+          ## specify api-key env var using secretKeyRef
+          #- name: CLAUDE_API_KEY
+          #  valueFrom:
+          #    secretKeyRef:
+          #      name: ai-chatbot-keys
+          #      key: claude-api-key
+          ## specify api-key env var using secretKeyRef
+          #- name: GOOGLE_API_KEY
+          #  valueFrom:
+          #    secretKeyRef:
+          #      name: ai-chatbot-keys
+          #      key: google-api-key
+          ## specify api-key env var using secretKeyRef
+          #- name: MISTRAL_API_KEY
+          #  valueFrom:
+          #    secretKeyRef:
+          #      name: ai-chatbot-keys
+          #      key: mistral-api-key
       # replaces the default system prompt with a custom one
         volumeMounts:
         - name: instructions-volume
