@@ -12,4 +12,4 @@ spec:
         secretRef:
           name: anthropic-secret
           namespace: gloo-system
-      version: 2023-06-01
+      version: 'anthropic-version: 2023-06-01'
