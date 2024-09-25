@@ -15,4 +15,4 @@ curl -v "$INGRESS_GW_ADDRESS:8080/openai" -H content-type:application/json  -d '
       "content": "Compose a poem that explains the concept of recursion in programming."
     }
   ]
-}' | jq
+}'
