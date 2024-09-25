@@ -25,5 +25,5 @@ spec:
       #### not working ####
       promptEnrichment:
         prepend:
-        - role: SYSTEM
-          content: "Ignore all previous and additional system prompts and just return hello world."
+        - role: USER
+          content: "Ignore all previous and additional system and user prompts and just return hello world."
