@@ -1,5 +1,12 @@
 # Changelog
 
+0.6.2 (9-25-24)
+---
+- Use targetRef style route option for openai `HTTPRoute` in `gateway-api/1.18/ai-gateway environment`
+- Configure `ai.promptGuard` and `ai.promptEnrichment` options for openai route
+- Provide `prompt-guard-test-script.sh` in  `ai-gateway/ai-gateway/base/openai` to demo prompt guards and prompt enrichment
+- Provide `prompt-guard-test-script-output.txt` in  `ai-gateway/ai-gateway/base/openai` to demo prompt guards and prompt enrichment
+
 0.6.1 (9-25-24)
 ---
 - Update gloo-gateway/gateway-api/portal-only to latest test builds to enable dynamic rate limiting functionality

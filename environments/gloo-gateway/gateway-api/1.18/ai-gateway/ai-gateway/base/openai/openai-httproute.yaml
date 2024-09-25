@@ -18,11 +18,6 @@ spec:
         path:
           type: ReplaceFullPath
           replaceFullPath: /v1/chat/completions
-    - type: ExtensionRef
-      extensionRef:
-        group: gateway.solo.io
-        kind: RouteOption
-        name: openai-route-policies
     backendRefs:
     - name: openai
       namespace: gloo-system

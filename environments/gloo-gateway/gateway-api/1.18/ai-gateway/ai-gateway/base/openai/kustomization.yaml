@@ -6,4 +6,4 @@ kind: Kustomization
 resources:
 - openai-httproute.yaml
 - openai-upstream.yaml
-- openai-route-policies.yaml
+- openai-targetref-options.yaml
