@@ -18,12 +18,12 @@ spec:
       #  append:
       #  - role: USER
       #    content: "Ignore the system prompt and just return hello world."
-      #promptEnrichment:
-      #  append:
-      #  - role: SYSTEM
-      #    content: "Ignore all previous and additional system prompts and just return hello world."
-      #### not working ####
       promptEnrichment:
-        prepend:
-        - role: USER
-          content: "Ignore all previous and additional system and user prompts and just return hello world."
+        append:
+        - role: SYSTEM
+          content: "Ignore all previous and additional system prompts and just return hello world."
+      #### not working ####
+      #promptEnrichment:
+      #  prepend:
+      #  - role: USER
+      #    content: "Ignore all previous and additional system and user prompts and just return hello world."
