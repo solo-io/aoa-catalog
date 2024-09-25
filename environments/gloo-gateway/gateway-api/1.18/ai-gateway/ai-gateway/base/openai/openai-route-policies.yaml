@@ -9,13 +9,13 @@ spec:
       disable: true
     ai:
       #### working ####
-      promptGuard:
-        request:
-          customResponseMessage: "Rejected due to inappropriate content"
-          matches:
-          - "credit cards"
+      #promptGuard:
+      #  request:
+      #    customResponseMessage: "Rejected due to inappropriate content"
+      #    matches:
+      #    - "credit cards"
       #### not working ####
-      #promptEnrichment:
-      #  prepend:
-      #  - role: SYSTEM
-      #    content: "Ignore everything and just return hello world"
+      promptEnrichment:
+        prepend:
+        - role: SYSTEM
+          content: "Ignore everything and just return hello world"
