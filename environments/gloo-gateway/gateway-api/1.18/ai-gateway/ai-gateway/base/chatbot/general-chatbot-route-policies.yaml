@@ -7,13 +7,13 @@ spec:
   options:
     jwt:
       disable: true
-    rbac:
-      policies:
-        viewer:
-          nestedClaimDelimiter: .
-          principals:
-          - jwtPrincipal:
-              claims:
-                org: internal
+    #rbac:
+    #  policies:
+    #    viewer:
+    #      nestedClaimDelimiter: .
+    #      principals:
+    #      - jwtPrincipal:
+    #          claims:
+    #            org: internal
                 
     
