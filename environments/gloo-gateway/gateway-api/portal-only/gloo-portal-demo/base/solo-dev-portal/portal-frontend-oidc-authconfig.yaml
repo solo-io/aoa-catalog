@@ -7,7 +7,7 @@ spec:
   configs:
   - oauth2:
       oidcAuthorizationCode:
-        appUrl: https://solo-dev-portal.glootest.com
+        appUrl: https://api.glootest.com
         callbackPath: /v1/login
         clientId: 0oa6qvzybcVCK6PcS5d7
         clientSecretRef:
