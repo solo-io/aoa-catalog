@@ -6,6 +6,7 @@ kind: Kustomization
 resources:
 - ai-gateway.yaml
 - gloo-gateway-override.yaml
+- ai-gateway-log-provider.yaml
 - openai
 - anthropic
 - chatbot
