@@ -9,8 +9,23 @@ echo
 # Pause for demonstration
 read -p "Step 1 complete. Press enter to proceed to Step 2..."
 
-# Step 2: Choose a request type
-echo "Step 2: Choose a request type to send:"
+# Step 2: Choose the OpenAI model to use
+echo "Step 2: Choose the OpenAI model to use:"
+MODELS=("gpt-4o" "gpt-4o-mini" "gpt-3.5-turbo")
+select MODEL in "${MODELS[@]}"; do
+    case $MODEL in
+        "gpt-4o"|"gpt-4o-mini"|"gpt-3.5-turbo")
+            echo "You chose model: $MODEL"
+            break
+            ;;
+        *)
+            echo "Invalid option, please select again."
+            ;;
+    esac
+done
+
+# Step 3: Choose a request type
+echo "Step 3: Choose a request type to send:"
 OPTIONS=("Regular Request" "No Math" "No Legal Advice" "No Medical Advice" "No Opinions" "No Credit Cards" "Mask Credit Cards")
 select REQUEST_TYPE in "${OPTIONS[@]}"; do
     case $REQUEST_TYPE in
@@ -18,7 +33,7 @@ select REQUEST_TYPE in "${OPTIONS[@]}"; do
             echo "You chose Regular Request."
             DATA=$(cat <<EOF
 {
-  "model": "gpt-3.5-turbo",
+  "model": "$MODEL",
   "messages": [
     {
       "role": "system",
@@ -38,7 +53,7 @@ EOF
             echo "You chose No Math."
             DATA=$(cat <<EOF
 {
-  "model": "gpt-3.5-turbo",
+  "model": "$MODEL",
   "messages": [
     {
       "role": "user",
@@ -54,7 +69,7 @@ EOF
             echo "You chose No Legal Advice."
             DATA=$(cat <<EOF
 {
-  "model": "gpt-3.5-turbo",
+  "model": "$MODEL",
   "messages": [
     {
       "role": "user",
@@ -70,7 +85,7 @@ EOF
             echo "You chose No Medical Advice."
             DATA=$(cat <<EOF
 {
-  "model": "gpt-3.5-turbo",
+  "model": "$MODEL",
   "messages": [
     {
       "role": "user",
@@ -86,7 +101,7 @@ EOF
             echo "You chose No Opinions."
             DATA=$(cat <<EOF
 {
-  "model": "gpt-3.5-turbo",
+  "model": "$MODEL",
   "messages": [
     {
       "role": "user",
@@ -102,7 +117,7 @@ EOF
             echo "You chose No Credit Cards."
             DATA=$(cat <<EOF
 {
-  "model": "gpt-3.5-turbo",
+  "model": "$MODEL",
   "messages": [
     {
       "role": "user",
@@ -118,7 +133,7 @@ EOF
             echo "You chose Mask Credit Cards."
             DATA=$(cat <<EOF
 {
-  "model": "gpt-3.5-turbo",
+  "model": "$MODEL",
   "messages": [
     {
       "role": "user",
@@ -138,11 +153,11 @@ done
 
 # Pause for demonstration
 echo "-------------------------"
-read -p "Step 2 complete. Press enter to proceed to Step 3..."
+read -p "Step 3 complete. Press enter to proceed to Step 4..."
 
-# Step 3: Execute the curl command and print it out first
+# Step 4: Execute the curl command and print it out first
 echo
-echo "Step 3: Preparing to send the request to the AI Gateway..."
+echo "Step 4: Preparing to send the request to the AI Gateway..."
 
 # Print the curl command that will be executed
 echo "curl \"$INGRESS_GW_ADDRESS:8080/openai\" -H \"Content-Type: application/json\" -d \"$DATA\""
@@ -151,7 +166,7 @@ echo "curl \"$INGRESS_GW_ADDRESS:8080/openai\" -H \"Content-Type: application/js
 curl "$INGRESS_GW_ADDRESS:8080/openai" -H "Content-Type: application/json" -d "$DATA"
 echo
 
-# Step 4: Ask if the user wants to run another request
+# Step 5: Ask if the user wants to run another request
 echo "-------------------------"
 while true; do
     read -p "Would you like to send another request? (y/n): " CONTINUE

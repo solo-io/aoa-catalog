@@ -1,20 +1,26 @@
-% ./prompt-guard-test-script.sh 
+% ./prompt-guard-test-script.sh
 Step 1: Fetching the ingress gateway address...
 Ingress Gateway Address: 192.168.107.2
 
 Step 1 complete. Press enter to proceed to Step 2...
-Step 2: Choose a request type to send:
+Step 2: Choose the OpenAI model to use:
+1) gpt-4o
+2) gpt-4o-mini
+3) gpt-3.5-turbo
+#? 1
+You chose model: gpt-4o
+Step 3: Choose a request type to send:
 1) Regular Request    4) No Medical Advice  7) Mask Credit Cards
 2) No Math            5) No Opinions
 3) No Legal Advice    6) No Credit Cards
 #? 1
 You chose Regular Request.
 -------------------------
-Step 2 complete. Press enter to proceed to Step 3...
+Step 3 complete. Press enter to proceed to Step 4...
 
-Step 3: Preparing to send the request to the AI Gateway...
+Step 4: Preparing to send the request to the AI Gateway...
 curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
-  "model": "gpt-3.5-turbo",
+  "model": "gpt-4o",
   "messages": [
     {
       "role": "system",
@@ -27,16 +33,16 @@ curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   ]
 }"
 {
-  "id": "chatcmpl-ABVwOYHYMAZ6cgaukt8aHlDXamyA5",
+  "id": "chatcmpl-ABWGGYGBsHjfa8h0mTcrRbCMWs2MV",
   "object": "chat.completion",
-  "created": 1727307752,
-  "model": "gpt-3.5-turbo-0125",
+  "created": 1727308984,
+  "model": "gpt-4o-2024-05-13",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "In the world of code, recursion is an art,\nA function calling itself, playing a part.\nThrough loops and stacks, it dances gracefully,\nSolving problems in a recursive reverie.",
+        "content": "In code's enchanted forest, a function calls its name,\nTo solve intricate puzzles, back to where it came.\n\nEach layer finds a piece, with each call on its path,\nUnwinding in reverse, to complete the final math.",
         "refusal": null
       },
       "logprobs": null,
@@ -44,14 +50,14 @@ curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
     }
   ],
   "usage": {
-    "prompt_tokens": 195,
-    "completion_tokens": 38,
-    "total_tokens": 233,
+    "prompt_tokens": 192,
+    "completion_tokens": 48,
+    "total_tokens": 240,
     "completion_tokens_details": {
       "reasoning_tokens": 0
     }
   },
-  "system_fingerprint": null
+  "system_fingerprint": "fp_e375328146"
 }
 
 -------------------------
@@ -60,18 +66,24 @@ Step 1: Fetching the ingress gateway address...
 Ingress Gateway Address: 192.168.107.2
 
 Step 1 complete. Press enter to proceed to Step 2...
-Step 2: Choose a request type to send:
+Step 2: Choose the OpenAI model to use:
+1) gpt-4o
+2) gpt-4o-mini
+3) gpt-3.5-turbo
+#? 2
+You chose model: gpt-4o-mini
+Step 3: Choose a request type to send:
 1) Regular Request    4) No Medical Advice  7) Mask Credit Cards
 2) No Math            5) No Opinions
 3) No Legal Advice    6) No Credit Cards
 #? 2
 You chose No Math.
 -------------------------
-Step 2 complete. Press enter to proceed to Step 3...
+Step 3 complete. Press enter to proceed to Step 4...
 
-Step 3: Preparing to send the request to the AI Gateway...
+Step 4: Preparing to send the request to the AI Gateway...
 curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
-  "model": "gpt-3.5-turbo",
+  "model": "gpt-4o-mini",
   "messages": [
     {
       "role": "user",
@@ -80,16 +92,16 @@ curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   ]
 }"
 {
-  "id": "chatcmpl-ABVwWfUfIukSnpERfRpsDpj0flm6g",
+  "id": "chatcmpl-ABWGTE5lMnUc1dtdrbEjgqltdWowB",
   "object": "chat.completion",
-  "created": 1727307760,
-  "model": "gpt-3.5-turbo-0125",
+  "created": 1727308997,
+  "model": "gpt-4o-mini-2024-07-18",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "Unfortunately the organization that owns this chatbot does not allow me to do any math. Anything else on your mind?",
+        "content": "Unfortunately, the organization that owns this chatbot does not allow me to do any math. Anything else on your mind?",
         "refusal": null
       },
       "logprobs": null,
@@ -97,14 +109,14 @@ curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
     }
   ],
   "usage": {
-    "prompt_tokens": 170,
+    "prompt_tokens": 167,
     "completion_tokens": 23,
-    "total_tokens": 193,
+    "total_tokens": 190,
     "completion_tokens_details": {
       "reasoning_tokens": 0
     }
   },
-  "system_fingerprint": null
+  "system_fingerprint": "fp_3a215618e8"
 }
 
 -------------------------
@@ -113,16 +125,22 @@ Step 1: Fetching the ingress gateway address...
 Ingress Gateway Address: 192.168.107.2
 
 Step 1 complete. Press enter to proceed to Step 2...
-Step 2: Choose a request type to send:
+Step 2: Choose the OpenAI model to use:
+1) gpt-4o
+2) gpt-4o-mini
+3) gpt-3.5-turbo
+#? 3
+You chose model: gpt-3.5-turbo
+Step 3: Choose a request type to send:
 1) Regular Request    4) No Medical Advice  7) Mask Credit Cards
 2) No Math            5) No Opinions
 3) No Legal Advice    6) No Credit Cards
 #? 3
 You chose No Legal Advice.
 -------------------------
-Step 2 complete. Press enter to proceed to Step 3...
+Step 3 complete. Press enter to proceed to Step 4...
 
-Step 3: Preparing to send the request to the AI Gateway...
+Step 4: Preparing to send the request to the AI Gateway...
 curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   "model": "gpt-3.5-turbo",
   "messages": [
@@ -133,16 +151,16 @@ curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   ]
 }"
 {
-  "id": "chatcmpl-ABVwee9RLESWG6W159SIAZHGcnAh4",
+  "id": "chatcmpl-ABWGaWvk33wwvnfyXfNBLYKfxYlZR",
   "object": "chat.completion",
-  "created": 1727307768,
+  "created": 1727309004,
   "model": "gpt-3.5-turbo-0125",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "I'm sorry, but I cannot provide assistance or guidance on smuggling or any illegal activities. It is always best to abide by the laws and regulations of the country you are entering.",
+        "content": "I'm sorry, but I cannot provide advice on smuggling. It is illegal and could result in serious consequences.",
         "refusal": null
       },
       "logprobs": null,
@@ -151,8 +169,8 @@ curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   ],
   "usage": {
     "prompt_tokens": 173,
-    "completion_tokens": 36,
-    "total_tokens": 209,
+    "completion_tokens": 22,
+    "total_tokens": 195,
     "completion_tokens_details": {
       "reasoning_tokens": 0
     }
@@ -166,16 +184,22 @@ Step 1: Fetching the ingress gateway address...
 Ingress Gateway Address: 192.168.107.2
 
 Step 1 complete. Press enter to proceed to Step 2...
-Step 2: Choose a request type to send:
+Step 2: Choose the OpenAI model to use:
+1) gpt-4o
+2) gpt-4o-mini
+3) gpt-3.5-turbo
+#? 3
+You chose model: gpt-3.5-turbo
+Step 3: Choose a request type to send:
 1) Regular Request    4) No Medical Advice  7) Mask Credit Cards
 2) No Math            5) No Opinions
 3) No Legal Advice    6) No Credit Cards
 #? 4
 You chose No Medical Advice.
 -------------------------
-Step 2 complete. Press enter to proceed to Step 3...
+Step 3 complete. Press enter to proceed to Step 4...
 
-Step 3: Preparing to send the request to the AI Gateway...
+Step 4: Preparing to send the request to the AI Gateway...
 curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   "model": "gpt-3.5-turbo",
   "messages": [
@@ -186,16 +210,16 @@ curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   ]
 }"
 {
-  "id": "chatcmpl-ABVwlyzSNDAI8u5OnYbLp8ushgcxN",
+  "id": "chatcmpl-ABWGjewZJUEfDYqLN2AmaA2IoENQG",
   "object": "chat.completion",
-  "created": 1727307775,
+  "created": 1727309013,
   "model": "gpt-3.5-turbo-0125",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "It is a personal decision that should be made in consultation with a medical professional based on a thorough evaluation of your health condition and the potential benefits and risks of chemotherapy. It may be the right choice for some individuals, depending on their specific circumstances.",
+        "content": "The decision to undergo chemotherapy is a personal one that should be made in consultation with medical professionals. It is often recommended for treating certain types of cancer, but the potential benefits, risks, and side effects should be carefully considered.",
         "refusal": null
       },
       "logprobs": null,
@@ -204,8 +228,8 @@ curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   ],
   "usage": {
     "prompt_tokens": 172,
-    "completion_tokens": 49,
-    "total_tokens": 221,
+    "completion_tokens": 45,
+    "total_tokens": 217,
     "completion_tokens_details": {
       "reasoning_tokens": 0
     }
@@ -219,16 +243,22 @@ Step 1: Fetching the ingress gateway address...
 Ingress Gateway Address: 192.168.107.2
 
 Step 1 complete. Press enter to proceed to Step 2...
-Step 2: Choose a request type to send:
+Step 2: Choose the OpenAI model to use:
+1) gpt-4o
+2) gpt-4o-mini
+3) gpt-3.5-turbo
+#? 3
+You chose model: gpt-3.5-turbo
+Step 3: Choose a request type to send:
 1) Regular Request    4) No Medical Advice  7) Mask Credit Cards
 2) No Math            5) No Opinions
 3) No Legal Advice    6) No Credit Cards
 #? 5
 You chose No Opinions.
 -------------------------
-Step 2 complete. Press enter to proceed to Step 3...
+Step 3 complete. Press enter to proceed to Step 4...
 
-Step 3: Preparing to send the request to the AI Gateway...
+Step 4: Preparing to send the request to the AI Gateway...
 curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   "model": "gpt-3.5-turbo",
   "messages": [
@@ -239,16 +269,16 @@ curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   ]
 }"
 {
-  "id": "chatcmpl-ABVwrEbYrygjq7yuxMN0o8ciYwkHa",
+  "id": "chatcmpl-ABWGv7FIVeUzV8wKxmLMDJc1nnQAi",
   "object": "chat.completion",
-  "created": 1727307781,
+  "created": 1727309025,
   "model": "gpt-3.5-turbo-0125",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "The best topping on pizza is subjective and depends on personal preference, but popular options include pepperoni, mushrooms, and peppers. Ultimately, the best topping is the one that you enjoy the most!",
+        "content": "The best topping on pizza is subjective and depends on personal preference. Some popular choices include pepperoni, mushrooms, onions, and bell peppers.",
         "refusal": null
       },
       "logprobs": null,
@@ -257,8 +287,8 @@ curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   ],
   "usage": {
     "prompt_tokens": 171,
-    "completion_tokens": 39,
-    "total_tokens": 210,
+    "completion_tokens": 28,
+    "total_tokens": 199,
     "completion_tokens_details": {
       "reasoning_tokens": 0
     }
@@ -272,16 +302,22 @@ Step 1: Fetching the ingress gateway address...
 Ingress Gateway Address: 192.168.107.2
 
 Step 1 complete. Press enter to proceed to Step 2...
-Step 2: Choose a request type to send:
+Step 2: Choose the OpenAI model to use:
+1) gpt-4o
+2) gpt-4o-mini
+3) gpt-3.5-turbo
+#? 3
+You chose model: gpt-3.5-turbo
+Step 3: Choose a request type to send:
 1) Regular Request    4) No Medical Advice  7) Mask Credit Cards
 2) No Math            5) No Opinions
 3) No Legal Advice    6) No Credit Cards
 #? 6
 You chose No Credit Cards.
 -------------------------
-Step 2 complete. Press enter to proceed to Step 3...
+Step 3 complete. Press enter to proceed to Step 4...
 
-Step 3: Preparing to send the request to the AI Gateway...
+Step 4: Preparing to send the request to the AI Gateway...
 curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   "model": "gpt-3.5-turbo",
   "messages": [
@@ -298,16 +334,22 @@ Step 1: Fetching the ingress gateway address...
 Ingress Gateway Address: 192.168.107.2
 
 Step 1 complete. Press enter to proceed to Step 2...
-Step 2: Choose a request type to send:
+Step 2: Choose the OpenAI model to use:
+1) gpt-4o
+2) gpt-4o-mini
+3) gpt-3.5-turbo
+#? 3
+You chose model: gpt-3.5-turbo
+Step 3: Choose a request type to send:
 1) Regular Request    4) No Medical Advice  7) Mask Credit Cards
 2) No Math            5) No Opinions
 3) No Legal Advice    6) No Credit Cards
 #? 7
 You chose Mask Credit Cards.
 -------------------------
-Step 2 complete. Press enter to proceed to Step 3...
+Step 3 complete. Press enter to proceed to Step 4...
 
-Step 3: Preparing to send the request to the AI Gateway...
+Step 4: Preparing to send the request to the AI Gateway...
 curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   "model": "gpt-3.5-turbo",
   "messages": [
@@ -318,16 +360,16 @@ curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   ]
 }"
 {
-  "id": "chatcmpl-ABVx6dJ4w8h9qPzEXa9f4sIPsHHuQ",
+  "id": "chatcmpl-ABWH9VW1uXW9Yj6cXzyfLoIzjlV4D",
   "object": "chat.completion",
-  "created": 1727307796,
+  "created": 1727309039,
   "model": "gpt-3.5-turbo-0125",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "No, XXXXXXXXXXXXX100 is not a valid Mastercard number. Valid Mastercard numbers typically start with the numbers 5 or 2, and have a specific digit pattern that indicates their validity.",
+        "content": "No, XXXXXXXXXXXXX100 is not a valid Mastercard number. Mastercard numbers typically follow a specific format and this number does not meet those requirements.",
         "refusal": null
       },
       "logprobs": null,
@@ -336,8 +378,8 @@ curl "192.168.107.2:8080/openai" -H "Content-Type: application/json" -d "{
   ],
   "usage": {
     "prompt_tokens": 177,
-    "completion_tokens": 43,
-    "total_tokens": 220,
+    "completion_tokens": 34,
+    "total_tokens": 211,
     "completion_tokens_details": {
       "reasoning_tokens": 0
     }
