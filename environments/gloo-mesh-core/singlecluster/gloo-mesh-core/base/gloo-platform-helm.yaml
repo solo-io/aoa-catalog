@@ -65,7 +65,7 @@ spec:
             basePath: /foo
             serviceType: ClusterIP
             auth:
-              enabled: true
+              enabled: false
               backend: oidc
               oidc:
                 appUrl: https://gloo-mesh-core-demo.solo.io
