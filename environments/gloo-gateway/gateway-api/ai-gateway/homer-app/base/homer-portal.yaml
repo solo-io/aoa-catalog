@@ -203,6 +203,12 @@ spec:
                         tag: "ai-gateway"
                         url: "https://language-chatbot.ggv2.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "BetterChatGPT Chatbot"
+                        #subtitle: "requires x-token header"
+                        icon: "far fa-question-circle"
+                        tag: "ai-gateway"
+                        url: "https://betterchatgpt.ggv2.glooplatform.com/"
+                        target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
     automated:
