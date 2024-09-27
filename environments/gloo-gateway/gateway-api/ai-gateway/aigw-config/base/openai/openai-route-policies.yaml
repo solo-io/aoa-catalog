@@ -1,0 +1,26 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: openai-route-policies
+  namespace: gloo-system
+spec:
+  options:
+    hostRewrite: 'api.openai.com'
+    prefixRewrite: '/v1/chat/completions'
+    jwt:
+      disable: true
+    cors:
+      allowOrigin:
+        - '*'
+      allowHeaders:
+        - "Content-Type"
+        - "Authorization"
+        - "Access-Control-Allow-Origin"
+        - "api-key"
+      allowMethods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - OPTIONS
+      allowCredentials: true
