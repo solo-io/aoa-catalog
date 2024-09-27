@@ -7,22 +7,6 @@ spec:
   options:
     jwt:
       disable: true
-    cors:
-      allowOrigin:
-        - https://betterchatgpt.ggv2.glooplatform.com/
-        - https://openai.ggv2.glooplatform.com/
-      allowHeaders:
-        - "Content-Type"
-        - "Authorization"
-        - "Access-Control-Allow-Origin"
-        - "api-key"
-      allowMethods:
-        - GET
-        - POST
-        - PUT
-        - DELETE
-        - OPTIONS
-      allowCredentials: true
     #rbac:
     #  policies:
     #    viewer:
