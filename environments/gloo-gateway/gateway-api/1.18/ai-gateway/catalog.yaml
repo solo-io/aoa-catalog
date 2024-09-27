@@ -20,7 +20,14 @@ waves:
       pre_deploy: 
       -  $env_path/aigw-config/init.sh
       post_deploy:
-      -  $env_path/aigw-config/test.sh   
+      -  $env_path/aigw-config/test.sh
+  - name: chatbot
+    location: $env_path/chatbot/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/chatbot/init.sh
+      post_deploy:
+      -  $env_path/chatbot/test.sh    
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:

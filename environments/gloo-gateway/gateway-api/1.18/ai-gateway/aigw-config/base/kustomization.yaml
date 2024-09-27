@@ -9,4 +9,3 @@ resources:
 - ai-gateway-log-provider.yaml
 - openai
 - anthropic
-- chatbot
