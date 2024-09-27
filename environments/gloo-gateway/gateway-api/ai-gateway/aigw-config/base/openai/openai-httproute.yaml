@@ -4,6 +4,8 @@ metadata:
   name: openai
   namespace: gloo-system
 spec:
+  hostnames:
+    - openai.ggv2.glooplatform.com
   parentRefs:
     - name: ai-gateway
       namespace: gloo-system
