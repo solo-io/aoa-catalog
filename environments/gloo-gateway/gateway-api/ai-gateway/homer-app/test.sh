@@ -8,7 +8,7 @@ echo
 echo "The applications featured in this demo are hosted under the *.ggv2.glooplatform.com domain"
 echo
 echo "When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:"
-echo "127.0.0.1 argocd.ggv2.glooplatform.com homer.ggv2.glooplatform.com solo-dev-portal.ggv2.glooplatform.com api.ggv2.glooplatform.com tracks.ggv2.glooplatform.com openlibrary.ggv2.glooplatform.com"
+echo "127.0.0.1 argocd.ggv2.glooplatform.com homer.ggv2.glooplatform.com httpbin.ggv2.glooplatform.com bookinfo.ggv2.glooplatform.com general-chatbot.ggv2.glooplatform.com language-chatbot.ggv2.glooplatform.com"
 echo 
 echo "Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)"
 echo

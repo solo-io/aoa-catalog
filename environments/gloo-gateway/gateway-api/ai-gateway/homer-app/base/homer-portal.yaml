@@ -151,15 +151,8 @@ spec:
                     Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
                     
                     When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />
-                    127.0.0.1 argocd.ggv2.glooplatform.com homer.ggv2.glooplatform.com solo-dev-portal.ggv2.glooplatform.com api.ggv2.glooplatform.com tracks.ggv2.glooplatform.com openlibrary.ggv2.glooplatform.com<br /><br />
+                    127.0.0.1 argocd.ggv2.glooplatform.com homer.ggv2.glooplatform.com general-chatbot.ggv2.glooplatform.com language-chatbot.ggv2.glooplatform.com<br /><br />
                     Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />
-                    
-                    Below are a few common usernames to explore the applications and portals:<br />
-                    Username: jdoe@solo.io // Password: gloo-dev<br />
-                    Username: jdoe@gmail.com // Password: gloo-public<br /><br />
-
-                    Used in API-Key auth example:<br />
-                    bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br /><br />
                     
                     Run this command in your terminal for the JWT token used in auth example:<br />
                     TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "x-token: $TOKEN"<br />
@@ -194,22 +187,22 @@ spec:
                         keywords: "argocd"
                         url: "https://argocd.ggv2.glooplatform.com/argo"
                         target: "_blank" # optional html a tag target attribute
-                  
-                  - name: "Gloo Portal"
-                    icon: "fas fa-cloud"
+
+                  - name: "AI Gateway Workloads"
+                    icon: "fas fa-brain"
                     items:
-                      - name: "React Frontend - Solo Dev Portal"
-                        icon: "fab fa-connectdevelop"
-                        tag: "portal"
-                        url: "https://solo-dev-portal.ggv2.glooplatform.com"
+                      - name: "General Chatbot"
+                        #subtitle: "requires x-token header"
+                        icon: "far fa-question-circle"
+                        tag: "ai-gateway"
+                        url: "https://general-chatbot.ggv2.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Portal Backend Server"
-                        icon: "far fa-window-maximize"
-                        tag: "portal"
-                        url: "https://api.ggv2.glooplatform.com/v1/api-products"
+                      - name: "Language Translator Chatbot"
+                        #subtitle: "requires x-token header"
+                        icon: "fas fa-language"
+                        tag: "ai-gateway"
+                        url: "https://language-chatbot.ggv2.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-                      
-                      
                     
   syncPolicy:
     automated:
