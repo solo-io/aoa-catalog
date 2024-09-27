@@ -1,0 +1,14 @@
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  labels:
+    app: gloo
+  name: anthropic
+  namespace: gloo-system
+spec:
+  ai:
+    anthropic:
+      authToken:
+        secretRef:
+          name: anthropic-secret
+          namespace: gloo-system
