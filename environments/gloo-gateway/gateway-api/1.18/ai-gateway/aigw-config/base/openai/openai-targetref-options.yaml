@@ -9,8 +9,6 @@ spec:
     kind: HTTPRoute
     name: openai
   options:
-    jwt:
-      disable: true
     ai:
       promptGuard:
         request:
