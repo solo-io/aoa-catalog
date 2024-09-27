@@ -1,0 +1,27 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: llamagpt-route
+  labels:
+    example: llamagpt-route
+    gateway: https
+spec:
+  hostnames:
+  - "llamagpt.glootest.com"
+  parentRefs:
+    - name: https
+      namespace: gloo-system
+  rules:
+    - backendRefs:
+        - name: llama-gpt-ui
+          port: 3000
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
+      filters:
+      - type: ExtensionRef
+        extensionRef:
+          group: gateway.solo.io
+          kind: RouteOption
+          name: llamagpt-route-policies

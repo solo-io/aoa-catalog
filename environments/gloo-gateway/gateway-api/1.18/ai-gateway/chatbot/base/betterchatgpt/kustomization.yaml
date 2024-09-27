@@ -4,9 +4,7 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- ai-chatbot-ns.yaml
-- gptportal-sa.yaml
-- general-chatbot
-- language-chatbot
-#- betterchatgpt
-#- llama-gpt
+- betterchatgpt-chatbot.yaml
+- betterchatgpt-route.yaml
+- betterchatgpt-route-policies.yaml
+- betterchatgpt-sa.yaml

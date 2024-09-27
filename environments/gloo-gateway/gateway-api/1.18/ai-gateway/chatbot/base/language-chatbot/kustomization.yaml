@@ -5,6 +5,6 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - language-chatbot.yaml
-- language-chatbot-https.yaml
+- language-chatbot-route.yaml
 - language-translator-system-prompt-cm.yaml
 - language-chatbot-route-policies.yaml

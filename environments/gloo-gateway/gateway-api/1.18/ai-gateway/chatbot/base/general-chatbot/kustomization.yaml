@@ -5,6 +5,6 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - general-chatbot.yaml
-- general-chatbot-https.yaml
+- general-chatbot-route.yaml
 - general-chatbot-route-policies.yaml
 - default-system-prompt-cm.yaml
