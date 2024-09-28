@@ -4,8 +4,8 @@ metadata:
   name: openai
   namespace: gloo-system
 spec:
-  hostnames:
-    - llm.glootest.com
+  #hostnames:
+  #  - llm.glootest.com
   parentRefs:
     - name: ai-gateway
       namespace: gloo-system
