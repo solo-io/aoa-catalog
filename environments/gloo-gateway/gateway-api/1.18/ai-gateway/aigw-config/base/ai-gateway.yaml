@@ -8,14 +8,9 @@ metadata:
 spec:
   gatewayClassName: gloo-gateway
   listeners:
-  - protocol: HTTPS
-    port: 443
-    name: https
-    tls:
-      mode: Terminate
-      certificateRefs:
-        - name: upstream-tls
-          kind: Secret
+  - protocol: HTTP
+    port: 8080
+    name: http
     allowedRoutes:
       namespaces:
         from: All
