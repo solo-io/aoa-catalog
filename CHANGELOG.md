@@ -8,7 +8,9 @@
 - Provide `prompt-guard-test-script-output.txt` in  `gateway-api/1.18/ai-gateway/ai-gateway/base/openai` to demo prompt guards and prompt enrichment
 - add locust loadgen example in `gateway-api/1.18/ai-gateway`
 - add ai-gateway access log listeneroption
-- configure multiple replicas in ai-gateway GatewayParameters
+- configure `replicas: 1` in ai-gateway GatewayParameters
+- (WIP) added chatbot/base/betterchatgpt
+- (WIP) added chatbot/base/llama-gpt
 
 0.6.1 (9-25-24)
 ---
