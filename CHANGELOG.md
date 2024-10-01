@@ -1,5 +1,17 @@
 # Changelog
 
+0.6.2 (10-1-24)
+---
+- Use targetRef style route option for openai `HTTPRoute` in `gateway-api/1.18/ai-gateway environment`
+- Configure `ai.promptGuard` and `ai.promptEnrichment` options for openai route
+- Provide `prompt-guard-test-script.sh` in  `ai-gateway/ai-gateway/base/openai` to demo prompt guards and prompt enrichment
+- Provide `prompt-guard-test-script-output.txt` in  `gateway-api/1.18/ai-gateway/ai-gateway/base/openai` to demo prompt guards and prompt enrichment
+- add locust loadgen example in `gateway-api/1.18/ai-gateway`
+- add ai-gateway access log listeneroption
+- configure `replicas: 1` in ai-gateway GatewayParameters
+- added chatbot/base/betterchatgpt
+- added chatbot/base/llama-gpt (not enabled by default)
+
 0.6.1 (9-25-24)
 ---
 - Update gloo-gateway/gateway-api/portal-only to latest test builds to enable dynamic rate limiting functionality

@@ -4,6 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- openai-httproute.yaml
-- openai-upstream.yaml
-- openai-route-policies.yaml
+- ai-gateway.yaml
+- gloo-gateway-override.yaml
+- ai-gateway-log-provider.yaml
+- openai
+- anthropic

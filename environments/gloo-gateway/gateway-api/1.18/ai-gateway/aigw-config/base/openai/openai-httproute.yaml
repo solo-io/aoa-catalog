@@ -4,6 +4,8 @@ metadata:
   name: openai
   namespace: gloo-system
 spec:
+  #hostnames:
+  #  - llm.glootest.com
   parentRefs:
     - name: ai-gateway
       namespace: gloo-system
@@ -12,12 +14,13 @@ spec:
     - path:
         type: PathPrefix
         value: /openai
+    #filters:
+    #- type: URLRewrite
+    #  urlRewrite:
+    #    path:
+    #      type: ReplaceFullPath
+    #      replaceFullPath: /v1/chat/completions
     filters:
-    - type: URLRewrite
-      urlRewrite:
-        path:
-          type: ReplaceFullPath
-          replaceFullPath: /v1/chat/completions
     - type: ExtensionRef
       extensionRef:
         group: gateway.solo.io

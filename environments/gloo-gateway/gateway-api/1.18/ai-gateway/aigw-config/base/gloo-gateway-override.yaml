@@ -10,3 +10,5 @@ spec:
       ports:
       - name: ai-monitoring
         containerPort: 9092
+    deployment:
+      replicas: 1
