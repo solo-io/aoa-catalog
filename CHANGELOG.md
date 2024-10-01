@@ -1,6 +1,6 @@
 # Changelog
 
-0.6.2 (9-26-24)
+0.6.2 (10-1-24)
 ---
 - Use targetRef style route option for openai `HTTPRoute` in `gateway-api/1.18/ai-gateway environment`
 - Configure `ai.promptGuard` and `ai.promptEnrichment` options for openai route
@@ -10,7 +10,7 @@
 - add ai-gateway access log listeneroption
 - configure `replicas: 1` in ai-gateway GatewayParameters
 - added chatbot/base/betterchatgpt
-- (WIP) added chatbot/base/llama-gpt
+- added chatbot/base/llama-gpt (not enabled by default)
 
 0.6.1 (9-25-24)
 ---

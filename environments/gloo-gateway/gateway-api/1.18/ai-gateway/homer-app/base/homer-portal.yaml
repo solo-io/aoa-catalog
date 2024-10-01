@@ -209,6 +209,12 @@ spec:
                         tag: "ai-gateway"
                         url: "http://chat.glootest.com/"
                         target: "_blank" # optional html a tag target attribute
+                      #- name: "LlamaGPT Chatbot"
+                      #  #subtitle: "requires x-token header"
+                      #  icon: "far fa-question-circle"
+                      #  tag: "ai-gateway"
+                      #  url: "http://llamagpt.glootest.com/"
+                      #  target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
     automated:
