@@ -7,3 +7,4 @@ resources:
 - openai-httproute.yaml
 - openai-upstream.yaml
 - openai-targetref-options.yaml
+- openai-route-policies.yaml
