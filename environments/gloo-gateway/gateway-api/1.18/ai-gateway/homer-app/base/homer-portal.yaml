@@ -203,12 +203,6 @@ spec:
                         tag: "ai-gateway"
                         url: "https://language-chatbot.glootest.com"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Language Translator Chatbot"
-                        #subtitle: "requires x-token header"
-                        icon: "fas fa-language"
-                        tag: "ai-gateway"
-                        url: "https://language-chatbot.glootest.com"
-                        target: "_blank" # optional html a tag target attribute
                       - name: "BetterChatGPT Chatbot"
                         #subtitle: "requires x-token header"
                         icon: "far fa-question-circle"
