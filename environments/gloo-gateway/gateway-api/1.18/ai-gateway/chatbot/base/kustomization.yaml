@@ -8,5 +8,5 @@ resources:
 - gptportal-sa.yaml
 - general-chatbot
 - language-chatbot
-#- betterchatgpt
+- betterchatgpt
 #- llama-gpt

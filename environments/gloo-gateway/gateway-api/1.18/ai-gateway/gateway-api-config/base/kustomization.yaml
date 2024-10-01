@@ -4,6 +4,7 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
+- gateway-http.yaml
 - gateway-https.yaml
 - argocd-https.yaml
 - argocd-route-policies.yaml

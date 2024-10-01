@@ -5,12 +5,12 @@ metadata:
   namespace: ai-chatbot
   labels:
     example: chatbot-route
-    gateway: https
+    gateway: http
 spec:
   hostnames:
-  - "betterchatgpt.glootest.com"
+  - "chat.glootest.com"
   parentRefs:
-    - name: https
+    - name: http
       namespace: gloo-system
   rules:
     - backendRefs:
