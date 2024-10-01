@@ -8,7 +8,7 @@ metadata:
     gateway: https
 spec:
   hostnames:
-  - "betterchatgpt.ggv2.glooplatform.com"
+  - "chat.ggv2.glooplatform.com"
   parentRefs:
     - name: https
       namespace: gloo-system
