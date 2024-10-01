@@ -151,7 +151,7 @@ spec:
                     Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
                     
                     When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />
-                    127.0.0.1 argocd.ggv2.glooplatform.com homer.ggv2.glooplatform.com general-chatbot.ggv2.glooplatform.com language-chatbot.ggv2.glooplatform.com<br /><br />
+                    127.0.0.1 argocd.ggv2.glooplatform.com homer.ggv2.glooplatform.com general-chatbot.ggv2.glooplatform.com language-chatbot.ggv2.glooplatform.com betterchatgpt.ggv2.glooplatform.com openai.ggv2.glooplatform.com<br /><br />
                     Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />
                     
                     Run this command in your terminal for the JWT token used in auth example:<br />
@@ -164,9 +164,9 @@ spec:
                     icon: "fab fa-github"
                     url: "https://github.com/solo-io/aoa-catalog"
                     target: "_blank" # optional html a tag target attribute
-                  - name: "Gloo Edge Documentation"
+                  - name: "Gloo AI Gateway Documentation"
                     icon: "fas fa-book"
-                    url: "https://docs.solo.io/gloo-edge/latest/"
+                    url: "https://docs.solo.io/gateway/main/ai/overview/"
                   # this will link to a second homer page that will load config from additional-page.yml and keep default config values as in config.yml file
                   # see url field and assets/additional-page.yml.dist used in this example:
                   #- name: "another page!"
