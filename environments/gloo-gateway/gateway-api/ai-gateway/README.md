@@ -1,2 +1,2 @@
 # Environment Description
-The `gateway-api/portal-only` environment deploys Gloo Gateway along with a Gloo Portal demo that exposes the sample React frontend portal from the Solo.io docs and serves several API Products with Swagger UI or Redoc views. There is no Gloo Mesh or Istio configured in this environment.
+The `gateway-api/ai-gateway` environment deploys Gloo Gateway along with a AI Gateway extension and configure AI Gateway features such as multi-LLM, prompt enrichment, and prompt guard at the proxy. Several chatbot examples that can use the Gloo AI Gateway endpoints are configured and exposed
