@@ -6,7 +6,7 @@ kind: Kustomization
 resources:
 - ai-chatbot-ns.yaml
 - gptportal-sa.yaml
-- general-chatbot
+#- general-chatbot
 - language-chatbot
 - betterchatgpt
 #- llama-gpt
