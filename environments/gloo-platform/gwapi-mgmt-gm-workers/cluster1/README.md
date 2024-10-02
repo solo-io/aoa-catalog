@@ -10,11 +10,11 @@ The `gloo-platform/core/cluster1` environment deploys the `cluster1` worker for 
 
 ## Environment description
 - base:
-    - gloo mesh 2.7.0-beta0-2024-09-26-ashleywang1-fix-base-path-helm-value-2d7859de5f
+    - gloo mesh 2.7.0-beta0-2024-10-02-ashleywang1-fix-base-path-helm-value-9763b86b23
     - istio 1.22.3-patch1-solo (Helm)
     - revision: 1-22
 - ilcm:
-    - gloo mesh 2.7.0-beta0-2024-09-26-ashleywang1-fix-base-path-helm-value-2d7859de5f
+    - gloo mesh 2.7.0-beta0-2024-10-02-ashleywang1-fix-base-path-helm-value-9763b86b23
     - istio 1.22.3-patch1-solo (ILCM)
     - revision: 1-22
 

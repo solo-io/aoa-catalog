@@ -82,7 +82,7 @@ spec:
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.7.0-beta0-2024-09-26-ashleywang1-fix-base-path-helm-value-2d7859de5f
+            #  tag: 2.7.0-beta0-2024-10-02-ashleywang1-fix-base-path-helm-value-9763b86b23
         telemetryGatewayCustomization:
             disableCertGeneration: true
             extraExporters:
@@ -181,7 +181,7 @@ spec:
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.7.0-beta0-2024-09-26-ashleywang1-fix-base-path-helm-value-2d7859de5f
+            #  tag: 2.7.0-beta0-2024-10-02-ashleywang1-fix-base-path-helm-value-9763b86b23
             config:
                 exporters:
                     otlp:
@@ -243,7 +243,7 @@ spec:
                       endpoint: 0.0.0.0:4318
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta0-2024-09-26-ashleywang1-fix-base-path-helm-value-2d7859de5f
+    targetRevision: 2.7.0-beta0-2024-10-02-ashleywang1-fix-base-path-helm-value-9763b86b23
   syncPolicy:
     automated:
       prune: true
