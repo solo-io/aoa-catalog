@@ -1,5 +1,9 @@
 # Changelog
 
+0.6.3 (10-2-24)
+---
+- Update readme with hostname entries section describing all of the hostnames used in this repo and how to configure them locally
+
 0.6.2 (10-1-24)
 ---
 - Use targetRef style route option for openai `HTTPRoute` in `gateway-api/1.18/ai-gateway environment`

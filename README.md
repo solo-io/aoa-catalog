@@ -60,7 +60,55 @@ pre_deploy scripts > deploy app-of-app > post_deploy scripts
 (Wave 2)
 pre_deploy scripts > deploy app-of-app > post_deploy scripts
 <...>
-``````
+```
+
+## Hostname entries
+
+Across the repo, the environments may be configured to use non-wildcard hostnames. Typically this should be `*.glootest.com` mapped to your Cloud LoadBalancer IP and configured with your DNS provider (i.e. Cloudflare, Route53, etc.)
+
+If running locally, these entries need to be added to `/etc/hosts` and unfortunately `/etc/hosts` does not support wildcard entries, therefore each required hostname needs to be mapped
+
+A tool I have found useful to manage `/etc/hosts` entries when running locally is [hostctl](https://github.com/guumaster/hostctl?tab=readme-ov-file). The following instructions can help you set get quickly set up on a Mac OSX environment
+
+#### Install hostctl on Mac OSX
+
+To install `hostctl` via Homebrew, run:
+```
+brew install guumaster/tap/hostctl
+```
+
+#### Adding entries using hostctl (updated 10-2-24)
+The following list contains all of the hostnames being used across all environments in this repo.
+
+This command will create a profile named `aoa-catalog` and map the following hostnames to `localhost`
+```
+sudo hostctl add domains aoa-catalog argocd.glootest.com mgmt-argocd.glootest.com cluster1-argocd.glootest.com cluster2-argocd.glootest.com gmui.glootest.com grafana.glootest.com bookinfo.glootest.com httpbin.glootest.com httpbin.int.glootest.com solowallet.glootest.com podinfo.glootest.com shop.glootest.com petstore.glootest.com petstore.int.glootest.com tracks.glootest.com solo-dev-portal.glootest.com backstage.glootest.com petstore-portal.glootest.com petstore-portal.int.glootest.com httpbin-portal.int.glootest.com httpbin-portal.glootest.com kubeinvaders.io external-portal.glootest.com jaeger.glootest.com portal.glootest.com api.glootest.com devapi.glootest.com tracks.int.glootest.com helloworld.glootest.com echo.glootest.com rollouts-demo.glootest.com admin.glootest.com homer.glootest.com ai-gateway.glootest.com general-chatbot.glootest.com language-chatbot.glootest.com client.glootest.com gloo-mesh-ui.glootest.com cluster1-bookinfo.example.com cluster1-httpbin.example.com cluster2-bookinfo.example.com passthrough.glootest.com kiali.glootest.com tiered-app.glootest.com idp.glootest.com openlibrary.glootest.com yahoo-finance.glootest.com chat.glootest.com llamagpt.glootest.com llm.glootest.com
+```
+
+For cloud based deployments without available DNS, we can use `hostctl` to map the hostnames to an IP using the `--ip` flag. The following example creates a new profile named `aoa-catalog-cloud`
+```
+sudo hostctl add domains aoa-catalog-cloud <hostnames_here> --ip 35.190.150.239
+```
+
+To list available profiles:
+```
+sudo hostctl list
+```
+
+To enable a profile:
+```
+sudo hostctl enable aoa-catalog
+```
+
+To disable a profile:
+```
+sudo hostctl disable aoa-catalog
+```
+
+To remove a profile completely
+```
+sudo hostctl remove aoa-catalog
+```
 
 #### Cloud Loadbalancer Discovery (alpha)
 *Note:* This is only available on select `gloo-gateway` environments, but more will be added over time
