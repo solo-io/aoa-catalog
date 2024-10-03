@@ -9,7 +9,7 @@ resources:
 #- general-chatbot
 - language-chatbot
 - betterchatgpt
-#- llama-gpt
+- llama-gpt
 
 # patch nodeSelector and tolerations on all Deployments
 patches:
