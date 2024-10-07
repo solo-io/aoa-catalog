@@ -9,10 +9,10 @@ spec:
     prefixRewrite: '/v1/chat/completions'
     jwt:
       disable: true
-    retries:
-      #retryOn: '429'
-      numRetries: 3
-      perTryTimeout: '1s'
+    #retries:
+    #  #retryOn: '429'
+    #  numRetries: 3
+    #  perTryTimeout: '1s'
     cors:
       allowOrigin:
         - '*'
