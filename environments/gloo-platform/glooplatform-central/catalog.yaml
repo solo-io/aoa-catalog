@@ -72,10 +72,10 @@ waves:
       -  $env_path/tiered-app/init.sh
       post_deploy:
       -  $env_path/tiered-app/test.sh   
-  - name: openai-app
-    location: $env_path/openai-app/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/openai-app/init.sh
-      post_deploy:
-      -  $env_path/openai-app/test.sh
+  #- name: openai-app
+  #  location: $env_path/openai-app/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/openai-app/init.sh
+  #    post_deploy:
+  #    -  $env_path/openai-app/test.sh
