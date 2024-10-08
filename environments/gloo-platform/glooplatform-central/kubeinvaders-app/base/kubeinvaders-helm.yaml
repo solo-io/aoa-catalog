@@ -13,7 +13,7 @@ spec:
   source:
     chart: kubeinvaders
     repoURL: https://lucky-sideburn.github.io/helm-charts/
-    targetRevision: 1.9.6
+    targetRevision: 1.9.8
     helm:
       values: |
         config:
