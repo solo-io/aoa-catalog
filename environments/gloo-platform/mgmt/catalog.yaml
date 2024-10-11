@@ -135,13 +135,6 @@ waves:
       -  $env_path/collaboration-tools-config/init.sh
       post_deploy:
       -  $env_path/collaboration-tools-config/test.sh
-  - name: ai-gateway-config
-    location: $env_path/ai-gateway-config/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/ai-gateway-config/init.sh
-      post_deploy:
-      -  $env_path/ai-gateway-config/test.sh
   #- name: gitlab-app
   #  location: $env_path/gitlab-app/base
   #  scripts:
