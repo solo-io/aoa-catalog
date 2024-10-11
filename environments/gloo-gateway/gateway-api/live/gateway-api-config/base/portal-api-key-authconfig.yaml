@@ -1,0 +1,12 @@
+apiVersion: enterprise.gloo.solo.io/v1
+kind: AuthConfig
+metadata:
+  name: portal-api-key-authconfig
+  namespace: gloo-system
+spec:
+  configs:
+    - opaAuth:
+        modules:
+          - name: metadata-scope-apiproduct-apikey-opa-cm
+            namespace: gloo-system
+        query: "data.test.result"

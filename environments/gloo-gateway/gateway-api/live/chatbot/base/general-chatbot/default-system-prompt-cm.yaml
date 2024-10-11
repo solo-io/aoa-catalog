@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: default-system-prompt-configmap
+  namespace: ai-chatbot
+data:
+  instructions.md: |
+    You are a generalist chatbot, ready to answer any question!
