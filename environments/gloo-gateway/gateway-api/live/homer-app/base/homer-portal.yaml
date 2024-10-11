@@ -209,6 +209,21 @@ spec:
                         tag: "ai-gateway"
                         url: "https://chat.ggv2.glooplatform.com/"
                         target: "_blank" # optional html a tag target attribute
+                        
+                  - name: "Web Applications"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "httpbin"
+                        icon: "far fa-window-maximize"
+                        tag: "httpbin"
+                        url: "https://httpbin.edge.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      #- name: "Bookinfo"
+                      #  subtitle: "requires bookinfo-key header"
+                      #  icon: "fas fa-book-reader"
+                      #  tag: "bookinfo"
+                      #  url: "https://bookinfo.edge.glooplatform.com/productpage"
+                      #  target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
     automated:
