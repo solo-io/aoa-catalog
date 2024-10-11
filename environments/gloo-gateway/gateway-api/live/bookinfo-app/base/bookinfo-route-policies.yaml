@@ -6,6 +6,8 @@ metadata:
 spec:
   # extauth options specified at the per-route level 
   options:
+    jwt:
+      disable: false
     # api-key ext auth
     extauth:
       configRef:

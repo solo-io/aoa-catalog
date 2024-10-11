@@ -155,7 +155,10 @@ spec:
                     Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />
                     
                     Run this command in your terminal for the JWT token used in auth example:<br />
-                    TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "x-token: $TOKEN"<br />
+                    TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "x-token: $TOKEN"<br /><br />
+
+                    Bookinfo API key auth:<br />
+                    bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br />
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
@@ -219,7 +222,7 @@ spec:
                         url: "https://httpbin.ggv2.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Bookinfo"
-                        subtitle: "requires bookinfo-key header"
+                        subtitle: "requires bookinfo-key and x-token header"
                         icon: "fas fa-book-reader"
                         tag: "bookinfo"
                         url: "https://bookinfo.ggv2.glooplatform.com/productpage"
