@@ -134,28 +134,7 @@ waves:
       pre_deploy: 
       -  $env_path/collaboration-tools-config/init.sh
       post_deploy:
-      -  $env_path/collaboration-tools-config/test.sh
-  #- name: gitlab-app
-  #  location: $env_path/gitlab-app/base
-  #  scripts:
-  #    pre_deploy: 
-  #    -  $env_path/gitlab-app/init.sh
-  #    post_deploy:
-  #    -  $env_path/gitlab-app/test.sh 
-  #- name: mesh-factory-app
-  #  location: $env_path/mesh-factory-app/base
-  #  scripts:
-  #    pre_deploy: 
-  #    -  $env_path/mesh-factory-app/init.sh
-  #    post_deploy:
-  #    -  $env_path/mesh-factory-app/test.sh 
-  #- name: mesh-factory-config
-  #  location: $env_path/mesh-factory-config/base
-  #  scripts:
-  #    pre_deploy: 
-  #    -  $env_path/mesh-factory-config/init.sh
-  #    post_deploy:
-  #    -  $env_path/mesh-factory-config/test.sh       
+      -  $env_path/collaboration-tools-config/test.sh      
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:
