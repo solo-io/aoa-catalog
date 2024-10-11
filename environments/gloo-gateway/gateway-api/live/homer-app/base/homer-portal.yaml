@@ -216,13 +216,13 @@ spec:
                       - name: "httpbin"
                         icon: "far fa-window-maximize"
                         tag: "httpbin"
-                        url: "https://httpbin.edge.glooplatform.com"
+                        url: "https://httpbin.ggv2.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       #- name: "Bookinfo"
                       #  subtitle: "requires bookinfo-key header"
                       #  icon: "fas fa-book-reader"
                       #  tag: "bookinfo"
-                      #  url: "https://bookinfo.edge.glooplatform.com/productpage"
+                      #  url: "https://bookinfo.ggv2.glooplatform.com/productpage"
                       #  target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
