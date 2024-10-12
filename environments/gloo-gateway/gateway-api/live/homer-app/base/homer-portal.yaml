@@ -211,6 +211,7 @@ spec:
                     icon: "fas fa-cloud"
                     items:
                       - name: "httpbin"
+                        subtitle: "requires oidc login through okta"
                         icon: "far fa-window-maximize"
                         tag: "httpbin"
                         url: "https://httpbin.ggv2.glooplatform.com"
