@@ -7,6 +7,7 @@ spec:
   options:
     jwt:
       disable: true
+    timeout: '2s'
     extauth:
       configRef:
         name: httpbin-okta
