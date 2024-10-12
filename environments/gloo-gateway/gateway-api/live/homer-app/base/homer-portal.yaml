@@ -228,12 +228,12 @@ spec:
                     icon: "fas fa-traffic-light"
                     items:
                       - name: "Timeout Policy - 2s"
-                          subtitle: "switch to /delay/2 to trigger timeout"
-                          icon: "fas fa-book-reader"
-                          tag: "gloo-gateway #demo"
-                          keywords: "gloo-gateway,demo"
-                          url: "https://httpbin.ggv2.glooplatform.com/delay/0"
-                          target: "_blank" # optional html a tag target attribute
+                        subtitle: "switch to /delay/2 to trigger timeout"
+                        icon: "fas fa-book-reader"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://httpbin.ggv2.glooplatform.com/delay/0"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "Dark Launch - bookinfo reviews-v2"
                         subtitle: "requires user: preview, bookinfo-key, x-token header"
                         icon: "fas fa-book-reader"
