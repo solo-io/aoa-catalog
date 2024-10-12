@@ -227,6 +227,13 @@ spec:
                         tag: "bookinfo"
                         url: "https://bookinfo.ggv2.glooplatform.com/productpage"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Dark Launch - bookinfo reviews-v2"
+                        subtitle: "requires user: preview, bookinfo-key, x-token header"
+                        icon: "fas fa-book-reader"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
+                        url: "https://bookinfo.ggv2.glooplatform.com/reviews/2"
+                        target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
     automated:

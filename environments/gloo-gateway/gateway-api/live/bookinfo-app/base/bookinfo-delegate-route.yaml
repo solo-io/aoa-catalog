@@ -5,6 +5,7 @@ metadata:
   namespace: bookinfo
 spec:
   rules:
+    # dark launch reviews v2 to preview users
     - matches:
       - path:
           type: PathPrefix
