@@ -8,6 +8,18 @@ spec:
     - matches:
       - path:
           type: PathPrefix
+          value: /reviews/2
+        headers:
+        - type: Exact
+          name: user
+          value: preview
+      # Route to the productpage service
+      backendRefs:
+        - name: reviews
+          port: 9080
+    - matches:
+      - path:
+          type: PathPrefix
           value: /
       # Route to the productpage service
       backendRefs:
