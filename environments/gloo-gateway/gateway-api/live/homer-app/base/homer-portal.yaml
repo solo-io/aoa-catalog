@@ -324,7 +324,7 @@ spec:
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/gateway-https.yaml#L14-L18"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Direct Response Action"
-                        subtitle: "expect "it's alive!""
+                        subtitle: "expect 'it's alive!'"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,demo"
