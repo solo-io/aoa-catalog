@@ -268,7 +268,7 @@ spec:
                     icon: "fas fa-traffic-light"
                     items:
                       - name: "Direct Response Action"
-                        subtitle: "return pre-defined body/status"
+                        subtitle: "expect 'it's alive!'"
                         icon: "fas fa-book-reader"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,demo"
@@ -324,11 +324,11 @@ spec:
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/gateway-https.yaml#L14-L18"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Direct Response Action"
-                        subtitle: "expect 'it's alive!'"
+                        subtitle: "return pre-defined body/status"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,demo"
-                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-delegate-route.yaml#L8-L17"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/direct-response.yaml"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Host Rewrite"
                         subtitle: "rewrite host path"
