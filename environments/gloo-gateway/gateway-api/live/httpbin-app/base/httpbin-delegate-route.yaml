@@ -7,6 +7,16 @@ spec:
   rules:
     - matches:
       - path:
+          type: Exact
+          value: /direct-response
+      filters:
+      - type: ExtensionRef
+        extensionRef:
+         name: direct-response
+         group: gateway.gloo.solo.io
+         kind: DirectResponse
+    - matches:
+      - path:
           type: PathPrefix
           value: /
       backendRefs:
