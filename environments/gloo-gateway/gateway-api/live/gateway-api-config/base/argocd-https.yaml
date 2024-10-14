@@ -13,7 +13,11 @@ spec:
     - name: https
       namespace: gloo-system
   rules:
-    - backendRefs:
+    - matches:
+      - path:
+          type: PathPrefix
+          value: /
+      backendRefs:
         - name: argocd-server
           port: 443
       filters:
