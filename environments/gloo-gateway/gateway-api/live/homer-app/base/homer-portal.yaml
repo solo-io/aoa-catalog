@@ -260,6 +260,13 @@ spec:
                   - name: "Configuration Examples"
                     icon: "far fa-file-code"
                     items:
+                      - name: "Deploy with GitOps"
+                        subtitle: "ArgoCD with Helm"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-enterprise-app/base/gloo-enterprise.yaml"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "TLS Termination"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #demo"
@@ -283,7 +290,7 @@ spec:
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,demo"
-                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-parent-route.yaml"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-parent-route.yaml#L16-L20"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Weighted Destinations"
                         icon: "far fa-file-code"
@@ -310,6 +317,7 @@ spec:
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L15-L23"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Conditional Transformations"
+                        subtitle: "response transformation example"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,demo"
@@ -346,7 +354,21 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/https-gateway-virtualhostoptions.yaml"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "OPA AuthConfig"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/portal-api-key-authconfig.yaml#L8-L12"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "OPA Rego Policy"
+                        subtitle: "referenced in configmap"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/portal-opa-cm.yaml"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "Access Logging"
+                        subtitle: "applied at the listener level"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,demo"
