@@ -7,5 +7,9 @@ spec:
   options:
     jwt:
       disable: true
+    extauth:
+      configRef:
+        name: argo-oidc
+        namespace: gloo-system
                 
     
