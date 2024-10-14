@@ -172,9 +172,6 @@ spec:
 
                     This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Gateway!<br />
                     Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
-                                        
-                    Bookinfo API key auth:<br />
-                    bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br />
                     
                     Below are a few common usernames to explore the applications and portals:<br />
                     Note: You can also sign up for your own user through Okta using self-service registration!<br /><br />
@@ -185,6 +182,9 @@ spec:
                     Used in JWT auth example:<br />
                     TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "$TOKEN"<br />
                     x-auth: Bearer ${TOKEN}<br /><br />
+
+                    Bookinfo API key auth:<br />
+                    bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br /><br />
 
                     Used in dark launch example:<br />
                     user: preview<br /><br />
