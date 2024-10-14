@@ -19,7 +19,7 @@ spec:
           redis:
             cookieName: gcp-session
             options:
-              host: redis.gloo-mesh-addons:6379
+              host: redis.gloo-system:6379
             allowRefreshing: true
           cookieOptions:
             maxAge: 3600
