@@ -15,3 +15,4 @@ resources:
 - log-provider.yaml
 - portal-api-key-authconfig.yaml
 - portal-opa-cm.yaml
+- argo-authconfig.yaml
