@@ -7,7 +7,7 @@ spec:
   options:
     cors:
       allowOrigin:
-        - https://solo-dev-portal.ggv2.glooplatform.com
+        - https://solo-dev-portal.gwapi.glooplatform.com
       allowHeaders:
         - "Content-Type"
         - "Authorization"

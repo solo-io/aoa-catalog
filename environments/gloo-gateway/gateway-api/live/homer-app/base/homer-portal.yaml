@@ -231,7 +231,7 @@ spec:
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
-                        url: "https://argocd.ggv2.glooplatform.com/argo"
+                        url: "https://argocd.gwapi.glooplatform.com/argo"
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "AI Gateway Workloads"
@@ -241,13 +241,13 @@ spec:
                         subtitle: "example client"
                         icon: "fas fa-language"
                         tag: "ai-gateway"
-                        url: "https://language-chatbot.ggv2.glooplatform.com"
+                        url: "https://language-chatbot.gwapi.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "BetterChatGPT Chatbot"
                         subtitle: "example client"
                         icon: "far fa-question-circle"
                         tag: "ai-gateway"
-                        url: "https://chat.ggv2.glooplatform.com/"
+                        url: "https://chat.gwapi.glooplatform.com/"
                         target: "_blank" # optional html a tag target attribute
                       - name: "AI - Prompt Guard"
                         subtitle: "config example"
@@ -272,21 +272,21 @@ spec:
                         icon: "fas fa-book-reader"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,demo"
-                        url: "https://httpbin.ggv2.glooplatform.com/direct-response"
+                        url: "https://httpbin.gwapi.glooplatform.com/direct-response"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Timeout Policy - 2s"
                         subtitle: "switch to /delay/2 to trigger timeout"
                         icon: "fas fa-book-reader"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,demo"
-                        url: "https://httpbin.ggv2.glooplatform.com/delay/0"
+                        url: "https://httpbin.gwapi.glooplatform.com/delay/0"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Dark Launch - bookinfo reviews-v2"
                         subtitle: "requires user: preview, bookinfo-key, x-token header"
                         icon: "fas fa-book-reader"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,gloo-mesh,demo"
-                        url: "https://bookinfo.ggv2.glooplatform.com/reviews/2"
+                        url: "https://bookinfo.gwapi.glooplatform.com/reviews/2"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Demo Security Capabilities"
@@ -296,14 +296,14 @@ spec:
                         subtitle: "requires user login credentials"
                         icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
-                        url: "https://httpbin.ggv2.glooplatform.com"
+                        url: "https://httpbin.gwapi.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       
                       - name: "API Key Auth + JWT Validation"
                         subtitle: "requires bookinfo-key and x-token header"
                         icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
-                        url: "https://bookinfo.ggv2.glooplatform.com/productpage"
+                        url: "https://bookinfo.gwapi.glooplatform.com/productpage"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Demo Gloo Portal Capabilities"
@@ -312,12 +312,12 @@ spec:
                       - name: "React Frontend - Solo Dev Portal"
                         icon: "fab fa-connectdevelop"
                         tag: "portal"
-                        url: "https://solo-dev-portal.ggv2.glooplatform.com"
+                        url: "https://solo-dev-portal.gwapi.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Portal Backend Server"
                         icon: "far fa-window-maximize"
                         tag: "portal"
-                        url: "https://api.ggv2.glooplatform.com/v1/api-products"
+                        url: "https://api.gwapi.glooplatform.com/v1/api-products"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Configuration Examples"

@@ -10,7 +10,7 @@ echo
 
 # Prompt the user to input the base URL for the portal server backend, re-prompt if empty
 while true; do
-    read -p "Enter the API base URL for the portal server backend (e.g., https://api.ggv2.glooplatform.com): " BASE_URL
+    read -p "Enter the API base URL for the portal server backend (e.g., https://api.gwapi.glooplatform.com): " BASE_URL
 
     # Validate if the input is empty
     if [ -z "$BASE_URL" ]; then
@@ -384,10 +384,10 @@ echo "Step 11: Choose an API product's URI or enter a custom one:"
 
 # Predefined URIs
 PREDEFINED_URIS=(
-  "https://tracks.ggv2.glooplatform.com/tracks/c_0"
-  "https://petstore.ggv2.glooplatform.com/pets/pet"
-  "https://api.ggv2.glooplatform.com/v1/api-products"
-  "https://openlibrary.ggv2.glooplatform.com/api/books?bibkeys=ISBN%3A0201558025&format=json&jscmd=viewapi"
+  "https://tracks.gwapi.glooplatform.com/tracks/c_0"
+  "https://petstore.gwapi.glooplatform.com/pets/pet"
+  "https://api.gwapi.glooplatform.com/v1/api-products"
+  "https://openlibrary.gwapi.glooplatform.com/api/books?bibkeys=ISBN%3A0201558025&format=json&jscmd=viewapi"
   "Custom"
 )
 

@@ -8,7 +8,7 @@ metadata:
     gateway: https
 spec:
   hostnames:
-  - "homer.ggv2.glooplatform.com"
+  - "homer.gwapi.glooplatform.com"
   parentRefs:
     - name: https
       namespace: gloo-system

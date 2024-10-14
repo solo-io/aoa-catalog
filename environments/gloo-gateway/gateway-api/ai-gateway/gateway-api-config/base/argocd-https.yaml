@@ -8,7 +8,7 @@ metadata:
     gateway: https
 spec:
   hostnames:
-  - "argocd.ggv2.glooplatform.com"
+  - "argocd.gwapi.glooplatform.com"
   parentRefs:
     - name: https
       namespace: gloo-system

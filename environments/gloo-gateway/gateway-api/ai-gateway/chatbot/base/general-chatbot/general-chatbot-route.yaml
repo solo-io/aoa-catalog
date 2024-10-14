@@ -8,7 +8,7 @@ metadata:
     gateway: https
 spec:
   hostnames:
-  - "general-chatbot.ggv2.glooplatform.com"
+  - "general-chatbot.gwapi.glooplatform.com"
   parentRefs:
     - name: https
       namespace: gloo-system

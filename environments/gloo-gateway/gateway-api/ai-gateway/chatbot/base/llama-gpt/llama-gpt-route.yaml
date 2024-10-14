@@ -7,7 +7,7 @@ metadata:
     gateway: https
 spec:
   hostnames:
-  - "llamagpt.ggv2.glooplatform.com"
+  - "llamagpt.gwapi.glooplatform.com"
   parentRefs:
     - name: https
       namespace: gloo-system

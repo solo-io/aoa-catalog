@@ -4,7 +4,7 @@ import logging
 
 # User-configurable variables
 class Config:
-    HOST = "https://llm.ggv2.glooplatform.com"  # Replace with your actual API base URL
+    HOST = "https://llm.gwapi.glooplatform.com"  # Replace with your actual API base URL
     API_KEY = "YOUR_API_KEY"  # Replace with your actual API key if needed
     ENDPOINT = "/openai"  # Define the endpoint for the LLM API
     MODEL = "gpt-4o-mini"  # Make model configurable

@@ -5,7 +5,7 @@ metadata:
   namespace: gloo-system
 spec:
   hostnames:
-    - tracks.ggv2.glooplatform.com
+    - tracks.gwapi.glooplatform.com
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway

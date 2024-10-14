@@ -45,4 +45,4 @@ spec:
             - containerPort: 4000
           env:
             - name: VITE_PORTAL_SERVER_URL
-              value: https://api.ggv2.glooplatform.com/v1 # The URL that the backend Portal is exposed on via an HTTPRoute.
+              value: https://api.gwapi.glooplatform.com/v1 # The URL that the backend Portal is exposed on via an HTTPRoute.
