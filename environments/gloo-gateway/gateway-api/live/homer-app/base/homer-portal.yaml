@@ -292,7 +292,7 @@ spec:
                         url: "https://httpbin.ggv2.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       
-                      - name: "Bookinfo"
+                      - name: "API Key Auth + JWT Validation"
                         subtitle: "requires bookinfo-key and x-token header"
                         icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
