@@ -306,6 +306,20 @@ spec:
                         url: "https://bookinfo.ggv2.glooplatform.com/productpage"
                         target: "_blank" # optional html a tag target attribute
                   
+                  #- name: "Demo Gloo Portal Capabilities"
+                  #  icon: "fas fa-cloud"
+                  #  items:
+                  #    - name: "React Frontend - Solo Dev Portal"
+                  #      icon: "fab fa-connectdevelop"
+                  #      tag: "portal"
+                  #      url: "https://solo-dev-portal.ggv2.glooplatform.com"
+                  #      target: "_blank" # optional html a tag target attribute
+                  #    - name: "Portal Backend Server"
+                  #      icon: "far fa-window-maximize"
+                  #      tag: "portal"
+                  #      url: "https://api.ggv2.glooplatform.com/v1/api-products"
+                  #      target: "_blank" # optional html a tag target attribute
+                  
                   - name: "Configuration Examples"
                     icon: "far fa-file-code"
                     items:

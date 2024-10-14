@@ -42,6 +42,13 @@ waves:
       -  $env_path/bookinfo-app/init.sh
       post_deploy:
       -  $env_path/bookinfo-app/test.sh   
+  - name: gloo-portal-demo
+    location: $env_path/gloo-portal-demo/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-portal-demo/init.sh
+      post_deploy:
+      -  $env_path/gloo-portal-demo/test.sh   
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:

@@ -1,0 +1,21 @@
+apiVersion: portal.gloo.solo.io/v1
+kind: Portal
+metadata:
+  name: portal-developer
+  namespace: gloo-system
+spec:
+  visibility:
+    public: true
+  apiProducts:
+  # select all api products in a namespace
+  - name: '*'
+    namespace: gloo-system
+  # Or you can list them individually
+  #- name: tracks-svc-api-product
+  #  namespace: gloo-system
+  #- name: petstore-svc-api-product
+  #  namespace: gloo-system
+  #- name: openlibrary-external-svc-api-product
+  #  namespace: gloo-system
+  #- name: gloo-portal-server-svc-api-product
+  #  namespace: gloo-system

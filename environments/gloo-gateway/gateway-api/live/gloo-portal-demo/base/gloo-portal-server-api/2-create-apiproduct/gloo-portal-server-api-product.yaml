@@ -1,0 +1,28 @@
+apiVersion: portal.gloo.solo.io/v1
+kind: ApiProduct
+metadata:
+  labels:
+    expose-portal: "true"
+  name: gloo-portal-server-svc-api-product
+  namespace: gloo-system
+spec:
+  id: "gloo-portal-server"
+  displayName: "gloo-portal-server"
+  customMetadata:
+    imageURL: https://www.solo.io/wp-content/uploads/2022/11/solo-logo-glooy-circle-white-blue-1024x1024.png
+  versions:
+  - apiVersion: "v1"
+    openapiMetadata:
+      title: "Gloo Portal server REST API"
+      description: "REST API for gloo-portal-server. This APIDoc was onboarded using inlineString"
+      termsOfService: "None"
+      contact: "support@example.com"
+      license: "License info, such as MIT"
+    customMetadata:
+      compatibility: "None"
+      lifecyclePhase: "Generally Available"
+    targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      name: portal-backend-route
+      namespace: gloo-system

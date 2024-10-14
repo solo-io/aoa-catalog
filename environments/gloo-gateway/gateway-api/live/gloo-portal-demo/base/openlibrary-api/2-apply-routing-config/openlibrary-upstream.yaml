@@ -1,0 +1,11 @@
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: openlibrary
+  namespace: openlibrary
+spec:
+  static:
+    hosts:
+      - addr: openlibrary.org
+        port: 443
+  sslConfig: {}
