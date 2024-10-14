@@ -118,8 +118,8 @@ spec:
                 # Homepage configuration
                 # See https://fontawesome.com/v5/search for icons options
                 
-                title: "Gloo Platform Demo Dashboard"
-                subtitle: "Every Connection, Every Direction, One API"
+                title: "Gloo Gateway Demo Dashboard"
+                subtitle: "Next-gen API Gateway built on Envoy proxy"
                 logo: "solo/glooy.png"
                 # icon: "fas fa-skull-crossbones" # Optional icon
                 
