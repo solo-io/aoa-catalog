@@ -7,6 +7,10 @@ spec:
   options:
     jwt:
       disable: true
+    retries:
+      retryOn: 'connect-failure'
+      numRetries: 3
+      perTryTimeout: '5s'
     timeout: '2s'
     extauth:
       configRef:
