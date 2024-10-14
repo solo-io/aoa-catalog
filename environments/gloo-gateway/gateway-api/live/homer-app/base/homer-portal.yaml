@@ -242,6 +242,22 @@ spec:
                         keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://bookinfo.ggv2.glooplatform.com/reviews/2"
                         target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Configuration Examples"
+                    icon: "far fa-file-code"
+                    items:
+                      - name: "Timeout Policy"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L10"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Dark Launch"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/bookinfo-app/base/bookinfo-delegate-route.yaml#L8-L20"
+                        target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
     automated:
