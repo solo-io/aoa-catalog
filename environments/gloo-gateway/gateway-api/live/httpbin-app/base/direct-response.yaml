@@ -5,4 +5,4 @@ metadata:
   namespace: httpbin
 spec:
   status: 200
-  body: "it's alive"
+  body: "it's alive!"
