@@ -302,7 +302,7 @@ spec:
                   - name: "Configuration Examples"
                     icon: "far fa-file-code"
                     items:
-                      - name: "Deploy Gloo GW with GitOps"
+                      - name: "Deploy Gloo Gateway with GitOps"
                         subtitle: "ArgoCD Application with Helm"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
@@ -315,6 +315,13 @@ spec:
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/gateway-https.yaml#L14-L18"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Direct Response Action"
+                        subtitle: "expect "it's alive!""
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-delegate-route.yaml#L8-L17"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Host Rewrite"
                         subtitle: "rewrite host path"
@@ -338,7 +345,7 @@ spec:
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-parent-route.yaml#L16-L20"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Traffic Splitting"
-                        subtitle: "split traffic by weight"
+                        subtitle: "using weighted destinations"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,demo"
@@ -435,13 +442,6 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/aigw-config/base/openai/openai-route-policies.yaml#L12-L26"
                         target: "_blank" # optional html a tag target attribute
-                      #- name: "Direct Response Action"
-                      #  subtitle: ""
-                      #  icon: "far fa-file-code"
-                      #  tag: "gloo-gateway #config"
-                      #  keywords: "gloo-gateway,demo"
-                      #  url: ""
-                      #  target: "_blank" # optional html a tag target attribute
                       #- name: "Redirects"
                       #  subtitle: ""
                       #  icon: "far fa-file-code"
@@ -457,13 +457,6 @@ spec:
                       #  url: ""
                       #  target: "_blank" # optional html a tag target attribute
                       #- name: "Retries"
-                      #  subtitle: ""
-                      #  icon: "far fa-file-code"
-                      #  tag: "gloo-gateway #config"
-                      #  keywords: "gloo-gateway,demo"
-                      #  url: ""
-                      #  target: "_blank" # optional html a tag target attribute
-                      #- name: "Timeouts"
                       #  subtitle: ""
                       #  icon: "far fa-file-code"
                       #  tag: "gloo-gateway #config"
