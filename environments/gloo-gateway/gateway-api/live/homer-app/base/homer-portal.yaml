@@ -246,6 +246,12 @@ spec:
                   - name: "Configuration Examples"
                     icon: "far fa-file-code"
                     items:
+                      - name: "Weighted Destinations"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-delegate-route.yaml#L12-L18"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "Timeout Policy"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #demo"
@@ -257,6 +263,44 @@ spec:
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/bookinfo-app/base/bookinfo-delegate-route.yaml#L8-L20"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Header Manipulation"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L15-L23"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Conditional Transformations"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L28-L35"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "WAF"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L36-L100"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Rate Limiting"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-ratelimit-config.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Oauth2 AuthConfig"
+                        subtitle: "okta example"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/okta-authconfig.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Route Delegation"
+                        subtitle: "parent delegating to child HTTPRoute"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-parent-route.yaml"
                         target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
