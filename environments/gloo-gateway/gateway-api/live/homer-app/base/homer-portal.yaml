@@ -57,15 +57,15 @@ spec:
         #  istio.io/rev: 1-23
         
         # -- Node selection constraint
-        #nodeSelector:
-        #  gke-spot: "true"
+        nodeSelector:
+          node: "spot"
 
         # -- Specify taint tolerations  
-        #tolerations:
-        #- key: cloud.google.com/gke-spot
-        #  operator: Equal
-        #  value: "true"
-        #  effect: NoSchedule
+        tolerations:
+        - key: cloud.google.com/node
+          operator: Equal
+          value: "spot"
+          effect: NoSchedule
         
         # -- Set annotations on the pod
         #podAnnotations:
