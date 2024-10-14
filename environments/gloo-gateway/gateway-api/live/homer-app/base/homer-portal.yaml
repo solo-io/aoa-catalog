@@ -309,7 +309,7 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-enterprise-app/base/gloo-enterprise.yaml"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "TLS Termination"
+                      - name: "Network Encryption"
                         subtitle: "terminate TLS at Gloo Gateway"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
@@ -337,8 +337,8 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-parent-route.yaml#L16-L20"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Weighted Destinations"
-                        subtitle: "shift traffic by weight"
+                      - name: "Traffic Splitting"
+                        subtitle: "split traffic by weight"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,demo"
@@ -358,7 +358,7 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/bookinfo-app/base/bookinfo-delegate-route.yaml#L8-L20"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Header Manipulation"
+                      - name: "Header Control"
                         subtitle: "add/remove headers"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
@@ -386,8 +386,8 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-ratelimit-config.yaml"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Oauth2 AuthConfig"
-                        subtitle: "okta example"
+                      - name: "User Authentication"
+                        subtitle: "oauth2 okta example"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,demo"
@@ -435,6 +435,49 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/aigw-config/base/openai/openai-route-policies.yaml#L12-L26"
                         target: "_blank" # optional html a tag target attribute
+                      #- name: "Direct Response Action"
+                      #  subtitle: ""
+                      #  icon: "far fa-file-code"
+                      #  tag: "gloo-gateway #config"
+                      #  keywords: "gloo-gateway,demo"
+                      #  url: ""
+                      #  target: "_blank" # optional html a tag target attribute
+                      #- name: "Redirects"
+                      #  subtitle: ""
+                      #  icon: "far fa-file-code"
+                      #  tag: "gloo-gateway #config"
+                      #  keywords: "gloo-gateway,demo"
+                      #  url: ""
+                      #  target: "_blank" # optional html a tag target attribute
+                      #- name: "Fault Injection"
+                      #  subtitle: ""
+                      #  icon: "far fa-file-code"
+                      #  tag: "gloo-gateway #config"
+                      #  keywords: "gloo-gateway,demo"
+                      #  url: ""
+                      #  target: "_blank" # optional html a tag target attribute
+                      #- name: "Retries"
+                      #  subtitle: ""
+                      #  icon: "far fa-file-code"
+                      #  tag: "gloo-gateway #config"
+                      #  keywords: "gloo-gateway,demo"
+                      #  url: ""
+                      #  target: "_blank" # optional html a tag target attribute
+                      #- name: "Timeouts"
+                      #  subtitle: ""
+                      #  icon: "far fa-file-code"
+                      #  tag: "gloo-gateway #config"
+                      #  keywords: "gloo-gateway,demo"
+                      #  url: ""
+                      #  target: "_blank" # optional html a tag target attribute
+                      #- name: "Redirects"
+                      #  subtitle: ""
+                      #  icon: "far fa-file-code"
+                      #  tag: "gloo-gateway #config"
+                      #  keywords: "gloo-gateway,demo"
+                      #  url: ""
+                      #  target: "_blank" # optional html a tag target attribute
+
               
   syncPolicy:
     automated:
