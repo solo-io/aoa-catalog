@@ -366,8 +366,8 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L15-L23"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Conditional Transformations"
-                        subtitle: "response transformation example"
+                      - name: "Transformations - Error Handling"
+                        subtitle: "conditional html response"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,demo"
