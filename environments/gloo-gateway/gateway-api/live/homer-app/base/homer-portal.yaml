@@ -201,10 +201,10 @@ spec:
                     icon: "fab fa-github"
                     url: "https://github.com/solo-io/aoa-catalog"
                     target: "_blank" # optional html a tag target attribute
-                  - name: "Gloo Mesh Documentation"
-                    icon: "fas fa-book"
-                    url: "https://docs.solo.io/gloo-mesh-enterprise"
-                    target: "_blank" # optional html a tag target attribute
+                  #- name: "Gloo Mesh Documentation"
+                  #  icon: "fas fa-book"
+                  #  url: "https://docs.solo.io/gloo-mesh-enterprise"
+                  #  target: "_blank" # optional html a tag target attribute
                   - name: "Gloo Gateway Documentation"
                     icon: "fas fa-book"
                     url: "https://docs.solo.io/gateway/latest/"
