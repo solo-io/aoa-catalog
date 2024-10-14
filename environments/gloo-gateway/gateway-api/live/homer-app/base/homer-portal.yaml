@@ -263,24 +263,6 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/aigw-config/base/openai/openai-targetref-options.yaml#L22-L56"
                         target: "_blank" # optional html a tag target attribute
-                        
-                  - name: "Demo Web Applications"
-                    icon: "fas fa-cloud"
-                    items:
-                      - name: "httpbin"
-                        subtitle: "requires oidc login through okta"
-                        icon: "far fa-window-maximize"
-                        tag: "httpbin"
-                        url: "https://httpbin.ggv2.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute
-                      
-                      - name: "Bookinfo"
-                        subtitle: "requires bookinfo-key and x-token header"
-                        icon: "fas fa-book-reader"
-                        tag: "bookinfo"
-                        url: "https://bookinfo.ggv2.glooplatform.com/productpage"
-                        target: "_blank" # optional html a tag target attribute
-                      
                 
                   - name: "Demo Traffic Routing and Shifting Capabilities"
                     icon: "fas fa-traffic-light"
@@ -298,6 +280,23 @@ spec:
                         tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://bookinfo.ggv2.glooplatform.com/reviews/2"
+                        target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Demo Security Capabilities"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "OIDC Auth with Okta"
+                        subtitle: "requires user login credentials"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://httpbin.ggv2.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      
+                      - name: "Bookinfo"
+                        subtitle: "requires bookinfo-key and x-token header"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://bookinfo.ggv2.glooplatform.com/productpage"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Configuration Examples"
