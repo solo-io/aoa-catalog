@@ -34,7 +34,7 @@ spec:
         transformationTemplate:
           body:
             text: '{% if header(":status") == "429" %}<html><body style="background-color:powderblue;"><h1>Too
-              many Requests!</h1><p>Try again after 10 seconds</p></body></html>{%
+              many Requests!</h1><p>Please wait 60 seconds and try again</p></body></html>{%
               else %}{{ body() }}{% endif %}'
           parseBodyBehavior: DontParse
     waf:

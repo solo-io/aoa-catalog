@@ -299,6 +299,18 @@ spec:
                         tag: "gloo-gateway #gloo-mesh #demo"
                         url: "https://language-chatbot.gwapi.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Web Application Firewall"
+                        subtitle: "block incoming request if argument `?param1=test`"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://language-chatbot.gwapi.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Rate Limiting"
+                        subtitle: "10 requests per min"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/image/jpeg"
+                        target: "_blank" # optional html a tag target attribute
                   
                   - name: "Demo Gloo Portal Capabilities"
                     icon: "fas fa-cloud"
