@@ -171,24 +171,43 @@ spec:
                   title: "Welcome!"
                   icon: "fa fa-grin"
                   content: |
-                    This is a simple navigation homepage for aoa-catalog demo apps running on the Gloo Platform!<br />
-                    Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
+                    content: |
+                    <p>This is a simple navigation homepage for aoa-catalog demo apps running on the Gloo Platform!</p>
                     
-                    Below are a few common usernames to explore the applications and portals:<br />
-                    Note: You can also sign up for your own user through Okta using self-service registration!<br /><br />
-                    Username: jdoe@solo.io // Password: gloo-dev<br />
-                    Username: jdoe@gmail.com // Password: gloo-public<br /><br />
-                    Common headers used in demos (typically also in the subtitle of the link card where possible):<br /><br />
-                    Used in API-Key auth example:<br />
-                    api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br /><br />
-                    Used in JWT auth example:<br />
-                    TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "x-token: $TOKEN"<br />
-                    Used in dark launch example:<br />
-                    user: preview<br /><br />
-                    Used in WAF example:<br />
-                    user-agent: user1-5<br />
-                    user-agent: user6<br />
-                    user-agent: scammer<br /><br />
+                    <p>Find more information on <a href='https://github.com/solo-io/aoa-catalog' target="_blank">GitHub: solo-io/aoa-catalog</a></p>
+                    
+                    <h2>Common Usernames</h2>
+                    <p>Below are a few common usernames to explore the applications and portals:</p>
+                    <pre><code>Username: jdoe@solo.io   // Password: gloo-dev
+                    Username: jdoe@gmail.com // Password: gloo-public</code></pre>
+                    <p>Note: You can also sign up for your own user through Okta using self-service registration!</p>
+                
+                    <h2>Common Headers Used in Demos</h2>
+                    <p>Below are headers commonly used in demo applications (typically also shown in the subtitle of the link card):</p>
+                    <br />
+
+                    <p><a href='https://modheader.com/' target="_blank">ModHeader</a> is a nice browser extension that lets you to easily modify HTTP request and response headers</p>
+                    <br />
+
+                    <h3>API-Key Auth header</h3>
+                    <pre><code>api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy</code></pre>
+                    <br />
+                
+                    <h3>JWT Authentication Example</h3>
+                    <p>Run the following command to retrieve the JWT header:</p>
+                    <pre><code>TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "x-token: $TOKEN"</code></pre>
+                    <br />
+                
+                    <h3>Dark Launch Example</h3>
+                    <pre><code>user: preview</code></pre>
+                    <br />
+                
+                    <h3>WAF Example</h3>
+                    <p>Here are some common user-agent headers that will trigger modsecurity rules:</p>
+                    <pre><code>user-agent: user1-5
+                    user-agent: user6
+                    user-agent: scammer</code></pre>
+                    <br />
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
