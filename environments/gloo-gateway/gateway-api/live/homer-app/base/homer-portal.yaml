@@ -412,12 +412,19 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L10-L13"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Route Delegation"
-                        subtitle: "parent delegating to child HTTPRoute"
+                      - name: "Route Delegation - Parent"
+                        subtitle: "control host and top-level policies"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-parent-route.yaml#L16-L20"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Route Delegation - Child"
+                        subtitle: "control route-level matchers and policies"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-delegate-route.yaml"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Traffic Splitting"
                         subtitle: "using weighted destinations"
