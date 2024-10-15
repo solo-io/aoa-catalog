@@ -5,5 +5,6 @@ resources:
 - rollouts-demo-ns.yaml
 - rollouts-demo-rollout.yaml
 - rollouts-demo-service.yaml
-- rollouts-demo-virtualservice.yaml
+#- rollouts-demo-virtualservice.yaml
+- rollouts-demo-httproute.yaml
 

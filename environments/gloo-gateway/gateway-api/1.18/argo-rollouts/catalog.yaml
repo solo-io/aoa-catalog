@@ -14,6 +14,20 @@ waves:
       -  $env_path/gateway-api-config/init.sh
       post_deploy:
       -  $env_path/gateway-api-config/test.sh
+  - name: argo-rollouts
+    location: $env_path/argo-rollouts/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/argo-rollouts/init.sh
+      post_deploy:
+      -  $env_path/argo-rollouts/test.sh
+  - name: rollouts-demo
+    location: $env_path/rollouts-demo/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/rollouts-demo/init.sh
+      post_deploy:
+      -  $env_path/rollouts-demo/test.sh
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:
