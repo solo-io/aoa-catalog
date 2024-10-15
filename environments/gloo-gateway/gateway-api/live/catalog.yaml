@@ -63,6 +63,13 @@ waves:
       -  $env_path/rollouts-demo/init.sh
       post_deploy:
       -  $env_path/rollouts-demo/test.sh
+  - name: rollouts-ui
+    location: $env_path/rollouts-ui/strategies
+    scripts:
+      pre_deploy: 
+      -  $env_path/rollouts-ui/init.sh
+      post_deploy:
+      -  $env_path/rollouts-ui/test.sh
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:
