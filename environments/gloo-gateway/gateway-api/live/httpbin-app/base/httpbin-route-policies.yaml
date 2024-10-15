@@ -50,7 +50,7 @@ spec:
           # Add a new header with the values of the 'email' extraction appended
           headers:
             x-transformed-header:
-              text: 'address-{{ email }}'
+              text: 'org-{{ email }}'
       responseTransformation:
         transformationTemplate:
           body:
