@@ -294,20 +294,20 @@ spec:
                   - name: "Demo Traffic Routing and Shifting Capabilities"
                     icon: "fas fa-traffic-light"
                     items:
-                      - name: "Direct Response Action"
-                        subtitle: "expect 'it's alive!'"
-                        icon: "fas fa-book-reader"
-                        tag: "gloo-gateway #demo"
-                        keywords: "gloo-gateway,demo"
-                        url: "https://httpbin.gwapi.glooplatform.com/direct-response"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Timeout Policy - 2s"
-                        subtitle: "switch to /delay/2 to trigger timeout"
-                        icon: "fas fa-book-reader"
-                        tag: "gloo-gateway #demo"
-                        keywords: "gloo-gateway,demo"
-                        url: "https://httpbin.gwapi.glooplatform.com/delay/0"
-                        target: "_blank" # optional html a tag target attribute
+                      #- name: "Argo Rollouts Demo Dashboard"
+                      #  subtitle: "Use this dashboard to change image tag (i.e. blue > green)"
+                      #  icon: "fab fa-git-alt"
+                      #  tag: "gloo-gateway #demo"
+                      #  keywords: "gloo-gateway,argo-rollouts,canary,demo"
+                      #  url: "https://rollouts-ui.gwapi.glooplatform.com/"
+                      #  target: "_blank" # optional html a tag target attribute
+                      #- name: "Argo Rollouts Demo"
+                      #  subtitle: "Visualize Progressive Delivery in action"
+                      #  icon: "fab fa-git-alt"
+                      #  tag: "gloo-gateway #demo"
+                      #  keywords: "gloo-gateway,argo-rollouts,canary,demo"
+                      #  url: "https://rollouts.gwapi.glooplatform.com"
+                      #  target: "_blank" # optional html a tag target attribute
                       - name: "Dark Launch - bookinfo reviews-v2"
                         subtitle: "requires user: preview & bookinfo-key header"
                         icon: "fas fa-book-reader"
@@ -324,6 +324,56 @@ spec:
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Traffic Routing and Shifting Demo Config Examples"
+                    icon: "far fa-file-code"
+                    items:
+                      - name: "Traffic Splitting"
+                        subtitle: "using weighted destinations"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-delegate-route.yaml#L22-L28"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Dark Launch"
+                        subtitle: "dark launch by host header"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/bookinfo-app/base/bookinfo-delegate-route.yaml#L8-L20"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "External Service Upstream Config"
+                        subtitle: "create static upstream for external service"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/external-service/httpbin-external-upstream.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "External Service Routing Config"
+                        subtitle: "traffic shift between public / in-cluster"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/external-service/httpbin-external-delegate-route.yaml#L12-L19"
+                        target: "_blank" # optional html a tag target attribute
+
+                  - name: "Demo Traffic Shaping Capabilities"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "Direct Response Action"
+                        subtitle: "expect 'it's alive!'"
+                        icon: "fas fa-book-reader"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/direct-response"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Timeout Policy - 2s"
+                        subtitle: "switch to /delay/2 to trigger timeout"
+                        icon: "fas fa-book-reader"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/delay/0"
+                        target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Traffic Shaping Config Examples"
                     icon: "far fa-file-code"
                     items:
                       - name: "Direct Response Action"
@@ -354,26 +404,12 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L10-L13"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Traffic Splitting"
-                        subtitle: "using weighted destinations"
-                        icon: "far fa-file-code"
-                        tag: "gloo-gateway #config"
-                        keywords: "gloo-gateway,demo"
-                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-delegate-route.yaml#L22-L28"
-                        target: "_blank" # optional html a tag target attribute
                       - name: "Timeout Policy"
                         subtitle: "configure timeouts"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L14"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Dark Launch"
-                        subtitle: "dark launch by host header"
-                        icon: "far fa-file-code"
-                        tag: "gloo-gateway #config"
-                        keywords: "gloo-gateway,demo"
-                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/bookinfo-app/base/bookinfo-delegate-route.yaml#L8-L20"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Header Control"
                         subtitle: "add/remove headers"
@@ -389,21 +425,6 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L32-L39"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "External Service Upstream Config"
-                        subtitle: "create static upstream for external service"
-                        icon: "far fa-file-code"
-                        tag: "gloo-gateway #config"
-                        keywords: "gloo-gateway,demo"
-                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/external-service/httpbin-external-upstream.yaml"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "External Service Routing Config"
-                        subtitle: "traffic shift between public / in-cluster"
-                        icon: "far fa-file-code"
-                        tag: "gloo-gateway #config"
-                        keywords: "gloo-gateway,demo"
-                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/external-service/httpbin-external-delegate-route.yaml#L12-L19"
-                        target: "_blank" # optional html a tag target attribute
-
                   
                   - name: "Demo Security Capabilities"
                     icon: "fas fa-shield-alt"
