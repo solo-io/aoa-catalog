@@ -202,11 +202,9 @@ spec:
                 
                     <h3>WAF Example</h3>
                     <p>Here are some common user-agent headers that will trigger modsecurity rules:</p>
-                    <pre><code>
-                    user-agent: user1-5
+                    <pre><code>user-agent: user1-5
                     user-agent: user6
-                    user-agent: scammer
-                    </code></pre>
+                    user-agent: scammer</code></pre>
 
                 
                 # Optional navbar
