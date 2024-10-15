@@ -171,12 +171,11 @@ spec:
                   title: "Welcome!"
                   icon: "fa fa-grin"
                   content: |
-                    <strong>AOA Catalog Demo Apps</strong><br />
                     <p>This is a simple navigation homepage for the <strong>aoa-catalog</strong> demo apps running on the <strong>Gloo Platform</strong>!</p>
                     
                     <p>Find more information on <a href='https://github.com/solo-io/aoa-catalog' target="_blank">GitHub: solo-io/aoa-catalog</a></p>
                     
-                    <strong>Common Usernames</strong><br />
+                    <h2>Common Usernames</h2>
                     <p>Below are a few common usernames to explore the applications and portals:</p>
                     <ul>
                         <li>Username: <strong>jdoe@solo.io</strong> // Password: <strong>gloo-dev</strong></li>
@@ -184,22 +183,22 @@ spec:
                     </ul>
                     <p>Note: You can also sign up for your own user through Okta using self-service registration!</p>
                 
-                    <strong>Common Headers Used in Demos</strong><br />
+                    <h2>Common Headers Used in Demos</h2>
                     <p>Below are headers commonly used in demo applications (typically also shown in the subtitle of the link card):</p>
                 
-                    <b>API-Key Authentication Example</b><br />
+                    <h3>API-Key Authentication Example</h3>
                     <pre><code>api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy</code></pre>
                 
-                    <b>JWT Authentication Example</b><br />
+                    <h3>JWT Authentication Example</h3>
                     <p>Run the following command to retrieve the JWT:</p>
                     <pre><code>TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "$TOKEN"</code></pre>
                     <p>Then use this header:</p>
                     <pre><code>x-auth: Bearer ${TOKEN}</code></pre>
                 
-                    <b>Dark Launch Example</b><br />
+                    <h3>Dark Launch Example</h3>
                     <pre><code>user: preview</code></pre>
                 
-                    <b>WAF Example</b><br />
+                    <h3>WAF Example</h3>
                     <p>Here are some common user-agent headers:</p>
                     <pre><code>user-agent: user1-5</code></pre>
                     <pre><code>user-agent: user6</code></pre>
