@@ -39,6 +39,18 @@ spec:
       - name: httpbin-ratelimit-config
         namespace: httpbin
     transformations:
+      requestTransformation:
+        transformationTemplate:
+          extractors:
+          # This extracts the 'x-email' header to an extractor named 'email'
+            email:
+              header: 'x-email'
+              regex: .*@(.*)$
+              subgroup: 1
+          # Add a new header with the values of the 'email' extraction appended
+          headers:
+            x-transformed-header:
+              text: 'address-{{ email }}'
       responseTransformation:
         transformationTemplate:
           body:
