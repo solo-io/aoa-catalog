@@ -201,10 +201,13 @@ spec:
                     <br />
                 
                     <h3>WAF Example</h3>
-                    <p style="margin-bottom: 0;">Here are some common user-agent headers that will trigger modsecurity rules:</p>
-                    <pre style="margin: 0;"><code>user-agent: user1-5</code></pre>
-                    <pre style="margin: 0;"><code>user-agent: user6</code></pre>
-                    <pre style="margin: 0;"><code>user-agent: scammer</code></pre>
+                    <p>Here are some common user-agent headers that will trigger modsecurity rules:</p>
+                    <pre><code>
+                    user-agent: user1-5
+                    user-agent: user6
+                    user-agent: scammer
+                    </code></pre>
+
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
