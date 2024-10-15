@@ -594,13 +594,13 @@ spec:
                         #subtitle: "requires x-token header"
                         icon: "fas fa-language"
                         tag: "ai-gateway"
-                        url: "https://language-chatbot.ggv2.glooplatform.com"
+                        url: "https://language-chatbot.gwapi.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "BetterChatGPT Chatbot"
                         #subtitle: "requires x-token header"
                         icon: "far fa-question-circle"
                         tag: "ai-gateway"
-                        url: "https://chat.ggv2.glooplatform.com/"
+                        url: "https://chat.gwapi.glooplatform.com/"
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "Application Onboarding IDP Demo"
