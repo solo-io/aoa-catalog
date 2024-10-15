@@ -19,7 +19,7 @@ patchesJson6902:
           apiGroups:
           - gateway.networking.k8s.io
           resources:
-          - HTTPRoute
+          - httproutes
           verbs:
           - '*'
           
