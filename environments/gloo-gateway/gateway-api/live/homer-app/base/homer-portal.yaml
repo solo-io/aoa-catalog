@@ -175,7 +175,7 @@ spec:
                     
                     <p>Find more information on <a href='https://github.com/solo-io/aoa-catalog' target="_blank">GitHub: solo-io/aoa-catalog</a></p>
                     
-                    <h4>Common Usernames</h4>
+                    <h3>Common Usernames</h3>
                     <p>Below are a few common usernames to explore the applications and portals:</p>
                     <ul>
                         <li>Username: <strong>jdoe@solo.io</strong> // Password: <strong>gloo-dev</strong></li>
@@ -183,22 +183,22 @@ spec:
                     </ul>
                     <p>Note: You can also sign up for your own user through Okta using self-service registration!</p>
                 
-                    <h4>Common Headers Used in Demos</h4>
+                    <h3>Common Headers Used in Demos</h3>
                     <p>Below are headers commonly used in demo applications (typically also shown in the subtitle of the link card):</p>
                 
-                    <h4>API-Key Authentication Example</h4>
+                    <h3>API-Key Authentication Example</h3>
                     <pre><code>api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy</code></pre>
                 
-                    <h4>JWT Authentication Example</h4>
+                    <h3>JWT Authentication Example</h3>
                     <p>Run the following command to retrieve the JWT:</p>
                     <pre><code>TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "$TOKEN"</code></pre>
                     <p>Then use this header:</p>
                     <pre><code>x-auth: Bearer ${TOKEN}</code></pre>
                 
-                    <h4>Dark Launch Example</h4>
+                    <h3>Dark Launch Example</h3>
                     <pre><code>user: preview</code></pre>
                 
-                    <h4>WAF Example</h4>
+                    <h3>WAF Example</h3>
                     <p>Here are some common user-agent headers:</p>
                     <pre><code>user-agent: user1-5</code></pre>
                     <pre><code>user-agent: user6</code></pre>
