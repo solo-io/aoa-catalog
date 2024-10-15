@@ -13,6 +13,5 @@ resources:
 - httpbin-route-policies.yaml
 - httpbin-ratelimit-config.yaml
 - okta-authconfig.yaml
-- direct-response.yaml
 - external-service
 - direct-response
