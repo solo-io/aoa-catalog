@@ -334,6 +334,20 @@ spec:
                         keywords: "gloo-gateway,gloo-portal,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-portal-demo/base/gloo-portal-server-api/1-inline-openapi-schema/gloo-portal-server-inline-apidoc.yaml"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Configure API Products from API Docs"
+                        subtitle: "define api product, lifecycle, and metadata"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #gloo-portal #demo"
+                        keywords: "gloo-gateway,gloo-portal,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-portal-demo/base/tracks-api/tracks-apiproduct.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Expose API Products on Portal"
+                        subtitle: "define which products are exposed on the portal"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #gloo-portal #demo"
+                        keywords: "gloo-gateway,gloo-portal,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-portal-demo/base/solo-dev-portal/portal-developer.yaml"
+                        target: "_blank" # optional html a tag target attribute
                   
                   - name: "Configuration Examples"
                     icon: "far fa-file-code"
