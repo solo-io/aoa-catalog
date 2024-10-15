@@ -241,7 +241,7 @@ spec:
                       
                   
                   - name: "AI Gateway Demo Config Examples"
-                    icon: "fas fa-cloud"
+                    icon: "far fa-file-code"
                     items:
                       - name: "AI - Prompt Guard"
                         subtitle: "filter sensitive content on the request/response"
@@ -284,7 +284,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Traffic Routing and Shifting Demo Config Examples"
-                    icon: "fas fa-cloud"
+                    icon: "far fa-file-code"
                     items:
                       - name: "Direct Response Action"
                         subtitle: "return pre-defined body/status"
@@ -352,7 +352,7 @@ spec:
 
                   
                   - name: "Demo Security Capabilities"
-                    icon: "fas fa-cloud"
+                    icon: "fas fa-shield-alt"
                     items:
                       - name: "Httpbin - OIDC Auth"
                         subtitle: "requires user login credentials"
@@ -386,7 +386,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Security Demo Config Examples"
-                    icon: "fas fa-cloud"
+                    icon: "far fa-file-code"
                     items:
                       - name: "Network Encryption"
                         subtitle: "terminate TLS at Gloo Gateway"
@@ -479,7 +479,7 @@ spec:
                         url: "https://api.gwapi.glooplatform.com/v1/api-products"
                         target: "_blank" # optional html a tag target attribute
                   
-                  - name: "Gloo Configuration Examples"
+                  - name: "Gloo Portal Configuration Examples"
                     icon: "far fa-file-code"
                     items:
                       - name: "OpenAPI spec discovery - annotations"
@@ -557,13 +557,6 @@ spec:
                       #  url: ""
                       #  target: "_blank" # optional html a tag target attribute
                       #- name: "Fault Injection"
-                      #  subtitle: ""
-                      #  icon: "far fa-file-code"
-                      #  tag: "gloo-gateway #config"
-                      #  keywords: "gloo-gateway,demo"
-                      #  url: ""
-                      #  target: "_blank" # optional html a tag target attribute
-                      #- name: "Redirects"
                       #  subtitle: ""
                       #  icon: "far fa-file-code"
                       #  tag: "gloo-gateway #config"
