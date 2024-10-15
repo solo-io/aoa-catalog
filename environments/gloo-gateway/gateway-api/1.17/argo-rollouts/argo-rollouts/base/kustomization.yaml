@@ -20,6 +20,7 @@ patchesJson6902:
           - gateway.networking.k8s.io
           resources:
           - httproutes
+          - configmaps
           verbs:
           - '*'
           
