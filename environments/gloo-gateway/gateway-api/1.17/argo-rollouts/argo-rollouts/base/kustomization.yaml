@@ -18,12 +18,20 @@ patchesJson6902:
         value:
           apiGroups:
           - gateway.networking.k8s.io
-          - v1
           resources:
           - httproutes
-          - configmaps
           verbs:
           - '*'
+      - op: add
+        path: /rules/-
+        value:
+          apiGroups:
+          - ""
+          resources:
+          - configmaps
+          verbs:
+          - create
+      
           
   - target:
       kind: ConfigMap
