@@ -171,11 +171,13 @@ spec:
                   title: "Welcome!"
                   icon: "fa fa-grin"
                   content: |
+
+                    <h2>AOA Catalog Demo Apps</h2>
                     <p>This is a simple navigation homepage for the <strong>aoa-catalog</strong> demo apps running on the <strong>Gloo Platform</strong>!</p>
                     
                     <p>Find more information on <a href='https://github.com/solo-io/aoa-catalog' target="_blank">GitHub: solo-io/aoa-catalog</a></p>
                     
-                    <h3>Common Usernames</h3>
+                    <h2>Common Usernames</h2>
                     <p>Below are a few common usernames to explore the applications and portals:</p>
                     <ul>
                         <li>Username: <strong>jdoe@solo.io</strong> // Password: <strong>gloo-dev</strong></li>
@@ -183,7 +185,7 @@ spec:
                     </ul>
                     <p>Note: You can also sign up for your own user through Okta using self-service registration!</p>
                 
-                    <h3>Common Headers Used in Demos</h3>
+                    <h2>Common Headers Used in Demos</h2>
                     <p>Below are headers commonly used in demo applications (typically also shown in the subtitle of the link card):</p>
                 
                     <h3>API-Key Authentication Example</h3>
