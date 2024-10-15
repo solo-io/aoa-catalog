@@ -5,7 +5,7 @@ metadata:
   namespace: rollouts-demo
 spec:
   hostnames:
-  - "rollouts-ui.glootest.com"
+  - "rollouts-ui.gwapi.glooplatform.com"
   parentRefs:
     - name: https
       namespace: gloo-system
