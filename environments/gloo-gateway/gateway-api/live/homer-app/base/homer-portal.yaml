@@ -223,16 +223,6 @@ spec:
                 # First level array represent a group.
                 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
                 services:
-                  - name: "Admin Applications"
-                    icon: "fas fa-user-cog"
-                    items:
-                      - name: "ArgoCD"
-                        subtitle: "admin // solo.io"
-                        icon: "fab fa-git-alt"
-                        tag: "argo"
-                        keywords: "argocd"
-                        url: "https://argocd.gwapi.glooplatform.com/argo"
-                        target: "_blank" # optional html a tag target attribute
 
                   - name: "AI Gateway Workloads"
                     icon: "fas fa-brain"
@@ -491,6 +481,17 @@ spec:
                       #  keywords: "gloo-gateway,demo"
                       #  url: ""
                       #  target: "_blank" # optional html a tag target attribute
+                      
+                  - name: "Admin Applications"
+                    icon: "fas fa-user-cog"
+                    items:
+                      - name: "ArgoCD"
+                        subtitle: "admin // solo.io"
+                        icon: "fab fa-git-alt"
+                        tag: "argo"
+                        keywords: "argocd"
+                        url: "https://argocd.gwapi.glooplatform.com/argo"
+                        target: "_blank" # optional html a tag target attribute
 
               
   syncPolicy:
