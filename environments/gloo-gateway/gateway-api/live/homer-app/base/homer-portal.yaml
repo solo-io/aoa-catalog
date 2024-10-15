@@ -184,7 +184,10 @@ spec:
                     <h2>Common Headers Used in Demos</h2>
                     <p>Below are headers commonly used in demo applications (typically also shown in the subtitle of the link card):</p>
                     <br />
-                
+
+                    <a href='https://modheader.com/' target="_blank">ModHeader</a> is a nice browser extension that lets you to easily modify HTTP request and response headers
+                    <br />
+
                     <h3>Bookinfo API-Key Auth header</h3>
                     <pre><code>bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy</code></pre>
                     <br />
@@ -203,7 +206,10 @@ spec:
                     <pre><code>user-agent: user1-5
                     user-agent: user6
                     user-agent: scammer</code></pre>
+                    <br />
 
+                    <h3>Transformation Example - Extract/Transform</h3>
+                    <pre><code>x-email: jdoe@solo.io</code></pre>
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
