@@ -34,7 +34,8 @@ spec:
             -----END PUBLIC KEY-----
         tokenSource:                    
           headers:  
-          - name: X-Auth
-            prefix: 'Bearer '
+          - #name: X-Auth
+            name: x-token
+            #prefix: 'Bearer '
           queryParams:       
           - auth_token
