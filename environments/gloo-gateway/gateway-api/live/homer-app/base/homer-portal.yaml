@@ -223,11 +223,11 @@ spec:
                 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
                 services:
 
-                  - name: "AI Gateway Workloads"
+                  - name: "Demo AI Gateway Capabilities"
                     icon: "fas fa-brain"
                     items:
                       - name: "BetterChatGPT Chatbot"
-                        subtitle: "example client"
+                        subtitle: "use https://llm.gwapi.glooplatform.com/openai"
                         icon: "far fa-question-circle"
                         tag: "ai-gateway"
                         url: "https://chat.gwapi.glooplatform.com/"
