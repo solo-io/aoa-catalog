@@ -54,7 +54,7 @@ spec:
         
         # -- Set labels on the pod
         #podLabels:
-        #  istio.io/rev: 1-23
+        #  istio.io/rev: 1-22
         
         # -- Node selection constraint
         nodeSelector:
@@ -169,7 +169,6 @@ spec:
                   title: "Welcome!"
                   icon: "fa fa-grin"
                   content: |
-                    <h1>AOA Catalog Demo Apps</h1>
                     This is a simple navigation homepage for aoa-catalog demo apps running on the Gloo Platform!<br />
                     Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
                     
@@ -219,6 +218,31 @@ spec:
                 # First level array represent a group.
                 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
                 services:
+
+                  #- name: "SSO"
+                  #  icon: "fas fa-cloud"
+                  #  items:
+                  #    - name: "GCP Login"
+                  #      icon: "fas fa-sign-in-alt"
+                  #      tag: "login"
+                  #      url: "https://login.glooplatform.com/gcp"
+                  #      target: "_blank" # optional html a tag target attribute
+                  #    - name: "Okta Login"
+                  #      icon: "fas fa-sign-in-alt"
+                  #      tag: "login"
+                  #      url: "https://login.glooplatform.com/okta"
+                  #      target: "_blank" # optional html a tag target attribute
+
+                  #- name: "Gloo Mesh UI"
+                  #  icon: "fas fa-cloud"
+                  #  items:
+                  #    
+                  #    - name: "Gloo Mesh UI (Okta Auth)"
+                  #      subtitle: "Use Self Service Registration to Access UI"
+                  #      icon: "fas fa-arrows-alt"
+                  #      tag: "gmui"
+                  #      url: "https://public-ui.glooplatform.com"
+                  #      target: "_blank" # optional html a tag target attribute
 
                   - name: "Gloo Platform Demo Walkthroughs"
                     logo: "solo/glooy.png"
@@ -610,7 +634,32 @@ spec:
                         url: "https://gh-action-idp.demo.glooplatform.com/team-a/"
                         target: "_blank" # optional html a tag target attribute
 
-                                      
+                      
+                  - name: "Developer Portals"
+                    icon: "fab fa-connectdevelop"
+                    items:
+                      - name: "Internal Developer Portal"
+                        subtitle: "Backstage"
+                        icon: "fab fa-git-alt"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,gloo-portal,backstage,demo"
+                        url: "https://backstage.glooplatform.com/gloo-platform-portal/apis"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "External Developer Portal"
+                        subtitle: "BYO React Frontend"
+                        icon: "fab fa-connectdevelop"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,gloo-portal,demo"
+                        url: "https://external-portal.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Portal Analytics & Monetization"
+                        subtitle: "Grafana / OTel / Clickhouse"
+                        icon: "fas fa-chart-area"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,gloo-portal,clickhouse,grafana,otel,demo"
+                        url: "https://clickhouse.demo.glooplatform.com/mgmt-grafana/d/db93be88-8cd4-4c32-8a37-83fbca40e3f0a/api-dashboard-geomap?orgId=1&from=now-1h&to=now"
+                        target: "_blank" # optional html a tag target attribute
+                  
                   - name: "Gloo Mesh Core Demo"
                     logo: "solo/glooy.png"
                     items:
