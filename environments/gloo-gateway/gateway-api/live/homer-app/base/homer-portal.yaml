@@ -379,6 +379,13 @@ spec:
                         keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://httpbin.gwapi.glooplatform.com/headers"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Header Control - Extract/Transform"
+                        subtitle: "provide x-email header for x-transformed-header"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/headers"
+                        target: "_blank" # optional html a tag target attribute
                   
                   - name: "Traffic Shaping Config Examples"
                     icon: "far fa-file-code"
@@ -418,8 +425,15 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L14"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Header Control"
+                      - name: "Header Control - Append/Remove"
                         subtitle: "add/remove headers"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L19-L36"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Header Control - Extract/Transform"
+                        subtitle: "extract x-email and transform to x-transformed-header"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,demo"

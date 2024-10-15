@@ -42,7 +42,7 @@ spec:
       requestTransformation:
         transformationTemplate:
           extractors:
-          # This extracts the 'x-email' header to an extractor named 'email'
+          # This extracts the 'x-email' header to an extractor named 'email' and takes the domain using regex
             email:
               header: 'x-email'
               regex: .*@(.*)$
