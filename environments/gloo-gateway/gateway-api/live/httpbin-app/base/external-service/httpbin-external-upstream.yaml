@@ -1,0 +1,10 @@
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: httpbin-external
+  namespace: httpbin
+spec:
+  static:
+    hosts:
+      - addr: httpbin.org
+        port: 443

@@ -14,7 +14,17 @@ spec:
       namespace: gloo-system
   rules:
     - backendRefs:
-        - name: 'httpbin-delegate-route'
+        # uncomment to use direct reference
+        #- name: 'httpbin-delegate-route'
+        #  namespace: httpbin
+        #  group: gateway.networking.k8s.io
+        #  kind: HTTPRoute
+        #- name: 'httpbin-external-delegate-route'
+        #  namespace: httpbin
+        #  group: gateway.networking.k8s.io
+        #  kind: HTTPRoute
+        # uncomment to use wildcard to delegate to all route tables in the httpbin namespace
+        - name: '*'
           namespace: httpbin
           group: gateway.networking.k8s.io
           kind: HTTPRoute

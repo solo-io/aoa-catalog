@@ -14,3 +14,5 @@ resources:
 - httpbin-ratelimit-config.yaml
 - okta-authconfig.yaml
 - direct-response.yaml
+- external-service
+- direct-response
