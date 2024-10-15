@@ -6,3 +6,4 @@ resources:
 - rbac.yaml
 - rollouts-ui-httproute.yaml
 - rollouts-ui-route-policies.yaml
+- rollouts-ui-authconfig.yaml
