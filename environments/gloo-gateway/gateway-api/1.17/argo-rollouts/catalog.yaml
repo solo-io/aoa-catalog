@@ -22,7 +22,7 @@ waves:
       post_deploy:
       -  $env_path/argo-rollouts/test.sh
   - name: rollouts-demo
-    location: $env_path/rollouts-demo/base
+    location: $env_path/rollouts-demo/strategies
     scripts:
       pre_deploy: 
       -  $env_path/rollouts-demo/init.sh
