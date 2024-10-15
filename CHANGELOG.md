@@ -1,5 +1,9 @@
 # Changelog
 
+0.6.4 (10-15-24)
+---
+- Add gateway-api/1.17/argo-rollouts environment
+
 0.6.3 (10-2-24)
 ---
 - Update readme with hostname entries section describing all of the hostnames used in this repo and how to configure them locally
