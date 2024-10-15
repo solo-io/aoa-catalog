@@ -20,11 +20,20 @@ spec:
       # add headers to all responses
       requestHeadersToAdd:
         - header:
-            key: "foo"
-            value: "bar"
+            key: "custom-request-header-1"
+            value: "zanzibar"
         - header:
-            key: "x-id"
-            value: "12345"
+            key: "custom-request-header-2"
+            value: "madagascar"
+        - header:
+            key: "custom-request-header-3"
+            value: "morocco"
+        - header:
+            key: "custom-request-header-4"
+            value: "nigeria"
+        - header:
+            key: "custom-request-header-5"
+            value: "senegal"
     rateLimitConfigs:
       refs:
       - name: httpbin-ratelimit-config
