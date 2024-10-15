@@ -272,7 +272,7 @@ spec:
                         url: "https://httpbin.gwapi.glooplatform.com/delay/0"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Dark Launch - bookinfo reviews-v2"
-                        subtitle: "requires user: preview, bookinfo-key, x-token header"
+                        subtitle: "requires user: preview & bookinfo-key header"
                         icon: "fas fa-book-reader"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,gloo-mesh,demo"
@@ -282,15 +282,15 @@ spec:
                   - name: "Demo Security Capabilities"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "OIDC Auth with Okta"
+                      - name: "Httpbin - OIDC Auth"
                         subtitle: "requires user login credentials"
                         icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         url: "https://httpbin.gwapi.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       
-                      - name: "API Key Auth + JWT Validation"
-                        subtitle: "requires bookinfo-key and x-token header"
+                      - name: "Bookinfo - API Key Auth"
+                        subtitle: "requires bookinfo-key header"
                         icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         url: "https://bookinfo.gwapi.glooplatform.com/productpage"
