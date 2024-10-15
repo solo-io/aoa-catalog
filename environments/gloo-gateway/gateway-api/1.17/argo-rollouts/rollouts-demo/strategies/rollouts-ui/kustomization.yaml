@@ -4,3 +4,5 @@ kind: Kustomization
 resources:
 - rollouts-ui-deploy.yaml
 - rbac.yaml
+- rollouts-ui-httproute.yaml
+- rollouts-ui-route-policies.yaml

@@ -8,5 +8,4 @@ resources:
 - rollouts-demo-service.yaml
 - rollouts-demo-httproute.yaml
 - rollouts-demo-route-policies.yaml
-#- rollouts-demo-vs-rt.yaml
 
