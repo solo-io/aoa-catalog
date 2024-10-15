@@ -182,8 +182,7 @@ spec:
                     Used in API-Key auth example:<br />
                     api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br /><br />
                     Used in JWT auth example:<br />
-                    TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "$TOKEN"<br />
-                    x-auth: Bearer ${TOKEN}<br /><br />
+                    TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "x-token: $TOKEN"<br />
                     Used in dark launch example:<br />
                     user: preview<br /><br />
                     Used in WAF example:<br />
@@ -474,7 +473,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "JWT Validation & Claims to Headers"
-                        subtitle: "requires x-auth header"
+                        subtitle: "requires x-token header"
                         icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #external-service #demo"
                         keywords: "gloo-gateway,demo"
