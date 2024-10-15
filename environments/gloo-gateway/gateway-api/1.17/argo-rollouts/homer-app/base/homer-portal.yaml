@@ -178,6 +178,10 @@ spec:
                         keywords: "argocd"
                         url: "https://argocd.glootest.com/argo"
                         target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Argo Rollouts Demo"
+                    icon: "fas fa-cloud"
+                    items:
                       - name: "Rollouts Demo Dashboard"
                         #subtitle: "Change your image color tag here"
                         icon: "fab fa-git-alt"
@@ -185,11 +189,8 @@ spec:
                         keywords: "argo-rollouts"
                         url: "https://rollouts-ui.glootest.com/rollouts"
                         target: "_blank" # optional html a tag target attribute
-                  
-                  - name: "Rollout Strategies"
-                    icon: "fas fa-cloud"
-                    items:
-                      - name: "rollouts-demo (blue-green/canary)"
+                      - name: "Color Demo App"
+                        subtitle: "canary rollout strategy"
                         icon: "fas fa-globe-americas"
                         tag: "rollouts-demo"
                         url: "http://rollouts-demo.glootest.com"
