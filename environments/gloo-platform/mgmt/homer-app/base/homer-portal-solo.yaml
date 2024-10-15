@@ -169,6 +169,7 @@ spec:
                   title: "Welcome!"
                   icon: "fa fa-grin"
                   content: |
+                    <h1>AOA Catalog Demo Apps</h1>
                     This is a simple navigation homepage for aoa-catalog demo apps running on the Gloo Platform!<br />
                     Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
                     
