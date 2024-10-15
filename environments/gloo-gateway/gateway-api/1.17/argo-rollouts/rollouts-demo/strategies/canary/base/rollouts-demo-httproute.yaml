@@ -16,9 +16,9 @@ spec:
           value: /
       backendRefs:
         - name: rollouts-demo-active
-          port: 8000
+          port: 8080
         - name: rollouts-demo-preview
-          port: 8000
+          port: 8080
       filters:
       - type: ExtensionRef
         extensionRef:
