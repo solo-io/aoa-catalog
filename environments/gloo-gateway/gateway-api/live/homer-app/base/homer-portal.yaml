@@ -179,11 +179,10 @@ spec:
                     Username: jdoe@gmail.com // Password: gloo-public<br /><br />
                     Common headers used in demos:<br /><br />
 
-                    Used in JWT auth example:<br />
-                    TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "$TOKEN"<br />
-                    x-auth: Bearer ${TOKEN}<br /><br />
+                    Run this command in terminal to get the JWT auth header:<br />
+                    TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "x-token: $TOKEN"<br /><br />
 
-                    Bookinfo API key auth:<br />
+                    Bookinfo API key auth header:<br />
                     bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br /><br />
 
                     Used in dark launch example:<br />
@@ -288,9 +287,14 @@ spec:
                         tag: "gloo-gateway #gloo-mesh #demo"
                         url: "https://httpbin.gwapi.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-                      
                       - name: "Bookinfo - API Key Auth"
                         subtitle: "requires bookinfo-key header"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://bookinfo.gwapi.glooplatform.com/productpage"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Chatbot - JWT Validation & RBAC"
+                        subtitle: "requires x-token JWT header"
                         icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         url: "https://bookinfo.gwapi.glooplatform.com/productpage"
