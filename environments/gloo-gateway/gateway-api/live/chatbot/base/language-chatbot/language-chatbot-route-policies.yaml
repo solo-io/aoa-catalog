@@ -5,8 +5,10 @@ metadata:
   namespace: ai-chatbot
 spec:
   options:
+    # jwt validation is enabled when using this policy
     jwt:
       disable: false
+    # validated claim must include org: internal
     rbac:
       policies:
         viewer:

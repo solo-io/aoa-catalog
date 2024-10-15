@@ -226,27 +226,27 @@ spec:
                   - name: "AI Gateway Workloads"
                     icon: "fas fa-brain"
                     items:
-                      - name: "Language Translator Chatbot"
-                        subtitle: "example client"
-                        icon: "fas fa-language"
-                        tag: "ai-gateway"
-                        url: "https://language-chatbot.gwapi.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute
                       - name: "BetterChatGPT Chatbot"
                         subtitle: "example client"
                         icon: "far fa-question-circle"
                         tag: "ai-gateway"
                         url: "https://chat.gwapi.glooplatform.com/"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Language Translator Chatbot"
+                        subtitle: "requires x-token header with valid JWT"
+                        icon: "fas fa-language"
+                        tag: "ai-gateway"
+                        url: "https://language-chatbot.gwapi.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "AI - Prompt Guard"
-                        subtitle: "config example"
+                        subtitle: "filter sensitive content on the request/response"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/aigw-config/base/openai/openai-targetref-options.yaml#L13-L21"
                         target: "_blank" # optional html a tag target attribute
                       - name: "AI - Prompt Enrichment"
-                        subtitle: "config example"
+                        subtitle: "prepend/append system and user prompts"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,demo"
@@ -294,10 +294,10 @@ spec:
                         url: "https://bookinfo.gwapi.glooplatform.com/productpage"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Chatbot - JWT Validation & RBAC"
-                        subtitle: "requires x-token JWT header"
+                        subtitle: "requires x-token header with valid JWT"
                         icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
-                        url: "https://bookinfo.gwapi.glooplatform.com/productpage"
+                        url: "https://language-chatbot.gwapi.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Demo Gloo Portal Capabilities"
@@ -435,6 +435,13 @@ spec:
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/https-gateway-virtualhostoptions.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "JWT Validation & RBAC"
+                        subtitle: "authorize based on validated claims"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/chatbot/base/language-chatbot/language-chatbot-route-policies.yaml"
                         target: "_blank" # optional html a tag target attribute
                       - name: "OPA AuthConfig"
                         subtitle: "opa auth example"
