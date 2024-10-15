@@ -28,9 +28,9 @@ spec:
         
         image:
           # -- image repository
-          repository: b4bz/homer
+          repository: ably77/homer
           # -- image tag
-          tag: v23.05.1
+          tag: 0.1.0
           # -- image pull policy
           pullPolicy: IfNotPresent
         
@@ -103,7 +103,7 @@ spec:
                 
                 title: "aoa-catalog demo dashboard"
                 subtitle: "Homepage"
-                logo: "logo.png"
+                logo: "solo/glooy.png"
                 # icon: "fas fa-skull-crossbones" # Optional icon
                 
                 header: true
@@ -146,23 +146,7 @@ spec:
                   style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
                   title: "Welcome!"
                   icon: "fa fa-grin"
-                  content: | 
-                    This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Gateway!<br />
-                    Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
-                    
-                    When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />
-                    127.0.0.1 argocd.glootest.com homer.glootest.com httpbin.glootest.com bookinfo.glootest.com general-chatbot.glootest.com language-chatbot.glootest.com<br /><br />
-                    Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />
-                    
-                    Below are a few common usernames to explore the applications and portals:<br />
-                    Username: jdoe@solo.io // Password: gloo-dev<br />
-                    Username: jdoe@gmail.com // Password: gloo-public<br /><br />
-
-                    Used in API-Key auth example:<br />
-                    bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy<br /><br />
-                    
-                    Run this command in your terminal for the JWT token used in auth example:<br />
-                    TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "x-token: $TOKEN"<br />
+                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Platform!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />127.0.0.1 argocd.glootest.com rollouts-demo.glootest.com rollouts.glootest.com<br /><br />Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-gateway/single-cluster-freestyle#application-description'>here</a>"
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
@@ -192,39 +176,30 @@ spec:
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
-                        url: "https://argocd.glootest.com/argo"
+                        url: "https://admin.glootest.com/argo"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Grafana"
+                        subtitle: "Observability dashboards"
+                        icon: "fas fa-chart-area"
+                        tag: "grafana"
+                        keywords: "grafana"
+                        url: "https://admin.glootest.com/grafana"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Rollouts Demo Dashboard"
+                        #subtitle: "Change your image color tag here"
+                        icon: "fab fa-git-alt"
+                        tag: "argo-rollouts"
+                        keywords: "argo-rollouts"
+                        url: "https://admin.glootest.com/rollouts"
                         target: "_blank" # optional html a tag target attribute
                   
-                  - name: "Web Applications"
+                  - name: "Rollout Strategies"
                     icon: "fas fa-cloud"
                     items:
-                      - name: "httpbin"
-                        subtitle: "requires okta login"
-                        icon: "far fa-window-maximize"
-                        tag: "httpbin"
-                        url: "https://httpbin.glootest.com"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Bookinfo"
-                        subtitle: "requires x-token & bookinfo-key header"
-                        icon: "fas fa-book-reader"
-                        tag: "bookinfo"
-                        url: "https://bookinfo.glootest.com/productpage"
-                        target: "_blank" # optional html a tag target attribute
-
-                  - name: "AI Gateway Workloads"
-                    icon: "fas fa-brain"
-                    items:
-                      - name: "General Chatbot"
-                        subtitle: "requires x-token header"
-                        icon: "far fa-question-circle"
-                        tag: "ai-gateway"
-                        url: "https://general-chatbot.glootest.com"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Language Translator Chatbot"
-                        subtitle: "requires x-token header"
-                        icon: "fas fa-language"
-                        tag: "ai-gateway"
-                        url: "https://language-chatbot.glootest.com"
+                      - name: "rollouts-demo (blue-green/canary)"
+                        icon: "fas fa-globe-americas"
+                        tag: "rollouts-demo"
+                        url: "http://rollouts-demo.glootest.com"
                         target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
