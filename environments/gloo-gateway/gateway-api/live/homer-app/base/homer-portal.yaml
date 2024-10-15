@@ -171,7 +171,7 @@ spec:
                   title: "Welcome!"
                   icon: "fa fa-grin"
                   content: |
-                    <p>This is a simple navigation homepage for the <strong>aoa-catalog</strong> demo apps running on the <strong>Gloo Platform</strong>!</p>
+                    <p>This is a simple navigation homepage for the <strong>aoa-catalog</strong> demo apps running on <strong>Gloo Gateway</strong>!</p>
                     
                     <p>Find more information on <a href='https://github.com/solo-io/aoa-catalog' target="_blank">GitHub: solo-io/aoa-catalog</a></p>
                     
@@ -185,18 +185,20 @@ spec:
                 
                     <h2>Common Headers Used in Demos</h2>
                     <p>Below are headers commonly used in demo applications (typically also shown in the subtitle of the link card):</p>
+                    <br />
                 
-                    <h3>API-Key Authentication Example</h3>
-                    <pre><code>api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy</code></pre>
+                    <h3>Bookinfo API-Key Auth header</h3>
+                    <pre><code>bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy</code></pre>
+                    <br />
                 
                     <h3>JWT Authentication Example</h3>
-                    <p>Run the following command to retrieve the JWT:</p>
-                    <pre><code>TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "$TOKEN"</code></pre>
-                    <p>Then use this header:</p>
-                    <pre><code>x-auth: Bearer ${TOKEN}</code></pre>
+                    <p>Run the following command to retrieve the JWT header:</p>
+                    <pre><code>TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "x-token: $TOKEN"</code></pre>
+                    <br />
                 
                     <h3>Dark Launch Example</h3>
                     <pre><code>user: preview</code></pre>
+                    <br />
                 
                     <h3>WAF Example</h3>
                     <p>Here are some common user-agent headers:</p>
