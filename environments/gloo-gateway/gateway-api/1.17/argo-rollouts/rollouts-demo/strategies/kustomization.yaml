@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
 #- blue-green
 - canary
-#- rollouts-ui
+- rollouts-ui
 
