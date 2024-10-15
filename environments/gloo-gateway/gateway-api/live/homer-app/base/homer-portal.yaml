@@ -185,7 +185,7 @@ spec:
                     <p>Below are headers commonly used in demo applications (typically also shown in the subtitle of the link card):</p>
                     <br />
 
-                    <a href='https://modheader.com/' target="_blank">ModHeader</a> is a nice browser extension that lets you to easily modify HTTP request and response headers
+                    <p><a href='https://modheader.com/' target="_blank">ModHeader</a> is a nice browser extension that lets you to easily modify HTTP request and response headers</p>
                     <br />
 
                     <h3>Bookinfo API-Key Auth header</h3>
