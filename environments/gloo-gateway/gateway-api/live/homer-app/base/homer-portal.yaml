@@ -315,6 +315,13 @@ spec:
                         keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://bookinfo.gwapi.glooplatform.com/reviews/2"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "External Service Migration"
+                        subtitle: "50/50 public / in-cluster"
+                        icon: "fas fa-external-link-alt"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/anything/migration"
+                        target: "_blank" # optional html a tag target attribute
                   
                   - name: "Traffic Routing and Shifting Demo Config Examples"
                     icon: "far fa-file-code"
@@ -324,7 +331,7 @@ spec:
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,demo"
-                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/direct-response.yaml"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/direct-response/direct-response.yaml"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Host Rewrite"
                         subtitle: "rewrite host path"
@@ -381,6 +388,20 @@ spec:
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L32-L39"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "External Service Upstream Config"
+                        subtitle: "create static upstream for external service"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/external-service/httpbin-external-upstream.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "External Service Routing Config"
+                        subtitle: "traffic shift between public / in-cluster"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/external-service/httpbin-external-delegate-route.yaml#L12-L19"
                         target: "_blank" # optional html a tag target attribute
 
                   
@@ -566,7 +587,7 @@ spec:
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #config"
                         keywords: "gloo-gateway,demo"
-                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-parent-route.yaml#L16-L20"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-parent-route.yaml#L16-L30"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Route Delegation - Child"
                         subtitle: "control route-level matchers and policies"
