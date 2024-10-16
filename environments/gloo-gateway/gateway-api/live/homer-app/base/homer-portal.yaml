@@ -245,7 +245,7 @@ spec:
                     icon: "fas fa-brain"
                     items:
                       - name: "BetterChatGPT Chatbot"
-                        subtitle: "use https://llm.gwapi.glooplatform.com/openai"
+                        subtitle: "use custom API > https://llm.gwapi.glooplatform.com/openai"
                         icon: "far fa-question-circle"
                         tag: "ai-gateway"
                         url: "https://chat.gwapi.glooplatform.com/"
