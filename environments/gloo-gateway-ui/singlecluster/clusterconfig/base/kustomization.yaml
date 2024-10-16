@@ -7,7 +7,7 @@ resources:
 - argocd-ns.yaml
 - cert-manager-ns.yaml
 - gateway-ca.yaml
-- gloo-mesh-ns.yaml
+- gloo-system-ns.yaml
 - gloo-mesh-relay-root-ca.yaml
 - istio-eastwest-ns.yaml
 - istio-gateways-ns.yaml
