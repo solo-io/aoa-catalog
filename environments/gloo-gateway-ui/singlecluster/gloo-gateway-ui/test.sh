@@ -13,5 +13,5 @@ spec:
 EOF
 
 # wait for gloo mesh mgmt server
-$SCRIPT_DIR/tools/wait-for-rollout.sh deployment gloo-mesh-mgmt-server gloo-mesh 10 ${cluster_context}
+#$SCRIPT_DIR/tools/wait-for-rollout.sh deployment gloo-mesh-mgmt-server gloo-mesh 10 ${cluster_context}
 
