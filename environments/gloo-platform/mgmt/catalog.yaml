@@ -51,27 +51,27 @@ waves:
       -  $env_path/gloo-platform-config/init.sh
       post_deploy:
       -  $env_path/gloo-platform-config/test.sh 
-  - name: bookinfo-config
-    location: $env_path/bookinfo-config/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/bookinfo-config/init.sh
-      post_deploy:
-      -  $env_path/bookinfo-config/test.sh   
-  - name: httpbin-app
-    location: $env_path/httpbin-app/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/httpbin-app/init.sh
-      post_deploy:
-      -  $env_path/httpbin-app/test.sh   
-  - name: httpbin-config
-    location: $env_path/httpbin-config/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/httpbin-config/init.sh
-      post_deploy:
-      -  $env_path/httpbin-config/test.sh  
+  #- name: bookinfo-config
+  #  location: $env_path/bookinfo-config/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/bookinfo-config/init.sh
+  #    post_deploy:
+  #    -  $env_path/bookinfo-config/test.sh   
+  #- name: httpbin-app
+  #  location: $env_path/httpbin-app/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/httpbin-app/init.sh
+  #    post_deploy:
+  #    -  $env_path/httpbin-app/test.sh   
+  #- name: httpbin-config
+  #  location: $env_path/httpbin-config/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/httpbin-config/init.sh
+  #    post_deploy:
+  #    -  $env_path/httpbin-config/test.sh  
   - name: online-boutique-config
     location: $env_path/online-boutique-config/base
     scripts:
@@ -79,13 +79,13 @@ waves:
       -  $env_path/online-boutique-config/init.sh
       post_deploy:
       -  $env_path/online-boutique-config/test.sh     
-  - name: portal-demo
-    location: $env_path/portal-demo/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/portal-demo/init.sh
-      post_deploy:
-      -  $env_path/portal-demo/test.sh    
+  #- name: portal-demo
+  #  location: $env_path/portal-demo/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/portal-demo/init.sh
+  #    post_deploy:
+  #    -  $env_path/portal-demo/test.sh    
   - name: mario-config
     location: $env_path/mario-config/base
     scripts:
