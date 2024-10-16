@@ -17,9 +17,6 @@ spec:
       - path:
           type: PathPrefix
           value: /solo
-      - path:
-          type: PathPrefix
-          value: /
       backendRefs:
       - name: homer-portal
         port: 8080
@@ -29,6 +26,14 @@ spec:
           group: gateway.solo.io
           kind: RouteOption
           name: homer-route-policies
+    - matches:
+      - path:
+          type: PathPrefix
+          value: /
+      backendRefs:
+      - name: homer-portal
+        port: 8080
+      filters:
       - type: RequestRedirect
         requestRedirect:
           path:
