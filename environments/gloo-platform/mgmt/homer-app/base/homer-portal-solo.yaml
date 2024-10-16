@@ -760,7 +760,7 @@ spec:
                         icon: "fas fa-fighter-jet"
                         tag: "additional #demo"
                         keywords: "gloo-mesh,chaos,demo"
-                        url: "https://chaos.demo.glooplatform.com"
+                        url: "https://chaos.central.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Tiered Mesh Application - Core"
