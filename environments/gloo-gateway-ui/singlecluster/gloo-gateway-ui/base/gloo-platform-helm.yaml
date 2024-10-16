@@ -20,6 +20,8 @@ spec:
         global: {}
         licensing:
             licenseSecretName: "gloo-license"
+        glooGateway:
+            enabled: true
         glooMgmtServer:
             enabled: false
             registerCluster: true
