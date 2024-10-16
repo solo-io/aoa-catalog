@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: gloo-mesh
+    namespace: gloo-system
     server: https://kubernetes.default.svc
   project: default
   source:

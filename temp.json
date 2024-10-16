@@ -1,0 +1,19 @@
+{
+  "apiVersion": "v1",
+  "kind": "Namespace",
+  "metadata": {
+    "creationTimestamp": "2024-10-16T20:46:33Z",
+    "labels": {
+      "kubernetes.io/metadata.name": "gloo-mesh"
+    },
+    "name": "gloo-mesh",
+    "resourceVersion": "133585",
+    "uid": "b6137a86-fde3-4c82-bafa-af7601c71c2e"
+  },
+  "spec": {
+    "finalizers": []
+  },
+  "status": {
+    "phase": "Active"
+  }
+}
