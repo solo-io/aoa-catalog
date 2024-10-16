@@ -4,7 +4,5 @@ kind: Kustomization
 
 # when using baseline uncomment below
 resources:
-- virtualservice.yaml
-- base
-#- sidecar
-#- ambient
+- tiered-app-httproute.yaml
+- tiered-app-route-policies.yaml

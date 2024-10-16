@@ -1,0 +1,42 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: tiered-app-ns-1-route-policies
+  namespace: ns-1
+spec:
+  options:
+    jwt:
+      disable: true
+---
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: tiered-app-ns-2-route-policies
+  namespace: ns-2
+spec:
+  options:
+    jwt:
+      disable: true
+---
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: tiered-app-ns-3-route-policies
+  namespace: ns-3
+spec:
+  options:
+    jwt:
+      disable: true
+---
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: tiered-app-ns-4-route-policies
+  namespace: ns-4
+spec:
+  options:
+    jwt:
+      disable: true
+
+                
+    
