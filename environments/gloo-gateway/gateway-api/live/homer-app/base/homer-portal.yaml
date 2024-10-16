@@ -44,7 +44,7 @@ spec:
           # -- Specify the group ID the application will run as
           GID: "1001"
           # -- Specify the basepath the application will run at
-          #SUBFOLDER: /solo
+          SUBFOLDER: /solo
         
         # -- Set the resource requests / limits for the main container.
         resources:
@@ -120,7 +120,7 @@ spec:
                 
                 title: "Gloo Gateway Demo Dashboard"
                 subtitle: "Next-gen API Gateway built on Envoy proxy"
-                logo: "glooy.png"
+                logo: "solo/glooy.png"
                 # icon: "fas fa-skull-crossbones" # Optional icon
                 
                 header: true
@@ -606,7 +606,7 @@ spec:
                     items:
                       - name: "Gloo Portal Diagram"
                         subtitle: "Concepts, objects, and personas"
-                        logo: "glooy.png"
+                        logo: "solo/glooy.png"
                         tag: "gloo-portal"
                         url: "https://raw.githubusercontent.com/solo-io/aoa-catalog/refs/heads/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/images/portal-personas.png"
                         target: "_blank" # optional html a tag target attribute
