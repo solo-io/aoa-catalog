@@ -32,7 +32,9 @@ kubectl config rename-context k3d-your_mgmt_cluster_name mgmt
 
 ### Installer options
 ```
-Syntax: installer [-f|-i|-h]
+aoa-catalog installer.
+
+Syntax: installer [-f|-i|-h|--colima|--dry-run]
 
 commands:
 deploy     deploys an environment with the specified path
@@ -45,10 +47,67 @@ options:
 
 additional flags:
 --skip-argo  skip argo installation
+--colima   execute colima-install.sh script instead of k3d-install.sh
+--dry-run   simulate the actions without making changes
 ```
 
-Notes on flag options: 
-- If `-i` is used, the installer will check for a folder named `.infra` in the environment directory and will install the infra before running the script. This currently only supports `k3d` for local deployments
+### install local dev infra with flags
+
+If `-i` is used, the installer will check for a folder named `.infra` in the environment directory and will install the infra before running the script. This currently only supports `k3d` for local deployments
+
+Example to deploy k3d before installing
+```
+./aoa-tools/deploy.sh deploy -if <environment directory>
+```
+
+If `-i` and `--colima` is used, the installer will bootstrap a local colima install
+```
+./aoa-tools/deploy.sh deploy -if <environment directory> --colima
+```
+
+### review using dry-run
+If `--dry-run` is used, the installer will simulate the steps and provide a readout without actually configuring anything
+
+Here's an example output:
+```
+% aoa deploy -if environments/gloo-gateway/gateway-api/1.17/standalone --dry-run
+Dry-run: Would install K3D infrastructure.
+Dry-run: Would install ArgoCD.
+
+Starting gloo-enterprise-app with sync=true
+Dry-run: Would execute pre_deploy script at environments/gloo-gateway/gateway-api/1.17/standalone/gloo-enterprise-app/init.sh.
+Dry-run: The following ArgoCD Application would be created:
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wave-gloo-enterprise-app-aoa
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io/solo-io
+spec:
+  project: app-of-apps
+  source:
+    repoURL: https://github.com/solo-io/aoa-catalog/
+    targetRevision: 0.6.5
+    path: environments/gloo-gateway/gateway-api/1.17/standalone/gloo-enterprise-app/base
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 2
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s
+
+Dry-run: Would execute post_deploy script at environments/gloo-gateway/gateway-api/1.17/standalone/gloo-enterprise-app/test.sh.
+<...>
+END.
+```
 
 ### catalog.yaml
 The `catalog.yaml` exists in each demo environment directory which provides a list of app-of-apps "waves" to be deployed in order by the installer. A wave consists of the `location` (relative to the root path of the selected environment) as well as `pre_deploy` and `post_deploy` scripts which can be optionally run which can be useful for tasks such as health checks, or waiting for pods to be ready or printing output.
