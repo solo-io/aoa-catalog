@@ -30,8 +30,8 @@ spec:
           kind: RouteOption
           name: homer-route-policies
       - type: RequestRedirect
-          requestRedirect:
-            path:
-              type: ReplacePrefixMatch
-              replacePrefixMatch: /solo
-            statusCode: 302
+        requestRedirect:
+          path:
+            type: ReplacePrefixMatch
+            replacePrefixMatch: /solo
+          statusCode: 302
