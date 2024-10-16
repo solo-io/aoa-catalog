@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: prometheus
+  namespace: istio-gateways
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-gateways/http-gateway
+  http:
+  - name: prometheus-ui
+    match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: prometheus-server.gloo-mesh
+        port:
+          number: 9090

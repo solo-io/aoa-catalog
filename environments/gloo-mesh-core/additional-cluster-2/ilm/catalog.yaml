@@ -14,13 +14,13 @@ waves:
       post_deploy:
       -  $env_path/../certmanager/test.sh
     location: $env_path/../certmanager/base
-  - name: gloo-mesh-core
-    location: $env_path/../gloo-mesh-core/base
+  - name: gloo-gateway-ui
+    location: $env_path/../gloo-gateway-ui/base
     scripts:
       pre_deploy: 
-      -  $env_path/../gloo-mesh-core/init.sh
+      -  $env_path/../gloo-gateway-ui/init.sh
       post_deploy:
-      -  $env_path/../gloo-mesh-core/test.sh
+      -  $env_path/../gloo-gateway-ui/test.sh
   - name: istio
     location: $env_path/../istio/lifecyclemanager/base
     scripts:

@@ -1,0 +1,71 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: IstioLifecycleManager
+metadata:
+  name: istiod-control-plane
+  namespace: gloo-mesh
+  annotations:
+    argocd.argoproj.io/sync-wave: "-8"
+spec:
+  installations:
+      # The revision for this installation, such as 1-22
+    - revision: 1-22
+      # List all workload clusters to install Istio into
+      clusters:
+      - name: mgmt
+        # If set to true, the spec for this revision is applied in the cluster
+        defaultRevision: true
+      # When set to true, the lifecycle manager allows you to perform in-place upgrades by skipping checks that are required for canary upgrades
+      skipUpgradeValidation: true
+      istioOperatorSpec:
+        # Only the control plane components are installed
+        # (https://istio.io/latest/docs/setup/additional-setup/config-profiles/)
+        profile: minimal
+        # Solo.io Istio distribution repository; required for Gloo Istio.
+        # You get the repo key from your Solo Account Representative.
+        hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
+        # Any Solo.io Gloo Istio tag
+        tag: 1.22.3-patch1-solo
+        namespace: istio-system
+        # Mesh configuration
+        meshConfig:
+          # Enable access logging only if using.
+          accessLogFile: /dev/stdout
+          # Encoding for the proxy access log (TEXT or JSON). Default value is TEXT.
+          accessLogEncoding: JSON
+          # Enable span tracing only if using.
+          enableTracing: true
+          defaultConfig:
+            # Wait for the istio-proxy to start before starting application pods
+            holdApplicationUntilProxyStarts: true
+            proxyMetadata:
+              # Enable Istio agent to handle DNS requests for known hosts
+              # Unknown hosts are automatically resolved using upstream DNS servers
+              # in resolv.conf (for proxy-dns)
+              ISTIO_META_DNS_CAPTURE: "true"
+              # Enable automatic address allocation (for proxy-dns)
+              ISTIO_META_DNS_AUTO_ALLOCATE: "true"
+          # Set the default behavior of the sidecar for handling outbound traffic
+          # from the application
+          outboundTrafficPolicy:
+            mode: ALLOW_ANY
+          # The administrative root namespace for Istio configuration
+          rootNamespace: istio-system
+        # Traffic management
+        values:
+          global:
+            meshID: gloo-mesh
+            network: mgmt
+            multiCluster:
+              clusterName: mgmt
+        # Traffic management
+        components:
+          pilot:
+            k8s:
+              env:
+              # Disable selecting workload entries for local service routing.
+              # Required for Gloo VirtualDestinaton functionality.
+              - name: PILOT_ENABLE_K8S_SELECT_WORKLOAD_ENTRIES
+                value: "false"
+              # Reload cacerts when cert-manager changes it
+              - name: AUTO_RELOAD_PLUGIN_CERTS
+                value: "true"
