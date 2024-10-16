@@ -4,6 +4,4 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- waypoint-per-namespace.yaml
-#- hpa-per-namespace.yaml
-#- pdb.yaml
+- waypoint-viewer.yaml
