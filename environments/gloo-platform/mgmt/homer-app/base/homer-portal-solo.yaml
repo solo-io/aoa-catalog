@@ -337,7 +337,7 @@ spec:
                         icon: "fab fa-git-alt"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,argo-rollouts,canary,demo"
-                        url: "https://rollouts-ui.demo.glooplatform.com/"
+                        url: "https://rollouts-ui.gwapi.glooplatform.com/rollouts/rollouts-demo"
                         target: "_blank" # optional html a tag target attribute
 
                       - name: "Argo Rollouts Demo"
@@ -345,7 +345,7 @@ spec:
                         icon: "fab fa-git-alt"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,argo-rollouts,canary,demo"
-                        url: "https://rollouts.demo.glooplatform.com"
+                        url: "https://rollouts-demo.gwapi.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       
                       - name: "Dark Launch - bookinfo reviews-v2"
