@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: gloo-mesh-mgmt-server
+  name: gloo-system-mgmt-server
   namespace: gloo-system
 spec:
-  commonName: gloo-mesh-mgmt-server
+  commonName: gloo-system-mgmt-server
   dnsNames:
-    - "*.gloo-mesh"
+    - "*.gloo-system"
   # 1 year life
   duration: 8760h0m0s
   issuerRef:

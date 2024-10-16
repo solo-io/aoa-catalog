@@ -24,7 +24,7 @@ spec:
           multiCluster:
             clusterName: mgmt
           network: network1
-          hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
+          hub: us-docker.pkg.dev/gloo-system/istio-workshops
           tag: 1.22.3-patch1-solo
         meshConfig:
           trustDomain: mgmt
@@ -35,7 +35,7 @@ spec:
             # Wait for the istio-proxy to start before starting application pods
             holdApplicationUntilProxyStarts: true
             envoyAccessLogService:
-              address: gloo-mesh-agent.gloo-mesh:9977
+              address: gloo-system-agent.gloo-system:9977
             proxyMetadata:
               ISTIO_META_DNS_CAPTURE: "true"
               ISTIO_META_DNS_AUTO_ALLOCATE: "true"

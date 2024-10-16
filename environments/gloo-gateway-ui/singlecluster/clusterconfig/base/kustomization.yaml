@@ -8,7 +8,7 @@ resources:
 - cert-manager-ns.yaml
 - gateway-ca.yaml
 - gloo-system-ns.yaml
-- gloo-mesh-relay-root-ca.yaml
+- gloo-system-relay-root-ca.yaml
 - istio-eastwest-ns.yaml
 - istio-gateways-ns.yaml
 - istio-system-ns.yaml

@@ -1,4 +1,4 @@
 #!/bin/bash
 
 echo "wave description:"
-echo "deploy and register gloo-mesh agent and addons"
+echo "deploy and register gloo-system agent and addons"

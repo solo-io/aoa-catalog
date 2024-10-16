@@ -8,7 +8,7 @@ resources:
 - grafana-vs.yaml
 - http-gateway.yaml
 - https-gateway.yaml
-- gloo-mesh-ui-vs.yaml
+- gloo-system-ui-vs.yaml
 - grafana-dashboard-configmaps
 #- jaeger-vs.yaml
 #- kiali-vs.yaml

@@ -1,5 +1,5 @@
 # Environment Description
-The `gloo-mesh-core/singlecluster` environment deploys the core components of a single cluster Gloo Mesh Core demo, with the online-boutique demo application deployed.
+The `gloo-gateway-ui/singlecluster` environment deploys the core components of a single cluster Gloo Mesh Core demo, with the online-boutique demo application deployed.
 
 ### Prerequisites
 - 1 Kubernetes Cluster

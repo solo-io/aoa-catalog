@@ -2,6 +2,6 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: selfsigned
-  namespace: gloo-mesh
+  namespace: gloo-system
 spec:
   selfSigned: {}

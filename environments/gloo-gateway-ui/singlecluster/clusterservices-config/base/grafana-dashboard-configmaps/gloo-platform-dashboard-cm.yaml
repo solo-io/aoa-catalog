@@ -930,7 +930,7 @@ data:
                 "uid": "PC80848E498D38F97"
               },
               "exemplar": true,
-              "expr": "sum(delta(gloo_mesh_redis_sync_err{app=\"gloo-mesh-mgmt-server\"}[10m]))",
+              "expr": "sum(delta(gloo_mesh_redis_sync_err{app=\"gloo-system-mgmt-server\"}[10m]))",
               "instant": false,
               "interval": "",
               "legendFormat": "",
@@ -1023,7 +1023,7 @@ data:
                 "uid": "PC80848E498D38F97"
               },
               "exemplar": true,
-              "expr": "sum(relay_pull_clients_connected{app=\"gloo-mesh-mgmt-server\"}) / count(relay_pull_clients_connected{app=\"gloo-mesh-mgmt-server\"})",
+              "expr": "sum(relay_pull_clients_connected{app=\"gloo-system-mgmt-server\"}) / count(relay_pull_clients_connected{app=\"gloo-system-mgmt-server\"})",
               "interval": "",
               "legendFormat": "",
               "refId": "A"
@@ -1246,7 +1246,7 @@ data:
                 "uid": "PC80848E498D38F97"
               },
               "exemplar": true,
-              "expr": "sum(relay_pull_clients_connected{app=\"gloo-mesh-mgmt-server\"})by (pod)",
+              "expr": "sum(relay_pull_clients_connected{app=\"gloo-system-mgmt-server\"})by (pod)",
               "instant": false,
               "interval": "",
               "legendFormat": "",
@@ -1346,7 +1346,7 @@ data:
                 "uid": "PC80848E498D38F97"
               },
               "exemplar": false,
-              "expr": "sum(relay_pull_clients_connected{app=\"gloo-mesh-mgmt-server\"}) by (pod,cluster)",
+              "expr": "sum(relay_pull_clients_connected{app=\"gloo-system-mgmt-server\"}) by (pod,cluster)",
               "format": "table",
               "instant": true,
               "interval": "",
@@ -2001,7 +2001,7 @@ data:
                     "uid": "PC80848E498D38F97"
                   },
                   "exemplar": true,
-                  "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"gloo-mesh\"}[5m])) by (pod)",
+                  "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"gloo-system\"}[5m])) by (pod)",
                   "format": "time_series",
                   "hide": false,
                   "interval": "",
@@ -2016,7 +2016,7 @@ data:
                     "uid": "PC80848E498D38F97"
                   },
                   "exemplar": true,
-                  "expr": "scalar(kube_resourcequota{namespace=\"gloo-mesh\", type=\"hard\",resource=\"requests.cpu\"})",
+                  "expr": "scalar(kube_resourcequota{namespace=\"gloo-system\", type=\"hard\",resource=\"requests.cpu\"})",
                   "format": "time_series",
                   "interval": "",
                   "intervalFactor": 2,
@@ -2030,7 +2030,7 @@ data:
                     "uid": "PC80848E498D38F97"
                   },
                   "exemplar": true,
-                  "expr": "scalar(kube_resourcequota{namespace=\"gloo-mesh\", type=\"hard\",resource=\"limits.cpu\"})",
+                  "expr": "scalar(kube_resourcequota{namespace=\"gloo-system\", type=\"hard\",resource=\"limits.cpu\"})",
                   "format": "time_series",
                   "interval": "",
                   "intervalFactor": 2,
@@ -2207,7 +2207,7 @@ data:
                     "uid": "PC80848E498D38F97"
                   },
                   "exemplar": true,
-                  "expr": "sum(container_memory_working_set_bytes{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"gloo-mesh\", container!=\"\", image!=\"\"}) by (pod)",
+                  "expr": "sum(container_memory_working_set_bytes{job=\"kubelet\", metrics_path=\"/metrics/cadvisor\", namespace=\"gloo-system\", container!=\"\", image!=\"\"}) by (pod)",
                   "format": "time_series",
                   "interval": "",
                   "intervalFactor": 2,
@@ -2221,7 +2221,7 @@ data:
                     "uid": "PC80848E498D38F97"
                   },
                   "exemplar": true,
-                  "expr": "scalar(kube_resourcequota{namespace=\"gloo-mesh\", type=\"hard\",resource=\"requests.memory\"})",
+                  "expr": "scalar(kube_resourcequota{namespace=\"gloo-system\", type=\"hard\",resource=\"requests.memory\"})",
                   "format": "time_series",
                   "interval": "",
                   "intervalFactor": 2,
@@ -2235,7 +2235,7 @@ data:
                     "uid": "PC80848E498D38F97"
                   },
                   "exemplar": true,
-                  "expr": "scalar(kube_resourcequota{namespace=\"gloo-mesh\", type=\"hard\",resource=\"limits.memory\"})",
+                  "expr": "scalar(kube_resourcequota{namespace=\"gloo-system\", type=\"hard\",resource=\"limits.memory\"})",
                   "format": "time_series",
                   "interval": "",
                   "intervalFactor": 2,

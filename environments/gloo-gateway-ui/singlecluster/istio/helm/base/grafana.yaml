@@ -58,7 +58,7 @@ spec:
               name: prometheus-gloo-platform
               orgId: 1
               type: prometheus
-              url: http://prometheus-server.gloo-mesh
+              url: http://prometheus-server.gloo-system
         dashboardProviders:
           dashboardproviders.yaml:
             apiVersion: 1
