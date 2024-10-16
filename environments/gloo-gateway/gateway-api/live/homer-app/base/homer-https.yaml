@@ -30,9 +30,6 @@ spec:
       - path:
           type: PathPrefix
           value: /
-      backendRefs:
-      - name: homer-portal
-        port: 8080
       filters:
       - type: RequestRedirect
         requestRedirect:
