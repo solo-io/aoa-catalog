@@ -5,6 +5,6 @@ kind: Kustomization
 # when using baseline uncomment below
 resources:
 - virtualservice.yaml
-#- base
+- base
 #- sidecar
-- ambient
+#- ambient
