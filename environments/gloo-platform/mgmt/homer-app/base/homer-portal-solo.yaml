@@ -171,7 +171,7 @@ spec:
                   title: "Welcome!"
                   icon: "fa fa-grin"
                   content: |
-                    <p>This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Platform!</p>
+                    <p>This is a simple navigation homepage for the aoa-catalog demo apps running on Gloo Gateway!</p>
                     
                     <p>Find more information on <a href='https://github.com/solo-io/aoa-catalog' target="_blank">GitHub: solo-io/aoa-catalog</a></p>
                     
@@ -188,8 +188,8 @@ spec:
                     <p><a href='https://modheader.com/' target="_blank">ModHeader</a> is a nice browser extension that lets you to easily modify HTTP request and response headers</p>
                     <br />
 
-                    <h3>API-Key Auth header</h3>
-                    <pre><code>api-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy</code></pre>
+                    <h3>Bookinfo API-Key Auth header</h3>
+                    <pre><code>bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy</code></pre>
                     <br />
                 
                     <h3>JWT Authentication Example</h3>
@@ -207,6 +207,9 @@ spec:
                     user-agent: user6
                     user-agent: scammer</code></pre>
                     <br />
+
+                    <h3>Transformation Example - Extract/Transform</h3>
+                    <pre><code>x-email: jdoe@solo.io</code></pre>
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
@@ -267,79 +270,72 @@ spec:
                         tag: "howto"
                         url: "https://demo.glooplatform.com/howto"
                         target: "_blank" # optional html a tag target attribute
-                  
-                  - name: "Platform Admin Tools"
-                    icon: "fas fa-tools"
-                    items:
-                      - name: "Gloo Mesh UI"
-                        icon: "fas fa-arrows-alt"
-                        tag: "admin #gloo-mesh #demo"
-                        keywords: "gloo-mesh,gloo-gateway,ui,admin,demo"
-                        url: "https://ui.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "uptime dashboard"
-                        icon: "fas fa-heartbeat"
-                        tag: "admin #observability #demo"
-                        keywords: "uptime,gloo-mesh,observability,admin,demo"
-                        url: "https://uptime.admin.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Prometheus"
-                        #subtitle: "Requires header user: preferred"
-                        icon: "fas fa-chart-area"
-                        tag: "admin #observability #demo"
-                        keywords: "observability,gloo-mesh,admin,demo"
-                        url: "https://prometheus.admin.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "ArgoCD - mgmt"
-                        icon: "fab fa-git-alt"
-                        tag: "admin #gitops #demo"
-                        keywords: "admin,argocd,gitops,demo"
-                        url: "https://admin.glooplatform.com/argo"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "ArgoCD - glooplatform-central"
-                        icon: "fab fa-git-alt"
-                        tag: "admin #gitops #demo"
-                        keywords: "admin,argocd,gitops,demo"
-                        url: "https://argocd.central.glooplatform.com/argo"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "ArgoCD - glooplatform-east"
-                        icon: "fab fa-git-alt"
-                        tag: "admin #gitops #demo"
-                        keywords: "admin,argocd,gitops,demo"
-                        url: "https://argocd.east.glooplatform.com/argo"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Grafana - mgmt"
-                        #subtitle: "Another application"
-                        icon: "fas fa-chart-area"
-                        tag: "admin #observability #demo"
-                        keywords: "admin,observability,demo,grafana"
-                        url: "https://admin.glooplatform.com/mgmt-grafana"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Grafana - glooplatform-central"
-                        icon: "fas fa-chart-area"
-                        tag: "admin #observability #demo"
-                        keywords: "admin,observability,demo,grafana"
-                        url: "https://grafana.admin.glooplatform.com/central"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Grafana - glooplatform-east"
-                        icon: "fas fa-chart-area"
-                        tag: "admin #observability #demo"
-                        keywords: "admin,observability,demo,grafana"
-                        url: "https://grafana.admin.glooplatform.com/east"
-                        target: "_blank" # optional html a tag target attribute
 
-                  - name: "Traffic Routing and Shifting Capabilities"
+                  - name: "Demo AI Gateway Capabilities"
+                    icon: "fas fa-brain"
+                    items:
+                      - name: "BetterChatGPT Chatbot"
+                        subtitle: "use custom API > https://llm.gwapi.glooplatform.com/openai"
+                        icon: "far fa-question-circle"
+                        tag: "ai-gateway"
+                        url: "https://chat.gwapi.glooplatform.com/"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Language Translator Chatbot"
+                        subtitle: "requires x-token header with valid JWT"
+                        icon: "fas fa-language"
+                        tag: "ai-gateway"
+                        url: "https://language-chatbot.gwapi.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "AI Gateway Demo Config Examples"
+                    icon: "far fa-file-code"
+                    items:
+                      - name: "Deploy the AI Gateway"
+                        subtitle: "example using kind: Gateway"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/aigw-config/base/ai-gateway.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Configure OpenAI Upstream"
+                        subtitle: "api-key can be referenced by gateway"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/aigw-config/base/openai/openai-upstream.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Configure Route to LLM Upstream"
+                        subtitle: "using kind: HTTPRoute"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/aigw-config/base/openai/openai-httproute.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Configure AI Prompt Guard"
+                        subtitle: "filter sensitive content on the request/response"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/aigw-config/base/openai/openai-targetref-options.yaml#L13-L21"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Configure AI Prompt Enrichment"
+                        subtitle: "prepend/append system and user prompts"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/aigw-config/base/openai/openai-targetref-options.yaml#L22-L56"
+                        target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Demo Traffic Routing and Shifting Capabilities"
                     icon: "fas fa-traffic-light"
                     items:
-                      
                       - name: "Argo Rollouts Demo Dashboard"
                         subtitle: "Use this dashboard to change image tag (i.e. blue > green)"
                         icon: "fab fa-git-alt"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,argo-rollouts,canary,demo"
-                        url: "https://rollouts-ui.gwapi.glooplatform.com/rollouts/rollouts-demo"
+                        url: "https://rollouts-ui.gwapi.glooplatform.com/"
                         target: "_blank" # optional html a tag target attribute
-
                       - name: "Argo Rollouts Demo"
                         subtitle: "Visualize Progressive Delivery in action"
                         icon: "fab fa-git-alt"
@@ -347,194 +343,399 @@ spec:
                         keywords: "gloo-gateway,argo-rollouts,canary,demo"
                         url: "https://rollouts-demo.gwapi.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-                      
                       - name: "Dark Launch - bookinfo reviews-v2"
-                        subtitle: "requires header - user: preview"
+                        subtitle: "requires user: preview & bookinfo-key header"
                         icon: "fas fa-book-reader"
                         tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,gloo-mesh,demo"
-                        url: "https://bookinfo.east.glooplatform.com/reviews/2"
+                        url: "https://bookinfo.gwapi.glooplatform.com/reviews/2"
                         target: "_blank" # optional html a tag target attribute
-
-                      - name: "Timeout Policy - 2s"
-                        subtitle: "config example"
-                        icon: "far fa-file-code"
-                        tag: "gloo-gateway #gloo-mesh #config"
-                        keywords: "gloo-gateway,gloo-mesh,config"
-                        url: "https://ui.glooplatform.com/workspace/httpbin/policy/retry/httpbin-timeout-policy/httpbin/mgmt/"
-                        target: "_blank" # optional html a tag target attribute
-
-                      - name: "Timeout Policy"
-                        subtitle: "switch to /delay/2 to trigger timeout"
-                        icon: "far fa-hourglass"
-                        tag: "gloo-gateway #gloo-mesh #demo"
-                        keywords: "gloo-gateway,gloo-mesh,demo"
-                        url: "https://httpbin.demo.glooplatform.com/delay/1"
-                        target: "_blank" # optional html a tag target attribute
-
-                      - name: "Traffic Mirroring"
-                        subtitle: "100% of reviews-v1 to reviews-v2"
-                        icon: "fas fa-forward"
-                        tag: "gloo-gateway #gloo-mesh #demo"
-                        keywords: "gloo-gateway,gloo-mesh,demo"
-                        url: "https://bookinfo.east.glooplatform.com/reviews/1"
-                        target: "_blank" # optional html a tag target attribute
-
-                      - name: "Traffic Mirroring Logs"
-                        subtitle: "search for containing: -shadow"
-                        icon: "fas fa-forward"
-                        tag: "gloo-gateway #gloo-mesh #demo"
-                        keywords: "gloo-gateway,gloo-mesh,ui,demo"
-                        url: "https://argocd.east.glooplatform.com/argo/applications/argocd/wave-bookinfo-app-aoa/bookinfo-backends/istio-proxy/logs?podName=&group=apps&kind=Deployment&name=reviews-v2"
-                        #url: "https://argocd.east.glooplatform.com/argo/api/v1/applications/wave-bookinfo-app-aoa/logs?appNamespace=argocd&container=istio-proxy&namespace=bookinfo-backends&follow=true&group=apps&kind=Deployment&resourceName=reviews-v2&tailLines=100&sinceSeconds=60"
-                        target: "_blank" # optional html a tag target attribute
-
-                      - name: "Traffic Mirroring Policy"
-                        subtitle: "config example"
-                        icon: "far fa-file-code"
-                        tag: "gloo-gateway #gloo-mesh #config"
-                        keywords: "gloo-gateway,gloo-mesh,config"
-                        url: "https://ui.glooplatform.com/workspace/bookinfo/policy/mirror/mirror-policy/bookinfo-team-config/mgmt"
-                        target: "_blank" # optional html a tag target attribute
-
-                      - name: "Route to External Services"
-                        subtitle: "public httpbin.org/anything URL"
-                        icon: "fas fa-external-link-alt"
-                        tag: "gloo-gateway #gloo-mesh #demo"
-                        keywords: "gloo-gateway,gloo-mesh,demo"
-                        url: "https://httpbin.demo.glooplatform.com/anything"
-                        target: "_blank" # optional html a tag target attribute
-
                       - name: "External Service Migration"
                         subtitle: "50/50 public / in-cluster"
                         icon: "fas fa-external-link-alt"
-                        tag: "gloo-gateway #gloo-mesh #demo"
-                        keywords: "gloo-gateway,gloo-mesh,demo"
-                        url: "https://httpbin.demo.glooplatform.com/anything/migration"
-                        target: "_blank" # optional html a tag target attribute
-
-                      - name: "External Service Migration Config"
-                        subtitle: "config example"
-                        icon: "far fa-file-code"
-                        tag: "gloo-gateway #gloo-mesh #config"
-                        keywords: "gloo-gateway,gloo-mesh,config"
-                        url: "https://ui.glooplatform.com/workspace/httpbin/route/table/httpbin-rt-443/httpbin/mgmt"
-                        target: "_blank" # optional html a tag target attribute
-
-                  - name: "Traffic Shaping Capabilities"
-                    icon: "fas fa-cloud"
-                    items:
-
-                      - name: "Header Manipulation - Extract/Append"
-                        subtitle: "see headers with prefix custom-"
-                        icon: "far fa-window-maximize"
-                        tag: "gloo-gateway #gloo-mesh #demo"
-                        keywords: "gloo-gateway,gloo-mesh,demo"
-                        url: "https://httpbin.demo.glooplatform.com/headers"
-                        target: "_blank" # optional html a tag target attribute
-
-                      - name: "Header Manipulation - Extract/Append"
-                        subtitle: "config example"
-                        icon: "far fa-file-code"
-                        tag: "gloo-gateway #gloo-mesh #config"
-                        keywords: "gloo-gateway,gloo-mesh,config"
-                        url: "https://ui.glooplatform.com/workspace/httpbin/policy/header-manipulation/header-manipulation/httpbin/mgmt"
-                        target: "_blank" # optional html a tag target attribute
-                      
-                      - name: "Header Manipulation - Extract/Transform"
-                        subtitle: "config example"
-                        icon: "far fa-file-code"
-                        tag: "gloo-gateway #gloo-mesh #config"
-                        keywords: "gloo-gateway,gloo-mesh,config"
-                        url: "https://ui.glooplatform.com/workspace/httpbin/policy/transformation/modify-x-email-header/httpbin/mgmt"
-                        target: "_blank" # optional html a tag target attribute
-                      
-                      - name: "Transformations - Error Handling"
-                        subtitle: "conditional html response"
-                        icon: "far fa-window-maximize"
-                        tag: "gloo-gateway #gloo-mesh #demo"
-                        keywords: "gloo-gateway,gloo-mesh,demo"
-                        url: "https://httpbin.demo.glooplatform.com/status/404"
-                        target: "_blank" # optional html a tag target attribute
-
-                      
-
-                  - name: "Security Capabilities"
-                    icon: "fas fa-user-shield"
-                    items:
-                      - name: "TLS Termination"
-                        subtitle: "httpbin public endpoint"
-                        icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #demo"
                         keywords: "gloo-gateway,demo"
-                        url: "https://httpbin.demo.glooplatform.com"
+                        url: "https://httpbin.gwapi.glooplatform.com/anything/migration"
                         target: "_blank" # optional html a tag target attribute
-
-                      - name: "OIDC Auth with Okta"
+                  
+                  - name: "Traffic Routing and Shifting Demo Config Examples"
+                    icon: "far fa-file-code"
+                    items:
+                      - name: "Traffic Splitting"
+                        subtitle: "using weighted destinations"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-delegate-route.yaml#L22-L28"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Dark Launch"
+                        subtitle: "dark launch by host header"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/bookinfo-app/base/bookinfo-delegate-route.yaml#L8-L20"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "External Service Upstream Config"
+                        subtitle: "create static upstream for external service"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/external-service/httpbin-external-upstream.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "External Service Routing Config"
+                        subtitle: "traffic shift between public / in-cluster"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/external-service/httpbin-external-delegate-route.yaml#L12-L19"
+                        target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Demo Traffic Shaping Capabilities"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "Direct Response Action"
+                        subtitle: "expect 'it's alive!'"
+                        icon: "fas fa-book-reader"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/direct-response"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Timeout Policy - 2s"
+                        subtitle: "switch to /delay/2 to trigger timeout"
+                        icon: "fas fa-book-reader"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/delay/0"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Header Control - Append"
+                        subtitle: "see headers with prefix custom-"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/headers"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Header Control - Extract/Transform"
+                        subtitle: "provide x-email header for x-transformed-header"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/headers"
+                        target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Traffic Shaping Config Examples"
+                    icon: "far fa-file-code"
+                    items:
+                      - name: "Direct Response Action"
+                        subtitle: "return pre-defined body/status"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/direct-response/direct-response.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Host Rewrite"
+                        subtitle: "rewrite host path"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/aigw-config/base/openai/openai-route-policies.yaml#L8"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Path Rewrite"
+                        subtitle: "rewrite prefix path"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/aigw-config/base/openai/openai-route-policies.yaml#L9"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Retries"
+                        subtitle: "retry logic at the gateway"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L10-L13"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Timeout Policy"
+                        subtitle: "configure timeouts"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L14"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Header Control - Append/Remove"
+                        subtitle: "add/remove headers"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L19-L36"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Header Control - Extract/Transform"
+                        subtitle: "extract x-email and transform to x-transformed-header"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L42-L53"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Transformations - Error Handling"
+                        subtitle: "conditional html response"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L54-L60"
+                        target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Demo Security Capabilities"
+                    icon: "fas fa-shield-alt"
+                    items:
+                      - name: "Ambient Mesh Demo App"
+                        subtitle: "change path number: /ns-#"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://tiered-app.gwapi.glooplatform.com/ns-1/ui"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Visualize Ambient mTLS and Telemetry in Kiali"
+                        subtitle: "no sidecars required"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://kiali.ambient.gmc.glooplatform.com/kiali/console/graph/namespaces/?traffic=grpc%2CgrpcRequest%2Chttp%2ChttpRequest%2Ctcp%2CtcpSent&graphType=versionedApp&namespaces=ns-1%2Cns-2%2Cns-3%2Cns-4%2Cgloo-system&duration=300&refresh=60000&layout=kiali-dagre&namespaceLayout=kiali-dagre&animation=true&badgeSecurity=true"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Httpbin - OIDC Auth"
                         subtitle: "requires user login credentials"
                         icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
-                        keywords: "gloo-gateway,gloo-mesh,demo"
-                        url: "https://httpbin.demo.glooplatform.com/get"
+                        url: "https://httpbin.gwapi.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-
-                      - name: "API Key Auth"
-                        subtitle: "requires api-key header"
+                      - name: "Bookinfo - API Key Auth"
+                        subtitle: "requires bookinfo-key header"
                         icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
-                        keywords: "gloo-gateway,demo"
-                        url: "https://httpbin.demo.glooplatform.com/ip"
+                        url: "https://bookinfo.gwapi.glooplatform.com/productpage"
                         target: "_blank" # optional html a tag target attribute
-
-                      - name: "JWT Validation & Claims to Headers"
-                        subtitle: "requires x-token header"
+                      - name: "Chatbot - JWT Validation & RBAC"
+                        subtitle: "requires x-token header with valid JWT"
                         icon: "fas fa-shield-alt"
-                        tag: "gloo-gateway #gloo-mesh #external-service #demo"
-                        keywords: "gloo-gateway,demo"
-                        url: "https://httpbin.demo.glooplatform.com/anything/jwt/external-service"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://language-chatbot.gwapi.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-
-                      - name: "JWT Policy"
-                        subtitle: "config example"
+                      - name: "Web Application Firewall"
+                        subtitle: "block incoming request if argument `?param1=test`"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://language-chatbot.gwapi.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Rate Limiting"
+                        subtitle: "quota set to 10 requests per min"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/image/jpeg"
+                        target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Security Demo Config Examples"
+                    icon: "far fa-file-code"
+                    items:
+                      - name: "Onboard Application to Ambient Mesh"
+                        subtitle: "using namespace annotation and kustomize"
                         icon: "far fa-file-code"
                         tag: "gloo-gateway #gloo-mesh #config"
-                        keywords: "gloo-gateway,gloo-mesh,config,security"
-                        url: "https://ui.glooplatform.com/workspace/httpbin/policy/jwt/basic-jwt-policy/httpbin/mgmt"
-                        target: "_blank" # optional html a tag target attribute
-
-                      - name: "CORS Policy"
-                        subtitle: "config example"
-                        icon: "far fa-file-code"
-                        tag: "gloo-gateway #config"
-                        keywords: "gloo-gateway,config"
-                        url: "https://ui.glooplatform.com/workspace/external-portal/policy/cors/external-portal-cors/external-portal-config/mgmt"
-                        target: "_blank" # optional html a tag target attribute
-
-                      - name: "Web Application Firewall (WAF)"
-                        subtitle: "block header - user-agent: scammer"
-                        icon: "fas fa-shield-alt"
-                        tag: "gloo-gateway #demo"
-                        keywords: "gloo-gateway,demo"
-                        url: "https://httpbin.demo.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute
-
-                      - name: "WAF Policy"
-                        subtitle: "config example"
-                        icon: "far fa-file-code"
-                        tag: "gloo-gateway #config"
-                        keywords: "gloo-gateway,config"
-                        url: "https://ui.glooplatform.com/workspace/httpbin/policy/waf/httpbin-wafpolicy/httpbin/mgmt"
-                        target: "_blank" # optional html a tag target attribute
-
-                      - name: "Rate Limiting"
-                        subtitle: "429 error code at > 1RPS"
-                        icon: "fas fa-shield-alt"
-                        tag: "gloo-gateway #gloo-mesh #demo"
                         keywords: "gloo-gateway,gloo-mesh,demo"
-                        url: "https://ghost.demo.glooplatform.com/"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-mesh-core/east-region-ambient/tiered-app/base/tiered-app/ambient/transformers/ambient-label-transformer.yaml#L6"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Configure Ambient L4 Auth"
+                        subtitle: "using AuthorizationPolicy"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #gloo-mesh #config"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-mesh-core/east-region-ambient/tiered-app/base/tiered-app/ambient/l4-policy/tier-1-app-a-viewer.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Configure Ambient L7 Waypoint"
+                        subtitle: "waypoint per namespace"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #gloo-mesh #config"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-mesh-core/east-region-ambient/tiered-app/base/tiered-app/ambient/waypoints/waypoint-per-namespace.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Configure Ambient L7 Auth"
+                        subtitle: "using AuthorizationPolicy"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #gloo-mesh #config"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-mesh-core/east-region-ambient/tiered-app/base/tiered-app/ambient/l7-policy/waypoint-viewer.yaml#L18"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Network Encryption"
+                        subtitle: "terminate TLS at Gloo Gateway"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/gateway-https.yaml#L14-L18"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Web Application Firewall"
+                        subtitle: "deny access based on modsecurity rules"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L61-L125"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Rate Limiting"
+                        subtitle: "basic rate limit example"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-ratelimit-config.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "User Authentication"
+                        subtitle: "oauth2 okta example"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/okta-authconfig.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Api-key AuthConfig"
+                        subtitle: "auth using api-key in a k8s secret"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/api-key-auth.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "JWT Validation & claims-to-headers"
+                        subtitle: "validate and extract claims"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/https-gateway-virtualhostoptions.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "JWT Validation & RBAC"
+                        subtitle: "authorize based on validated claims"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/chatbot/base/language-chatbot/language-chatbot-route-policies.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "OPA AuthConfig"
+                        subtitle: "opa auth example"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/portal-api-key-authconfig.yaml#L8-L12"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "OPA Rego Policy"
+                        subtitle: "policy stored in a configmap"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/portal-opa-cm.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "CORS Policy"
+                        subtitle: "configure cors rules"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/aigw-config/base/openai/openai-route-policies.yaml#L12-L26"
                         target: "_blank" # optional html a tag target attribute
 
-                  - name: "Mesh Capabilities"
+                  - name: "Demo Gloo Portal Capabilities"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "Gloo Portal Diagram"
+                        subtitle: "Concepts, objects, and personas"
+                        logo: "solo/glooy.png"
+                        tag: "gloo-portal"
+                        url: "https://raw.githubusercontent.com/solo-io/aoa-catalog/refs/heads/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/images/portal-personas.png"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "React Frontend - Solo Dev Portal"
+                        icon: "fab fa-connectdevelop"
+                        tag: "gloo-portal"
+                        url: "https://solo-dev-portal.gwapi.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Portal Backend Server"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-portal"
+                        url: "https://api.gwapi.glooplatform.com/v1/api-products"
+                        target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Gloo Portal Configuration Examples"
+                    icon: "far fa-file-code"
+                    items:
+                      - name: "OpenAPI spec discovery - annotations"
+                        subtitle: "spec discovery using k8s annotations"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #gloo-portal #demo"
+                        keywords: "gloo-gateway,gloo-portal,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-portal-demo/base/tracks-api/tracks-api.yaml#L34-L38"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "OpenAPI spec discovery - URI"
+                        subtitle: "spec discovery using URI"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #gloo-portal #demo"
+                        keywords: "gloo-gateway,gloo-portal,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-portal-demo/base/openlibrary-api/1-discover-openapi-schema/openlibrary-apischemadiscovery.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "OpenAPI spec discovery - manual"
+                        subtitle: "configure API doc statically"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #gloo-portal #demo"
+                        keywords: "gloo-gateway,gloo-portal,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-portal-demo/base/gloo-portal-server-api/1-inline-openapi-schema/gloo-portal-server-inline-apidoc.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Configure API Products from API Docs"
+                        subtitle: "define api product, lifecycle, and metadata"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #gloo-portal #demo"
+                        keywords: "gloo-gateway,gloo-portal,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-portal-demo/base/tracks-api/tracks-apiproduct.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Expose API Products on Portal"
+                        subtitle: "define which products are exposed on the portal"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #gloo-portal #demo"
+                        keywords: "gloo-gateway,gloo-portal,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-portal-demo/base/solo-dev-portal/portal-developer.yaml"
+                        target: "_blank" # optional html a tag target attribute
+
+                  - name: "Gloo Gateway Configuration Examples"
+                    icon: "far fa-file-code"
+                    items:
+                      - name: "Deploy Gloo Gateway with GitOps"
+                        subtitle: "ArgoCD Application with Helm"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-enterprise-app/base/gloo-enterprise.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Route Delegation - Parent"
+                        subtitle: "control host and top-level policies"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-parent-route.yaml#L16-L30"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Route Delegation - Child"
+                        subtitle: "control route-level matchers and policies"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-delegate-route.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Access Logging"
+                        subtitle: "applied at the listener level"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/log-provider.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      #- name: "Redirects"
+                      #  subtitle: ""
+                      #  icon: "far fa-file-code"
+                      #  tag: "gloo-gateway #config"
+                      #  keywords: "gloo-gateway,demo"
+                      #  url: ""
+                      #  target: "_blank" # optional html a tag target attribute
+                      #- name: "Fault Injection"
+                      #  subtitle: ""
+                      #  icon: "far fa-file-code"
+                      #  tag: "gloo-gateway #config"
+                      #  keywords: "gloo-gateway,demo"
+                      #  url: ""
+                      #  target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Demo Service Mesh Capabilities"
                     icon: "fas fa-cloud"
                     items:
 
@@ -602,22 +803,6 @@ spec:
                         url: "https://argocd.central.glooplatform.com/argo/applications/argocd/wave-tiered-app-aoa/ns-1/bombardier/logs?podName=&group=apps&kind=Deployment&name=bombardier-ns-1"
                         target: "_blank" # optional html a tag target attribute
 
-                  - name: "AI Gateway Workloads"
-                    icon: "fas fa-brain"
-                    items:
-                      - name: "Language Translator Chatbot"
-                        #subtitle: "requires x-token header"
-                        icon: "fas fa-language"
-                        tag: "ai-gateway"
-                        url: "https://language-chatbot.gwapi.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "BetterChatGPT Chatbot"
-                        #subtitle: "requires x-token header"
-                        icon: "far fa-question-circle"
-                        tag: "ai-gateway"
-                        url: "https://chat.gwapi.glooplatform.com/"
-                        target: "_blank" # optional html a tag target attribute
-
                   - name: "Application Onboarding IDP Demo"
                     logo: "solo/glooy.png"
                     items:
@@ -648,32 +833,6 @@ spec:
                         keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://gh-action-idp.demo.glooplatform.com/team-a/"
                         target: "_blank" # optional html a tag target attribute
-
-                      
-                  - name: "Developer Portals"
-                    icon: "fab fa-connectdevelop"
-                    items:
-                      - name: "Internal Developer Portal"
-                        subtitle: "Backstage"
-                        icon: "fab fa-git-alt"
-                        tag: "gloo-gateway #demo"
-                        keywords: "gloo-gateway,gloo-portal,backstage,demo"
-                        url: "https://backstage.glooplatform.com/gloo-platform-portal/apis"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "External Developer Portal"
-                        subtitle: "BYO React Frontend"
-                        icon: "fab fa-connectdevelop"
-                        tag: "gloo-gateway #demo"
-                        keywords: "gloo-gateway,gloo-portal,demo"
-                        url: "https://external-portal.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Portal Analytics & Monetization"
-                        subtitle: "Grafana / OTel / Clickhouse"
-                        icon: "fas fa-chart-area"
-                        tag: "gloo-gateway #demo"
-                        keywords: "gloo-gateway,gloo-portal,clickhouse,grafana,otel,demo"
-                        url: "https://clickhouse.demo.glooplatform.com/mgmt-grafana/d/db93be88-8cd4-4c32-8a37-83fbca40e3f0a/api-dashboard-geomap?orgId=1&from=now-1h&to=now"
-                        target: "_blank" # optional html a tag target attribute
                   
                   - name: "Gloo Mesh Core Demo"
                     logo: "solo/glooy.png"
@@ -685,50 +844,65 @@ spec:
                         url: "https://demo.gmc.glooplatform.com/solo/"
                         target: "_blank" # optional html a tag target attribute
                   
-                  #- name: "Portal API Endpoints"
-                  #  icon: "fas fa-cloud"
-                  #  items:
-                  #    - name: "Portal Server REST API"
-                  #      icon: "fab fa-connectdevelop"
-                  #      tag: "solo-dev-portal"
-                  #      url: "https://solo-dev-portal.int.glooplatform.com/portal-server/v1/apis"
-                  #      target: "_blank" # optional html a tag target attribute
-                  #    - name: "httpbin REST API - internal"
-                  #      subtitle: "requires valid api-key"
-                  #      icon: "fab fa-connectdevelop"
-                  #      tag: "httpbin-rest-api"
-                  #      url: "https://httpbin.int.glooplatform.com/v1/get"
-                  #      target: "_blank" # optional html a tag target attribute
-                  #    - name: "petstore REST API - internal"
-                  #      subtitle: "requires valid api-key"
-                  #      icon: "fab fa-connectdevelop"
-                  #      tag: "petstore-rest-api"
-                  #      url: "https://petstore.int.glooplatform.com/pet"
-                  #      target: "_blank" # optional html a tag target attribute
-                  #    - name: "tracks REST API - internal"
-                  #      subtitle: "requires valid api-key"
-                  #      icon: "fab fa-connectdevelop"
-                  #      tag: "petstore-rest-api"
-                  #      url: "https://tracks.int.glooplatform.com/tracks"
-                  #      target: "_blank" # optional html a tag target attribute
-                  #    - name: "httpbin REST API - external"
-                  #      subtitle: "requires valid api-key"
-                  #      icon: "fab fa-connectdevelop"
-                  #      tag: "httpbin-rest-api"
-                  #      url: "https://httpbin.ext.glooplatform.com/v1/get"
-                  #      target: "_blank" # optional html a tag target attribute
-                  #    - name: "petstore REST API - external"
-                  #      subtitle: "requires valid api-key"
-                  #      icon: "fab fa-connectdevelop"
-                  #      tag: "petstore-rest-api"
-                  #      url: "https://petstore.ext.glooplatform.com/pet"
-                  #      target: "_blank" # optional html a tag target attribute
-                  #    - name: "tracks REST API - external"
-                  #      subtitle: "requires valid api-key"
-                  #      icon: "fab fa-connectdevelop"
-                  #      tag: "petstore-rest-api"
-                  #      url: "https://tracks.ext.glooplatform.com/tracks"
-                  #      target: "_blank" # optional html a tag target attribute
+                  - name: "Platform Admin Tools"
+                    icon: "fas fa-tools"
+                    items:
+                      - name: "Gloo Mesh UI"
+                        icon: "fas fa-arrows-alt"
+                        tag: "admin #gloo-mesh #demo"
+                        keywords: "gloo-mesh,gloo-gateway,ui,admin,demo"
+                        url: "https://ui.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "uptime dashboard"
+                        icon: "fas fa-heartbeat"
+                        tag: "admin #observability #demo"
+                        keywords: "uptime,gloo-mesh,observability,admin,demo"
+                        url: "https://uptime.admin.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Prometheus"
+                        #subtitle: "Requires header user: preferred"
+                        icon: "fas fa-chart-area"
+                        tag: "admin #observability #demo"
+                        keywords: "observability,gloo-mesh,admin,demo"
+                        url: "https://prometheus.admin.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "ArgoCD - mgmt"
+                        icon: "fab fa-git-alt"
+                        tag: "admin #gitops #demo"
+                        keywords: "admin,argocd,gitops,demo"
+                        url: "https://admin.glooplatform.com/argo"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "ArgoCD - glooplatform-central"
+                        icon: "fab fa-git-alt"
+                        tag: "admin #gitops #demo"
+                        keywords: "admin,argocd,gitops,demo"
+                        url: "https://argocd.central.glooplatform.com/argo"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "ArgoCD - glooplatform-east"
+                        icon: "fab fa-git-alt"
+                        tag: "admin #gitops #demo"
+                        keywords: "admin,argocd,gitops,demo"
+                        url: "https://argocd.east.glooplatform.com/argo"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Grafana - mgmt"
+                        #subtitle: "Another application"
+                        icon: "fas fa-chart-area"
+                        tag: "admin #observability #demo"
+                        keywords: "admin,observability,demo,grafana"
+                        url: "https://admin.glooplatform.com/mgmt-grafana"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Grafana - glooplatform-central"
+                        icon: "fas fa-chart-area"
+                        tag: "admin #observability #demo"
+                        keywords: "admin,observability,demo,grafana"
+                        url: "https://grafana.admin.glooplatform.com/central"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Grafana - glooplatform-east"
+                        icon: "fas fa-chart-area"
+                        tag: "admin #observability #demo"
+                        keywords: "admin,observability,demo,grafana"
+                        url: "https://grafana.admin.glooplatform.com/east"
+                        target: "_blank" # optional html a tag target attribute
               
   syncPolicy:
     automated:
