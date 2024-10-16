@@ -4,7 +4,6 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- gloo-agent-cert.yaml
 - gloo-mesh-cert.yaml
 - gloo-platform-crds.yaml
 - gloo-platform-helm.yaml

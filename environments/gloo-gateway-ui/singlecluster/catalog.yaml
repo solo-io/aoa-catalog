@@ -28,13 +28,13 @@ waves:
 #      -  $env_path/istio/helm/init.sh
 #      post_deploy:
 #      -  $env_path/istio/helm/test.sh
-  - name: clusterservices-config
-    location: $env_path/clusterservices-config/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/clusterservices-config/init.sh
-      post_deploy:
-      -  $env_path/clusterservices-config/test.sh
+#  - name: clusterservices-config
+#    location: $env_path/clusterservices-config/base
+#    scripts:
+#      pre_deploy:
+#      -  $env_path/clusterservices-config/init.sh
+#      post_deploy:
+#      -  $env_path/clusterservices-config/test.sh
 #  - name: online-boutique-app
 #    location: $env_path/online-boutique-app/base
 #    scripts:

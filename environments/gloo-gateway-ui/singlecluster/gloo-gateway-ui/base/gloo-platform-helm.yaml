@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: gloo-mesh
+    namespace: gloo-system
   project: default
   source:
     chart: gloo-platform
