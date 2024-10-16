@@ -147,6 +147,21 @@ parent_app_sync="true"
 
 When `parent_app_sync="false"` the installer will disable ArgoCD `autosync` and `prune` features. This is particularly useful for development so manual changes using `kubectl` are not re-synced by ArgoCD.
 
+### sync override a wave in catalog.yaml
+For cases where you want to control sync behavior of individual waves in the catalog.yaml, it is possible to do so. Configuring a sync override takes priority over the `parent_app_sync` value configured in the `vars.env`. If undefined, the deploy script will use the `parent_app_sync` value as the default
+
+An example `catalog.yaml` entry with sync set to false:
+```
+- name: rollouts-demo
+    location: $env_path/rollouts-demo/strategies
+    scripts:
+      pre_deploy: 
+      -  $env_path/rollouts-demo/init.sh
+      post_deploy:
+      -  $env_path/rollouts-demo/test.sh
+    sync: false
+```
+
 #### k3d loadbalancer port mapping
 K3d allows for exposing ports via docker and servicelb in local deployments. This provides local access to services with `type: LoadBalancer` in the browser at `localhost:<port>`. The k3d cluster config examples provided in the `.infra` folder are configured with the following mappings
 
