@@ -28,6 +28,7 @@ waves:
       -  $env_path/echo-rollout/init.sh
       post_deploy:
       -  $env_path/echo-rollout/test.sh 
+    sync: false
   - name: homer-app
     location: $env_path/homer-app/localhost
     scripts:

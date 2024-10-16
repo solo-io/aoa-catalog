@@ -1,5 +1,14 @@
 # Changelog
 
+0.6.5 (10-16-24)
+---
+- add ability to the to configure sync override for wave in catalog.yaml
+- configure `parent_app_sync=true` in `vars.env` as default in all rollouts demo environments
+- configure `sync: false` override in rollouts-demo overlay in all rollouts demo environments
+- update readme with details and an example for catalog.yaml sync override
+- add `--dry-run` feature to installer
+- update readme with details and an example for `--dry-run` flag
+
 0.6.4 (10-15-24)
 ---
 - Add gateway-api/1.17/argo-rollouts environment

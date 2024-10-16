@@ -6,6 +6,7 @@
 install_k3d=false
 install_colima=false
 install_argo=true
+dry_run=false  # Default dry run to false
 export SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 
@@ -21,7 +22,7 @@ help() {
     # Display Help
     echo "aoa-catalog installer."
     echo
-    echo "Syntax: installer [-f|-i|-h|--colima]"
+    echo "Syntax: installer [-f|-i|-h|--colima|--dry-run]"
     echo
     echo "commands:"
     echo "deploy     deploys an environment with the specified path"
@@ -35,6 +36,7 @@ help() {
     echo "additional flags:"
     echo "--skip-argo  skip argo installation"
     echo "--colima   execute colima-install.sh script instead of k3d-install.sh"
+    echo "--dry-run   simulate the actions without making changes"
 }
 
 pre_install() {
@@ -52,6 +54,7 @@ pre_install() {
     echo "Repo: $repo_name"
     echo "Branch: $target_branch"
     echo "Automatic Sync: $parent_app_sync"
+    echo "Dry-run mode: $dry_run"
     echo "------------------------------------------------------------"
 
     echo "Continue? [y/N]"
@@ -139,78 +142,70 @@ unset tmp_env
 
 install_k3d()
 {
-   check_env
-   echo "Deploying infra..."
-
-   if [[ ${install_colima} == false ]]; then
-       source $SCRIPT_DIR/tools/k3d-install.sh
-
-       if [ -d "$env/.infra" ]
-       then
-          cd $env/.infra
-          for i in $(ls | sort -n); do 
-                create-k3d-cluster $(cat $i | yq .metadata.name) ${i}
-          done      
-       fi 
+   if [[ "$dry_run" == true ]]; then
+      echo "Dry-run: Would install K3D infrastructure."
    else
-       source $SCRIPT_DIR/tools/colima-install.sh
+      check_env
+      echo "Deploying infra..."
+
+      if [[ ${install_colima} == false ]]; then
+          source $SCRIPT_DIR/tools/k3d-install.sh
+
+          if [ -d "$env/.infra" ]
+          then
+             cd $env/.infra
+             for i in $(ls | sort -n); do 
+                   create-k3d-cluster $(cat $i | yq .metadata.name) ${i}
+             done      
+          fi 
+      else
+          source $SCRIPT_DIR/tools/colima-install.sh
+      fi
    fi
 }
 
 
 destroy_infra()
 {
-    check_env
-    echo "Destroying infra..."
+    if [[ "$dry_run" == true ]]; then
+        echo "Dry-run: Would destroy infrastructure."
+    else
+        check_env
+        echo "Destroying infra..."
 
-    if [[ ${install_colima} == true ]]; then
-        colima delete --force
-        rm ~/.kube/config
-    elif [[ ${install_colima} == false ]]; then
-        if [ -d "$env/.infra" ]; then
-            cd $env/.infra
-            for i in $(ls | sort -n); do 
-                k3d cluster delete $(cat $i | yq .metadata.name) ${i}
-                kubectl config delete-context $(cat $i | yq .metadata.name)
-            done      
-        fi 
+        if [[ ${install_colima} == true ]]; then
+            colima delete --force
+            rm ~/.kube/config
+        elif [[ ${install_colima} == false ]]; then
+            if [ -d "$env/.infra" ]; then
+                cd $env/.infra
+                for i in $(ls | sort -n); do 
+                    k3d cluster delete $(cat $i | yq .metadata.name) ${i}
+                    kubectl config delete-context $(cat $i | yq .metadata.name)
+                done      
+            fi 
+        fi
     fi
 }
 
-
-
-#destroy_infra()
-#{
-#   check_env
-#   echo "Destroying infra..."
-#
-#   if [ -d "$env/.infra" ]
-#   then
-#      cd $env/.infra
-#      for i in $(ls | sort -n); do 
-#            delete-k3d-cluster $(cat $i | yq .name) ${i}
-#      done      
-#      fi 
-#}
-
-
 install_argo()
 {
-   check_env
-   echo "Deploying argo..."
-   cd $SCRIPT_DIR/bootstrap-argocd
+   if [[ "$dry_run" == true ]]; then
+      echo "Dry-run: Would install ArgoCD."
+   else
+      check_env
+      echo "Deploying argo..."
+      cd $SCRIPT_DIR/bootstrap-argocd
 
-   $SCRIPT_DIR/bootstrap-argocd/install-argocd.sh insecure-rootpath ${cluster_context}
+      $SCRIPT_DIR/bootstrap-argocd/install-argocd.sh insecure-rootpath ${cluster_context}
 
-   $SCRIPT_DIR/tools/wait-for-rollout.sh deployment argocd-server argocd 20 ${cluster_context}
-   cd $env
-
+      $SCRIPT_DIR/tools/wait-for-rollout.sh deployment argocd-server argocd 20 ${cluster_context}
+      cd $env
+   fi
 }
-
 
 parse_opt()
 {
-
 # Get the options
  while getopts "f:hi-:" option; do
     case $option in
@@ -227,6 +222,8 @@ parse_opt()
              install_colima=true;;
            skip-argo) # --skip-argo logic
              install_argo=false;;
+           dry-run) # --dry-run logic
+             dry_run=true;;
            *) # handle other long options
              echo "Invalid option: --${OPTARG}"
              help
@@ -238,84 +235,127 @@ parse_opt()
          exit;;
     esac
   done
-
 }
 
-deploy()
-{
+deploy() {
+    ############################################################
+    parse_opt $@
+    pre_install
 
-############################################################
-parse_opt $@
-pre_install
+    if [[ ${install_k3d} == true ]]
+    then
+       install_k3d
+    fi 
 
-if [[ ${install_k3d} == true ]]
-then
-   install_k3d
-fi 
+    if [[ ${install_argo} == true ]]
+    then
+       install_argo
+    fi 
 
-if [[ ${install_argo} == true ]]
-then
-   install_argo
-fi 
-
-cd $env
-git_root="$(git rev-parse --show-toplevel)/"
-export env_path=$(echo $PWD | sed -e "s+$git_root++g")
+    cd $env
+    git_root="$(git rev-parse --show-toplevel)/"
+    export env_path=$(echo $PWD | sed -e "s+$git_root++g")
 
 
-### If the cluster_context is not specified, simply use the default context.
-if [[ ${cluster_context} == "" ]]
-then
-  export cluster_context=`kubectl config current-context`
-  if [[ ${cluster_context} == "" ]]
-  then
-    echo "You do not have a curent kubernetes cluster.  Please create one."
-    exit 1
-  fi
-  echo "No context specified. Using default context of ${cluster_context}"
-fi
+    ### If the cluster_context is not specified, simply use the default context.
+    if [[ ${cluster_context} == "" ]]
+    then
+      export cluster_context=`kubectl config current-context`
+      if [[ ${cluster_context} == "" ]]
+      then
+        echo "You do not have a current kubernetes cluster.  Please create one."
+        exit 1
+      fi
+      echo "No context specified. Using default context of ${cluster_context}"
+    fi
 
-# Read catalog.yaml
-catalog_content=$(cat catalog.yaml)
+    # Read catalog.yaml
+    catalog_content=$(cat catalog.yaml)
 
-waves_count=$(echo "$catalog_content" | yq ".waves | length")
+    waves_count=$(echo "$catalog_content" | yq ".waves | length")
 
-# Function to execute pre/post deploy scripts
-execute_scripts() {
-  local script_type=$1
-  local count=$2
+    # Function to execute pre/post deploy scripts
+    execute_scripts() {
+      local script_type=$1
+      local count=$2
 
-  for ((s = 0; s < $count; s++)); do
-    script_location=$(echo "$catalog_content" | yq ".waves[$c].scripts.$script_type[$s]")
-    normalized_script_location=$(eval echo $script_location)
+      for ((s = 0; s < $count; s++)); do
+        script_location=$(echo "$catalog_content" | yq ".waves[$c].scripts.$script_type[$s]")
+        normalized_script_location=$(eval echo $script_location)
 
-    [[ -f "${git_root}${normalized_script_location}" ]] && ${git_root}/${normalized_script_location}
-  done
-}
+        if [[ "$dry_run" == true ]]; then
+            echo "Dry-run: Would execute $script_type script at $normalized_script_location."
+        else
+            [[ -f "${git_root}${normalized_script_location}" ]] && ${git_root}/${normalized_script_location}
+        fi
+      done
+    }
 
-for ((c = 0; c < $waves_count; c++)); do
-  wave_name=$(echo "$catalog_content" | yq -r ".waves[$c].name")
-  wave_name="${wave_name:-$c}"
+    for ((c = 0; c < $waves_count; c++)); do
+      wave_name=$(echo "$catalog_content" | yq -r ".waves[$c].name")
+      wave_name="${wave_name:-$c}"
 
-  wave_location=$(echo "$catalog_content" | yq -r ".waves[$c].location")
-  normalized_wave_location=$(eval echo $wave_location)
+      wave_location=$(echo "$catalog_content" | yq -r ".waves[$c].location")
+      normalized_wave_location=$(eval echo $wave_location)
 
-  # Start wave
-  echo "Starting $wave_name"
+      # Explicitly check if sync is true or false in the catalog.yaml
+      wave_sync=$(echo "$catalog_content" | yq -r ".waves[$c].sync")
 
-  # Execute pre deploy scripts
-  pre_script_count=$(echo "$catalog_content" | yq ".waves[$c].scripts.pre_deploy | length")
-  execute_scripts pre_deploy $pre_script_count
+      # If sync is null or not set, default to parent_app_sync
+      if [[ "$wave_sync" == "null" || -z "$wave_sync" ]]; then
+        wave_sync="$parent_app_sync"
+      fi
 
-  # Deploy aoa wave application
-  $SCRIPT_DIR/tools/configure-wave.sh ${normalized_wave_location} ${wave_name} ${cluster_context} ${github_username} ${repo_name} ${target_branch} ${parent_app_sync}
+      # Start wave
+      echo "---"
+      echo "Starting $wave_name with sync=$wave_sync"
 
-  # Execute post deploy scripts
-  post_script_count=$(echo "$catalog_content" | yq ".waves[$c].scripts.post_deploy | length")
-  execute_scripts post_deploy $post_script_count
-done
+      # Execute pre deploy scripts
+      pre_script_count=$(echo "$catalog_content" | yq ".waves[$c].scripts.pre_deploy | length")
+      execute_scripts pre_deploy $pre_script_count
 
-echo "END."
+      # Deploy aoa wave application with sync status
+      if [[ "$dry_run" == true ]]; then
+          echo "Dry-run: The following ArgoCD Application would be created:"
+          echo
+          cat <<EOF
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wave-${wave_name}-aoa
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io/solo-io
+spec:
+  project: app-of-apps
+  source:
+    repoURL: https://github.com/${github_username}/${repo_name}/
+    targetRevision: ${target_branch}
+    path: ${normalized_wave_location}
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: ${wave_sync}
+      selfHeal: ${wave_sync}
+    retry:
+      limit: 2
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s
+EOF
+echo
+      else
+          $SCRIPT_DIR/tools/configure-wave.sh ${normalized_wave_location} ${wave_name} ${cluster_context} ${github_username} ${repo_name} ${target_branch} ${wave_sync}
+      fi
+
+      # Execute post deploy scripts
+      post_script_count=$(echo "$catalog_content" | yq ".waves[$c].scripts.post_deploy | length")
+      execute_scripts post_deploy $post_script_count
+    done
+
+    echo "END."
 }
 
 destroy()
