@@ -300,15 +300,23 @@ for ((c = 0; c < $waves_count; c++)); do
   wave_location=$(echo "$catalog_content" | yq -r ".waves[$c].location")
   normalized_wave_location=$(eval echo $wave_location)
 
+  # Explicitly check if sync is true or false in the catalog.yaml
+  wave_sync=$(echo "$catalog_content" | yq -r ".waves[$c].sync")
+
+  # If sync is null or not set, default to parent_app_sync
+  if [[ "$wave_sync" == "null" || -z "$wave_sync" ]]; then
+    wave_sync="$parent_app_sync"
+  fi
+
   # Start wave
-  echo "Starting $wave_name"
+  echo "Starting $wave_name with sync=$wave_sync"
 
   # Execute pre deploy scripts
   pre_script_count=$(echo "$catalog_content" | yq ".waves[$c].scripts.pre_deploy | length")
   execute_scripts pre_deploy $pre_script_count
 
-  # Deploy aoa wave application
-  $SCRIPT_DIR/tools/configure-wave.sh ${normalized_wave_location} ${wave_name} ${cluster_context} ${github_username} ${repo_name} ${target_branch} ${parent_app_sync}
+  # Deploy aoa wave application with sync status
+  $SCRIPT_DIR/tools/configure-wave.sh ${normalized_wave_location} ${wave_name} ${cluster_context} ${github_username} ${repo_name} ${target_branch} ${wave_sync}
 
   # Execute post deploy scripts
   post_script_count=$(echo "$catalog_content" | yq ".waves[$c].scripts.post_deploy | length")
