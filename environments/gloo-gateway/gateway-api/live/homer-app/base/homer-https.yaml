@@ -16,7 +16,7 @@ spec:
     - matches:
       - path:
           type: PathPrefix
-          value: /
+          value: /solo
       backendRefs:
       - name: homer-portal
         port: 8080
