@@ -300,8 +300,13 @@ for ((c = 0; c < $waves_count; c++)); do
   wave_location=$(echo "$catalog_content" | yq -r ".waves[$c].location")
   normalized_wave_location=$(eval echo $wave_location)
 
-  # Check if sync is specified for the wave, otherwise use parent_app_sync
-  wave_sync=$(echo "$catalog_content" | yq -r ".waves[$c].sync // \"$parent_app_sync\"")
+  # Explicitly check if sync is true or false in the catalog.yaml
+  wave_sync=$(echo "$catalog_content" | yq -r ".waves[$c].sync")
+
+  # If sync is null or not set, default to parent_app_sync
+  if [[ "$wave_sync" == "null" || -z "$wave_sync" ]]; then
+    wave_sync="$parent_app_sync"
+  fi
 
   # Start wave
   echo "Starting $wave_name with sync=$wave_sync"
