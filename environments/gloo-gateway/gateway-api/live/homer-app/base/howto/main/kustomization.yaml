@@ -6,3 +6,4 @@ kind: Kustomization
 resources:
 - homer-howto-httproute.yaml
 - homer-howto-route-policies.yaml
+- homer-portal-howto.yaml

@@ -4,7 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- homer-admin-httproute.yaml
-- homer-admin-route-policies.yaml
-- homer-authconfig.yaml
-- homer-portal-admin.yaml
+- homer-portal-ns.yaml
+- homer-portal-solo.yaml
+- homer-https-solo.yaml
+- homer-route-policies.yaml
+
