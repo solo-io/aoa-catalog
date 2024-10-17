@@ -179,7 +179,6 @@ spec:
                   - name: "Back to the Main Page!"
                     icon: "fab fa-github"
                     url: "https://demo.glooplatform.com/solo"
-                    target: "_blank" # optional html a tag target attribute
                   - name: "Github Repo"
                     icon: "fab fa-github"
                     url: "https://github.com/solo-io/aoa-catalog"
