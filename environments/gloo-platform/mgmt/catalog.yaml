@@ -136,17 +136,17 @@ waves:
   #    -  $env_path/collaboration-tools-config/init.sh
   #    post_deploy:
   #    -  $env_path/collaboration-tools-config/test.sh      
-  - name: homer-app
-    location: $env_path/homer-app/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/homer-app/init.sh
-      post_deploy:
-      -  $env_path/homer-app/test.sh 
-  - name: homer-config
-    location: $env_path/homer-config/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/homer-config/init.sh
-      post_deploy:
-      -  $env_path/homer-config/test.sh
+  #- name: homer-app
+  #  location: $env_path/homer-app/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/homer-app/init.sh
+  #    post_deploy:
+  #    -  $env_path/homer-app/test.sh 
+  #- name: homer-config
+  #  location: $env_path/homer-config/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/homer-config/init.sh
+  #    post_deploy:
+  #    -  $env_path/homer-config/test.sh
