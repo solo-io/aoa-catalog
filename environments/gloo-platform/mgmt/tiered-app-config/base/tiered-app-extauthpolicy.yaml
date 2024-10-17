@@ -7,7 +7,7 @@ spec:
   applyToRoutes:
   - route:
       labels:
-        oauth: tiered-app.demo.glooplatform.com
+        oauth: tiered-app.central.glooplatform.com
   config:
     server:
       name: glooplatform-east-ext-auth-server
@@ -17,7 +17,7 @@ spec:
       configs:
       - oauth2:
           oidcAuthorizationCode:
-            appUrl: https://tiered-app.demo.glooplatform.com
+            appUrl: https://tiered-app.central.glooplatform.com
             callbackPath: /callback
             clientId: 967359009029-j7uts17vmc85kt3aaie8cnpodefql93t.apps.googleusercontent.com
             clientSecretRef:

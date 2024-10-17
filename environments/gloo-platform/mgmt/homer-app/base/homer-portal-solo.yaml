@@ -768,7 +768,7 @@ spec:
                         icon: "fab fa-connectdevelop"
                         tag: "gloo-mesh #demo"
                         keywords: "gloo-mesh,demo"
-                        url: "https://tiered-app.demo.glooplatform.com/ns-1/ui/"
+                        url: "https://tiered-app.central.glooplatform.com/ns-1/ui/"
                         target: "_blank" # optional html a tag target attribute  
                       
                       - name: "Tiered Mesh Application - Extended"
@@ -776,7 +776,7 @@ spec:
                         icon: "fab fa-connectdevelop"
                         tag: "gloo-mesh #demo"
                         keywords: "gloo-mesh,virtualdestination,multicluster,demo"
-                        url: "https://tiered-app.demo.glooplatform.com/east/ns-1/ui/"
+                        url: "https://tiered-app.central.glooplatform.com/east/ns-1/ui/"
                         target: "_blank" # optional html a tag target attribute  
 
                       - name: "Multicluster Application Architecture - Gloo UI"
