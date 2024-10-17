@@ -148,7 +148,7 @@ spec:
           value: "1"
         resources:
           requests:
-            cpu: "50m"
+            cpu: "20m"
             memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
@@ -202,7 +202,7 @@ spec:
             command: ["/bin/grpc_health_probe", "-addr=:3550"]
         resources:
           requests:
-            cpu: "50m"
+            cpu: "20m"
             memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
@@ -255,7 +255,7 @@ spec:
             command: ["/bin/grpc_health_probe", "-addr=:8080"]
         resources:
           requests:
-            cpu: "50m"
+            cpu: "20m"
             memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
@@ -310,7 +310,7 @@ spec:
             command: ["/bin/grpc_health_probe", "-addr=:7000"]
         resources:
           requests:
-            cpu: "50m"
+            cpu: "20m"
             memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
@@ -361,7 +361,7 @@ spec:
             command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
         resources:
           requests:
-            cpu: "50m"
+            cpu: "20m"
             memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
@@ -525,7 +525,7 @@ spec:
             command: ["/bin/grpc_health_probe", "-addr=:50051"]
         resources:
           requests:
-            cpu: "50m"
+            cpu: "20m"
             memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
@@ -579,7 +579,7 @@ spec:
             command: ["/bin/grpc_health_probe", "-addr=:50051"]
         resources:
           requests:
-            cpu: "50m"
+            cpu: "20m"
             memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1

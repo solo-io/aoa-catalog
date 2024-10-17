@@ -10,3 +10,4 @@ resources:
 transformers:
 - transformers/istio-sidecar-label-transformer.yaml
 - transformers/hold-proxy-annotation-transformer.yaml
+- transformers/proxy-resources-annotation-transformer.yaml

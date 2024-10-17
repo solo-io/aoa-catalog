@@ -104,7 +104,7 @@ spec:
         resources:
           requests:
             memory: "50Mi"
-            cpu: "50m"
+            cpu: "10m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -176,7 +176,7 @@ spec:
         resources:
           requests:
             memory: "50Mi"
-            cpu: "50m"
+            cpu: "10m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -248,7 +248,7 @@ spec:
         resources:
           requests:
             memory: "50Mi"
-            cpu: "50m"
+            cpu: "10m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -346,7 +346,7 @@ spec:
         resources:
           requests:
             memory: "50Mi"
-            cpu: "50m"
+            cpu: "10m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -416,7 +416,7 @@ spec:
         resources:
           requests:
             memory: "50Mi"
-            cpu: "50m"
+            cpu: "10m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -514,7 +514,7 @@ spec:
         resources:
           requests:
             memory: "50Mi"
-            cpu: "50m"
+            cpu: "10m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -612,7 +612,7 @@ spec:
         resources:
           requests:
             memory: "50Mi"
-            cpu: "50m"
+            cpu: "10m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -710,7 +710,7 @@ spec:
         resources:
           requests:
             memory: "50Mi"
-            cpu: "50m"
+            cpu: "10m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -780,5 +780,5 @@ spec:
         resources:
           requests:
             memory: "50Mi"
-            cpu: "50m"
+            cpu: "10m"
 ---

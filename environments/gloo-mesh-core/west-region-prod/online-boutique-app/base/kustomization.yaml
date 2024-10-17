@@ -8,3 +8,4 @@ resources:
 - web-ui-ns.yaml
 - web-ui.yaml
 - virtualservice.yaml
+- transformers/proxy-resources-annotation-transformer.yaml
