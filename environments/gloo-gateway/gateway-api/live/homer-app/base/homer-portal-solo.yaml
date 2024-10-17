@@ -407,6 +407,20 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://httpbin.gwapi.glooplatform.com/delay/0"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Fault Injection - Abort"
+                        subtitle: "inject 500 error code 50% of the time"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/anything/fault"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Fault Injection - delay"
+                        subtitle: "inject 3s delay 100% of the time"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/anything/delay"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "Header Control - Append"
                         subtitle: "see headers with prefix custom-"
                         icon: "far fa-window-maximize"
