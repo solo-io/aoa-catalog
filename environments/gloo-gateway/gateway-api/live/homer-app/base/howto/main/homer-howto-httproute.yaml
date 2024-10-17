@@ -16,7 +16,7 @@ spec:
   rules:
     - matches:
       - path:
-          type: Exact
+          type: PathPrefix
           value: /howto
       backendRefs:
       - name: homer-portal-howto
