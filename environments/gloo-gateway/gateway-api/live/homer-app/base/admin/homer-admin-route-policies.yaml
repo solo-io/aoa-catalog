@@ -7,6 +7,9 @@ spec:
   options:
     jwt:
       disable: true
+    retries:
+      retryOn: 'connect-failure,retriable-status-codes,5xx,gateway-error,reset'
+      numRetries: 3
     extauth:
       configRef:
         name: homer-admin-oidc
