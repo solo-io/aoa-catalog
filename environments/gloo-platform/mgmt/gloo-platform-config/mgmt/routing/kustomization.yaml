@@ -5,7 +5,7 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - admin-routetable.yaml
-#- gcp-gmui-routetable.yaml
+- gcp-gmui-routetable.yaml
 #- okta-gmui-routetable.yaml
 #- plow-routetable.yaml
 - prometheus-routetable.yaml
