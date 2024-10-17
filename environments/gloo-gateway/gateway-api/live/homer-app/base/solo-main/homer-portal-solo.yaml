@@ -689,10 +689,10 @@ spec:
                         url: "https://api.gwapi.glooplatform.com/v1/api-products"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Portal API Key and Dynamic Rate Limiting"
-                        subtitle: "run this script to demonstrate"
+                        subtitle: "example using asciinema"
                         icon: "far fa-window-maximize"
                         tag: "gloo-portal"
-                        url: "https://raw.githubusercontent.com/solo-io/aoa-catalog/refs/heads/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-portal-demo/base/dynamic-rl-script.sh"
+                        url: "https://asciinema.org/a/9d9Ojugpjr64zqKM9EnwNKt5C"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Gloo Portal Configuration Examples"
@@ -732,6 +732,12 @@ spec:
                         tag: "gloo-gateway #gloo-portal #demo"
                         keywords: "gloo-gateway,gloo-portal,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-portal-demo/base/solo-dev-portal/portal-developer.yaml"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Portal API Key and Dynamic Rate Limiting"
+                        subtitle: "link to demo script"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-portal"
+                        url: "https://raw.githubusercontent.com/solo-io/aoa-catalog/refs/heads/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-portal-demo/base/dynamic-rl-script.sh"
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "Gloo Gateway Configuration Examples"
