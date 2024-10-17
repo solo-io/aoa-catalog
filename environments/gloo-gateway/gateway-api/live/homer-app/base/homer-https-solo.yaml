@@ -9,6 +9,7 @@ metadata:
 spec:
   hostnames:
   - "demo.glooplatform.com"
+  - "demo.gwapi.glooplatform.com"
   parentRefs:
     - name: https
       namespace: gloo-system
