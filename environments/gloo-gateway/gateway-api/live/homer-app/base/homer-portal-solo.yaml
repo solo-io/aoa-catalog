@@ -227,7 +227,7 @@ spec:
                     url: "https://docs.solo.io/gloo-gateway"
                     target: "_blank" # optional html a tag target attribute
                   - name: "Admin Tools"
-                    icon: "fas fa-book"
+                    icon: "fas fa-cog"
                     url: "https://demo.glooplatform.com/admin/"
                     target: "_blank" # optional html a tag target attribute
                   # this will link to a second homer page that will load config from additional-page.yml and keep default config values as in config.yml file
