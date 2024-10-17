@@ -467,6 +467,20 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/httpbin-route-policies.yaml#L14"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Fault Injection - Abort"
+                        subtitle: "inject status errors on a route"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/fault-injection/abort/httpbin-fault-injection-abort-route-policies.yaml#L11-L13"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Fault Injection - Delay"
+                        subtitle: "inject delays on a route"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/fault-injection/delay/httpbin-fault-injection-delay-route-policies.yaml#L11-L13"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "Header Control - Append/Remove"
                         subtitle: "add/remove headers"
                         icon: "far fa-file-code"
@@ -727,13 +741,7 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/log-provider.yaml"
                         target: "_blank" # optional html a tag target attribute
-                      #- name: "Fault Injection"
-                      #  subtitle: ""
-                      #  icon: "far fa-file-code"
-                      #  tag: "gloo-gateway #config"
-                      #  keywords: "gloo-gateway,demo"
-                      #  url: ""
-                      #  target: "_blank" # optional html a tag target attribute
+                      
                   
                   - name: "Demo Service Mesh Capabilities"
                     icon: "fas fa-cloud"
