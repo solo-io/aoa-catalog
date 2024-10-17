@@ -7,7 +7,7 @@ spec:
   configs:
   - oauth2:
       oidcAuthorizationCode:
-        appUrl: https://https://demo.glooplatform.com
+        appUrl: https://demo.glooplatform.com
         callbackPath: /callback
         clientId: 967359009029-j7uts17vmc85kt3aaie8cnpodefql93t.apps.googleusercontent.com
         clientSecretRef:
