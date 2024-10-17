@@ -44,13 +44,13 @@ waves:
       -  $env_path/online-boutique-app/init.sh
       post_deploy:
       -  $env_path/online-boutique-app/test.sh    
-  - name: uptime-app
-    location: $env_path/uptime-app/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/uptime-app/init.sh
-      post_deploy:
-      -  $env_path/uptime-app/test.sh
+  #- name: uptime-app
+  #  location: $env_path/uptime-app/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/uptime-app/init.sh
+  #    post_deploy:
+  #    -  $env_path/uptime-app/test.sh
   - name: mario-app
     location: $env_path/mario-app/base
     scripts:
