@@ -9,5 +9,7 @@ resources:
 - homer-https-solo.yaml
 - homer-route-policies.yaml
 - homer-portal-howto.yaml
+- homer-portal-admin.yaml
 - howto
+- admin
 
