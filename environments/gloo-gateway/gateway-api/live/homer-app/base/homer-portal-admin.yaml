@@ -203,15 +203,6 @@ spec:
                 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
                 services:
                   
-                  - name: "Navigate the Admin Applications"
-                    icon: "fas fa-cloud"
-                    items:
-                      - name: "Admin Applications - Demo Walkthrough"
-                        icon: "fas fa-cloud"
-                        tag: "admin-apps"
-                        url: "https://demo.glooplatform.com/howto/admin"
-                        target: "_blank" # optional html a tag target attribute
-                  
                   - name: "Platform Admin Tools"
                     icon: "fas fa-tools"
                     items:
