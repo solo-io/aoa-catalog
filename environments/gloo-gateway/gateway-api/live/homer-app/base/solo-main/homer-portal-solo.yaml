@@ -678,6 +678,7 @@ spec:
                         url: "https://raw.githubusercontent.com/solo-io/aoa-catalog/refs/heads/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/images/portal-personas.png"
                         target: "_blank" # optional html a tag target attribute
                       - name: "React Frontend - Solo Dev Portal"
+                        subtitle: "sample external facing portal"
                         icon: "fab fa-connectdevelop"
                         tag: "gloo-portal"
                         url: "https://solo-dev-portal.gwapi.glooplatform.com"
@@ -686,6 +687,12 @@ spec:
                         icon: "far fa-window-maximize"
                         tag: "gloo-portal"
                         url: "https://api.gwapi.glooplatform.com/v1/api-products"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Portal API Key and Dynamic Rate Limiting"
+                        subtitle: "run this script to demonstrate"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-portal"
+                        url: "https://raw.githubusercontent.com/solo-io/aoa-catalog/refs/heads/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-portal-demo/base/dynamic-rl-script.sh"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Gloo Portal Configuration Examples"
