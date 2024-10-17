@@ -190,8 +190,8 @@ spec:
                 # First level array represent a group.
                 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
                 services:
-                  
-                  - name: "Platform Admin Tools"
+
+                  - name: "Gloo Platform Admin"
                     icon: "fas fa-tools"
                     items:
                       - name: "Gloo Mesh UI"
@@ -249,6 +249,17 @@ spec:
                         tag: "admin #observability #demo"
                         keywords: "admin,observability,demo,grafana"
                         url: "https://grafana.admin.glooplatform.com/east"
+                        target: "_blank" # optional html a tag target attribute
+
+                  - name: "Gloo Gateway Admin"
+                    icon: "fas fa-tools"
+                    items:
+                      - name: "ArgoCD"
+                        subtitle: "Gloo Gateway / GMC Ambient"
+                        icon: "fab fa-git-alt"
+                        tag: "admin #gitops #demo"
+                        keywords: "admin,argocd,gitops,demo"
+                        url: "https://argocd.gwapi.glooplatform.com/argo"
                         target: "_blank" # optional html a tag target attribute
 
               
