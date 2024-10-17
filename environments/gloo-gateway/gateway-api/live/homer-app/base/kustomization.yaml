@@ -5,9 +5,9 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - homer-portal-ns.yaml
-#- homer-portal.yaml
-#- homer-https.yaml
 - homer-portal-solo.yaml
 - homer-https-solo.yaml
 - homer-route-policies.yaml
+- homer-portal-howto.yaml
+- howto
 

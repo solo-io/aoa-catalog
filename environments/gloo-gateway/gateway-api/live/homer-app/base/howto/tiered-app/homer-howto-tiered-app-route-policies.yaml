@@ -1,0 +1,16 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: homer-howto-tiered-app-route-policies
+  namespace: homer-portal
+spec:
+  options:
+    jwt:
+      disable: true
+    headerManipulation:
+      responseHeadersToAdd:
+        - header:
+            key: "content-type"
+            value: "text/html"
+                
+    
