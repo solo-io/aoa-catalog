@@ -18,6 +18,9 @@ spec:
       - path:
           type: PathPrefix
           value: /admin
+      - path:
+          type: PathPrefix
+          value: /callback
       backendRefs:
       - name: homer-portal-admin
         port: 8080
