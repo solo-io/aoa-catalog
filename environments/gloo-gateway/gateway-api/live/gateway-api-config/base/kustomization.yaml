@@ -16,3 +16,4 @@ resources:
 - portal-api-key-authconfig.yaml
 - portal-opa-cm.yaml
 - argo-authconfig.yaml
+- host-redirect.yaml
