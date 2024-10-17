@@ -210,7 +210,7 @@ spec:
                         icon: "fas fa-heartbeat"
                         tag: "admin #observability #demo"
                         keywords: "uptime,gloo-mesh,observability,admin,demo"
-                        url: "https://uptime.admin.glooplatform.com"
+                        url: "https://uptime.gwapi.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Prometheus"
                         #subtitle: "Requires header user: preferred"
