@@ -109,6 +109,14 @@ Dry-run: Would execute post_deploy script at environments/gloo-gateway/gateway-a
 END.
 ```
 
+### Render environment manifests
+The `render-manifests.sh` script located in `/aoa-tools` allows you to generate and view all Kubernetes manifests for a given environment or wave. It automatically detects all kustomization.yaml files within the specified environment and renders the manifests that will be applied. The output can also be saved to a text file.
+
+Usage:
+```
+./aoa-tools/render-manifests.sh <environment-path>
+```
+
 ### catalog.yaml
 The `catalog.yaml` exists in each demo environment directory which provides a list of app-of-apps "waves" to be deployed in order by the installer. A wave consists of the `location` (relative to the root path of the selected environment) as well as `pre_deploy` and `post_deploy` scripts which can be optionally run which can be useful for tasks such as health checks, or waiting for pods to be ready or printing output.
 

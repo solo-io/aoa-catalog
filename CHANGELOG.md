@@ -1,5 +1,10 @@
 # Changelog
 
+0.6.6 (10-17-24)
+---
+- add `/aoa-tools/render-manifests.sh` script - generate and view all Kubernetes manifests for a given environment or wave by providing a path
+- add `Render environment manifests` section to README.md on how to use this new tool
+
 0.6.5 (10-16-24)
 ---
 - add ability to the to configure sync override for wave in catalog.yaml
