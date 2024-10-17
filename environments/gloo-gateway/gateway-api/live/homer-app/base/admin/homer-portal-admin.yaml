@@ -133,7 +133,7 @@ spec:
 
                 # Optional: Proxy / hosting option
                 proxy:
-                  useCredentials: false # send cookies & authorization headers when fetching service specific data. Set to `true` if you use an authentication proxy. Can be overrided on service level. 
+                  useCredentials: true # send cookies & authorization headers when fetching service specific data. Set to `true` if you use an authentication proxy. Can be overrided on service level. 
 
                 # Set the default layout and color scheme
                 defaults:
