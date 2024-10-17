@@ -1,0 +1,13 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: httpbin-fault-injection-delay-route-policies
+  namespace: httpbin
+spec:
+  options:
+    jwt:
+      disable: true
+    faults:
+      delay:
+        percentage: 100
+        fixedDelay: '5s'

@@ -15,3 +15,4 @@ resources:
 - okta-authconfig.yaml
 - external-service
 - direct-response
+- fault-injection

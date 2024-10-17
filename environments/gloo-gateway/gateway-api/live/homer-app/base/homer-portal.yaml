@@ -403,6 +403,13 @@ spec:
                         keywords: "gloo-gateway,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/httpbin-app/base/direct-response/direct-response.yaml"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Host Redirect"
+                        subtitle: "The host portion of the URL is swapped with this value"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #config"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/328861d404d120b6d7d8791af39465632b4899f9/environments/gloo-gateway/gateway-api/live/gateway-api-config/base/host-redirect.yaml#L14-L17"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "Host Rewrite"
                         subtitle: "rewrite host path"
                         icon: "far fa-file-code"
