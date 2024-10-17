@@ -44,7 +44,7 @@ spec:
           # -- Specify the group ID the application will run as
           GID: "1001"
           # -- Specify the basepath the application will run at
-          SUBFOLDER: /solo
+          SUBFOLDER: /howto
         
         # -- Set the resource requests / limits for the main container.
         resources:
