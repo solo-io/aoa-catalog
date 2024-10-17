@@ -86,13 +86,13 @@ waves:
   #    -  $env_path/portal-demo/init.sh
   #    post_deploy:
   #    -  $env_path/portal-demo/test.sh    
-  - name: mario-config
-    location: $env_path/mario-config/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/mario-config/init.sh
-      post_deploy:
-      -  $env_path/mario-config/test.sh 
+  #- name: mario-config
+  #  location: $env_path/mario-config/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/mario-config/init.sh
+  #    post_deploy:
+  #    -  $env_path/mario-config/test.sh 
   - name: kubeinvaders-config
     location: $env_path/kubeinvaders-config/base
     scripts:

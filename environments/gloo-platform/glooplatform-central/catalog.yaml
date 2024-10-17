@@ -51,13 +51,13 @@ waves:
   #    -  $env_path/uptime-app/init.sh
   #    post_deploy:
   #    -  $env_path/uptime-app/test.sh
-  - name: mario-app
-    location: $env_path/mario-app/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/mario-app/init.sh
-      post_deploy:
-      -  $env_path/mario-app/test.sh  
+  #- name: mario-app
+  #  location: $env_path/mario-app/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/mario-app/init.sh
+  #    post_deploy:
+  #    -  $env_path/mario-app/test.sh  
   - name: kubeinvaders-app
     location: $env_path/kubeinvaders-app/base
     scripts:
