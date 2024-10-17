@@ -15,6 +15,7 @@ prompt_user_input() {
 # Input variables with default values
 LICENSE_KEY=${1:-""}
 cluster_context=${2:-"mgmt"}
+NS=${3:-"gloo-mesh"}
 
 # Prompt user for input if variables are not provided
 prompt_user_input LICENSE_KEY "Please provide your Gloo Mesh Enterprise License Key"
@@ -32,7 +33,7 @@ else
 fi
 
 # Create namespace for Gloo Mesh
-kubectl create ns gloo-mesh --context "${cluster_context}"
+kubectl create ns "${NS}" --context "${cluster_context}"
 
 # Apply license keys as a Kubernetes secret
 kubectl apply --context "${cluster_context}" -f - <<EOF
@@ -45,6 +46,6 @@ data:
 kind: Secret
 metadata:
   name: gloo-license
-  namespace: gloo-mesh
+  namespace: $NS
 type: Opaque
 EOF

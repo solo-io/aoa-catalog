@@ -63,7 +63,7 @@ spec:
         jaeger:
             enabled: false
         glooUi:
-            enabled: true
+            enabled: false
             serviceType: LoadBalancer
             auth:
               enabled: false
