@@ -248,13 +248,13 @@ spec:
                         icon: "fas fa-chart-area"
                         tag: "admin #observability #demo"
                         keywords: "admin,observability,demo,grafana"
-                        url: "https://grafana.admin.glooplatform.com/central"
+                        url: "https://grafana.central.glooplatform.com/central"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Grafana - glooplatform-east"
                         icon: "fas fa-chart-area"
                         tag: "admin #observability #demo"
                         keywords: "admin,observability,demo,grafana"
-                        url: "https://grafana.admin.glooplatform.com/east"
+                        url: "https://grafana.central.glooplatform.com/east"
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "Gloo Gateway Admin"
