@@ -23,10 +23,10 @@ spec:
         glooInsightsEngine:
             enabled: true
         glooAnalyzer:
-            enabled: true
+            enabled: false
             runAsSidecar: true
         glooAgent:
-            enabled: true
+            enabled: false
             relay:
                 serverAddress: gloo-mesh-mgmt-server:9900
                 clientTlsSecret:
