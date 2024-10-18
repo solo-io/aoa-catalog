@@ -9,12 +9,19 @@ waves:
       post_deploy:
       -  $env_path/clusterconfig/test.sh  
   - name: certmanager
+    location: $env_path/certmanager/base
     scripts:
       pre_deploy: 
       -  $env_path/certmanager/init.sh
       post_deploy:
       -  $env_path/certmanager/test.sh
-    location: $env_path/certmanager/base
+  - name: certmanager-config
+    location: $env_path/certmanager-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/certmanager-config/init.sh
+      post_deploy:
+      -  $env_path/certmanager-config/test.sh
   - name: gloo-enterprise-app
     location: $env_path/gloo-enterprise-app/base
     scripts:
