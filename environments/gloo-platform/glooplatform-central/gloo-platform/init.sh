@@ -68,6 +68,9 @@ spec:
                 clientTlsSecret:
                     name: gloo-agent-tls-cert
                     namespace: gloo-mesh
+        glooAnalyzer:
+            enabled: true
+            runAsSidecar: true
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
     targetRevision: 2.6.5
