@@ -68,11 +68,11 @@ spec:
         proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
     spec:  
       #nodeSelector:
-      #  gke-spot: "true"
+      #  node: "spot"
       #tolerations:
-      #- key: cloud.google.com/gke-spot
+      #- key: cloud.google.com/node
       #  operator: Equal
-      #  value: "true"
+      #  value: "spot"
       #  effect: NoSchedule
       serviceAccountName: uptime
       automountServiceAccountToken: true

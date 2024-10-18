@@ -89,11 +89,11 @@ spec:
             root_url: https://*.glooplatform.com/central/
             serve_from_sub_path: true
         nodeSelector:
-          gke-spot: "true"
+          node: "spot"
         tolerations:
-        - key: cloud.google.com/gke-spot
+        - key: cloud.google.com/node
           operator: Equal
-          value: "true"
+          value: "spot"
           effect: NoSchedule
   project: default
   syncPolicy:

@@ -463,11 +463,11 @@ spec:
         kiali.io/dashboards: go,kiali
     spec:
       nodeSelector:
-        gke-spot: "true"
+        node: "spot"
       tolerations:
-      - key: cloud.google.com/gke-spot
+      - key: cloud.google.com/node
         operator: Equal
-        value: "true"
+        value: "spot"
         effect: NoSchedule
       serviceAccountName: kiali
       containers:

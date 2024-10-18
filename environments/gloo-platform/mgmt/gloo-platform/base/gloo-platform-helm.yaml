@@ -57,11 +57,11 @@ spec:
                                 sidecar.istio.io/inject: "true"
                         spec:
                             nodeSelector:
-                                gke-spot: "true"
+                                node: "spot"
                             tolerations:
-                                - key: cloud.google.com/gke-spot
+                                - key: cloud.google.com/node
                                   operator: Equal
-                                  value: "true"
+                                  value: "spot"
                                   effect: NoSchedule  
             enabled: true
             serviceType: ClusterIP

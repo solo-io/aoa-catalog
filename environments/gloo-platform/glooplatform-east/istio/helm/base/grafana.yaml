@@ -139,11 +139,11 @@ spec:
         kubectl.kubernetes.io/default-container: grafana
     spec:
       nodeSelector:
-        gke-spot: "true"
+        node: "spot"
       tolerations:
-      - key: cloud.google.com/gke-spot
+      - key: cloud.google.com/node
         operator: Equal
-        value: "true"
+        value: "spot"
         effect: NoSchedule
       serviceAccountName: grafana
       automountServiceAccountToken: true

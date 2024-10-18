@@ -34,7 +34,7 @@ options:
       - label: gloo=gateway
         nodeFilters:
           - server:*
-      - label: gke-spot=true
+      - label: node=spot
         nodeFilters:
           - server:*
   kubeconfig:

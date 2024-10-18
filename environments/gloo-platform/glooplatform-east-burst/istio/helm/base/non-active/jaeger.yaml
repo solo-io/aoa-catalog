@@ -19,11 +19,11 @@ spec:
         prometheus.io/port: "14269"
     spec:
       nodeSelector:
-        gke-spot: "true"
+        node: "spot"
       tolerations:
-      - key: cloud.google.com/gke-spot
+      - key: cloud.google.com/node
         operator: Equal
-        value: "true"
+        value: "spot"
         effect: NoSchedule
       containers:
         - name: jaeger
