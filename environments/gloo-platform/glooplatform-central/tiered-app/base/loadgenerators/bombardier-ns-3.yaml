@@ -26,7 +26,7 @@ spec:
               memory: 25Mi
         env:
         - name: APP_URL
-          value: "tiered-app.demo.glooplatform.com"
+          value: "tiered-app.central.glooplatform.com"
         - name: APP_NAMESPACE
           value: "ns-3"
         - name: REQUESTS_PER_SECOND

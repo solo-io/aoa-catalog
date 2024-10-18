@@ -30,27 +30,13 @@ waves:
       post_deploy:
       -  $env_path/gloo-platform/test.sh
   # additional
-  - name: bookinfo-app
-    location: $env_path/bookinfo-app/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/bookinfo-app/init.sh
-      post_deploy:
-      -  $env_path/bookinfo-app/test.sh   
   - name: online-boutique-app
     location: $env_path/online-boutique-app/base
     scripts:
       pre_deploy: 
       -  $env_path/online-boutique-app/init.sh
       post_deploy:
-      -  $env_path/online-boutique-app/test.sh    
-  - name: uptime-app
-    location: $env_path/uptime-app/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/uptime-app/init.sh
-      post_deploy:
-      -  $env_path/uptime-app/test.sh 
+      -  $env_path/online-boutique-app/test.sh     
   - name: kubeinvaders-app
     location: $env_path/kubeinvaders-app/base
     scripts:

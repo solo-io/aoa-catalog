@@ -50,35 +50,14 @@ waves:
       pre_deploy: 
       -  $env_path/gloo-platform-config/init.sh
       post_deploy:
-      -  $env_path/gloo-platform-config/test.sh 
-  - name: bookinfo-config
-    location: $env_path/bookinfo-config/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/bookinfo-config/init.sh
-      post_deploy:
-      -  $env_path/bookinfo-config/test.sh   
-  - name: httpbin-app
-    location: $env_path/httpbin-app/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/httpbin-app/init.sh
-      post_deploy:
-      -  $env_path/httpbin-app/test.sh   
-  - name: httpbin-config
-    location: $env_path/httpbin-config/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/httpbin-config/init.sh
-      post_deploy:
-      -  $env_path/httpbin-config/test.sh  
+      -  $env_path/gloo-platform-config/test.sh    
   - name: online-boutique-config
     location: $env_path/online-boutique-config/base
     scripts:
       pre_deploy: 
       -  $env_path/online-boutique-config/init.sh
       post_deploy:
-      -  $env_path/online-boutique-config/test.sh       
+      -  $env_path/online-boutique-config/test.sh     
   - name: kubeinvaders-config
     location: $env_path/kubeinvaders-config/base
     scripts:
@@ -86,20 +65,6 @@ waves:
       -  $env_path/kubeinvaders-config/init.sh
       post_deploy:
       -  $env_path/kubeinvaders-config/test.sh 
-  - name: argo-rollouts
-    location: $env_path/argo-rollouts/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/argo-rollouts/init.sh
-      post_deploy:
-      -  $env_path/argo-rollouts/test.sh
-  - name: rollouts-demo
-    location: $env_path/rollouts-demo/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/rollouts-demo/init.sh
-      post_deploy:
-      -  $env_path/rollouts-demo/test.sh
   - name: tiered-app-config
     location: $env_path/tiered-app-config/base
     scripts:
@@ -107,31 +72,3 @@ waves:
       -  $env_path/tiered-app-config/init.sh
       post_deploy:
       -  $env_path/tiered-app-config/test.sh
-  - name: collaboration-tools-app
-    location: $env_path/collaboration-tools-app/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/collaboration-tools-app/init.sh
-      post_deploy:
-      -  $env_path/collaboration-tools-app/test.sh 
-  - name: collaboration-tools-config
-    location: $env_path/collaboration-tools-config/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/collaboration-tools-config/init.sh
-      post_deploy:
-      -  $env_path/collaboration-tools-config/test.sh   
-  - name: homer-app
-    location: $env_path/homer-app/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/homer-app/init.sh
-      post_deploy:
-      -  $env_path/homer-app/test.sh 
-  - name: homer-config
-    location: $env_path/homer-config/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/homer-config/init.sh
-      post_deploy:
-      -  $env_path/homer-config/test.sh

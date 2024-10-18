@@ -95,8 +95,8 @@ spec:
           value: "/ns-3/ui/"
         resources:
           requests:
-            memory: "150Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "30m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -185,8 +185,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "150Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "30m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -275,8 +275,8 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "150Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "30m"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -365,6 +365,6 @@ spec:
           value: "true"
         resources:
           requests:
-            memory: "150Mi"
-            cpu: "100m"
+            memory: "50Mi"
+            cpu: "30m"
 ---

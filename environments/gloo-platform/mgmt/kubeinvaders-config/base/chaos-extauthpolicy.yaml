@@ -7,7 +7,7 @@ spec:
   applyToRoutes:
   - route:
       labels:
-        oauth: chaos.demo.glooplatform.com
+        oauth: chaos.central.glooplatform.com
   config:
     server:
       name: glooplatform-east-ext-auth-server
@@ -17,7 +17,7 @@ spec:
       configs:
       - oauth2:
           oidcAuthorizationCode:
-            appUrl: https://chaos.demo.glooplatform.com
+            appUrl: https://chaos.central.glooplatform.com
             callbackPath: /callback
             clientId: 967359009029-j7uts17vmc85kt3aaie8cnpodefql93t.apps.googleusercontent.com
             clientSecretRef:

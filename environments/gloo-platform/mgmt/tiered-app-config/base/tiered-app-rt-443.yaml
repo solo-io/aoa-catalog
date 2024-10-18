@@ -7,7 +7,7 @@ metadata:
     expose: "true"
 spec:
   hosts:
-    - 'tiered-app.demo.glooplatform.com'
+    - 'tiered-app.central.glooplatform.com'
   virtualGateways:
     - name: north-south-gw
       namespace: istio-gateways

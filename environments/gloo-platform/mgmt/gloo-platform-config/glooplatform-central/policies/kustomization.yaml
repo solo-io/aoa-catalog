@@ -5,4 +5,4 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - argocd-glooplatform-central-extauthpolicy-gcp.yaml
-- uptime-extauthpolicy-gcp.yaml
+#- uptime-extauthpolicy-gcp.yaml

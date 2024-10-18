@@ -15,4 +15,5 @@ resources:
 - istio-system-ns.yaml
 - relay-identity-token-secret.yaml
 - relay-root-ca.yaml
+- descheduler-helm.yaml
 

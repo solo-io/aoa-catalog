@@ -6,7 +6,6 @@ kind: Kustomization
 resources:
 - admin-routetable.yaml
 - gcp-gmui-routetable.yaml
-- plow-routetable.yaml
 - prometheus-routetable.yaml
 - workload-grafana-routetable.yaml
 

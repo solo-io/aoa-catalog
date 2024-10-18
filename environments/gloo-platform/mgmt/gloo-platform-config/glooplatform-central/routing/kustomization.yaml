@@ -5,4 +5,4 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - argocd-glooplatform-central-routetable.yaml
-- uptime-routetable.yaml
+#- uptime-routetable.yaml

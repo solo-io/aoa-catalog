@@ -6,3 +6,4 @@ kind: Kustomization
 resources:
 - argocd-glooplatform-east-routetable.yaml
 - east-central-extauthservice-vd.yaml
+#- east-central-portalserver-vd.yaml
