@@ -1,0 +1,42 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  name: reviews-vd
+  namespace: bookinfo-team-config
+spec:
+  hosts:
+  # Arbitrary, internal-only hostname assigned to the endpoint
+  - reviews-vd.randomvalue
+  ports:
+  - number: 8080
+    protocol: HTTP
+    targetPort:
+      number: 9080
+  services:
+    - labels:
+        app: reviews
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: reviews
+  namespace: bookinfo-team-config
+spec:
+  hosts:
+    - 'reviews.bookinfo-backends.svc.cluster.local'
+  workloadSelectors:
+  - selector:
+      labels:
+        app: productpage
+  http:
+    - name: reviews
+      matchers:
+      - uri:
+          prefix: /reviews
+      forwardTo:
+        destinations:
+          - ref:
+              name: reviews-vd
+            kind: VIRTUAL_DESTINATION
+            port:
+              number: 8080

@@ -1,0 +1,10 @@
+apiVersion: builtin
+kind: LabelTransformer
+metadata:
+  name: label-transformer
+labels:
+  portal: internal
+  api: tracks
+fieldSpecs:
+- path: metadata/labels
+  create: true

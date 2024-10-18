@@ -1,0 +1,33 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  labels:
+    expose: "true"
+  name: uptime-rt-443
+  namespace: uptime
+spec:
+  hosts:
+  - 'uptime.admin.glooplatform.com'
+  http:
+  - forwardTo:
+      destinations:
+      - port:
+          number: 3001
+        ref:
+          cluster: glooplatform-central
+          name: uptime
+          namespace: uptime
+    labels:
+      waf: "true"
+      auth: uptime.admin.glooplatform.com
+    name: uptime
+    matchers:
+      - uri:
+          prefix: /
+      - uri:
+          prefix: /callback
+  virtualGateways:
+  - cluster: mgmt
+    name: north-south-gw
+    namespace: istio-gateways
+  workloadSelectors: []

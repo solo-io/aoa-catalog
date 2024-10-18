@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Httpbin Demo Walkthrough</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .parallax-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 40vh;
+            background: linear-gradient(45deg, #3498db, #9b59b6);
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        .parallax-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .note {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .note:hover {
+            transform: scale(1.03);
+        }
+
+        .highlight {
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .icon {
+            font-size: 32px;
+            margin-right: 10px;
+            color: #3498db;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parallax-container">
+        <div class="parallax-bg"></div>
+        <div class="parallax-content">
+            <h1>Httpbin Demo Walkthrough</h1>
+        </div>
+    </div>
+
+    <div class="parallax-content">
+        <!-- Httpbin Demo Walkthrough -->
+        <div class="note">
+            <h2><i class="icon fas fa-cogs"></i><span class="highlight">Application Description:</span></h2>
+            <p>Httpbin is a simple HTTP Request & Response Service. It is useful for testing and debugging HTTP clients and can be used to mock API endpoints. We make use of the httpbin app to demonstrate features such as routing, security policies, and transformations</p>
+        </div>
+
+        <!-- Httpbin Public Endpoint -->
+        <div class="note">
+            <h2><i class="icon fas fa-globe"></i><span class="highlight">Httpbin Public Endpoint:</span></h2>
+            <p>This endpoint is the publicly facing endpoint for the httpbin application. It is exposed through Gloo Gateway and can be accessed by anyone.</p>
+        </div>
+
+        <!-- Ext Auth with Okta -->
+        <div class="note">
+            <h2><i class="icon fas fa-lock"></i><span class="highlight">Ext Auth with Okta:</span></h2>
+            <p>This demo shows how to use Gloo Gateway to secure an application with Okta. The application is secured with an ExtAuthPolicy that is configured to an Okta Developer Account. You can use the provided credentials to log in and access the protected application endpoints such as /get</p>
+            <ol>
+                <li>Navigate to the Httpbin - protected /get tile to see that the endpoint is protected by ext auth and re-routes you to Okta</li>
+                <li>Log in with the user jdoe@solo.io and password gloo-dev to access the protected endpoint</li>
+                <li>Note the headers that contain the id_token and access_token that are used to authenticate the user</li>
+                <li>Navigate to the Gloo Mesh UI > Policies to review the `httpbin-extauth` ExtAuthPolicy yaml configuration</li>
+            </ol>
+        </div>
+
+        <!-- Rate Limiting -->
+        <div class="note">
+            <h2><i class="icon fas fa-stopwatch"></i><span class="highlight">Rate Limiting:</span></h2>
+            <p>This demo shows how to use Gloo Gateway to rate limit an application. The rate limit configured for the httpbin app is set to 1000 requests per minute, so it should be difficult to hit the limit. We can use the Gloo Mesh UI to verify that a rate limit policy is in place instead</p>
+            <ol>
+                <li>Navigate to the Gloo Mesh UI > Policies to review the `httpbin` RateLimitPolicy yaml configuration</li>
+                <li>Confirm that the RateLimitPolicy has been attached to the httpbin-rt-443 route</li>
+            </ol>
+        </div>
+
+        <!-- JWT Validation, ClaimsToHeaders, and Transformations -->
+        <div class="note">
+            <h2><i class="icon fas fa-user-shield"></i><span class="highlight">JWT Validation, ClaimsToHeaders, and Transformations:</span></h2>
+            <p>This demo shows how to use Gloo Gateway to validate a JWT token and extract claims from the token to be used as headers in the request.</p>
+            <ol>
+                <li>Navigate to the httpbin /get endpoint to see the response headers</li>
+                <li>If you decode the JWT token, you will see that there are claims for `email` and `groups`</li>
+                <li>Navigate to the Gloo Mesh UI > Policies to review the `httpbin-claimstoheaders` JWTPolicy yaml configuration</li>
+                <li>Note that we are taking the x-id-token in the header, validating it, and extracting select claims to headers named X-Email and X-Groups</li>
+                <li>Navigate to the Gloo Mesh UI > Policies to review the `modify-x-email-header` TransformationPolicy yaml configuration</li>
+                <li>Notice that here we are extracting the X-Email header into a variable named `organization` and creating an additional header named X-Organization with the value of the organization variable. This is useful for upstream applications that require a specific header to be present in the request</li>
+            </ol>
+        </div>
+
+        <!-- OPA AuthZ -->
+        <div class="note">
+            <h2><i class="icon fas fa-shield-alt"></i><span class="highlight">OPA AuthZ:</span></h2>
+            <p>In addition to OIDC, we can also configure the ExtAuthPolicy to use OPA for authorization. This demo shows how to use Gloo Gateway to secure an application with OPA.</p>
+            <ol>
+                <li>Navigate to the Gloo Mesh UI > Policies to review the `httpbin-extauth` ExtAuthPolicy yaml configuration. Note that the policy is configured to use opaAuth with rules defined in a configmap named `httpbin-opa` in the `httpbin` namespace</li>
+                <li>Navigate to the Argo CD UI (mgmt) > wave-httpbin-config-aoa > httpbin-opa configmap to review the OPA rules</li>
+                <li>Note that the rules are configured to allow access to the /get and /anything endpoints</li>
+                <li>Instead, try to access the /status/200 endpoint and note that you are denied access with a 403</li>
+            </ol>
+        </div>
+
+        <!-- WAF policy -->
+        <div class="note">
+            <h2><i class="icon fas fa-shield"></i><span class="highlight">WAF policy:</span></h2>
+            <p>Applications can be secured with a WAFPolicy to protect against common web application attacks. This demo configures rules from the OWASP Core Rule Set (CRS) to protect the httpbin app.</p>
+            <ol>
+                <li>Navigate to the Gloo Mesh UI > Policies to review the `httpbin-waf` WAFPolicy yaml configuration</li>
+                <li>Back at the /get endpoint of the httpbin app, try to inject a request header User-Agent "scammer". This can be done with browser extensions or with curl.</li>
+                <li>Note that the request is blocked with a message that indicates that a WAF rule was triggered</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            var scrolled = window.scrollY;
+            var parallaxBg = document.querySelector('.parallax-bg');
+            parallaxBg.style.transform = 'translateY(' + scrolled * 0.5 + 'px)';
+        });
+    </script>
+</body>
+
+</html>

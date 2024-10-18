@@ -1,0 +1,85 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: portal-frontend-ext
+  namespace: external-portal-config
+spec:
+  hosts:
+    - "external-portal.glooplatform.com"
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+  defaultDestination:
+    port:
+      number: 8080
+    ref:
+      name: gloo-mesh-portal-server
+      namespace: gloo-mesh-addons
+      cluster: mgmt
+  http:
+    - name: portal-frontend-auth
+      forwardTo:
+        destinations:
+          - port:
+              number: 4000
+            ref:
+              name: portal-frontend
+              namespace: external-portal
+              cluster: mgmt
+      labels:
+        auth: oidc # apply ext auth policy
+      matchers:
+        - uri:
+            prefix: /portal-server/v1/login
+    - forwardTo:
+        pathRewrite: /v1
+      name: authn-api-and-usage-plans
+      labels:
+        auth: oidc # apply ext auth policy
+      matchers:
+        - uri:
+            prefix: /portal-server/v1
+          headers:
+            - name: Cookie
+              value: ".*?id_token=.*" # match characters before id_token= and after id_token= zero to unlimited times
+              regex: true
+    - forwardTo:
+        pathRewrite: /v1/me
+      name: authn-me
+      labels:
+        auth: oidc # apply ext auth policy
+      matchers:
+        - uri:
+            prefix: /portal-server/v1/me
+    - forwardTo:
+        pathRewrite: /v1/api-keys
+      name: authn-api-keys
+      labels:
+        auth: oidc # apply ext auth policy
+      matchers:
+        - uri:
+            prefix: /portal-server/v1/api-keys
+    - forwardTo:
+        pathRewrite: /v1/apis
+      name: no-auth-apis
+      matchers:
+        - uri:
+            prefix: /portal-server/v1/apis
+    - forwardTo:
+        pathRewrite: /v1/usage-plans
+      name: no-auth-usage-plans
+      matchers:
+        - uri:
+            prefix: /portal-server/v1/usage-plans
+    - name: portal-frontend-no-auth
+      forwardTo:
+        destinations:
+          - port:
+              number: 4000
+            ref:
+              name: portal-frontend
+              namespace: external-portal
+              cluster: mgmt
+      matchers:
+        - uri:
+            prefix: /

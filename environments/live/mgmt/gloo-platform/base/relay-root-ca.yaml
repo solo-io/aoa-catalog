@@ -1,0 +1,8 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: relay-root-ca
+  namespace: gloo-mesh
+spec:
+  ca:
+    secretName: relay-root-ca

@@ -1,0 +1,100 @@
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-1
+  labels:
+    seed: "1696442875193501000"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: strangler-pattern
+  namespace: ns-1
+  labels:
+    app: strangler-pattern
+    tier: "1"
+    seed: "1696442875193501000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: strangler-pattern
+  namespace: ns-1
+  labels:
+    app: strangler-pattern
+    tier: "1"
+    seed: "1696442875193501000"
+spec:
+  selector:
+    app: strangler-pattern
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: strangler-pattern-v1
+  namespace: ns-1
+  labels:
+    app: strangler-pattern
+    version: v1
+    tier: "1"
+    seed: "1696442875193501000"
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+        app: strangler-pattern
+        version: v1
+  template:
+    metadata:
+      labels:
+        app: strangler-pattern
+        version: v1
+    spec:
+      serviceAccountName: strangler-pattern
+      containers:
+      - name: strangler-pattern
+        image: nicholasjackson/fake-service:v0.26.0
+        ports:
+        - containerPort: 8080
+        securityContext:
+          runAsUser: 1001
+        env:
+        - name: "LISTEN_ADDR"
+          value: "0.0.0.0:8080"
+        - name: "NAME"
+          value: "strangler-pattern-v1"
+        - name: "SERVER_TYPE"
+          value: "http"
+        - name: "MESSAGE"
+          value: "Hello From strangler-pattern (v1)!"
+        - name: "UPSTREAM_URIS"
+          value: "http://restless-sky-vd.solo-io.mesh:8080,http://throbbing-field-vd.solo-io.mesh:8080,http://random-treeline-vd.solo-io.mesh:8080"
+        - name: "UPSTREAM_WORKERS"
+          value: "1"
+        - name: "TIMING_50_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_90_PERCENTILE"
+          value: "0ms"
+        - name: "TIMING_99_PERCENTILE"
+          value: "0ms"
+        - name: "HTTP_CLIENT_REQUEST_TIMEOUT"
+          value: "30s"
+        - name: "HTTP_SERVER_KEEP_ALIVES"
+          value: "true"
+        - name: "HTTP_CLIENT_KEEP_ALIVES"
+          value: "true"
+        - name: "UI_PATH"
+          value: "/east/ns-1/ui/"
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "30m"
+---

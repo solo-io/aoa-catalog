@@ -1,0 +1,91 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: httpbin-main
+  labels:
+spec:
+  hosts:
+    - '$changeme'
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
+  http:
+   - matchers:
+     - uri:
+         prefix: /v1
+     delegate:
+       routeTables:
+         - name: v1-httpbin-rt
+   - matchers:
+     - uri:
+         prefix: /v2
+     delegate:
+       routeTables:
+         - name: v2-httpbin-rt
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: v1-httpbin-rt
+  labels:
+     # uncomment if you want to hide this API from the portal
+     #portal-visibility: private
+spec:
+  portalMetadata:
+    apiProductId: "httpbin"
+    apiProductDisplayName: "Httpbin API Product - v1"
+    apiVersion: "$changeme"
+    title: "httpbin v1 REST API"
+    description: "REST API for httpbin to retrieve data for httpbin, authors and modules."
+    termsOfService: "Information about your Terms of Service."
+    contact: "changeme@email.com"
+    license: "ISC License"
+    customMetadata:
+      lifecyclePhase: "Stable"
+      compatibility: "Forwards"
+  http:
+  - name: httpbin-api-v1
+    matchers:
+    - uri:
+        prefix: /
+    forwardTo:
+      pathRewrite: /
+      destinations:
+      - ref:
+          name: httpbin
+        port:
+          number: 8000
+---
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: v2-httpbin-rt
+  labels:
+     # uncomment if you want to hide this API from the portal
+     #portal-visibility: private
+spec:
+  portalMetadata:
+    apiProductId: "httpbin"
+    apiProductDisplayName: "Httpbin API Product - v2"
+    apiVersion: "v2"
+    title: "httpbin v2 REST API"
+    description: "REST API for httpbin to retrieve data for httpbin, authors and modules."
+    termsOfService: "Information about your Terms of Service."
+    contact: "changeme@email.com"
+    license: "ISC License"
+    customMetadata:
+      lifecyclePhase: "Stable"
+      compatibility: "Forwards"
+  http:
+  - name: httpbin-api-v2
+    matchers:
+    - uri:
+        prefix: /
+    forwardTo:
+      pathRewrite: /
+      destinations:
+      - ref:
+          name: httpbin
+        port:
+          number: 8000

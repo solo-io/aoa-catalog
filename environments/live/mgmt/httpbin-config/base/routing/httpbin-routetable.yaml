@@ -1,0 +1,177 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: RouteTable
+metadata:
+  name: httpbin-rt-443
+  namespace: httpbin
+spec:
+  hosts:
+    - 'httpbin.demo.glooplatform.com'
+  virtualGateways:
+    - name: mgmt-north-south-gw-443
+      namespace: istio-gateways
+      cluster: mgmt
+  workloadSelectors: []
+  http:
+    - name: httpbin-protected
+      labels:
+        oauth: httpbin.demo.glooplatform.com
+        waf: "true"
+        ratelimited: "true"
+      matchers:
+      - uri:
+          exact: /get
+      - uri:
+          prefix: /delete
+      - uri:
+          prefix: /patch
+      - uri:
+          prefix: /post
+      - uri:
+          prefix: /put
+      - uri:
+          exact: /user-agent
+      - uri:
+          prefix: /callback
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
+    - name: httpbin-headers
+      labels:
+        route: httpbin-headers
+        extract-header: "pseudo-path"
+        add-header: newly-created-header-for-upstream
+      matchers:
+      - uri:
+          exact: /headers
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
+    - name: httpbin-api-key
+      labels:
+        security: api-key
+      matchers:
+      - uri:
+          exact: /ip
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
+    - name: httpbin-status
+      labels:
+        route: httpbin-status
+      matchers:
+      - uri:
+          prefix: /status
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
+    - name: httpbin-delay
+      labels:
+        route: httpbin-delay
+      matchers:
+      - uri:
+          prefix: /delay
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
+    - name: httpbin-anything-jwt
+      labels:
+        route: httpbin-anything-jwt
+        security: basic-jwt
+      matchers:
+      - uri:
+          prefix: /anything/jwt/external-service
+      forwardTo:
+        destinations:
+        - kind: EXTERNAL_SERVICE
+          port:
+            number: 443
+          ref:
+            name: httpbin
+            namespace: httpbin
+    - name: httpbin-anything-unprotected
+      labels:
+        route: httpbin-anything-unprotected
+      matchers:
+      - uri:
+          exact: /anything/unprotected
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
+    - name: httpbin-anything-migration
+      labels:
+        route: httpbin-anything-migration
+      matchers:
+      - uri:
+          exact: /anything/migration
+      forwardTo:
+        destinations:
+        - kind: EXTERNAL_SERVICE
+          port:
+            number: 443
+          ref:
+            name: httpbin
+            namespace: httpbin
+          weight: 50
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000
+          weight: 50
+    - name: httpbin-anything
+      labels:
+        route: httpbin-anything
+      matchers:
+      - uri:
+          prefix: /anything
+      forwardTo:
+        destinations:
+        - kind: EXTERNAL_SERVICE
+          port:
+            number: 443
+          ref:
+            name: httpbin
+            namespace: httpbin
+    - name: httpbin-public
+      labels:
+        route: httpbin-public
+        waf: "true"
+        ratelimited: "true"
+      matchers:
+      - uri:
+          exact: /
+      - uri:
+          prefix: /flasgger_static
+      - uri:
+          exact: /spec.json
+      forwardTo:
+        destinations:
+        - ref:
+            name: in-mesh
+            namespace: httpbin
+          port:
+            number: 8000

@@ -1,0 +1,35 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argo-rollouts
+
+resources:
+- https://raw.githubusercontent.com/argoproj/argo-rollouts/v1.5.1/manifests/install.yaml
+
+patchesJson6902:
+  - target:
+      kind: ClusterRole
+      name: argo-rollouts
+      version: v1
+    patch: |
+      - op: add
+        path: /rules/-
+        value:
+          apiGroups:
+          - networking.gloo.solo.io
+          resources:
+          - routetables
+          verbs:
+          - '*'
+          
+  - target:
+      kind: ConfigMap
+      name: argo-rollouts-config
+      version: v1
+    patch: |
+      - op: add
+        path: /data
+        value:
+          trafficRouterPlugins: |
+            - name: "solo-io/glooplatform"
+              location: "https://github.com/argoproj-labs/rollouts-plugin-trafficrouter-glooplatform/releases/download/v0.0.0-beta2/glooplatform-api-plugin-linux-amd64"

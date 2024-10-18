@@ -1,0 +1,17 @@
+apiVersion: trafficcontrol.policy.gloo.solo.io/v2
+kind: HeaderManipulationPolicy
+metadata:
+  name: header-manipulation
+  namespace: httpbin
+spec:
+  applyToRoutes:
+  - route:
+      labels:
+        add-header: newly-created-header-for-upstream
+  config:
+    appendRequestHeaders:
+      custom-request-header-1: zanzibar
+      custom-request-header-2: madagascar
+      custom-request-header-3: morocco
+      custom-request-header-4: nigeria
+      custom-request-header-5: senegal
