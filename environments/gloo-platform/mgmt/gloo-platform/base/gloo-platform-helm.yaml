@@ -20,6 +20,11 @@ spec:
             adminNamespace: "gloo-mesh"
             cluster: mgmt
         global: {}
+        glooInsightsEngine:
+            enabled: true
+        glooAnalyzer:
+            enabled: true
+            runAsSidecar: true
         glooAgent:
             enabled: true
             relay:
