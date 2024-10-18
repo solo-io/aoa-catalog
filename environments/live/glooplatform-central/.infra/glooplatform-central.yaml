@@ -1,18 +1,16 @@
-apiVersion: k3d.io/v1alpha3
+apiVersion: k3d.io/v1alpha5
 kind: Simple
-name: cluster2
-image: rancher/k3s:v1.23.5-k3s1
+metadata:
+  name: glooplatform-central
+image: rancher/k3s:v1.28.7-k3s1
 network: k3d-cluster-network
 ports:
-  - port: 8081:80 # same as `--port '8081:80@loadbalancer'`
+  - port: 8081:80 # same as `--port '80:80@loadbalancer'`
     nodeFilters:
       - loadbalancer
-  - port: 8444:443 # same as `--port '8444:443@loadbalancer'`
+  - port: 8444:443 # same as `--port '443:443@loadbalancer'`
     nodeFilters:
-      - loadbalancer
-# registries: # define how registries should be created or used
-#   use:
-#     - registry.localhost:5000 # some other k3d-managed registry; same as `--registry-use 'k3d-myotherregistry:5000'`
+      - loadbalancer      
 options:
   k3d: # k3d runtime settings
     wait: true # wait for cluster to be usable before returining; same as `--wait` (default: true)
@@ -38,4 +36,4 @@ options:
           - server:*
   kubeconfig:
     updateDefaultKubeconfig: true # add new cluster to your default Kubeconfig; same as `--kubeconfig-update-default` (default: true)
-    switchCurrentContext: false # also set current-context to the new cluster's context; same as `--kubeconfig-switch-context` (default: true)
+    switchCurrentContext: true # also set current-context to the new cluster's context; same as `--kubeconfig-switch-context` (default: true)
