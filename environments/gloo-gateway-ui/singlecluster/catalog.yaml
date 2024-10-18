@@ -7,13 +7,13 @@ waves:
       -  $env_path/clusterconfig/init.sh
       post_deploy:
       -  $env_path/clusterconfig/test.sh  
-  - name: certmanager
-    scripts:
-      pre_deploy: 
-      -  $env_path/certmanager/init.sh
-      post_deploy:
-      -  $env_path/certmanager/test.sh
-    location: $env_path/certmanager/base
+#  - name: certmanager
+#    scripts:
+#      pre_deploy:
+#      -  $env_path/certmanager/init.sh
+#      post_deploy:
+#      -  $env_path/certmanager/test.sh
+#    location: $env_path/certmanager/base
   - name: gloo-gateway-ui
     location: $env_path/gloo-gateway-ui/base
     scripts:

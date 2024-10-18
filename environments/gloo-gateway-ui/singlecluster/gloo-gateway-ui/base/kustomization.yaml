@@ -4,8 +4,9 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- gloo-system-cert.yaml
+#- gloo-system-cert.yaml
+- gloo-helm.yaml
 - gloo-platform-crds.yaml
 - gloo-platform-helm.yaml
-- gloo-telemetry-gateway-cert.yaml
-- relay-root-ca.yaml
+#- gloo-telemetry-gateway-cert.yaml
+#- relay-root-ca.yaml
