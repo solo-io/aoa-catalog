@@ -13,7 +13,7 @@ fi
 
 # discover gloo mesh endpoint with kubectl
 until [ "${SVC}" != "" ]; do
-  SVC=$(kubectl --context ${mgmt_context} -n gloo-mesh get svc gloo-mesh-mgmt-server -o jsonpath='{.status.loadBalancer.ingress[0].*}')
+  SVC=$(kubectl --context ${mgmt_context} -n gloo-mesh get svc gloo-mesh-mgmt-server -o jsonpath='{.status.loadBalancer.ingress[0].ip}{.status.loadBalancer.ingress[0].hostname}')
   echo waiting for gloo mesh management server LoadBalancer IP to be detected
   sleep 2
 done
