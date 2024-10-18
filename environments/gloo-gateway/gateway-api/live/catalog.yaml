@@ -14,6 +14,13 @@ waves:
       -  $env_path/gateway-api-config/init.sh
       post_deploy:
       -  $env_path/gateway-api-config/test.sh
+  - name: demo-admin-config
+    location: $env_path/demo-admin-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/demo-admin-config/init.sh
+      post_deploy:
+      -  $env_path/demo-admin-config/test.sh
   - name: aigw-config
     location: $env_path/aigw-config/base
     scripts:
