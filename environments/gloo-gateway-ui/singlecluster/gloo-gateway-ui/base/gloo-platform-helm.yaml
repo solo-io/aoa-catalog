@@ -20,6 +20,7 @@ spec:
         global: {}
         licensing:
             licenseSecretName: "gloo-license"
+            glooMeshLicenseKey: "fake"
         glooGateway:
             enabled: true
         glooMgmtServer:
