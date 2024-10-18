@@ -4,9 +4,9 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- admin-routetable.yaml
-- gcp-gmui-routetable.yaml
-- prometheus-routetable.yaml
+#- admin-routetable.yaml
+#- gcp-gmui-routetable.yaml
+#- prometheus-routetable.yaml
 - workload-grafana-routetable.yaml
 
 
