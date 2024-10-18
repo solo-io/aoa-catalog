@@ -5,13 +5,6 @@ metadata:
   namespace: gloo-mesh
 spec:
   workloadClusters:
-  #- name: 'mgmt'
-  #  namespaces:
-  #  - name: gloo-mesh
-  #  - name: istio-system
-  #  - name: ops-team-config
-  #  - name: homer-portal
-  #  - name: gitlab
   - name: '*'
     namespaces:
     - name: argocd
@@ -22,3 +15,8 @@ spec:
     - name: uptime
     - name: istio-system
     - name: grafana
+    - name: gloo-mesh
+    - name: istio-system
+    - name: ops-team-config
+    - name: homer-portal
+    - name: gitlab
