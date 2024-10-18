@@ -15,13 +15,27 @@ waves:
       post_deploy:
       -  $env_path/certmanager/test.sh
     location: $env_path/certmanager/base
+  - name: gloo-enterprise-app
+    location: $env_path/gloo-enterprise-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-enterprise-app/init.sh
+      post_deploy:
+      -  $env_path/gloo-enterprise-app/test.sh
   - name: gloo-platform
     location: $env_path/gloo-platform/base
     scripts:
       pre_deploy: 
       -  $env_path/gloo-platform/init.sh
       post_deploy:
-      -  $env_path/gloo-platform/test.sh      
+      -  $env_path/gloo-platform/test.sh
+  - name: gateway-api-config
+    location: $env_path/gateway-api-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gateway-api-config/init.sh
+      post_deploy:
+      -  $env_path/gateway-api-config/test.sh      
   - name: gloo-platform-config
     location: $env_path/gloo-platform-config/mgmt
     scripts:

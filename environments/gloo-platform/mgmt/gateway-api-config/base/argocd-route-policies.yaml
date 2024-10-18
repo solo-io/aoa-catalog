@@ -1,0 +1,15 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: argocd-route-policies
+  namespace: argocd
+spec:
+  options:
+    jwt:
+      disable: true
+    extauth:
+      configRef:
+        name: argo-oidc
+        namespace: gloo-system
+                
+    
