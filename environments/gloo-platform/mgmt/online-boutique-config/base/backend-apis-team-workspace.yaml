@@ -5,9 +5,9 @@ metadata:
   namespace: gloo-mesh
 spec:
   workloadClusters:
-  - name: 'mgmt'
-    namespaces:
-    - name: backend-apis-team
+  #- name: 'mgmt'
+  #  namespaces:
+  #  - name: backend-apis-team
   - name: '*'
     namespaces:
     - name: backend-apis

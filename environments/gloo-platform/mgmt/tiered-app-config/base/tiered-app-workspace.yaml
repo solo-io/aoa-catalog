@@ -5,9 +5,9 @@ metadata:
   namespace: gloo-mesh
 spec:
   workloadClusters:
-  - name: 'mgmt'
-    namespaces:
-    - name: tiered-app-ws-config
+  #- name: 'mgmt'
+  #  namespaces:
+  #  - name: tiered-app-ws-config
   - name: '*'
     namespaces:
     - name: ns-1
