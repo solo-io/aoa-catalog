@@ -29,14 +29,7 @@ waves:
       -  $env_path/gloo-platform/init.sh
       post_deploy:
       -  $env_path/gloo-platform/test.sh
-  # additional
-  #- name: bookinfo-app
-  #  location: $env_path/bookinfo-app/base
-  #  scripts:
-  #    pre_deploy: 
-  #    -  $env_path/bookinfo-app/init.sh
-  #    post_deploy:
-  #    -  $env_path/bookinfo-app/test.sh   
+  # additional  
   - name: online-boutique-app
     location: $env_path/online-boutique-app/base
     scripts:

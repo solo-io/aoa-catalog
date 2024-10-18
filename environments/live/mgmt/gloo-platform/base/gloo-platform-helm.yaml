@@ -95,19 +95,19 @@ spec:
                 limits:
                     cpu: 1
                     memory: 2Gi
-            extraEnvs:
-            - name: CLICKHOUSE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  key: password
-                  name: clickhouse-auth
+            #extraEnvs:
+            #- name: CLICKHOUSE_PASSWORD
+            #  valueFrom:
+            #    secretKeyRef:
+            #      key: password
+            #      name: clickhouse-auth
         telemetryGatewayCustomization:
-            pipelines:
-                logs/clickhouse:
-                  enabled: false
-            extraExporters:
-                clickhouse:
-                  password: password
+            #pipelines:
+            #    logs/clickhouse:
+            #      enabled: false
+            #extraExporters:
+            #    clickhouse:
+            #      password: password
             disableCertGeneration: true
         telemetryCollector:
             enabled: true
@@ -135,11 +135,11 @@ spec:
                   valueFrom:
                     fieldRef:
                       fieldPath: metadata.name
-                - name: CLICKHOUSE_PASSWORD
-                  valueFrom:
-                    secretKeyRef:
-                      key: password
-                      name: clickhouse-auth
+                #- name: CLICKHOUSE_PASSWORD
+                #  valueFrom:
+                #    secretKeyRef:
+                #      key: password
+                #      name: clickhouse-auth
             extraVolumes:
                 - name: root-ca
                   secret:
@@ -155,13 +155,13 @@ spec:
                     path: /var/run/cilium
                     type: DirectoryOrCreate
                   name: cilium-run
-        telemetryCollectorCustomization:
-            pipelines:
-                logs/portal:
-                    enabled: true
-            extraExporters:
-                clickhouse:
-                  password: password
+        #telemetryCollectorCustomization:
+        #    pipelines:
+        #        logs/portal:
+        #            enabled: true
+        #    extraExporters:
+        #        clickhouse:
+        #          password: password
         glooPortalServer:
             enabled: true
             apiKeyStorage:
@@ -178,7 +178,7 @@ spec:
             deployment:
                 enabled: true
         clickhouse:
-            enabled: true
+            enabled: false
             persistence:
                 enabled: false
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
