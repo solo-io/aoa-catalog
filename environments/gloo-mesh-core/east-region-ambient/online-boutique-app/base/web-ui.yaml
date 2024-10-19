@@ -85,8 +85,8 @@ spec:
                   value: "shop_session-id=x-liveness-probe"
           resources:
             requests:
-              cpu: "50m"
-              memory: "150Mi"  # Adjusted to match the resource requests
+              cpu: "10m"
+              memory: "50Mi"
           env:
             - name: PORT
               value: "8080"

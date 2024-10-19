@@ -92,8 +92,8 @@ spec:
         
         resources:
           requests:
-            cpu: "50m"
-            memory: "50Mi"
+            cpu: "30m"
+            memory: "15Mi"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -183,8 +183,8 @@ spec:
           value: "/ns-3/ui/"
         resources:
           requests:
-            cpu: "50m"
-            memory: "50Mi"
+            cpu: "30m"
+            memory: "15Mi"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -272,8 +272,8 @@ spec:
         
         resources:
           requests:
-            cpu: "50m"
-            memory: "50Mi"
+            cpu: "30m"
+            memory: "15Mi"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -361,8 +361,8 @@ spec:
         
         resources:
           requests:
-            cpu: "50m"
-            memory: "50Mi"
+            cpu: "30m"
+            memory: "15Mi"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -450,8 +450,8 @@ spec:
         
         resources:
           requests:
-            cpu: "50m"
-            memory: "50Mi"
+            cpu: "30m"
+            memory: "15Mi"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -511,8 +511,8 @@ spec:
         
         resources:
           requests:
-            cpu: "50m"
-            memory: "50Mi"
+            cpu: "30m"
+            memory: "15Mi"
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -600,6 +600,6 @@ spec:
         
         resources:
           requests:
-            cpu: "50m"
-            memory: "50Mi"
+            cpu: "30m"
+            memory: "15Mi"
 ---
