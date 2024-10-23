@@ -119,8 +119,8 @@ spec:
                 # See https://fontawesome.com/v5/search for icons options
                 
                 title: "Gloo Platform Demo Dashboard"
-                subtitle: "Every Connection, Every Direction, One API"
-                logo: "solo/glooy.png"
+                subtitle: "Cloud connectivity done right"
+                logo: "solo/solo-mark-light-transparent.png"
                 # icon: "fas fa-skull-crossbones" # Optional icon
                 
                 header: true

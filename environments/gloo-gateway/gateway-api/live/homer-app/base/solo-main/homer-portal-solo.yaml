@@ -119,8 +119,8 @@ spec:
                 # See https://fontawesome.com/v5/search for icons options
                 
                 title: "Gloo Platform Demo Dashboard"
-                subtitle: "Every Connection, Every Direction, One API"
-                logo: "solo/glooy.png"
+                subtitle: "Cloud connectivity done right"
+                logo: "solo/solo-mark-light-transparent.png"
                 # icon: "fas fa-skull-crossbones" # Optional icon
                 
                 header: true
@@ -266,10 +266,10 @@ spec:
                   #      target: "_blank" # optional html a tag target attribute
 
                   - name: "Gloo Platform Demo Walkthroughs"
-                    logo: "solo/glooy.png"
+                    logo: "solo/solo-mark-light-transparent.png"
                     items:
                       - name: "How to Use this Environment"
-                        logo: "solo/glooy.png"
+                        logo: "solo/solo-mark-light-transparent.png"
                         tag: "howto"
                         url: "https://demo.glooplatform.com/howto"
                         target: "_blank" # optional html a tag target attribute
@@ -673,7 +673,7 @@ spec:
                     items:
                       - name: "Gloo Portal Diagram"
                         subtitle: "Concepts, objects, and personas"
-                        logo: "solo/glooy.png"
+                        logo: "solo/solo-mark-light-transparent.png"
                         tag: "gloo-portal"
                         url: "https://raw.githubusercontent.com/solo-io/aoa-catalog/refs/heads/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/images/portal-personas.png"
                         target: "_blank" # optional html a tag target attribute
@@ -842,7 +842,7 @@ spec:
                         target: "_blank" # optional html a tag target attribute
 
                   #- name: "Application Onboarding IDP Demo"
-                  #  logo: "solo/glooy.png"
+                  #  logo: "solo/solo-mark-light-transparent.png"
                   #  items:
                   #    - name: "High Level Architecture Diagram"
                   #      icon: "fas fa-project-diagram"
@@ -873,10 +873,10 @@ spec:
                   #      target: "_blank" # optional html a tag target attribute
                   
                   - name: "Gloo Mesh Core Demo"
-                    logo: "solo/glooy.png"
+                    logo: "solo/solo-mark-light-transparent.png"
                     items:
                       - name: "Gloo Mesh Core Demo Dashboard"
-                        logo: "solo/glooy.png"
+                        logo: "solo/solo-mark-light-transparent.png"
                         tag: "gloo-mesh-core #demo"
                         keywords: "gloo-mesh-core,demo"
                         url: "https://demo.gmc.glooplatform.com/solo/"
