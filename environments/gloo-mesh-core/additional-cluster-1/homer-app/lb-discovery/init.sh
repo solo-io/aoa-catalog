@@ -45,7 +45,7 @@ spec:
           # -- image repository
           repository: ably77/homer
           # -- image tag
-          tag: 0.1.0
+          tag: 0.1.4
           # -- image pull policy
           pullPolicy: IfNotPresent
         
@@ -115,9 +115,9 @@ spec:
                 # Homepage configuration
                 # See https://fontawesome.com/v5/search for icons options
                 
-                title: "aoa-catalog demo dashboard"
-                subtitle: "Homepage"
-                logo: "solo/glooy.png"
+                title: "Solo.io demo dashboard"
+                subtitle: "Cloud Connectivity Done Right"
+                logo: "solo/solo-mark-light.png"
                 # icon: "fas fa-skull-crossbones" # Optional icon
                 
                 header: true
@@ -128,9 +128,9 @@ spec:
                 theme: default
                 colors:
                   light:
-                    highlight-primary: "#3367d6"
-                    highlight-secondary: "#4285f4"
-                    highlight-hover: "#5a95f5"
+                    highlight-primary: "#5bb5de"
+                    highlight-secondary: "#51a4d0"
+                    highlight-hover: "#51a4d0"
                     background: "#f5f5f5"
                     card-background: "#ffffff"
                     text: "#363636"
@@ -138,12 +138,12 @@ spec:
                     text-title: "#303030"
                     text-subtitle: "#424242"
                     card-shadow: rgba(0, 0, 0, 0.1)
-                    link: "#3273dc"
-                    link-hover: "#363636"
+                    link: "#5bb5de"
+                    link-hover: "#4fbc45"
                   dark:
-                    highlight-primary: "#3367d6"
-                    highlight-secondary: "#4285f4"
-                    highlight-hover: "#5a95f5"
+                    highlight-primary: "#5bb5de"
+                    highlight-secondary: "#51a4d0"
+                    highlight-hover: "#51a4d0"
                     background: "#131313"
                     card-background: "#2b2b2b"
                     text: "#eaeaea"
@@ -151,8 +151,8 @@ spec:
                     text-title: "#fafafa"
                     text-subtitle: "#f5f5f5"
                     card-shadow: rgba(0, 0, 0, 0.4)
-                    link: "#3273dc"
-                    link-hover: "#ffdd57"
+                    link: "#5bb5de"
+                    link-hover: "#4fbc45"
                 
                 # Optional message
                 message:
