@@ -30,7 +30,7 @@ spec:
           # -- image repository
           repository: ably77/homer
           # -- image tag
-          tag: 0.1.3
+          tag: 0.1.4
           # -- image pull policy
           pullPolicy: Always
         
@@ -120,7 +120,7 @@ spec:
                 
                 title: "Gloo Platform Demo Dashboard"
                 subtitle: "Cloud Connectivity done right"
-                logo: "solo/solo-mark-light-transparent.png"
+                logo: "solo/solo-mark-light.png"
                 # icon: "fas fa-skull-crossbones" # Optional icon
                 
                 header: true
