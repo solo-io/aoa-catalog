@@ -28,9 +28,9 @@ spec:
         
         image:
           # -- image repository
-          repository: b4bz/homer
+          repository: ably77/homer
           # -- image tag
-          tag: v23.05.1
+          tag: 0.1.4
           # -- image pull policy
           pullPolicy: IfNotPresent
         

@@ -47,7 +47,7 @@ spec:
           # -- image repository
           repository: ably77/homer
           # -- image tag
-          tag: 0.1.0
+          tag: 0.1.4
           # -- image pull policy
           pullPolicy: IfNotPresent
         
