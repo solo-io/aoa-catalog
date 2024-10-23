@@ -1,5 +1,12 @@
 # Changelog
 
+0.6.7 (10-23-24)
+---
+- Update homer portal to use `ably77/homer:0.1.4` 
+- Refresh homer dashboard theme with Solo colors and logos
+- Update homepage title and slogan
+- Fix links pointing at Gloo Gateway
+
 0.6.6 (10-17-24)
 ---
 - add `/aoa-tools/render-manifests.sh` script - generate and view all Kubernetes manifests for a given environment or wave by providing a path
