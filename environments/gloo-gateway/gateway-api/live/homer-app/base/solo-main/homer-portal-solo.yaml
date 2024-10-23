@@ -120,7 +120,7 @@ spec:
                 
                 title: "Gloo Platform Demo Dashboard"
                 subtitle: "Cloud connectivity done right"
-                logo: "solo/glooy.png"
+                logo: "solo/solo-mark-light-transparent.png"
                 # icon: "fas fa-skull-crossbones" # Optional icon
                 
                 header: true
