@@ -115,7 +115,7 @@ spec:
                 # Homepage configuration
                 # See https://fontawesome.com/v5/search for icons options
                 
-                title: "aoa-catalog demo dashboard"
+                title: "Solo.io demo dashboard"
                 subtitle: "Cloud Connectivity Done Right"
                 logo: "solo/solo-mark-light.png"
                 # icon: "fas fa-skull-crossbones" # Optional icon
