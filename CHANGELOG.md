@@ -1,5 +1,10 @@
 # Changelog
 
+0.6.8 (10-23-24)
+---
+- Update gloo-gateway to `1.18.0-beta2-bmain-d7eacd4` in `gateway-api/1.18/portal-only` and `gateway-api/1.18/ai-gateway` environment
+- Update gloo-gateway to `1.18.0-beta28` in gateway-api/1.18/oss environment
+
 0.6.7 (10-23-24)
 ---
 - Update homer portal to use `ably77/homer:0.1.4` 
