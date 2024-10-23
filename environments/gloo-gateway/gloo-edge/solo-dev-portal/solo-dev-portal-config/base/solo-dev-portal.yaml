@@ -1,0 +1,59 @@
+apiVersion: portal.gloo.solo.io/v1beta1
+kind: Portal
+metadata:
+  name: ecommerce-portal
+  namespace: petstore
+spec:
+  allApisPublicViewable: false
+  banner:
+    fetchUrl: https://www.solo.io/wp-content/themes/solo/dist/img/solo-ogdefault.jpg
+  customStyling: {}
+  description: Consolidated Dev Portal for various API teams
+  displayName: Solo Dev Portal
+  domains:
+  - portal.glootest.com
+  favicon:
+    fetchUrl: https://raw.githubusercontent.com/solo-io/gitops-library/main/assets/solo-logo-1.jpg
+  primaryLogo:
+    fetchUrl: https://raw.githubusercontent.com/solo-io/gitops-library/main/assets/solo-logo-2.jpg
+  publishedEnvironments:
+  - name: dev-internal
+    namespace: petstore
+  - name: dev-external
+    namespace: petstore
+  - name: prod
+    namespace: petstore
+  staticPages:
+  - content:
+      configMap:
+        key: faq
+        name: default-petstore-portal-faq
+        namespace: petstore
+    description: Frequently Asked Questions
+    displayOnHomepage: false
+    name: faq
+    navigationLinkName: FAQ
+    path: /faq
+  - content:
+      configMap:
+        key: user-info
+        name: petstore-ecommerce-portal-user-info
+        namespace: petstore
+    description: User Info
+    displayOnHomepage: true
+    name: user-info
+    navigationLinkName: user-info
+    path: /user-info
+  tls:
+    secretRef:
+      name: upstream-tls
+      namespace: gloo-system
+  oidcAuth:
+    clientId: 0oa6qvzybcVCK6PcS5d7
+    clientSecret:
+      name: okta-client-secret
+      namespace: gloo-system
+      key: client-secret # this is the k8s secret we have created above
+    groupClaimKey: groups # we will use the 'group' claim in the 'id_token' to associate the user with a group
+    issuer: https://dev-22653158.okta.com/oauth2/default
+  portalUrlPrefix: https://portal.glootest.com/

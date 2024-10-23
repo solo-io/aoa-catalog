@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-v1
+  namespace: echo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo
+  template:
+    metadata:
+      labels:
+        app: echo
+    spec:
+      containers:
+        - image: hashicorp/http-echo
+          args:
+            - "-text=version:v1"
+            - -listen=:8080
+          imagePullPolicy: Always
+          name: echo-v1
+          ports:
+            - containerPort: 8080

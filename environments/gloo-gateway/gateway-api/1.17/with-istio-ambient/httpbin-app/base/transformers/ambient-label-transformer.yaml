@@ -1,0 +1,10 @@
+apiVersion: builtin
+kind: LabelTransformer
+metadata:
+  name: label-transformer
+labels:
+  istio.io/dataplane-mode: ambient
+fieldSpecs:
+- kind: Namespace
+  path: metadata/labels
+  create: true

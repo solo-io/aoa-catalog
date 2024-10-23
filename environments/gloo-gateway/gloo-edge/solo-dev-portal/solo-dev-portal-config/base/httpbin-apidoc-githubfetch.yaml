@@ -1,0 +1,9 @@
+apiVersion: portal.gloo.solo.io/v1beta1
+kind: APIDoc
+metadata:
+  name: httpbin-openapi-githubfetch
+  namespace: httpbin
+spec:
+  openApi:
+    content:
+      fetchUrl: https://raw.githubusercontent.com/solo-io/gitops-library/main/httpbin/openapi-specs/httpbin-swagger-v1.json

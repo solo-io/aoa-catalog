@@ -1,0 +1,205 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: homer-portal
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io/solo-io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: homer-portal
+  project: default
+  source:
+    chart: homer
+    repoURL: https://djjudas21.github.io/charts/
+    targetRevision: 8.1.9
+    helm:
+      values: |
+        #
+        # IMPORTANT NOTE
+        #
+        # This chart inherits from our common library chart. You can check the default values/options here:
+        # https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+        #
+
+        controller:
+          replicas: 1
+        
+        image:
+          # -- image repository
+          repository: b4bz/homer
+          # -- image tag
+          tag: v23.05.1
+          # -- image pull policy
+          pullPolicy: IfNotPresent
+        
+        # -- environment variables.
+        # @default -- See below
+        env:
+          # -- Set the container timezone
+          TZ: UTC
+          # -- Specify the user ID the application will run as
+          UID: "1001"
+          # -- Specify the group ID the application will run as
+          GID: "1001"
+          # -- Specify the basepath the application will run at
+          SUBFOLDER: /solo
+        
+        # -- Set labels on the pod
+        #podLabels:
+        #  foo: bar
+        
+        # -- Set annotations on the pod
+        #podAnnotations:
+        #  foo: bar
+        
+        # -- Configures serviceAccount settings for the chart.
+        serviceAccount:
+          # -- Specifies whether a service account should be created
+          create: true
+        
+        # -- Configures service settings for the chart.
+        # @default -- See values.yaml
+        service:
+          main:
+            enabled: true
+            primary: true
+            type: ClusterIP
+            ports:
+              http:
+                enabled: true
+                port: 8080
+                protocol: HTTP
+                targetPort: 8080
+            labels:
+              expose: "true"
+        
+        ingress:
+          # -- Enable and configure ingress settings for the chart under this key.
+          # @default -- See values.yaml
+          main:
+            enabled: false
+        
+        # -- Configure persistence settings for the chart under this key.
+        # @default -- See values.yaml
+        persistence:
+          config:
+            enabled: false
+            mountPath: /www/assets
+        
+        configmap:
+          config:
+            # -- Store homer configuration as a ConfigMap
+            enabled: true
+            # -- Homer configuration. See [image documentation](https://github.com/bastienwirtz/homer/blob/main/docs/configuration.md) for more information.
+            # @default -- See values.yaml
+            data:
+              config.yml: |
+                #externalConfig: https://raw.githubusercontent.com/bastienwirtz/homer/main/public/assets/config.yml.dist
+                ---
+                # Homepage configuration
+                # See https://fontawesome.com/v5/search for icons options
+                
+                title: "aoa-catalog demo dashboard"
+                subtitle: "Homepage"
+                logo: "logo.png"
+                # icon: "fas fa-skull-crossbones" # Optional icon
+                
+                header: true
+                #footer: '<p>Created with <span class="has-text-danger">❤️</span> with <a href="https://bulma.io/">bulma</a>, <a href="https://vuejs.org/">vuejs</a> & <a href="https://fontawesome.com/">font awesome</a> // Fork me on <a href="https://github.com/bastienwirtz/homer"><i class="fab fa-github-alt"></i></a></p>' # set false if you want to hide it.
+                footer: false
+        
+                # Optional theme customization
+                theme: default
+                colors:
+                  light:
+                    highlight-primary: "#3367d6"
+                    highlight-secondary: "#4285f4"
+                    highlight-hover: "#5a95f5"
+                    background: "#f5f5f5"
+                    card-background: "#ffffff"
+                    text: "#363636"
+                    text-header: "#ffffff"
+                    text-title: "#303030"
+                    text-subtitle: "#424242"
+                    card-shadow: rgba(0, 0, 0, 0.1)
+                    link: "#3273dc"
+                    link-hover: "#363636"
+                  dark:
+                    highlight-primary: "#3367d6"
+                    highlight-secondary: "#4285f4"
+                    highlight-hover: "#5a95f5"
+                    background: "#131313"
+                    card-background: "#2b2b2b"
+                    text: "#eaeaea"
+                    text-header: "#ffffff"
+                    text-title: "#fafafa"
+                    text-subtitle: "#f5f5f5"
+                    card-shadow: rgba(0, 0, 0, 0.4)
+                    link: "#3273dc"
+                    link-hover: "#ffdd57"
+                
+                # Optional message
+                message:
+                  #url: https://b4bz.io
+                  style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
+                  title: "Welcome!"
+                  icon: "fa fa-grin"
+                  content: | 
+                    This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Gateway!<br />
+                    Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
+                    
+                    When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />
+                    127.0.0.1 argocd.glootest.com homer.glootest.com httpbin.glootest.com bookinfo.glootest.com<br /><br />
+                    Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />
+                                    
+                # Optional navbar
+                # links: [] # Allows for navbar (dark mode, layout, and search) without any links
+                links:
+                  - name: "Github Repo"
+                    icon: "fab fa-github"
+                    url: "https://github.com/solo-io/aoa-catalog"
+                    target: "_blank" # optional html a tag target attribute
+                  - name: "Gloo Edge Documentation"
+                    icon: "fas fa-book"
+                    url: "https://docs.solo.io/gloo-edge/latest/"
+                  # this will link to a second homer page that will load config from additional-page.yml and keep default config values as in config.yml file
+                  # see url field and assets/additional-page.yml.dist used in this example:
+                  #- name: "another page!"
+                  #  icon: "fas fa-file-alt"
+                  #  url: "#additional-page" 
+                
+                # Services
+                # First level array represent a group.
+                # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
+                services:
+                  - name: "Admin Applications"
+                    icon: "fas fa-user-cog"
+                    items:
+                      - name: "ArgoCD"
+                        subtitle: "admin // solo.io"
+                        icon: "fab fa-git-alt"
+                        tag: "argo"
+                        keywords: "argocd"
+                        url: "https://argocd.glootest.com/argo"
+                        target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Web Applications"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "httpbin"
+                        icon: "far fa-window-maximize"
+                        tag: "httpbin"
+                        url: "https://httpbin.glootest.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Bookinfo"
+                        icon: "fas fa-book-reader"
+                        tag: "bookinfo"
+                        url: "https://bookinfo.glootest.com/productpage"
+                        target: "_blank" # optional html a tag target attribute
+                    
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

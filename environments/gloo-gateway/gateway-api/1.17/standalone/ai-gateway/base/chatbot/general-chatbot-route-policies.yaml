@@ -1,0 +1,19 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: general-chatbot-route-policies
+  namespace: ai-chatbot
+spec:
+  options:
+    jwt:
+      disable: false
+    rbac:
+      policies:
+        viewer:
+          nestedClaimDelimiter: .
+          principals:
+          - jwtPrincipal:
+              claims:
+                org: internal
+                
+    

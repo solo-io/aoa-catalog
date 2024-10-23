@@ -1,0 +1,22 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: https
+  namespace: gloo-system
+  labels:
+    gateway: https
+spec:
+  gatewayClassName: gloo-gateway
+  listeners:
+    - name: https
+      port: 443
+      protocol: HTTPS
+      hostname: "*.glootest.com"
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: upstream-tls
+            kind: Secret
+      allowedRoutes:
+        namespaces:
+          from: All

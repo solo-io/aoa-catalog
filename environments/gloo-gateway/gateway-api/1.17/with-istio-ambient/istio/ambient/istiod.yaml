@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istiod
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io/solo-io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3"
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system
+  project: default
+  source:
+    chart: istiod
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: 1.23.0
+    helm:
+      values: |
+        profile: ambient
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    #automated: {}
+  ignoreDifferences:     
+  - group: admissionregistration.k8s.io                                                              
+    kind: ValidatingWebhookConfiguration
+    jsonPointers:                                                                                    
+    - /webhooks/0/failurePolicy

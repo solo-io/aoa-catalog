@@ -1,0 +1,20 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- httpbin-active.yaml
+- httpbin-preview.yaml
+- httpbin-ns.yaml
+#- httpbin-all-in-one-route.yaml
+- httpbin-parent-route.yaml
+- httpbin-delegate-route.yaml
+- httpbin-route-policies.yaml
+#- httpbin-add-header-policy.yaml
+- httpbin-ratelimit-config.yaml
+- okta-authconfig.yaml
+
+# when using ambient uncomment below
+transformers:
+- transformers/ambient-label-transformer.yaml
