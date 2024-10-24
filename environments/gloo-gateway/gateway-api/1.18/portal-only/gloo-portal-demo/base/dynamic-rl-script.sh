@@ -8,17 +8,16 @@ export ADMIN_USER_AUTH_TOKEN="eyJhbGciOiJSUzI1NiIsImtpZCI6IjladmVRTXdVMXZMdVJScU
 echo "Tokens set."
 echo
 
-# Prompt the user to input the base URL for the portal server backend, re-prompt if empty
-while true; do
-    read -p "Enter the API base URL for the portal server backend (e.g., https://api.k8mesh.com): " BASE_URL
+BASE_URL="https://api.k8mesh.com"
+
+read -p "Enter the API base URL for the portal server backend (e.g., $BASE_URL): " NEW_BASE_URL
 
     # Validate if the input is empty
-    if [ -z "$BASE_URL" ]; then
-        echo "No base URL provided. Please try again."
+    if [ -z "$NEW_BASE_URL" ]; then
+        echo "No base URL provided. Using $BASE_URL"
     else
-        break
+        BASE_URL="${$NEW_BASE_URL%/}"
     fi
-done
 
 # Space between steps
 echo "-------------------------"
@@ -285,9 +284,9 @@ echo "Applying rate limit of $REQUESTS_PER_UNIT requests per $UNIT to subscripti
 echo
 
 # Print the curl command
-echo "curl -X PUT $BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata -H 'Content-Type: application/json' -H 'Authorization: Bearer \$ADMIN_USER_AUTH_TOKEN' -d '{\"rateLimit\": {\"requestsPerUnit\": \"$REQUESTS_PER_UNIT\", \"unit\": \"$UNIT\"}, \"customMetadata\": {\"key2\": \"value2\"}}'"
+echo "curl -X POST $BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata -H 'Content-Type: application/json' -H 'Authorization: Bearer \$ADMIN_USER_AUTH_TOKEN' -d '{\"rateLimit\": {\"requestsPerUnit\": \"$REQUESTS_PER_UNIT\", \"unit\": \"$UNIT\"}, \"customMetadata\": {\"key2\": \"value2\"}}'"
 
-curl -X PUT "$BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata" \
+curl -X POST "$BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata" \
     -H "Content-Type: application/json" \
     -d "{\"rateLimit\": {\"requestsPerUnit\": \"$REQUESTS_PER_UNIT\", \"unit\": \"$UNIT\"}, \"customMetadata\": {\"key2\": \"value2\"}}" \
     -H "Authorization: Bearer $ADMIN_USER_AUTH_TOKEN"
