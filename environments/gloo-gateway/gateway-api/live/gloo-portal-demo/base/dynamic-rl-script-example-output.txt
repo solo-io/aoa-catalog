@@ -9,7 +9,7 @@ Step 1 complete. Press enter to proceed to Step 2...
 Step 2: Creating a user...
 curl -X PUT https://api.gwapi.glooplatform.com/v1/me -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN'
 
-User created with ID: 7d790473-1a67-49c8-be6e-3ee823c64cb9
+User created with ID: 43b4f471-cee1-4c4a-8c7d-9567ad3011cb
 
 -------------------------
 Step 2 complete. Press enter to proceed to Step 3...
@@ -25,7 +25,7 @@ Choose a team description or enter a custom one:
 #? 1
 curl -X POST https://api.gwapi.glooplatform.com/v1/teams -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"Name": "Engineering", "Description": "The engineering team"}'
 
-Team created with ID: c39033e3-a853-48c6-8457-64157d2cb299
+Team created with ID: ef24ba56-0e27-4216-9955-811719680752
 
 -------------------------
 Step 3 complete. Press enter to proceed to Step 4...
@@ -39,9 +39,9 @@ Choose an application description or enter a custom one:
 1) App for testing   3) Production app
 2) Demo application  4) Custom
 #? 1
-curl -X POST https://api.gwapi.glooplatform.com/v1/teams/c39033e3-a853-48c6-8457-64157d2cb299/apps -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"Name": "TestApp1", "Description": "App for testing"}'
+curl -X POST https://api.gwapi.glooplatform.com/v1/teams/ef24ba56-0e27-4216-9955-811719680752/apps -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"Name": "TestApp1", "Description": "App for testing"}'
 
-Application created with ID: bd696341-aabf-4f5d-bc91-b3105a15cd3e
+Application created with ID: 096a74b3-ce32-4db5-a999-35c98c44f55f
 
 -------------------------
 Step 4 complete. Press enter to proceed to Step 5...
@@ -50,19 +50,16 @@ Step 5: Listing available API products...
 curl -X GET https://api.gwapi.glooplatform.com/v1/api-products -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN'
 
 Available API Products:
-1) Catstronauts Course Tracks (ID: 4a3a0933-a58f-48c2-bf88-21febda9b955)
-2) Pet Store (ID: 6d9d7b10-012f-4b41-8767-72068ed64a0e)
-3) gloo-portal-server (ID: 9cca2ca6-1b22-452b-8e22-2cc285795f52)
-4) openlibrary (ID: 97efd07a-569c-4aa8-9a8a-5c2d558166ca)
+1) Catstronauts Course Tracks (ID: c240b22c-11ba-4033-ad84-b2482cd24d95)
 
-Please select an API product by number (1 to 4): 1
-Selected API Product ID: 4a3a0933-a58f-48c2-bf88-21febda9b955
+Please select an API product by number (1 to 1): 1
+Selected API Product ID: c240b22c-11ba-4033-ad84-b2482cd24d95
 
 -------------------------
 Step 5 complete. Press enter to proceed to Step 6...
 
 Step 6: Creating a subscription to the API product...
-curl -X POST https://api.gwapi.glooplatform.com/v1/apps/$APPLICATION_ID/subscriptions -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"ApiProductId": "4a3a0933-a58f-48c2-bf88-21febda9b955"}'
+curl -X POST https://api.gwapi.glooplatform.com/v1/apps/$APPLICATION_ID/subscriptions -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"ApiProductId": "c240b22c-11ba-4033-ad84-b2482cd24d95"}'
 
 Full subscription response: 
 HTTP Status: 201
@@ -71,7 +68,7 @@ Subscription created successfully, but no response body. Skipping subscription I
 Discovering subscription ID by listing subscriptions...
 curl -X GET https://api.gwapi.glooplatform.com/v1/apps/$APPLICATION_ID/subscriptions -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN'
 
-Subscription ID: eac5c3b9-e75c-4bde-886f-2701ba10511d
+Subscription ID: f1256f5a-3212-4bb3-b78f-d50aac1980a1
 
 -------------------------
 Step 6 complete. Press enter to proceed to Step 7...
@@ -85,10 +82,10 @@ Subscription approved.
 Step 7 complete. Press enter to proceed to Step 8...
 
 Step 8: Setting a dynamic rate limit for the subscription...
-Enter the number of requests per minute: 5
-Applying rate limit of 5 requests per MINUTE to subscription eac5c3b9-e75c-4bde-886f-2701ba10511d...
+Enter the number of requests per minute: 4
+Applying rate limit of 4 requests per MINUTE to subscription f1256f5a-3212-4bb3-b78f-d50aac1980a1...
 
-curl -X PUT https://api.gwapi.glooplatform.com/v1/subscriptions/eac5c3b9-e75c-4bde-886f-2701ba10511d/metadata -H 'Content-Type: application/json' -H 'Authorization: Bearer $ADMIN_USER_AUTH_TOKEN' -d '{"rateLimit": {"requestsPerUnit": "5", "unit": "MINUTE"}, "customMetadata": {"key2": "value2"}}'
+curl -X POST https://api.gwapi.glooplatform.com/v1/subscriptions/f1256f5a-3212-4bb3-b78f-d50aac1980a1/metadata -H 'Content-Type: application/json' -H 'Authorization: Bearer $ADMIN_USER_AUTH_TOKEN' -d '{"rateLimit": {"requestsPerUnit": "4", "unit": "MINUTE"}, "customMetadata": {"key2": "value2"}}'
 
 Rate limit applied. Note that the time unit is configurable, but for this demo, it's set to MINUTE.
 -------------------------
@@ -99,10 +96,10 @@ Choose an API key name or enter a custom one:
 3) DevKey
 4) Custom
 #? 1
-curl -X POST https://api.gwapi.glooplatform.com/v1/apps/bd696341-aabf-4f5d-bc91-b3105a15cd3e/api-keys -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"apiKeyName": "TestKey"}'
+curl -X POST https://api.gwapi.glooplatform.com/v1/apps/096a74b3-ce32-4db5-a999-35c98c44f55f/api-keys -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"apiKeyName": "TestKey"}'
 
-API Key created: 4248ec50-b298-47d5-bb90-046b8a535759
-API Key ID: 8f868a58-9c89-43b5-8961-92005413bb5b
+API Key created: b3c60054-4928-4281-aa6e-6498523d32c9
+API Key ID: 7cc4bb8f-822b-4686-a9e3-f62c1cbdaffb
 
 -------------------------
 Step 9 complete. Press enter to proceed to Step 10...
@@ -114,7 +111,7 @@ Step 10: Validating the API key...
 Selected API Product ID: tracks
 
 curl -X GET https://api.gwapi.glooplatform.com/v1/metadata?apiKey=$API_KEY&apiProductId=$API_PRODUCT_ID
-{"allowed":true,"customMetadata":{"key2":"value2"},"rateLimit":{"requestsPerUnit":"5","unit":"MINUTE"}}
+{"allowed":true,"customMetadata":{"key2":"value2"},"rateLimit":{"requestsPerUnit":"4","unit":"MINUTE"}}
 
 -------------------------
 Step 10 complete. Press enter to proceed to Step 11...
@@ -154,12 +151,9 @@ Attempt 4:
 HTTP Status Code: 200
 -------------------------
 Attempt 5:
-HTTP Status Code: 200
--------------------------
-Attempt 6:
 HTTP Status Code: 429
 -------------------------
-Expecting dynamic rate limiting after attempt 6.
+Expecting dynamic rate limiting after attempt 5.
 
 -------------------------
 Step 13 complete. Press enter to proceed to Step 14...

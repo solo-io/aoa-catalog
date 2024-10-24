@@ -10,7 +10,7 @@ echo
 
 # Prompt the user to input the base URL for the portal server backend, re-prompt if empty
 while true; do
-    read -p "Enter the API base URL for the portal server backend (e.g., https://api.gwapi.glooplatform.com): " BASE_URL
+    read -p "Enter the API base URL for the portal server backend (e.g., https://api.glootest.com): " BASE_URL
 
     # Validate if the input is empty
     if [ -z "$BASE_URL" ]; then
@@ -285,9 +285,9 @@ echo "Applying rate limit of $REQUESTS_PER_UNIT requests per $UNIT to subscripti
 echo
 
 # Print the curl command
-echo "curl -X PUT $BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata -H 'Content-Type: application/json' -H 'Authorization: Bearer \$ADMIN_USER_AUTH_TOKEN' -d '{\"rateLimit\": {\"requestsPerUnit\": \"$REQUESTS_PER_UNIT\", \"unit\": \"$UNIT\"}, \"customMetadata\": {\"key2\": \"value2\"}}'"
+echo "curl -X POST $BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata -H 'Content-Type: application/json' -H 'Authorization: Bearer \$ADMIN_USER_AUTH_TOKEN' -d '{\"rateLimit\": {\"requestsPerUnit\": \"$REQUESTS_PER_UNIT\", \"unit\": \"$UNIT\"}, \"customMetadata\": {\"key2\": \"value2\"}}'"
 
-curl -X PUT "$BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata" \
+curl -X POST "$BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata" \
     -H "Content-Type: application/json" \
     -d "{\"rateLimit\": {\"requestsPerUnit\": \"$REQUESTS_PER_UNIT\", \"unit\": \"$UNIT\"}, \"customMetadata\": {\"key2\": \"value2\"}}" \
     -H "Authorization: Bearer $ADMIN_USER_AUTH_TOKEN"
@@ -384,10 +384,10 @@ echo "Step 11: Choose an API product's URI or enter a custom one:"
 
 # Predefined URIs
 PREDEFINED_URIS=(
-  "https://tracks.gwapi.glooplatform.com/tracks/c_0"
-  "https://petstore.gwapi.glooplatform.com/pets/pet"
-  "https://api.gwapi.glooplatform.com/v1/api-products"
-  "https://openlibrary.gwapi.glooplatform.com/api/books?bibkeys=ISBN%3A0201558025&format=json&jscmd=viewapi"
+  "https://tracks.glootest.com/tracks/c_0"
+  "https://petstore.glootest.com/pets/pet"
+  "https://api.glootest.com/v1/api-products"
+  "https://openlibrary.glootest.com/api/books?bibkeys=ISBN%3A0201558025&format=json&jscmd=viewapi"
   "Custom"
 )
 
