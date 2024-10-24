@@ -46,7 +46,7 @@ spec:
               replicas: 1
               customEnv:
                 # The portal plugin is disabled by default, so must explicitly enable it
-                - name: GG_EXPERIMENTAL_PORTAL_PLUGIN
+                - name: GG_PORTAL_PLUGIN
                   value: "true"
               livenessProbeEnabled: true
           discovery:
@@ -74,10 +74,10 @@ spec:
               serve_from_sub_path: true
         # This demo does not deal with Gloo Federation, so we disable the components to simplify the installation
         gloo-fed:
-          enabled: true
+          enabled: false
           create_license_secret: false
           glooFedApiserver:
-            enable: true
+            enable: false
         gateway-portal-web-server:
           # Enable the sub-chart for the Portal webserver
           enabled: true
@@ -94,8 +94,8 @@ spec:
               requestTimeout: 5s
               deployment:
                 logLevel: debug
-    repoURL: http://storage.googleapis.com/gloo-ee-helm
-    targetRevision: 1.17.0
+    repoURL: https://storage.googleapis.com/gloo-ee-test-helm
+    targetRevision: 1.18.0-beta2-bmain-1203aed
   syncPolicy:
     automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
