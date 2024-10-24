@@ -527,7 +527,7 @@ spec:
                         subtitle: "change path number: /ns-#"
                         icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
-                        url: "https://tiered-app.gwapi.glooplatform.com/ns-1/ui"
+                        url: "https://tiered-app.central.glooplatform.com/ns-1/ui"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Visualize Ambient mTLS and Telemetry in Kiali"
                         subtitle: "no sidecars required"

@@ -78,13 +78,13 @@ waves:
       -  $env_path/rollouts-ui/init.sh
       post_deploy:
       -  $env_path/rollouts-ui/test.sh
-  - name: tiered-app-config-gwapi
-    location: $env_path/tiered-app-config-gwapi/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/tiered-app-config-gwapi/init.sh
-      post_deploy:
-      -  $env_path/tiered-app-config-gwapi/test.sh
+  #- name: tiered-app-config-gwapi
+  #  location: $env_path/tiered-app-config-gwapi/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/tiered-app-config-gwapi/init.sh
+  #    post_deploy:
+  #    -  $env_path/tiered-app-config-gwapi/test.sh
   - name: uptime-app
     location: $env_path/uptime-app/base
     scripts:
