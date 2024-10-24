@@ -9,7 +9,7 @@ Step 1 complete. Press enter to proceed to Step 2...
 Step 2: Creating a user...
 curl -X PUT https://api.glootest.com/v1/me -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN'
 
-User created with ID: 7d790473-1a67-49c8-be6e-3ee823c64cb9
+User created with ID: 36fdfbd0-be78-4e7f-9ef2-f7fb525e9fe0
 
 -------------------------
 Step 2 complete. Press enter to proceed to Step 3...
@@ -25,7 +25,7 @@ Choose a team description or enter a custom one:
 #? 1
 curl -X POST https://api.glootest.com/v1/teams -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"Name": "Engineering", "Description": "The engineering team"}'
 
-Team created with ID: c39033e3-a853-48c6-8457-64157d2cb299
+Team created with ID: e44889f4-3163-4a35-989b-902066c9ebe2
 
 -------------------------
 Step 3 complete. Press enter to proceed to Step 4...
@@ -39,9 +39,9 @@ Choose an application description or enter a custom one:
 1) App for testing   3) Production app
 2) Demo application  4) Custom
 #? 1
-curl -X POST https://api.glootest.com/v1/teams/c39033e3-a853-48c6-8457-64157d2cb299/apps -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"Name": "TestApp1", "Description": "App for testing"}'
+curl -X POST https://api.glootest.com/v1/teams/e44889f4-3163-4a35-989b-902066c9ebe2/apps -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"Name": "TestApp1", "Description": "App for testing"}'
 
-Application created with ID: bd696341-aabf-4f5d-bc91-b3105a15cd3e
+Application created with ID: 9c1aa53c-dccd-4486-9e3b-cc202e248731
 
 -------------------------
 Step 4 complete. Press enter to proceed to Step 5...
@@ -50,19 +50,16 @@ Step 5: Listing available API products...
 curl -X GET https://api.glootest.com/v1/api-products -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN'
 
 Available API Products:
-1) Catstronauts Course Tracks (ID: 4a3a0933-a58f-48c2-bf88-21febda9b955)
-2) Pet Store (ID: 6d9d7b10-012f-4b41-8767-72068ed64a0e)
-3) gloo-portal-server (ID: 9cca2ca6-1b22-452b-8e22-2cc285795f52)
-4) openlibrary (ID: 97efd07a-569c-4aa8-9a8a-5c2d558166ca)
+1) Catstronauts Course Tracks (ID: 08bb4ed9-7f4f-4ebc-9590-7bf8cbcc0a31)
 
-Please select an API product by number (1 to 4): 1
-Selected API Product ID: 4a3a0933-a58f-48c2-bf88-21febda9b955
+Please select an API product by number (1 to 1): 1
+Selected API Product ID: 08bb4ed9-7f4f-4ebc-9590-7bf8cbcc0a31
 
 -------------------------
 Step 5 complete. Press enter to proceed to Step 6...
 
 Step 6: Creating a subscription to the API product...
-curl -X POST https://api.glootest.com/v1/apps/$APPLICATION_ID/subscriptions -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"ApiProductId": "4a3a0933-a58f-48c2-bf88-21febda9b955"}'
+curl -X POST https://api.glootest.com/v1/apps/$APPLICATION_ID/subscriptions -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"ApiProductId": "08bb4ed9-7f4f-4ebc-9590-7bf8cbcc0a31"}'
 
 Full subscription response: 
 HTTP Status: 201
@@ -71,7 +68,7 @@ Subscription created successfully, but no response body. Skipping subscription I
 Discovering subscription ID by listing subscriptions...
 curl -X GET https://api.glootest.com/v1/apps/$APPLICATION_ID/subscriptions -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN'
 
-Subscription ID: eac5c3b9-e75c-4bde-886f-2701ba10511d
+Subscription ID: 9f71d262-b751-4ce3-8314-24d81293372f
 
 -------------------------
 Step 6 complete. Press enter to proceed to Step 7...
@@ -86,9 +83,9 @@ Step 7 complete. Press enter to proceed to Step 8...
 
 Step 8: Setting a dynamic rate limit for the subscription...
 Enter the number of requests per minute: 5
-Applying rate limit of 5 requests per MINUTE to subscription eac5c3b9-e75c-4bde-886f-2701ba10511d...
+Applying rate limit of 5 requests per MINUTE to subscription 9f71d262-b751-4ce3-8314-24d81293372f...
 
-curl -X PUT https://api.glootest.com/v1/subscriptions/eac5c3b9-e75c-4bde-886f-2701ba10511d/metadata -H 'Content-Type: application/json' -H 'Authorization: Bearer $ADMIN_USER_AUTH_TOKEN' -d '{"rateLimit": {"requestsPerUnit": "5", "unit": "MINUTE"}, "customMetadata": {"key2": "value2"}}'
+curl -X POST https://api.glootest.com/v1/subscriptions/9f71d262-b751-4ce3-8314-24d81293372f/metadata -H 'Content-Type: application/json' -H 'Authorization: Bearer $ADMIN_USER_AUTH_TOKEN' -d '{"rateLimit": {"requestsPerUnit": "5", "unit": "MINUTE"}, "customMetadata": {"key2": "value2"}}'
 
 Rate limit applied. Note that the time unit is configurable, but for this demo, it's set to MINUTE.
 -------------------------
@@ -99,10 +96,10 @@ Choose an API key name or enter a custom one:
 3) DevKey
 4) Custom
 #? 1
-curl -X POST https://api.glootest.com/v1/apps/bd696341-aabf-4f5d-bc91-b3105a15cd3e/api-keys -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"apiKeyName": "TestKey"}'
+curl -X POST https://api.glootest.com/v1/apps/9c1aa53c-dccd-4486-9e3b-cc202e248731/api-keys -H 'Content-Type: application/json' -H 'Authorization: Bearer $DEV_USER_AUTH_TOKEN' -d '{"apiKeyName": "TestKey"}'
 
-API Key created: 4248ec50-b298-47d5-bb90-046b8a535759
-API Key ID: 8f868a58-9c89-43b5-8961-92005413bb5b
+API Key created: bb8d7957-8b55-491a-9aca-cef2c3d3aae2
+API Key ID: 61722adb-f09d-4bb4-ae54-e5044ea81e15
 
 -------------------------
 Step 9 complete. Press enter to proceed to Step 10...
