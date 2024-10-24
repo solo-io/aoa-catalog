@@ -1,5 +1,9 @@
 # Changelog
 
+0.6.10 (10-24-24)
+---
+- Update `dynamic-rl-script.sh` and `dynamic-rl-script-example-output.txt` in `gateway-api/1.18/portal-only`
+
 0.6.9 (10-24-24)
 ---
 - Update gloo-gateway to `1.18.0-beta2-bmain-1203aed ` in `gateway-api/1.18/portal-only` and `gateway-api/1.18/ai-gateway` environment

@@ -285,9 +285,9 @@ echo "Applying rate limit of $REQUESTS_PER_UNIT requests per $UNIT to subscripti
 echo
 
 # Print the curl command
-echo "curl -X PUT $BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata -H 'Content-Type: application/json' -H 'Authorization: Bearer \$ADMIN_USER_AUTH_TOKEN' -d '{\"rateLimit\": {\"requestsPerUnit\": \"$REQUESTS_PER_UNIT\", \"unit\": \"$UNIT\"}, \"customMetadata\": {\"key2\": \"value2\"}}'"
+echo "curl -X POST $BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata -H 'Content-Type: application/json' -H 'Authorization: Bearer \$ADMIN_USER_AUTH_TOKEN' -d '{\"rateLimit\": {\"requestsPerUnit\": \"$REQUESTS_PER_UNIT\", \"unit\": \"$UNIT\"}, \"customMetadata\": {\"key2\": \"value2\"}}'"
 
-curl -X PUT "$BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata" \
+curl -X POST "$BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata" \
     -H "Content-Type: application/json" \
     -d "{\"rateLimit\": {\"requestsPerUnit\": \"$REQUESTS_PER_UNIT\", \"unit\": \"$UNIT\"}, \"customMetadata\": {\"key2\": \"value2\"}}" \
     -H "Authorization: Bearer $ADMIN_USER_AUTH_TOKEN"
