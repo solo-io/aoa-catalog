@@ -18,6 +18,7 @@ spec:
     targetRevision: 1.23.0
     helm:
       values: |
+        profile: ambient
         revision: 1-23
         global:
           hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
