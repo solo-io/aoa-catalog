@@ -5,7 +5,7 @@ metadata:
   namespace: gloo-system
 spec:
   #hostnames:
-  #  - llm.glootest.com
+  #  - llm.k8mesh.com
   parentRefs:
     - name: ai-gateway
       namespace: gloo-system

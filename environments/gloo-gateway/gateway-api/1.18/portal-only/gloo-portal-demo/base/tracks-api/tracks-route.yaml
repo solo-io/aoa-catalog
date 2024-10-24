@@ -5,7 +5,7 @@ metadata:
   namespace: gloo-system
 spec:
   hostnames:
-    - tracks.glootest.com
+    - tracks.k8mesh.com
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway

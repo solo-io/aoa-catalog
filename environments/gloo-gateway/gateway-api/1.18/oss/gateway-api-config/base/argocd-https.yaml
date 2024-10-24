@@ -8,7 +8,7 @@ metadata:
     gateway: https
 spec:
   hostnames:
-  - "argocd.glootest.com"
+  - "argocd.k8mesh.com"
   parentRefs:
     - name: https
       namespace: gloo-system

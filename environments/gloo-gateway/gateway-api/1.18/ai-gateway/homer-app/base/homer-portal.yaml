@@ -151,7 +151,7 @@ spec:
                     Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
                     
                     When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />
-                    127.0.0.1 argocd.glootest.com homer.glootest.com general-chatbot.glootest.com language-chatbot.glootest.com chat.glootest.com llm.glootest.com<br /><br />
+                    127.0.0.1 argocd.k8mesh.com homer.k8mesh.com general-chatbot.k8mesh.com language-chatbot.k8mesh.com chat.k8mesh.com llm.k8mesh.com<br /><br />
                     Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />
                     
                     Run this command in your terminal for the JWT token used in auth example:<br />
@@ -185,7 +185,7 @@ spec:
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
-                        url: "https://argocd.glootest.com/argo"
+                        url: "https://argocd.k8mesh.com/argo"
                         target: "_blank" # optional html a tag target attribute
 
                   - name: "AI Gateway Workloads"
@@ -195,25 +195,25 @@ spec:
                         #subtitle: "requires x-token header"
                         icon: "far fa-question-circle"
                         tag: "ai-gateway"
-                        url: "https://general-chatbot.glootest.com"
+                        url: "https://general-chatbot.k8mesh.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Language Translator Chatbot"
                         #subtitle: "requires x-token header"
                         icon: "fas fa-language"
                         tag: "ai-gateway"
-                        url: "https://language-chatbot.glootest.com"
+                        url: "https://language-chatbot.k8mesh.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "BetterChatGPT Chatbot"
                         #subtitle: "requires x-token header"
                         icon: "far fa-question-circle"
                         tag: "ai-gateway"
-                        url: "http://chat.glootest.com/"
+                        url: "http://chat.k8mesh.com/"
                         target: "_blank" # optional html a tag target attribute
                       #- name: "LlamaGPT Chatbot"
                       #  #subtitle: "requires x-token header"
                       #  icon: "far fa-question-circle"
                       #  tag: "ai-gateway"
-                      #  url: "http://llamagpt.glootest.com/"
+                      #  url: "http://llamagpt.k8mesh.com/"
                       #  target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:

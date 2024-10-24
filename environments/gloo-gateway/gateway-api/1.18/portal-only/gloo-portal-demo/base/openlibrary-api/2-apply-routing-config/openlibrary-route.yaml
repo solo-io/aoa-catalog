@@ -8,7 +8,7 @@ metadata:
     gateway: https
 spec:
   hostnames:
-  - "openlibrary.glootest.com"
+  - "openlibrary.k8mesh.com"
   parentRefs:
     - name: https
       namespace: gloo-system

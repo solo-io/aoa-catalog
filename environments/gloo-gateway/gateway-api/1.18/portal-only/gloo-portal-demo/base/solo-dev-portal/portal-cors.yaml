@@ -7,7 +7,7 @@ spec:
   options:
     cors:
       allowOrigin:
-        - https://solo-dev-portal.glootest.com
+        - https://solo-dev-portal.k8mesh.com
       allowHeaders:
         - "Content-Type"
         - "Authorization"

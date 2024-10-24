@@ -151,7 +151,7 @@ spec:
                     Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
                     
                     When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />
-                    127.0.0.1 argocd.glootest.com homer.glootest.com httpbin.glootest.com bookinfo.glootest.com<br /><br />
+                    127.0.0.1 argocd.k8mesh.com homer.k8mesh.com httpbin.k8mesh.com bookinfo.k8mesh.com<br /><br />
                     Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />
                                     
                 # Optional navbar
@@ -182,7 +182,7 @@ spec:
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
-                        url: "https://argocd.glootest.com/argo"
+                        url: "https://argocd.k8mesh.com/argo"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Web Applications"
@@ -191,12 +191,12 @@ spec:
                       - name: "httpbin"
                         icon: "far fa-window-maximize"
                         tag: "httpbin"
-                        url: "https://httpbin.glootest.com"
+                        url: "https://httpbin.k8mesh.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Bookinfo"
                         icon: "fas fa-book-reader"
                         tag: "bookinfo"
-                        url: "https://bookinfo.glootest.com/productpage"
+                        url: "https://bookinfo.k8mesh.com/productpage"
                         target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:

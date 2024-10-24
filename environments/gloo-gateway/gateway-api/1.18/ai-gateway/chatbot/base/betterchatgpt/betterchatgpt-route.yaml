@@ -8,7 +8,7 @@ metadata:
     gateway: http
 spec:
   hostnames:
-  - "chat.glootest.com"
+  - "chat.k8mesh.com"
   parentRefs:
     - name: http
       namespace: gloo-system

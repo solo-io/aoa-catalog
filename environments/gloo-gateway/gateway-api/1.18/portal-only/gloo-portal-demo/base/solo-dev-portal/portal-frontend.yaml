@@ -45,7 +45,7 @@ spec:
             - containerPort: 4000
           env:
             - name: VITE_PORTAL_SERVER_URL
-              value: https://api.glootest.com/v1 # The URL that the backend Portal is exposed on via an HTTPRoute.
+              value: https://api.k8mesh.com/v1 # The URL that the backend Portal is exposed on via an HTTPRoute.
             - name: VITE_COMPANY_NAME
               value: "Solo.io"
             #- name: VITE_HOME_IMAGE_URL

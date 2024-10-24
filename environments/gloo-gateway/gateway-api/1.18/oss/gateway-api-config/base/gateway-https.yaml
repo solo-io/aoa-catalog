@@ -11,7 +11,7 @@ spec:
     - name: https
       port: 443
       protocol: HTTPS
-      hostname: "*.glootest.com"
+      hostname: "*.k8mesh.com"
       tls:
         mode: Terminate
         certificateRefs:

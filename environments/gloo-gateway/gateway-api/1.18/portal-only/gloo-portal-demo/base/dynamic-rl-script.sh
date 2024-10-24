@@ -10,7 +10,7 @@ echo
 
 # Prompt the user to input the base URL for the portal server backend, re-prompt if empty
 while true; do
-    read -p "Enter the API base URL for the portal server backend (e.g., https://api.glootest.com): " BASE_URL
+    read -p "Enter the API base URL for the portal server backend (e.g., https://api.k8mesh.com): " BASE_URL
 
     # Validate if the input is empty
     if [ -z "$BASE_URL" ]; then
@@ -384,10 +384,10 @@ echo "Step 11: Choose an API product's URI or enter a custom one:"
 
 # Predefined URIs
 PREDEFINED_URIS=(
-  "https://tracks.glootest.com/tracks/c_0"
-  "https://petstore.glootest.com/pets/pet"
-  "https://api.glootest.com/v1/api-products"
-  "https://openlibrary.glootest.com/api/books?bibkeys=ISBN%3A0201558025&format=json&jscmd=viewapi"
+  "https://tracks.k8mesh.com/tracks/c_0"
+  "https://petstore.k8mesh.com/pets/pet"
+  "https://api.k8mesh.com/v1/api-products"
+  "https://openlibrary.k8mesh.com/api/books?bibkeys=ISBN%3A0201558025&format=json&jscmd=viewapi"
   "Custom"
 )
 

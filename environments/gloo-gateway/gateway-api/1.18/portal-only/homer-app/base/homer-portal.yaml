@@ -151,7 +151,7 @@ spec:
                     Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
                     
                     When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />
-                    127.0.0.1 argocd.glootest.com homer.glootest.com solo-dev-portal.glootest.com api.glootest.com tracks.glootest.com openlibrary.glootest.com<br /><br />
+                    127.0.0.1 argocd.k8mesh.com homer.k8mesh.com solo-dev-portal.k8mesh.com api.k8mesh.com tracks.k8mesh.com openlibrary.k8mesh.com<br /><br />
                     Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />
                     
                     Below are a few common usernames to explore the applications and portals:<br />
@@ -192,7 +192,7 @@ spec:
                         icon: "fab fa-git-alt"
                         tag: "argo"
                         keywords: "argocd"
-                        url: "https://argocd.glootest.com/argo"
+                        url: "https://argocd.k8mesh.com/argo"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Gloo Portal"
@@ -201,12 +201,12 @@ spec:
                       - name: "React Frontend - Solo Dev Portal"
                         icon: "fab fa-connectdevelop"
                         tag: "portal"
-                        url: "https://solo-dev-portal.glootest.com"
+                        url: "https://solo-dev-portal.k8mesh.com"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Portal Backend Server"
                         icon: "far fa-window-maximize"
                         tag: "portal"
-                        url: "https://api.glootest.com/v1/api-products"
+                        url: "https://api.k8mesh.com/v1/api-products"
                         target: "_blank" # optional html a tag target attribute
                       
                       
