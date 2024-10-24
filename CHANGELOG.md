@@ -1,5 +1,9 @@
 # Changelog
 
+0.6.9 (10-24-24)
+---
+- Update gloo-gateway to `1.18.0-beta2-bmain-1203aed ` in `gateway-api/1.18/portal-only` and `gateway-api/1.18/ai-gateway` environment
+
 0.6.8 (10-23-24)
 ---
 - Update gloo-gateway to `1.18.0-beta2-bmain-d7eacd4` in `gateway-api/1.18/portal-only` and `gateway-api/1.18/ai-gateway` environment
