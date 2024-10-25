@@ -16,3 +16,4 @@ resources:
 - istiod.yaml
 - istio-ingressgateway.yaml
 - istio-ztunnel.yaml
+- gcp-critical-pods-resource-quota.yaml
