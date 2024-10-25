@@ -6,7 +6,7 @@ resources:
 - egress-waypoint.yaml
 - service-entry.yaml
 - vs.yaml
-- egress-loadgen
+- bombardier-egress.yaml
 
 # patch nodeSelector and tolerations on all Deployments
 patches:
