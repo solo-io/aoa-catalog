@@ -15,13 +15,18 @@ spec:
   source:
     chart: cni
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.22.3
+    targetRevision: 1.23.3
     helm:
       values: |
         profile: ambient
+        ambient:
+          dnsCapture: true
         # uncomment below if using GKE
         cni:
           cniBinDir: /home/kubernetes/bin
+          # this is going away in 1.24.x
+          ambient:
+            dnsCapture: true
   syncPolicy:
     automated:
       prune: true

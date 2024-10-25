@@ -15,7 +15,7 @@ spec:
   source:
     chart: ztunnel
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.22.3
+    targetRevision: 1.23.3
     helm:
       values: |
         resources:
@@ -23,6 +23,7 @@ spec:
             cpu: 200m
             memory: 512Mi
         istioNamespace: istio-system
+        logLevel: info
   syncPolicy:
     automated:
       prune: true
