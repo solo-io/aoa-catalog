@@ -1,5 +1,9 @@
 # Changelog
 
+0.6.11 (10-24-24)
+---
+- Update `aoa-tools/render-manifests.sh`. Non-manifest details (environment details, kustomization file locations, etc.) are now prefixed with # to make the output directly usable with kubectl apply.
+
 0.6.10 (10-24-24)
 ---
 - Update `dynamic-rl-script.sh` and `dynamic-rl-script-example-output.txt` in `gateway-api/1.18/portal-only`

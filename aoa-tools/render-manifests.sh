@@ -8,11 +8,11 @@ remove_trailing_slash() {
 # Function to print verbose environment details
 print_environment_details() {
   local env_path="$1"
-  echo "===================================="
-  echo "Processing environment: $env_path"
-  echo "------------------------------------"
-  echo "Date: $(date)"
-  echo "===================================="
+  echo "# ===================================="
+  echo "# Processing environment: $env_path"
+  echo "# ------------------------------------"
+  echo "# Date: $(date)"
+  echo "# ===================================="
 }
 
 # Function to prompt for output file path
@@ -63,21 +63,22 @@ find "$env_path" -type f -name 'kustomization.yaml' | while read -r kustomizatio
   # Normalize the directory path to remove any trailing slashes
   dir=$(dirname "$kustomization_file" | sed 's:/*$::')
   
-  output "------------------------------------"
-  output "Found kustomization.yaml in: $dir"
-  output "Running 'kubectl kustomize'..."
+  output "# ------------------------------------"
+  output "# Found kustomization.yaml in: $dir"
+  output "# Running 'kubectl kustomize'..."
   
   # Run kubectl kustomize and capture output
   kubectl_output=$(kubectl kustomize "$dir")
   
   if [ $? -ne 0 ]; then
-    output "Error running 'kubectl kustomize' in $dir"
+    output "# Error running 'kubectl kustomize' in $dir"
   else
-    output "Successfully ran 'kubectl kustomize' in $dir"
-    output "------------------------------------"
-    output "Kustomized output for $dir:"
+    output "# Successfully ran 'kubectl kustomize' in $dir"
+    output "# ------------------------------------"
+    output "# Kustomized output for $dir:"
     output "---"
     output "$kubectl_output"
-    output "------------------------------------"
+    output "---"
+    output "# ------------------------------------"
   fi
 done
