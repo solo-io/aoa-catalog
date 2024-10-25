@@ -597,6 +597,13 @@ spec:
                         keywords: "gloo-gateway,gloo-mesh,demo"
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-mesh-core/east-region-ambient/tiered-app/base/tiered-app/ambient/l7-policy/waypoint-viewer.yaml#L18"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Configure Ambient Egress"
+                        subtitle: "using egress waypoint"
+                        icon: "far fa-file-code"
+                        tag: "gloo-gateway #gloo-mesh #config"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
+                        url: "https://github.com/solo-io/aoa-catalog/tree/glooplatform.com-2.6.x-active/environments/gloo-mesh-core/east-region-ambient/egress/base"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "Network Encryption"
                         subtitle: "terminate TLS at Gloo Gateway"
                         icon: "far fa-file-code"
