@@ -25,4 +25,4 @@ spec:
             requests:
               cpu: 10m
               memory: 10Mi
-        args: ["-c", "for run in $(seq 1 100000); do bombardier -c 1 -n 1 -p i,p,r httpbin.org/get; sleep 30; done"]
+        args: ["-c", "for run in $(seq 1 100000); do bombardier -c 1 -n 1 -p i,p,r httpbin.org/get; sleep 60; done"]
