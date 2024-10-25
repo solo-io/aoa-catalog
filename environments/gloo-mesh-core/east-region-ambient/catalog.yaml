@@ -48,4 +48,11 @@ waves:
       pre_deploy: 
       -  $env_path/online-boutique-app/init.sh
       post_deploy:
-      -  $env_path/online-boutique-app/test.sh          
+      -  $env_path/online-boutique-app/test.sh    
+  - name: egress
+    location: $env_path/egress/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/egress/init.sh
+      post_deploy:
+      -  $env_path/egress/test.sh        

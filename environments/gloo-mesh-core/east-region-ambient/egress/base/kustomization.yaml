@@ -5,4 +5,24 @@ resources:
 - egress-ns.yaml
 - egress-waypoint.yaml
 - service-entry.yaml
-#- vs.yaml
+- vs.yaml
+- egress-client
+
+# patch nodeSelector and tolerations on all Deployments
+patches:
+- patch: |-
+    kind: not-important
+    metadata:
+      name: not-important
+    spec:
+      template:
+        spec:
+          nodeSelector:
+            node: "spot"
+          tolerations:
+          - key: cloud.google.com/node
+            operator: Equal
+            value: "spot"
+            effect: NoSchedule
+  target:
+    kind: Deployment
