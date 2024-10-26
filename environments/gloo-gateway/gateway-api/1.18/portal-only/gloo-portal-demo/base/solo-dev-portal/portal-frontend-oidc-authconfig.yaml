@@ -9,11 +9,11 @@ spec:
       oidcAuthorizationCode:
         appUrl: https://solo-dev-portal.k8mesh.com
         callbackPath: /v1/login
-        clientId: 0oa6qvzybcVCK6PcS5d7
+        clientId: 0oako9sbxv2MD3MsR5d7
         clientSecretRef:
           name: okta-client-secret
           namespace: gloo-system
-        issuerUrl: https://dev-22653158.okta.com/oauth2/default
+        issuerUrl: https://dev-75468328.okta.com/oauth2/default
         scopes:
         - email
         headers:
