@@ -8,4 +8,4 @@ resources:
 - tracks-api
 #- petstore-api
 #- openlibrary-api
-#- gloo-portal-server-api
+- gloo-portal-server-api
