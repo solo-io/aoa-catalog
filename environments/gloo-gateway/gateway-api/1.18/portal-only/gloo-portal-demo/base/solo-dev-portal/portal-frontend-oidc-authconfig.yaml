@@ -9,7 +9,7 @@ spec:
       oidcAuthorizationCode:
         appUrl: https://solo-dev-portal.k8mesh.com
         callbackPath: /v1/login
-        clientId: 0oako9sbxv2MD3MsR5d7
+        clientId: 0oakob18oydCGDgqu5d7
         clientSecretRef:
           name: okta-client-secret
           namespace: gloo-system
