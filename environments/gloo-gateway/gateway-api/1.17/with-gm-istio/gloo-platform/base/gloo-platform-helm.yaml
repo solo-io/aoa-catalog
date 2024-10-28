@@ -92,6 +92,9 @@ spec:
             licenseSecretName: "gloo-license"
         prometheus:
             enabled: true
+        redis:
+            deployment:
+                enabled: true
         telemetryGateway:
             enabled: true
             #image:
