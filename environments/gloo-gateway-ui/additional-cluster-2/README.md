@@ -9,10 +9,10 @@ The `gloo-gateway-ui/additional-cluster-2` environment bootstraps an additional 
 
 ## Environment descriptions
 - base:
-    - gloo mesh 2.7.0-beta0-2024-10-24-main-389ae0d3be
+    - gloo mesh 2.7.0-beta0-2024-10-25-puertomontt-gg-license-00b7def340
     - istio 1.22.3-patch1-solo (Helm)
     - revision: 1-22
 - lifecyclemanager:
-    - gloo mesh 2.7.0-beta0-2024-10-24-main-389ae0d3be
+    - gloo mesh 2.7.0-beta0-2024-10-25-puertomontt-gg-license-00b7def340
     - istio 1.22.3-patch1-solo (ILM)
     - revision: 1-22
