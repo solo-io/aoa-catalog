@@ -22,9 +22,9 @@ spec:
             adminNamespace: "gloo-mesh"
             cluster: mgmt
         glooInsightsEngine:
-            enabled: true
+            enabled: false
         glooAnalyzer:
-            enabled: true
+            enabled: false
             runAsSidecar: true
         global: {}
         glooAgent:
