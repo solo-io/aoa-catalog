@@ -4,11 +4,11 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- gloo-mesh-global-workspacesettings.yaml
+#- gloo-mesh-global-workspacesettings.yaml
 - gloo-mesh-mgmt-extauthserver.yaml
 - gloo-mesh-mgmt-kubernetescluster.yaml
-- gloo-mesh-ops-team-workspace.yaml
-- gloo-mesh-ops-team-workspacesettings.yaml
+#- gloo-mesh-ops-team-workspace.yaml
+#- gloo-mesh-ops-team-workspacesettings.yaml
 #- roottrustpolicy-generated.yaml
 #- roottrustpolicy-secretref.yaml
 - gloo-mesh-ui-https.yaml
