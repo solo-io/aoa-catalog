@@ -41,6 +41,8 @@ spec:
                   namespace: null
         glooMgmtServer:
             enabled: true
+            policyApis:
+                enabled: false
             relay:
                 disableCa: true
                 disableCaCertGeneration: true
@@ -96,7 +98,7 @@ spec:
             deployment:
                 enabled: true
         telemetryGateway:
-            enabled: true
+            enabled: false
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
