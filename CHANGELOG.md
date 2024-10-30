@@ -1,5 +1,9 @@
 # Changelog
 
+0.6.12 (10-30-24)
+---
+- reset 1.18/ai-gateway env to use helm chart from `http://storage.googleapis.com/gloo-ee-helm` and `1.18.0-beta1` build
+
 0.6.11 (10-24-24)
 ---
 - Update `aoa-tools/render-manifests.sh`. Non-manifest details (environment details, kustomization file locations, etc.) are now prefixed with # to make the output directly usable with kubectl apply.
