@@ -23,8 +23,9 @@ spec:
             cluster: mgmt
         glooInsightsEngine:
             enabled: true
+            runAsSidecar: true
         glooAnalyzer:
-            enabled: true
+            enabled: false
             runAsSidecar: true
         global: {}
         glooAgent:
@@ -99,178 +100,24 @@ spec:
                 enabled: true
         telemetryGateway:
             enabled: false
-            #image:
-            #  pullPolicy: IfNotPresent
-            #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.7.0-beta0-2024-11-03-main-54cf65133f
         telemetryCollector:
             enabled: true
             mode: deployment
             replicaCount: 1
-            #image:
-            #  pullPolicy: IfNotPresent
-            #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.7.0-beta0-2024-11-03-main-54cf65133f
-            config:
-                exporters:
-                    otlp:
-                        endpoint: "gloo-telemetry-gateway.gloo-mesh.svc.cluster.local:4317"
-            extraVolumes:
-                - name: root-ca
-                  secret:
-                    defaultMode: 420
-                    secretName: gloo-telemetry-gateway-tls-secret
-                - configMap:
-                    items:
-                        - key: relay
-                          path: relay.yaml
-                    name: gloo-telemetry-collector-config
-                  name: telemetry-configmap
-                - hostPath:
-                    path: /var/run/cilium
-                    type: DirectoryOrCreate
-                  name: cilium-run
-        telemetryGatewayCustomization:
-            disableCertGeneration: true
-            extraPipelines:
-                metrics/gloo-mgmt:
-                    exporters:
-                        - prometheus
-                    processors:
-                        - memory_limiter
-                        - batch
-                    receivers:
-                        - prometheus/gloo-mgmt
-                metrics/gloo-gateway:
-                    receivers: [prometheus/gloo-dataplane, prometheus/gloo-controlplane]
-                    processors: [batch]
-                    exporters: [prometheus]
-            extraReceivers:
-                prometheus/gloo-dataplane:
-                    config:
-                        scrape_configs:
-                        # Scrape the Gloo Gateway pods
-                        - job_name: gloo-gateways
-                          honor_labels: true
-                          kubernetes_sd_configs:
-                          - role: pod
-                          relabel_configs:
-                            - action: keep
-                              regex: kube-gateway
-                              source_labels:
-                              - __meta_kubernetes_pod_label_gloo
-                            - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
-                              action: keep
-                              regex: true
-                            - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
-                              action: replace
-                              target_label: __metrics_path__
-                              regex: (.+)
-                            - action: replace
-                              source_labels:
-                              - __meta_kubernetes_pod_ip
-                              - __meta_kubernetes_pod_annotation_prometheus_io_port
-                              separator: ':'
-                              target_label: __address__
-                            - action: labelmap
-                              regex: __meta_kubernetes_pod_label_(.+)
-                            - source_labels: [__meta_kubernetes_namespace]
-                              action: replace
-                              target_label: kube_namespace
-                            - source_labels: [__meta_kubernetes_pod_name]
-                              action: replace
-                              target_label: pod
-                prometheus/gloo-controlplane:
-                    config:
-                        scrape_configs:
-                        # Scrape the Gloo pods
-                        - job_name: gloo-gateways
-                          honor_labels: true
-                          kubernetes_sd_configs:
-                          - role: pod
-                          relabel_configs:
-                            - action: keep
-                              regex: gloo
-                              source_labels:
-                              - __meta_kubernetes_pod_label_gloo
-                            - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
-                              action: keep
-                              regex: true
-                            - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
-                              action: replace
-                              target_label: __metrics_path__
-                              regex: (.+)
-                            - action: replace
-                              source_labels:
-                              - __meta_kubernetes_pod_ip
-                              - __meta_kubernetes_pod_annotation_prometheus_io_port
-                              separator: ':'
-                              target_label: __address__
-                            - action: labelmap
-                              regex: __meta_kubernetes_pod_label_(.+)
-                            - source_labels: [__meta_kubernetes_namespace]
-                              action: replace
-                              target_label: kube_namespace
-                            - source_labels: [__meta_kubernetes_pod_name]
-                              action: replace
-                              target_label: pod
-                prometheus/gloo-mgmt:
-                    config:
-                        scrape_configs:
-                            - honor_labels: true
-                              job_name: gloo-mesh-mgmt-server-otel
-                              kubernetes_sd_configs:
-                                - namespaces:
-                                    names:
-                                        - gloo-mesh
-                                  role: pod
-                              relabel_configs:
-                                - action: keep
-                                  regex: gloo-mesh-mgmt-server|gloo-mesh-ui
-                                  source_labels:
-                                    - __meta_kubernetes_pod_label_app
-                                - action: keep
-                                  regex: true
-                                  source_labels:
-                                    - __meta_kubernetes_pod_annotation_prometheus_io_scrape
-                                - action: drop
-                                  regex: true
-                                  source_labels:
-                                    - __meta_kubernetes_pod_annotation_prometheus_io_scrape_slow
-                                - action: replace
-                                  regex: (https?)
-                                  source_labels:
-                                    - __meta_kubernetes_pod_annotation_prometheus_io_scheme
-                                  target_label: __scheme__
-                                - action: replace
-                                  regex: (.+)
-                                  source_labels:
-                                    - __meta_kubernetes_pod_annotation_prometheus_io_path
-                                  target_label: __metrics_path__
-                                - action: replace
-                                  regex: ([^:]+)(?::\d+)?;(\d+)
-                                  replacement: $$1:$$2
-                                  source_labels:
-                                    - __address__
-                                    - __meta_kubernetes_pod_annotation_prometheus_io_port
-                                  target_label: __address__
-                                - action: labelmap
-                                  regex: __meta_kubernetes_pod_annotation_prometheus_io_param_(.+)
-                                  replacement: __param_$$1
-                                - action: labelmap
-                                  regex: __meta_kubernetes_pod_label_(.+)
-                                - action: replace
-                                  source_labels:
-                                    - __meta_kubernetes_namespace
-                                  target_label: namespace
-                                - action: replace
-                                  source_labels:
-                                    - __meta_kubernetes_pod_name
-                                  target_label: pod
-                                - action: drop
-                                  regex: Pending|Succeeded|Failed|Completed
-                                  source_labels:
-                                    - __meta_kubernetes_pod_phase
+        telemetryCollectorCustomization:
+            pipelines:
+              logs/analyzer:
+                enabled: false
+              logs/ui:
+                enabled: true
+                pipeline:
+                  exporters:
+                  - redisstream/ui
+              metrics/ui:
+                enabled: true
+                pipeline:
+                  exporters:
+                  - prometheus
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
     targetRevision: 2.7.0-beta0-2024-11-03-main-54cf65133f
