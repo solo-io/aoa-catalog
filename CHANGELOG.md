@@ -1,5 +1,10 @@
 # Changelog
 
+0.7.0 (11-11-24)
+---
+- set 1.18/ai-gateway and /portal-only envs to use `1.18.0-beta2` release
+- update 1.18/oss env to use OSS `1.18.0-beta33` release
+
 0.6.12 (10-30-24)
 ---
 - reset 1.18/ai-gateway env to use helm chart from `http://storage.googleapis.com/gloo-ee-helm` and `1.18.0-beta1` build
