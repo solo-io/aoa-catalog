@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gloo-platform-crds
+  name: gloo-gateway-ui-crds
   namespace: argocd
 spec:
   destination:
