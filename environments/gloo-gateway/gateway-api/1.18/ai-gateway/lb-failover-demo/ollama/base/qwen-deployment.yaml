@@ -1,0 +1,61 @@
+# ====================================
+# Processing environment: environments/gloo-gateway/gateway-api/1.18/ai-gateway/aigw-config/base/ollama-qwen
+# ------------------------------------
+# Date: Mon Nov  4 13:34:46 PST 2024
+# ====================================
+# ------------------------------------
+# Found kustomization.yaml in: environments/gloo-gateway/gateway-api/1.18/ai-gateway/aigw-config/base/ollama-qwen
+# Running 'kubectl kustomize'...
+# Successfully ran 'kubectl kustomize' in environments/gloo-gateway/gateway-api/1.18/ai-gateway/aigw-config/base/ollama-qwen
+# ------------------------------------
+# Kustomized output for environments/gloo-gateway/gateway-api/1.18/ai-gateway/aigw-config/base/ollama-qwen:
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama-qwen
+  namespace: gloo-system
+spec:
+  ports:
+  - name: http
+    port: 11434
+    protocol: TCP
+    targetPort: http
+  selector:
+    name: ollama-qwen
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama-qwen
+  namespace: gloo-system
+spec:
+  selector:
+    matchLabels:
+      name: ollama-qwen
+  template:
+    metadata:
+      labels:
+        name: ollama-qwen
+    spec:
+      containers:
+      - env:
+        - name: PRELOAD_MODELS
+          value: qwen:0.5b,qwen:1.8b
+        - name: OLLAMA_KEEP_ALIVE
+          value: "-1"
+        image: ollama/ollama:latest
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - /bin/sh
+              - -c
+              - for model in $(echo $PRELOAD_MODELS | tr ',' ' '); do echo Loading
+                $model; ollama run "$model" ""; sleep 2; done
+        name: ollama-qwen
+        ports:
+        - containerPort: 11434
+          name: http
+          protocol: TCP
