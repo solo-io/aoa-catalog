@@ -51,10 +51,6 @@ spec:
             disableLeaderElection: true
             deployment:
               replicas: 1
-              customEnv:
-                # The portal plugin is disabled by default, so must explicitly enable it
-                - name: GG_PORTAL_PLUGIN
-                  value: "true"
               livenessProbeEnabled: true
           discovery:
             # We don't need the discovery deployment for our Gloo Gateway demo
@@ -66,13 +62,13 @@ spec:
             # Expose the Control Plane Admin API (port 10010 on Gloo)
             devMode: true
         observability:
-          enabled: true
+          enabled: false
         prometheus:
           # setting to false will disable prometheus, removing it from Gloo's chart dependencies
-          enabled: true
+          enabled: false
         grafana:
           # setting to false will disable grafana, removing it from Gloo's chart dependencies
-          defaultInstallationEnabled: true
+          defaultInstallationEnabled: false
           grafana.ini:
             auth.anonymous:
               enabled: true
@@ -87,7 +83,7 @@ spec:
             enable: false
         gateway-portal-web-server:
           # Enable the sub-chart for the Portal webserver
-          enabled: true
+          enabled: false
         global:
           istioIntegration:
             enableAutoMtls: true
@@ -97,12 +93,12 @@ spec:
           extensions:
             # Rate-Limit Configuration
             rateLimit:
-              enabled: true
+              enabled: false
               deployment:
                 logLevel: debug
             # Ext-Auth Configuration
             extAuth:
-              enabled: true
+              enabled: false
               requestTimeout: 5s
               deployment:
                 logLevel: debug
