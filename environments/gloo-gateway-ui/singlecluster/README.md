@@ -8,10 +8,10 @@ The `gloo-gateway-ui/singlecluster` environment deploys the core components of a
 
 ## Environment descriptions
 - base:
-    - gloo mesh 2.7.0-beta1-2024-11-09-main-6aaeb2df36
+    - gloo mesh 2.7.0-beta1-2024-11-11-main-734db4fa4b
     - istio 1.22.3-patch1-solo (Helm)
     - revision: 1-22
 - lifecyclemanager:
-    - gloo mesh 2.7.0-beta1-2024-11-09-main-6aaeb2df36
+    - gloo mesh 2.7.0-beta1-2024-11-11-main-734db4fa4b
     - istio 1.22.3-patch1-solo (ILM)
     - revision: 1-22
