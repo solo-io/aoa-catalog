@@ -1,0 +1,63 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gloo-platform-helm
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io/solo-io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gloo-system
+  project: default
+  source:
+    chart: gloo-platform
+    helm:
+      skipCrds: true
+      values: |
+        featureGates:
+            insightsConfiguration: true
+        common:
+            adminNamespace: "gloo-system"
+            cluster: mgmt
+        glooInsightsEngine:
+            enabled: true
+        glooUi:
+            enabled: true
+            serviceType: ClusterIP
+        licensing:
+            licenseSecretName: "gloo-license"
+        prometheus:
+            enabled: true
+        redis:
+            deployment:
+                enabled: true
+        telemetryCollector:
+            enabled: true
+            mode: deployment
+            replicaCount: 1
+        telemetryCollectorCustomization:
+            pipelines:
+              logs/analyzer:
+                enabled: false
+              logs/ui:
+                enabled: true
+                pipeline:
+                  exporters:
+                  - redisstream/ui
+              metrics/ui:
+                enabled: true
+                pipeline:
+                  exporters:
+                  - prometheus
+
+    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
+    targetRevision: 2.7.0-beta1-2024-11-11-main-734db4fa4b
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  # ignore the self-signed certs that are being generated automatically    
+  ignoreDifferences:
+  - group: v1
+    kind: Secret

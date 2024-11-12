@@ -23,7 +23,6 @@ spec:
             cluster: mgmt
         glooInsightsEngine:
             enabled: true
-            runAsSidecar: true
         glooAnalyzer:
             enabled: false
             runAsSidecar: true
