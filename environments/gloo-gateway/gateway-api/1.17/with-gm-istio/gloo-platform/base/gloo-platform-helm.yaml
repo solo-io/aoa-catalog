@@ -29,7 +29,7 @@ spec:
             runAsSidecar: true
         global: {}
         glooAgent:
-            enabled: true
+            enabled: false
             relay:
                 serverAddress: gloo-mesh-mgmt-server:9900
                 clientTlsSecret:
@@ -41,7 +41,7 @@ spec:
                   name: null
                   namespace: null
         glooMgmtServer:
-            enabled: true
+            enabled: false
             policyApis:
                 enabled: false
             relay:
