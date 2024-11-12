@@ -25,7 +25,7 @@ spec:
             runAsSidecar: false
         glooUi:
             enabled: true
-            serviceType: ClusterIP
+            serviceType: LoadBalancer
         licensing:
             licenseSecretName: "gloo-license"
         prometheus:

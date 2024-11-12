@@ -72,7 +72,7 @@ spec:
             #                    istio.io/rev: 1-23
             #                    sidecar.istio.io/inject: "true"
             enabled: true
-            serviceType: ClusterIP
+            serviceType: LoadBalancer
         extAuthService:
             enabled: false
             extAuth:
