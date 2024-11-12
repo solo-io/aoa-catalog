@@ -7,7 +7,7 @@ apiVersion: admin.gloo.solo.io/v2
 kind: KubernetesCluster
 metadata:
   name: mgmt
-  namespace: gloo-mesh
+  namespace: gloo-system
 spec:
   clusterDomain: cluster.local
 EOF
