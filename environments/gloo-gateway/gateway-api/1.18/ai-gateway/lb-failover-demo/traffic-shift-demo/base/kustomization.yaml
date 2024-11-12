@@ -1,0 +1,9 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- ollama-qwen-0.5-upstream.yaml
+- ollama-qwen-1.8-upstream.yaml
+- qwen-5050-httproute.yaml
