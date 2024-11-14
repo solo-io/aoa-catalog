@@ -28,13 +28,13 @@ waves:
       -  $env_path/aigw-config/init.sh
       post_deploy:
       -  $env_path/aigw-config/test.sh
-  - name: ollama
-    location: $env_path/ollama/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/ollama/init.sh
-      post_deploy:
-      -  $env_path/ollama/test.sh
+  #- name: ollama
+  #  location: $env_path/ollama/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/ollama/init.sh
+  #    post_deploy:
+  #    -  $env_path/ollama/test.sh
   - name: chatbot
     location: $env_path/chatbot/base
     scripts:
@@ -99,6 +99,20 @@ waves:
       -  $env_path/uptime-app/init.sh
       post_deploy:
       -  $env_path/uptime-app/test.sh 
+  - name: aigw-traffic-shift-demo
+    location: $env_path/aigw-traffic-shift-demo/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/aigw-traffic-shift-demo/init.sh
+      post_deploy:
+      -  $env_path/aigw-traffic-shift-demo/test.sh 
+  - name: aigw-failover-demo
+    location: $env_path/aigw-failover-demo/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/aigw-failover-demo/init.sh
+      post_deploy:
+      -  $env_path/aigw-failover-demo/test.sh 
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:
