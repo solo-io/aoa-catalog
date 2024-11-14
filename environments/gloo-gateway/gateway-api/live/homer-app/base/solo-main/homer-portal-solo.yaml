@@ -277,6 +277,18 @@ spec:
                   - name: "Demo AI Gateway Capabilities"
                     icon: "fas fa-brain"
                     items:
+                      - name: "Traffic Split for Backend LLMs"
+                        subtitle: "50-50 between qwen-0.5b & 1.8b models"
+                        icon: "fas fa-brain"
+                        tag: "ai-gateway"
+                        url: "https://asciinema.org/a/osJR84D4ebg2gSG0LnxlmPp6g"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Public to Local LLM Failover"
+                        subtitle: "Failover from OpenAI to local LLM"
+                        icon: "fas fa-brain"
+                        tag: "ai-gateway"
+                        url: "https://asciinema.org/a/parI4RSl5c2sFpI8QvsIOJHG3"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "BetterChatGPT Chatbot"
                         subtitle: "use custom API > https://llm.gwapi.glooplatform.com/openai"
                         icon: "far fa-question-circle"
