@@ -39,7 +39,6 @@ spec:
               service:
                 type: ClusterIP
           gateway:
-            enabled: false
             persistProxySpec: true
             logLevel: info
             validation:
