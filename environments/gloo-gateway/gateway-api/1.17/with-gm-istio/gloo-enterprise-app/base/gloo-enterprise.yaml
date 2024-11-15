@@ -20,7 +20,7 @@ spec:
           license_secret_name: license
           kubeGateway:
             # Enable K8s Gateway integration
-            enabled: false
+            enabled: true
             gatewayParameters:
               glooGateway:
                 istio:
