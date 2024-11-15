@@ -45,7 +45,7 @@ spec:
               allowWarnings: true
               alwaysAcceptResources: false
           gloo:
-            logLevel: info
+            logLevel: debug
             # To simplify the demo, we disable any features that are affected by leader election
             # In Gloo Gateway, this is just status reporting, but still we do this to be safe
             disableLeaderElection: true
