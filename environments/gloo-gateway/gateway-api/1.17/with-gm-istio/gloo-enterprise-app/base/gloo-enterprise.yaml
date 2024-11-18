@@ -93,12 +93,12 @@ spec:
           extensions:
             # Rate-Limit Configuration
             rateLimit:
-              enabled: false
+              enabled: true
               deployment:
                 logLevel: debug
             # Ext-Auth Configuration
             extAuth:
-              enabled: false
+              enabled: true
               requestTimeout: 5s
               deployment:
                 logLevel: debug
