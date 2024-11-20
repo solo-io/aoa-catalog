@@ -6,6 +6,7 @@
 - rename 1.18/ai-gateway environment to 1.18/ai-gateway/chatbots
 - add 1.18/ai-gateway/lb-failover-demo environment to demonstrate traffic shifting and resiliency capabilities (see manual instructions [here](https://github.com/ably77/aig-lb-failover-demo))
 - update 1.18/oss env to use OSS `1.18.0-beta33` release
+- configure postgres database backend for gloo-portal-backend-server in 1.18/portal-only environment
 
 0.6.12 (10-30-24)
 ---
