@@ -2,7 +2,7 @@
 
 0.7.0 (11-11-24)
 ---
-- set 1.18/ai-gateway and /portal-only envs to use `1.18.0-beta2` release
+- set 1.18/ai-gateway and /portal-only envs to use `1.18.0-rc1` release
 - rename 1.18/ai-gateway environment to 1.18/ai-gateway/chatbots
 - add 1.18/ai-gateway/lb-failover-demo environment to demonstrate traffic shifting and resiliency capabilities (see manual instructions [here](https://github.com/ably77/aig-lb-failover-demo))
 - update 1.18/oss env to use OSS `1.18.0-beta33` release
@@ -21,12 +21,12 @@
 
 0.6.9 (10-24-24)
 ---
-- Update gloo-gateway to `1.18.0-beta2-bmain-1203aed ` in `gateway-api/1.18/portal-only` and `gateway-api/1.18/ai-gateway` environment
+- Update gloo-gateway to `1.18.0-rc1-bmain-1203aed ` in `gateway-api/1.18/portal-only` and `gateway-api/1.18/ai-gateway` environment
 
 0.6.8 (10-23-24)
 ---
-- Update gloo-gateway to `1.18.0-beta2-bmain-d7eacd4` in `gateway-api/1.18/portal-only` and `gateway-api/1.18/ai-gateway` environment
-- Update gloo-gateway to `1.18.0-beta28` in gateway-api/1.18/oss environment
+- Update gloo-gateway to `1.18.0-rc1-bmain-d7eacd4` in `gateway-api/1.18/portal-only` and `gateway-api/1.18/ai-gateway` environment
+- Update gloo-gateway to `1.18.0-rc18` in gateway-api/1.18/oss environment
 
 0.6.7 (10-23-24)
 ---

@@ -38,7 +38,7 @@ spec:
         gateway-portal-web-server:
           enabled: false
     repoURL: http://storage.googleapis.com/gloo-ee-helm
-    targetRevision: 1.18.0-beta2
+    targetRevision: 1.18.0-rc1
   syncPolicy:
     automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
