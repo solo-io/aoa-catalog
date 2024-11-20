@@ -1,6 +1,6 @@
 # Changelog
 
-0.7.0 (11-11-24)
+0.7.0 (11-19-24)
 ---
 - set 1.18/ai-gateway and /portal-only envs to use `1.18.0-rc1` release
 - rename 1.18/ai-gateway environment to 1.18/ai-gateway/chatbots
