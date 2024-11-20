@@ -4,7 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- gloo-enterprise.yaml
-- gloo-system-ns.yaml
-- postgres-db.yaml
-- portal-database-config.yaml
+- gateway-https.yaml
+- argocd-https.yaml
+- argocd-route-policies.yaml
+- upstream-tls.yaml
+- log-provider.yaml

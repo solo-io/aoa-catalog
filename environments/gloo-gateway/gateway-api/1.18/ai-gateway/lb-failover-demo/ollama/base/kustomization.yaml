@@ -4,7 +4,4 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- gloo-enterprise.yaml
-- gloo-system-ns.yaml
-- postgres-db.yaml
-- portal-database-config.yaml
+- qwen-deployment.yaml

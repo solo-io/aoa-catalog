@@ -81,6 +81,9 @@ spec:
         gateway-portal-web-server:
           # Enable the sub-chart for the Portal webserver
           enabled: true
+          glooPortalServer:
+            database:
+              type: postgres
         global:
           extensions:
             # Rate-Limit Configuration
@@ -94,8 +97,8 @@ spec:
               requestTimeout: 5s
               deployment:
                 logLevel: debug
-    repoURL: https://storage.googleapis.com/gloo-ee-test-helm
-    targetRevision: 1.18.0-beta2-bmain-1203aed
+    repoURL: http://storage.googleapis.com/gloo-ee-helm
+    targetRevision: 1.18.0-rc1
   syncPolicy:
     automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).

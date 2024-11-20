@@ -6,5 +6,3 @@ kind: Kustomization
 resources:
 - gloo-enterprise.yaml
 - gloo-system-ns.yaml
-- postgres-db.yaml
-- portal-database-config.yaml

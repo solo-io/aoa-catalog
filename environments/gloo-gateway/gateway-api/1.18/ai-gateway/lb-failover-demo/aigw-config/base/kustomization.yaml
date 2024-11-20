@@ -4,7 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- gloo-enterprise.yaml
-- gloo-system-ns.yaml
-- postgres-db.yaml
-- portal-database-config.yaml
+- ai-gateway.yaml
+- gloo-gateway-override.yaml
+- ai-gateway-log-provider.yaml
+#- openai
+#- anthropic
