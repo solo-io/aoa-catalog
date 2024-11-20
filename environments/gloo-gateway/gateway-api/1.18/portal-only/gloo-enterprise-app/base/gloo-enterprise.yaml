@@ -81,6 +81,9 @@ spec:
         gateway-portal-web-server:
           # Enable the sub-chart for the Portal webserver
           enabled: true
+          glooPortalServer:
+            database:
+              type: postgres
         global:
           extensions:
             # Rate-Limit Configuration
