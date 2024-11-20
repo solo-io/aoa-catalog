@@ -53,7 +53,7 @@ spec:
                   - prometheus
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-11-18-main-c58f8248db
+    targetRevision: 2.7.0-beta1-2024-11-19-main-b15ca66cab
   syncPolicy:
     automated:
       prune: true
