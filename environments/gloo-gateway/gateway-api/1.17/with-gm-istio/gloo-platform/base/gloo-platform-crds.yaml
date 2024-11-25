@@ -11,7 +11,7 @@ spec:
   source:
     chart: gloo-platform-crds
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-11-24-main-138c2e295c
+    targetRevision: 2.7.0-beta1-2024-11-23-main-138c2e295c
     helm:
       values: |
         installEnterpriseCrds: false
