@@ -62,3 +62,4 @@ spec:
   ignoreDifferences:
   - group: v1
     kind: Secret
+  - kind: ClusterRole
