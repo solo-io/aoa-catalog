@@ -63,3 +63,4 @@ spec:
   - group: v1
     kind: Secret
   - kind: ClusterRole
+  - kind: ClusterRoleBinding
