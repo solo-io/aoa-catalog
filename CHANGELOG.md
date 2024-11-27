@@ -35,7 +35,7 @@
 - enable access logs for https gateway in gloo-edge/gateway-api environments
 - configure JWT validation as a VirtualHostOption (gateway-level) but disable for homer dashboard, argo, client and LLM proxy routes
 - update JWT certs used in demo to match the examples in gloo-mesh-use-cases/gloo-gateway repo from the docs (https://github.com/solo-io/gloo-mesh-use-cases/tree/main/gloo-gateway/jwt)
-- add httpbin AuthorizationPolicy example to gloo-edge/gateway-api/with-istio and gloo-edge/gateway-api/with-gm-istio 
+- add httpbin AuthorizationPolicy example to gloo-edge/gateway-api/with-istio and gloo-edge/gateway-api/with-gm-istio
 - testing GG + GM in a single cluster setup in gloo-edge/gateway-api/with-gm-istio environment (WIP)
 - testing GG + GM in a three cluster setup in gloo-platform/gwapi-mgmt-gm-workers environment (WIP)
 - fix links in homer dashboard in gloo-edge/gateway-api/with-istio and gloo-edge/gateway-api/with-gm-istio
@@ -44,7 +44,7 @@
 ---
 - update gloo-edge/gateway-api and gloo-edge/gateway-api-with-istio to use 1.17.0-rc5
 - restructure gateway-api environments to gloo-edge/gateway-api/standalone and gloo-edge/gateway-api/with-istio
-- add config for multiple route policies to gloo-edge/gateway-api environments (commented out - fix coming in 1.18.0-beta2-bmain-5c852bc or later)
+- add config for multiple route policies to gloo-edge/gateway-api environments (commented out - fix coming in 1.18.0-rc2 or later)
 
 0.3.15 (7-9-24)
 ---
@@ -86,7 +86,7 @@
 0.3.8 (6-24-24)
 ---
 add general-chatbot and language-chatbot to gloo-edge/gateway-api environment
-    - configurable environment variables for backend LLM endpoints and api-keys 
+    - configurable environment variables for backend LLM endpoints and api-keys
     - configure the system prompt using a configmap
 
 0.3.7 (6-6-24)
@@ -123,7 +123,7 @@ add general-chatbot and language-chatbot to gloo-edge/gateway-api environment
 - update gloo-edge/gatweay-api to 1.17.0-beta3
 - pin colima to v1.29.5+k3s1
 - set domain-qualified `/solo-io` finalizer name `resources-finalizer.argocd.argoproj.io/solo-io` to ArgoCD Applications
-    - Fixes this warning: 
+    - Fixes this warning:
     ```
     Warning: metadata.finalizers: "resources-finalizer.argocd.argoproj.io": prefer a domain-qualified finalizer name to avoid accidental conflicts with other finalizer writers
     ```
@@ -189,7 +189,7 @@ add general-chatbot and language-chatbot to gloo-edge/gateway-api environment
 
 0.2.6 (3-14-24)
 ---
-- update /istio/ambient-demo environment to 1.21.0 
+- update /istio/ambient-demo environment to 1.21.0
     - Support for any CNI now available upstream
     - This makes it possible to test ambient an ambient environment locally on k3d or colima+k3s using the `-i` or `-i --colima` flag
 - update istio/ambient-demo with a few new variations
@@ -252,7 +252,7 @@ add general-chatbot and language-chatbot to gloo-edge/gateway-api environment
 0.1.14 (12-27-23)
 ---
 - update homer image to ably77/homer:0.1.0 (adds glooy logo)
-- add --context to homer output command: 
+- add --context to homer output command:
 ```
 echo "access the dashboard at https://$(kubectl --context ${cluster_context} -n istio-gateways get service istio-ingressgateway-${ISTIO_REVISION} -o jsonpath='{.status.loadBalancer.ingress[0].*}')/solo"
 ```
@@ -310,18 +310,18 @@ An example `catalog.yaml` below shows an example where the default localhost `ho
   #- name: homer-app
   #  location: $env_path/homer-app/localhost
   #  scripts:
-  #    pre_deploy: 
+  #    pre_deploy:
   #    -  $env_path/homer-app/localhost/init.sh
   #    post_deploy:
-  #    -  $env_path/homer-app/localhost/test.sh 
+  #    -  $env_path/homer-app/localhost/test.sh
   # Uncomment to use LB Discovery for link dashboard (Cloud)
   - name: homer-app
     location: $env_path/homer-app/lb-discovery
     scripts:
-      pre_deploy: 
+      pre_deploy:
       -  $env_path/homer-app/lb-discovery/init.sh
       post_deploy:
-      -  $env_path/homer-app/lb-discovery/test.sh 
+      -  $env_path/homer-app/lb-discovery/test.sh
 ```
 
 0.1.4 (11-20-23)
