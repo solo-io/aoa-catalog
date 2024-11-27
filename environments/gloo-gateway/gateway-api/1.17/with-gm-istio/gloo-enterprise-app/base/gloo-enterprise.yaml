@@ -54,7 +54,7 @@ spec:
               livenessProbeEnabled: true
               resources:
                 limit:
-                  memory: "1G"
+                  memory: "1Gi"
           discovery:
             # We don't need the discovery deployment for our Gloo Gateway demo
             enabled: false
