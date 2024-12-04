@@ -1,20 +1,18 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: argocd-vs
-  namespace: argocd
+  name: argo-vs
+  namespace: istio-gateways
 spec:
   hosts:
-  - "argocd.west.gmc.glooplatform.com"
+  - "argo.west.gmc.glooplatform.com"
   gateways:
-  - istio-system/http-gateway
+  - istio-gateways/https-gateway
   http:
   - name: argo-ui
     match:
     - uri:
         prefix: /argo
-    - uri:
-        prefix: /
     route:
     - destination:
         host: argocd-server
