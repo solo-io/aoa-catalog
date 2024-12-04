@@ -7,7 +7,7 @@ spec:
   hosts:
   - "argocd.west.gmc.glooplatform.com"
   gateways:
-  - istio-system/https-gateway
+  - istio-system/http-gateway
   http:
   - name: argo-ui
     match:
