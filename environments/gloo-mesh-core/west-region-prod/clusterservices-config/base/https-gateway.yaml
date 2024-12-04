@@ -12,12 +12,13 @@ spec:
       name: https
       protocol: HTTPS
     hosts:
-    - "istio-gateways/*"
-    - "gloo-mesh/*"
-    - "argocd/*"
-    - "grafana/*"
-    - "web-ui/*"
-    - "openai/*"
+    #- "istio-gateways/*"
+    #- "gloo-mesh/*"
+    #- "argocd/*"
+    #- "grafana/*"
+    #- "web-ui/*"
+    #- "openai/*"
+    - "*"
     tls:
       mode: SIMPLE
       credentialName: cf-advanced-tls-secret
