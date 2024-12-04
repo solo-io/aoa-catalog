@@ -11,4 +11,3 @@ resources:
 #- jaeger-vs.yaml
 #- kiali-vs.yaml
 #- prometheus-vs.yaml
-- argocd-vs.yaml
