@@ -12,9 +12,9 @@ spec:
   - name: argo-ui
     match:
     - uri:
-        prefix: /argo
+        prefix: /
     route:
     - destination:
         host: argocd-server
         port:
-          number: 80
+          number: 443
