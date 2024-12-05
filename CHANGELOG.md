@@ -1,5 +1,9 @@
 # Changelog
 
+0.7.1 (12-5-24)
+---
+- set 1.18/ai-gateway and /portal-only envs to use `1.18.0-rc3` release
+
 0.7.0 (11-19-24)
 ---
 - set 1.18/ai-gateway and /portal-only envs to use `1.18.0-rc1` release
