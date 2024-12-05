@@ -15,13 +15,13 @@ spec:
   source:
     chart: gateway
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.23.0
+    targetRevision: 1.24.0
     helm:
       values: |
         # Name allows overriding the release name. Generally this should not be set
         name: "istio-eastwestgateway"
         # revision declares which revision this gateway is a part of
-        revision: "1-23"
+        revision: "1-24"
         
         replicaCount: 1
         
@@ -55,7 +55,7 @@ spec:
         
         # Labels to apply to all resources
         labels:
-          istio.io/rev: 1-23
+          istio.io/rev: 1-24
           istio: eastwestgateway
           topology.istio.io/network: cluster2
   syncPolicy:

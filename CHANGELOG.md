@@ -10,6 +10,7 @@
     - note that ambient environments are still configured to use `1.23.3` until a fix in `1.24.2`
 - set gloo-mesh-core environments to `2.6.6` and istio `1.24.0-solo` with `1-24` revision tag
 - set gloo-mesh-gateway environments to `2.6.6` and istio `1.24.0-solo` with `1-24` revision tag
+- set gloo-platform environments to `2.6.6` and istio `1.24.0-solo` with `1-24` revision tag
 
 
 0.7.0 (11-19-24)
