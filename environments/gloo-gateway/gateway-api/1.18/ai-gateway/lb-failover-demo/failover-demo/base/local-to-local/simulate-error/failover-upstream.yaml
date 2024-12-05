@@ -20,6 +20,6 @@ spec:
       - pool:
         - openai:
             customHost:
-              host: ollama-qwen.gloo-system.svc.cluster.local
+              host: ollama-qwen.ollama.svc.cluster.local
               port: 11434
             model: qwen:0.5b
