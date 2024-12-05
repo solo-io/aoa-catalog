@@ -28,19 +28,3 @@ waves:
       -  $env_path/ollama/init.sh
       post_deploy:
       -  $env_path/ollama/test.sh 
-  - name: traffic-shift-demo
-    location: $env_path/traffic-shift-demo/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/traffic-shift-demo/init.sh
-      post_deploy:
-      -  $env_path/traffic-shift-demo/test.sh 
-    sync: false
-  - name: failover-demo
-    location: $env_path/failover-demo/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/failover-demo/init.sh
-      post_deploy:
-      -  $env_path/failover-demo/test.sh 
-    sync: false

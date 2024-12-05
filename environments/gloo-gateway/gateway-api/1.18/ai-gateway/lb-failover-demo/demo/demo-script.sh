@@ -1,28 +1,25 @@
 #!/bin/bash
 
-export traffic_shift_path="traffic-shift/base"
-export failover_path="failover/base"
-
 echo "Starting the Load Balancing and Failover Demo..."
 echo
 
 # Step 1: Review Example Upstreams
 echo
 read -p "Step 1: Review example upstream configurations. Press enter to proceed..."
-cat ${traffic_shift_path}/ollama-qwen-0.5-upstream.yaml
-cat ${traffic_shift_path}/ollama-qwen-1.8-upstream.yaml
+cat traffic-shift/ollama-qwen-0.5-upstream.yaml
+cat traffic-shift/ollama-qwen-1.8-upstream.yaml
 echo
 
 # Step 2: Review HTTPRoute for 50-50 Traffic Split
 echo
 read -p "Step 2: Review HTTPRoute for 50-50 traffic split. Press enter to proceed..."
-cat ${traffic_shift_path}/qwen-5050-httproute.yaml
+cat traffic-shift/qwen-5050-httproute.yaml
 echo
 
 # Step 3: Configure Traffic Shift
 echo
 read -p "Step 3: Apply 50-50 traffic shift configuration. Press enter to proceed..."
-kubectl apply -k ${traffic_shift_path}
+kubectl apply -f traffic-shift
 echo
 
 # Step 4: Get AI Gateway Load Balancer Address
@@ -65,9 +62,9 @@ done
 # Step 6: Configure Local-to-Local Failover
 echo
 read -p "Step 6: Configure local-to-local failover example. Press enter to proceed..."
-cat ${failover_path}/local-to-local/failover-upstream.yaml
-cat ${failover_path}/local-to-local/failover-route.yaml
-kubectl apply -k ${failover_path}/local-to-local
+cat failover/local-to-local/failover-upstream.yaml
+cat failover/local-to-local/failover-route.yaml
+kubectl apply -f failover/local-to-local
 echo "Local-to-local failover configuration applied."
 echo
 
@@ -103,8 +100,8 @@ done
 # Step 8: Simulate Failover Errors
 echo
 read -p "Step 8: Simulate failover errors. Press enter to proceed..."
-cat ${failover_path}/local-to-local/simulate-error/failover-upstream.yaml
-kubectl apply -k ${failover_path}/local-to-local/simulate-error
+cat failover/local-to-local/simulate-error/failover-upstream.yaml
+kubectl apply -f failover/local-to-local/simulate-error
 echo "Failover configuration with simulated errors applied."
 echo
 echo "Testing /failover endpoint."
@@ -141,9 +138,9 @@ echo
 read -p "Step 9: Configure OpenAI to local failover. Press enter to proceed..."
 kubectl create secret generic openai-secret -n gloo-system \
 --from-literal="Authorization=Bearer $OPENAI_API_KEY" \
---dry-run=client -oyaml | kubectl apply -k -
-cat ${failover_path}/openai-to-local/openai-to-local-upstream.yaml
-kubectl apply -k ${failover_path}/openai-to-local
+--dry-run=client -oyaml | kubectl apply -f -
+cat failover/openai-to-local/openai-to-local-upstream.yaml
+kubectl apply -f failover/openai-to-local
 echo "OpenAI to local failover configuration applied."
 echo
 
@@ -179,8 +176,8 @@ done
 # Step 11: Simulate Error for OpenAI Failover
 echo
 read -p "Step 11: Simulate error for OpenAI failover. Press enter to proceed..."
-cat ${failover_path}/openai-to-local/simulate-error/openai-to-local-upstream.yaml
-kubectl apply -k ${failover_path}/openai-to-local/simulate-error
+cat failover/openai-to-local/simulate-error/openai-to-local-upstream.yaml
+kubectl apply -f failover/openai-to-local/simulate-error
 echo "Simulated error configuration applied to OpenAI failover upstream."
 echo
 
@@ -216,11 +213,9 @@ done
 # Step 12: Cleanup Resources
 echo
 read -p "Step 11: Cleanup demo resources. Press enter to proceed..."
-kubectl delete -f ${failover_path}/openai-to-local
-kubectl delete -f ${failover_path}/local-to-local
-kubectl delete -f ${traffic_shift_path}
-kubectl apply -k ${traffic_shift_path}
-kubectl apply -k ${failover_path}
+kubectl delete -f failover/openai-to-local
+kubectl delete -f failover/local-to-local
+kubectl delete -f traffic-shift
 echo "Demo resources cleaned up."
 echo
 
