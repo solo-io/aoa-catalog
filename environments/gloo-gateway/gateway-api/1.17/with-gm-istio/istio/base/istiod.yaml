@@ -18,7 +18,7 @@ spec:
     targetRevision: 1.24.0
     helm:
       values: |
-        revision: 1-23
+        revision: 1-24
         global:
           hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
           tag: 1.24.0-solo
@@ -40,6 +40,6 @@ spec:
   ignoreDifferences:
     - group: admissionregistration.k8s.io
       kind: ValidatingWebhookConfiguration
-      name: istio-validator-1-23-istio-system
+      name: istio-validator-1-24-istio-system
       jsonPointers:
         - /webhooks/0/failurePolicy

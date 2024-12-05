@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: gloo-mesh-addons
   #labels:
-  #  istio.io/rev: 1-23
+  #  istio.io/rev: 1-24
