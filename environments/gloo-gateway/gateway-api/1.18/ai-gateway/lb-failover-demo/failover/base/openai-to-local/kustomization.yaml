@@ -5,6 +5,5 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - openai-to-local-route.yaml
-#- openai-to-local-upstream.yaml
-- simulate-error/openai-to-local-upstream.yaml
+- openai-to-local-upstream.yaml
 
