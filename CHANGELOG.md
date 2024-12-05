@@ -9,6 +9,7 @@
 - set gloo-gateway/gateway-api/1.17 environments using istio to `1.24.0-solo` images and `1-24` revision tag and update Gloo Platform to `2.6.6`
     - note that ambient environments are still configured to use `1.23.3` until a fix in `1.24.2`
 - set gloo-mesh-core environments to `2.6.6` and istio `1.24.0-solo` with `1-24` revision tag
+- set gloo-mesh-gateway environments to `2.6.6` and istio `1.24.0-solo` with `1-24` revision tag
 
 
 0.7.0 (11-19-24)
