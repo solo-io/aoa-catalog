@@ -1,5 +1,18 @@
 # Changelog
 
+0.7.1 (12-5-24)
+---
+- set gloo-gateway/gateway-api/1.18/ai-gateway and /portal-only envs to use `1.18.0-rc3` release
+- reconfigure ollama to own namespace in gloo-gateway/gateway-api/1.18/ai-gateway/lb-failover-demo
+- add demo-script.sh in gloo-gateway/gateway-api/1.18/ai-gateway/lb-failover-demo
+- set gloo-gateway/gateway-api/1.17 environments to `1.17.4`
+- set gloo-gateway/gateway-api/1.17 environments using istio to `1.24.0-solo` images and `1-24` revision tag and update Gloo Platform to `2.6.6`
+    - note that ambient environments are still configured to use `1.23.3` until a fix in `1.24.2`
+- set gloo-mesh-core environments to `2.6.6` and istio `1.24.0-solo` with `1-24` revision tag
+- set gloo-mesh-gateway environments to `2.6.6` and istio `1.24.0-solo` with `1-24` revision tag
+- set gloo-platform environments to `2.6.6` and istio `1.24.0-solo` with `1-24` revision tag
+
+
 0.7.0 (11-19-24)
 ---
 - set 1.18/ai-gateway and /portal-only envs to use `1.18.0-rc1` release

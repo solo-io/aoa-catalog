@@ -1,20 +1,9 @@
-# ====================================
-# Processing environment: environments/gloo-gateway/gateway-api/1.18/ai-gateway/aigw-config/base/ollama-qwen
-# ------------------------------------
-# Date: Mon Nov  4 13:34:46 PST 2024
-# ====================================
-# ------------------------------------
-# Found kustomization.yaml in: environments/gloo-gateway/gateway-api/1.18/ai-gateway/aigw-config/base/ollama-qwen
-# Running 'kubectl kustomize'...
-# Successfully ran 'kubectl kustomize' in environments/gloo-gateway/gateway-api/1.18/ai-gateway/aigw-config/base/ollama-qwen
-# ------------------------------------
-# Kustomized output for environments/gloo-gateway/gateway-api/1.18/ai-gateway/aigw-config/base/ollama-qwen:
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: ollama-qwen
-  namespace: gloo-system
+  namespace: ollama
 spec:
   ports:
   - name: http
@@ -29,7 +18,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ollama-qwen
-  namespace: gloo-system
+  namespace: ollama
 spec:
   selector:
     matchLabels:

@@ -10,13 +10,13 @@ The `gloo-gateway/httpbin` environment deploys the core components of a single c
 
 ## Environment descriptions
 - base:
-    - gloo mesh 2.6.3
+    - gloo mesh 2.6.6
     - istio 1.23.0-solo (Helm)
-    - revision: 1-23
+    - revision: 1-24
 - ilm:
-    - gloo mesh 2.6.3
+    - gloo mesh 2.6.6
     - istio 1.23.0-solo (ILM)
-    - revision: 1-23
+    - revision: 1-24
 
 ## Application description
 
@@ -38,7 +38,7 @@ To access applications, follow the methods below:
 
 Discover your gateway IP address
 ```
-ISTIO_REVISION=1-23
+ISTIO_REVISION=1-24
 GATEWAY_IP=$(kubectl -n istio-gateways get service istio-ingressgateway-${ISTIO_REVISION} -o '{.status.loadBalancer.ingress[0].*}')
 
 echo ${GATEWAY_IP}
@@ -79,7 +79,7 @@ access gloo mesh ui at https://localhost:8090"
 
 To access Istio Ingress Gateway using port-forward command:
 ```
-ISTIO_REVISION=1-23
+ISTIO_REVISION=1-24
 kubectl port-forward -n istio-gateways svc/istio-ingressgateway-${ISTIO_REVISION} 8443:443 --context <cluster_name>
 ```
 access the ingress gateway at https://localhost:8443

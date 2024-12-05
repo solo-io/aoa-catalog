@@ -25,7 +25,7 @@ spec:
               glooGateway:
                 istio:
                   istioProxyContainer:
-                    istioDiscoveryAddress: istiod-1-23.istio-system.svc:15012
+                    istioDiscoveryAddress: istiod-1-24.istio-system.svc:15012
                     istioMetaClusterId: Kubernetes
                     istioMetaMeshId: Kubernetes
           gatewayProxies:
@@ -107,7 +107,7 @@ spec:
               deployment:
                 logLevel: debug
     repoURL: http://storage.googleapis.com/gloo-ee-helm
-    targetRevision: 1.17.1
+    targetRevision: 1.17.4
   syncPolicy:
     automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).

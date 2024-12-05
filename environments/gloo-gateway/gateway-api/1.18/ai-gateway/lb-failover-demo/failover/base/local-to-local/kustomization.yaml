@@ -6,5 +6,4 @@ kind: Kustomization
 resources:
 - failover-route.yaml
 - failover-upstream.yaml
-#- simulate-error/failover-upstream.yaml
 

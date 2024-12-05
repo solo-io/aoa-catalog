@@ -4,11 +4,11 @@ metadata:
   labels:
     app: istio-ingressgateway
     istio: ingressgateway
-    revision: 1-23
+    revision: 1-24
   annotations:
     # AWS NLB Annotation
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
-  name: istio-ingressgateway-1-23
+  name: istio-ingressgateway-1-24
   namespace: istio-gateways
 spec:
   ports:
@@ -23,5 +23,5 @@ spec:
   selector:
     app: istio-ingressgateway
     istio: ingressgateway
-    revision: 1-23
+    revision: 1-24
   type: LoadBalancer

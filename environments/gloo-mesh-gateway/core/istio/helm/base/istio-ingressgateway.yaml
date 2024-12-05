@@ -19,9 +19,9 @@ spec:
     helm:
       values: |
         # Name allows overriding the release name. Generally this should not be set
-        name: "istio-ingressgateway-1-23"
+        name: "istio-ingressgateway-1-24"
         # revision declares which revision this gateway is a part of
-        revision: "1-23"
+        revision: "1-24"
         
         replicaCount: 1
         

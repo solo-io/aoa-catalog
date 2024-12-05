@@ -35,6 +35,7 @@ waves:
       -  $env_path/traffic-shift-demo/init.sh
       post_deploy:
       -  $env_path/traffic-shift-demo/test.sh 
+    sync: false
   - name: failover-demo
     location: $env_path/failover-demo/base
     scripts:
@@ -42,3 +43,4 @@ waves:
       -  $env_path/failover-demo/init.sh
       post_deploy:
       -  $env_path/failover-demo/test.sh 
+    sync: false

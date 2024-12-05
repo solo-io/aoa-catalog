@@ -11,11 +11,10 @@ spec:
       priorities:
       - pool:
         - openai:
-            customHost:
-              # invalid host
-              #host: invalidhost.foo.bar
-              # 429 status code
-              host: httpbin.org/status/429
+            # customHost not required, will default to api.openai.com if undefined
+            # but we will manipulate this to simulate an error in the next step
+            customHost: 
+              host: api.openai.com
             model: gpt-4o-mini
             authToken:
               secretRef:
@@ -24,6 +23,6 @@ spec:
       - pool:
         - openai:
             customHost:
-              host: ollama-qwen.gloo-system.svc.cluster.local
+              host: ollama-qwen.ollama.svc.cluster.local
               port: 11434
             model: qwen:0.5b
