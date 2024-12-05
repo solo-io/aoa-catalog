@@ -2,9 +2,10 @@
 
 0.7.1 (12-5-24)
 ---
-- set 1.18/ai-gateway and /portal-only envs to use `1.18.0-rc3` release
-- reconfigure ollama to own namespace in 1.18/ai-gateway/lb-failover-demo
-- add demo-script.sh in 1.18/ai-gateway/lb-failover-demo
+- set gloo-gateway/gateway-api/1.18/ai-gateway and /portal-only envs to use `1.18.0-rc3` release
+- reconfigure ollama to own namespace in gloo-gateway/gateway-api/1.18/ai-gateway/lb-failover-demo
+- add demo-script.sh in gloo-gateway/gateway-api/1.18/ai-gateway/lb-failover-demo
+- set gloo-gateway/gateway-api/1.17 environments to `1.17.4`
 
 0.7.0 (11-19-24)
 ---
