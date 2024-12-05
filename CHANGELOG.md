@@ -1,5 +1,10 @@
 # Changelog
 
+0.7.2 (12-5-24)
+---
+- add 1.18/ai-gateway/lb-failover-demo environment to demonstrate traffic shifting and resiliency
+- add 1.18/ai-gateway/auth-and-rl-demo environment to demonstrate JWT Auth, RBAC, and Rate Limiting based on Token count
+
 0.7.1 (12-5-24)
 ---
 - set gloo-gateway/gateway-api/1.18/ai-gateway and /portal-only envs to use `1.18.0-rc3` release

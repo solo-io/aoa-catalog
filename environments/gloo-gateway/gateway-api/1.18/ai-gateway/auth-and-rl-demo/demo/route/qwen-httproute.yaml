@@ -1,0 +1,38 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: ollama-qwen
+  namespace: gloo-system
+spec:
+  parentRefs:
+  - name: ai-gateway
+    namespace: gloo-system
+  rules:
+  - backendRefs:
+    - group: gloo.solo.io
+      kind: Upstream
+      name: ollama-qwen-0.5-upstream
+      namespace: gloo-system
+      weight: 100
+    filters:
+    - extensionRef:
+        group: gateway.solo.io
+        kind: RouteOption
+        name: ollama-qwen-route-policies
+      type: ExtensionRef
+    matches:
+    - path:
+        type: PathPrefix
+        value: /qwen
+---
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: ollama-qwen-route-policies
+  namespace: gloo-system
+spec:
+  options:
+    jwt:
+      disable: false
+    prefixRewrite: /v1/chat/completions
+
