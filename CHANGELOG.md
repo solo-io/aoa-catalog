@@ -6,7 +6,7 @@
 - reconfigure ollama to own namespace in gloo-gateway/gateway-api/1.18/ai-gateway/lb-failover-demo
 - add demo-script.sh in gloo-gateway/gateway-api/1.18/ai-gateway/lb-failover-demo
 - set gloo-gateway/gateway-api/1.17 environments to `1.17.4`
-- set gloo-gateway/gateway-api/1.17 environments using istio to `1.24.0-solo` images and `1-24` revision tag
+- set gloo-gateway/gateway-api/1.17 environments using istio to `1.24.0-solo` images and `1-24` revision tag and update Gloo Platform to `2.6.6`
 
 0.7.0 (11-19-24)
 ---
