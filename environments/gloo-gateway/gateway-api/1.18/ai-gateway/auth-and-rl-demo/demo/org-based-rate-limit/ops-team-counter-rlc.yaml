@@ -1,0 +1,24 @@
+apiVersion: ratelimit.solo.io/v1alpha1
+kind: RateLimitConfig
+metadata:
+  name: ops-team-counter-rlc
+  namespace: gloo-system
+spec:
+  raw:
+    descriptors:
+    - key: ops-team
+      rateLimit:
+        requestsPerUnit: 150
+        unit: HOUR
+    rateLimits:
+    - actions:
+      - metadata:
+          descriptorKey: ops-team
+          source: DYNAMIC
+          default: unknown
+          metadataKey:
+            key: "envoy.filters.http.jwt_authn"
+            path:
+            - key: principal
+            - key: team
+              value: ops

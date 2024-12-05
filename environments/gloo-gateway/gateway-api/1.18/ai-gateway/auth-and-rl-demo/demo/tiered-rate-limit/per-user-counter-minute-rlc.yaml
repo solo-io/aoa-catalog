@@ -1,0 +1,23 @@
+apiVersion: ratelimit.solo.io/v1alpha1
+kind: RateLimitConfig
+metadata:
+  name: per-user-counter-minute
+  namespace: gloo-system
+spec:
+  raw:
+    descriptors:
+    - key: user-id
+      rateLimit:
+        requestsPerUnit: 100
+        unit: MINUTE
+    rateLimits:
+    - actions:
+      - metadata:
+          descriptorKey: user-id
+          source: DYNAMIC
+          default: unknown
+          metadataKey:
+            key: "envoy.filters.http.jwt_authn"
+            path:
+            - key: principal
+            - key: sub

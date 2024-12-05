@@ -1,0 +1,24 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: ollama-qwen-rbac-route-option
+  namespace: gloo-system
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: ollama-qwen
+  options:
+    rbac:
+      policies:
+        viewer:
+          nestedClaimDelimiter: .
+          principals:
+          #- jwtPrincipal:
+          #    claims:
+          #      "llms.openai": "gpt-3.5-turbo"
+          #    matcher: LIST_CONTAINS
+          - jwtPrincipal:
+              claims:
+                "org": "solo.io"
+                "team": "dev"
