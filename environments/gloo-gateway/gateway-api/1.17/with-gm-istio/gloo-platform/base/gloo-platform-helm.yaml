@@ -101,7 +101,7 @@ spec:
         telemetryGateway:
             enabled: false
         telemetryCollector:
-            enabled: true
+            enabled: false
             mode: deployment
             replicaCount: 1
         telemetryCollectorCustomization:
