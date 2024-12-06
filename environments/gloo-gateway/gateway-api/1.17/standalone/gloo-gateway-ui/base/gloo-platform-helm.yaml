@@ -1,0 +1,72 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gloo-gateway-ui-helm
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io/solo-io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gloo-system
+  project: default
+  source:
+    chart: gloo-platform
+    helm:
+      skipCrds: true
+      values: |
+        featureGates:
+            insightsConfiguration: true
+        common:
+            adminNamespace: "gloo-system"
+            cluster: mgmt
+        glooInsightsEngine:
+            enabled: true
+            runAsSidecar: false
+        glooUi:
+            enabled: true
+            serviceType: LoadBalancer
+        licensing:
+            licenseSecretName: "gloo-license"
+        prometheus:
+            enabled: true
+        redis:
+            deployment:
+                enabled: true
+        telemetryCollector:
+            enabled: true
+            mode: deployment
+            replicaCount: 1
+        telemetryCollectorCustomization:
+            pipelines:
+              logs/analyzer:
+                enabled: false
+              logs/ui:
+                enabled: true
+                pipeline:
+                  exporters:
+                  - redisstream/ui
+              metrics/ui:
+                enabled: true
+                pipeline:
+                  exporters:
+                  - debug
+                  - prometheus
+            extraExporters:
+              debug:
+                verbosity: detailed
+                sampling_initial: 5
+                sampling_thereafter: 200
+
+    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
+    targetRevision: 2.7.0-beta1-2024-12-06-add-gg-standalone-otel-pipelines-d1462e9a2c
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  # ignore the self-signed certs that are being generated automatically    
+  ignoreDifferences:
+  - group: v1
+    kind: Secret
+  - kind: ClusterRole
+  - kind: ClusterRoleBinding
