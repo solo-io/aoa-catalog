@@ -20,6 +20,12 @@ spec:
         common:
             adminNamespace: "gloo-system"
             cluster: mgmt
+        glooMgmtServer:
+            enabled: true
+        glooAgent:
+            enabled: true
+        glooAnalyzer:
+            enabled: true
         glooInsightsEngine:
             enabled: true
             runAsSidecar: false
@@ -33,6 +39,8 @@ spec:
         redis:
             deployment:
                 enabled: true
+        telemetryGateway:
+            enabled: true
         telemetryCollector:
             enabled: true
             mode: deployment
