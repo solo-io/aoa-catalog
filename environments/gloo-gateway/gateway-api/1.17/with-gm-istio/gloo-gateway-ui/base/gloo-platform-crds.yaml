@@ -11,7 +11,7 @@ spec:
   source:
     chart: gloo-platform-crds
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-12-03-add-gg-standalone-otel-pipelines-7fefbd4227
+    targetRevision: 2.7.0-beta1-2024-12-06-add-gg-standalone-otel-pipelines-d1462e9a2c
     helm:
       values: |
         installEnterpriseCrds: false

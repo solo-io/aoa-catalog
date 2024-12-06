@@ -7,7 +7,7 @@ echo "deploy and register gloo-mesh agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.7.0-beta1-2024-11-14-main-eb5373cda5):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.7.0-beta1-2024-12-04-main-8c0e0d52b7):"
     read gloo_mesh_version
 fi
 
@@ -75,7 +75,7 @@ spec:
                   namespace: null
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-11-14-main-eb5373cda5
+    targetRevision: 2.7.0-beta1-2024-12-04-main-8c0e0d52b7
   syncPolicy:
     automated:
       prune: true
@@ -123,7 +123,7 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.7.0-beta1-2024-11-14-main-eb5373cda5
+              tag: 2.7.0-beta1-2024-12-04-main-8c0e0d52b7
             config:
                 exporters:
                     otlp:
@@ -145,7 +145,7 @@ spec:
                   name: cilium-run
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-11-14-main-eb5373cda5
+    targetRevision: 2.7.0-beta1-2024-12-04-main-8c0e0d52b7
   syncPolicy:
     automated:
       prune: true
