@@ -1,26 +1,26 @@
 #!/bin/bash
 
 echo "wave description:"
-echo "deploy and register gloo-mesh agent and addons"
+echo "deploy and register gloo agent and addons"
 
 # check to see if gloo_mesh_version variable was passed through, if not prompt for it
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.7.0-beta1-2024-12-04-main-8c0e0d52b7):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.7.0-beta1-2024-12-06-add-gg-standalone-otel-pipelines-c53b736b75):"
     read gloo_mesh_version
 fi
 
 # discover gloo mesh endpoint with kubectl
 until [ "${SVC}" != "" ]; do
-  SVC=$(kubectl --context ${mgmt_context} -n gloo-mesh get svc gloo-mesh-mgmt-server -o jsonpath='{.status.loadBalancer.ingress[0].*}')
+  SVC=$(kubectl --context ${mgmt_context} -n gloo-system get svc gloo-mesh-mgmt-server -o jsonpath='{.status.loadBalancer.ingress[0].*}')
   echo waiting for gloo mesh management server LoadBalancer IP to be detected
   sleep 2
 done
 
 # discover gloo mesh metrics endpoint with kubectl
 until [ "${METRICS}" != "" ]; do
-  METRICS=$(kubectl --context ${mgmt_context} -n gloo-mesh get svc gloo-telemetry-gateway -o jsonpath='{.status.loadBalancer.ingress[0].*}')
+  METRICS=$(kubectl --context ${mgmt_context} k)
   echo waiting for gloo mesh metrics gateway LoadBalancer IP to be detected
   sleep 2
 done
@@ -30,7 +30,7 @@ apiVersion: admin.gloo.solo.io/v2
 kind: KubernetesCluster
 metadata:
   name: ${cluster_context}
-  namespace: gloo-mesh
+  namespace: gloo-system
   labels:
     roottrust: shared
 spec:
@@ -43,7 +43,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: relay-root-ca
-  namespace: gloo-mesh
+  namespace: gloo-system
 spec:
   ca:
     secretName: relay-root-ca
@@ -52,7 +52,7 @@ kind: Certificate
 apiVersion: cert-manager.io/v1
 metadata:
   name: gloo-agent
-  namespace: gloo-mesh
+  namespace: gloo-system
 spec:
   commonName: gloo-agent
   dnsNames:
@@ -88,7 +88,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: gloo-mesh
+    namespace: gloo-system
   project: default
   source:
     chart: gloo-platform
@@ -105,7 +105,7 @@ spec:
                 serverAddress: "${SVC}:9900"
                 clientTlsSecret:
                     name: gloo-agent-tls-cert
-                    namespace: gloo-mesh
+                    namespace: gloo-system
                 # required to set to null in 2.4.x if providing server and client tls certificates
                 tokenSecret:
                   key: null
@@ -115,7 +115,7 @@ spec:
             enabled: true
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-12-04-main-8c0e0d52b7
+    targetRevision: 2.7.0-beta1-2024-12-06-add-gg-standalone-otel-pipelines-c53b736b75
   syncPolicy:
     automated:
       prune: true
@@ -138,7 +138,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: gloo-mesh
+    namespace: gloo-system
   project: default
   source:
     chart: gloo-platform
@@ -171,7 +171,7 @@ spec:
                   name: cilium-run
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-12-04-main-8c0e0d52b7
+    targetRevision: 2.7.0-beta1-2024-12-06-add-gg-standalone-otel-pipelines-c53b736b75
   syncPolicy:
     automated:
       prune: true

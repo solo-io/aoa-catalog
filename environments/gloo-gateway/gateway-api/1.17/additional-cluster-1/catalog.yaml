@@ -15,9 +15,9 @@ waves:
       post_deploy:
       -  $env_path/gateway-api-config/test.sh
   - name: gloo-gateway-ui
-    location: $env_path/gloo-gateway-ui/base
+    location: $env_path/gloo-agent/base
     scripts:
       pre_deploy:
-        -  $env_path/gloo-gateway-ui/init.sh
+        -  $env_path/gloo-agent/init.sh
       post_deploy:
-        -  $env_path/gloo-gateway-ui/test.sh
+        -  $env_path/gloo-agent/test.sh
