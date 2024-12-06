@@ -20,7 +20,7 @@ done
 
 # discover gloo mesh metrics endpoint with kubectl
 until [ "${METRICS}" != "" ]; do
-  METRICS=$(kubectl --context ${mgmt_context} k)
+  METRICS=$(kubectl --context ${mgmt_context} -n gloo-system get svc gloo-telemetry-gateway -o jsonpath='{.status.loadBalancer.ingress[0].*}')
   echo waiting for gloo mesh metrics gateway LoadBalancer IP to be detected
   sleep 2
 done
