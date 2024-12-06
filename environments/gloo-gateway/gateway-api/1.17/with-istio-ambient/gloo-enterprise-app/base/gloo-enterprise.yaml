@@ -95,7 +95,7 @@ spec:
               deployment:
                 logLevel: debug
     repoURL: https://storage.googleapis.com/gloo-ee-test-helm
-    targetRevision: 1.18.0-rc3-bkubegateway-clusternames-3f71ec6
+    targetRevision: 1.19.0-beta1-bcluster-stats-name-5f8953d
   syncPolicy:
     automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).

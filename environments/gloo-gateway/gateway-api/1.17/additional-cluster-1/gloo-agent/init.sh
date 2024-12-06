@@ -7,20 +7,20 @@ echo "deploy and register gloo agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.7.0-beta1-2024-12-06-add-gg-standalone-otel-pipelines-c53b736b75):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.7.0-beta1-2024-12-06-chunter-issue-19177-008d170ddc):"
     read gloo_mesh_version
 fi
 
 # discover gloo mesh endpoint with kubectl
 until [ "${SVC}" != "" ]; do
-  SVC=$(kubectl --context ${mgmt_context} -n gloo-system get svc gloo-mesh-mgmt-server -o jsonpath='{.status.loadBalancer.ingress[0].*}')
+  SVC=$(kubectl --context ${mgmt_context} -n gloo-system get svc gloo-mesh-mgmt-server -o jsonpath='{.status.loadBalancer.ingress[0].*}' | sed 's/ VIP//g')
   echo waiting for gloo mesh management server LoadBalancer IP to be detected
   sleep 2
 done
 
 # discover gloo mesh metrics endpoint with kubectl
 until [ "${METRICS}" != "" ]; do
-  METRICS=$(kubectl --context ${mgmt_context} -n gloo-system get svc gloo-telemetry-gateway -o jsonpath='{.status.loadBalancer.ingress[0].*}')
+  METRICS=$(kubectl --context ${mgmt_context} -n gloo-system get svc gloo-telemetry-gateway -o jsonpath='{.status.loadBalancer.ingress[0].*}' | sed 's/ VIP//g')
   echo waiting for gloo mesh metrics gateway LoadBalancer IP to be detected
   sleep 2
 done
@@ -108,7 +108,7 @@ spec:
             enabled: true
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-12-06-add-gg-standalone-otel-pipelines-c53b736b75
+    targetRevision: 2.7.0-beta1-2024-12-06-chunter-issue-19177-008d170ddc
   syncPolicy:
     automated:
       prune: true
@@ -164,7 +164,7 @@ spec:
                   name: cilium-run
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-12-06-add-gg-standalone-otel-pipelines-c53b736b75
+    targetRevision: 2.7.0-beta1-2024-12-06-chunter-issue-19177-008d170ddc
   syncPolicy:
     automated:
       prune: true
