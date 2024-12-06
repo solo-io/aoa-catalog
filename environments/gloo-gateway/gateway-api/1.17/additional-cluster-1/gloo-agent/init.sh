@@ -102,6 +102,8 @@ spec:
         glooAgent:
             enabled: true
             insecure: true
+            relay:
+                serverAddress: "${SVC}:9900"
         glooAnalyzer:
             enabled: true
                   
