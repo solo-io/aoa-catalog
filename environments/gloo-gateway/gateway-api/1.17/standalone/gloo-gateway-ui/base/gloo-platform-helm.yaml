@@ -25,11 +25,13 @@ spec:
             registerCluster: true
         glooAgent:
             enabled: true
+            runAsSidecar: true
         glooAnalyzer:
             enabled: true
+            runAsSidecar: true
         glooInsightsEngine:
             enabled: true
-            runAsSidecar: false
+            runAsSidecar: true
         glooUi:
             enabled: true
             serviceType: LoadBalancer
