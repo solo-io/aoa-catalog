@@ -22,9 +22,11 @@ spec:
             cluster: mgmt
         glooMgmtServer:
             enabled: true
+            insecure: true
             registerCluster: true
         glooAgent:
             enabled: true
+            insecure: true
             runAsSidecar: true
         glooAnalyzer:
             enabled: true

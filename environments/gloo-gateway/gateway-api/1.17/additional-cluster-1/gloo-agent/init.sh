@@ -101,16 +101,7 @@ spec:
         global: {}
         glooAgent:
             enabled: true
-            relay:
-                serverAddress: "${SVC}:9900"
-                clientTlsSecret:
-                    name: gloo-agent-tls-cert
-                    namespace: gloo-system
-                # required to set to null in 2.4.x if providing server and client tls certificates
-                tokenSecret:
-                  key: null
-                  name: null
-                  namespace: null
+            insecure: true
         glooAnalyzer:
             enabled: true
                   
