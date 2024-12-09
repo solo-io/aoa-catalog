@@ -120,7 +120,7 @@ spec:
                   - prometheus
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-12-06-chunter-issue-19177-008d170ddc
+    targetRevision: 2.7.0-beta1-2024-12-06-add-gg-standalone-otel-pipelines-c53b736b75
   syncPolicy:
     automated:
       prune: true
