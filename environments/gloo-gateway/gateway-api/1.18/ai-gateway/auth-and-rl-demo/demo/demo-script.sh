@@ -9,6 +9,8 @@ echo
 # Step 1: Configure a simple route to qwen-0.5b LLM backend
 read -p "Step 1: Configure a simple route to qwen-0.5b LLM backend. Press enter to proceed..."
 kubectl apply -f route
+echo
+cat route/*.yaml
 echo "Route applied successfully."
 echo
 
@@ -20,7 +22,7 @@ echo
 
 # Step 3: Test the AI Gateway Endpoint
 read -p "Step 3: Test the AI Gateway endpoint. Press enter to proceed..."
-curl http://$GATEWAY_IP:8080/qwen -H "Content-Type: application/json" -d '{
+curl -i http://$GATEWAY_IP:8080/qwen -H "Content-Type: application/json" -d '{
     "messages": [
       {
         "role": "system",
@@ -33,20 +35,22 @@ curl http://$GATEWAY_IP:8080/qwen -H "Content-Type: application/json" -d '{
     ]
   }'
 echo
+echo "^^^^"
 echo "The response should indicate that qwen-0.5b is serving the request."
 echo
 
 # Step 4: Set up Access Control
 read -p "Step 4: Configure access control to restrict unauthenticated access. Press enter to proceed..."
 kubectl apply -f access-control
-cat access-control/jwt-provider.yaml
+echo
+cat access-control/*.yaml
 echo
 echo "Access control configured successfully."
 echo
 
 # Step 5: Test Access Control Without JWT
 read -p "Step 5: Test the endpoint without JWT to verify access control. Press enter to proceed..."
-curl -v http://$GATEWAY_IP:8080/qwen -H "Content-Type: application/json" -d '{
+curl -i http://$GATEWAY_IP:8080/qwen -H "Content-Type: application/json" -d '{
     "messages": [
       {
         "role": "system",
@@ -59,12 +63,13 @@ curl -v http://$GATEWAY_IP:8080/qwen -H "Content-Type: application/json" -d '{
     ]
   }'
 echo
+echo "^^^^"
 echo "The request should return a 401 HTTP response code, indicating that JWT is missing."
 echo
 
 # Step 6: Save and Test Alice's JWT Token
 read -p "Step 6: Save and test Alice's JWT token. Press enter to proceed..."
-curl -v http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $ALICE_TOKEN" -H "Content-Type: application/json" -d '{
+curl -i http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $ALICE_TOKEN" -H "Content-Type: application/json" -d '{
     "messages": [
       {
         "role": "system",
@@ -76,12 +81,14 @@ curl -v http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $ALICE_TOKEN" -H 
       }
     ]
   }'
+echo
+echo "^^^^"
 echo "Alice's request should succeed."
 echo
 
 # Step 7: Test Bob's JWT Token
 read -p "Step 7: Save and test Bob's JWT token. Press enter to proceed..."
-curl -v http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $BOB_TOKEN" -H "Content-Type: application/json" -d '{
+curl -i http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $BOB_TOKEN" -H "Content-Type: application/json" -d '{
     "messages": [
       {
         "role": "system",
@@ -94,19 +101,23 @@ curl -v http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $BOB_TOKEN" -H "C
     ]
   }'
 echo
+echo "^^^^"
 echo "Bob's request should also succeed."
 echo
 
 # Step 8: Configure RBAC
 read -p "Step 8: Configure RBAC to enforce team-based access. Press enter to proceed..."
 kubectl apply -f access-control/rbac
+echo
+cat access-control/rbac/*.yaml
+echo
 echo "RBAC policies applied."
 echo
 
 # Step 9: Test RBAC Policies
 read -p "Step 9: Test RBAC policies. Press enter to proceed..."
 echo "Testing Alice's access..."
-curl -v http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $ALICE_TOKEN" -H "Content-Type: application/json" -d '{
+curl -i http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $ALICE_TOKEN" -H "Content-Type: application/json" -d '{
     "messages": [
       {
         "role": "system",
@@ -120,7 +131,7 @@ curl -v http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $ALICE_TOKEN" -H 
   }'
 echo "Alice's request should succeed because she belongs to the dev team."
 echo "Testing Bob's access..."
-curl -v http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $BOB_TOKEN" -H "Content-Type: application/json" -d '{
+curl -i http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $BOB_TOKEN" -H "Content-Type: application/json" -d '{
     "messages": [
       {
         "role": "system",
@@ -133,24 +144,31 @@ curl -v http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $BOB_TOKEN" -H "C
     ]
   }'
 echo
+echo "^^^^"
 echo "Bob's request should fail with 'RBAC: access denied' because he is not a part of the dev team"
 echo
 
 # Step 10: Configure Tiered Rate Limiting
 read -p "Step 10: Configure tiered rate limiting. Press enter to proceed..."
+echo "Cleaning up previous RBAC policies if configured"
+kubectl delete -f access-control/rbac
 kubectl apply -f tiered-rate-limit
+echo
+cat tiered-rate-limit/*.yaml
+echo
 echo "Tiered rate limiting policies applied."
 echo
 
 # Step 11: Test Rate Limiting
 echo "Step 11: Test the rate-limiting policies."
-echo "Press Enter to send a request as Alice (1), Bob (2), or type 'exit' to stop."
+echo "Press Enter to send a request as Alice (1), Bob (2), or type 'next' to finish this step."
 
 while true; do
   # Prompt user to choose a token by number
-  read -p "Select a user (1 for Alice, 2 for Bob, or 'exit' to quit): " user_input
-  if [[ "$user_input" == "exit" ]]; then
+  read -p "Select a user (1 for Alice, 2 for Bob, or 'next' to finish this step): " user_input
+  if [[ "$user_input" == "next" ]]; then
     echo "Exiting rate-limiting test."
+    echo
     break
   elif [[ "$user_input" == "1" ]]; then
     TOKEN=$ALICE_TOKEN
@@ -159,12 +177,12 @@ while true; do
     TOKEN=$BOB_TOKEN
     USER="Bob"
   else
-    echo "Invalid input. Please enter 1, 2, or 'exit'."
+    echo "Invalid input. Please enter 1, 2, or 'next'."
     continue
   fi
 
   echo "Sending request as $USER..."
-  curl -v http://$GATEWAY_IP:8080/qwen \
+  curl -i http://$GATEWAY_IP:8080/qwen \
     -H "Authorization: Bearer $TOKEN" \
     -H "Content-Type: application/json" \
     -d '{
