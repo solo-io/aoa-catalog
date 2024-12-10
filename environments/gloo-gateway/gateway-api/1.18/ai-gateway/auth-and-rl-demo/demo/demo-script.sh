@@ -116,6 +116,7 @@ echo
 
 # Step 9: Test RBAC Policies
 read -p "Step 9: Test RBAC policies. Press enter to proceed..."
+echo
 echo "Testing Alice's access..."
 curl -i http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $ALICE_TOKEN" -H "Content-Type: application/json" -d '{
     "messages": [
@@ -129,7 +130,11 @@ curl -i http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $ALICE_TOKEN" -H 
       }
     ]
   }'
+echo
+echo "^^^^"
 echo "Alice's request should succeed because she belongs to the dev team."
+echo
+echo
 echo "Testing Bob's access..."
 curl -i http://$GATEWAY_IP:8080/qwen -H "Authorization: Bearer $BOB_TOKEN" -H "Content-Type: application/json" -d '{
     "messages": [
