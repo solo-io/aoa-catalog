@@ -72,7 +72,7 @@ spec:
                 sampling_thereafter: 200
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-12-10-add-gg-standalone-otel-pipelines-77bf909a51
+    targetRevision: 2.7.0-beta1-2024-12-11-arek-graph-32160d5d12
   syncPolicy:
     automated:
       prune: true
