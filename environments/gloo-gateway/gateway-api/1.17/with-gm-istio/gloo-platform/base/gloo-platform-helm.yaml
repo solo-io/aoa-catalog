@@ -94,7 +94,7 @@ spec:
         licensing:
             licenseSecretName: "gloo-license"
         prometheus:
-            enabled: false
+            enabled: true
         redis:
             deployment:
                 enabled: true
