@@ -25,7 +25,7 @@ spec:
             enabled: true
             runAsSidecar: false
         glooAnalyzer:
-            enabled: false
+            enabled: true
             runAsSidecar: true
         global: {}
         glooAgent:
@@ -41,7 +41,7 @@ spec:
                   name: null
                   namespace: null
         glooMgmtServer:
-            enabled: false
+            enabled: true
             policyApis:
                 enabled: false
             relay:
@@ -101,7 +101,7 @@ spec:
         telemetryGateway:
             enabled: false
         telemetryCollector:
-            enabled: false
+            enabled: true
             mode: deployment
             replicaCount: 1
         telemetryCollectorCustomization:
