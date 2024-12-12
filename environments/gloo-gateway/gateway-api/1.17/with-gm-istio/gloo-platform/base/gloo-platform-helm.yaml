@@ -97,7 +97,7 @@ spec:
             enabled: true
         redis:
             deployment:
-                enabled: true
+                enabled: false
         telemetryGateway:
             enabled: false
         telemetryCollector:
