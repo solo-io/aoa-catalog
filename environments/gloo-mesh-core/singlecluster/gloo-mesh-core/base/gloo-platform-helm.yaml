@@ -18,6 +18,8 @@ spec:
         common:
             cluster: mgmt
         global: {}
+        featureGates:
+            istioLifecycleAgent: true
         licensing:
             licenseSecretName: "gloo-license"
         glooMgmtServer:
