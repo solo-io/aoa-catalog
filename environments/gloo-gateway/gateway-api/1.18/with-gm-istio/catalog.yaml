@@ -69,14 +69,7 @@ waves:
       pre_deploy: 
       -  $env_path/client-app/init.sh
       post_deploy:
-      -  $env_path/client-app/test.sh        
-  #- name: ai-gateway
-  #  location: $env_path/../standalone/ai-gateway/base
-  #  scripts:
-  #    pre_deploy: 
-  #    -  $env_path/../standalone/ai-gateway/init.sh
-  #    post_deploy:
-  #    -  $env_path/../standalone/ai-gateway/test.sh    
+      -  $env_path/client-app/test.sh         
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:
