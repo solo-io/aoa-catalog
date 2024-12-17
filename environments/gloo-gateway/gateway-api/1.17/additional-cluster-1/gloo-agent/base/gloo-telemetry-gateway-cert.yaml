@@ -2,7 +2,7 @@ kind: Certificate
 apiVersion: cert-manager.io/v1
 metadata:
   name: gloo-telemetry-gateway
-  namespace: gloo-mesh
+  namespace: gloo-system
 spec:
   commonName: gloo-telemetry-gateway
   dnsNames:
