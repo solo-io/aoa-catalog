@@ -63,13 +63,7 @@ spec:
                 enabled: true
                 pipeline:
                   exporters:
-                  - debug
                   - prometheus
-            extraExporters:
-              debug:
-                verbosity: detailed
-                sampling_initial: 5
-                sampling_thereafter: 200
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
     targetRevision: 2.7.0-beta1-2024-12-16-main-0f33bf6285

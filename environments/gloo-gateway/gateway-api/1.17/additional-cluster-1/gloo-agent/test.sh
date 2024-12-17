@@ -159,6 +159,8 @@ spec:
                       path: /var/run/cilium
                       type: DirectoryOrCreate
                   name: cilium-run
+        telemetryCollectorCustomization:
+            skipVerify: true
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
     targetRevision: 2.7.0-beta1-2024-12-16-main-0f33bf6285
