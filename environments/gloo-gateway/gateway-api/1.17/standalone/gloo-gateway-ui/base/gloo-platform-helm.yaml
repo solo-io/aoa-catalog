@@ -72,7 +72,7 @@ spec:
                 sampling_thereafter: 200
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-12-11-main-8512036382
+    targetRevision: 2.7.0-beta1-2024-12-16-main-0f33bf6285
   syncPolicy:
     automated:
       prune: true
