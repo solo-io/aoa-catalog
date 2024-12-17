@@ -93,7 +93,7 @@ spec:
       skipCrds: true
       values: |
         common:
-            adminNamespace: "gloo-mesh"
+            adminNamespace: "gloo-system"
             cluster: ${cluster_context}
         global: {}
         glooAgent:
@@ -136,7 +136,7 @@ spec:
       skipCrds: true
       values: |
         common:
-            adminNamespace: "gloo-mesh"
+            adminNamespace: "gloo-system"
             cluster: ${cluster_context}
         telemetryCollector:
             enabled: true

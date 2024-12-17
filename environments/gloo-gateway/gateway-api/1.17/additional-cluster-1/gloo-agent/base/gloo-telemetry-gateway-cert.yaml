@@ -6,8 +6,8 @@ metadata:
 spec:
   commonName: gloo-telemetry-gateway
   dnsNames:
-    - gloo-telemetry-gateway.gloo-mesh
-    - gloo-telemetry-gateway.gloo-mesh.svc
+    - gloo-telemetry-gateway.gloo-system
+    - gloo-telemetry-gateway.gloo-system.svc
   # 1 year life
   duration: 8760h0m0s
   issuerRef:
