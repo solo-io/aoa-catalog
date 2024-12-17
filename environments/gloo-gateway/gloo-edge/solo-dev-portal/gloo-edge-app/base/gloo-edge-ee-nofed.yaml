@@ -41,7 +41,7 @@ spec:
               deployment:
                 stats:
                   enabled: true
-    repoURL: https://storage.googleapis.com/gloo-ee-test-helm
+    repoURL: http://storage.googleapis.com/gloo-ee-helm
     targetRevision: 1.15.7
   syncPolicy:
     automated:

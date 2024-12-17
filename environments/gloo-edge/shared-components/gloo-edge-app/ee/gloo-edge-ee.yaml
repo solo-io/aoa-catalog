@@ -49,7 +49,7 @@ spec:
             server:
               root_url: https://*/grafana/
               serve_from_sub_path: true
-    repoURL: https://storage.googleapis.com/gloo-ee-test-helm
+    repoURL: http://storage.googleapis.com/gloo-ee-helm
     targetRevision: 1.16.6
   syncPolicy:
     automated:

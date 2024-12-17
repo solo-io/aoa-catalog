@@ -94,8 +94,8 @@ spec:
               requestTimeout: 5s
               deployment:
                 logLevel: debug
-    repoURL: https://storage.googleapis.com/gloo-ee-test-helm
-    targetRevision: 1.18.0-rc3-bkubegateway-clusternames-3f71ec6
+    repoURL: http://storage.googleapis.com/gloo-ee-helm
+    targetRevision: 1.18.0
   syncPolicy:
     automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).

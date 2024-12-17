@@ -94,7 +94,7 @@ spec:
               requestTimeout: 5s
               deployment:
                 logLevel: debug
-    repoURL: https://storage.googleapis.com/gloo-ee-test-helm
+    repoURL: http://storage.googleapis.com/gloo-ee-helm
     targetRevision: 1.17.0
   syncPolicy:
     automated:
