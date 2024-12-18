@@ -4,7 +4,7 @@
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.7.0-beta1-2024-12-16-main-0f33bf6285):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.7.0-beta1-2024-12-17-main-3e37fd236f):"
     read gloo_mesh_version
 fi
 
@@ -105,7 +105,7 @@ spec:
             enabled: true
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-12-16-main-0f33bf6285
+    targetRevision: 2.7.0-beta1-2024-12-17-main-3e37fd236f
   syncPolicy:
     automated:
       prune: true
@@ -163,7 +163,7 @@ spec:
             skipVerify: true
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-12-16-main-0f33bf6285
+    targetRevision: 2.7.0-beta1-2024-12-17-main-3e37fd236f
   syncPolicy:
     automated:
       prune: true
