@@ -1,0 +1,23 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: openai-sc-option
+  namespace: gloo-system
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: openai-route
+  options:
+    ai:
+      semanticCache:
+        datastore:
+          redis:
+            connectionString: redis://redis-cache:6379
+            scoreThreshold: 0.1
+        embedding:
+          openai:
+            authToken:
+              secretRef:
+                name: openai-secret
+                namespace: gloo-system

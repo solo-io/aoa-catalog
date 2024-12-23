@@ -1,0 +1,10 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: openai-route-policies
+  namespace: gloo-system
+spec:
+  options:
+    jwt:
+      disable: true
+    prefixRewrite: /v1/chat/completions
