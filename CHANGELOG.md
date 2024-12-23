@@ -1,5 +1,16 @@
 # Changelog
 
+0.7.3 (12-23-24)
+---
+- update gloo-gateway/1.18/oss to 1.18.2
+- update gloo-gateway/1.18/portal-only to 1.18.1
+- add ai-gateway/field-demo that includes all scripted demos under /demos directory
+    - auth-and-rl-demo
+    - lb-failover-demo
+    - prompt-management-demo
+    - semantic-cache-demo
+- remove previously separated AI gateway demo environments in favor of ai-gateway/field-demo
+
 0.7.2 (12-5-24)
 ---
 - add 1.18/ai-gateway/lb-failover-demo environment to demonstrate traffic shifting and resiliency
