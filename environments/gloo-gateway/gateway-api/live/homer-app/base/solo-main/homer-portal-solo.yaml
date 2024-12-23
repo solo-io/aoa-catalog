@@ -272,7 +272,6 @@ spec:
                         logo: "solo/glooy.png"
                         tag: "howto"
                         url: "https://demo.glooplatform.com/howto"
-                        target: "_blank" # optional html a tag target attribute
                       - name: "Demo Environment Config Examples"
                         logo: "solo/glooy.png"
                         tag: "config"
