@@ -171,7 +171,7 @@ spec:
                   title: "Welcome!"
                   icon: "fa fa-grin"
                   content: |
-                    This page links out to Instructions as well as YouTube videos on how to demonstrate use-cases and features for applications running on the Gloo Platform demo website!<br /><br />
+                    This page links out to the github config for applications running on the Gloo Platform demo website!<br /><br />
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
@@ -189,7 +189,7 @@ spec:
                     target: "_blank" # optional html a tag target attribute
                   - name: "Gloo Gateway Documentation"
                     icon: "fas fa-book"
-                    url: "https://docs.solo.io/gloo-gateway"
+                    url: "https://docs.solo.io/gateway/latest/"
                     target: "_blank" # optional html a tag target attribute
                   # this will link to a second homer page that will load config from additional-page.yml and keep default config values as in config.yml file
                   # see url field and assets/additional-page.yml.dist used in this example:
@@ -463,7 +463,7 @@ spec:
                         url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/aigw-config/base/openai/openai-route-policies.yaml#L12-L26"
                         target: "_blank" # optional html a tag target attribute
                   
-                  - name: "Gloo Portal Configuration Examples"
+                  - name: "Gloo Portal Config Examples"
                     icon: "far fa-file-code"
                     items:
                       - name: "OpenAPI spec discovery - annotations"
@@ -508,7 +508,7 @@ spec:
                         url: "https://raw.githubusercontent.com/solo-io/aoa-catalog/refs/heads/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-portal-demo/base/dynamic-rl-script.sh"
                         target: "_blank" # optional html a tag target attribute
 
-                  - name: "Gloo Gateway Configuration Examples"
+                  - name: "Gloo Gateway Config Examples"
                     icon: "far fa-file-code"
                     items:
                       - name: "Deploy Gloo Gateway with GitOps"
