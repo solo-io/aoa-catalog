@@ -1,0 +1,25 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: openai-route
+  namespace: gloo-system
+spec:
+  parentRefs:
+  - name: ai-gateway
+    namespace: gloo-system
+  rules:
+  - backendRefs:
+    - group: gloo.solo.io
+      kind: Upstream
+      name: openai-upstream
+      namespace: gloo-system
+    filters:
+    - extensionRef:
+        group: gateway.solo.io
+        kind: RouteOption
+        name: openai-route-policies
+      type: ExtensionRef
+    matches:
+    - path:
+        type: PathPrefix
+        value: /openai
