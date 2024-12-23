@@ -7,5 +7,5 @@ resources:
 - solo-main
 - howto
 - admin
-- config-examples
+#- config-examples
 
