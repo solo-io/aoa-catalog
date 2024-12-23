@@ -1,5 +1,9 @@
 # Changelog
 
+0.7.4 (12-23-24)
+---
+- change system/user prompts to focus on LLMs in ai-gateway/field-demo/demos
+
 0.7.3 (12-23-24)
 ---
 - update gloo-gateway/1.18/oss to 1.18.2

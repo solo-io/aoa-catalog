@@ -125,11 +125,11 @@ done
 #      "messages": [
 #        {
 #          "role": "system",
-#          "content": "You are a solutions architect for Kubernetes networking, skilled in explaining complex technical concepts surrounding API Gateway, Service Mesh, and CNI"
+#          "content": "You are a cloud native solutions architect, skilled in explaining complex technical concepts such as API Gateway, microservices, LLM operations, kubernetes, and advanced networking patterns"
 #        },
 #        {
 #          "role": "user",
-#          "content": "Write me a 20-word pitch on why I should use a service mesh in my Kubernetes cluster"
+#          "content": "Write me a 20-word pitch on why I should use an AI gateway in my Kubernetes cluster"
 #        }
 #      ]
 #    }'
