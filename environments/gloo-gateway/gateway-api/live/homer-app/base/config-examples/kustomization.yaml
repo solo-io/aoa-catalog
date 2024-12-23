@@ -4,8 +4,6 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- solo-main
-- howto
-- admin
-- config-examples
-
+- homer-config-httproute.yaml
+- homer-config-route-policies.yaml
+- homer-portal-config.yaml

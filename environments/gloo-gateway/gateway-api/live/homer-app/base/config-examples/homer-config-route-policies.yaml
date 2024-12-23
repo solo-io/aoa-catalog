@@ -1,0 +1,19 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: homer-config-route-policies
+  namespace: homer-portal
+spec:
+  options:
+    jwt:
+      disable: true
+    retries:
+      retryOn: 'connect-failure,retriable-status-codes,5xx,gateway-error,reset'
+      numRetries: 3
+    headerManipulation:
+      responseHeadersToAdd:
+        - header:
+            key: "content-type"
+            value: "text/html"
+                
+    
