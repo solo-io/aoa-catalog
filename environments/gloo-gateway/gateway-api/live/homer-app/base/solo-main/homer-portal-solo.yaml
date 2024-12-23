@@ -474,6 +474,12 @@ spec:
                     icon: "fas fa-cloud"
                     items:
 
+                      - name: "Gloo Mesh UI"
+                        icon: "fas fa-arrows-alt"
+                        tag: "admin #gloo-mesh #demo"
+                        keywords: "gloo-mesh,gloo-gateway,ui,admin,demo"
+                        url: "https://ui.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "Locality Awareness Routing"
                         subtitle: "onlineboutique-east"
                         icon: "fas fa-shopping-cart"
@@ -481,7 +487,6 @@ spec:
                         keywords: "gloo-mesh,demo"
                         url: "https://shop.east.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-
                       - name: "Multicluster Failover"
                         subtitle: "central > east on failover"
                         icon: "fas fa-shopping-cart"
@@ -489,7 +494,6 @@ spec:
                         keywords: "gloo-mesh,demo"
                         url: "https://shop.central.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-                      
                       - name: "Chaos - Trigger Failover"
                         subtitle: "Kubeinvaders!"
                         icon: "fas fa-fighter-jet"
@@ -497,7 +501,6 @@ spec:
                         keywords: "gloo-mesh,chaos,demo"
                         url: "https://chaos.central.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
-
                       - name: "Tiered Mesh Application - Core"
                         subtitle: "change path number: /ns-#"
                         icon: "fab fa-connectdevelop"
@@ -505,7 +508,6 @@ spec:
                         keywords: "gloo-mesh,demo"
                         url: "https://tiered-app.central.glooplatform.com/ns-1/ui/"
                         target: "_blank" # optional html a tag target attribute  
-                      
                       - name: "Tiered Mesh Application - Extended"
                         subtitle: "Virtual Destination / Strangler Pattern"
                         icon: "fab fa-connectdevelop"
@@ -513,7 +515,6 @@ spec:
                         keywords: "gloo-mesh,virtualdestination,multicluster,demo"
                         url: "https://tiered-app.central.glooplatform.com/east/ns-1/ui/"
                         target: "_blank" # optional html a tag target attribute  
-
                       - name: "Multicluster Application Architecture - Gloo UI"
                         subtitle: "Core + Strangler Pattern"
                         icon: "fas fa-arrows-alt"
@@ -521,7 +522,6 @@ spec:
                         keywords: "gloo-mesh,ui,demo"
                         url: "https://ui.glooplatform.com/graph/?workspace=tiered-app"
                         target: "_blank" # optional html a tag target attribute   
-
                       - name: "Loadgen Logs - Internal"
                         subtitle: "loadgen client > app in mesh in same namespace (ns-1)"
                         icon: "fas fa-forward"
@@ -529,7 +529,6 @@ spec:
                         keywords: "gloo-gateway,gloo-mesh,ui,demo"
                         url: "https://argocd.central.glooplatform.com/argo/applications/argocd/wave-tiered-app-aoa/ns-1/vegeta/logs?podName=&group=apps&kind=Deployment&name=vegeta-ns-1"
                         target: "_blank" # optional html a tag target attribute
-
                       - name: "Loadgen Logs - Ingress"
                         subtitle: "loadgen > cloudflare > gateway > app in mesh (ns-1)"
                         icon: "fas fa-forward"
@@ -569,7 +568,7 @@ spec:
                   #      url: "https://gh-action-idp.demo.glooplatform.com/team-a/"
                   #      target: "_blank" # optional html a tag target attribute
                   
-                  - name: "Gloo Mesh Core Demo"
+                  - name: "Gloo Mesh Core Demo Environment"
                     logo: "solo/glooy.png"
                     items:
                       - name: "Gloo Mesh Core Demo Dashboard"
@@ -577,16 +576,6 @@ spec:
                         tag: "gloo-mesh-core #demo"
                         keywords: "gloo-mesh-core,demo"
                         url: "https://demo.gmc.glooplatform.com/solo/"
-                        target: "_blank" # optional html a tag target attribute
-                  
-                  - name: "Platform Admin Tools"
-                    icon: "fas fa-tools"
-                    items:
-                      - name: "Gloo Mesh UI"
-                        icon: "fas fa-arrows-alt"
-                        tag: "admin #gloo-mesh #demo"
-                        keywords: "gloo-mesh,gloo-gateway,ui,admin,demo"
-                        url: "https://ui.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
               
   syncPolicy:
