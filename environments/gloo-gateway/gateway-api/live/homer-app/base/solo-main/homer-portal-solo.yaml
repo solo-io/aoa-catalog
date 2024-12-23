@@ -277,7 +277,6 @@ spec:
                         logo: "solo/glooy.png"
                         tag: "config"
                         url: "https://demo.glooplatform.com/config"
-                        target: "_blank" # optional html a tag target attribute
 
                   - name: "Demo AI Gateway Capabilities"
                     icon: "fas fa-brain"
@@ -285,25 +284,25 @@ spec:
                       - name: "LLM Traffic Split and Failover Demo"
                         subtitle: "local-to-local and public-to-local examples"
                         icon: "fas fa-brain"
-                        tag: "ai-gateway"
+                        tag: "ai-gateway,#asciinema"
                         url: "https://asciinema.org/a/QTiUvWjyk6Tu7HQ0duevMOaTm"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Auth, Rate Limiting, and Metrics Demo"
                         subtitle: "protect access, token-based RL, and telemetry"
                         icon: "fas fa-brain"
-                        tag: "ai-gateway"
+                        tag: "ai-gateway,#asciinema"
                         url: "https://asciinema.org/a/0urpIzs8rLlDz4Wyba1a2jV6O"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Semantic Caching Demo"
                         subtitle: "improve performance and reduce cost with caching"
                         icon: "fas fa-brain"
-                        tag: "ai-gateway"
+                        tag: "ai-gateway,#asciinema"
                         url: "https://asciinema.org/a/EDBWEFCLrGQy9su7wSxWGu1kb"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Prompt Enrichment Demo"
                         subtitle: "prepend/append organizational prompts"
                         icon: "fas fa-brain"
-                        tag: "ai-gateway"
+                        tag: "ai-gateway,#asciinema"
                         url: "https://asciinema.org/a/EqlEvIG6xMx9esZiquiMw2sI5"
                         target: "_blank" # optional html a tag target attribute
                       - name: "BetterChatGPT Chatbot"
@@ -466,7 +465,7 @@ spec:
                       - name: "Portal API Key and Dynamic Rate Limiting"
                         subtitle: "example using asciinema"
                         icon: "far fa-window-maximize"
-                        tag: "gloo-portal"
+                        tag: "gloo-portal,#asciinema"
                         url: "https://asciinema.org/a/9d9Ojugpjr64zqKM9EnwNKt5C"
                         target: "_blank" # optional html a tag target attribute                      
                   
