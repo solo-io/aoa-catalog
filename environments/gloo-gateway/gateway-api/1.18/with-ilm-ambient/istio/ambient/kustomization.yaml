@@ -5,17 +5,9 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 
-#- istio-system-ns.yaml
-#- istio-base.yaml
-#- istio-cni.yaml
-#- istiod.yaml
-#- istio-ztunnel.yaml
 - kiali.yaml
 - prometheus.yaml
 #- jaeger.yaml
 #- grafana.yaml
-#- istio-ingressgateway.yaml
-#- gateway-cert.yaml
-#- gateway-clusterissuer.yaml
-- smc.yaml
+- servicemeshcontroller.yaml
 
