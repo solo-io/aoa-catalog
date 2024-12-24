@@ -58,12 +58,4 @@ spec:
         duration: 5s
         factor: 2
         maxDuration: 3m0s
-  # Prevent auto-sync reset by parent app during troubleshooting using ignoreDifferences.
-  ignoreDifferences:
-  - group: argoproj.io
-    kind: Application
-    managedFieldsManagers:
-      - argocd-server
-    jsonPointers:
-      - /spec/syncPolicy/automated
 EOF
