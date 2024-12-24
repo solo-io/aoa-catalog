@@ -28,20 +28,6 @@ waves:
       -  $env_path/gateway-api-config/init.sh
       post_deploy:
       -  $env_path/gateway-api-config/test.sh
-  - name: httpbin-app
-    location: $env_path/httpbin-app/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/httpbin-app/init.sh
-      post_deploy:
-      -  $env_path/httpbin-app/test.sh
-  - name: bookinfo-app
-    location: $env_path/bookinfo-app/base
-    scripts:
-      pre_deploy: 
-      -  $env_path/bookinfo-app/init.sh
-      post_deploy:
-      -  $env_path/bookinfo-app/test.sh  
   - name: tiered-app
     location: $env_path/tiered-app/1-namespace-app/ambient
     scripts:
