@@ -10,8 +10,8 @@ resources:
 #- istio-cni.yaml
 #- istiod.yaml
 #- istio-ztunnel.yaml
-#- kiali.yaml
-#- prometheus.yaml
+- kiali.yaml
+- prometheus.yaml
 #- jaeger.yaml
 #- grafana.yaml
 #- istio-ingressgateway.yaml
