@@ -7,5 +7,6 @@ resources:
 - ai-gateway.yaml
 - gloo-gateway-override.yaml
 - ai-gateway-log-provider.yaml
+- redis-cache.yaml
 - openai
 - anthropic

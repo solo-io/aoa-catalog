@@ -8,7 +8,15 @@ spec:
     aiExtension:
       enabled: true
       ports:
-      - name: ai-monitoring
-        containerPort: 9092
+      - containerPort: 9092
+        name: ai-monitoring
+      stats:
+        customLabels:
+          - name: "team"
+            metadataKey: "principal:team"
+          - name: "org"
+            metadataKey: "principal:org"
+          - name: "id"
+            metadataKey: "principal:sub"
     deployment:
       replicas: 2
