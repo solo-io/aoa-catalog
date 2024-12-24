@@ -1,0 +1,12 @@
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: ollama-qwen-0.5-upstream
+  namespace: gloo-system
+spec:
+  ai:
+    openai:
+      customHost:
+        host: ollama-qwen.ollama.svc.cluster.local
+        port: 11434
+      model: qwen:0.5b

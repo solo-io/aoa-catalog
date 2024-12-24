@@ -1,0 +1,15 @@
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  labels:
+    app: gloo
+  name: openai-upstream
+  namespace: gloo-system
+spec:
+  ai:
+    openai:
+      authToken:
+        secretRef:
+          name: openai-secret
+          namespace: gloo-system
+      model: gpt-4o-mini

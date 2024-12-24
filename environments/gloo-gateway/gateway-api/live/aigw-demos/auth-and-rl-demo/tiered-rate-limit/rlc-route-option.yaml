@@ -1,0 +1,21 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: rlc-route-option
+  namespace: gloo-system
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: ollama-qwen
+  options:
+    rateLimitConfigs:
+      refs:
+      - name: per-user-counter-minute
+        namespace: gloo-system
+      - name: per-user-counter-hour
+        namespace: gloo-system
+      - name: per-user-counter-day
+        namespace: gloo-system
+      
+      
