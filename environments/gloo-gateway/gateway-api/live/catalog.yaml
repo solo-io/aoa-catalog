@@ -1,5 +1,12 @@
 
 waves:
+  - name: enclosed-app
+    location: $env_path/enclosed-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/enclosed-app/init.sh
+      post_deploy:
+      -  $env_path/enclosed-app/test.sh 
   - name: gloo-enterprise-app
     location: $env_path/gloo-enterprise-app/base
     scripts:
