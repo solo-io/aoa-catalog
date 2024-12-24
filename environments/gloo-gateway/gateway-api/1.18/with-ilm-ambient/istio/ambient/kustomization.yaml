@@ -17,6 +17,5 @@ resources:
 #- istio-ingressgateway.yaml
 #- gateway-cert.yaml
 #- gateway-clusterissuer.yaml
-- gloo-operator.yaml
 - smc.yaml
 
