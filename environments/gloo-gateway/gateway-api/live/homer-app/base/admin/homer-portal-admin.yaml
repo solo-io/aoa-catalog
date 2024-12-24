@@ -250,6 +250,13 @@ spec:
                         keywords: "admin,observability,demo,grafana"
                         url: "https://grafana.central.glooplatform.com/east"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "Enclosed App"
+                        subtitle: "Send private and secure notes and files"
+                        icon: "fas fa-shield-alt"
+                        tag: "admin #observability #demo"
+                        keywords: "admin,observability,demo,grafana"
+                        url: "https://grafana.central.glooplatform.com/east"
+                        target: "_blank" # optional html a tag target attribute
 
               
   syncPolicy:
