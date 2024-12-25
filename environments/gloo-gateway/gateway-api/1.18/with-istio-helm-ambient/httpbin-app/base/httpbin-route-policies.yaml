@@ -2,7 +2,7 @@ apiVersion: gateway.solo.io/v1
 kind: RouteOption
 metadata:
   name: httpbin-route-policies
-  namespace: httpbin
+  namespace: gloo-system
 spec:
   options:
     jwt:
