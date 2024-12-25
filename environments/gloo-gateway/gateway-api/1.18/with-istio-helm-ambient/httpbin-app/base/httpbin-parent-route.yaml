@@ -28,6 +28,7 @@ spec:
             group: gateway.solo.io
             kind: RouteOption
             name: httpbin-route-policies
+            namespace: httpbin
         #- type: ExtensionRef
         #  extensionRef:
         #    group: gateway.solo.io
