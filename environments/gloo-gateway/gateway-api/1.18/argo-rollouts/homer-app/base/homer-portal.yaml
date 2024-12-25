@@ -193,7 +193,7 @@ spec:
                         subtitle: "canary rollout strategy"
                         icon: "fas fa-globe-americas"
                         tag: "rollouts-demo"
-                        url: "http://rollouts-demo.glootest.com"
+                        url: "https://rollouts-demo.glootest.com"
                         target: "_blank" # optional html a tag target attribute
                     
   syncPolicy:
