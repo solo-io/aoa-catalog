@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: in-mesh-client
+  namespace: client
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: in-mesh-client
+  namespace: client
+  labels:
+    app: in-mesh-client
+spec:
+  ports:
+  - port: 5000
+    name: http
+  selector:
+    name: in-mesh-client
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: in-mesh-client-deployment
+  namespace: client
+  labels:
+    app: in-mesh-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: in-mesh-client
+  template:
+    metadata:
+      labels:
+        name: in-mesh-client
+        istio.io/rev: 1-24
+    spec:
+      serviceAccountName: in-mesh-client
+      containers:
+      - name: in-mesh-client
+        image: ably77/curl-ui:0.7.3
+        ports:
+        - containerPort: 5000
+        env:
+          - name: CURL_UI_TITLE
+            value: "In Mesh Client"
+          - name: REQUEST_URL
+            value: "http://httpbin.httpbin.svc.cluster.local:8000/get"
+          - name: BASE_PATH
+            value: "/in-mesh"
+          - name: ENABLE_JSON_CONTENT_TYPE
+            value: "true"
+          - name: DEFAULT_HTTP_METHOD
+            value: "GET"
