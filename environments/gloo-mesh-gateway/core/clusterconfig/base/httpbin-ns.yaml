@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: httpbin
   labels:
-    istio.io/rev: 1-24
+    istio.io/rev: 1-23

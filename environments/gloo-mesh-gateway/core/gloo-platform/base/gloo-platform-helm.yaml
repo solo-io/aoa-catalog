@@ -63,7 +63,7 @@ spec:
             #                annotations:
             #                    proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
             #                labels:
-            #                    istio.io/rev: 1-24
+            #                    istio.io/rev: 1-23
             #                    sidecar.istio.io/inject: "true"
             enabled: true
             serviceType: ClusterIP
