@@ -1,0 +1,13 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- client-ns.yaml
+- in-mesh-client.yaml
+- not-in-mesh-client.yaml
+- client-parent-route.yaml
+- in-mesh-delegate-route.yaml
+- not-in-mesh-delegate-route.yaml
+- client-route-policies.yaml

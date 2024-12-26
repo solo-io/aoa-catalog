@@ -8,7 +8,7 @@ echo
 echo "The applications featured in this demo are hosted under the *.glootest.com domain"
 echo
 echo "When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:"
-echo "127.0.0.1 argocd.glootest.com homer.glootest.com solo-dev-portal.glootest.com api.glootest.com tracks.glootest.com openlibrary.glootest.com"
+echo "127.0.0.1 api.glootest.com argocd.glootest.com homer.glootest.com openlibrary.glootest.com petstore.glootest.com solo-dev-portal.glootest.com tracks.glootest.com"
 echo 
 echo "Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)"
 echo

@@ -163,7 +163,9 @@ spec:
                   style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
                   title: "Welcome!"
                   icon: "fa fa-grin"
-                  content: "This is a simple navigation homepage for aoa-catalog demo apps running on Istio!<br /> Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />More information in the README <a href='https://github.com/solo-io/aoa-catalog/tree/main/environments/gloo-platform/multicluster-onlineboutique/mgmt/#application-description'>here</a>"
+                  content: | 
+                    This is a simple navigation homepage for aoa-catalog demo apps running on Istio!<br />
+                    Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
                 
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links

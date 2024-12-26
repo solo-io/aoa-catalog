@@ -1,0 +1,2 @@
+# Environment Description
+The `gateway-api/standalone` environment deploys Gloo Gateway EE along with ai-gateway, bookinfo, and httpbin app to demonstrate features and capabilities. Standalone in this context means that there is no Istio or Gloo Mesh installed on this environment.

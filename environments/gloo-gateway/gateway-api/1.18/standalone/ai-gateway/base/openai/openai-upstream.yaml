@@ -1,0 +1,10 @@
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  name: openai
+  namespace: ai-gateway
+spec:
+    static:
+      hosts:
+      - addr: api.openai.com
+        port: 443

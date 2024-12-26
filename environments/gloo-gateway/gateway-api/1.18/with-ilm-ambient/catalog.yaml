@@ -1,0 +1,51 @@
+
+waves:
+  - name: gloo-operator
+    location: $env_path/gloo-operator/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-operator/init.sh
+      post_deploy:
+      -  $env_path/gloo-operator/test.sh
+  - name: istio
+    location: $env_path/istio/ambient
+    scripts:
+      pre_deploy: 
+      -  $env_path/istio/init.sh
+      post_deploy:
+      -  $env_path/istio/test.sh
+  - name: gloo-enterprise-app
+    location: $env_path/gloo-enterprise-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-enterprise-app/init.sh
+      post_deploy:
+      -  $env_path/gloo-enterprise-app/test.sh
+  - name: gateway-api-config
+    location: $env_path/gateway-api-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gateway-api-config/init.sh
+      post_deploy:
+      -  $env_path/gateway-api-config/test.sh
+  - name: tiered-app
+    location: $env_path/tiered-app/1-namespace-app/ambient
+    scripts:
+      pre_deploy: 
+      -  $env_path/tiered-app/init.sh
+      post_deploy:
+      -  $env_path/tiered-app/test.sh  
+  - name: loadgenerators
+    location: $env_path/loadgenerators/1-loadgenerators
+    scripts:
+      pre_deploy: 
+      -  $env_path/loadgenerators/init.sh
+      post_deploy:
+      -  $env_path/loadgenerators/test.sh        
+  - name: homer-app
+    location: $env_path/homer-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer-app/init.sh
+      post_deploy:
+      -  $env_path/homer-app/test.sh 

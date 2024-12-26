@@ -1,0 +1,23 @@
+apiVersion: gateway.solo.io/v1
+kind: ListenerOption
+metadata:
+  name: log-provider
+  namespace: gloo-system
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    name: https
+  options:
+    accessLoggingService:
+      accessLog:
+      - fileSink:
+          jsonFormat:
+            httpMethod: '%REQ(:METHOD)%'
+            path: '%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%'
+            requestId: '%REQ(X-REQUEST-ID)%'
+            responseCode: '%RESPONSE_CODE%'
+            systemTime: '%START_TIME%'
+            targetDuration: '%RESPONSE_DURATION%'
+            upstreamName: '%UPSTREAM_CLUSTER%'
+          path: /dev/stdout

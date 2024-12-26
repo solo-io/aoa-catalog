@@ -1,5 +1,17 @@
 # Changelog
 
+0.7.4 (12-26-24)
+---
+- change system/user prompts to focus on LLMs in ai-gateway/field-demo/demos
+- migrated gateway-api/1.17/with-istio-ambient environment to gateway-api/1.18/with-istio-helm-ambient
+- migrated gateway-api/1.17/standalone environment to 1.18
+- migrated gateway-api/1.17/argo-rollouts environment to 1.18
+- migrated gateway-api/1.17/with-istio-sidecar environment to gateway-api/1.18/with-istio-helm-sidecar
+- migrated gateway-api/1.17/with-gm-istio environment to gateway-api/1.18/with-gm-istio-helm-sidecar
+- testing ILMv3 in gateway-api/1.18/with-ilm-ambient environment
+    - seeing some issues with L7 waypoint auth policies
+- add `aoa-tools/find-hostnames.sh` to simplify discovery of hostnames used in a particular environment. To use this script run `aoa-tools/find-hostnames.sh <environment-path`. Note this only works with environments that use GWAPI and `HTTPRoutes`
+
 0.7.3 (12-23-24)
 ---
 - update gloo-gateway/1.18/oss to 1.18.2

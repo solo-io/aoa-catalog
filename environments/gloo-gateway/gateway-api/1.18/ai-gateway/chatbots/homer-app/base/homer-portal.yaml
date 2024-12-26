@@ -149,11 +149,7 @@ spec:
                   content: | 
                     This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Gateway!<br />
                     Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
-                    
-                    When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />
-                    127.0.0.1 argocd.glootest.com homer.glootest.com general-chatbot.glootest.com language-chatbot.glootest.com chat.glootest.com llm.glootest.com<br /><br />
-                    Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />
-                    
+                                        
                     Run this command in your terminal for the JWT token used in auth example:<br />
                     TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "x-token: $TOKEN"<br />
                 
