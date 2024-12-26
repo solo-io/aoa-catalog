@@ -8,7 +8,7 @@ echo
 echo "The applications featured in this demo are hosted under the *.gwapi.glooplatform.com domain"
 echo
 echo "When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:"
-echo "127.0.0.1 argocd.gwapi.glooplatform.com homer.gwapi.glooplatform.com httpbin.gwapi.glooplatform.com bookinfo.gwapi.glooplatform.com general-chatbot.gwapi.glooplatform.com language-chatbot.gwapi.glooplatform.com"
+echo "127.0.0.1 api.gwapi.glooplatform.com argocd.gwapi.glooplatform.com bookinfo.gwapi.glooplatform.com chat.gwapi.glooplatform.com demo.glooplatform.com demo.gwapi.glooplatform.com enclosed.gwapi.glooplatform.com general-chatbot.gwapi.glooplatform.com glooplatform.com httpbin.gwapi.glooplatform.com language-chatbot.gwapi.glooplatform.com llamagpt.gwapi.glooplatform.com llm.gwapi.glooplatform.com openlibrary.gwapi.glooplatform.com petstore.gwapi.glooplatform.com prometheus.admin.glooplatform.com rollouts-demo.gwapi.glooplatform.com rollouts-ui.gwapi.glooplatform.com solo-dev-portal.gwapi.glooplatform.com tiered-app.gwapi.glooplatform.com tracks.gwapi.glooplatform.com ui.glooplatform.com uptime.gwapi.glooplatform.com"
 echo 
 echo "Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)"
 echo
