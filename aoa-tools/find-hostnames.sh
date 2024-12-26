@@ -61,7 +61,7 @@ unique_hostnames=($(printf "%s\n" "${hostname_list[@]}" | sort -u))
 
 # Print the final list of hostnames
 echo "# ===================================="
-echo "# Final List of Hostnames:"
+echo "# List of Hostnames:"
 for hostname in "${unique_hostnames[@]}"; do
   echo "$hostname"
 done
