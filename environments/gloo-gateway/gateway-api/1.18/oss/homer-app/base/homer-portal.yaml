@@ -149,10 +149,6 @@ spec:
                   content: | 
                     This is a simple navigation homepage for aoa-catalog demo apps running on Gloo Gateway!<br />
                     Find more information on <a href='https://github.com/solo-io/aoa-catalog'>github.com/solo-io/aoa-catalog</a><br /><br />
-                    
-                    When using K3d locally with the -i flag, add the entries below to your /etc/hosts file:<br /><br />
-                    127.0.0.1 argocd.glootest.com homer.glootest.com httpbin.glootest.com bookinfo.glootest.com<br /><br />
-                    Otherwise, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)<br /><br />
                                     
                 # Optional navbar
                 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
