@@ -1,5 +1,10 @@
 # Changelog
 
+0.7.5 (12-26-24)
+---
+- Cleanup of unused environments/overlays
+- Replace youtube video of deployment in main readme with updated asciinema version
+
 0.7.4 (12-26-24)
 ---
 - change system/user prompts to focus on LLMs in ai-gateway/field-demo/demos
