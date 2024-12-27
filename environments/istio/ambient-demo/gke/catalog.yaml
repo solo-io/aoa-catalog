@@ -11,11 +11,11 @@ waves:
     location: $env_path/../core/istio/gke
     scripts:
       pre_deploy: 
-      -  $env_path/../core/istio/gke/init.sh
+      -  $env_path/../core/istio/init.sh
       post_deploy:
-      -  $env_path/../core/istio/gke/test.sh
+      -  $env_path/../core/istio/test.sh
   - name: apps
-    location: $env_path/../uniform-apps/apps/5-namespace-app/ambient
+    location: $env_path/../uniform-apps/apps/1-namespace-app/ambient
     scripts:
       pre_deploy: 
       -  $env_path/../uniform-apps/apps/init.sh
