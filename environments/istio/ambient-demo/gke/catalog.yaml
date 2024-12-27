@@ -29,7 +29,7 @@ waves:
       post_deploy:
       -  $env_path/../core/clusterservices-config/test.sh 
   - name: loadgenerators
-    location: $env_path/../uniform-apps/loadgenerators/5-loadgenerators
+    location: $env_path/../uniform-apps/loadgenerators/1-loadgenerators
     scripts:
       pre_deploy: 
       -  $env_path/../uniform-apps/loadgenerators/init.sh
