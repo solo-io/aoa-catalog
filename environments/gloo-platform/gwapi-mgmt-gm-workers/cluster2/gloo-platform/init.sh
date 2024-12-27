@@ -13,14 +13,14 @@ fi
 
 # discover gloo mesh endpoint with kubectl
 until [ "${SVC}" != "" ]; do
-  SVC=$(kubectl --context ${mgmt_context} -n gloo-mesh get svc gloo-mesh-mgmt-server -o jsonpath='{.status.loadBalancer.ingress[0].*}')
+  SVC=$(kubectl --context ${mgmt_context} -n gloo-mesh get svc gloo-mesh-mgmt-server -o jsonpath='{.status.loadBalancer.ingress[0].ip}{.status.loadBalancer.ingress[0].hostname}')
   echo waiting for gloo mesh management server LoadBalancer IP to be detected
   sleep 2
 done
 
 # discover gloo mesh metrics endpoint with kubectl
 until [ "${METRICS}" != "" ]; do
-  METRICS=$(kubectl --context ${mgmt_context} -n gloo-mesh get svc gloo-telemetry-gateway -o jsonpath='{.status.loadBalancer.ingress[0].*}')
+  METRICS=$(kubectl --context ${mgmt_context} -n gloo-mesh get svc gloo-telemetry-gateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}{.status.loadBalancer.ingress[0].hostname}')
   echo waiting for gloo mesh metrics gateway LoadBalancer IP to be detected
   sleep 2
 done
