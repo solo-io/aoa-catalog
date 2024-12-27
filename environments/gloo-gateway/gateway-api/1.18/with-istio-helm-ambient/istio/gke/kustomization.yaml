@@ -5,7 +5,7 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - ../ambient
+- resourcequota.yaml
 
 patchesStrategicMerge:
 - istio-cni.yaml
-- istio-ztunnel.yaml
