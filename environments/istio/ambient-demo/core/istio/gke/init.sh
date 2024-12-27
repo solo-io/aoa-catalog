@@ -3,6 +3,9 @@
 echo "wave description:"
 echo "istiod and ingress gateway deployments"
 
+# create istio-system namespace
+kubectl create ns istio-system
+
 # install Kubernetes Gateway CRDs
 echo "installing Kubernetes Gateway CRDs"
 kubectl get crd gateways.gateway.networking.k8s.io &> /dev/null || \
