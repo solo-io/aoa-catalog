@@ -10,7 +10,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: kube-system
+    namespace: istio-system
   project: default
   source:
     chart: cni
