@@ -1,5 +1,15 @@
 # Changelog
 
+0.7.6 (12-27-24)
+---
+- Update /istio environments to 1.23.4
+- Update /gateway-api/1.17/with-istio-helm-ambient environment to 1.23.4
+- Update /gateway-api/1.18/with-istio-helm-ambient environment to 1.23.4
+- Update Gateway API CRDs from experimental 0.6.1 to stable 1.2.0 for ambient environments
+- Move all ambient components to `istio-system` and add `ResourceQuota` for GKE deployments. Previously istio-cni and ztunnel were deployed in `kube-system` namespace
+- Add `/gateway-api/1.18/with-istio-helm-ambient/gke` overlay to support GKE deployments for this environment
+- Previously any LB discovery was done with the following `-o jsonpath='{.items[*].status.loadBalancer.ingress[0].*}'` which for certain cloud providers (GKE and AWS) picks up additional fields. This now has been changed to `-o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}{.items[*].status.loadBalancer.ingress[0].hostname}'` which should capture all LB address formats
+
 0.7.5 (12-26-24)
 ---
 - Cleanup of unused environments/overlays

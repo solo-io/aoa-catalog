@@ -3,7 +3,7 @@
 echo "wave description:"
 echo "deploying homer portal app"
 
-LB_ADDRESS=$(kubectl get svc -n istio-system --context ${cluster_context} --selector=istio=ingressgateway -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}')
+LB_ADDRESS=$(kubectl get svc -n istio-system --context ${cluster_context} --selector=istio=ingressgateway -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}{.items[*].status.loadBalancer.ingress[0].hostname}')
 
 kubectl apply --context ${cluster_context} -f- <<EOF
 apiVersion: v1

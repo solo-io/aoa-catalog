@@ -13,9 +13,9 @@ waves:
       pre_deploy: 
       -  $env_path/../core/istio/gke/init.sh
       post_deploy:
-      -  $env_path/../core/istio/gke/test.sh
+      -  $env_path/../core/istio/test.sh
   - name: apps
-    location: $env_path/../uniform-apps/apps/5-namespace-app/ambient
+    location: $env_path/../uniform-apps/apps/1-namespace-app/ambient
     scripts:
       pre_deploy: 
       -  $env_path/../uniform-apps/apps/init.sh
@@ -29,7 +29,7 @@ waves:
       post_deploy:
       -  $env_path/../core/clusterservices-config/test.sh 
   - name: loadgenerators
-    location: $env_path/../uniform-apps/loadgenerators/5-loadgenerators
+    location: $env_path/../uniform-apps/loadgenerators/1-loadgenerators
     scripts:
       pre_deploy: 
       -  $env_path/../uniform-apps/loadgenerators/init.sh
