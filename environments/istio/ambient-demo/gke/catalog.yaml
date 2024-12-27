@@ -11,7 +11,7 @@ waves:
     location: $env_path/../core/istio/gke
     scripts:
       pre_deploy: 
-      -  $env_path/../core/istio/init.sh
+      -  $env_path/../core/istio/gke/init.sh
       post_deploy:
       -  $env_path/../core/istio/test.sh
   - name: apps
