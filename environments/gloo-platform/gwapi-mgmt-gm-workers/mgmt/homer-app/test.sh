@@ -11,7 +11,7 @@ echo "127.0.0.1 argocd.glootest.com homer.glootest.com httpbin.glootest.com book
 echo
 echo "If using LoadBalancer External-IP, map the hostnames above to your Load Balancer IP address using your DNS solution of choice (i.e. etc/hosts, CloudFlare, Route53, etc.)"
 echo "Discovering Load Balancer IP..."
-echo "Load Balancer IP: https://$(kubectl --context ${mgmt_context} get svc -n gloo-system --selector=gloo=kube-gateway -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}{.status.loadBalancer.ingress[0].hostname}')/solo"
+echo "Load Balancer IP: https://$(kubectl --context ${mgmt_context} get svc -n gloo-system --selector=gloo=kube-gateway -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}{.items[*].status.loadBalancer.ingress[0].hostname}')/solo"
 echo
 echo "access the dashboard at https://homer.glootest.com/solo"
 echo

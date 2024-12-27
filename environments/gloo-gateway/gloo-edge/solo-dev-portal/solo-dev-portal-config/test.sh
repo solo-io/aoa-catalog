@@ -7,7 +7,7 @@ echo "To access applications, follow the methods below:"
 echo 
 echo "Method 1 - LoadBalancer External-IP: modify /etc/hosts on your local machine (this will require sudo privileges)"
 echo "cat <<EOF | sudo tee -a /etc/hosts"
-echo "$(kubectl -n gloo-system get service gateway-proxy -o jsonpath='{.status.loadBalancer.ingress[0].ip}{.status.loadBalancer.ingress[0].hostname}') argocd.glootest.com api.glootest.com apidev.glootest.com portal.glootest.com"
+echo "$(kubectl -n gloo-system get service gateway-proxy -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}{.items[*].status.loadBalancer.ingress[0].hostname}') argocd.glootest.com api.glootest.com apidev.glootest.com portal.glootest.com"
 echo "EOF"
 echo
 echo "Method 2 - K3d LB Integration: modify /etc/hosts on your local machine (this will require sudo privileges)"

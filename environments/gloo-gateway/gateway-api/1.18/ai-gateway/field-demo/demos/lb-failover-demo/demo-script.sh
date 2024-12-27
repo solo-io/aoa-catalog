@@ -84,7 +84,7 @@ echo
 
 # Step 4: Get AI Gateway Load Balancer Address
 read -p "Step 4: Retrieve the AI Gateway Load Balancer address. Press enter to proceed..."
-export GATEWAY_IP=$(kubectl get svc -n gloo-system gloo-proxy-ai-gateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}{.status.loadBalancer.ingress[0].hostname}')
+export GATEWAY_IP=$(kubectl get svc -n gloo-system gloo-proxy-ai-gateway -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}{.items[*].status.loadBalancer.ingress[0].hostname}')
 echo "Gateway IP: $GATEWAY_IP"
 echo
 
