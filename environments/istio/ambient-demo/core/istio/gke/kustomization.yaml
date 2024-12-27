@@ -6,3 +6,6 @@ kind: Kustomization
 resources:
 - ../ambient
 - resourcequota.yaml
+
+patchesStrategicMerge:
+- istio-cni.yaml
