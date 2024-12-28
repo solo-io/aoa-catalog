@@ -2,7 +2,7 @@
 
 # Step 1: Fetch the INGRESS_GW_ADDRESS and export it
 echo "Step 1: Fetching the ingress gateway address..."
-export INGRESS_GW_ADDRESS=$(kubectl get svc -n gloo-system gloo-proxy-ai-gateway -o jsonpath="{.status.loadBalancer.ingress[0]['hostname','ip']}")
+export INGRESS_GW_ADDRESS=$(kubectl get svc -n gloo-system --selector=gateway.networking.k8s.io/gateway-name=ai-gateway -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}{.items[*].status.loadBalancer.ingress[0].hostname}')
 echo "Ingress Gateway Address: $INGRESS_GW_ADDRESS"
 echo
 
