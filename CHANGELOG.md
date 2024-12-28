@@ -1,5 +1,9 @@
 # Changelog
 
+0.7.7 (12-27-24)
+---
+- update all `demo-script.sh` in ai-gateway/field-demo/demos to use label selectors when discovering the LB address, this makes it consistent with the rest of aoa-catalog
+
 0.7.6 (12-27-24)
 ---
 - Update /istio environments to 1.23.4
