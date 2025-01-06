@@ -23,6 +23,8 @@ spec:
         glooInsightsEngine:
             enabled: true
             runAsSidecar: false
+        glooAnalyzer:
+            enabled: true
         glooUi:
             enabled: true
             serviceType: LoadBalancer
@@ -53,7 +55,7 @@ spec:
                   - prometheus
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2024-12-19-chunter-issue-19177-6ff95143cf
+    targetRevision: 2.7.0-beta1-2025-01-05-main-08f720ff8e
   syncPolicy:
     automated:
       prune: true
