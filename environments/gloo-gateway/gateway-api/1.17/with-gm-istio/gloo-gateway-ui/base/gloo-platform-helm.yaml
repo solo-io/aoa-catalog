@@ -42,9 +42,9 @@ spec:
         telemetryCollectorCustomization:
             pipelines:
               logs/analyzer:
-                enabled: false
-              logs/ui:
                 enabled: true
+              logs/ui:
+                enabled: false
                 pipeline:
                   exporters:
                   - redisstream/ui
@@ -55,7 +55,7 @@ spec:
                   - prometheus
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2025-01-05-main-08f720ff8e
+    targetRevision: 2.7.0-beta1-2025-01-06-main-1d76c7d4ef
   syncPolicy:
     automated:
       prune: true
