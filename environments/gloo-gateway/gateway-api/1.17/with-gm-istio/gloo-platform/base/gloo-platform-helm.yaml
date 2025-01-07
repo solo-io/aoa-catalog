@@ -23,10 +23,8 @@ spec:
             cluster: mgmt
         glooInsightsEngine:
             enabled: true
-            runAsSidecar: false
         glooAnalyzer:
             enabled: true
-            runAsSidecar: false
         global: {}
         glooAgent:
             enabled: false
@@ -41,7 +39,7 @@ spec:
                   name: null
                   namespace: null
         glooMgmtServer:
-            enabled: true
+            enabled: false
             policyApis:
                 enabled: false
             relay:
@@ -97,7 +95,7 @@ spec:
             enabled: true
         redis:
             deployment:
-                enabled: true
+                enabled: false
         telemetryGateway:
             enabled: false
         telemetryCollector:
