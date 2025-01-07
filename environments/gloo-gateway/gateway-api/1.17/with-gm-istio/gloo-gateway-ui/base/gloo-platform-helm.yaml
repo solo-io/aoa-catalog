@@ -35,7 +35,7 @@ spec:
             enabled: true
         redis:
             deployment:
-                enabled: false
+                enabled: true
         telemetryCollector:
             enabled: true
             mode: deployment
