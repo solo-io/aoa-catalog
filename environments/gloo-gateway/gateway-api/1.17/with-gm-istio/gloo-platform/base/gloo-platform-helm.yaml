@@ -93,6 +93,7 @@ spec:
             licenseSecretName: "gloo-license"
         prometheus:
             enabled: true
+            skipAutoMigration: true
         redis:
             deployment:
                 enabled: false
