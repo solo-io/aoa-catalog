@@ -66,7 +66,7 @@ spec:
                   - prometheus
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2025-01-08-main-51e295bc0d
+    targetRevision: 2.7.0-beta1-2025-01-07-jmcguire-check-crds-installed-before-starting-controllers-930c24925b
   syncPolicy:
     automated:
       prune: true
