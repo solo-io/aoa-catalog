@@ -7,4 +7,4 @@ resources:
 - gloo-platform-crds.yaml
 - gloo-telemetry-gateway-cert.yaml
 - relay-root-tls-secret-cert.yaml
-- gloo-agent-cert.yaml
+#- gloo-agent-cert.yaml
