@@ -4,7 +4,7 @@
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.7.0-beta1-2025-01-07-jmcguire-check-crds-installed-before-starting-controllers-930c24925b):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.7.0-beta1-2025-01-08-jhawley-apiserver-no-cross-cluster-57598e7e27):"
     read gloo_mesh_version
 fi
 
@@ -105,7 +105,7 @@ spec:
             enabled: true
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2025-01-07-jmcguire-check-crds-installed-before-starting-controllers-930c24925b
+    targetRevision: 2.7.0-beta1-2025-01-08-jhawley-apiserver-no-cross-cluster-57598e7e27
   syncPolicy:
     automated:
       prune: true
@@ -163,7 +163,7 @@ spec:
             skipVerify: true
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2025-01-07-jmcguire-check-crds-installed-before-starting-controllers-930c24925b
+    targetRevision: 2.7.0-beta1-2025-01-08-jhawley-apiserver-no-cross-cluster-57598e7e27
   syncPolicy:
     automated:
       prune: true
