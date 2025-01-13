@@ -1,5 +1,10 @@
 # Changelog
 
+0.7.9 (1-13-25)
+---
+- update gloo-operator to 0.1.0-beta.2 in gateway-api/1.18/with-ilm-ambient environment
+- configure gateway-api/1.18/with-ilm-ambient to enforce L7 auth policies
+
 0.7.8 (12-27-24)
 ---
 - Updated a few more areas where LB discovery was not using selectors
