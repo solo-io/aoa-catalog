@@ -10,4 +10,3 @@ resources:
 #- jaeger.yaml
 #- grafana.yaml
 - servicemeshcontroller.yaml
-
