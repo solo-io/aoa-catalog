@@ -106,6 +106,9 @@ data:
         enabled: true
       istio:
         root_namespace: istio-system
+        config_map_name: "istio-gloo"
+        istio_sidecar_injector_config_map_name: "istio-sidecar-injector-gloo"
+        istiod_deployment_name: "istiod-gloo"
       tracing:
         enabled: false
     identity:
