@@ -12,7 +12,10 @@ spec:
   rules:
   - from:
     - source:
-        namespaces: ["ns-1"]
+        namespaces:
+          - ns-1
+          - client
     to:
     - operation:
-        methods: ["GET"]
+        methods:
+          - GET
