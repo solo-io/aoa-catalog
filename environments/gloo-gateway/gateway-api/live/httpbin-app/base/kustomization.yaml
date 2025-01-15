@@ -17,6 +17,10 @@ resources:
 - direct-response
 - fault-injection
 
+# when using ambient uncomment below
+transformers:
+- transformers/ambient-label-transformer.yaml
+
 # patch nodeSelector and tolerations on all Deployments
 patches:
 - patch: |-
