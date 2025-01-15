@@ -130,7 +130,7 @@ spec:
                   enabled: false
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2025-01-12-main-c580b88b9d
+    targetRevision: 2.7.0-beta1-2025-01-14-main-0e5f6c9088
   syncPolicy:
     automated:
       prune: true
