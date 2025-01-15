@@ -4,7 +4,10 @@ kind: Kustomization
 resources:
 #- blue-green
 - canary
-#- rollouts-ui
+
+# when using ambient uncomment below
+transformers:
+- transformers/ambient-label-transformer.yaml
 
 # patch nodeSelector and tolerations on all Deployments
 patches:
