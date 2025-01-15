@@ -10,6 +10,10 @@ resources:
 - bookinfo-delegate-route.yaml
 - bookinfo-route-policies.yaml
 
+# when using ambient uncomment below
+transformers:
+- transformers/ambient-label-transformer.yaml
+
 # patch nodeSelector and tolerations on all Deployments
 patches:
 - patch: |-
