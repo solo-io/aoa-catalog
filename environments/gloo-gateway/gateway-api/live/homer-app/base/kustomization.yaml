@@ -9,3 +9,6 @@ resources:
 - admin
 - config-examples
 
+# when using ambient uncomment below
+transformers:
+- transformers/ambient-label-transformer.yaml
