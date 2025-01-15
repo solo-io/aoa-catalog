@@ -478,7 +478,7 @@ spec:
                         icon: "far fa-file-code"
                         tag: "gloo-mesh #config"
                         keywords: "gloo-mesh,config"
-                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/gloo-portal-demo/base/tracks-api/tracks-api.yaml#L34-L38"
+                        url: "https://github.com/solo-io/aoa-catalog/blob/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/istio/ambient/servicemeshcontroller.yaml"
                         target: "_blank" # optional html a tag target attribute
                   
                   - name: "Gloo Portal Config Examples"
