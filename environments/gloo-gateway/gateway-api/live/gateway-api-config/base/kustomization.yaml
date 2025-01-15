@@ -17,3 +17,5 @@ resources:
 - portal-opa-cm.yaml
 - argo-authconfig.yaml
 - host-redirect.yaml
+- kiali-https.yaml
+- kiali-route-policies.yaml
