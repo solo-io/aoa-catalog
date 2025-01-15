@@ -10,3 +10,6 @@ resources:
 - uptime-httproute.yaml
 - uptime-route-policies.yaml
 
+# when using ambient uncomment below
+transformers:
+- transformers/ambient-label-transformer.yaml
