@@ -6,3 +6,7 @@ kind: Kustomization
 resources:
 - gloo-enterprise.yaml
 - gloo-system-ns.yaml
+
+# when using ambient uncomment below
+transformers:
+- transformers/ambient-label-transformer.yaml
