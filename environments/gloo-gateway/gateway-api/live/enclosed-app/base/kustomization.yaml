@@ -9,6 +9,10 @@ resources:
 - enclosed-https.yaml
 - enclosed-route-policies.yaml
 
+# when using ambient uncomment below
+transformers:
+- transformers/ambient-label-transformer.yaml
+
 # patch nodeSelector and tolerations on all Deployments
 patches:
 - patch: |-
