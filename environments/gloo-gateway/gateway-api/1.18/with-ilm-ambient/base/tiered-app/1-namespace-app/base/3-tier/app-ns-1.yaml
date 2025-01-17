@@ -69,7 +69,8 @@ spec:
         - name: "MESSAGE"
           value: "Hello From tier-1-app-a !"
         - name: "UPSTREAM_URIS"
-          value: "http://tier-2-app-a.ns-1:8080,http://tier-2-app-b.ns-1:8080"
+          #value: "http://tier-2-app-a.ns-1:8080,http://tier-2-app-b.ns-1:8080"
+          value: "http://tier-2-app-a.ns-1.mesh.internal:8080,http://tier-2-app-b.ns-1.mesh.internal:8080"
         - name: "UPSTREAM_WORKERS"
           value: "1"
         - name: "TIMING_50_PERCENTILE"
@@ -110,6 +111,7 @@ metadata:
   labels:
     app: tier-2-app-a
     tier: "2"
+    solo.io/service-scope: global
 spec:
   selector:
     app: tier-2-app-a
@@ -199,6 +201,7 @@ metadata:
   labels:
     app: tier-2-app-b
     tier: "2"
+    solo.io/service-scope: global
 spec:
   selector:
     app: tier-2-app-b
