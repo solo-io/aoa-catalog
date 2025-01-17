@@ -12,19 +12,19 @@ spec:
  - from:
    - source:
        principals:
-       - cluster.local/ns/client/sa/sleep
-       - cluster.local/ns/ns-1/sa/tier-2-app-a
-       - cluster.local/ns/ns-2/sa/tier-2-app-a
-       - cluster.local/ns/ns-3/sa/tier-2-app-a
-       - cluster.local/ns/ns-4/sa/tier-2-app-a
-       - cluster.local/ns/ns-5/sa/tier-2-app-a
-       - cluster.local/ns/ns-1/sa/tier-2-app-b
-       - cluster.local/ns/ns-2/sa/tier-2-app-b
-       - cluster.local/ns/ns-3/sa/tier-2-app-b
-       - cluster.local/ns/ns-4/sa/tier-2-app-b
-       - cluster.local/ns/ns-5/sa/tier-2-app-b
-       - cluster.local/ns/ns-1/sa/waypoint
-       - cluster.local/ns/ns-2/sa/waypoint
-       - cluster.local/ns/ns-3/sa/waypoint
-       - cluster.local/ns/ns-4/sa/waypoint
-       - cluster.local/ns/ns-5/sa/waypoint
+       - '*/ns/client/sa/sleep'
+       - '*/ns/ns-1/sa/tier-2-app-a'
+       - '*/ns/ns-2/sa/tier-2-app-a'
+       - '*/ns/ns-3/sa/tier-2-app-a'
+       - '*/ns/ns-4/sa/tier-2-app-a'
+       - '*/ns/ns-5/sa/tier-2-app-a'
+       - '*/ns/ns-1/sa/tier-2-app-b'
+       - '*/ns/ns-2/sa/tier-2-app-b'
+       - '*/ns/ns-3/sa/tier-2-app-b'
+       - '*/ns/ns-4/sa/tier-2-app-b'
+       - '*/ns/ns-5/sa/tier-2-app-b'
+       - '*/ns/ns-1/sa/waypoint'
+       - '*/ns/ns-2/sa/waypoint'
+       - '*/ns/ns-3/sa/waypoint'
+       - '*/ns/ns-4/sa/waypoint'
+       - '*/ns/ns-5/sa/waypoint'
