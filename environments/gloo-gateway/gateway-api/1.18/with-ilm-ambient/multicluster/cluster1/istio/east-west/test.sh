@@ -7,9 +7,10 @@ $SCRIPT_DIR/tools/wait-for-rollout.sh deployment istio-eastwest istio-gateways 1
 until [ "${SVC}" != "" ]; do
   SVC=$(kubectl --context ${peering_context} -n istio-gateways get svc --selector=gateway.networking.k8s.io/gateway-name=istio-eastwest -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}{.items[*].status.loadBalancer.ingress[0].hostname}')
   echo waiting for istio east-west LoadBalancer IP to be detected on the peering cluster
-  echo LoadBalancer IP found: $SVC
   sleep 2
 done
+
+echo LoadBalancer IP found: $SVC
 
 kubectl apply --context ${cluster_context} -f- <<EOF
 apiVersion: gateway.networking.k8s.io/v1
