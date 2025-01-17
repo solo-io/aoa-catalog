@@ -11,3 +11,17 @@ resources:
 #- jaeger.yaml
 #- grafana.yaml
 - servicemeshcontroller.yaml
+
+patches:
+- target:
+    group: operator.gloo.solo.io
+    version: v1
+    kind: ServiceMeshController
+    name: ambient
+  patch: |
+    - op: add
+      path: /spec/cluster
+      value: cluster1
+    - op: add
+      path: /spec/network
+      value: cluster1
