@@ -4,7 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-
+#- certmanager-istio-ca-cert.yaml
+#- certmanager-selfsigned-issuer.yaml
 - kiali.yaml
 - prometheus.yaml
 #- jaeger.yaml

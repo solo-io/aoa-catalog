@@ -1,5 +1,12 @@
 
 waves:
+  #- name: cert-manager
+  #  location: $env_path/../base/cert-manager/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/../base/cert-manager/init.sh
+  #    post_deploy:
+  #    -  $env_path/../base/cert-manager/test.sh
   - name: gloo-operator
     location: $env_path/../base/gloo-operator/base
     scripts:
@@ -15,7 +22,7 @@ waves:
       post_deploy:
       -  $env_path/istio/test.sh
   - name: istio-peering
-    location: $env_path/../base/istio/east-west
+    location: $env_path/istio/east-west
     #scripts:
     #  pre_deploy: 
     #  -  $env_path/../base/istio/init.sh
