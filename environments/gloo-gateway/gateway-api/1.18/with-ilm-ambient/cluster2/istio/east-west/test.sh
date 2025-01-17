@@ -5,8 +5,8 @@ $SCRIPT_DIR/tools/wait-for-rollout.sh deployment istio-eastwest istio-gateways 1
 
 # configure peering link
 until [ "${SVC}" != "" ]; do
-  SVC=$(kubectl --context ${peering_context} -n gloo-mesh get svc --selector=app=gloo-mesh-mgmt-server -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}{.items[*].status.loadBalancer.ingress[0].hostname}')
-  echo waiting for gloo mesh management server LoadBalancer IP to be detected
+  SVC=$(kubectl --context ${peering_context} -n istio-gateways get svc --selector=gateway.networking.k8s.io/gateway-name=istio-eastwest -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}{.items[*].status.loadBalancer.ingress[0].hostname}')
+  echo waiting for istio east-west LoadBalancer IP to be detected
   sleep 2
 done
 
