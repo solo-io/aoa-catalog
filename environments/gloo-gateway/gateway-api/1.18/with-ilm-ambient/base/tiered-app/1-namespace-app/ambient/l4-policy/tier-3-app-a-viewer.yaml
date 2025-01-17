@@ -12,7 +12,7 @@ spec:
  - from:
    - source:
        principals:
-       - cluster.local/ns/client/sa/sleep
-       - cluster.local/ns/ns-1/sa/tier-2-app-a
-       - cluster.local/ns/ns-1/sa/tier-2-app-b
-       - cluster.local/ns/ns-1/sa/waypoint
+       - '*/ns/client/sa/sleep'
+       - '*/ns/ns-1/sa/tier-2-app-a'
+       - '*/ns/ns-1/sa/tier-2-app-b'
+       - '*/ns/ns-1/sa/waypoint'
