@@ -14,6 +14,8 @@ waves:
       -  $env_path/istio/init.sh
       post_deploy:
       -  $env_path/istio/test.sh
+  - name: istio-observability
+    location: $env_path/istio/observability
   - name: gloo-enterprise-app
     location: $env_path/../base/gloo-enterprise-app/base
     scripts:

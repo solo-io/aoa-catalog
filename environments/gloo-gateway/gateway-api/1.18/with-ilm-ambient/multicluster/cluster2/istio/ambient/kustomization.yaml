@@ -4,12 +4,6 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-#- certmanager-istio-ca-cert.yaml
-#- certmanager-selfsigned-issuer.yaml
-- kiali.yaml
-- prometheus.yaml
-#- jaeger.yaml
-#- grafana.yaml
 - servicemeshcontroller.yaml
 
 patches:
@@ -21,7 +15,7 @@ patches:
   patch: |
     - op: add
       path: /spec/cluster
-      value: cluster2
+      value: cluster1
     - op: add
       path: /spec/network
-      value: cluster2
+      value: cluster1
