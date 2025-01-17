@@ -1,4 +1,5 @@
 notes.md
 environments/gloo-gateway/gateway-api/1.18/ai-gateway/locust/locust_output.log
 environments/gloo-gateway/gateway-api/1.18/ai-gateway/locust/__pycache__
+aoa-tools/shared-root-trust-secret.yaml
 .idea/*
