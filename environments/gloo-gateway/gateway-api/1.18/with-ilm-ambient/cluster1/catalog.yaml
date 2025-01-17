@@ -49,6 +49,7 @@ waves:
       -  $env_path/../base/tiered-app/init.sh
       post_deploy:
       -  $env_path/../base/tiered-app/test.sh  
+    sync: false
   - name: loadgenerators
     location: $env_path/../base/loadgenerators/1-loadgenerators
     scripts:
