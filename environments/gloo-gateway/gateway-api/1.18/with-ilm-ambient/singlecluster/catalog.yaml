@@ -31,12 +31,12 @@ waves:
       post_deploy:
       -  $env_path/../base/gateway-api-config/test.sh
   - name: tiered-app
-    location: $env_path/../base/tiered-app/1-namespace-app/ambient
+    location: $env_path/tiered-app/1-namespace-app/ambient
     scripts:
       pre_deploy: 
-      -  $env_path/../base/tiered-app/init.sh
+      -  $env_path/tiered-app/init.sh
       post_deploy:
-      -  $env_path/../base/tiered-app/test.sh  
+      -  $env_path/tiered-app/test.sh  
     sync: false
   - name: loadgenerators
     location: $env_path/../base/loadgenerators/1-loadgenerators
