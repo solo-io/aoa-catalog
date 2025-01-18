@@ -3,9 +3,6 @@ kind: ServiceMeshController
 metadata:
   name: ambient
 spec:
-  version: 1.24-alpha.c5f994b3f8c5ab3b6d00ea7347c656667dd8568d-internal
+  version: 1.24.2
+  dataplaneMode: Ambient
   installNamespace: istio-system
-  repository:
-    url: oci://registry-1.docker.io/rvennam
-  image:
-    repository: docker.io/rvennam
