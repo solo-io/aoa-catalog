@@ -29,18 +29,12 @@ spec:
     value: ${SVC}
   gatewayClassName: istio-remote
   listeners:
-  - allowedRoutes:
-      namespaces:
-        from: Same
-    name: cross-network
+  - name: cross-network
     port: 15008
     protocol: HBONE
     tls:
       mode: Passthrough
-  - allowedRoutes:
-      namespaces:
-        from: Same
-    name: xds-tls
+  - name: xds-tls
     port: 15012
     protocol: TLS
     tls:
