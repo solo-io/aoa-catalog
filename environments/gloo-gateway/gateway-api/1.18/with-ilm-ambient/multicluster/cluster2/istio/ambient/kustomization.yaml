@@ -15,7 +15,7 @@ patches:
   patch: |
     - op: add
       path: /spec/cluster
-      value: cluster1
+      value: cluster2
     - op: add
       path: /spec/network
-      value: cluster1
+      value: cluster2
