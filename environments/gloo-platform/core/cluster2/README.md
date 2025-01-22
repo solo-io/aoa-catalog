@@ -10,11 +10,11 @@ The `gloo-platform/core/cluster2` environment deploys the `cluster2` worker for 
 
 ## Environment description
 - base:
-    - gloo mesh v2.7.0-beta1-2025-01-16-main-8617dbd45e
+    - gloo mesh v2.7.0-beta1-2025-01-21-main-12e88d9f58
     - istio 1.22.3-patch1-solo (Helm)
     - revision: 1-22
 - ilcm:
-    - gloo mesh v2.7.0-beta1-2025-01-16-main-8617dbd45e
+    - gloo mesh v2.7.0-beta1-2025-01-21-main-12e88d9f58
     - istio 1.22.3-patch1-solo (ILCM)
     - revision: 1-22
 
