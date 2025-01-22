@@ -62,7 +62,7 @@ spec:
           enabled: true
         prometheus:
           # setting to false will disable prometheus, removing it from Gloo's chart dependencies
-          enabled: true
+          enabled: false
         grafana:
           # setting to false will disable grafana, removing it from Gloo's chart dependencies
           defaultInstallationEnabled: true
