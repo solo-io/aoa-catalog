@@ -12,10 +12,6 @@ spec:
       numRetries: 3
       perTryTimeout: '5s'
     timeout: '2s'
-    extauth:
-      configRef:
-        name: httpbin-okta
-        namespace: gloo-system
     headerManipulation:
       # add headers to all responses
       requestHeadersToAdd:
