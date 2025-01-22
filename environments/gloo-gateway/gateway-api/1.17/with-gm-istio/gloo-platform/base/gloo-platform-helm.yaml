@@ -108,10 +108,7 @@ spec:
               logs/analyzer:
                 enabled: false
               logs/ui:
-                enabled: true
-                pipeline:
-                  exporters:
-                  - redisstream/ui
+                enabled: false
               metrics/ui:
                 enabled: true
                 pipeline:

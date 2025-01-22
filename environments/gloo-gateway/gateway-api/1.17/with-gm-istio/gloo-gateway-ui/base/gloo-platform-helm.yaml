@@ -45,9 +45,6 @@ spec:
                 enabled: false
               logs/ui:
                 enabled: false
-                pipeline:
-                  exporters:
-                  - redisstream/ui
               metrics/ui:
                 enabled: true
                 pipeline:
