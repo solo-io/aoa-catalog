@@ -17,6 +17,7 @@ resources:
 - direct-response
 - fault-injection
 - httpbin-ext-auth-routeoption.yaml
+- httpbin-get-route.yaml
 
 # when using ambient uncomment below
 transformers:

@@ -7,7 +7,7 @@ spec:
   targetRefs:
   - group: gateway.networking.k8s.io
     kind: HTTPRoute
-    name: httpbin-delegate-route
+    name: httpbin-get-route
   options:
     extauth:
       configRef:
