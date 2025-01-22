@@ -20,6 +20,6 @@ spec:
             metadataKey: "principal:sub"
     deployment:
       replicas: 2
-    podTemplate:
-      extraLabels:
-        istio.io/dataplane-mode: none
+    #podTemplate:
+    #  extraLabels:
+    #    istio.io/dataplane-mode: none
