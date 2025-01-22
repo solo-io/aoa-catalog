@@ -414,7 +414,7 @@ spec:
                         subtitle: "requires user login credentials"
                         icon: "fas fa-shield-alt"
                         tag: "gloo-gateway #gloo-mesh #demo"
-                        url: "https://httpbin.gwapi.glooplatform.com"
+                        url: "https://httpbin.gwapi.glooplatform.com/get"
                         target: "_blank" # optional html a tag target attribute
                       - name: "Bookinfo - API Key Auth"
                         subtitle: "requires bookinfo-key header"
