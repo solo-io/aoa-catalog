@@ -15,7 +15,7 @@ spec:
   source:
     chart: gloo-operator
     repoURL: us-docker.pkg.dev/solo-public/gloo-operator-helm
-    targetRevision: 0.1.0-beta.2
+    targetRevision: 0.1.0-beta.3
   syncPolicy:
     automated:
       prune: true
