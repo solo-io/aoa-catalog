@@ -55,7 +55,7 @@ spec:
                   - prometheus
 
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.7.0-beta1-2025-01-07-chunter-issue-19177-76136fe1c6
+    targetRevision: 2.7.0-beta1-2025-01-22-chunter-issue-19177-f4e93e8c9a
   syncPolicy:
     automated:
       prune: true
