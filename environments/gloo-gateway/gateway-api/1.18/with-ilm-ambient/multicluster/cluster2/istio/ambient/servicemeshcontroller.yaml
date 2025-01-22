@@ -1,0 +1,11 @@
+apiVersion: operator.gloo.solo.io/v1
+kind: ServiceMeshController
+metadata:
+  name: ambient
+spec:
+  version: 1.24-alpha.c5f994b3f8c5ab3b6d00ea7347c656667dd8568d-internal
+  installNamespace: istio-system
+  repository:
+    url: oci://registry-1.docker.io/rvennam
+  image:
+    repository: docker.io/rvennam

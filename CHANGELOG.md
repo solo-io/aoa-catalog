@@ -1,5 +1,13 @@
 # Changelog
 
+0.8.1 (1-21-25)
+---
+- configured a kustomize patch for `ServiceMeshController` to specify `cluster1` and `cluster2` in for network and cluster vars in the `gateway-api/1.18/with-ilm-ambient` environments
+- split `/with-ilm-ambient` into singlecluster and multicluster overlays
+- configure istio peering gateways in post script
+- move observability tooling to istio/observability in the `/with-ilm-ambient` environments into it's own wave. This avoids an error condition where kiali and prometheus are ready before ILM has configured the Istio mesh
+- note that in `gateway-api/1.18/with-ilm-ambient` environments the cacerts secret for shared root trust will need to be provided by the user. The init.sh script (found at gateway-api/1.18/with-ilm-ambient/cluster1/istio/init.sh) expects this secret to be under `/aoa-tools/shared-root-trust-secret.yaml`. Will find a longer term solution for this later
+
 0.8.0 (1-16-25)
 ---
 - deprecate gateway-api/1.17 in favor of gateway-api/1.18
