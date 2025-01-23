@@ -35,11 +35,6 @@ spec:
                 clientTlsSecret:
                     name: gloo-agent-tls-cert
                     namespace: gloo-mesh
-                # required to set to null in 2.4.x if providing server and client tls certificates
-                tokenSecret:
-                  key: null
-                  name: null
-                  namespace: null
         glooMgmtServer:
             enabled: true
             policyApis:
@@ -52,45 +47,8 @@ spec:
                     name: gloo-server-tls-cert
             serviceType: LoadBalancer
         glooUi:
-            auth:
-                backend: oidc
-                enabled: false
-                oidc:
-                    appUrl: https://gmui.glootest.com/gmui
-                    clientId: 0oa5zoq0xoGKtOSpg5d7
-                    clientSecret: _MS9PJ52NpUJo8Hj2nE4zj90hX4BFkW61SdaXJfE
-                    clientSecretName: dashboard
-                    issuerUrl: https://dev-22653158.okta.com/oauth2/default
-            # uncomment to inject the Gloo UI with the Istio sidecar
-            #deploymentOverrides:
-            #    spec:
-            #        template:
-            #            metadata:
-            #                annotations:
-            #                    proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
-            #                labels:
-            #                    istio.io/rev: 1-23
-            #                    sidecar.istio.io/inject: "true"
             enabled: true
             serviceType: LoadBalancer
-        extAuthService:
-            enabled: false
-            extAuth:
-                apiKeyStorage:
-                    enabled: true
-                    # Use the local gloo-mesh-addons Redis for backing storage
-                    name: redis
-                    config:
-                      connection:
-                        host: "redis.gloo-mesh-addons:6379"
-                        # Set to 0 to match the default database for the 'glooPortalServer.apiKeyStorage' configuration
-                        db: 0
-                    # Replace with a random string to use to generate hash values for other keys
-                    secretKey: "xyz987"
-        rateLimiter:
-            enabled: false
-        legacyMetricsPipeline:
-            enabled: false
         licensing:
             licenseSecretName: "gloo-license"
         prometheus:
@@ -98,7 +56,7 @@ spec:
             skipAutoMigration: true
         redis:
             deployment:
-                enabled: true
+                enabled: false
         telemetryGateway:
             enabled: false
         telemetryCollector:
