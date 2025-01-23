@@ -22,8 +22,10 @@ spec:
             cluster: mgmt
         glooInsightsEngine:
             enabled: true
+            runAsSidecar: false
         glooAnalyzer:
             enabled: true
+            runAsSidecar: false
         glooUi:
             enabled: true
             serviceType: LoadBalancer
