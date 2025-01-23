@@ -98,7 +98,7 @@ spec:
             skipAutoMigration: true
         redis:
             deployment:
-                enabled: false
+                enabled: true
         telemetryGateway:
             enabled: false
         telemetryCollector:
