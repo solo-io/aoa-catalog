@@ -37,17 +37,17 @@ spec:
     name: http
     port: 8080
     protocol: HTTP
-  - allowedRoutes:
-      namespaces:
-        from: All
-    name: https
-    port: 443
-    protocol: HTTPS
-    tls:
-      mode: Terminate
-      certificateRefs:
-        - name: upstream-tls
-          kind: Secret
+  #- allowedRoutes:
+  #    namespaces:
+  #      from: All
+  #  name: https
+  #  port: 443
+  #  protocol: HTTPS
+  #  tls:
+  #    mode: Terminate
+  #    certificateRefs:
+  #      - name: upstream-tls
+  #        kind: Secret
 ---
 apiVersion: gateway.solo.io/v1
 kind: ListenerOption
