@@ -39,7 +39,7 @@ spec:
             deployment:
                 enabled: false
         telemetryCollector:
-            enabled: false
+            enabled: true
             mode: deployment
             replicaCount: 1
         telemetryCollectorCustomization:
