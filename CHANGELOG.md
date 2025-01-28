@@ -1,5 +1,13 @@
 # Changelog
 
+0.8.2 (1-28-25)
+---
+- update gloo-operator to 0.1.0-rc.0 in gateway-api/1.18/with-ilm-ambient environments
+- update gwapi crds to use v1.2.0 in all environments
+- update colima-install.sh to use profiles which enables local multi-cluster installations
+- update colima-install.sh to use k8s v1.31.2+k3s1
+- minor fixes/updates in gateway-api/1.18/ai-gateway/field-demo environment
+
 0.8.1 (1-21-25)
 ---
 - configured a kustomize patch for `ServiceMeshController` to specify `cluster1` and `cluster2` in for network and cluster vars in the `gateway-api/1.18/with-ilm-ambient` environments

@@ -167,6 +167,7 @@ install_k3d()
 
 destroy_infra()
 {
+    source_env_vars
     if [[ "$dry_run" == true ]]; then
         echo "Dry-run: Would destroy infrastructure."
     else
@@ -174,7 +175,7 @@ destroy_infra()
         echo "Destroying infra..."
 
         if [[ ${install_colima} == true ]]; then
-            colima delete --force
+            colima delete ${cluster_context} --force
             rm ~/.kube/config
         elif [[ ${install_colima} == false ]]; then
             if [ -d "$env/.infra" ]; then
@@ -365,7 +366,7 @@ destroy()
   
    echo "------------------------------------------------------------"
    echo "--------------   AoA Installer - Env Destroy   -------------"
-   echo "The following environemnt will be destroyed: $env"
+   echo "The following environment will be destroyed: $env"
 
    echo "Continue? [y/N]"
 
