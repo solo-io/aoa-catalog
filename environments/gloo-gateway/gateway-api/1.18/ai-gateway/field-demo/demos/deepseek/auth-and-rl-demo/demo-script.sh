@@ -64,8 +64,8 @@ echo
 echo "Starting the Gloo AI Gateway Rate Limiting Demo..."
 echo
 
-# Step 1: Configure a simple route to qwen-0.5b LLM backend
-read -p "Step 1: Configure a simple route to qwen-0.5b LLM backend. Press enter to proceed..."
+# Step 1: Configure a simple route to deepseek-1.5b LLM backend
+read -p "Step 1: Configure a simple route to deepseek-1.5b LLM backend. Press enter to proceed..."
 kubectl apply -f route
 echo
 cat route/*.yaml
@@ -80,7 +80,7 @@ echo
 
 # Step 3: Test the AI Gateway Endpoint
 read -p "Step 3: Test the AI Gateway endpoint. Press enter to proceed..."
-curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/qwen -H "Content-Type: application/json" -d '{
+curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/deepseek -H "Content-Type: application/json" -d '{
     "messages": [
       {
         "role": "system",
@@ -94,7 +94,7 @@ curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/qwen -H "Content-Type: application/j
   }'
 echo
 echo "^^^^"
-echo "The response should indicate that qwen-0.5b is serving the request."
+echo "The response should indicate that deepseek-1.5b is serving the request."
 echo
 
 # Step 4: Set up Access Control
@@ -108,7 +108,7 @@ echo
 
 # Step 5: Test Access Control Without JWT
 read -p "Step 5: Test the endpoint without JWT to verify access control. Press enter to proceed..."
-curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/qwen -H "Content-Type: application/json" -d '{
+curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/deepseek -H "Content-Type: application/json" -d '{
     "messages": [
       {
         "role": "system",
@@ -127,7 +127,7 @@ echo
 
 # Step 6: Save and Test Alice's JWT Token
 read -p "Step 6: Save and test Alice's JWT token. Press enter to proceed..."
-curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/qwen -H "Authorization: Bearer $ALICE_TOKEN" -H "Content-Type: application/json" -d '{
+curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/deepseek -H "Authorization: Bearer $ALICE_TOKEN" -H "Content-Type: application/json" -d '{
     "messages": [
       {
         "role": "system",
@@ -146,7 +146,7 @@ echo
 
 # Step 7: Test Bob's JWT Token
 read -p "Step 7: Save and test Bob's JWT token. Press enter to proceed..."
-curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/qwen -H "Authorization: Bearer $BOB_TOKEN" -H "Content-Type: application/json" -d '{
+curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/deepseek -H "Authorization: Bearer $BOB_TOKEN" -H "Content-Type: application/json" -d '{
     "messages": [
       {
         "role": "system",
@@ -176,7 +176,7 @@ echo
 read -p "Step 9: Test RBAC policies. Press enter to proceed..."
 echo
 echo "Testing Alice's access..."
-curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/qwen -H "Authorization: Bearer $ALICE_TOKEN" -H "Content-Type: application/json" -d '{
+curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/deepseek -H "Authorization: Bearer $ALICE_TOKEN" -H "Content-Type: application/json" -d '{
     "messages": [
       {
         "role": "system",
@@ -194,7 +194,7 @@ echo "Alice's request should succeed because she belongs to the dev team."
 echo
 echo
 echo "Testing Bob's access..."
-curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/qwen -H "Authorization: Bearer $BOB_TOKEN" -H "Content-Type: application/json" -d '{
+curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/deepseek -H "Authorization: Bearer $BOB_TOKEN" -H "Content-Type: application/json" -d '{
     "messages": [
       {
         "role": "system",
@@ -245,7 +245,7 @@ while true; do
   fi
 
   echo "Sending request as $USER..."
-  curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/qwen \
+  curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/deepseek \
     -H "Authorization: Bearer $TOKEN" \
     -H "Content-Type: application/json" \
     -d '{

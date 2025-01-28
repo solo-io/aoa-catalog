@@ -64,19 +64,19 @@ echo "Starting the Load Balancing and Failover Demo..."
 echo
 read -p "Step 1: Review example upstream configurations. Press enter to proceed..."
 echo
-cat traffic-shift/ollama-deepseek-1.5-upstream.yaml
+cat route/ollama-deepseek-1.5-upstream.yaml
 echo
 
-# Step 2: Review HTTPRoute for 50-50 Traffic Split
+# Step 2: Review HTTPRoute for deepseek
 echo
-read -p "Step 2: Review HTTPRoute for 50-50 traffic split. Press enter to proceed..."
+read -p "Step 2: Review HTTPRoute for deepseek. Press enter to proceed..."
 echo
-cat traffic-shift/deepseek-httproute.yaml
+cat route/deepseek-httproute.yaml
 echo
 
 # Step 3: Configure Traffic Shift
 read -p "Step 3: Apply traffic shift configuration. Press enter to proceed..."
-kubectl apply -f traffic-shift
+kubectl apply -f route
 echo
 
 # Step 4: Get AI Gateway Load Balancer Address
@@ -117,10 +117,10 @@ while true; do
 done
 
 
-# Step 12: Cleanup Resources
+# Step 6: Cleanup Resources
 echo
-read -p "Step 11: Cleanup demo resources. Press enter to proceed..."
-kubectl delete -f traffic-shift
+read -p "Step 6: Cleanup demo resources. Press enter to proceed..."
+kubectl delete -f route
 echo "Demo resources cleaned up."
 echo
 

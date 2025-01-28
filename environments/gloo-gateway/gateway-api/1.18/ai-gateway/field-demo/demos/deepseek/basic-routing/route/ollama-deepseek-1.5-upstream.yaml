@@ -1,12 +1,12 @@
 apiVersion: gloo.solo.io/v1
 kind: Upstream
 metadata:
-  name: ollama-qwen-0.5-upstream
+  name: ollama-deepseek-1.5-upstream
   namespace: gloo-system
 spec:
   ai:
     openai:
       customHost:
-        host: ollama-qwen.ollama.svc.cluster.local
+        host: ollama-deepseek.ollama.svc.cluster.local
         port: 11434
-      model: qwen:0.5b
+      model: deepseek-r1:1.5b

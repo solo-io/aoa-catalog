@@ -61,16 +61,23 @@ echo
 echo "Starting the Gloo AI Gateway Prompt Management Demo..."
 echo
 
-# Step 1: Configure a simple route to openai LLM backend
-read -p "Step 1: Configure a simple route to openai LLM backend. Press enter to proceed..."
-kubectl create secret generic openai-secret -n gloo-system \
---from-literal="Authorization=Bearer $OPENAI_API_KEY" \
---dry-run=client -oyaml | kubectl apply -f -
+# Step 1: Configure a simple route to deepseek LLM backend
+read -p "Step 1: Configure a simple route to deepseek LLM backend. Press enter to proceed..."
+
+echo
+cat route/ollama-deepseek-1.5-upstream.yaml
+echo
+
+# Step 3: Review HTTPRoute for deepseek
+echo
+read -p "Step 2: Review HTTPRoute for deepseek. Press enter to proceed..."
+echo
+cat route/deepseek-httproute.yaml
+echo
+
+# Step 3: Configure deepseek route
+read -p "Step 3: Apply traffic shift configuration. Press enter to proceed..."
 kubectl apply -f route
-echo
-cat route/*.yaml
-echo
-echo "Route applied successfully."
 echo
 
 # Step 2: Get AI Gateway Load Balancer Address
@@ -78,9 +85,9 @@ read -p "Step 2: Retrieve the AI Gateway Load Balancer address. Press enter to p
 export GATEWAY_IP=$(kubectl get svc -n gloo-system --selector=gateway.networking.k8s.io/gateway-name=ai-gateway -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}{.items[*].status.loadBalancer.ingress[0].hostname}')
 echo "Gateway IP: $GATEWAY_IP"
 
-# Step 3: Test OpenAI endpoint
+# Step 3: Test deepseek endpoint
 echo
-echo "Testing OpenAI endpoint with a simple math question "what is 10+10?""
+echo "Testing deepseek endpoint with a simple math question "what is 10+10?""
 
 while true; do
   read -p "Press Enter to send a request, or type 'next' to move on: " user_input
@@ -90,9 +97,8 @@ while true; do
     break
   fi
 
-  echo "Sending request to OpenAI endpoint..."
-  curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/openai -H "Content-Type: application/json" -d '{
-      "model": "gpt-4o-mini",
+  echo "Sending request to deepseek endpoint..."
+  curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/deepseek -H "Content-Type: application/json" -d '{
       "messages": [
         {
           "role": "user",
@@ -102,7 +108,7 @@ while true; do
     }'
   echo
   echo "^^^^"
-  echo "OpenAI should respond with the answer of 10+10 in the response above"
+  echo "deepseek should respond with the answer of 10+10 in the response above"
   echo
 done
 
@@ -114,9 +120,9 @@ cat prompt-management/no-math/*.yaml
 echo
 echo "RouteOption applied successfully."
 
-# Step 5: Test OpenAI endpoint
+# Step 5: Test deepseek endpoint
 echo
-echo "Testing OpenAI endpoint with a simple math question "what is 10+10?" with prompt injections applied"
+echo "Testing deepseek endpoint with a simple math question "what is 10+10?" with prompt injections applied"
 
 while true; do
   read -p "Press Enter to send a request, or type 'next' to move on: " user_input
@@ -126,9 +132,8 @@ while true; do
     break
   fi
 
-  echo "Sending request to OpenAI endpoint..."
-  curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/openai -H "Content-Type: application/json" -d '{
-      "model": "gpt-4o-mini",
+  echo "Sending request to deepseek endpoint..."
+  curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/deepseek -H "Content-Type: application/json" -d '{
       "messages": [
         {
           "role": "user",
@@ -138,7 +143,7 @@ while true; do
     }'
   echo
   echo "^^^^"
-  echo "OpenAI should respond that it cannot answer math problems above"
+  echo "deepseek should respond that it cannot answer math problems above"
   echo
 done
 
@@ -151,9 +156,9 @@ echo
 echo "RouteOption applied successfully."
 echo
 
-# Step 7: Test OpenAI endpoint
+# Step 7: Test deepseek endpoint
 echo
-echo "Testing OpenAI endpoint with a simple math question "what is 10+10?" with prompt injections applied"
+echo "Testing deepseek endpoint with a simple math question "what is 10+10?" with prompt injections applied"
 
 while true; do
   read -p "Press Enter to send a request, or type 'next' to move on: " user_input
@@ -163,9 +168,8 @@ while true; do
     break
   fi
 
-  echo "Sending request to OpenAI endpoint..."
-  curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/openai -H "Content-Type: application/json" -d '{
-      "model": "gpt-4o-mini",
+  echo "Sending request to deepseek endpoint..."
+  curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/deepseek -H "Content-Type: application/json" -d '{
       "messages": [
         {
           "role": "user",
@@ -175,7 +179,7 @@ while true; do
     }'
   echo
   echo "^^^^"
-  echo "OpenAI should respond with "i love lamp""
+  echo "deepseek should respond with "i love lamp""
   echo
 done
 
