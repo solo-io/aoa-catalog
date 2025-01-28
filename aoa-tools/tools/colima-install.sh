@@ -9,9 +9,10 @@ fi
 
 # new
 colima start --cpu 6 --memory 16 \
+  --profile=${cluster_context} \
   --vm-type=vz \
   --kubernetes \
-  --kubernetes-version v1.29.5+k3s1 \
+  --kubernetes-version v1.31.2+k3s1 \
   --network-address \
   --k3s-arg "--disable=traefik"
 
@@ -24,4 +25,4 @@ kubectl label nodes colima topology.kubernetes.io/region=us-west
 kubectl label nodes colima topology.kubernetes.io/zone=us-west-1
 
 # change context
-kubectl config rename-context colima ${cluster_context}
+kubectl config rename-context colima-${cluster_context} ${cluster_context}
