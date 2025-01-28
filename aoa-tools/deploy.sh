@@ -366,7 +366,7 @@ destroy()
   
    echo "------------------------------------------------------------"
    echo "--------------   AoA Installer - Env Destroy   -------------"
-   echo "The following environemnt will be destroyed: $env"
+   echo "The following environment will be destroyed: $env"
 
    echo "Continue? [y/N]"
 
