@@ -167,6 +167,7 @@ install_k3d()
 
 destroy_infra()
 {
+    source_env_vars
     if [[ "$dry_run" == true ]]; then
         echo "Dry-run: Would destroy infrastructure."
     else
