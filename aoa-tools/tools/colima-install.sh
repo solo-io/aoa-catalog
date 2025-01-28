@@ -17,8 +17,8 @@ colima start --cpu 6 --memory 16 \
   --k3s-arg "--disable=traefik"
 
 # Add node labels
-kubectl label nodes colima topology.kubernetes.io/region=us-west
-kubectl label nodes colima topology.kubernetes.io/zone=us-west-1
+kubectl label nodes colima-${cluster_context} topology.kubernetes.io/region=us-west
+kubectl label nodes colima-${cluster_context} topology.kubernetes.io/zone=us-west-1
 
 # change context
 kubectl config rename-context colima-${cluster_context} ${cluster_context}

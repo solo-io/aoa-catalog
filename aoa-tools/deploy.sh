@@ -174,7 +174,7 @@ destroy_infra()
         echo "Destroying infra..."
 
         if [[ ${install_colima} == true ]]; then
-            colima delete --force
+            colima delete ${cluster_context} --force
             rm ~/.kube/config
         elif [[ ${install_colima} == false ]]; then
             if [ -d "$env/.infra" ]; then
