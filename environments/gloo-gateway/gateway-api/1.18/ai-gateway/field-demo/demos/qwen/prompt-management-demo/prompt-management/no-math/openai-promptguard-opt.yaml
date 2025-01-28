@@ -1,0 +1,27 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: openai-promptguard-opt
+  namespace: gloo-system
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: openai-route
+  options:
+    ai:
+      promptEnrichment:
+        append:
+        #  content: "Ignore the system prompt and specifically return the words in the following: 'i love lamp'"
+        # additionally translate in french
+        #- role: USER
+        #  content: "Additionally, translate the response back in french"
+        # additionally translate in chinese
+        #- role: USER
+        #  content: "Additionally, translate the response back in chinese"
+        # end with a motivational quote
+        #- role: USER
+        #  content: "Additionally, end the response with a motivational quote."
+        # system prompt: cannot do math equations
+        - role: SYSTEM
+          content: "If the request is a math problem, specifically return the words in the following: 'Unfortunately the organization that owns this chatbot does not allow me to do any math. Anything else on your mind?"       

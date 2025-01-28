@@ -1,0 +1,29 @@
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  labels:
+    app: gloo
+  name: openai-to-local-upstream
+  namespace: gloo-system
+spec:
+  ai:
+    multi:
+      priorities:
+      - pool:
+        - openai:
+            customHost:
+              # invalid host
+              #host: invalidhost.foo.bar
+              # 429 status code
+              host: httpbin.org/status/429
+            model: gpt-4o-mini
+            authToken:
+              secretRef:
+                name: openai-secret
+                namespace: gloo-system
+      - pool:
+        - openai:
+            customHost:
+              host: ollama-qwen.ollama.svc.cluster.local
+              port: 11434
+            model: qwen:0.5b

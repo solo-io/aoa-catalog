@@ -1,0 +1,41 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: ollama-qwen-failover
+  namespace: gloo-system
+spec:
+  parentRefs:
+  - name: ai-gateway
+    namespace: gloo-system
+  rules:
+  - backendRefs:
+    - group: gloo.solo.io
+      kind: Upstream
+      name: aig-failover
+      namespace: gloo-system
+    filters:
+    - extensionRef:
+        group: gateway.solo.io
+        kind: RouteOption
+        name: ollama-qwen-failover-route-policies
+      type: ExtensionRef
+    matches:
+    - path:
+        type: PathPrefix
+        value: /failover
+---
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: ollama-qwen-failover-route-policies
+  namespace: gloo-system
+spec:
+  options:
+    jwt:
+      disable: true
+    prefixRewrite: /v1/chat/completions
+    retries:
+      retryOn: 'retriable-status-codes'
+      numRetries: 3
+      previousPriorities:
+        updateFrequency: 1
