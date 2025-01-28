@@ -5,5 +5,4 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - ollama-ns.yaml
-#- qwen-deployment.yaml
-- deepseek-deployment.yaml
+- qwen-deployment.yaml
