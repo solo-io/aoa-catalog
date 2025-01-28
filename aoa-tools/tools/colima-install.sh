@@ -10,7 +10,9 @@ fi
 # new
 colima start --cpu 6 --memory 16 \
   --profile=${cluster_context} \
+  --vm-type=vz \
   --kubernetes \
+  --kubernetes-version v1.31.2+k3s1 \
   --k3s-arg "--disable=traefik"
 
 # Add node labels
