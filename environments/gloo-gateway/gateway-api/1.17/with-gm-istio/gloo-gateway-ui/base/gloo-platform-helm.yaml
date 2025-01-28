@@ -29,16 +29,17 @@ spec:
         glooUi:
             enabled: true
             serviceType: LoadBalancer
+            prometheusUrl: http://prometheus-server.gloo-mesh.svc.cluster.local
         licensing:
             licenseSecretName: "gloo-license"
         prometheus:
-            enabled: true
+            enabled: false
             skipAutoMigration: true
         redis:
             deployment:
                 enabled: false
         telemetryCollector:
-            enabled: true
+            enabled: false
             mode: deployment
             replicaCount: 1
         telemetryCollectorCustomization:
