@@ -13,7 +13,6 @@ colima start --cpu 6 --memory 16 \
   --vm-type=vz \
   --kubernetes \
   --kubernetes-version v1.31.2+k3s1 \
-  #--network-address \
   --k3s-arg "--disable=traefik"
 
 # Add node labels
