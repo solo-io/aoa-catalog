@@ -6,4 +6,4 @@ kind: Kustomization
 resources:
 - aig-base.yaml
 - redis-cache.yaml
-- upstream-tls.yaml
+#- upstream-tls.yaml
