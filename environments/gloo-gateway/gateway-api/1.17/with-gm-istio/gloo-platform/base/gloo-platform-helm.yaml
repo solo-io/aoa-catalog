@@ -85,7 +85,5 @@ spec:
   ignoreDifferences:
   - group: v1
     kind: Secret
-  - group: v1
-    kind: ClusterRoleBinding
-  - group: v1
-    kind: ClusterRole
+  - kind: ClusterRole
+  - kind: ClusterRoleBinding
