@@ -310,12 +310,6 @@ spec:
                         tag: "ai-gateway"
                         url: "https://chat.gwapi.glooplatform.com/"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Language Translator Chatbot"
-                        subtitle: "requires x-token header with valid JWT"
-                        icon: "fas fa-language"
-                        tag: "ai-gateway"
-                        url: "https://language-chatbot.gwapi.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute
                   
                   - name: "Demo Traffic Routing and Shifting Capabilities"
                     icon: "fas fa-traffic-light"

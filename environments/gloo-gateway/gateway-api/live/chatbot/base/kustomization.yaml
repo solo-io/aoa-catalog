@@ -7,7 +7,6 @@ resources:
 - ai-chatbot-ns.yaml
 - gptportal-sa.yaml
 #- general-chatbot
-- language-chatbot
 - betterchatgpt
 #- llama-gpt
 
