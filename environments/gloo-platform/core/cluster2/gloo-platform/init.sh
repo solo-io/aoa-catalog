@@ -7,7 +7,7 @@ echo "deploy and register gloo-mesh agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. v2.8.0-beta0-2025-01-29-main-4bf61e4969):"
+    echo "Please provide the gloo_mesh_version to use (i.e. v2.8.0-beta0-2025-01-30-jmcguire-configure-grpc-max-size-on-analyzer-96ebf69cbd):"
     read gloo_mesh_version
 fi
 
@@ -75,7 +75,7 @@ spec:
                   namespace: null
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: v2.8.0-beta0-2025-01-29-main-4bf61e4969
+    targetRevision: v2.8.0-beta0-2025-01-30-jmcguire-configure-grpc-max-size-on-analyzer-96ebf69cbd
   syncPolicy:
     automated:
       prune: true
@@ -123,7 +123,7 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: v2.8.0-beta0-2025-01-29-main-4bf61e4969
+              tag: v2.8.0-beta0-2025-01-30-jmcguire-configure-grpc-max-size-on-analyzer-96ebf69cbd
             config:
                 exporters:
                     otlp:
@@ -145,7 +145,7 @@ spec:
                   name: cilium-run
                   
     repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: v2.8.0-beta0-2025-01-29-main-4bf61e4969
+    targetRevision: v2.8.0-beta0-2025-01-30-jmcguire-configure-grpc-max-size-on-analyzer-96ebf69cbd
   syncPolicy:
     automated:
       prune: true

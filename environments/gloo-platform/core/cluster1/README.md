@@ -10,11 +10,11 @@ The `gloo-platform/core/cluster1` environment deploys the `cluster1` worker for 
 
 ## Environment description
 - base:
-    - gloo mesh v2.8.0-beta0-2025-01-29-main-4bf61e4969
+    - gloo mesh v2.8.0-beta0-2025-01-30-jmcguire-configure-grpc-max-size-on-analyzer-96ebf69cbd
     - istio 1.22.3-patch1-solo (Helm)
     - revision: 1-22
 - ilcm:
-    - gloo mesh v2.8.0-beta0-2025-01-29-main-4bf61e4969
+    - gloo mesh v2.8.0-beta0-2025-01-30-jmcguire-configure-grpc-max-size-on-analyzer-96ebf69cbd
     - istio 1.22.3-patch1-solo (ILCM)
     - revision: 1-22
 
