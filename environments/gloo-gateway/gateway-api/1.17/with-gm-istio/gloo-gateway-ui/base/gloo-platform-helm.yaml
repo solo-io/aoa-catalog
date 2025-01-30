@@ -32,13 +32,8 @@ spec:
             prometheusUrl: http://prometheus-server.gloo-mesh.svc.cluster.local
         licensing:
             licenseSecretName: "gloo-license"
-        # This disables discovery since it's fighting with the one from the gloo-mesh namespace
         glooAgent:
             enabled: false
-            deploymentOverrides:
-                spec:
-                    template:
-                        replicas: 0
         prometheus:
             enabled: false
             skipAutoMigration: true
