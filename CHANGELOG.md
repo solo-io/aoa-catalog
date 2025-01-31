@@ -1,5 +1,10 @@
 # Changelog
 
+0.8.3 (1-30-25)
+---
+- updates/fixes to gateway-api/1.18/with-ilm-ambient/multicluster environments
+- add ambient multicluster failover demo script
+
 0.8.2 (1-28-25)
 ---
 - update gloo-operator to 0.1.0-rc.0 in gateway-api/1.18/with-ilm-ambient environments
