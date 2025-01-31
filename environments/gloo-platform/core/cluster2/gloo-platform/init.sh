@@ -7,7 +7,7 @@ echo "deploy and register gloo-mesh agent and addons"
 if [[ ${gloo_mesh_version} == "" ]]
   then
     # provide gloo_mesh_version variable
-    echo "Please provide the gloo_mesh_version to use (i.e. 2.6.6):"
+    echo "Please provide the gloo_mesh_version to use (i.e. 2.6.9):"
     read gloo_mesh_version
 fi
 
@@ -78,7 +78,7 @@ spec:
             runAsSidecar: true  
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.6.6
+    targetRevision: 2.6.9
   syncPolicy:
     automated:
       prune: true
@@ -120,13 +120,13 @@ spec:
             #service: 
             #  type: ClusterIP
             #podLabels:
-            #  istio.io/rev: 1-24
+            #  istio.io/rev: main
             #podAnnotations:
             #  proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.6.6
+              tag: 2.6.9
             config:
                 exporters:
                     otlp:
@@ -148,7 +148,7 @@ spec:
                   name: cilium-run
                   
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.6.6
+    targetRevision: 2.6.9
   syncPolicy:
     automated:
       prune: true

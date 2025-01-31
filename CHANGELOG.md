@@ -1,5 +1,14 @@
 # Changelog
 
+0.8.4 (1-31-25)
+---
+- update /gloo-gateway environments to use gloo-gateway 1.18.3 / istio 1.24.2 / `main` as revision tag / gloo-platform 2.6.9 (where used)
+- update /gloo-gateway/oss environments to use OSS gloo-gateway 1.18.6
+- update /gloo-mesh-core environments to use gloo-platform 2.6.9 / istio 1.24.2 / `main` as revision tag
+- update /gloo-mesh-gateway environments to use gloo-platform 2.6.9 / istio 1.24.2 / `main` as revision tag
+- update /gloo-platform environments to use gloo-platform 2.6.9 / istio 1.24.2 / `main` as revision tag
+- update /istio environments to use istio 1.24.2 / `main` as revision tag
+
 0.8.3 (1-30-25)
 ---
 - updates/fixes to gateway-api/1.18/with-ilm-ambient/multicluster environments

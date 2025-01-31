@@ -63,7 +63,7 @@ spec:
             #                annotations:
             #                    proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
             #                labels:
-            #                    istio.io/rev: 1-23
+            #                    istio.io/rev: main
             #                    sidecar.istio.io/inject: "true"
             enabled: true
             serviceType: ClusterIP
@@ -94,13 +94,13 @@ spec:
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.6.6
+            #  tag: 2.6.9
         telemetryCollector:
             enabled: true
             #image:
             #  pullPolicy: IfNotPresent
             #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.6.6
+            #  tag: 2.6.9
             config:
                 exporters:
                     otlp:
@@ -191,7 +191,7 @@ spec:
                                     - __meta_kubernetes_pod_phase
 
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.6.6
+    targetRevision: 2.6.9
   syncPolicy:
     automated:
       prune: true

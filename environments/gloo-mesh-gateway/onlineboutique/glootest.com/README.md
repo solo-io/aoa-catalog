@@ -23,9 +23,9 @@ The `gloo-gateway/onlineboutique` environment deploys the core components of a s
 
 ## Overlay description
 - base:
-    - gloo mesh 2.6.6
-    - istio 1.23.0-solo (Helm)
-    - revision: 1-23
+    - gloo mesh 2.6.9
+    - istio 1.24.2-solo (Helm)
+    - revision: main
 
 ## Application description
 
@@ -45,7 +45,7 @@ To access applications, follow the methods below:
 
 Discover your gateway IP address
 ```
-ISTIO_REVISION=1-23
+ISTIO_REVISION=main
 GATEWAY_IP=$(kubectl -n istio-gateways get service istio-ingressgateway-${ISTIO_REVISION} -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}{.items[*].status.loadBalancer.ingress[0].hostname}')
 
 echo ${GATEWAY_IP}
@@ -86,7 +86,7 @@ access gloo mesh ui at https://localhost:8090"
 
 To access Istio Ingress Gateway using port-forward command:
 ```
-ISTIO_REVISION=1-23
+ISTIO_REVISION=main
 kubectl port-forward -n istio-gateways svc/istio-ingressgateway-${ISTIO_REVISION} 8443:443 --context <cluster_name>
 ```
 access the ingress gateway at https://localhost:8443
