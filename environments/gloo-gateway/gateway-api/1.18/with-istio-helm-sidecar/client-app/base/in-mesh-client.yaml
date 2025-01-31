@@ -34,7 +34,7 @@ spec:
     metadata:
       labels:
         name: in-mesh-client
-        istio.io/rev: 1-24
+        istio.io/rev: main
     spec:
       serviceAccountName: in-mesh-client
       containers:

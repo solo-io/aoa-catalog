@@ -15,13 +15,13 @@ spec:
   source:
     chart: istiod
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.24.0
+    targetRevision: 1.24.2
     helm:
       values: |
-        revision: 1-24
+        revision: main
         global:
           hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
-          tag: 1.24.0-solo
+          tag: 1.24.2-solo
         meshConfig:
           accessLogFile: /dev/stdout
           enableAutoMtls: true
@@ -40,6 +40,6 @@ spec:
   ignoreDifferences:
     - group: admissionregistration.k8s.io
       kind: ValidatingWebhookConfiguration
-      name: istio-validator-1-24-istio-system
+      name: istio-validator-main-istio-system
       jsonPointers:
         - /webhooks/0/failurePolicy
