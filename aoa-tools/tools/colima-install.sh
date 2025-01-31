@@ -10,6 +10,7 @@ fi
 # new
 colima start --cpu 6 --memory 16 \
   --profile=${cluster_context} \
+  --network-address \
   --vm-type=vz \
   --kubernetes \
   --kubernetes-version v1.31.2+k3s1 \
