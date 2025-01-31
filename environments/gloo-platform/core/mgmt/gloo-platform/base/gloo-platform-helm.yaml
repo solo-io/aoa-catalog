@@ -63,7 +63,7 @@ spec:
             #                annotations:
             #                    proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
             #                labels:
-            #                    istio.io/rev: 1-24
+            #                    istio.io/rev: main
             #                    sidecar.istio.io/inject: "true"
             enabled: true
             serviceType: ClusterIP
@@ -85,7 +85,7 @@ spec:
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.6.6
+              tag: 2.6.9
         telemetryGatewayCustomization:
             disableCertGeneration: true
         telemetryCollector:
@@ -96,13 +96,13 @@ spec:
             #service: 
             #    type: ClusterIP
             #podLabels:
-            #    istio.io/rev: 1-24
+            #    istio.io/rev: main
             #podAnnotations:
             #    proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
             image:
               pullPolicy: IfNotPresent
               repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.6.6
+              tag: 2.6.9
             config:
                 exporters:
                     otlp:
@@ -124,7 +124,7 @@ spec:
                   name: cilium-run
         
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.6.6
+    targetRevision: 2.6.9
   syncPolicy:
     automated:
       prune: true
