@@ -8,3 +8,5 @@ resources:
 - betterchatgpt-route.yaml
 - betterchatgpt-route-policies.yaml
 - betterchatgpt-sa.yaml
+- betterchatgpt-ext-auth-routeoption.yaml
+- okta-authconfig.yaml

@@ -1,0 +1,15 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: betterchatgpt-ext-auth
+  namespace: ai-chatbot
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: betterchatgpt-route
+  options:
+    extauth:
+      configRef:
+        name: betterchatgpt-okta
+        namespace: gloo-system
