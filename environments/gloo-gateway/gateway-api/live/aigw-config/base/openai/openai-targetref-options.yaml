@@ -46,8 +46,8 @@ spec:
         - role: SYSTEM
           content: "Limit responses to 2 sentences"
         # system prompt: redact names
-        - role: SYSTEM
-          content: "Take the input and redact any PII names by replacing a dash for every letter besides the first one in the name in the output"
+        #- role: SYSTEM
+        #  content: "Take the input and redact any PII names by replacing a dash for every letter besides the first one in the name in the output"
         # system prompt: sensitive content filtering
         #- role: SYSTEM
         #  content: "If the request includes any sensitive or offensive language, respond with the following: 'Please refrain from using inappropriate language. How can I assist you otherwise?"
