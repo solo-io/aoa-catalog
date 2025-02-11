@@ -264,7 +264,7 @@ while true; do
 done
 
 # Step 12: View AI Gateway Metrics
-echo "Step 12: View AI Gateway Metrics."
+read -p "Step 12: View AI Gateway Metrics. Press enter to proceed..."
 echo "Setting up port-forwarding to access AI Gateway metrics..."
 echo
 
@@ -284,8 +284,22 @@ echo
 echo "To view all of the available AI gateway metrics navigate to http://localhost:9092 in your browser"
 echo
 
-# Step 13: Cleanup
-read -p "Step 13: Cleanup demo resources. Press enter to proceed..."
+# Step 13: View AI Gateway Access Logs
+read -p "Step 13: View AI Gateway Access Logs. Press enter to proceed..."
+echo
+echo "Gloo Gateway access log configuration:"
+echo
+kubectl get listeneroption -n gloo-system ai-gateway-log-provider -oyaml
+echo
+
+echo "Using 'kubectl logs' to view the last 5 log entries from this demo"
+echo "Command: 'kubectl logs -n gloo-system --selector=gateway.networking.k8s.io/gateway-name=ai-gateway -c gloo-gateway --tail=5'"
+echo
+kubectl logs -n gloo-system --selector=gateway.networking.k8s.io/gateway-name=ai-gateway -c gloo-gateway --tail=5
+echo
+
+# Step 14: Cleanup
+read -p "Step 14: Cleanup demo resources. Press enter to proceed..."
 kubectl delete -f tiered-rate-limit
 kubectl delete -f access-control/rbac
 kubectl delete -f access-control
