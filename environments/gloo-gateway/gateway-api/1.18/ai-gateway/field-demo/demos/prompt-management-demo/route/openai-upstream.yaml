@@ -1,3 +1,4 @@
+
 apiVersion: gloo.solo.io/v1
 kind: Upstream
 metadata:
@@ -13,3 +14,4 @@ spec:
           name: openai-secret
           namespace: gloo-system
       model: gpt-4o-mini
+---

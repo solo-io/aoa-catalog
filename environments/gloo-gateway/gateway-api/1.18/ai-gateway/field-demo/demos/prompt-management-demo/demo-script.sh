@@ -112,6 +112,7 @@ kubectl apply -f prompt-management/no-math
 echo
 cat prompt-management/no-math/*.yaml
 echo
+echo
 echo "RouteOption applied successfully."
 
 # Step 5: Test OpenAI endpoint
@@ -148,6 +149,7 @@ kubectl apply -f prompt-management/complete-override
 echo
 cat prompt-management/complete-override/*.yaml
 echo
+echo
 echo "RouteOption applied successfully."
 echo
 
@@ -175,7 +177,7 @@ while true; do
     }'
   echo
   echo "^^^^"
-  echo "OpenAI should respond with "i love lamp""
+  echo "OpenAI should respond with 'Unfortunately the system is down. Please try again later!'"
   echo
 done
 

@@ -1,5 +1,9 @@
 # Changelog
 
+0.8.5 (2-11-25)
+---
+- Formatting fixes and updates to AI gateway demo scripts in `gloo-gateway/gateway-api/1.18/ai-gateway/field-demo/demos`
+
 0.8.4 (1-31-25)
 ---
 - update /gloo-gateway environments to use gloo-gateway 1.18.3 / istio 1.24.2 / `main` as revision tag / gloo-platform 2.6.9 (where used)
