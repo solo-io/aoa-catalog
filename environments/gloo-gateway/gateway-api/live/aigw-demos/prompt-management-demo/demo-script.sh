@@ -75,7 +75,7 @@ echo
 
 # Step 2: Get AI Gateway Load Balancer Address
 read -p "Step 2: Retrieve the AI Gateway Load Balancer address. Press enter to proceed..."
-export GATEWAY_IP=$(kubectl get svc -n gloo-system gloo-proxy-ai-gateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}{.status.loadBalancer.ingress[0].hostname}')
+export GATEWAY_IP=$(kubectl get svc -n gloo-system --selector=gateway.networking.k8s.io/gateway-name=ai-gateway -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}{.items[*].status.loadBalancer.ingress[0].hostname}')
 echo "Gateway IP: $GATEWAY_IP"
 
 # Step 3: Test OpenAI endpoint
@@ -111,6 +111,7 @@ read -p "Step 4: Prepend or Append organization-level prompts using a RouteOptio
 kubectl apply -f prompt-management/no-math
 echo
 cat prompt-management/no-math/*.yaml
+echo
 echo
 echo "RouteOption applied successfully."
 
@@ -148,6 +149,7 @@ kubectl apply -f prompt-management/complete-override
 echo
 cat prompt-management/complete-override/*.yaml
 echo
+echo
 echo "RouteOption applied successfully."
 echo
 
@@ -175,7 +177,7 @@ while true; do
     }'
   echo
   echo "^^^^"
-  echo "OpenAI should respond with "i love lamp""
+  echo "OpenAI should respond with 'Unfortunately the system is down. Please try again later!'"
   echo
 done
 

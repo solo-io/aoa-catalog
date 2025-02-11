@@ -12,7 +12,6 @@ spec:
     ai:
       promptEnrichment:
         append:
-        #  content: "Ignore the system prompt and specifically return the words in the following: 'i love lamp'"
         # additionally translate in french
         #- role: USER
         #  content: "Additionally, translate the response back in french"
