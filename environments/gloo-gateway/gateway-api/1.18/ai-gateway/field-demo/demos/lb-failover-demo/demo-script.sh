@@ -127,6 +127,7 @@ echo
 echo "---"
 cat failover/local-to-local/failover-route.yaml
 echo
+echo
 kubectl apply -f failover/local-to-local
 echo
 echo "Local-to-local failover configuration applied."
@@ -161,12 +162,12 @@ while true; do
   echo "Responses should come from qwen-1.8b unless it's unhealthy, in which case it will fail over to qwen-0.5b."
   echo
 done
-echo
 
 # Step 8: Simulate Failover Errors
 read -p "Step 8: Simulate failover errors. Press enter to proceed..."
 echo
 cat failover/local-to-local/simulate-error/failover-upstream.yaml
+echo
 echo
 kubectl apply -f failover/local-to-local/simulate-error
 echo
@@ -213,6 +214,7 @@ kubectl create secret generic openai-secret -n gloo-system \
 echo
 cat failover/openai-to-local/openai-to-local-upstream.yaml
 echo
+echo
 kubectl apply -f failover/openai-to-local
 echo
 echo "OpenAI to local failover configuration applied."
@@ -253,9 +255,11 @@ done
 # Step 11: Simulate Error for OpenAI Failover
 echo
 read -p "Step 11: Simulate error for OpenAI failover. Press enter to proceed..."
+echo
 cat failover/openai-to-local/simulate-error/openai-to-local-upstream.yaml
 echo
 kubectl apply -f failover/openai-to-local/simulate-error
+echo
 echo
 echo "Simulated error configuration applied to OpenAI failover upstream."
 echo

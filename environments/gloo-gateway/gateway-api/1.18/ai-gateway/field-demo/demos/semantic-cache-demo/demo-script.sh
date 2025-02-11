@@ -83,7 +83,6 @@ echo "Gateway IP: $GATEWAY_IP"
 echo
 
 # Step 3: Test OpenAI endpoint with the "Hi" use case
-echo
 echo "Testing OpenAI endpoint with the "Hi" use case."
 
 while true; do
@@ -104,42 +103,16 @@ while true; do
       ]
     }'
   echo
-  echo "Responses should come from gpt-4o-mini model."
+  echo
+  echo "Responses should come from gpt-4o-mini model first, and then from the cache on subsequent requests"
+  echo "This can be validated by the presence of the 'x-gloo-semantic-cache: hit' header"
   echo
 done
 
-# Step 4: Test OpenAI endpoint with service mesh prompt
-#echo
-#echo "Testing OpenAI endpoint with service mesh prompt."
-#
-#while true; do
-#  read -p "Press Enter to send a request, or type 'next' to move on: " user_input
-#  if [[ "$user_input" == "next" ]]; then
-#    echo "Exiting test."
-#    break
-#  fi
-#
-#  echo "Sending request to OpenAI endpoint..."
-#  curl -ik $PROTOCOL://$GATEWAY_IP:$AIGW_PORT/openai -H "Content-Type: application/json" -d '{
-#      "model": "gpt-4o-mini",
-#      "messages": [
-#        {
-#          "role": "system",
-#          "content": "You are a cloud native solutions architect, skilled in explaining complex technical concepts such as API Gateway, microservices, LLM operations, kubernetes, and advanced networking patterns"
-#        },
-#        {
-#          "role": "user",
-#          "content": "Write me a 20-word pitch on why I should use an AI gateway in my Kubernetes cluster"
-#        }
-#      ]
-#    }'
-#  echo
-#  echo "Responses should come from gpt-4o-mini model."
-#  echo
-#done
-
-# Step 12: Cleanup
-read -p "Step 12: Cleanup demo resources. Press enter to proceed..."
+# Step 4: Cleanup
+echo
+read -p "Step 4: Cleanup demo resources. Press enter to proceed..."
 kubectl delete -f route
+echo
 echo "Cleanup completed."
 echo
