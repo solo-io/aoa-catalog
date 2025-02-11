@@ -18,6 +18,7 @@ spec:
         create_license_secret: false
         gloo:
           license_secret_name: license
+          logLevel: error
           kubeGateway:
             # Enable K8s Gateway integration
             enabled: true
