@@ -18,7 +18,6 @@ spec:
         create_license_secret: false
         gloo:
           license_secret_name: license
-          logLevel: error
           kubeGateway:
             # Enable K8s Gateway integration
             enabled: true
@@ -39,7 +38,7 @@ spec:
               allowWarnings: true
               alwaysAcceptResources: false
           gloo:
-            logLevel: info
+            logLevel: error
             # To simplify the demo, we disable any features that are affected by leader election
             # In Gloo Gateway, this is just status reporting, but still we do this to be safe
             disableLeaderElection: true
