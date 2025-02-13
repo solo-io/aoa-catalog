@@ -73,7 +73,7 @@ spec:
         telemetryGatewayCustomization:
             disableCertGeneration: true
         telemetryCollector:
-            enabled: false
+            enabled: true
             config:
                 exporters:
                     otlp:
