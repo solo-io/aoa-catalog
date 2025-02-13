@@ -38,7 +38,7 @@ spec:
                   namespace: null
             serviceType: LoadBalancer
         glooAgent:
-            enabled: true
+            enabled: false
             runAsSidecar: true
             relay:
                 serverAddress: gloo-mesh-mgmt-server:9900
