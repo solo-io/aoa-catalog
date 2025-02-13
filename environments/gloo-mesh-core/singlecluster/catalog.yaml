@@ -43,7 +43,7 @@ waves:
       post_deploy:
       -  $env_path/clusterservices-config/test.sh
   - name: online-boutique-app
-    location: $env_path/online-boutique-app/base
+    location: $env_path/online-boutique-app/ambient
     scripts:
       pre_deploy: 
       -  $env_path/online-boutique-app/init.sh
