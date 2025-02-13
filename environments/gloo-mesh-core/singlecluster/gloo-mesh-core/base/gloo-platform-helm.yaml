@@ -92,10 +92,10 @@ spec:
                           path: relay.yaml
                     name: gloo-telemetry-collector-config
                   name: telemetry-configmap
-                #- hostPath:
-                #    path: /var/run/cilium
-                #    type: DirectoryOrCreate
-                #  name: cilium-run
+                - hostPath:
+                    path: /var/run/cilium
+                    type: DirectoryOrCreate
+                  name: cilium-run
         telemetryCollectorCustomization:
             pipelines:
               logs/analyzer:
