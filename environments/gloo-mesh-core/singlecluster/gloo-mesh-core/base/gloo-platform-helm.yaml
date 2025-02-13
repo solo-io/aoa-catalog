@@ -72,9 +72,6 @@ spec:
             enabled: true
         telemetryGatewayCustomization:
             disableCertGeneration: true
-            pipelines:
-                traces/jaeger:
-                    enabled: true
         telemetryCollector:
             enabled: true
             config:
@@ -96,10 +93,6 @@ spec:
                     path: /var/run/cilium
                     type: DirectoryOrCreate
                   name: cilium-run
-        telemetryCollectorCustomization:
-            pipelines:
-              logs/analyzer:
-                enabled: true
 
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
     targetRevision: 2.7.0-rc1
