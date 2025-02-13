@@ -69,7 +69,7 @@ spec:
             deployment:
                 enabled: true
         telemetryGateway:
-            enabled: true
+            enabled: false
         telemetryGatewayCustomization:
             disableCertGeneration: true
         telemetryCollector:
