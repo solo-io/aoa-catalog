@@ -69,11 +69,11 @@ spec:
             deployment:
                 enabled: true
         telemetryGateway:
-            enabled: false
+            enabled: true
         telemetryGatewayCustomization:
             disableCertGeneration: true
         telemetryCollector:
-            enabled: true
+            enabled: false
             config:
                 exporters:
                     otlp:
