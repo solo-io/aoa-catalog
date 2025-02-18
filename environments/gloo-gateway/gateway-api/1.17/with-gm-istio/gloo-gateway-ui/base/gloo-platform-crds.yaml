@@ -10,8 +10,8 @@ spec:
   project: default
   source:
     chart: gloo-platform-crds
-    repoURL: https://storage.googleapis.com/gloo-platform-dev/platform-charts/helm-charts
-    targetRevision: 2.8.0-beta0-2025-02-14-19265-new-cluster-details-0966fa9b62
+    repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
+    targetRevision: 2.7.0-rc2
     helm:
       values: |
         installEnterpriseCrds: false
