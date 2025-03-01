@@ -5,6 +5,4 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - mesh-admin
-- routing
-- policies
 

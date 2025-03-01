@@ -238,18 +238,6 @@ spec:
                         keywords: "admin,argocd,gitops,demo"
                         url: "https://argocd.east.glooplatform.com/argo"
                         target: "_blank" # optional html a tag target attribute
-                      - name: "Grafana - glooplatform-central"
-                        icon: "fas fa-chart-area"
-                        tag: "admin #observability #demo"
-                        keywords: "admin,observability,demo,grafana"
-                        url: "https://grafana.central.glooplatform.com/central"
-                        target: "_blank" # optional html a tag target attribute
-                      - name: "Grafana - glooplatform-east"
-                        icon: "fas fa-chart-area"
-                        tag: "admin #observability #demo"
-                        keywords: "admin,observability,demo,grafana"
-                        url: "https://grafana.central.glooplatform.com/east"
-                        target: "_blank" # optional html a tag target attribute
                       - name: "Enclosed App"
                         subtitle: "Send private and secure notes and files"
                         icon: "fas fa-shield-alt"
