@@ -30,13 +30,13 @@ spec:
             relay:
                 serverAddress: gloo-mesh-mgmt-server:9900
                 authority: gloo-mesh-mgmt-server.gloo-mesh
-                clientTlsSecret:
-                    name: gloo-agent-tls-cert
-                    namespace: gloo-mesh
-                tokenSecret:
-                    key: null
-                    name: null
-                    namespace: null
+                #clientTlsSecret:
+                #    name: gloo-agent-tls-cert
+                #    namespace: gloo-mesh
+                #tokenSecret:
+                #    key: null
+                #    name: null
+                #    namespace: null
         glooMgmtServer:
             enabled: true
             registerCluster: true
