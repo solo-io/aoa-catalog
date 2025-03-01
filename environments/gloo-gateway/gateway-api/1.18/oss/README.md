@@ -1,2 +1,0 @@
-# Environment Description
-The `gateway-api/oss` environment deploys Gloo Gateway OSS along with bookinfo and httpbin app to demonstrate features and capabilities. There is no Gloo Mesh or Istio configured in this environment.

@@ -1,0 +1,89 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-ingressgateway
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-gateways
+  project: default
+  source:
+    chart: gateway
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: 1.23.1
+    helm:
+      values: |
+        # Name allows overriding the release name. Generally this should not be set
+        name: "istio-ingressgateway-1-23"
+        # revision declares which revision this gateway is a part of
+        revision: "1-23"
+        
+        # replicas
+        #replicaCount: 1
+        
+        service:
+          # Type of service. Set to "None" to disable the service entirely
+          type: None
+        
+        # Pod environment variables
+        env: {}
+        
+        # Labels to apply to all resources
+        labels:
+          istio.io/rev: 1-23
+          istio: ingressgateway
+
+        # node selector
+        nodeSelector:
+          gloo: "gateway"
+
+        # tolerations
+        tolerations:
+          - key: cloud.google.com/gloo
+            operator: Equal
+            value: "gateway"
+            effect: NoSchedule
+
+        # resources
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 2000m
+            memory: 1024Mi
+
+        # hpa configuration
+        autoscaling:
+          enabled: true
+          minReplicas: 2
+          maxReplicas: 8
+          targetCPUUtilizationPercentage: 60
+
+        # topology spread constraints
+        topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              istio: ingressgateway
+        
+        # affinity
+        affinity:
+          podAntiAffinity:
+            preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm: 
+                labelSelector:
+                  matchLabels:
+                    istio: ingressgateway
+                topologyKey: "kubernetes.io/host"
+              weight: 100
+
+  syncPolicy:
+    automated: {}

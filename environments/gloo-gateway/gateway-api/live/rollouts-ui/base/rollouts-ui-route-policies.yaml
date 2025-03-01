@@ -1,0 +1,15 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: rollouts-ui-route-policies
+  namespace: rollouts-demo
+spec:
+  options:
+    jwt:
+      disable: true
+    extauth:
+      configRef:
+        name: rollouts-ui-oidc
+        namespace: gloo-system
+                
+    

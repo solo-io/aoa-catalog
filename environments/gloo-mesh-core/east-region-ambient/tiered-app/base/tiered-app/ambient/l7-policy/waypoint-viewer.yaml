@@ -1,0 +1,94 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: waypoint-viewer
+  namespace: ns-1
+spec:
+  targetRefs:
+  - kind: Gateway
+    group: gateway.networking.k8s.io
+    name: waypoint
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["ns-1"]
+    to:
+    - operation:
+        methods: ["GET"]
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: waypoint-viewer
+  namespace: ns-2
+spec:
+  targetRefs:
+  - kind: Gateway
+    group: gateway.networking.k8s.io
+    name: waypoint
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["ns-2"]
+    to:
+    - operation:
+        methods: ["GET"]
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: waypoint-viewer
+  namespace: ns-3
+spec:
+  targetRefs:
+  - kind: Gateway
+    group: gateway.networking.k8s.io
+    name: waypoint
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["ns-3"]
+    to:
+    - operation:
+        methods: ["GET"]
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: waypoint-viewer
+  namespace: ns-4
+spec:
+  targetRefs:
+  - kind: Gateway
+    group: gateway.networking.k8s.io
+    name: waypoint
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["ns-4"]
+    to:
+    - operation:
+        methods: ["GET"]
+#---
+#apiVersion: security.istio.io/v1beta1
+#kind: AuthorizationPolicy
+#metadata:
+#  name: waypoint-viewer
+#  namespace: ns-5
+#spec:
+#  targetRefs:
+#  - kind: Gateway
+#    group: gateway.networking.k8s.io
+#    name: waypoint
+#  action: ALLOW
+#  rules:
+#  - from:
+#    - source:
+#        namespaces: ["ns-5"]
+#    to:
+#    - operation:
+#        methods: ["GET"]

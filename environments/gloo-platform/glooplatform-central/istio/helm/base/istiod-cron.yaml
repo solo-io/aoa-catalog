@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: rollout-restart-sa
+  namespace: istio-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: istio-system
+  name: rollout-restart-role
+rules:
+- apiGroups: ["apps"]
+  resources: ["deployments", "replicasets", "pods"]
+  verbs: ["get", "patch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: rollout-restart-role-binding
+  namespace: istio-system
+subjects:
+- kind: ServiceAccount
+  name: rollout-restart-sa
+  namespace: istio-system
+roleRef:
+  kind: Role
+  name: rollout-restart-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: rollout-restart-every-day
+  namespace: istio-system
+spec:
+  schedule: "0 0 * * *"  # This schedule triggers the job every day at midnight
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: rollout-restart-sa
+          containers:
+          - name: rollout-restart
+            image: quay.io/solo-io/kubectl:1.16.4  # Image with kubectl or any other tool capable of deleting pods
+            command: ["sh", "-c", "kubectl rollout restart -n istio-system deploy/istiod-1-23"]  # Command to delete the pod
+            # Add any environment variables or volume mounts necessary
+          restartPolicy: OnFailure
+  successfulJobsHistoryLimit: 0  # Do not keep any successful jobs

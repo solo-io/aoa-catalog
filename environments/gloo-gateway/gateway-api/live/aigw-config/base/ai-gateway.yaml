@@ -1,0 +1,22 @@
+kind: Gateway
+apiVersion: gateway.networking.k8s.io/v1
+metadata:
+  name: ai-gateway
+  namespace: gloo-system
+  annotations:
+    gateway.gloo.solo.io/gateway-parameters-name: gloo-gateway-override
+spec:
+  gatewayClassName: gloo-gateway
+  listeners:
+  - protocol: HTTPS
+    port: 443
+    name: https
+    tls:
+        mode: Terminate
+        certificateRefs:
+          - name: cf-advanced-tls-secret
+            kind: Secret
+    allowedRoutes:
+      namespaces:
+        from: All
+        

@@ -1,0 +1,36 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: WorkspaceSettings
+metadata:
+  name: ops-team
+  namespace: ops-team-config
+spec:
+  exportTo:
+  - workspaces:
+    - name: "*"
+    resources:
+    - kind: SERVICE
+      namespace: gloo-mesh-addons
+    - kind: SERVICE
+      namespace: istio-gateways
+    - kind: SERVICE
+      namespace: istio-eastwest
+    - kind: VIRTUAL_DESTINATION
+      namespace: gloo-mesh-addons
+  importFrom:
+  - workspaces:
+    - name: '*'
+  options:
+    federation:
+      enabled: true
+      hostSuffix: global
+      serviceSelector:
+        - cluster: glooplatform-east
+          namespace: argocd
+        - cluster: glooplatform-central
+          namespace: argocd
+        #- cluster: glooplatform-central
+        #  namespace: gloo-mesh-addons
+        #- cluster: glooplatform-east
+        #  namespace: gloo-mesh-addons
+        - cluster: glooplatform-central
+          namespace: uptime

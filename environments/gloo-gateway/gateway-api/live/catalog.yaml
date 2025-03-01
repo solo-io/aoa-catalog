@@ -1,0 +1,143 @@
+
+waves:
+  - name: gloo-operator
+    location: $env_path/gloo-operator/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-operator/init.sh
+      post_deploy:
+      -  $env_path/gloo-operator/test.sh
+  - name: istio
+    location: $env_path/istio/ambient
+    scripts:
+      pre_deploy: 
+      -  $env_path/istio/init.sh
+      post_deploy:
+      -  $env_path/istio/test.sh
+  - name: gloo-enterprise-app
+    location: $env_path/gloo-enterprise-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-enterprise-app/init.sh
+      post_deploy:
+      -  $env_path/gloo-enterprise-app/test.sh
+  - name: gateway-api-config
+    location: $env_path/gateway-api-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gateway-api-config/init.sh
+      post_deploy:
+      -  $env_path/gateway-api-config/test.sh
+  - name: demo-admin-config
+    location: $env_path/demo-admin-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/demo-admin-config/init.sh
+      post_deploy:
+      -  $env_path/demo-admin-config/test.sh
+  - name: aigw-config
+    location: $env_path/aigw-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/aigw-config/init.sh
+      post_deploy:
+      -  $env_path/aigw-config/test.sh
+  - name: ollama
+    location: $env_path/ollama/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/ollama/init.sh
+      post_deploy:
+      -  $env_path/ollama/test.sh
+  - name: chatbot
+    location: $env_path/chatbot/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/chatbot/init.sh
+      post_deploy:
+      -  $env_path/chatbot/test.sh  
+  - name: httpbin-app
+    location: $env_path/httpbin-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/httpbin-app/init.sh
+      post_deploy:
+      -  $env_path/httpbin-app/test.sh   
+  - name: bookinfo-app
+    location: $env_path/bookinfo-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/bookinfo-app/init.sh
+      post_deploy:
+      -  $env_path/bookinfo-app/test.sh   
+  - name: gloo-portal-demo
+    location: $env_path/gloo-portal-demo/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-portal-demo/init.sh
+      post_deploy:
+      -  $env_path/gloo-portal-demo/test.sh
+  - name: argo-rollouts
+    location: $env_path/argo-rollouts/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/argo-rollouts/init.sh
+      post_deploy:
+      -  $env_path/argo-rollouts/test.sh
+  - name: rollouts-demo
+    location: $env_path/rollouts-demo/strategies
+    scripts:
+      pre_deploy: 
+      -  $env_path/rollouts-demo/init.sh
+      post_deploy:
+      -  $env_path/rollouts-demo/test.sh
+    sync: false
+  - name: rollouts-ui
+    location: $env_path/rollouts-ui/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/rollouts-ui/init.sh
+      post_deploy:
+      -  $env_path/rollouts-ui/test.sh
+  #- name: tiered-app-config-gwapi
+  #  location: $env_path/tiered-app-config-gwapi/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/tiered-app-config-gwapi/init.sh
+  #    post_deploy:
+  #    -  $env_path/tiered-app-config-gwapi/test.sh
+  - name: uptime-app
+    location: $env_path/uptime-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/uptime-app/init.sh
+      post_deploy:
+      -  $env_path/uptime-app/test.sh 
+  - name: aigw-traffic-shift-demo
+    location: $env_path/aigw-traffic-shift-demo/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/aigw-traffic-shift-demo/init.sh
+      post_deploy:
+      -  $env_path/aigw-traffic-shift-demo/test.sh 
+  - name: aigw-failover-demo
+    location: $env_path/aigw-failover-demo/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/aigw-failover-demo/init.sh
+      post_deploy:
+      -  $env_path/aigw-failover-demo/test.sh 
+  - name: enclosed-app
+    location: $env_path/enclosed-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/enclosed-app/init.sh
+      post_deploy:
+      -  $env_path/enclosed-app/test.sh 
+  - name: homer-app
+    location: $env_path/homer-app/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/homer-app/init.sh
+      post_deploy:
+      -  $env_path/homer-app/test.sh 

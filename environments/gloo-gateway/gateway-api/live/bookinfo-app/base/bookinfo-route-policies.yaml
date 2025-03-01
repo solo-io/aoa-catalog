@@ -1,0 +1,16 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: bookinfo-route-policies
+  namespace: gloo-system
+spec:
+  # extauth options specified at the per-route level 
+  options:
+    jwt:
+      disable: true
+    # api-key ext auth
+    extauth:
+      configRef:
+        name: apikey-auth
+        namespace: gloo-system   
+    

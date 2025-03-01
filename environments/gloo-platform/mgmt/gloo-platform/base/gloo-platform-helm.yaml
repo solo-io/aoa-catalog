@@ -1,0 +1,130 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gloo-platform-helm
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gloo-mesh
+  project: default
+  source:
+    chart: gloo-platform
+    helm:
+      skipCrds: true
+      values: |
+        common:
+            adminNamespace: "gloo-mesh"
+            cluster: mgmt
+        global: {}
+        glooInsightsEngine:
+            enabled: true
+        glooAnalyzer:
+            enabled: false
+            runAsSidecar: true
+        glooAgent:
+            enabled: false
+            relay:
+                serverAddress: gloo-mesh-mgmt-server:9900
+                clientTlsSecret:
+                    name: gloo-agent-tls-cert
+                    namespace: gloo-mesh
+                tokenSecret:
+                    key: null
+                    name: null
+                    namespace: null
+        glooMgmtServer:
+            enabled: true
+            relay:
+                disableCa: true
+                disableCaCertGeneration: true
+                disableTokenGeneration: true
+                tlsSecret:
+                    name: gloo-server-tls-cert
+            serviceType: LoadBalancer
+        glooUi:
+            deploymentOverrides:
+                spec:
+                    template:
+                        #metadata:
+                        #    annotations:
+                        #        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+                        #    labels:
+                        #        istio.io/rev: 1-23
+                        #        sidecar.istio.io/inject: "true"
+                        spec:
+                            nodeSelector:
+                                node: "spot"
+                            tolerations:
+                                - key: cloud.google.com/node
+                                  operator: Equal
+                                  value: "spot"
+                                  effect: NoSchedule  
+            enabled: true
+            serviceType: ClusterIP
+            resources:
+                requests:
+                    cpu: 125m
+                    memory: 256Mi
+        legacyMetricsPipeline:
+            enabled: false
+        licensing:
+            licenseSecretName: "gloo-license"
+        prometheus:
+            enabled: true
+        telemetryGateway:
+            enabled: true
+            resources:
+                requests:
+                    cpu: 300m
+                    memory: 1Gi
+                limits:
+                    cpu: 1
+                    memory: 2Gi
+        telemetryGatewayCustomization:
+            disableCertGeneration: true
+        telemetryCollector:
+            enabled: true
+            mode: deployment
+            replicaCount: 1
+            config:
+                exporters:
+                    otlp:
+                        endpoint: "gloo-telemetry-gateway.gloo-mesh.svc.cluster.local:4317"
+            resources:
+                limits:
+                    cpu: 1
+                    memory: 2Gi
+                requests:
+                    cpu: 200m
+                    memory: 1Gi
+            extraVolumes:
+                - name: root-ca
+                  secret:
+                    defaultMode: 420
+                    secretName: gloo-telemetry-gateway-tls-secret
+                - configMap:
+                    items:
+                        - key: relay
+                          path: relay.yaml
+                    name: gloo-telemetry-collector-config
+                  name: telemetry-configmap
+                - hostPath:
+                    path: /var/run/cilium
+                    type: DirectoryOrCreate
+                  name: cilium-run
+        redis:
+            deployment:
+                enabled: true
+    repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
+    targetRevision: 2.7.0
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  # ignore the self-signed certs that are being generated automatically    
+  ignoreDifferences:
+  - group: v1
+    kind: Secret

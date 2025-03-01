@@ -1,2 +1,0 @@
-# Environment Description
-The `gateway-api/with-istio-ambient/cluster2` environment deploys Gloo Gateway EE with Istio Ambient mode enabled along with bookinfo and httpbin app configured in the mesh to demonstrate features and capabilities. In this environment, Gloo Gateway is a part of the Istio Ambient mesh. There is no Gloo Mesh configured in this environment

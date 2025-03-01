@@ -39,7 +39,7 @@ metadata:
   name: wave-${wave_name}-aoa
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io/solo-io
+  - resources-finalizer.argocd.argoproj.io
 spec:
   project: app-of-apps
   source:

@@ -1,0 +1,15 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: httpbin-ext-auth
+  namespace: httpbin
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: httpbin-get-route
+  options:
+    extauth:
+      configRef:
+        name: httpbin-okta
+        namespace: gloo-system

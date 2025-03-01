@@ -9,16 +9,18 @@ fi
 
 # new
 colima start --cpu 6 --memory 16 \
-  --profile=${cluster_context} \
-  --network-address \
   --vm-type=vz \
   --kubernetes \
-  --kubernetes-version v1.31.2+k3s1 \
+  --network-address \
   --k3s-arg "--disable=traefik"
 
+# Setup colima for ssh capability
+printf "=== Installing socat\n"
+colima ssh -- sudo apt install -y socat
+
 # Add node labels
-kubectl label nodes colima-${cluster_context} topology.kubernetes.io/region=us-west
-kubectl label nodes colima-${cluster_context} topology.kubernetes.io/zone=us-west-1
+kubectl label nodes colima topology.kubernetes.io/region=us-west
+kubectl label nodes colima topology.kubernetes.io/zone=us-west-1
 
 # change context
-kubectl config rename-context colima-${cluster_context} ${cluster_context}
+kubectl config rename-context colima ${cluster_context}

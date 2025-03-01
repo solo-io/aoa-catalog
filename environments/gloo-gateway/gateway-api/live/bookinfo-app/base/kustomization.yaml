@@ -1,0 +1,34 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- bookinfo-ns.yaml
+- bookinfo.yaml
+- bookinfo-parent-route.yaml
+- bookinfo-delegate-route.yaml
+- bookinfo-route-policies.yaml
+
+# when using ambient uncomment below
+transformers:
+- transformers/ambient-label-transformer.yaml
+
+# patch nodeSelector and tolerations on all Deployments
+patches:
+- patch: |-
+    kind: not-important
+    metadata:
+      name: not-important
+    spec:
+      template:
+        spec:
+          nodeSelector:
+            node: "spot"
+          tolerations:
+          - key: cloud.google.com/node
+            operator: Equal
+            value: "spot"
+            effect: NoSchedule
+  target:
+    kind: Deployment

@@ -1,0 +1,15 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: uptime-route-policies
+  namespace: uptime
+spec:
+  options:
+    jwt:
+      disable: true
+    extauth:
+      configRef:
+        name: uptime-oidc
+        namespace: gloo-system
+                
+    

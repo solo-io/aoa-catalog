@@ -1,0 +1,14 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: helloworld
+  namespace: helloworld
+spec:
+  action: DENY
+  selector:
+    matchLabels:
+      app: helloworld
+  rules:
+  - from:
+    - source:
+        namespaces: ["homer-portal"]

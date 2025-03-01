@@ -5,7 +5,7 @@ metadata:
   namespace: istio-gateways
 spec:
   hosts:
-  - "*"
+  - "prometheus.admin.gmc.glooplatform.com"
   gateways:
   - istio-gateways/https-gateway
   http:

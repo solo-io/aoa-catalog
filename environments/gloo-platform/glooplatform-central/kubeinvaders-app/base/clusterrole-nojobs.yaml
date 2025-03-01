@@ -1,0 +1,39 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app: kubeinvaders
+    app.kubernetes.io/instance: kubeinvaders
+    chart: kubeinvaders-1.9.6
+    heritage: Helm
+    release: kubeinvaders
+  name: kubeinvaders
+rules:
+  - apiGroups:
+      - ''
+    resources:
+      - pods
+      - pods/log
+    verbs:
+      - delete
+  - apiGroups:
+      - batch
+      - extensions
+    resources:
+      - jobs
+    verbs:
+      - get
+      - list
+      - watch
+      #- create
+      #- update
+      #- patch
+      #- delete
+  - apiGroups:
+      - '*'
+    resources:
+      - '*'
+    verbs:
+      - get
+      - watch
+      - list

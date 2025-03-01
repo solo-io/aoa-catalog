@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: enclosed-svc
+  namespace: enclosed
+  labels:
+    app: enclosed
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8787
+    protocol: TCP
+    targetPort: 8787
+  selector:
+    app: enclosed
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: enclosed-sa
+  namespace: enclosed
+  labels:
+    app: enclosed
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enclosed-deployment
+  namespace: enclosed
+  labels:
+    app: enclosed
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: enclosed
+  template:
+    metadata:
+      labels:
+        app: enclosed
+    spec:
+      serviceAccountName: enclosed-sa
+      containers:
+      - name: enclosed
+        image: corentinth/enclosed
+        ports:
+        - containerPort: 8787
+        resources:
+          requests:
+            memory: "20Mi"
+            cpu: "5m"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8787
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8787
+          initialDelaySeconds: 10
+          periodSeconds: 15

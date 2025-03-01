@@ -1,0 +1,41 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: httpbin-parent-route
+  namespace: gloo-system
+  labels:
+    example: httpbin-route
+    gateway: https
+spec:
+  hostnames:
+  - "httpbin.gwapi.glooplatform.com"
+  parentRefs:
+    - name: https
+      namespace: gloo-system
+  rules:
+    - backendRefs:
+        # uncomment to use direct reference
+        #- name: 'httpbin-delegate-route'
+        #  namespace: httpbin
+        #  group: gateway.networking.k8s.io
+        #  kind: HTTPRoute
+        #- name: 'httpbin-external-delegate-route'
+        #  namespace: httpbin
+        #  group: gateway.networking.k8s.io
+        #  kind: HTTPRoute
+        # uncomment to use wildcard to delegate to all route tables in the httpbin namespace
+        - name: '*'
+          namespace: httpbin
+          group: gateway.networking.k8s.io
+          kind: HTTPRoute
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
+      filters:
+        - type: ExtensionRef
+          extensionRef:
+            group: gateway.solo.io
+            kind: RouteOption
+            name: httpbin-route-policies
+    

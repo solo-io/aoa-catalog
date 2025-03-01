@@ -1,0 +1,10 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- homer-admin-httproute.yaml
+- homer-admin-route-policies.yaml
+- homer-authconfig.yaml
+- homer-portal-admin.yaml

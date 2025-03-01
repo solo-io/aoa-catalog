@@ -1,0 +1,17 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: httpbin-direct-response-route
+  namespace: httpbin
+spec:
+  rules:
+    - matches:
+      - path:
+          type: Exact
+          value: /direct-response
+      filters:
+      - type: ExtensionRef
+        extensionRef:
+         name: direct-response
+         group: gateway.gloo.solo.io
+         kind: DirectResponse

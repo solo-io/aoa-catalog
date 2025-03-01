@@ -1,0 +1,14 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: gloo-mesh-ui-route-policies
+  namespace: gloo-mesh
+spec:
+  options:
+    jwt:
+      disable: true
+    retries:
+      retryOn: 'connect-failure,retriable-status-codes,5xx,gateway-error,reset'
+      numRetries: 3
+                
+    

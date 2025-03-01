@@ -1,0 +1,12 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+#- tiered-app-extauthpolicy.yaml
+- tiered-app-workspace.yaml
+- tiered-app-workspacesettings.yaml
+- tiered-app-ws-config-ns.yaml
+- tiered-app-rt-443.yaml
+- vd.yaml

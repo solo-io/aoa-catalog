@@ -59,6 +59,13 @@ spec:
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "true"
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: frontend
       containers:
         - name: server
@@ -82,6 +89,10 @@ spec:
               httpHeaders:
                 - name: "Cookie"
                   value: "shop_session-id=x-liveness-probe"
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "150Mi"  # Adjusted to match the resource requests
           env:
             - name: PORT
               value: "8080"
@@ -120,4 +131,4 @@ spec:
                 fieldRef:
                   fieldPath: metadata.namespace
             - name: KUBERNETES_CLUSTER_NAME
-              value: gcp-v1
+              value: gloo-mesh-core-main

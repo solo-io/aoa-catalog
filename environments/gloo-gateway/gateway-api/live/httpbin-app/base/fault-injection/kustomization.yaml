@@ -1,0 +1,10 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# list of resources to be Applied
+resources:
+- abort/httpbin-fault-injection-abort-delegate-route.yaml
+- abort/httpbin-fault-injection-abort-route-policies.yaml
+- delay/httpbin-fault-injection-delay-delegate-route.yaml
+- delay/httpbin-fault-injection-delay-route-policies.yaml

@@ -1,0 +1,8 @@
+apiVersion: gateway.gloo.solo.io/v1alpha1
+kind: DirectResponse
+metadata:
+  name: direct-response
+  namespace: httpbin
+spec:
+  status: 200
+  body: "it's alive!"

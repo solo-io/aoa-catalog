@@ -113,6 +113,13 @@ spec:
       labels:
         app: recommendationservice
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: recommendation
       terminationGracePeriodSeconds: 5
       containers:
@@ -139,6 +146,10 @@ spec:
           value: "1"
         - name: DISABLE_DEBUGGER
           value: "1"
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -160,6 +171,13 @@ spec:
       labels:
         app: productcatalogservice
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: product-catalog
       terminationGracePeriodSeconds: 5
       containers:
@@ -182,6 +200,10 @@ spec:
         livenessProbe:
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:3550"]
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -203,6 +225,13 @@ spec:
       labels:
         app: emailservice
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: email
       containers:
       - name: server
@@ -224,6 +253,10 @@ spec:
           periodSeconds: 5
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:8080"]
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -245,6 +278,13 @@ spec:
       labels:
         app: currencyservice
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: currency
       terminationGracePeriodSeconds: 5
       containers:
@@ -268,6 +308,10 @@ spec:
         livenessProbe:
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:7000"]
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -289,6 +333,13 @@ spec:
       labels:
         app: cartservice
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: cart
       terminationGracePeriodSeconds: 5
       containers:
@@ -308,6 +359,10 @@ spec:
           periodSeconds: 10
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:7070", "-rpc-timeout=5s"]
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -329,6 +384,13 @@ spec:
       labels:
         app: adservice
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: ad
       terminationGracePeriodSeconds: 5
       containers:
@@ -353,6 +415,10 @@ spec:
             periodSeconds: 15
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:9555"]
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "150Mi"  # Adjusted to match the resource requests
 ---
 ###########################################################
 ## Services
@@ -426,6 +492,13 @@ spec:
       labels:
         app: shippingservice
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: shipping
       containers:
       - name: server
@@ -452,8 +525,8 @@ spec:
             command: ["/bin/grpc_health_probe", "-addr=:50051"]
         resources:
           requests:
-            cpu: 100m
-            memory: 64Mi
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -475,6 +548,13 @@ spec:
       labels:
         app: paymentservice
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: payment
       terminationGracePeriodSeconds: 5
       containers:
@@ -499,8 +579,8 @@ spec:
             command: ["/bin/grpc_health_probe", "-addr=:50051"]
         resources:
           requests:
-            cpu: 100m
-            memory: 64Mi
+            cpu: "50m"
+            memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -522,6 +602,13 @@ spec:
       labels:
         app: checkoutservice
     spec:
+      nodeSelector:
+        node: "spot"
+      tolerations:
+      - key: cloud.google.com/node
+        operator: Equal
+        value: "spot"
+        effect: NoSchedule
       serviceAccountName: checkout
       containers:
         - name: server
@@ -562,8 +649,8 @@ spec:
           #   value: "jaeger-collector:14268"
           resources:
             requests:
-              cpu: 100m
-              memory: 64Mi
+              cpu: "50m"
+              memory: "150Mi"  # Adjusted to match the resource requests
 ---
 apiVersion: v1
 kind: ConfigMap

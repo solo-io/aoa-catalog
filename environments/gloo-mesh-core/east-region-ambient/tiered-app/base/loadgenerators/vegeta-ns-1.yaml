@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: vegeta
+  namespace: ns-1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: vegeta
+  name: vegeta-ns-1
+  namespace: ns-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vegeta
+  template:
+    metadata:
+      labels:
+        app: vegeta
+    spec:
+      serviceAccountName: vegeta
+      containers:
+      - name: vegeta
+        image: ably77/vegeta:0.1
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/sh"]
+        # guaranteed qos
+        resources:
+          requests:
+            cpu: 25m
+            memory: 25Mi
+        env:
+        - name: APP_URL
+          value: "http://restless-sky.ns-1.svc.cluster.local:8080"
+        - name: REQUESTS_PER_SECOND
+          value: "20"
+        - name: DURATION
+          value: "120s"
+        args: 
+          - "-c"
+          - 'sleep 5; for run in $(seq 1 100000); do echo "GET ${APP_URL}" | vegeta attack -dns-ttl=0 -keepalive -http2=true -rate ${REQUESTS_PER_SECOND}/1s -duration=${DURATION} | tee results.bin | vegeta report -type=text; done'

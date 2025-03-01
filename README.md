@@ -1,16 +1,14 @@
 # aoa-catalog
 This repo serves as a collection of Solo.io demo environments driven by GitOps using the ArgoCD app-of-apps pattern.
 
+### Demo Video Link
+
+[![Youtube Video Demonstration](aoa-tools/images/youtube1.png)](https://youtu.be/c4wgigSihJI)
+
 ### Prerequisites
 - `yq` - `brew install yq` or see here (https://mikefarah.gitbook.io/yq/v/v3.x/)
 - `k3d` - `brew install k3d` or see here (https://k3d.io/v5.4.7/#installation)
 - `kubectl` - `brew install kubectl` or see here (https://kubernetes.io/docs/tasks/tools/#kubectl)
-
-### Deployment Demonstration
-
-An `asciinema` demonstration showcasing the installation of the Gateway API (v1.18) with Istio Helm in an Ambient Mesh environment.
-
-[![asciicast](https://asciinema.org/a/euuMmsac6L3QaG58Yd3X6gDSN.svg)](https://asciinema.org/a/euuMmsac6L3QaG58Yd3X6gDSN)
 
 #### Exporting your license key
 For environments that require an Enterprise product license, export your license key with the commands below

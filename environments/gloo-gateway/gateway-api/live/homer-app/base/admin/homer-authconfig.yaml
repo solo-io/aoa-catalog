@@ -1,0 +1,28 @@
+apiVersion: enterprise.gloo.solo.io/v1
+kind: AuthConfig
+metadata:
+  name: homer-admin-oidc
+  namespace: gloo-system
+spec:
+  configs:
+  - oauth2:
+      oidcAuthorizationCode:
+        appUrl: https://demo.glooplatform.com
+        callbackPath: /callback
+        clientId: 967359009029-j7uts17vmc85kt3aaie8cnpodefql93t.apps.googleusercontent.com
+        clientSecretRef:
+          name: gcp-client-secret
+          namespace: gloo-system
+        issuerUrl: https://accounts.google.com
+        session:
+          failOnFetchFailure: true
+          redis:
+            cookieName: homer-session
+            options:
+              host: redis.gloo-system:6379
+            allowRefreshing: true
+          cookieOptions:
+            maxAge: 3600
+        scopes:
+        - email
+        logoutPath: /logout

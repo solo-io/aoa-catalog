@@ -1,0 +1,576 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: homer-portal-solo
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: homer-portal
+  project: default
+  source:
+    chart: homer
+    repoURL: https://djjudas21.github.io/charts/
+    targetRevision: 8.1.9
+    helm:
+      values: |
+        #
+        # IMPORTANT NOTE
+        #
+        # This chart inherits from our common library chart. You can check the default values/options here:
+        # https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
+        #
+
+        controller:
+          replicas: 1
+        
+        image:
+          # -- image repository
+          repository: ably77/homer
+          # -- image tag
+          tag: 0.1.4
+          # -- image pull policy
+          pullPolicy: Always
+        
+        # -- environment variables.
+        # @default -- See below
+        env:
+          # -- Set the container timezone
+          TZ: UTC
+          # -- Specify the user ID the application will run as
+          UID: "1001"
+          # -- Specify the group ID the application will run as
+          GID: "1001"
+          # -- Specify the basepath the application will run at
+          SUBFOLDER: /solo
+        
+        # -- Set the resource requests / limits for the main container.
+        resources:
+          requests:
+            cpu: 30m
+            memory: 128Mi
+        
+        # -- Set labels on the pod
+        #podLabels:
+        #  istio.io/rev: 1-22
+        
+        # -- Node selection constraint
+        nodeSelector:
+          node: "spot"
+
+        # -- Specify taint tolerations  
+        tolerations:
+        - key: cloud.google.com/node
+          operator: Equal
+          value: "spot"
+          effect: NoSchedule
+        
+        # -- Set annotations on the pod
+        podAnnotations:
+          proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+        
+        # -- Configures serviceAccount settings for the chart.
+        serviceAccount:
+          # -- Specifies whether a service account should be created
+          create: true
+        
+        # -- Configures service settings for the chart.
+        # @default -- See values.yaml
+        service:
+          main:
+            enabled: true
+            primary: true
+            type: ClusterIP
+            ports:
+              http:
+                enabled: true
+                port: 8080
+                protocol: HTTP
+                targetPort: 8080
+            labels:
+              expose: "true"
+        
+        ingress:
+          # -- Enable and configure ingress settings for the chart under this key.
+          # @default -- See values.yaml
+          main:
+            enabled: false
+        
+        # -- Configure persistence settings for the chart under this key.
+        # @default -- See values.yaml
+        persistence:
+          config:
+            enabled: false
+            mountPath: /www/assets
+        
+        configmap:
+          config:
+            # -- Store homer configuration as a ConfigMap
+            enabled: true
+            # -- Homer configuration. See [image documentation](https://github.com/bastienwirtz/homer/blob/main/docs/configuration.md) for more information.
+            # @default -- See values.yaml
+            data:
+              config.yml: |
+                #externalConfig: https://raw.githubusercontent.com/bastienwirtz/homer/main/public/assets/config.yml.dist
+                ---
+                # Homepage configuration
+                # See https://fontawesome.com/v5/search for icons options
+                
+                title: "Gloo Platform Demo Dashboard"
+                subtitle: "Cloud connectivity done right"
+                logo: "solo/solo-mark-light.png"
+                # icon: "fas fa-skull-crossbones" # Optional icon
+                
+                header: true
+                #footer: '<p>Created with <span class="has-text-danger">❤️</span> with <a href="https://bulma.io/">bulma</a>, <a href="https://vuejs.org/">vuejs</a> & <a href="https://fontawesome.com/">font awesome</a> // Fork me on <a href="https://github.com/bastienwirtz/homer"><i class="fab fa-github-alt"></i></a></p>' # set false if you want to hide it.
+                footer: false
+
+                columns: '2'
+
+                # Set the default layout and color scheme
+                defaults:
+                  layout: list # Either 'columns', or 'list'
+                  colorTheme: dark # One of 'auto', 'light', or 'dark'
+        
+                # Optional theme customization
+                theme: default
+                colors:
+                  light:
+                    highlight-primary: "#5bb5de"
+                    highlight-secondary: "#51a4d0"
+                    highlight-hover: "#51a4d0"
+                    background: "#f5f5f5"
+                    card-background: "#ffffff"
+                    text: "#363636"
+                    text-header: "#ffffff"
+                    text-title: "#303030"
+                    text-subtitle: "#424242"
+                    card-shadow: rgba(0, 0, 0, 0.1)
+                    link: "#5bb5de"
+                    link-hover: "#4fbc45"
+                  dark:
+                    highlight-primary: "#5bb5de"
+                    highlight-secondary: "#51a4d0"
+                    highlight-hover: "#51a4d0"
+                    background: "#131313"
+                    card-background: "#2b2b2b"
+                    text: "#eaeaea"
+                    text-header: "#ffffff"
+                    text-title: "#fafafa"
+                    text-subtitle: "#f5f5f5"
+                    card-shadow: rgba(0, 0, 0, 0.4)
+                    link: "#5bb5de"
+                    link-hover: "#4fbc45"
+                
+                # Optional message
+                message:
+                  #url: https://b4bz.io
+                  style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
+                  title: "Welcome!"
+                  icon: "fa fa-grin"
+                  content: |
+                    <p>This is a simple navigation homepage for the aoa-catalog demo apps running on Gloo Gateway!</p>
+                    
+                    <p>Find more information on <a href='https://github.com/solo-io/aoa-catalog' target="_blank">GitHub: solo-io/aoa-catalog</a></p>
+                    
+                    <h2>Common Usernames</h2>
+                    <p>Below are a few common usernames to explore the applications and portals:</p>
+                    <pre><code>Username: jdoe@solo.io   // Password: gloo-dev
+                    Username: jdoe@gmail.com // Password: gloo-public</code></pre>
+                    <p>Note: You can also sign up for your own user through Okta using self-service registration!</p>
+                
+                    <h2>Common Headers Used in Demos</h2>
+                    <p>Below are headers commonly used in demo applications (typically also shown in the subtitle of the link card):</p>
+                    <br />
+
+                    <p><a href='https://modheader.com/' target="_blank">ModHeader</a> is a nice browser extension that lets you to easily modify HTTP request and response headers</p>
+                    <br />
+
+                    <h3>Bookinfo API-Key Auth header</h3>
+                    <pre><code>bookinfo-key: N2YwMDIxZTEtNGUzNS1jNzgzLTRkYjAtYjE2YzRkZGVmNjcy</code></pre>
+                    <br />
+                
+                    <h3>JWT Authentication Example</h3>
+                    <p>Run the following command to retrieve the JWT header:</p>
+                    <pre><code>TOKEN=$(curl https://raw.githubusercontent.com/solo-io/gloo-mesh-use-cases/main/gloo-gateway/jwt/dev-example.jwt -s) && echo "x-token: $TOKEN"</code></pre>
+                    <br />
+                
+                    <h3>Dark Launch Example</h3>
+                    <pre><code>user: preview</code></pre>
+                    <br />
+                
+                    <h3>WAF Example</h3>
+                    <p>Here are some common user-agent headers that will trigger modsecurity rules:</p>
+                    <pre><code>user-agent: user1-5
+                    user-agent: user6
+                    user-agent: scammer</code></pre>
+                    <br />
+
+                    <h3>Transformation Example - Extract/Transform</h3>
+                    <pre><code>x-email: jdoe@solo.io</code></pre>
+                
+                # Optional navbar
+                # links: [] # Allows for navbar (dark mode, layout, and search) without any links
+                links:
+                  - name: "Github Repo"
+                    icon: "fab fa-github"
+                    url: "https://github.com/solo-io/aoa-catalog"
+                    target: "_blank" # optional html a tag target attribute
+                  - name: "Gloo Mesh Documentation"
+                    icon: "fas fa-book"
+                    url: "https://docs.solo.io/gloo-mesh-enterprise"
+                    target: "_blank" # optional html a tag target attribute
+                  - name: "Gloo Gateway Documentation"
+                    icon: "fas fa-book"
+                    url: "https://docs.solo.io/gateway/latest/"
+                    target: "_blank" # optional html a tag target attribute
+                  - name: "Admin Tools"
+                    icon: "fas fa-cog"
+                    url: "https://demo.glooplatform.com/admin/"
+                  # this will link to a second homer page that will load config from additional-page.yml and keep default config values as in config.yml file
+                  # see url field and assets/additional-page.yml.dist used in this example:
+                  #- name: "another page!"
+                  #  icon: "fas fa-file-alt"
+                  #  url: "#additional-page" 
+                
+                # Services
+                # First level array represent a group.
+                # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
+                services:
+
+                  #- name: "SSO"
+                  #  icon: "fas fa-cloud"
+                  #  items:
+                  #    - name: "GCP Login"
+                  #      icon: "fas fa-sign-in-alt"
+                  #      tag: "login"
+                  #      url: "https://login.glooplatform.com/gcp"
+                  #      target: "_blank" # optional html a tag target attribute
+                  #    - name: "Okta Login"
+                  #      icon: "fas fa-sign-in-alt"
+                  #      tag: "login"
+                  #      url: "https://login.glooplatform.com/okta"
+                  #      target: "_blank" # optional html a tag target attribute
+
+                  #- name: "Gloo Mesh UI"
+                  #  icon: "fas fa-cloud"
+                  #  items:
+                  #    
+                  #    - name: "Gloo Mesh UI (Okta Auth)"
+                  #      subtitle: "Use Self Service Registration to Access UI"
+                  #      icon: "fas fa-arrows-alt"
+                  #      tag: "gmui"
+                  #      url: "https://public-ui.glooplatform.com"
+                  #      target: "_blank" # optional html a tag target attribute
+
+                  - name: "Gloo Platform Demo Walkthroughs and Config Examples"
+                    logo: "solo/glooy.png"
+                    items:
+                      - name: "How to Use this Environment"
+                        logo: "solo/glooy.png"
+                        tag: "howto"
+                        url: "https://demo.glooplatform.com/howto"
+                      - name: "Demo Environment Config Examples"
+                        logo: "solo/glooy.png"
+                        tag: "config"
+                        url: "https://demo.glooplatform.com/config"
+
+                  - name: "Demo AI Gateway Capabilities"
+                    icon: "fas fa-brain"
+                    items:
+                      - name: "LLM Traffic Split and Failover Demo"
+                        subtitle: "local-to-local and public-to-local examples"
+                        icon: "fas fa-brain"
+                        tag: "ai-gateway,#asciinema"
+                        url: "https://asciinema.org/a/QTiUvWjyk6Tu7HQ0duevMOaTm"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Auth, Rate Limiting, and Metrics Demo"
+                        subtitle: "protect access, token-based RL, and telemetry"
+                        icon: "fas fa-brain"
+                        tag: "ai-gateway,#asciinema"
+                        url: "https://asciinema.org/a/0urpIzs8rLlDz4Wyba1a2jV6O"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Semantic Caching Demo"
+                        subtitle: "improve performance and reduce cost with caching"
+                        icon: "fas fa-brain"
+                        tag: "ai-gateway,#asciinema"
+                        url: "https://asciinema.org/a/EDBWEFCLrGQy9su7wSxWGu1kb"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Prompt Enrichment Demo"
+                        subtitle: "prepend/append organizational prompts"
+                        icon: "fas fa-brain"
+                        tag: "ai-gateway,#asciinema"
+                        url: "https://asciinema.org/a/EqlEvIG6xMx9esZiquiMw2sI5"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "BetterChatGPT Chatbot"
+                        subtitle: "use custom API > https://llm.gwapi.glooplatform.com/openai"
+                        icon: "far fa-question-circle"
+                        tag: "ai-gateway"
+                        url: "https://chat.gwapi.glooplatform.com/"
+                        target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Demo Traffic Routing and Shifting Capabilities"
+                    icon: "fas fa-traffic-light"
+                    items:
+                      - name: "Argo Rollouts Demo Dashboard"
+                        subtitle: "Use this dashboard to change image tag (i.e. blue > green)"
+                        icon: "fab fa-git-alt"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,argo-rollouts,canary,demo"
+                        url: "https://rollouts-ui.gwapi.glooplatform.com/"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Argo Rollouts Demo"
+                        subtitle: "Visualize Progressive Delivery in action"
+                        icon: "fab fa-git-alt"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,argo-rollouts,canary,demo"
+                        url: "https://rollouts-demo.gwapi.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Dark Launch - bookinfo reviews-v2"
+                        subtitle: "requires user: preview & bookinfo-key header"
+                        icon: "fas fa-book-reader"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
+                        url: "https://bookinfo.gwapi.glooplatform.com/reviews/2"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "External Service Migration"
+                        subtitle: "50/50 public / in-cluster"
+                        icon: "fas fa-external-link-alt"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/anything/migration"
+                        target: "_blank" # optional html a tag target attribute
+                                    
+                  - name: "Demo Traffic Shaping Capabilities"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "Direct Response Action"
+                        subtitle: "expect 'it's alive!'"
+                        icon: "fas fa-book-reader"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/direct-response"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Timeout Policy - 2s"
+                        subtitle: "switch to /delay/2 to trigger timeout"
+                        icon: "fas fa-book-reader"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/delay/0"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Fault Injection - Abort"
+                        subtitle: "inject 500 error code 50% of the time"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/anything/fault"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Fault Injection - delay"
+                        subtitle: "inject 3s delay 100% of the time"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/anything/delay"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Header Control - Append"
+                        subtitle: "see headers with prefix custom-"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/headers"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Header Control - Extract/Transform"
+                        subtitle: "provide x-email header for x-transformed-header"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-gateway #demo"
+                        keywords: "gloo-gateway,gloo-mesh,demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/headers"
+                        target: "_blank" # optional html a tag target attribute
+                                    
+                  - name: "Demo Security Capabilities"
+                    icon: "fas fa-shield-alt"
+                    items:
+                      - name: "Ambient Mesh Demo App"
+                        subtitle: "change path number: /ns-#"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://tiered-app.ambient.gmc.glooplatform.com/ns-1/ui"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Visualize Ambient mTLS and Telemetry in Kiali"
+                        subtitle: "no sidecars required"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://kiali.ambient.gmc.glooplatform.com/kiali/console/graph/namespaces/?traffic=grpc%2CgrpcRequest%2Chttp%2ChttpRequest%2Ctcp%2CtcpSent&graphType=versionedApp&namespaces=ns-1%2Cns-2%2Cns-3%2Cns-4%2Cgloo-system&duration=300&refresh=60000&layout=kiali-dagre&namespaceLayout=kiali-dagre&animation=true&badgeSecurity=true"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Httpbin - OIDC Auth"
+                        subtitle: "requires user login credentials"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/get"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Bookinfo - API Key Auth"
+                        subtitle: "requires bookinfo-key header"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://bookinfo.gwapi.glooplatform.com/productpage"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Chatbot - JWT Validation & RBAC"
+                        subtitle: "requires x-token header with valid JWT"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://language-chatbot.gwapi.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Web Application Firewall"
+                        subtitle: "block incoming request if argument `?param1=test`"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://language-chatbot.gwapi.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Rate Limiting"
+                        subtitle: "quota set to 10 requests per min"
+                        icon: "fas fa-shield-alt"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        url: "https://httpbin.gwapi.glooplatform.com/image/jpeg"
+                        target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Demo Gloo Portal Capabilities"
+                    icon: "fas fa-cloud"
+                    items:
+                      - name: "Gloo Portal Diagram"
+                        subtitle: "Concepts, objects, and personas"
+                        logo: "solo/glooy.png"
+                        tag: "gloo-portal"
+                        url: "https://raw.githubusercontent.com/solo-io/aoa-catalog/refs/heads/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/images/portal-personas.png"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "React Frontend - Solo Dev Portal"
+                        subtitle: "sample external facing portal"
+                        icon: "fab fa-connectdevelop"
+                        tag: "gloo-portal"
+                        url: "https://solo-dev-portal.gwapi.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Portal Backend Server"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-portal"
+                        url: "https://api.gwapi.glooplatform.com/v1/api-products"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Portal API Key and Dynamic Rate Limiting"
+                        subtitle: "example using asciinema"
+                        icon: "far fa-window-maximize"
+                        tag: "gloo-portal,#asciinema"
+                        url: "https://asciinema.org/a/9d9Ojugpjr64zqKM9EnwNKt5C"
+                        target: "_blank" # optional html a tag target attribute                      
+                  
+                  - name: "Demo Service Mesh Capabilities"
+                    icon: "fas fa-cloud"
+                    items:
+
+                      - name: "Gloo Mesh UI"
+                        icon: "fas fa-arrows-alt"
+                        tag: "admin #gloo-mesh #demo"
+                        keywords: "gloo-mesh,gloo-gateway,ui,admin,demo"
+                        url: "https://ui.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Locality Awareness Routing"
+                        subtitle: "onlineboutique-east"
+                        icon: "fas fa-shopping-cart"
+                        tag: "gloo-mesh #demo"
+                        keywords: "gloo-mesh,demo"
+                        url: "https://shop.east.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Multicluster Failover"
+                        subtitle: "central > east on failover"
+                        icon: "fas fa-shopping-cart"
+                        tag: "gloo-mesh #demo"
+                        keywords: "gloo-mesh,demo"
+                        url: "https://shop.central.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Chaos - Trigger Failover"
+                        subtitle: "Kubeinvaders!"
+                        icon: "fas fa-fighter-jet"
+                        tag: "additional #demo"
+                        keywords: "gloo-mesh,chaos,demo"
+                        url: "https://chaos.central.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Tiered Mesh Application - Core"
+                        subtitle: "change path number: /ns-#"
+                        icon: "fab fa-connectdevelop"
+                        tag: "gloo-mesh #demo"
+                        keywords: "gloo-mesh,demo"
+                        url: "https://tiered-app.central.glooplatform.com/ns-1/ui/"
+                        target: "_blank" # optional html a tag target attribute  
+                      - name: "Tiered Mesh Application - Extended"
+                        subtitle: "Virtual Destination / Strangler Pattern"
+                        icon: "fab fa-connectdevelop"
+                        tag: "gloo-mesh #demo"
+                        keywords: "gloo-mesh,virtualdestination,multicluster,demo"
+                        url: "https://tiered-app.central.glooplatform.com/east/ns-1/ui/"
+                        target: "_blank" # optional html a tag target attribute  
+                      - name: "Multicluster Application Architecture - Gloo UI"
+                        subtitle: "Core + Strangler Pattern"
+                        icon: "fas fa-arrows-alt"
+                        tag: "gloo-mesh #ui #demo"
+                        keywords: "gloo-mesh,ui,demo"
+                        url: "https://ui.glooplatform.com/graph/?workspace=tiered-app"
+                        target: "_blank" # optional html a tag target attribute   
+                      - name: "Loadgen Logs - Internal"
+                        subtitle: "loadgen client > app in mesh in same namespace (ns-1)"
+                        icon: "fas fa-forward"
+                        tag: "gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,ui,demo"
+                        url: "https://argocd.central.glooplatform.com/argo/applications/argocd/wave-tiered-app-aoa/ns-1/vegeta/logs?podName=&group=apps&kind=Deployment&name=vegeta-ns-1"
+                        target: "_blank" # optional html a tag target attribute
+                      - name: "Loadgen Logs - Ingress"
+                        subtitle: "loadgen > cloudflare > gateway > app in mesh (ns-1)"
+                        icon: "fas fa-forward"
+                        tag: "gloo-gateway #gloo-mesh #demo"
+                        keywords: "gloo-gateway,gloo-mesh,ui,demo"
+                        url: "https://argocd.central.glooplatform.com/argo/applications/argocd/wave-tiered-app-aoa/ns-1/bombardier/logs?podName=&group=apps&kind=Deployment&name=bombardier-ns-1"
+                        target: "_blank" # optional html a tag target attribute
+
+                  #- name: "Application Onboarding IDP Demo"
+                  #  logo: "solo/glooy.png"
+                  #  items:
+                  #    - name: "High Level Architecture Diagram"
+                  #      icon: "fas fa-project-diagram"
+                  #      tag: "gloo-gateway #gloo-mesh #demo"
+                  #      keywords: "gloo-gateway,gloo-mesh,demo"
+                  #      url: "https://raw.githubusercontent.com/ably77/gh-action-idp/main/.images/gh-action-idp-demo.png"
+                  #      target: "_blank" # optional html a tag target attribute
+                  #    - name: "Swagger UI Frontend"
+                  #      subtitle: "requires Github PAT to gh-action-idp repo"
+                  #      icon: "fab fa-git-alt"
+                  #      tag: "gloo-gateway #gloo-mesh #demo"
+                  #      keywords: "gloo-gateway,gloo-mesh,demo"
+                  #      url: "https://idp.demo.glooplatform.com/"
+                  #      target: "_blank" # optional html a tag target attribute
+                  #    - name: "GitHub Actions Workflow Page"
+                  #      subtitle: "view triggered workflows"
+                  #      icon: "fab fa-git-alt"
+                  #      tag: "github #demo"
+                  #      keywords: "github,demo"
+                  #      url: "https://github.com/ably77/gh-action-idp/actions/"
+                  #      target: "_blank" # optional html a tag target attribute
+                  #    - name: "Sample Service Team A Route"
+                  #      subtitle: "default try-it-now example"
+                  #      icon: "far fa-window-maximize"
+                  #      tag: "gloo-gateway #gloo-mesh #demo"
+                  #      keywords: "gloo-gateway,gloo-mesh,demo"
+                  #      url: "https://gh-action-idp.demo.glooplatform.com/team-a/"
+                  #      target: "_blank" # optional html a tag target attribute
+                  
+                  - name: "Gloo Mesh Core Demo Environment"
+                    logo: "solo/glooy.png"
+                    items:
+                      - name: "Gloo Mesh Core Demo Dashboard"
+                        logo: "solo/glooy.png"
+                        tag: "gloo-mesh-core #demo"
+                        keywords: "gloo-mesh-core,demo"
+                        url: "https://demo.gmc.glooplatform.com/solo/"
+                        target: "_blank" # optional html a tag target attribute
+              
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

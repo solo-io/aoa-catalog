@@ -1,0 +1,2 @@
+# Environment Description
+The `gateway-api/ai-gateway` environment deploys Gloo Gateway along with a AI Gateway extension and configure AI Gateway features such as multi-LLM, prompt enrichment, and prompt guard at the proxy. Several chatbot examples that can use the Gloo AI Gateway endpoints are configured and exposed

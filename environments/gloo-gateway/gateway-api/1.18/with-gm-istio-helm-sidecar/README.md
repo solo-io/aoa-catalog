@@ -1,2 +1,0 @@
-# Environment Description
-The `gateway-api/with-gm-istio` environment deploys Gloo Gateway EE, Istio, and Gloo Mesh along with bookinfo and httpbin app configured in the mesh to demonstrate features and capabilities. In this environment, the Gloo Gateway Helm chart values have been configured to enabled the `global.istioIntegration` and `global.istioSDS` features in Gloo Gateway.

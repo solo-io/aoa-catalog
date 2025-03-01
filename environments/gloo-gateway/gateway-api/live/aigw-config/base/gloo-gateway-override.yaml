@@ -1,0 +1,25 @@
+apiVersion: gateway.gloo.solo.io/v1alpha1
+kind: GatewayParameters
+metadata:
+  name: gloo-gateway-override
+  namespace: gloo-system
+spec:
+  kube:
+    aiExtension:
+      enabled: true
+      ports:
+      - containerPort: 9092
+        name: ai-monitoring
+      stats:
+        customLabels:
+          - name: "team"
+            metadataKey: "principal:team"
+          - name: "org"
+            metadataKey: "principal:org"
+          - name: "id"
+            metadataKey: "principal:sub"
+    deployment:
+      replicas: 2
+    #podTemplate:
+    #  extraLabels:
+    #    istio.io/dataplane-mode: none

@@ -1,0 +1,10 @@
+apiVersion: builtin
+kind: AnnotationsTransformer
+metadata:
+  name: hold-proxy-annotations-transformer
+annotations:
+  proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+fieldSpecs:
+- kind: Deployment
+  path: spec/template/metadata/annotations
+  create: true

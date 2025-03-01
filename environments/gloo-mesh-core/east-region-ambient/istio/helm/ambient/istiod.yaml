@@ -1,0 +1,65 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istiod
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3"
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system
+  project: default
+  source:
+    chart: istiod
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: 1.24.2
+    helm:
+      values: |
+          profile: ambient
+          global:
+            hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
+            tag: 1.24.2-solo
+            variant: ""
+          meshConfig:
+            accessLogFile: /dev/stdout
+            accessLogEncoding: JSON
+            defaultConfig:
+              proxyMetadata:
+                ISTIO_META_DNS_CAPTURE: "true"
+                ISTIO_META_DNS_AUTO_ALLOCATE: "true"
+            outboundTrafficPolicy:
+              mode: REGISTRY_ONLY
+          pilot:
+            autoscaleEnabled: false
+            replicaCount: 1
+            rollingMaxUnavailable: 50%
+            resources:
+              requests:
+                cpu: 128m
+                memory: 512Mi      
+            env:
+              PILOT_ENABLE_K8S_SELECT_WORKLOAD_ENTRIES: "false"
+              PILOT_SKIP_VALIDATE_TRUST_DOMAIN: "true"
+              PILOT_ENABLE_IP_AUTOALLOCATE: "true"
+          # not working until 1.24
+          waypoint:
+            nodeSelector:
+              node: "spot"
+            tolerations:
+            - key: cloud.google.com/node
+              operator: Equal
+              value: "spot"
+              effect: NoSchedule
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    #automated: {}
+  ignoreDifferences:     
+  - group: admissionregistration.k8s.io                                                              
+    kind: ValidatingWebhookConfiguration
+    jsonPointers:                                                                                    
+    - /webhooks/0/failurePolicy

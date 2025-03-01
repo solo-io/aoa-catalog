@@ -1,0 +1,98 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: GatewayLifecycleManager
+metadata:
+  name: istio-ingressgateway
+  namespace: gloo-mesh
+  annotations:
+    argocd.argoproj.io/sync-wave: "-7"
+spec:
+  installations:
+      # The revision for this installation, such as 1-20
+    - gatewayRevision: 1-20
+      # List all workload clusters to install Istio into
+      clusters:
+      - name: mgmt
+        # If set to true, the spec for this revision is applied in the cluster
+        activeGateway: true
+      istioOperatorSpec:
+        # No control plane components are installed
+        profile: empty
+        # Solo.io Istio distribution repository; required for Gloo Istio.
+        # You get the repo key from your Solo Account Representative.
+        hub: us-docker.pkg.dev/gloo-mesh/istio-workshops
+        # The Solo.io Gloo Istio tag
+        tag: 1.20.4-solo
+        values:
+          gateways:
+            istio-ingressgateway:
+              customService: true
+        components:
+          ingressGateways:
+            - name: istio-ingressgateway
+              namespace: istio-gateways
+              enabled: true
+              label:
+                istio: ingressgateway
+              k8s:
+                # node selector
+                nodeSelector:
+                  node: "gateway"
+                # tolerations
+                tolerations:
+                  - key: cloud.google.com/node
+                    operator: Equal
+                    value: "gateway"
+                    effect: NoSchedule
+                # resources
+                resources:
+                  requests:
+                    cpu: 100m
+                    memory: 128Mi
+                  limits:
+                    cpu: 2000m
+                    memory: 1024Mi
+                # hpa
+                #hpaSpec:
+                #  minReplicas: 2
+                #  maxReplicas: 4
+                #  scaleTargetRef:
+                #    apiVersion: apps/v1
+                #    kind: Deployment
+                #    name: istio-ingressgateway-1-20
+                #  metrics:
+                #  - resource:
+                #      name: cpu
+                #      target:
+                #        averageUtilization: 60
+                #        type: Utilization
+                #    type: Resource
+                # affinity
+                #affinity:
+                #  nodeAffinity:
+                #    requiredDuringSchedulingIgnoredDuringExecution:
+                #      nodeSelectorTerms:
+                #      - matchExpressions:
+                #        - key: cloud.google.com/node
+                #          operator: Equal
+                #          values:
+                #          - gateway
+                #  podAntiAffinity:
+                #    preferredDuringSchedulingIgnoredDuringExecution:
+                #    - weight: 100
+                #      podAffinityTerm:
+                #        labelSelector:
+                #          matchExpressions:
+                #          - key: cloud.google.com/node
+                #            operator: Equal
+                #            values:
+                #            - gateway
+                #        topologyKey: "kubernetes.io/hostname"
+                #  podAffinity:
+                #    requiredDuringSchedulingIgnoredDuringExecution:
+                #    - labelSelector:
+                #        matchExpressions:
+                #        - key: cloud.google.com/node
+                #          operator: Equal
+                #          values:
+                #          - gateway
+                #      topologyKey: "kubernetes.io/hostname"

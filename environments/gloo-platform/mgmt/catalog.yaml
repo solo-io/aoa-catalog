@@ -1,0 +1,88 @@
+
+waves:
+  # core 
+  - name: clusterconfig
+    location: $env_path/clusterconfig/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/clusterconfig/init.sh
+      post_deploy:
+      -  $env_path/clusterconfig/test.sh  
+  - name: certmanager
+    location: $env_path/certmanager/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/certmanager/init.sh
+      post_deploy:
+      -  $env_path/certmanager/test.sh
+  - name: certmanager-config
+    location: $env_path/certmanager-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/certmanager-config/init.sh
+      post_deploy:
+      -  $env_path/certmanager-config/test.sh
+  #- name: gloo-enterprise-app
+  #  location: $env_path/gloo-enterprise-app/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/gloo-enterprise-app/init.sh
+  #    post_deploy:
+  #    -  $env_path/gloo-enterprise-app/test.sh
+  - name: gloo-platform
+    location: $env_path/gloo-platform/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-platform/init.sh
+      post_deploy:
+      -  $env_path/gloo-platform/test.sh
+  #- name: gateway-api-config
+  #  location: $env_path/gateway-api-config/base
+  #  scripts:
+  #    pre_deploy: 
+  #    -  $env_path/gateway-api-config/init.sh
+  #    post_deploy:
+  #    -  $env_path/gateway-api-config/test.sh      
+  - name: gloo-platform-config
+    location: $env_path/gloo-platform-config/mgmt
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-platform-config/init.sh
+      post_deploy:
+      -  $env_path/gloo-platform-config/test.sh
+  # additional
+  - name: glooplatform-central-platform-config
+    location: $env_path/gloo-platform-config/glooplatform-central
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-platform-config/init.sh
+      post_deploy:
+      -  $env_path/gloo-platform-config/test.sh 
+  - name: glooplatform-east-platform-config
+    location: $env_path/gloo-platform-config/glooplatform-east
+    scripts:
+      pre_deploy: 
+      -  $env_path/gloo-platform-config/init.sh
+      post_deploy:
+      -  $env_path/gloo-platform-config/test.sh    
+  - name: online-boutique-config
+    location: $env_path/online-boutique-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/online-boutique-config/init.sh
+      post_deploy:
+      -  $env_path/online-boutique-config/test.sh     
+  - name: kubeinvaders-config
+    location: $env_path/kubeinvaders-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/kubeinvaders-config/init.sh
+      post_deploy:
+      -  $env_path/kubeinvaders-config/test.sh 
+  - name: tiered-app-config
+    location: $env_path/tiered-app-config/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/tiered-app-config/init.sh
+      post_deploy:
+      -  $env_path/tiered-app-config/test.sh

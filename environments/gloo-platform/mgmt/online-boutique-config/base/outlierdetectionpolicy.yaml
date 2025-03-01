@@ -1,0 +1,15 @@
+apiVersion: resilience.policy.gloo.solo.io/v2
+kind: OutlierDetectionPolicy
+metadata:
+  name: outlier-detection
+  namespace: web-team
+spec:
+  applyToDestinations:
+  - kind: VIRTUAL_DESTINATION
+    selector:
+      namespace: web-team
+  config:
+    consecutiveErrors: 1
+    interval: 5s
+    baseEjectionTime: 15s
+    maxEjectionPercent: 100

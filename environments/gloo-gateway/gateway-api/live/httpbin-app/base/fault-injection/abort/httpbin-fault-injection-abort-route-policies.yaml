@@ -1,0 +1,13 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: httpbin-fault-injection-abort-route-policies
+  namespace: httpbin
+spec:
+  options:
+    jwt:
+      disable: true
+    faults:
+      abort:
+        percentage: 50
+        httpStatus: 500

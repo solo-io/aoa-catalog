@@ -4,7 +4,7 @@ metadata:
   name: gloo-platform-helm
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io/solo-io
+  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -30,36 +30,38 @@ spec:
                 disableCaCertGeneration: true
                 disableTokenGeneration: true
                 tlsSecret:
-                    name: gloo-server-tls-cert
-                # required to set to null in 2.4.x if providing server and client tls certificates
-                tokenSecret:
-                  key: null
-                  name: null
-                  namespace: null
+                    name: relay-server-tls-secret
             serviceType: LoadBalancer
+            deploymentOverrides:
+                spec:
+                    template:
+                        metadata:
+                            annotations:
+                                prometheus.io/port: '9091'
         glooAgent:
             enabled: true
             runAsSidecar: true
             relay:
-                serverAddress: gloo-mesh-mgmt-server:9900
+                serverAddress: gloo-mesh-mgmt-server.gloo-mesh:9900
                 clientTlsSecret:
-                    name: gloo-agent-tls-cert
-                    namespace: gloo-mesh
-                rootTlsSecret:
-                    name: relay-root-ca
+                    name: relay-client-tls-secret
                     namespace: gloo-mesh
                 # required to set to null in 2.4.x if providing server and client tls certificates
                 tokenSecret:
-                  key: null
-                  name: null
-                  namespace: null
+                    key: null
+                    name: null
+                    namespace: null
+            deploymentOverrides:
+                spec:
+                    template:
+                        metadata:
+                            annotations:
+                                prometheus.io/port: '9091'
         glooInsightsEngine:
             enabled: true
         glooAnalyzer:
             enabled: true
             runAsSidecar: true
-        jaeger:
-            enabled: true
         glooUi:
             enabled: true
             serviceType: ClusterIP
@@ -70,17 +72,17 @@ spec:
                 enabled: true
         telemetryGateway:
             enabled: true
+            resources:
+                requests:
+                    cpu: 300m
+                    memory: 1Gi
+                limits:
+                    cpu: 1
+                    memory: 2Gi
         telemetryGatewayCustomization:
             disableCertGeneration: true
-            pipelines:
-                traces/jaeger:
-                    enabled: true
         telemetryCollector:
             enabled: true
-            config:
-                exporters:
-                    otlp:
-                        endpoint: "gloo-telemetry-gateway.gloo-mesh.svc.cluster.local:4317"
             extraVolumes:
                 - name: root-ca
                   secret:
@@ -98,7 +100,7 @@ spec:
                   name: cilium-run
 
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.6.9
+    targetRevision: 2.7.0
   syncPolicy:
     automated:
       prune: true
