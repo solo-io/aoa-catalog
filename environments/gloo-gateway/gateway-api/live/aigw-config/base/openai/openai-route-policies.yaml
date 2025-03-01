@@ -5,6 +5,7 @@ metadata:
   namespace: gloo-system
 spec:
   options:
+    timeout: "0"
     hostRewrite: 'api.openai.com'
     prefixRewrite: '/v1/chat/completions'
     jwt:
