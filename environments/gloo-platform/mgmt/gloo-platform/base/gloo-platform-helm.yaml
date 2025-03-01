@@ -25,18 +25,21 @@ spec:
             enabled: false
             runAsSidecar: true
         glooAgent:
-            enabled: false
+            enabled: true
+            runAsSidecar: true
             relay:
                 serverAddress: gloo-mesh-mgmt-server:9900
-                clientTlsSecret:
-                    name: gloo-agent-tls-cert
-                    namespace: gloo-mesh
-                tokenSecret:
-                    key: null
-                    name: null
-                    namespace: null
+                authority: gloo-mesh-mgmt-server.gloo-mesh
+                #clientTlsSecret:
+                #    name: gloo-agent-tls-cert
+                #    namespace: gloo-mesh
+                #tokenSecret:
+                #    key: null
+                #    name: null
+                #    namespace: null
         glooMgmtServer:
             enabled: true
+            registerCluster: true
             relay:
                 disableCa: true
                 disableCaCertGeneration: true
