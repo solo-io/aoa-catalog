@@ -276,6 +276,12 @@ spec:
                         logo: "solo/glooy.png"
                         tag: "config"
                         url: "https://demo.glooplatform.com/config"
+                      - name: "Gloo Mesh UI"
+                        icon: "fas fa-arrows-alt"
+                        tag: "admin #gloo-mesh #demo"
+                        keywords: "gloo-mesh,gloo-gateway,ui,admin,demo"
+                        url: "https://ui.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
 
                   - name: "Demo AI Gateway Capabilities"
                     icon: "fas fa-brain"
@@ -465,13 +471,6 @@ spec:
                   - name: "Demo Service Mesh Capabilities"
                     icon: "fas fa-cloud"
                     items:
-
-                      - name: "Gloo Mesh UI"
-                        icon: "fas fa-arrows-alt"
-                        tag: "admin #gloo-mesh #demo"
-                        keywords: "gloo-mesh,gloo-gateway,ui,admin,demo"
-                        url: "https://ui.glooplatform.com"
-                        target: "_blank" # optional html a tag target attribute
                       - name: "Locality Awareness Routing"
                         subtitle: "onlineboutique-east"
                         icon: "fas fa-shopping-cart"
