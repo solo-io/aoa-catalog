@@ -559,15 +559,15 @@ spec:
                   #      url: "https://gh-action-idp.demo.glooplatform.com/team-a/"
                   #      target: "_blank" # optional html a tag target attribute
                   
-                  - name: "Gloo Mesh Core Demo Environment"
-                    logo: "solo/glooy.png"
-                    items:
-                      - name: "Gloo Mesh Core Demo Dashboard"
-                        logo: "solo/glooy.png"
-                        tag: "gloo-mesh-core #demo"
-                        keywords: "gloo-mesh-core,demo"
-                        url: "https://demo.gmc.glooplatform.com/solo/"
-                        target: "_blank" # optional html a tag target attribute
+                  #- name: "Gloo Mesh Core Demo Environment"
+                  #  logo: "solo/glooy.png"
+                  #  items:
+                  #    - name: "Gloo Mesh Core Demo Dashboard"
+                  #      logo: "solo/glooy.png"
+                  #      tag: "gloo-mesh-core #demo"
+                  #      keywords: "gloo-mesh-core,demo"
+                  #      url: "https://demo.gmc.glooplatform.com/solo/"
+                  #      target: "_blank" # optional html a tag target attribute
               
   syncPolicy:
     automated:
