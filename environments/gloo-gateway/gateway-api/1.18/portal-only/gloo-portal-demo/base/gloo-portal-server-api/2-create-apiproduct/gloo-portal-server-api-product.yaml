@@ -9,7 +9,7 @@ spec:
   id: "gloo-portal-server"
   displayName: "gloo-portal-server"
   customMetadata:
-    imageURL: https://www.solo.io/wp-content/uploads/2022/11/solo-logo-glooy-circle-white-blue-1024x1024.png
+    imageURL: https://cdn.prod.website-files.com/66dba20a96c0aa281999f399/671a5931050f09d0cde96505_header-image.svg
   versions:
   - apiVersion: "v1"
     openapiMetadata:

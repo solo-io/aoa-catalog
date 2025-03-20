@@ -30,7 +30,7 @@ read -p "Step 1 complete. Press enter to proceed to Step 2..."
 echo
 echo "Step 2: Creating a user..."
 echo "curl -X PUT $BASE_URL/v1/me -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN'"
-USER_RESPONSE=$(curl -s -X PUT "$BASE_URL/v1/me" \
+USER_RESPONSE=$(curl -s -X PUT -k "$BASE_URL/v1/me" \
   -H "Authorization: Bearer $DEV_USER_AUTH_TOKEN")
 echo
 
@@ -83,7 +83,7 @@ done
 # Print the curl command
 echo "curl -X POST $BASE_URL/v1/teams -H 'Content-Type: application/json' -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN' -d '{\"Name\": \"$TEAM_NAME\", \"Description\": \"$TEAM_DESCRIPTION\"}'"
 
-TEAM_RESPONSE=$(curl -s -X POST "$BASE_URL/v1/teams" \
+TEAM_RESPONSE=$(curl -s -X POST -k "$BASE_URL/v1/teams" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $DEV_USER_AUTH_TOKEN" \
   -d "{\"Name\": \"$TEAM_NAME\", \"Description\": \"$TEAM_DESCRIPTION\"}")
@@ -138,7 +138,7 @@ done
 # Print the curl command
 echo "curl -X POST $BASE_URL/v1/teams/$TEAM_ID/apps -H 'Content-Type: application/json' -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN' -d '{\"Name\": \"$APP_NAME\", \"Description\": \"$APP_DESCRIPTION\"}'"
 
-APP_RESPONSE=$(curl -s -X POST "$BASE_URL/v1/teams/$TEAM_ID/apps" \
+APP_RESPONSE=$(curl -s -X POST -k "$BASE_URL/v1/teams/$TEAM_ID/apps" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $DEV_USER_AUTH_TOKEN" \
   -d "{\"Name\": \"$APP_NAME\", \"Description\": \"$APP_DESCRIPTION\"}")
@@ -159,7 +159,7 @@ read -p "Step 4 complete. Press enter to proceed to Step 5..."
 echo
 echo "Step 5: Listing available API products..."
 echo "curl -X GET $BASE_URL/v1/api-products -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN'"
-API_PRODUCTS_RESPONSE=$(curl -s -X GET "$BASE_URL/v1/api-products" \
+API_PRODUCTS_RESPONSE=$(curl -s -X GET -k "$BASE_URL/v1/api-products" \
   -H "Authorization: Bearer $DEV_USER_AUTH_TOKEN")
 echo
 
@@ -206,7 +206,7 @@ read -p "Step 5 complete. Press enter to proceed to Step 6..."
 echo
 echo "Step 6: Creating a subscription to the API product..."
 echo "curl -X POST $BASE_URL/v1/apps/\$APPLICATION_ID/subscriptions -H 'Content-Type: application/json' -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN' -d '{\"ApiProductId\": \"$API_PRODUCT_ID\"}'"
-SUBSCRIPTION_RESPONSE=$(curl -s -w "\nHTTP_STATUS_CODE:%{http_code}" -X POST "$BASE_URL/v1/apps/$APPLICATION_ID/subscriptions" \
+SUBSCRIPTION_RESPONSE=$(curl -s -w "\nHTTP_STATUS_CODE:%{http_code}" -X POST -k "$BASE_URL/v1/apps/$APPLICATION_ID/subscriptions" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $DEV_USER_AUTH_TOKEN" \
   -d "{\"ApiProductId\": \"$API_PRODUCT_ID\"}")
@@ -231,7 +231,7 @@ fi
 if [[ -z "$SUBSCRIPTION_ID" || "$SUBSCRIPTION_ID" == "null" ]]; then
   echo "Discovering subscription ID by listing subscriptions..."
   echo "curl -X GET $BASE_URL/v1/apps/\$APPLICATION_ID/subscriptions -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN'"
-  EXISTING_SUBSCRIPTIONS=$(curl -s -X GET "$BASE_URL/v1/apps/$APPLICATION_ID/subscriptions" \
+  EXISTING_SUBSCRIPTIONS=$(curl -s -X GET -k "$BASE_URL/v1/apps/$APPLICATION_ID/subscriptions" \
     -H "Authorization: Bearer $DEV_USER_AUTH_TOKEN")
   export SUBSCRIPTION_ID=$(echo "$EXISTING_SUBSCRIPTIONS" | jq -r '.[0].id')
   echo
@@ -250,7 +250,7 @@ read -p "Step 6 complete. Press enter to proceed to Step 7..."
 echo
 echo "Step 7: Approving subscription..."
 echo "curl -X POST $BASE_URL/v1/subscriptions/\$SUBSCRIPTION_ID/approve -H 'Authorization: Bearer \$ADMIN_USER_AUTH_TOKEN'"
-curl -s -X POST "$BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/approve" \
+curl -s -X POST -k "$BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/approve" \
   -H "Authorization: Bearer $ADMIN_USER_AUTH_TOKEN"
 echo
 echo "Subscription approved."
@@ -287,7 +287,7 @@ echo
 # Print the curl command
 echo "curl -X POST $BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata -H 'Content-Type: application/json' -H 'Authorization: Bearer \$ADMIN_USER_AUTH_TOKEN' -d '{\"rateLimit\": {\"requestsPerUnit\": \"$REQUESTS_PER_UNIT\", \"unit\": \"$UNIT\"}, \"customMetadata\": {\"key2\": \"value2\"}}'"
 
-curl -X POST "$BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata" \
+curl -X POST -k "$BASE_URL/v1/subscriptions/$SUBSCRIPTION_ID/metadata" \
     -H "Content-Type: application/json" \
     -d "{\"rateLimit\": {\"requestsPerUnit\": \"$REQUESTS_PER_UNIT\", \"unit\": \"$UNIT\"}, \"customMetadata\": {\"key2\": \"value2\"}}" \
     -H "Authorization: Bearer $ADMIN_USER_AUTH_TOKEN"
@@ -322,7 +322,7 @@ done
 # Print the curl command
 echo "curl -X POST $BASE_URL/v1/apps/$APPLICATION_ID/api-keys -H 'Content-Type: application/json' -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN' -d '{\"apiKeyName\": \"$API_KEY_NAME\"}'"
 
-API_KEY_RESPONSE=$(curl -s -X POST "$BASE_URL/v1/apps/$APPLICATION_ID/api-keys" \
+API_KEY_RESPONSE=$(curl -s -X POST -k "$BASE_URL/v1/apps/$APPLICATION_ID/api-keys" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $DEV_USER_AUTH_TOKEN" \
   -d "{\"apiKeyName\": \"$API_KEY_NAME\"}")
@@ -369,7 +369,7 @@ echo
 
 # Make the API call using the selected or custom API Product ID
 echo "curl -X GET $BASE_URL/v1/metadata?apiKey=\$API_KEY&apiProductId=\$API_PRODUCT_ID"
-curl -s -X GET "$BASE_URL/v1/metadata?apiKey=$API_KEY&apiProductId=$API_PRODUCT_ID"
+curl -s -X GET -k "$BASE_URL/v1/metadata?apiKey=$API_KEY&apiProductId=$API_PRODUCT_ID"
 echo
 
 # Space between steps
@@ -422,7 +422,7 @@ echo "Calling the API product's endpoint without the API key (expecting 403)..."
 # Print the curl command for calling the API without the API key
 echo "curl $API_PRODUCT_URI"
 
-curl "$API_PRODUCT_URI"
+curl -k "$API_PRODUCT_URI"
 echo
 echo "Expecting a Rejected - 403 error."
 echo
@@ -443,7 +443,7 @@ for ((i=1; i<=REQUESTS_PER_UNIT+1; i++)); do
   echo "Attempt $i:"
   
   # Perform the curl request and extract only the HTTP status code
-  HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$API_PRODUCT_URI" \
+  HTTP_STATUS=$(curl -s -k -o /dev/null -w "%{http_code}" "$API_PRODUCT_URI" \
     -H "api-key: $API_KEY")
   
   echo "HTTP Status Code: $HTTP_STATUS"
@@ -466,7 +466,7 @@ echo
 echo "curl -X DELETE $BASE_URL/v1/api-keys/\$API_KEY_ID -H 'Authorization: Bearer \$DEV_USER_AUTH_TOKEN' -H 'User-Agent: curl/8.9.0' -H 'Accept: */*'"
 
 # Perform the API key revocation and capture the response along with the HTTP status code
-REVOKE_RESPONSE=$(curl -s -w "\nHTTP_STATUS_CODE:%{http_code}" -X DELETE "$BASE_URL/v1/api-keys/$API_KEY_ID" \
+REVOKE_RESPONSE=$(curl -s -w "\nHTTP_STATUS_CODE:%{http_code}" -X DELETE -k "$BASE_URL/v1/api-keys/$API_KEY_ID" \
   -H "Authorization: Bearer $DEV_USER_AUTH_TOKEN" \
   -H "User-Agent: curl/8.9.0" \
   -H "Accept: */*")
@@ -494,7 +494,7 @@ read -p "Step 14 complete. Press enter to proceed to Step 15..."
 echo
 echo "Step 15: Calling the API product's endpoint with the revoked API key (expecting 403)..."
 echo "curl $API_PRODUCT_URI -H 'api-key: \$API_KEY'"
-curl "$API_PRODUCT_URI" \
+curl -k "$API_PRODUCT_URI" \
   -H "api-key: $API_KEY"
 echo
 echo
