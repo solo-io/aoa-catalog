@@ -42,6 +42,13 @@ waves:
       -  $env_path/aigw-config/init.sh
       post_deploy:
       -  $env_path/aigw-config/test.sh
+  - name: kagent
+    location: $env_path/kagent/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/kagent/init.sh
+      post_deploy:
+      -  $env_path/kagent/test.sh
   - name: ollama
     location: $env_path/ollama/base
     scripts:
