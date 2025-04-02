@@ -1,0 +1,11 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: kagent-dashboard-route-policies
+  namespace: kagent
+spec:
+  options:
+    jwt:
+      disable: true
+                
+    

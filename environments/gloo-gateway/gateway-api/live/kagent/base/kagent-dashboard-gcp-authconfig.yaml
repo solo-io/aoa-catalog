@@ -1,0 +1,18 @@
+apiVersion: enterprise.gloo.solo.io/v1
+kind: AuthConfig
+metadata:
+  name: kagent-dashboard-gcp
+  namespace: gloo-system
+spec:
+  configs:
+  - oauth2:
+      oidcAuthorizationCode:
+        appUrl: https://kagent.gwapi.glooplatform.com
+        callbackPath: /callback
+        clientId: 967359009029-j7uts17vmc85kt3aaie8cnpodefql93t.apps.googleusercontent.com
+        clientSecretRef:
+          name: gcp-client-secret
+          namespace: gloo-system
+        issuerUrl: https://accounts.google.com
+        scopes:
+        - email

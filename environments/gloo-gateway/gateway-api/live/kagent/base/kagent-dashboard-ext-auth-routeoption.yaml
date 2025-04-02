@@ -1,0 +1,15 @@
+apiVersion: gateway.solo.io/v1
+kind: RouteOption
+metadata:
+  name: kagent-dashboard-ext-auth
+  namespace: kagent
+spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: kagent-dashboard-route
+  options:
+    extauth:
+      configRef:
+        name: kagent-dashboard-gcp
+        namespace: gloo-system
