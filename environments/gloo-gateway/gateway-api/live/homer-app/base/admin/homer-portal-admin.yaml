@@ -245,6 +245,13 @@ spec:
                         keywords: "admin,observability,demo,grafana"
                         url: "https://enclosed.gwapi.glooplatform.com"
                         target: "_blank" # optional html a tag target attribute
+                      - name: "kagent"
+                        subtitle: "dashboard"
+                        icon: "fas fa-shield-alt"
+                        tag: "admin #kagent #ai"
+                        keywords: "admin,kagent,ui"
+                        url: "https://kagent.gwapi.glooplatform.com"
+                        target: "_blank" # optional html a tag target attribute
 
               
   syncPolicy:
