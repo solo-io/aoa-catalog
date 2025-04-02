@@ -1,5 +1,15 @@
 # Changelog
 
+0.8.6 (4-2-25)
+---
+- update /gloo-platform environments to use gloo-platform 2.7.1
+- update /gloo-mesh-gateway environments to use gloo-platform 2.7.1
+- update /gloo-mesh-core environments to use gloo-platform 2.7.1
+- update /istio environments to use istio 1.25.0
+- update /gloo-gateway environments to use gloo-gateway 1.18.9
+- update /gloo-gateway/oss environments to use OSS gloo-gateway 1.18.13
+- configure `telemetryCollector.mode: deployment` for `/gateway-api/1.18/with-gm-istio-helm-sidecar` environment to visualize Gloo Gateway metrics in the main dashboard
+
 0.8.5 (2-11-25)
 ---
 - Formatting fixes and updates to AI gateway demo scripts in `gloo-gateway/gateway-api/1.18/ai-gateway/field-demo/demos`
