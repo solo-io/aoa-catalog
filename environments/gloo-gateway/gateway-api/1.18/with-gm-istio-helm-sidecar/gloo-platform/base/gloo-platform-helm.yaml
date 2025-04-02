@@ -94,16 +94,10 @@ spec:
             enabled: true
         telemetryGateway:
             enabled: true
-            #image:
-            #  pullPolicy: IfNotPresent
-            #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.7.1
         telemetryCollector:
             enabled: true
-            #image:
-            #  pullPolicy: IfNotPresent
-            #  repository: gcr.io/gloo-mesh/gloo-otel-collector
-            #  tag: 2.7.1
+            mode: deployment
+            replicaCount: 1
             config:
                 exporters:
                     otlp:

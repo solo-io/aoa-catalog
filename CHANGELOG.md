@@ -8,6 +8,7 @@
 - update /istio environments to use istio 1.25.0
 - update /gloo-gateway environments to use gloo-gateway 1.18.9
 - update /gloo-gateway/oss environments to use OSS gloo-gateway 1.18.13
+- configure `telemetryCollector.mode: deployment` for `/gateway-api/1.18/with-gm-istio-helm-sidecar` environment to visualize Gloo Gateway metrics in the main dashboard
 
 0.8.5 (2-11-25)
 ---
