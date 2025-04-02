@@ -26,7 +26,7 @@ spec:
             deployment:
                 enabled: true
     repoURL: https://storage.googleapis.com/gloo-platform/helm-charts
-    targetRevision: 2.7.0
+    targetRevision: 2.7.1
   syncPolicy:
     automated:
       prune: true
