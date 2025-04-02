@@ -240,31 +240,6 @@ spec:
                 # Leave only a "items" key if not using group (group name, icon & tagstyle are optional, section separation will not be displayed).
                 services:
 
-                  #- name: "SSO"
-                  #  icon: "fas fa-cloud"
-                  #  items:
-                  #    - name: "GCP Login"
-                  #      icon: "fas fa-sign-in-alt"
-                  #      tag: "login"
-                  #      url: "https://login.glooplatform.com/gcp"
-                  #      target: "_blank" # optional html a tag target attribute
-                  #    - name: "Okta Login"
-                  #      icon: "fas fa-sign-in-alt"
-                  #      tag: "login"
-                  #      url: "https://login.glooplatform.com/okta"
-                  #      target: "_blank" # optional html a tag target attribute
-
-                  #- name: "Gloo Mesh UI"
-                  #  icon: "fas fa-cloud"
-                  #  items:
-                  #    
-                  #    - name: "Gloo Mesh UI (Okta Auth)"
-                  #      subtitle: "Use Self Service Registration to Access UI"
-                  #      icon: "fas fa-arrows-alt"
-                  #      tag: "gmui"
-                  #      url: "https://public-ui.glooplatform.com"
-                  #      target: "_blank" # optional html a tag target attribute
-
                   - name: "Gloo Platform Demo Walkthroughs and Config Examples"
                     logo: "solo/glooy.png"
                     items:
@@ -505,13 +480,6 @@ spec:
                         tag: "gloo-mesh #demo"
                         keywords: "gloo-mesh,virtualdestination,multicluster,demo"
                         url: "https://tiered-app.central.glooplatform.com/east/ns-1/ui/"
-                        target: "_blank" # optional html a tag target attribute  
-                      - name: "Multicluster Application Architecture - Gloo UI"
-                        subtitle: "Core + Strangler Pattern"
-                        icon: "fas fa-arrows-alt"
-                        tag: "gloo-mesh #ui #demo"
-                        keywords: "gloo-mesh,ui,demo"
-                        url: "https://ui.glooplatform.com/graph/?workspace=tiered-app"
                         target: "_blank" # optional html a tag target attribute   
                       - name: "Loadgen Logs - Internal"
                         subtitle: "loadgen client > app in mesh in same namespace (ns-1)"
@@ -527,47 +495,6 @@ spec:
                         keywords: "gloo-gateway,gloo-mesh,ui,demo"
                         url: "https://argocd.central.glooplatform.com/argo/applications/argocd/wave-tiered-app-aoa/ns-1/bombardier/logs?podName=&group=apps&kind=Deployment&name=bombardier-ns-1"
                         target: "_blank" # optional html a tag target attribute
-
-                  #- name: "Application Onboarding IDP Demo"
-                  #  logo: "solo/glooy.png"
-                  #  items:
-                  #    - name: "High Level Architecture Diagram"
-                  #      icon: "fas fa-project-diagram"
-                  #      tag: "gloo-gateway #gloo-mesh #demo"
-                  #      keywords: "gloo-gateway,gloo-mesh,demo"
-                  #      url: "https://raw.githubusercontent.com/ably77/gh-action-idp/main/.images/gh-action-idp-demo.png"
-                  #      target: "_blank" # optional html a tag target attribute
-                  #    - name: "Swagger UI Frontend"
-                  #      subtitle: "requires Github PAT to gh-action-idp repo"
-                  #      icon: "fab fa-git-alt"
-                  #      tag: "gloo-gateway #gloo-mesh #demo"
-                  #      keywords: "gloo-gateway,gloo-mesh,demo"
-                  #      url: "https://idp.demo.glooplatform.com/"
-                  #      target: "_blank" # optional html a tag target attribute
-                  #    - name: "GitHub Actions Workflow Page"
-                  #      subtitle: "view triggered workflows"
-                  #      icon: "fab fa-git-alt"
-                  #      tag: "github #demo"
-                  #      keywords: "github,demo"
-                  #      url: "https://github.com/ably77/gh-action-idp/actions/"
-                  #      target: "_blank" # optional html a tag target attribute
-                  #    - name: "Sample Service Team A Route"
-                  #      subtitle: "default try-it-now example"
-                  #      icon: "far fa-window-maximize"
-                  #      tag: "gloo-gateway #gloo-mesh #demo"
-                  #      keywords: "gloo-gateway,gloo-mesh,demo"
-                  #      url: "https://gh-action-idp.demo.glooplatform.com/team-a/"
-                  #      target: "_blank" # optional html a tag target attribute
-                  
-                  #- name: "Gloo Mesh Core Demo Environment"
-                  #  logo: "solo/glooy.png"
-                  #  items:
-                  #    - name: "Gloo Mesh Core Demo Dashboard"
-                  #      logo: "solo/glooy.png"
-                  #      tag: "gloo-mesh-core #demo"
-                  #      keywords: "gloo-mesh-core,demo"
-                  #      url: "https://demo.gmc.glooplatform.com/solo/"
-                  #      target: "_blank" # optional html a tag target attribute
               
   syncPolicy:
     automated:
