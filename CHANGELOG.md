@@ -1,6 +1,6 @@
 # Changelog
 
-0.8.5 (4-2-25)
+0.8.6 (4-2-25)
 ---
 - update /gloo-platform environments to use gloo-platform 2.7.1
 - update /gloo-mesh-gateway environments to use gloo-platform 2.7.1
