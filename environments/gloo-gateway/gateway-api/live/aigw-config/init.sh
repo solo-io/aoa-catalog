@@ -31,9 +31,3 @@ kubectl create secret generic openai-secret -n gloo-system \
 kubectl create secret generic anthropic-secret -n gloo-system \
 --from-literal="Authorization=Bearer $anthropic_api_key" \
 --dry-run=client -oyaml | kubectl apply -f -
-
-helm upgrade -i kagent oci://ghcr.io/kagent-dev/kagent/helm/kagent \
-    --namespace kagent \
-    --create-namespace \
-    --version 0.1.11 \
-    --set openai.secretName="kagent-openai" \
