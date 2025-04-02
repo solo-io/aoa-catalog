@@ -3,6 +3,6 @@ kind: ServiceMeshController
 metadata:
   name: ambient
 spec:
-  version: 1.24.2
+  version: 1.25.0
   dataplaneMode: Ambient
   installNamespace: istio-system
