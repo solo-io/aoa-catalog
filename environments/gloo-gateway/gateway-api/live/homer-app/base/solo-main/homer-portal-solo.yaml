@@ -399,7 +399,7 @@ spec:
                         subtitle: "Concepts, objects, and personas"
                         logo: "solo/glooy.png"
                         tag: "gloo-portal"
-                        url: "https://raw.githubusercontent.com/solo-io/aoa-catalog/refs/heads/glooplatform.com-2.6.x-active/environments/gloo-gateway/gateway-api/live/images/portal-personas.png"
+                        url: "https://raw.githubusercontent.com/solo-io/aoa-catalog/refs/heads/glooplatform.com-2.7.x-active/environments/gloo-gateway/gateway-api/live/images/portal-personas.png"
                         target: "_blank" # optional html a tag target attribute
                       - name: "React Frontend - Solo Dev Portal"
                         subtitle: "sample external facing portal"
