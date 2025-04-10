@@ -95,7 +95,7 @@ spec:
               deployment:
                 logLevel: debug
     repoURL: https://storage.googleapis.com/gloo-ee-helm
-    targetRevision: 1.18.4
+    targetRevision: 1.18.10
   syncPolicy:
     automated:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
