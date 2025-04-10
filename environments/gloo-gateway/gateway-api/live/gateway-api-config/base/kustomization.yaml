@@ -13,8 +13,6 @@ resources:
 - api-key-auth.yaml
 - example-api-key.yaml
 - log-provider.yaml
-- portal-api-key-authconfig.yaml
-- portal-opa-cm.yaml
 - argo-authconfig.yaml
 - host-redirect.yaml
 - kiali-https.yaml
