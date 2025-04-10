@@ -9,4 +9,3 @@ resources:
 - tracks-refgrant.yaml
 - tracks-route.yaml
 - tracks-route-policies.yaml
-- tracks-dynamic-rlc.yaml

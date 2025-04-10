@@ -37,7 +37,7 @@ spec:
     spec:
       serviceAccountName: portal-frontend
       containers:
-        - image: gcr.io/solo-public/docs/portal-frontend:latest
+        - image: gcr.io/solo-public/docs/portal-frontend:v0.1.1
           imagePullPolicy: Always
           name: portal-frontend
           args: ["--host", "0.0.0.0"]
@@ -45,4 +45,10 @@ spec:
             - containerPort: 4000
           env:
             - name: VITE_PORTAL_SERVER_URL
-              value: https://api.gwapi.glooplatform.com/v1 # The URL that the backend Portal is exposed on via an HTTPRoute.
+              value: "https://solo-dev-portal.gwapi.glooplatform.com/v1"
+            - name: VITE_APPLIED_OIDC_AUTH_CODE_CONFIG
+              value: "true"
+            - name: VITE_OIDC_AUTH_CODE_CONFIG_CALLBACK_PATH
+              value: "/v1/login"
+            - name: VITE_OIDC_AUTH_CODE_CONFIG_LOGOUT_PATH
+              value: "/v1/logout"

@@ -1,0 +1,12 @@
+apiVersion: enterprise.gloo.solo.io/v1
+kind: AuthConfig
+metadata:
+  name: portal-auth
+  namespace: gloo-system
+spec:
+  configs:
+    - name: portalAuth
+      portalAuth:
+        url: http://gateway-portal-web-server.gloo-system.svc.cluster.local:8080
+        cacheDuration: 10s
+        apiKeyHeader: "api-key"

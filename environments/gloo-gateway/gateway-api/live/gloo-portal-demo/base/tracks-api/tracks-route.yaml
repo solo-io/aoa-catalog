@@ -19,12 +19,6 @@ spec:
           namespace: tracks
           port: 5000
           weight: 1
-      #filters:
-      #  - type: URLRewrite
-      #    urlRewrite:
-      #      path:
-      #        replacePrefixMatch: /
-      #        type: ReplacePrefixMatch
       matches:
         - path:
             type: PathPrefix

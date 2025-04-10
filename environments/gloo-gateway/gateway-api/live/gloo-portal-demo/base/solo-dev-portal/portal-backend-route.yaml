@@ -8,20 +8,14 @@ spec:
     - name: https
       namespace: gloo-system
   hostnames:
-    - api.gwapi.glooplatform.com
+    #- api.gwapi.glooplatform.com
+    - solo-dev-portal.gwapi.glooplatform.com
   rules:
     - backendRefs:
         - name: gateway-portal-web-server
           namespace: gloo-system
           port: 8080
-      filters:
-        - type: ExtensionRef
-          extensionRef:
-            group: gateway.solo.io
-            kind: RouteOption
-            name: portal-cors
-        - type: ExtensionRef
-          extensionRef:
-            group: gateway.solo.io
-            kind: RouteOption
-            name: portal-backend-route-policies
+      matches:
+      - path:
+          type: PathPrefix
+          value: /v1
