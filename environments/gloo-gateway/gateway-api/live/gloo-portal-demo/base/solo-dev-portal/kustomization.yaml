@@ -5,11 +5,11 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - portal-backend-route.yaml
-#- portal-backend-route-policies.yaml
+- portal-backend-route-policies.yaml
 - portal-cors.yaml
 - portal-developer.yaml
 - portal-frontend-route.yaml
-#- portal-frontend-route-policies.yaml
+- portal-frontend-route-policies.yaml
 - portal-frontend.yaml
 - portal-frontend-oidc-authconfig.yaml
 - portal-frontend-auth-policy.yaml
