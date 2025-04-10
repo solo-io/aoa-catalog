@@ -21,6 +21,8 @@ spec:
           kubeGateway:
             # Enable K8s Gateway integration
             enabled: true
+            portal:
+              enabled: true
           gatewayProxies:
             gatewayProxy:
               disabled: true
@@ -44,10 +46,6 @@ spec:
             disableLeaderElection: true
             deployment:
               replicas: 1
-              customEnv:
-                # The portal plugin is disabled by default, so must explicitly enable it
-                - name: GG_PORTAL_PLUGIN
-                  value: "true"
               livenessProbeEnabled: true
           discovery:
             # We don't need the discovery deployment for our Gloo Gateway demo
@@ -78,9 +76,11 @@ spec:
           create_license_secret: false
           glooFedApiserver:
             enable: false
-        gateway-portal-web-server:
-          # Enable the sub-chart for the Portal webserver
-          enabled: true
+        gateway-portal-web-server:    
+          glooPortalServer:
+            env:
+            - name: CUSTOM_GROUP_CLAIM_KEY
+              value: groups
         global:
           extensions:
             # Rate-Limit Configuration
