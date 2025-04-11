@@ -192,7 +192,7 @@ spec:
                       - name: "Portal Backend Server"
                         icon: "far fa-window-maximize"
                         tag: "portal"
-                        url: "https://api.glootest.com/v1/api-products"
+                        url: "https://solo-dev-portal.glootest.com/v1/api-products"
                         target: "_blank" # optional html a tag target attribute
                       
                       
