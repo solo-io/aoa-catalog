@@ -19,3 +19,9 @@ spec:
       - path:
           type: PathPrefix
           value: /v1
+      filters:
+      - type: URLRewrite
+        urlRewrite:
+          path:
+            replacePrefixMatch: /v1
+            type: ReplacePrefixMatch
