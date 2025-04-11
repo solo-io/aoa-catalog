@@ -11,20 +11,20 @@ resources:
 - gloo-portal-server-api
 
 # patch nodeSelector and tolerations on all Deployments
-patches:
-- patch: |-
-    kind: not-important
-    metadata:
-      name: not-important
-    spec:
-      template:
-        spec:
-          nodeSelector:
-            node: "spot"
-          tolerations:
-          - key: cloud.google.com/node
-            operator: Equal
-            value: "spot"
-            effect: NoSchedule
-  target:
-    kind: Deployment
+#patches:
+#- patch: |-
+#    kind: not-important
+#    metadata:
+#      name: not-important
+#    spec:
+#      template:
+#        spec:
+#          nodeSelector:
+#            node: "spot"
+#          tolerations:
+#          - key: cloud.google.com/node
+#            operator: Equal
+#            value: "spot"
+#            effect: NoSchedule
+#  target:
+#    kind: Deployment
