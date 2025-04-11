@@ -4,6 +4,4 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- 1-onboard-apps
-- 2-apply-routing-config
-- 3-create-apiproduct
+- tracks-api.yaml
