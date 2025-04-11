@@ -17,6 +17,14 @@ spec:
       matches:
       - path:
           type: PathPrefix
+          value: /
+    - backendRefs:
+        - name: portal-frontend
+          namespace: gloo-system
+          port: 4000
+      matches:
+      - path:
+          type: PathPrefix
           value: /v1/login
       - path:
           type: PathPrefix
@@ -26,23 +34,4 @@ spec:
           extensionRef:
             group: gateway.solo.io
             kind: RouteOption
-            name: portal-frontend-route-policies
-        - type: ExtensionRef
-          extensionRef:
-            group: gateway.solo.io
-            kind: RouteOption
             name: portal-frontend-auth-policy
-    - backendRefs:
-        - name: portal-frontend
-          namespace: gloo-system
-          port: 4000
-      matches:
-      - path:
-          type: PathPrefix
-          value: /
-      filters:
-        - type: ExtensionRef
-          extensionRef:
-            group: gateway.solo.io
-            kind: RouteOption
-            name: portal-frontend-route-policies

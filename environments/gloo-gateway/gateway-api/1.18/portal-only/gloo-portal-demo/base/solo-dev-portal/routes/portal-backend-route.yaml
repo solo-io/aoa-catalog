@@ -1,0 +1,26 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: portal-backend-route
+  namespace: gloo-system
+spec:
+  parentRefs:
+    - name: https
+      namespace: gloo-system
+  hostnames:
+    - solo-dev-portal.glootest.com
+  rules:
+    - backendRefs:
+        - name: gateway-portal-web-server
+          namespace: gloo-system
+          port: 8080
+      matches:
+      - path:
+          type: PathPrefix
+          value: /v1
+      filters:
+      - type: URLRewrite
+        urlRewrite:
+          path:
+            replacePrefixMatch: /v1
+            type: ReplacePrefixMatch

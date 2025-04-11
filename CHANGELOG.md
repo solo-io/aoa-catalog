@@ -1,5 +1,9 @@
 # Changelog
 
+0.8.7 (4-11-25)
+---
+- update gateway-api/1.18/portal-only demo to add OIDC and rate limiting
+
 0.8.6 (4-2-25)
 ---
 - update /gloo-platform environments to use gloo-platform 2.7.1

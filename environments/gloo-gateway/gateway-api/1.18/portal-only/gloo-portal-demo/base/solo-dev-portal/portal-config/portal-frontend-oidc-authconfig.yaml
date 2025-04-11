@@ -9,13 +9,20 @@ spec:
       oidcAuthorizationCode:
         appUrl: https://solo-dev-portal.glootest.com
         callbackPath: /v1/login
+        logoutPath: /v1/logout
         clientId: 0oa6qvzybcVCK6PcS5d7
         clientSecretRef:
           name: okta-client-secret
           namespace: gloo-system
         issuerUrl: https://dev-22653158.okta.com/oauth2/default
+        session:
+          failOnFetchFailure: true
+          cookie:
+            allowRefreshing: true
         scopes:
+        - profile
         - email
+        - openid
         headers:
           idTokenHeader: id_token
           #idTokenHeader: x-id-token

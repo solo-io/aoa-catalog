@@ -6,410 +6,461 @@ metadata:
 spec:
   openapi:
     inlineString: |
-      openapi: 3.0.0
       info:
-        title: Gloo Platform Portal API
+        title: 'Gloo Portal Server API'
         version: 1.0.0
-        description: >
-          Review the following reference documentation for the Gloo Platform portal
-          APIs, which contains the endpoint specifications for managing user access to
-          both the developer portal and resources exposed by the portal.
+        description: 'Review the following reference documentation for the Gloo portal server APIs, which has the endpoint specifications for managing user access to both the developer portal and resources exposed by the portal. You can use these APIs to build your own frontend application. Be sure to update the server URL to the host that you exposed the backend portal server on, such as portal.example.com. For a sample app, refer to the Gloo Portal product documentation and GitHub repo https://github.com/solo-io/dev-portal-starter.'
+      openapi: 3.0.0
       servers:
-        - url: https://api.gloo-platform-portal.com/v1
+        - url: http://portal.example.com/v1
+      components:
+        schemas:
+          APIKey:
+            allOf:
+            - $ref: '#/components/schemas/BaseEntity'
+            - properties:
+                apiKey:
+                  description: Is returned only once when the API key is created
+                  example: 4f357f4f-cd56-41d2-aca8-301c999bb8a4
+                  type: string
+                id:
+                  example: ae8261d2-4e16-4a06-b1f3-1af71464a8dd
+                  type: string
+                metadata:
+                  example:
+                    key: value
+                  type: object
+                name:
+                  example: api-key-name-1
+                  type: string
+              type: object
+          APIProduct:
+            allOf:
+            - $ref: '#/components/schemas/BaseEntity'
+            - properties:
+                apiProductMetadata:
+                  description: Metadata for the API product.
+                  type: object
+                contactEmail:
+                  type: string
+                description:
+                  type: string
+                name:
+                  type: string
+              type: object
+          APIProductSummary:
+            allOf:
+            - $ref: '#/components/schemas/BaseEntity'
+            - properties:
+                apiKeyEnabled:
+                  description: Indicates whether `ApiKey` is enabled as an authentication
+                    mechanism for the API product.
+                  type: boolean
+                apiProductMetadata:
+                  description: Metadata for the API product.
+                  type: object
+                description:
+                  type: string
+                name:
+                  type: string
+                oauthEnabled:
+                  description: Indicates whether `OAuth` is enabled as an authentication
+                    mechanism for the API product.
+                  type: boolean
+                versionsCount:
+                  description: The version count of the API product.
+                  example: 2
+                  type: integer
+              type: object
+          Application:
+            allOf:
+            - $ref: '#/components/schemas/BaseEntity'
+            - properties:
+                description:
+                  example: app description
+                  type: string
+                metadata:
+                  $ref: '#/components/schemas/ApplicationMetadata'
+                name:
+                  example: app
+                  type: string
+                teamId:
+                  example: 2frepq0mjp841i3jfd030dhtmn
+                  readOnly: true
+                  type: string
+              type: object
+          ApplicationCreate:
+            description: Create
+            properties:
+              description:
+                example: app description
+                type: string
+              name:
+                example: app
+                type: string
+            required:
+            - name
+          ApplicationMetadata:
+            allOf:
+            - $ref: '#/components/schemas/BaseEntity'
+            - properties:
+                customMetadata:
+                  example:
+                    key: value
+                  type: object
+                rateLimit:
+                  $ref: '#/components/schemas/RateLimit'
+              type: object
+          ApplicationUpdate:
+            properties:
+              description:
+                example: the app description
+                type: string
+              name:
+                example: app
+                type: string
+          BaseEntity:
+            properties:
+              createdAt:
+                example: '2021-08-25T20:00:00Z'
+                format: date-time
+                readOnly: true
+                type: string
+              deletedAt:
+                example: '2021-08-25T20:00:00Z'
+                format: date-time
+                readOnly: true
+                type: string
+              id:
+                example: uuid
+                readOnly: true
+                type: string
+              updatedAt:
+                example: '2021-08-25T20:00:00Z'
+                format: date-time
+                readOnly: true
+                type: string
+          OAuthCredential:
+            properties:
+              id:
+                example: uuid
+                readOnly: true
+                type: string
+              idpClientId:
+                example: generated-client-id
+                readOnly: true
+                type: string
+              idpClientName:
+                example: client-name
+                readOnly: true
+                type: string
+              idpClientSecret:
+                example: generated-client-secret
+                readOnly: true
+                type: string
+            type: object
+          ProductVersion:
+            allOf:
+            - $ref: '#/components/schemas/BaseEntity'
+            - properties:
+                apiProductId:
+                  type: string
+                apiSpec:
+                  type: object
+                documentation:
+                  type: string
+                license:
+                  type: string
+                name:
+                  type: string
+                productVersionMetadata:
+                  description: Metadata for the API product version.
+                  type: object
+                termsOfService:
+                  type: string
+                title:
+                  type: string
+              type: object
+          RateLimit:
+            properties:
+              requestsPerUnit:
+                example: 5
+                type: string
+              unit:
+                enum:
+                - SECOND
+                - MINUTE
+                - HOUR
+                - DAY
+                - MONTH
+                - YEAR
+                example: SECOND
+                type: string
+          Subscription:
+            allOf:
+            - $ref: '#/components/schemas/BaseEntity'
+            - properties:
+                apiProductId:
+                  description: The ID of the API product associated with the subscription.
+                  type: string
+                applicationId:
+                  description: The ID of the application to which the subscription is associated.
+                  readOnly: true
+                  type: string
+                approved:
+                  description: Indicates whether the subscription has been approved.
+                  readOnly: true
+                  type: boolean
+                approvedAt:
+                  description: The timestamp when the subscription was approved.
+                  format: date-time
+                  readOnly: true
+                  type: string
+                metadata:
+                  $ref: '#/components/schemas/SubscriptionMetadata'
+                rejected:
+                  description: Indicates whether the subscription has been rejected.
+                  readOnly: true
+                  type: boolean
+                rejectedAt:
+                  description: The timestamp when the subscription was rejected.
+                  format: date-time
+                  readOnly: true
+                  type: string
+                requestedAt:
+                  description: The timestamp when the subscription was requested.
+                  format: date-time
+                  readOnly: true
+                  type: string
+              type: object
+          SubscriptionCreate:
+            properties:
+              apiProductId:
+                description: The API Product ID that we are subscribing to
+                type: string
+            required:
+            - apiProductId
+            type: object
+          SubscriptionMetadata:
+            allOf:
+            - $ref: '#/components/schemas/BaseEntity'
+            - properties:
+                customMetadata:
+                  example:
+                    key: value
+                  type: object
+                rateLimit:
+                  $ref: '#/components/schemas/RateLimit'
+              type: object
+          Team:
+            allOf:
+            - $ref: '#/components/schemas/BaseEntity'
+            - $ref: '#/components/schemas/TeamCreate'
+          TeamCreate:
+            description: Create a new team
+            properties:
+              description:
+                example: team description
+                type: string
+              name:
+                example: ACME Team
+                type: string
+            required:
+            - name
+          TeamUpdate:
+            allOf:
+            - $ref: '#/components/schemas/TeamCreate'
+          User:
+            allOf:
+            - $ref: '#/components/schemas/BaseEntity'
+            - properties:
+                email:
+                  example: johndoe@email.com
+                  type: string
+                isAdmin:
+                  example: false
+                  type: boolean
+                name:
+                  example: John Doe
+                  type: string
+                synced:
+                  example: true
+                  type: boolean
+                username:
+                  example: johndoe
+                  type: string
+              required:
+              - email
+              type: object
+        securitySchemes:
+          identityToken:
+            description: id token cookie from the identity provider used to authenticate
+              the user
+            in: cookie
+            name: id_token
+            type: apiKey
       paths:
-        /me:
-          get:
-            description: >
-              Looks up the user for the current session. Returns your user information
-              if the user session exists and is not expired. You might use this
-              endpoint to confirm your identity before performing other actions for
-              the developer portal, like issuing an API key.
-            summary: Gets the user for the current session.
-            operationId: GetCurrentUser
-            security:
-              - identityToken: []
-              - {}
+        /api-keys/{keyId}:
+          delete:
+            description: Deletes an API Key by API Key ID (UUID).
+            operationId: DeleteAPIKey
+            parameters:
+            - description: The API Key ID (UUID) of key to be deleted.
+              in: path
+              name: keyId
+              required: true
+              schema:
+                example: bfbf98eb-732d-428f-b948-770629802231
+                type: string
             responses:
-              '200':
-                content:
-                  application/json:
-                    schema:
-                      $ref: '#/components/schemas/User'
-                description: Successfully got user information.
+              '204':
+                description: Successfully deleted API keys.
+              '400':
+                description: Bad request. Please supply an API Key Name
               '401':
                 description: Unauthorized. The user's identity token is invalid.
               '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user has
-                  missing claims required by this method.
+                description: Forbidden. The user's identity token is valid, but the user
+                  has missing claims required by this method.
               '404':
                 description: User not found.
               '500':
-                description: Internal server error. Try again in a few moments.
-            tags:
-              - Me
-          put:
-            description: >
-              Upsert current user with the information encoded in the id token.
-
-              It is recommended to call this endpoint after the user logs in to the
-              portal to ensure that the data is up to date.
-            operationId: UpsertCurrentUser
+                description: Unexpected error deleting API keys. Try again in a few moments.
             security:
-              - identityToken: []
-            responses:
-              '200':
-                description: Successfully updated the user details
-                content:
-                  application/json:
-                    schema:
-                      $ref: '#/components/schemas/User'
-              '201':
-                description: Successfully created the user details
-                content:
-                  application/json:
-                    schema:
-                      $ref: '#/components/schemas/User'
-              '401':
-                description: Unauthorized. The user's identity token is invalid.
-              '500':
-                description: Unexpected error creating the user
-            summary: Upserts the current user
+            - identityToken: []
+            summary: Deletes the current user's API key(s) for a specified API ID.
             tags:
-              - Me
-        /teams:
+            - Applications
+        /api-products:
           get:
-            description: Retrieve the teams of the current user
-            operationId: ListTeams
-            security:
-              - identityToken: []
+            description: 'Retrieve a list of all API product summaries accessible to user.      
+      
+
+              This will return the list of summaries for all API products.      
+
+              '
+            operationId: ListApiProducts
             responses:
               '200':
-                description: Successfully listed all teams
                 content:
                   application/json:
                     schema:
-                      type: array
                       items:
-                        $ref: '#/components/schemas/Team'
+                        $ref: '#/components/schemas/APIProductSummary'
+                      type: array
+                description: A list of API products summaries accessible to user.
               '401':
                 description: Unauthorized. The user's identity token is invalid
               '404':
-                description: Teams not found
+                description: No API Products found
               '500':
-                description: Unexpected error fetching teams
-            summary: Lists all teams
-            tags:
-              - Teams
-          post:
-            description: Create a new team associated with the user provided in the identity token
-            operationId: CreateTeam
+                description: Unexpected error fetching api products
             security:
-              - identityToken: []
-            requestBody:
-              description: Team object that needs to be created
-              required: true
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/TeamCreate'
-            responses:
-              '201':
-                description: Successfully created the team
-                content:
-                  application/json:
-                    schema:
-                      $ref: '#/components/schemas/Team'
-              '400':
-                description: Bad request. The request body is invalid.
-              '401':
-                description: Unauthorized. The user's identity token is invalid.
-              '404':
-                description: User not found
-              '500':
-                description: Unexpected error creating the team
-            summary: Creates a team
+            - identityToken: []
             tags:
-              - Teams
-        /teams/{teamId}:
+            - API Products
+        /api-products/{productId}:
           get:
-            description: Retrieve detailed information about a team by its ID
-            operationId: GetTeamById
-            security:
-              - identityToken: []
+            description: Retrieve a specific API product by its ID.
+            operationId: GetApiProductById
             parameters:
-              - in: path
-                name: teamId
-                description: Unique identifier of the team
-                schema:
-                  type: string
-                  example: team-id
-                required: true
-            responses:
-              '200':
-                description: Successfully retrieved team information
-                content:
-                  application/json:
-                    schema:
-                      $ref: '#/components/schemas/Team'
-              '401':
-                description: Unauthorized. The user's identity token is invalid.
-              '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user does not
-                  have permission to view the team.
-              '404':
-                description: Team not found
-              '500':
-                description: Unexpected error querying for team information
-            summary: Gets a team
-            tags:
-              - Teams
-          put:
-            description: Update an existing team
-            operationId: UpdateTeam
-            security:
-              - identityToken: []
-            parameters:
-              - name: teamId
-                in: path
-                required: true
-                description: Unique identifier of the team
-                schema:
-                  type: string
-            requestBody:
-              description: Team object that needs to be updated
+            - description: The unique identifier of the API product.
+              in: path
+              name: productId
               required: true
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/TeamUpdate'
+              schema:
+                type: string
             responses:
               '200':
-                description: Successfully updated team information
                 content:
                   application/json:
                     schema:
-                      $ref: '#/components/schemas/Team'
+                      $ref: '#/components/schemas/APIProduct'
+                description: An API product object.
               '400':
-                description: Bad request. The request body is invalid.
+                description: Invalid request parameters.
               '401':
                 description: Unauthorized. The user's identity token is invalid.
               '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user does not
-                  have permission to update the team
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to view the API product.
               '404':
-                description: Team not found
+                description: API Product not found.
               '500':
-                description: Unexpected error updating the team
-            summary: Updates a team
+                description: Unexpected error fetching api product.
             tags:
-              - Teams
-          delete:
-            description: |-
-              Delete a team.
-
-              Prerequisite: All users and all apps associated with the team must be deleted before the team can be deleted.
-            operationId: DeleteTeam
-            security:
-              - identityToken: []
+            - API Products
+        /api-products/{productId}/versions:
+          get:
+            description: Retrieve all versions for a specific API product.
+            operationId: ListProductVersions
             parameters:
-              - name: teamId
-                in: path
-                required: true
-                description: Unique identifier of the team
-                schema:
-                  type: string
+            - description: The unique identifier of the API product.
+              in: path
+              name: productId
+              required: true
+              schema:
+                type: string
+            responses:
+              '200':
+                content:
+                  application/json:
+                    schema:
+                      items:
+                        $ref: '#/components/schemas/ProductVersion'
+                      type: array
+                description: A list of product versions for the specified API product.
+              '400':
+                description: Invalid request parameters.
+              '401':
+                description: Unauthorized. The user's identity token is invalid.
+              '403':
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to view the API product.
+              '404':
+                description: API Product not found.
+              '500':
+                description: Unexpected error fetching api product.
+            tags:
+            - API Products
+        /apps/{appId}:
+          delete:
+            description: Delete Application
+            operationId: DeleteApplication
+            parameters:
+            - description: Unique identifier of the application
+              in: path
+              name: appId
+              required: true
+              schema:
+                type: string
             responses:
               '204':
-                description: Successfully deleted the team
-              '400':
-                description: Bad request. The team has users or apps associated with it.
+                description: Successfully deleted client.
               '401':
                 description: Unauthorized. The user's identity token is invalid.
               '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user does not
-                  have permission to delete the team
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to delete the application.
               '404':
-                description: Team not found
+                description: Not found.
               '500':
-                description: Unexpected error deleting the team
-            summary: Deletes a team
-            tags:
-              - Teams
-        /teams/{teamId}/apps:
-          get:
-            description: Retrieve all team applications
-            operationId: ListTeamApplications
+                description: Unexpected error deleting client.
             security:
-              - identityToken: []
-            parameters:
-              - name: teamId
-                in: path
-                required: true
-                description: Unique identifier of the team
-                schema:
-                  type: string
-            responses:
-              '200':
-                content:
-                  application/json:
-                    schema:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/Application'
-                description: Successfully listed all team apps
-              '401':
-                description: Unauthorized. The user's identity token is invalid.
-              '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user does not
-                  have permission to view the team apps.
-              '404':
-                description: Team not found
-              '500':
-                description: Unexpected error fetching apps
-            summary: Lists all team apps
+            - identityToken: []
+            summary: Deletes an application
             tags:
-              - Teams
-          post:
-            description: Creates an application
-            operationId: CreateTeamApplication
-            security:
-              - identityToken: []
-            parameters:
-              - name: teamId
-                in: path
-                required: true
-                description: Unique identifier of the team
-                schema:
-                  type: string
-            requestBody:
-              description: Application body
-              required: true
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/ApplicationCreate'
-            responses:
-              '201':
-                content:
-                  application/json:
-                    schema:
-                      $ref: '#/components/schemas/Application'
-                description: Successfully created the team application
-              '400':
-                description: Bad request. The request body is invalid.
-              '401':
-                description: Unauthorized. The user's identity token is invalid.
-              '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user does not
-                  have permission to create the application.
-              '404':
-                description: Team not found.
-              '500':
-                description: Unexpected error creating the application.
-            summary: Creates an application
-            tags:
-              - Teams
-        /teams/{teamId}/members:
-          get:
-            description: Retrieve all team members
-            operationId: ListTeamMembers
-            security:
-              - identityToken: []
-            parameters:
-              - in: path
-                name: teamId
-                description: Unique identifier of the team
-                required: true
-                schema:
-                  type: string
-            responses:
-              '200':
-                description: List of team users
-                content:
-                  application/json:
-                    schema:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/User'
-              '401':
-                description: Unauthorized. The user's identity token is invalid.
-              '404':
-                description: Team not found.
-              '500':
-                description: Unexpected error fetching team members.
-            summary: List of team users
-            tags:
-              - Teams
-          post:
-            description: >
-              Assign a user as a member to the team. If the user doesn't exist within
-              the system, an account will be automatically created and assigned.
-
-              In order for this change to take effect, the client-side
-              application has to send a `PUT` request to the `/me` endpoint with the
-              user's `id_token`, after they login.
-            operationId: AddTeamMember
-            security:
-              - identityToken: []
-            parameters:
-              - in: path
-                name: teamId
-                description: Unique identifier of the team
-                required: true
-                schema:
-                  type: string
-            requestBody:
-              description: User object that needs to be added to the team
-              required: true
-              content:
-                application/json:
-                  schema:
-                    type: object
-                    properties:
-                      email:
-                        type: string
-                        description: Unique email of the user to add
-            responses:
-              '201':
-                description: Successfully added the user to the team
-                content:
-                  application/json:
-                    schema:
-                      $ref: '#/components/schemas/User'
-              '400':
-                description: Bad request. The request body is invalid.
-              '401':
-                description: Unauthorized. The user's identity token is invalid.
-              '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user does not
-                  have permission to add the member to the team.
-              '404':
-                description: Team not found or User not found.
-              '500':
-                description: Unexpected error adding member to the team.
-            summary: Adds a member to a team
-            tags:
-              - Teams
-        /apps/{appId}:
+            - Applications
           get:
             description: Get App information by its ID
             operationId: GetApplicationById
-            security:
-              - identityToken: []
             parameters:
-              - name: appId
-                in: path
-                required: true
-                description: Unique identifier of the team app
-                schema:
-                  type: string
+            - description: Unique identifier of the team app
+              in: path
+              name: appId
+              required: true
+              schema:
+                type: string
             responses:
               '200':
                 content:
@@ -420,35 +471,34 @@ spec:
               '401':
                 description: Unauthorized. The user's identity token is invalid.
               '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user does not
-                  have permission to view the app.
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to view the app.
               '404':
                 description: App not found
               '500':
                 description: Unexpected error querying for app information
+            security:
+            - identityToken: []
             summary: Gets an application
             tags:
-              - Applications
+            - Applications
           put:
             description: Update Application
             operationId: UpdateApplication
-            security:
-              - identityToken: []
             parameters:
-              - name: appId
-                in: path
-                required: true
-                description: Unique identifier of the team app
-                schema:
-                  type: string
-            requestBody:
-              description: Updates an application
+            - description: Unique identifier of the team app
+              in: path
+              name: appId
               required: true
+              schema:
+                type: string
+            requestBody:
               content:
                 application/json:
                   schema:
                     $ref: '#/components/schemas/ApplicationUpdate'
+              description: Updates an application
+              required: true
             responses:
               '200':
                 content:
@@ -461,141 +511,40 @@ spec:
               '401':
                 description: Unauthorized. The user's identity token is invalid.
               '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user does not
-                  have permission to update the application.
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to update the application.
               '404':
                 description: App not found
               '500':
                 description: Unexpected error updating application information.
+            security:
+            - identityToken: []
             summary: Updates an application
             tags:
-              - Applications
-          delete:
-            description: Delete Application
-            operationId: DeleteApplication
-            security:
-              - identityToken: []
-            parameters:
-              - name: appId
-                in: path
-                required: true
-                description: Unique identifier of the application
-                schema:
-                  type: string
-            responses:
-              '204':
-                description: Successfully deleted client.
-              '401':
-                description: Unauthorized. The user's identity token is invalid.
-              '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user does not
-                  have permission to delete the application.
-              '404':
-                description: Not found.
-              '500':
-                description: Unexpected error deleting client.
-            summary: Deletes an application
-            tags:
-              - Applications
-        /apps/{appId}/subscriptions:
-          get:
-            description: Retrieve all subscriptions for an application
-            operationId: ListApplicationProductSubscriptions
-            security:
-              - identityToken: []
-            parameters:
-              - name: appId
-                in: path
-                required: true
-                description: Unique identifier of the team app
-                schema:
-                  type: string
-            responses:
-              '200':
-                description: Successfully listed all app subscriptions
-                content:
-                  application/json:
-                    schema:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/Subscription'
-              '400':
-                description: Invalid request parameters.
-              '401':
-                description: Unauthorized. The user's identity token is invalid.
-              '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user does not
-                  have permission to view the app subscriptions.
-              '404':
-                description: App not found
-              '500':
-                description: Unexpected error fetching app subscriptions
-            summary: Lists all app subscriptions
-            tags:
-              - Applications
-          post:
-            description: Subscribe to an API product. It is subject to admin approval.
-            operationId: SubscribeToApiProduct
-            security:
-              - identityToken: []
-            parameters:
-              - name: appId
-                in: path
-                required: true
-                description: Unique identifier of the team app
-                schema:
-                  type: string
-            requestBody:
-              description: Subscription object that needs to be created
-              required: true
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/SubscriptionCreate'
-            responses:
-              '201':
-                description: Successfully created the subscription
-              '400':
-                description: Bad request. The request body is invalid.
-              '401':
-                description: Unauthorized. The user's identity token is invalid.
-              '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user does not
-                  have permission to create the subscription.
-              '404':
-                description: App not found.
-              '409':
-                description: Subscription already exists.
-              '500':
-                description: Unexpected error creating the subscription.
-            summary: Subscribes to an API product
-            tags:
-              - Applications
+            - Applications
         /apps/{appId}/api-keys:
           get:
-            description: Lists the API keys for the current user, filterable by usage plans or API IDs. A usage plan can have multiple API keys, which can each be tied to multiple API IDs. An API key belongs to only one usage plan. To check the current user, use the GET /me endpoint. To create an API key, use the POST /api-keys endpoint.
+            description: Lists the API keys for the current user, filterable by usage plans
+              or API IDs. A usage plan can have multiple API keys, which can each be tied
+              to multiple API IDs. An API key belongs to only one usage plan. To check the
+              current user, use the GET /me endpoint. To create an API key, use the POST
+              /api-keys endpoint.
             operationId: ListApplicationAPIKeys
-            security:
-              - identityToken: []
             parameters:
-              - name: appId
-                in: path
-                required: true
-                description: The unique identifier of the application.
-                schema:
-                  type: string
+            - description: The unique identifier of the application.
+              in: path
+              name: appId
+              required: true
+              schema:
+                type: string
             responses:
               '200':
                 content:
                   application/json:
                     schema:
-                      type: array
                       items:
                         $ref: '#/components/schemas/APIKey'
+                      type: array
                 description: Successfully listed API keys.
               '400':
                 description: Bad request. Please supply appId.
@@ -603,32 +552,34 @@ spec:
                 description: Application not found for provided appId.
               '500':
                 description: Unexpected error fetching API keys. Try again in a few moments.
-            summary: Lists API keys for the current user, filterable by usage plans or API IDs.
-            tags:
-              - APIs
-          post:
-            description: Creates an API key for the current user for a application. To check the current user, use the GET /me endpoint.
-            operationId: CreateApplicationAPIKey
             security:
-              - identityToken: []
+            - identityToken: []
+            summary: Lists API keys for the current user, filterable by usage plans or API
+              IDs.
+            tags:
+            - Applications
+          post:
+            description: Creates an API key for the current user for a application. To check
+              the current user, use the GET /me endpoint.
+            operationId: CreateApplicationAPIKey
             parameters:
-              - name: appId
-                in: path
-                required: true
-                description: The unique identifier of the application.
-                schema:
-                  type: string
-            requestBody:
-              description: Send the name for this API key in the request body.
+            - description: The unique identifier of the application.
+              in: path
+              name: appId
               required: true
+              schema:
+                type: string
+            requestBody:
               content:
                 application/json:
                   schema:
-                    type: object
                     properties:
                       apiKeyName:
-                        type: string
                         example: api-key-name-1
+                        type: string
+                    type: object
+              description: Send the name for this API key in the request body.
+              required: true
             responses:
               '201':
                 content:
@@ -642,116 +593,280 @@ spec:
                 description: Unauthorized. The user's identity token is invalid.
               '404':
                 description: Application not found for provided appId.
+              '409':
+                description: An API key with the same name already exists in the application.
               '500':
                 description: Unexpected error creating API key. Try again in a few moments.
-            summary: Creates an API key for the current user for a specific API ID and usage plan.
-            tags:
-              - APIs
-        /api-keys/{keyId}:
-          delete:
-            description: Deletes an API Key by API Key ID (UUID).
-            operationId: DeleteAPIKey
             security:
-              - identityToken: []
-            parameters:
-              - in: path
-                name: keyId
-                description: The API Key ID (UUID) of key to be deleted.
-                schema:
-                  type: string
-                  example: bfbf98eb-732d-428f-b948-770629802231
-                required: true
-            responses:
-              '204':
-                description: Successfully deleted API keys.
-              '400':
-                description: Bad request. Please supply an API Key Name
-              '401':
-                description: Unauthorized. The user's identity token is invalid.
-              '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user has
-                  missing claims required by this method.
-              '404':
-                description: User not found.
-              '500':
-                description: Unexpected error deleting API keys. Try again in a few moments.
-            summary: Deletes the current user's API key(s) for a specified API ID.
+            - identityToken: []
+            summary: Creates an API key for the current user for a specific API ID and usage
+              plan.
             tags:
-              - APIs
-        /teams/{teamId}/members/{userId}:
-          delete:
-            description: |
-              Remove user from the team. The user will lose access to the team and its apps.
-              However, if he has access to the app credentials he can still use those.
-            operationId: RemoveTeamMember
-            security:
-              - identityToken: []
-            parameters:
-              - in: path
-                name: teamId
-                description: Unique identifier of the team
-                schema:
-                  type: string
-                  example: team-id
-                required: true
-              - in: path
-                name: userId
-                description: Unique identifier of the user to remove
-                required: true
-                schema:
-                  type: string
-            responses:
-              '204':
-                description: Successfully removed the user from the team
-              '401':
-                description: Unauthorized. The user's identity token is invalid.
-              '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user does not
-                  have permission to remove the member from the team.
-              '404':
-                description: Team not found or User not found in the team.
-              '500':
-                description: Unexpected error removing member from the team.
-            summary: Removes a member from a team
-            tags:
-              - Teams
-        /subscriptions:
+            - Applications
+        /apps/{appId}/oauth-credentials:
           get:
-            summary: 'List subscriptions filtered by status'
-            description: >
-              Retrieves a list of subscriptions, filtered by their approval status.
-              Use the `status` query parameter to specify whether to return 'pending', 'approved',
-              or 'rejected' subscriptions. If the user is an administrator, all subscriptions
-              for the specified status will be returned. Otherwise, only the subscriptions
-              belonging to the teams for the given user with the specified status will be returned.
-            operationId: ListSubscriptionsByStatus
-            tags:
-              - Subscriptions
+            description: Gets the OAuth client credentials for the application
+            operationId: GetApplicationOAuthCredential
             parameters:
-              - name: status
-                in: query
-                required: true
-                description: >
-                  Filter subscriptions by status ('pending' for subscriptions awaiting
-                  approval, 'approved' for subscriptions that have been approved, 'rejected'
-                  for subscriptions that have been denied).
-                schema:
-                  type: string
-                  enum:
-                    - pending
-                    - approved
-                    - rejected
+            - description: The unique identifier of the application.
+              in: path
+              name: appId
+              required: true
+              schema:
+                type: string
             responses:
               '200':
-                description: Successfully retrieved list of subscriptions.
                 content:
                   application/json:
                     schema:
-                      type: array
+                      $ref: '#/components/schemas/OAuthCredential'
+                description: Successfully listed OAuth Client Credentials.
+              '400':
+                description: Bad request. Please supply appId.
+              '404':
+                description: Application not found for provided appId.
+              '500':
+                description: Unexpected error fetching API keys. Try again in a few moments.
+            security:
+            - identityToken: []
+            tags:
+            - Applications
+          post:
+            description: Generates new credentials for the specified application and pushes
+              them to the Identity Provider. If credentials already exist a for the application,
+              then a `409 Conflict` error will be returned.
+            operationId: GenerateApplicationOAuthCredential
+            parameters:
+            - description: The unique identifier of the application.
+              in: path
+              name: appId
+              required: true
+              schema:
+                type: string
+            responses:
+              '201':
+                content:
+                  application/json:
+                    schema:
+                      $ref: '#/components/schemas/OAuthCredential'
+                description: Successfully generated and pushed application credentials.
+              '400':
+                description: Invalid request parameters.
+              '401':
+                description: Unauthorized. The user's identity token is invalid.
+              '403':
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to generate credentials for the application.
+              '404':
+                description: Application not found.
+              '409':
+                description: Application credentials already exist.
+              '500':
+                description: Unexpected error generating or pushing credentials.
+            security:
+            - identityToken: []
+            summary: Generate and push application credentials to the Identity Provider
+            tags:
+            - Applications
+        /apps/{appId}/subscriptions:
+          get:
+            description: Retrieve all subscriptions for an application
+            operationId: ListApplicationProductSubscriptions
+            parameters:
+            - description: Unique identifier of the team app
+              in: path
+              name: appId
+              required: true
+              schema:
+                type: string
+            responses:
+              '200':
+                content:
+                  application/json:
+                    schema:
                       items:
                         $ref: '#/components/schemas/Subscription'
+                      type: array
+                description: Successfully listed all app subscriptions
+              '400':
+                description: Invalid request parameters.
+              '401':
+                description: Unauthorized. The user's identity token is invalid.
+              '403':
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to view the app subscriptions.
+              '404':
+                description: App not found
+              '500':
+                description: Unexpected error fetching app subscriptions
+            security:
+            - identityToken: []
+            summary: Lists all app subscriptions
+            tags:
+            - Applications
+          post:
+            description: Subscribe to an API product. It is subject to admin approval.
+            operationId: SubscribeToApiProduct
+            parameters:
+            - description: Unique identifier of the team app
+              in: path
+              name: appId
+              required: true
+              schema:
+                type: string
+            requestBody:
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/SubscriptionCreate'
+              description: Subscription object that needs to be created
+              required: true
+            responses:
+              '201':
+                description: Successfully created the subscription
+              '400':
+                description: Bad request. The request body is invalid.
+              '401':
+                description: Unauthorized. The user's identity token is invalid.
+              '403':
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to create the subscription.
+              '404':
+                description: App not found.
+              '409':
+                description: Subscription already exists.
+              '500':
+                description: Unexpected error creating the subscription.
+            security:
+            - identityToken: []
+            summary: Subscribes to an API product
+            tags:
+            - Applications
+        /me:
+          get:
+            description: Looks up the user for the current session. Returns your user information
+              if the user session exists and is not expired. You might use this endpoint
+              to confirm your identity before performing other actions for the developer
+              portal, like issuing an API key.
+            operationId: GetCurrentUser
+            responses:
+              '200':
+                content:
+                  application/json:
+                    schema:
+                      $ref: '#/components/schemas/User'
+                description: Successfully got user information.
+              '401':
+                description: Unauthorized. The user's identity token is invalid.
+              '403':
+                description: Forbidden. The user's identity token is valid, but the user
+                  has missing claims required by this method.
+              '404':
+                description: User not found.
+              '500':
+                description: Internal server error. Try again in a few moments.
+            security:
+            - identityToken: []
+            - {}
+            summary: Gets the user for the current session.
+            tags:
+            - Me
+          put:
+            description: 'Upsert current user with the information encoded in the id token.      
+
+              It is recommended to call this endpoint after the user logs in to the portal
+              to ensure that the data is up to date.      
+
+              '
+            operationId: UpsertCurrentUser
+            responses:
+              '200':
+                content:
+                  application/json:
+                    schema:
+                      $ref: '#/components/schemas/User'
+                description: Successfully updated the user details
+              '201':
+                content:
+                  application/json:
+                    schema:
+                      $ref: '#/components/schemas/User'
+                description: Successfully created the user details
+              '401':
+                description: Unauthorized. The user's identity token is invalid.
+              '500':
+                description: Unexpected error creating the user
+            security:
+            - identityToken: []
+            summary: Upserts the current user
+            tags:
+            - Me
+        /oauth-credentials/{credentialId}:
+          delete:
+            description: Deletes an OAuth client credential by its client ID
+            operationId: DeleteOAuthCredential
+            parameters:
+            - description: The OAuth client credential ID (UUID) of the credential to be
+                deleted.
+              in: path
+              name: credentialId
+              required: true
+              schema:
+                example: bfbf98eb-732d-428f-b948-770629802231
+                type: string
+            responses:
+              '204':
+                description: Successfully deleted OAuth client credential.
+              '400':
+                description: Bad request. Please supply an OAuth client credential ID.
+              '401':
+                description: Unauthorized. The user's identity token is invalid.
+              '403':
+                description: Forbidden. The user's identity token is valid, but the user
+                  has missing claims required by this method.
+              '404':
+                description: User not found.
+              '500':
+                description: Unexpected error deleting OAuth client credential. Try again
+                  in a few moments.
+            security:
+            - identityToken: []
+            summary: Deletes an OAuth client credential
+            tags:
+            - Applications
+        /subscriptions:
+          get:
+            description: 'Retrieves a list of subscriptions, filtered by their approval
+              status. Use the `status` query parameter to specify whether to return ''pending'',
+              ''approved'', or ''rejected'' subscriptions. If the user is an administrator,
+              all subscriptions for the specified status will be returned. Otherwise, only
+              the subscriptions belonging to the teams for the given user with the specified
+              status will be returned.      
+
+              '
+            operationId: ListSubscriptionsByStatus
+            parameters:
+            - description: Filter subscriptions by status ('pending' for subscriptions awaiting
+                approval, 'approved' for subscriptions that have been approved, 'rejected'
+                for subscriptions that have been denied).
+              in: query
+              name: status
+              required: true
+              schema:
+                enum:
+                - pending
+                - approved
+                - rejected
+                type: string
+            responses:
+              '200':
+                content:
+                  application/json:
+                    schema:
+                      items:
+                        $ref: '#/components/schemas/Subscription'
+                      type: array
+                description: Successfully retrieved list of subscriptions.
               '400':
                 description: Invalid status parameter.
               '401':
@@ -760,22 +875,21 @@ spec:
                 description: Unauthorized to view the list.
               '500':
                 description: Internal server error.
+            summary: List subscriptions filtered by status
+            tags:
+            - Subscriptions
         /subscriptions/{subscriptionId}:
           delete:
-            summary: Delete subscription
-            description: >
-              Deletes a subscription, revoking the associated application's access to
-              the specified API product.
+            description: Deletes a subscription, revoking the associated application's access
+              to the specified API product.
             operationId: DeleteApplicationProductSubscription
-            tags:
-              - Subscriptions
             parameters:
-              - name: subscriptionId
-                in: path
-                required: true
-                description: The unique identifier of the subscription to delete.
-                schema:
-                  type: string
+            - description: The unique identifier of the subscription to delete.
+              in: path
+              name: subscriptionId
+              required: true
+              schema:
+                type: string
             responses:
               '204':
                 description: Subscription successfully deleted.
@@ -787,352 +901,370 @@ spec:
                 description: Subscription not found.
               '500':
                 description: Internal server error.
-        /api-products:
-          get:
-            description: |
-              Retrieve a list of all API product summaries accessible to user.
-
-              This will return the list of summaries for all API products.
-            operationId: ListApiProducts
+            summary: Delete subscription
             tags:
-              - API Products
-            security:
-              - identityToken: []
+            - Subscriptions
+        /teams:
+          get:
+            description: Retrieve the teams of the current user
+            operationId: ListTeams
             responses:
               '200':
-                description: A list of API products summaries accessible to user.
                 content:
                   application/json:
                     schema:
-                      type: array
                       items:
-                        $ref: '#/components/schemas/APIProductSummary'
+                        $ref: '#/components/schemas/Team'
+                      type: array
+                description: Successfully listed all teams
               '401':
                 description: Unauthorized. The user's identity token is invalid
               '404':
-                description: No API Products found
+                description: Teams not found
               '500':
-                description: Unexpected error fetching api products
-        /api-products/{productId}:
-          get:
-            description: Retrieve a specific API product by its ID.
-            operationId: GetApiProductById
+                description: Unexpected error fetching teams
+            security:
+            - identityToken: []
+            summary: Lists all teams
             tags:
-              - API Products
-            parameters:
-              - name: productId
-                in: path
-                required: true
-                description: The unique identifier of the API product.
-                schema:
-                  type: string
+            - Teams
+          post:
+            description: Create a new team associated with the user provided in the identity
+              token
+            operationId: CreateTeam
+            requestBody:
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/TeamCreate'
+              description: Team object that needs to be created
+              required: true
             responses:
-              '200':
-                description: An API product object.
+              '201':
                 content:
                   application/json:
                     schema:
-                      $ref: '#/components/schemas/APIProduct'
+                      $ref: '#/components/schemas/Team'
+                description: Successfully created the team
               '400':
-                description: Invalid request parameters.
+                description: Bad request. The request body is invalid.
+              '401':
+                description: Unauthorized. The user's identity token is invalid.
+              '404':
+                description: User not found
+              '409':
+                description: User belongs to a team with the same name
+              '500':
+                description: Unexpected error creating the team
+            security:
+            - identityToken: []
+            summary: Creates a team
+            tags:
+            - Teams
+        /teams/{teamId}:
+          delete:
+            description: 'Delete a team.      
+      
+
+              Prerequisite: All users and all apps associated with the team must be deleted
+              before the team can be deleted.'
+            operationId: DeleteTeam
+            parameters:
+            - description: Unique identifier of the team
+              in: path
+              name: teamId
+              required: true
+              schema:
+                type: string
+            responses:
+              '204':
+                description: Successfully deleted the team
+              '400':
+                description: Bad request. The team has users or apps associated with it.
               '401':
                 description: Unauthorized. The user's identity token is invalid.
               '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user does not
-                  have permission to view the API product.
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to delete the team
               '404':
-                description: API Product not found.
+                description: Team not found
               '500':
-                description: Unexpected error fetching api product.
-        /api-products/{productId}/versions:
-          get:
-            description: Retrieve all versions for a specific API product.
-            operationId: ListProductVersions
+                description: Unexpected error deleting the team
+            security:
+            - identityToken: []
+            summary: Deletes a team
             tags:
-              - API Products
+            - Teams
+          get:
+            description: Retrieve detailed information about a team by its ID
+            operationId: GetTeamById
             parameters:
-              - name: productId
-                in: path
-                required: true
-                description: The unique identifier of the API product.
-                schema:
-                  type: string
+            - description: Unique identifier of the team
+              in: path
+              name: teamId
+              required: true
+              schema:
+                example: team-id
+                type: string
             responses:
               '200':
-                description: A list of product versions for the specified API product.
                 content:
                   application/json:
                     schema:
-                      type: array
+                      $ref: '#/components/schemas/Team'
+                description: Successfully retrieved team information
+              '401':
+                description: Unauthorized. The user's identity token is invalid.
+              '403':
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to view the team.
+              '404':
+                description: Team not found
+              '500':
+                description: Unexpected error querying for team information
+            security:
+            - identityToken: []
+            summary: Gets a team
+            tags:
+            - Teams
+          put:
+            description: Update an existing team
+            operationId: UpdateTeam
+            parameters:
+            - description: Unique identifier of the team
+              in: path
+              name: teamId
+              required: true
+              schema:
+                type: string
+            requestBody:
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/TeamUpdate'
+              description: Team object that needs to be updated
+              required: true
+            responses:
+              '200':
+                content:
+                  application/json:
+                    schema:
+                      $ref: '#/components/schemas/Team'
+                description: Successfully updated team information
+              '400':
+                description: Bad request. The request body is invalid.
+              '401':
+                description: Unauthorized. The user's identity token is invalid.
+              '403':
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to update the team
+              '404':
+                description: Team not found
+              '500':
+                description: Unexpected error updating the team
+            security:
+            - identityToken: []
+            summary: Updates a team
+            tags:
+            - Teams
+        /teams/{teamId}/apps:
+          get:
+            description: Retrieve all team applications
+            operationId: ListTeamApplications
+            parameters:
+            - description: Unique identifier of the team
+              in: path
+              name: teamId
+              required: true
+              schema:
+                type: string
+            responses:
+              '200':
+                content:
+                  application/json:
+                    schema:
                       items:
-                        $ref: '#/components/schemas/ProductVersion'
-              '400':
-                description: Invalid request parameters.
+                        $ref: '#/components/schemas/Application'
+                      type: array
+                description: Successfully listed all team apps
               '401':
                 description: Unauthorized. The user's identity token is invalid.
               '403':
-                description: >
-                  Forbidden. The user's identity token is valid, but the user does not
-                  have permission to view the API product.
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to view the team apps.
               '404':
-                description: API Product not found.
+                description: Team not found
               '500':
-                description: Unexpected error fetching api product.
-      components:
-        schemas:
-          BaseEntity:
-            properties:
-              id:
-                example: uuid
+                description: Unexpected error fetching apps
+            security:
+            - identityToken: []
+            summary: Lists all team apps
+            tags:
+            - Teams
+          post:
+            description: Creates an application
+            operationId: CreateTeamApplication
+            parameters:
+            - description: Unique identifier of the team
+              in: path
+              name: teamId
+              required: true
+              schema:
                 type: string
-                readOnly: true
-              createdAt:
+            requestBody:
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ApplicationCreate'
+              description: Application body
+              required: true
+            responses:
+              '201':
+                content:
+                  application/json:
+                    schema:
+                      $ref: '#/components/schemas/Application'
+                description: Successfully created the team application
+              '400':
+                description: Bad request. The request body is invalid.
+              '401':
+                description: Unauthorized. The user's identity token is invalid.
+              '403':
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to create the application.
+              '404':
+                description: Team not found.
+              '409':
+                description: Application with the same name already exists in the team.
+              '500':
+                description: Unexpected error creating the application.
+            security:
+            - identityToken: []
+            summary: Creates an application
+            tags:
+            - Teams
+        /teams/{teamId}/members:
+          get:
+            description: Retrieve all team members
+            operationId: ListTeamMembers
+            parameters:
+            - description: Unique identifier of the team
+              in: path
+              name: teamId
+              required: true
+              schema:
                 type: string
-                format: date-time
-                example: '2021-08-25T20:00:00Z'
-                readOnly: true
-              updatedAt:
+            responses:
+              '200':
+                content:
+                  application/json:
+                    schema:
+                      items:
+                        $ref: '#/components/schemas/User'
+                      type: array
+                description: List of team users
+              '401':
+                description: Unauthorized. The user's identity token is invalid.
+              '404':
+                description: Team not found.
+              '500':
+                description: Unexpected error fetching team members.
+            security:
+            - identityToken: []
+            summary: List of team users
+            tags:
+            - Teams
+          post:
+            description: 'Assign a user as a member to the team. If the user doesn''t exist
+              within the system, an account will be automatically created and assigned.      
+
+              In order for this change to take effect, the client-side application has to
+              send a `PUT` request to the `/me` endpoint with the user''s `id_token`, after
+              they login.      
+
+              '
+            operationId: AddTeamMember
+            parameters:
+            - description: Unique identifier of the team
+              in: path
+              name: teamId
+              required: true
+              schema:
                 type: string
-                format: date-time
-                example: '2021-08-25T20:00:00Z'
-                readOnly: true
-              deletedAt:
-                type: string
-                format: date-time
-                example: '2021-08-25T20:00:00Z'
-                readOnly: true
-          Application:
-            allOf:
-              - $ref: '#/components/schemas/BaseEntity'
-              - type: object
-                properties:
-                  name:
-                    example: app
-                    type: string
-                  description:
-                    example: app description
-                    type: string
-                  idpClientName:
-                    example: App
-                    type: string
-                    readOnly: true
-                  idpClientId:
-                    example: 2frepq0mjp841i3jfd030dhtmn
-                    type: string
-                    readOnly: true
-                  teamId:
-                    example: 2frepq0mjp841i3jfd030dhtmn
-                    type: string
-                    readOnly: true
-                  rateLimit:
-                    $ref: '#/components/schemas/RateLimit'
-                  customMetadata:
+            requestBody:
+              content:
+                application/json:
+                  schema:
+                    properties:
+                      email:
+                        description: Unique email of the user to add
+                        type: string
                     type: object
-                    example: {
-                      "key": "value"
-                    }
-          ApplicationCreate:
-            description: Create
-            required:
-              - name
-            properties:
-              name:
+              description: User object that needs to be added to the team
+              required: true
+            responses:
+              '201':
+                content:
+                  application/json:
+                    schema:
+                      $ref: '#/components/schemas/User'
+                description: Successfully added the user to the team
+              '400':
+                description: Bad request. The request body is invalid.
+              '401':
+                description: Unauthorized. The user's identity token is invalid.
+              '403':
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to add the member to the team.
+              '404':
+                description: Team not found or User not found.
+              '500':
+                description: Unexpected error adding member to the team.
+            security:
+            - identityToken: []
+            summary: Adds a member to a team
+            tags:
+            - Teams
+        /teams/{teamId}/members/{userId}:
+          delete:
+            description: 'Remove user from the team. The user will lose access to the team
+              and its apps.      
+
+              However, if he has access to the app credentials he can still use those.      
+
+              '
+            operationId: RemoveTeamMember
+            parameters:
+            - description: Unique identifier of the team
+              in: path
+              name: teamId
+              required: true
+              schema:
+                example: team-id
                 type: string
-                example: app
-              description:
+            - description: Unique identifier of the user to remove
+              in: path
+              name: userId
+              required: true
+              schema:
                 type: string
-                example: app description
-          ApplicationUpdate:
-            properties:
-              name:
-                example: app
-                type: string
-              description:
-                example: the app description
-                type: string
-          Team:
-            allOf:
-              - $ref: '#/components/schemas/BaseEntity'
-              - $ref: '#/components/schemas/TeamCreate'
-          TeamCreate:
-            description: Create a new team
-            required:
-              - name
-            properties:
-              name:
-                type: string
-                example: ACME Team
-              description:
-                type: string
-                example: team description
-          TeamUpdate:
-            allOf:
-              - $ref: '#/components/schemas/TeamCreate'
-          User:
-            allOf:
-              - $ref: '#/components/schemas/BaseEntity'
-              - type: object
-                required:
-                  - email
-                properties:
-                  email:
-                    example: johndoe@email.com
-                    type: string
-                  name:
-                    example: John Doe
-                    type: string
-                  username:
-                    example: johndoe
-                    type: string
-                  synced:
-                    example: true
-                    type: boolean
-          Subscription:
-            allOf:
-              - $ref: '#/components/schemas/BaseEntity'
-              - type: object
-                properties:
-                  requestedAt:
-                    type: string
-                    format: date-time
-                    description: The timestamp when the subscription was requested.
-                    readOnly: true
-                  approved:
-                    type: boolean
-                    description: Indicates whether the subscription has been approved.
-                    readOnly: true
-                  approvedAt:
-                    type: string
-                    format: date-time
-                    description: The timestamp when the subscription was approved.
-                    readOnly: true
-                  rejected:
-                    type: boolean
-                    description: Indicates whether the subscription has been rejected.
-                    readOnly: true
-                  rejectedAt:
-                    type: string
-                    format: date-time
-                    description: The timestamp when the subscription was rejected.
-                    readOnly: true
-                  applicationId:
-                    type: string
-                    description: >
-                      The ID of the application to which the subscription is
-                      associated.
-                    readOnly: true
-                  apiProductId:
-                    type: string
-                    description: The ID of the API product associated with the subscription.
-                  rateLimit:
-                    $ref: '#/components/schemas/RateLimit'
-                  customMetadata:
-                    type: object
-                    example: {
-                      "key": "value"
-                    }
-          SubscriptionCreate:
-            type: object
-            required:
-              - apiProductId
-            properties:
-              apiProductId:
-                type: string
-                description: The API Product ID that we are subscribing to
-          APIProduct:
-            allOf:
-              - $ref: '#/components/schemas/BaseEntity'
-              - type: object
-                properties:
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  contactEmail:
-                    type: string
-                  apiProductMetadata:
-                    type: object
-                    description: Metadata for the API product.
-          APIProductSummary:
-            allOf:
-              - $ref: '#/components/schemas/BaseEntity'
-              - type: object
-                properties:
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  versionsCount:
-                    example: 2
-                    type: integer
-                    description: The version count of the API product.
-                  apiProductMetadata:
-                    type: object
-                    description: Metadata for the API product.
-                  oauthEnabled:
-                    type: boolean
-                    description: Indicates whether `OAuth` is enabled as an authentication mechanism for the API product.
-                  apiKeyEnabled:
-                    type: boolean
-                    description: Indicates whether `ApiKey` is enabled as an authentication mechanism for the API product.
-          ProductVersion:
-            allOf:
-              - $ref: '#/components/schemas/BaseEntity'
-              - type: object
-                properties:
-                  name:
-                    type: string
-                  title:
-                    type: string
-                  documentation:
-                    type: string
-                  termsOfService:
-                    type: string
-                  license:
-                    type: string
-                  apiSpec:
-                    type: object
-                  productVersionMetadata:
-                    type: object
-                    description: Metadata for the API product version.
-                  apiProductId:
-                    type: string
-          APIKey:
-            allOf:
-              - $ref: '#/components/schemas/BaseEntity'
-              - type: object
-                properties:
-                  apiKey:
-                    description: Is returned only once when the API key is created
-                    example: 4f357f4f-cd56-41d2-aca8-301c999bb8a4
-                    type: string
-                  id:
-                    example: ae8261d2-4e16-4a06-b1f3-1af71464a8dd
-                    type: string
-                  name:
-                    example: api-key-name-1
-                    type: string
-                  metadata:
-                    type: object
-                    example: {
-                      "key": "value"
-                    }
-          RateLimit:
-            properties:
-              requestsPerUnit:
-                example: 5
-                type: string
-              unit:
-                type: string
-                example: "SECOND"
-                enum: ["SECOND", "MINUTE", "HOUR", "DAY", "MONTH", "YEAR"]
-      securitySchemes:
-        identityToken:
-          type: apiKey
-          in: cookie
-          name: id_token
-          description: id token cookie from the identity provider used to authenticate the user
+            responses:
+              '204':
+                description: Successfully removed the user from the team
+              '401':
+                description: Unauthorized. The user's identity token is invalid.
+              '403':
+                description: Forbidden. The user's identity token is valid, but the user
+                  does not have permission to remove the member from the team.
+              '404':
+                description: Team not found or User not found in the team.
+              '500':
+                description: Unexpected error removing member from the team.
+            security:
+            - identityToken: []
+            summary: Removes a member from a team
+            tags:
+            - Teams
   servedBy:
     - port: 8080
       targetRef:
