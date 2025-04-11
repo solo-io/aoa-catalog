@@ -8,7 +8,6 @@ spec:
     - name: https
       namespace: gloo-system
   hostnames:
-    #- api.gwapi.glooplatform.com
     - solo-dev-portal.gwapi.glooplatform.com
   rules:
     - backendRefs:

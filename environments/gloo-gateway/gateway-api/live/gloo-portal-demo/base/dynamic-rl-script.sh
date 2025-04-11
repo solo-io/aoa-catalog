@@ -386,7 +386,7 @@ echo "Step 11: Choose an API product's URI or enter a custom one:"
 PREDEFINED_URIS=(
   "https://tracks.gwapi.glooplatform.com/tracks/c_0"
   "https://petstore.gwapi.glooplatform.com/pets/pet"
-  "https://api.gwapi.glooplatform.com/v1/api-products"
+  "https://solo-dev-portal.gwapi.glooplatform.com/v1/api-products"
   "https://openlibrary.gwapi.glooplatform.com/api/books?bibkeys=ISBN%3A0201558025&format=json&jscmd=viewapi"
   "Custom"
 )
