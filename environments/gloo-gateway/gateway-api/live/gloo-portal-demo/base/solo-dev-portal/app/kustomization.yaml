@@ -4,6 +4,4 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- app
-- portal-config
-- routes
+- portal-frontend.yaml
