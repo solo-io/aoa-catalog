@@ -5,7 +5,7 @@ metadata:
   namespace: gloo-system
 spec:
   hostnames:
-    - petstore.glootest.com
+    - petstore.gwapi.glooplatform.com
   parentRefs:
     - group: gateway.networking.k8s.io
       kind: Gateway

@@ -18,7 +18,7 @@ spec:
     hostRewrite: 'openlibrary.org'
     cors:
       allowOrigin:
-        - https://solo-dev-portal.glootest.com
+        - https://solo-dev-portal.gwapi.glooplatform.com
       allowHeaders:
         - "Content-Type"
         - "Authorization"
