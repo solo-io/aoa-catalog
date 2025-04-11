@@ -7,4 +7,3 @@ resources:
 - petstore-route-policies.yaml
 - petstore-route.yaml
 - refgrants.yaml
-- petstore-dynamic-rlc.yaml

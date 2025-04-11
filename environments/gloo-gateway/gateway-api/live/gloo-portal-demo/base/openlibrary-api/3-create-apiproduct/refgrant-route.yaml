@@ -1,0 +1,14 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: ReferenceGrant
+metadata:
+  name: allow-apiproduct-to-access-httproute
+  namespace: openlibrary
+spec:
+  # Allow the APIProducts in other namespaces access to the HTTPRoute
+  from:
+    - group: portal.gloo.solo.io
+      kind: ApiProduct
+      namespace: gloo-system
+  to:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute

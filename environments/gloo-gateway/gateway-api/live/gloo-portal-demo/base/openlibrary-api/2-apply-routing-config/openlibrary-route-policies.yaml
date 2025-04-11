@@ -7,10 +7,18 @@ spec:
   options:
     jwt:
       disable: true
+    extauth:
+      configRef:
+        name: portal-auth
+        namespace: gloo-system
+    rateLimitConfigs:
+      refs:
+        - name: portal-rl
+          namespace: gloo-system
     hostRewrite: 'openlibrary.org'
     cors:
       allowOrigin:
-        - https://solo-dev-portal.gwapi.glooplatform.com
+        - https://solo-dev-portal.glootest.com
       allowHeaders:
         - "Content-Type"
         - "Authorization"
@@ -23,14 +31,6 @@ spec:
         - DELETE
         - OPTIONS
       allowCredentials: true
-    extauth:
-      configRef:
-        name: portal-api-key-authconfig
-        namespace: gloo-system
-    rateLimitConfigs:
-      refs:
-        - name: openlibrary-dynamic-rlc
-          namespace: openlibrary
                 
                 
     

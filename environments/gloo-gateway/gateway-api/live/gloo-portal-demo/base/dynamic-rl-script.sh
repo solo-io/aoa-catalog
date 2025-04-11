@@ -10,7 +10,7 @@ echo
 
 # Prompt the user to input the base URL for the portal server backend, re-prompt if empty
 while true; do
-    read -p "Enter the API base URL for the portal server backend (e.g., https://api.gwapi.glooplatform.com): " BASE_URL
+    read -p "Enter the API base URL for the portal server backend (e.g., https://solo-dev-portal.gwapi.glooplatform.com): " BASE_URL
 
     # Validate if the input is empty
     if [ -z "$BASE_URL" ]; then

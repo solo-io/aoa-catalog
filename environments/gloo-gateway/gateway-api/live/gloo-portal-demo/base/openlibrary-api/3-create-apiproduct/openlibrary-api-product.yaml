@@ -4,7 +4,7 @@ metadata:
   labels:
     expose-portal: "true"
   name: openlibrary-external-svc-api-product
-  namespace: openlibrary
+  namespace: gloo-system
 spec:
   id: "openlibrary"
   displayName: "openlibrary"

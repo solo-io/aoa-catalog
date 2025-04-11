@@ -6,9 +6,9 @@ kind: Kustomization
 resources:
 - solo-dev-portal
 - tracks-api
-#- petstore-api
-#- openlibrary-api
-#- gloo-portal-server-api
+- petstore-api
+- openlibrary-api
+- gloo-portal-server-api
 
 # patch nodeSelector and tolerations on all Deployments
 patches:

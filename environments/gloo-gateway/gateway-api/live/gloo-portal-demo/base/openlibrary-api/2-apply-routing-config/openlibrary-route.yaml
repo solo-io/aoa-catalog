@@ -8,7 +8,7 @@ metadata:
     gateway: https
 spec:
   hostnames:
-  - "openlibrary.gwapi.glooplatform.com"
+  - "openlibrary.glootest.com"
   parentRefs:
     - name: https
       namespace: gloo-system
