@@ -1,6 +1,6 @@
 # Changelog
 
-0.8.7 (4-11-25)
+0.8.7 (4-22-25)
 ---
 - update gateway-api/1.18/portal-only demo to add OIDC and rate limiting
 
