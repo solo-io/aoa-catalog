@@ -9,9 +9,9 @@ spec:
       disable: true
     extauth:
       configRef:
-        name: portal-api-key-authconfig
+        name: portal-auth
         namespace: gloo-system
     rateLimitConfigs:
       refs:
-        - name: tracks-dynamic-rlc
-          namespace: tracks
+        - name: portal-rl
+          namespace: gloo-system

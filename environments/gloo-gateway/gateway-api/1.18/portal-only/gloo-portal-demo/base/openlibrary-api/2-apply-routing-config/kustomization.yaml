@@ -7,5 +7,4 @@ resources:
 - openlibrary-upstream.yaml
 - openlibrary-route.yaml
 - openlibrary-route-policies.yaml
-- openlibrary-dynamic-rlc.yaml
 #- openlibrary-rg.yaml

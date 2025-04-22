@@ -9,12 +9,11 @@ spec:
       disable: true
     extauth:
       configRef:
-        name: portal-api-key-authconfig
+        name: portal-auth
         namespace: gloo-system
     rateLimitConfigs:
       refs:
-        - name: petstore-dynamic-rlc
+        - name: portal-rl
           namespace: gloo-system
-                
                 
     

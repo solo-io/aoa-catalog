@@ -1,9 +1,13 @@
 apiVersion: gateway.solo.io/v1
 kind: RouteOption
 metadata:
-  name: portal-backend-route-policies
+  name: portal-frontend-route-policies
   namespace: gloo-system
 spec:
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: portal-frontend-route
   options:
     jwt:
       disable: true

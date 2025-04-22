@@ -37,7 +37,7 @@ spec:
     spec:
       serviceAccountName: portal-frontend
       containers:
-        - image: gcr.io/solo-public/docs/portal-frontend:gg-teams-apps-demo-v1
+        - image: gcr.io/solo-public/docs/portal-frontend:v0.1.1
           imagePullPolicy: Always
           name: portal-frontend
           args: ["--host", "0.0.0.0"]
@@ -45,28 +45,10 @@ spec:
             - containerPort: 4000
           env:
             - name: VITE_PORTAL_SERVER_URL
-              value: https://api.glootest.com/v1 # The URL that the backend Portal is exposed on via an HTTPRoute.
-            - name: VITE_COMPANY_NAME
-              value: "Solo.io"
-            #- name: VITE_HOME_IMAGE_URL
-            #  value: ""
-            #- name: VITE_BANNER_IMAGE_URL
-            #  value: ""
-            #- name: VITE_LOGO_IMAGE_URL
-            #  value: ""
-            # experimental - oidc auth flow
+              value: "https://solo-dev-portal.glootest.com/v1"
             - name: VITE_APPLIED_OIDC_AUTH_CODE_CONFIG
               value: "true"
             - name: VITE_OIDC_AUTH_CODE_CONFIG_CALLBACK_PATH
               value: "/v1/login"
             - name: VITE_OIDC_AUTH_CODE_CONFIG_LOGOUT_PATH
               value: "/v1/logout"
-            # experimental PKCE auth flow
-            #- name: VITE_CLIENT_ID
-            #  value: 0oaafbtuwfy9lG7gr5d7
-            #- name: VITE_TOKEN_ENDPOINT
-            #  value: https://dev-22653158.okta.com/oauth2/default/v1/token
-            #- name: VITE_AUTH_ENDPOINT
-            #  value: https://dev-22653158.okta.com/oauth2/default/v1/authorize
-            #- name: VITE_LOGOUT_ENDPOINT
-            #  value: https://dev-22653158.okta.com/oauth2/default/v1/logout
