@@ -6,7 +6,7 @@ kind: Kustomization
 resources:
 - solo-dev-portal
 - tracks-api
-- petstore-api
+#- petstore-api
 - openlibrary-api
 - gloo-portal-server-api
 
