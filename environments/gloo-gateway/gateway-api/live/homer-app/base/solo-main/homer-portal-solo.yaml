@@ -261,6 +261,12 @@ spec:
                   - name: "Demo AI Gateway Capabilities"
                     icon: "fas fa-brain"
                     items:
+                      - name: "kagent dashboard"
+                        subtitle: "AI agents on Kubernetes"
+                        icon: "fas fa-brain"
+                        tag: "ai-gateway,#kagent"
+                        url: "https://kagent.gwapi.glooplatform.com/"
+                        target: "_blank" # optional html a tag target attribute
                       - name: "LLM Traffic Split and Failover Demo"
                         subtitle: "local-to-local and public-to-local examples"
                         icon: "fas fa-brain"
