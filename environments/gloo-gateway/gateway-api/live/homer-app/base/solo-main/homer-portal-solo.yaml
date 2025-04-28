@@ -177,8 +177,8 @@ spec:
                     
                     <h2>Common Usernames</h2>
                     <p>Below are a few common usernames to explore the applications and portals:</p>
-                    <pre><code>Username: jdoe@solo.io   // Password: gloo-dev
-                    Username: jdoe@gmail.com // Password: gloo-public</code></pre>
+                    <pre><code>Admin User: admin@solo.io // Password: gloo-manager
+                    Dev User: jdoe@solo.io   // Password: gloo-dev</code></pre>
                     <p>Note: You can also sign up for your own user through Okta using self-service registration!</p>
                 
                     <h2>Common Headers Used in Demos</h2>
