@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gloo-edge-enterprise-helm
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io/solo-io
+spec:
+  destination:
+    namespace: gloo-system
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: gloo-ee
+    helm:
+      skipCrds: false
+      values: |
+        create_license_secret: false
+        gloo:
+          kubeGateway:
+            enabled: true
+          gatewayProxies:
+            gatewayProxy:
+              disabled: true
+          discovery:
+            enabled: false
+        # disable everything else for a simple deployment
+        gloo-fed:
+          enabled: false
+          glooFedApiserver:
+            enable: false
+        observability:
+          enabled: false
+        prometheus:
+          enabled: false
+        grafana:
+          defaultInstallationEnabled: false
+        gateway-portal-web-server:
+          enabled: false
+    repoURL: http://storage.googleapis.com/gloo-ee-helm
+    targetRevision: 1.19.0
+  syncPolicy:
+    automated:
+      prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
+      selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).

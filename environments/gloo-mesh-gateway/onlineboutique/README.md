@@ -10,6 +10,6 @@ The `gloo-gateway/onlineboutique` environment deploys the core components of a s
 
 ## Environment descriptions
 - base:
-    - gloo mesh 2.7.1
+    - gloo mesh 2.7.3
     - istio 1.25.0-solo (Helm)
     - revision: main

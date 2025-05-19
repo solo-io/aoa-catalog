@@ -16,6 +16,6 @@ When applied with `cluster1` and `cluster2` environments, here is a high level d
 
 ## Environment description
 - base:
-    - gloo mesh 2.7.1
+    - gloo mesh 2.7.3
     - istio 1.25.0-solo (Helm)
     - revision: main

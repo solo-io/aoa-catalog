@@ -1,5 +1,13 @@
 # Changelog
 
+0.8.8 (5-19-25)
+---
+- update /gloo-platform environments to use gloo-platform 2.7.3
+- update /gloo-mesh-gateway environments to use gloo-platform 2.7.3
+- update /gloo-mesh-core environments to use gloo-platform 2.7.3
+- update /istio environments to use istio 1.26.0
+- update /gloo-gateway environments to use gloo-gateway 1.19.0
+
 0.8.7 (4-22-25)
 ---
 - update gateway-api/1.18/portal-only demo to add OIDC and rate limiting
