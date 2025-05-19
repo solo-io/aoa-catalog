@@ -11,4 +11,4 @@ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/downloa
 
 helm upgrade -i gloo-operator oci://us-docker.pkg.dev/solo-public/gloo-operator-helm/gloo-operator \
 --version "0.2.3" -n gloo-system --kube-context "$context" --create-namespace \
---set manager.env.SOLO_ISTIO_LICENSE_KEY=$GLOO_LICENSE_KEY
+--set manager.env.SOLO_ISTIO_LICENSE_KEY=$gloo_mesh_license_key
