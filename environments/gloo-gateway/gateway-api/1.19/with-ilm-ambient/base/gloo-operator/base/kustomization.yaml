@@ -5,5 +5,5 @@ kind: Kustomization
 # list of resources to be Applied
 resources:
 - gwapi-crds/1.2.0
-- gloo-operator.yaml
+#- gloo-operator.yaml
 

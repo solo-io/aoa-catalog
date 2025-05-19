@@ -15,7 +15,12 @@ spec:
   source:
     chart: gloo-operator
     repoURL: us-docker.pkg.dev/solo-public/gloo-operator-helm
-    targetRevision: 0.1.0-rc.0
+    targetRevision: 0.2.3
+    helm:
+      values: |
+        manager:
+          env:
+            SOLO_ISTIO_LICENSE_KEY=$GLOO_MESH_LICENSE_KEY
   syncPolicy:
     automated:
       prune: true
