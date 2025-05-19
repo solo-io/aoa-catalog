@@ -9,6 +9,7 @@
 - update /gloo-gateway environments to use gloo-gateway 1.19.0
 - update gloo-operator to 0.2.3 in gateway-api/1.19/with-ilm-ambient environment
 - update gwapi crds to use v1.2.1 in all environments
+- update ArgoCD to 2.14.11
 
 0.8.7 (4-22-25)
 ---
