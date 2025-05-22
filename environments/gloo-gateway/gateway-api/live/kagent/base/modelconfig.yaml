@@ -1,0 +1,12 @@
+apiVersion: kagent.dev/v1alpha1
+kind: ModelConfig
+metadata:
+  name: llm.gwapi.glooplatform.com
+  namespace: kagent
+spec:
+  model: gpt-4o-mini-2024-07-18
+  provider: OpenAI
+  apiKeySecretKey: ""
+  apiKeySecretRef: ""
+  openAI:
+    baseUrl: https://llm.gwapi.glooplatform.com/openai

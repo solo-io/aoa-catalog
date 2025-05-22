@@ -8,3 +8,4 @@ resources:
 - kagent-dashboard-gcp-authconfig.yaml
 - kagent-dashboard-route-policies.yaml
 - kagent-dashboard-route.yaml
+- modelconfig.yaml
