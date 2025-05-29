@@ -141,6 +141,13 @@ waves:
       -  $env_path/enclosed-app/init.sh
       post_deploy:
       -  $env_path/enclosed-app/test.sh 
+  - name: egress-waypoint
+    location: $env_path/egress-waypoint/base
+    scripts:
+      pre_deploy: 
+      -  $env_path/egress-waypoint/init.sh
+      post_deploy:
+      -  $env_path/egress-waypoint/test.sh 
   - name: homer-app
     location: $env_path/homer-app/base
     scripts:

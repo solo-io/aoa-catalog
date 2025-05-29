@@ -1,0 +1,13 @@
+apiVersion: telemetry.istio.io/v1
+kind: Telemetry
+metadata:
+  name: enable-access-logging
+  namespace: egress
+spec:
+  targetRefs:
+  - kind: Gateway
+    group: gateway.networking.k8s.io
+    name: egress-waypoint
+  accessLogging:
+    - providers:
+      - name: envoy
