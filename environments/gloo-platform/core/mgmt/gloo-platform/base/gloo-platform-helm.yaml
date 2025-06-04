@@ -99,10 +99,10 @@ spec:
             #    istio.io/rev: main
             #podAnnotations:
             #    proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
-            image:
-              pullPolicy: IfNotPresent
-              repository: gcr.io/gloo-mesh/gloo-otel-collector
-              tag: 2.7.3
+            #image:
+            #  pullPolicy: IfNotPresent
+            #  repository: gcr.io/gloo-mesh/gloo-otel-collector
+            #  tag: 2.7.3
             config:
                 exporters:
                     otlp:
