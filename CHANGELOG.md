@@ -1,13 +1,13 @@
 # Changelog
 
-0.8.8 (5-19-25)
+0.8.8 (6-4-25)
 ---
 - update /gloo-platform environments to use gloo-platform 2.7.3
 - update /gloo-mesh-gateway environments to use gloo-platform 2.7.3
 - update /gloo-mesh-core environments to use gloo-platform 2.7.3
 - update /istio environments to use istio 1.26.0
 - update /gloo-gateway environments to use gloo-gateway 1.19.0
-- update gloo-operator to 0.2.3 in gateway-api/1.19/with-ilm-ambient environment
+- update gloo-operator to 0.2.4 in gateway-api/1.19/with-ilm-ambient environment
 - update gwapi crds to use v1.2.1 in all environments
 - update ArgoCD to 2.14.11
 
