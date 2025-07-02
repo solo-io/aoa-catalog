@@ -4,10 +4,6 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- ai-gateway.yaml
-- gloo-gateway-override.yaml
-- ai-gateway-log-provider.yaml
-- redis-cache.yaml
-- openai
-- anthropic
-#- bedrock
+- bedrock-route.yaml
+- bedrock-routeoptions.yaml
+- bedrock-upstream.yaml

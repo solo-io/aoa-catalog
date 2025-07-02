@@ -1,0 +1,20 @@
+
+apiVersion: gloo.solo.io/v1
+kind: Upstream
+metadata:
+  labels:
+    app: gloo
+  name: bedrock-upstream
+  namespace: gloo-system
+spec:
+  ai:
+    bedrock:
+      #model: amazon.titan-tg1-large
+      #model: anthropic.claude-3-5-haiku-20241022-v1:0
+      model: meta.llama3-1-8b-instruct-v1:0
+      region: us-west-2
+      credentialProvider:
+        secretRef:
+          name: bedrock-secret
+          namespace: gloo-system
+---
