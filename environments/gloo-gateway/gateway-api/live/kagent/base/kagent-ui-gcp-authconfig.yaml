@@ -1,7 +1,7 @@
 apiVersion: enterprise.gloo.solo.io/v1
 kind: AuthConfig
 metadata:
-  name: kagent-dashboard-gcp
+  name: kagent-ui-gcp
   namespace: gloo-system
 spec:
   configs:

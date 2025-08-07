@@ -4,8 +4,8 @@ kind: Kustomization
 
 # list of resources to be Applied
 resources:
-- kagent-dashboard-ext-auth-routeoption.yaml
-- kagent-dashboard-gcp-authconfig.yaml
-- kagent-dashboard-route-policies.yaml
-- kagent-dashboard-route.yaml
+- kagent-ui-ext-auth-routeoption.yaml
+- kagent-ui-gcp-authconfig.yaml
+- kagent-ui-route-policies.yaml
+- kagent-ui-route.yaml
 - modelconfig.yaml
